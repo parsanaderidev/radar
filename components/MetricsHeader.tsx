@@ -34,11 +34,23 @@ export function MetricsHeader({
     <div className="space-y-4">
       {/* 5 Vercel Analytics Metric Tiles */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-        {/* Card 1: Total Messages */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between">
-          <span className="text-xs text-neutral-400 font-medium">
-            کل پیام‌های دریافتی
-          </span>
+        {/* Card 1: Total Messages (Clickable: resets filter to All) */}
+        <div
+          onClick={() => onSelectIntent("all")}
+          className={cn(
+            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
+            selectedIntent === "all" ? "border-white/40 ring-1 ring-white/10" : "border-[#1f1f1f]"
+          )}
+          title="مشاهده همه پیام‌های دریافتی"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-neutral-400 font-medium">
+              کل پیام‌های دریافتی
+            </span>
+            {selectedIntent === "all" && (
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            )}
+          </div>
           <div className="mt-3">
             <div className="text-2xl sm:text-3xl font-semibold text-white">
               {toPersianDigits(metrics.totalMessages)}
@@ -49,8 +61,15 @@ export function MetricsHeader({
           </div>
         </div>
 
-        {/* Card 2: Noise Filtered Ratio */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between">
+        {/* Card 2: Noise Filtered Ratio (Clickable: filters to Irrelevant) */}
+        <div
+          onClick={() => onSelectIntent("irrelevant")}
+          className={cn(
+            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
+            selectedIntent === "irrelevant" ? "border-neutral-400 ring-1 ring-neutral-400/20" : "border-[#1f1f1f]"
+          )}
+          title="مشاهده پیام‌های فیلترشده نویز و نامرتبط"
+        >
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-neutral-400 font-medium">
               نرخ حذف نویز
@@ -70,8 +89,15 @@ export function MetricsHeader({
           </div>
         </div>
 
-        {/* Card 3: Qualified Leads */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between relative overflow-hidden">
+        {/* Card 3: Qualified Leads (Clickable: filters to High Intent) */}
+        <div
+          onClick={() => onSelectIntent("high_intent")}
+          className={cn(
+            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between relative overflow-hidden cursor-pointer active:scale-[0.98]",
+            selectedIntent === "high_intent" ? "border-[#00e599]/60 ring-1 ring-[#00e599]/20" : "border-[#1f1f1f]"
+          )}
+          title="مشاهده سرنخ‌های واجد شرایط خرید قطعی"
+        >
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-neutral-400 font-medium">
               سرنخ‌های واجد شرایط (ICP)
@@ -90,11 +116,21 @@ export function MetricsHeader({
           </div>
         </div>
 
-        {/* Card 4: Total Spend */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between">
-          <span className="text-xs text-neutral-400 font-medium">
-            هزینه پردازش هوش
-          </span>
+        {/* Card 4: Problem-Aware Leads & Total Spend (Clickable: filters to Problem Aware) */}
+        <div
+          onClick={() => onSelectIntent("problem_aware")}
+          className={cn(
+            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
+            selectedIntent === "problem_aware" ? "border-[#f5a623]/60 ring-1 ring-[#f5a623]/20" : "border-[#1f1f1f]"
+          )}
+          title="مشاهده پیام‌های کاربران دردمند و ناراضی"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-neutral-400 font-medium">
+              هزینه پردازش هوش
+            </span>
+            <span className="text-[10px] text-[#f5a623] opacity-80">دردمند ↵</span>
+          </div>
           <div className="mt-3">
             <div className="text-2xl sm:text-3xl font-semibold text-white">
               {formatPersianToman(metrics.estimatedTomanSpend)}
@@ -105,11 +141,21 @@ export function MetricsHeader({
           </div>
         </div>
 
-        {/* Card 5: Avg Cost Per Lead */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between">
-          <span className="text-xs text-neutral-400 font-medium">
-            هزینه به‌ازای هر سرنخ
-          </span>
+        {/* Card 5: Curious Leads & Avg Cost Per Lead (Clickable: filters to Curious) */}
+        <div
+          onClick={() => onSelectIntent("curious")}
+          className={cn(
+            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
+            selectedIntent === "curious" ? "border-[#0070f3]/60 ring-1 ring-[#0070f3]/20" : "border-[#1f1f1f]"
+          )}
+          title="مشاهده پیام‌های کاربران کنجکاو"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-neutral-400 font-medium">
+              هزینه به‌ازای هر سرنخ
+            </span>
+            <span className="text-[10px] text-[#0070f3] opacity-80">کنجکاو ↵</span>
+          </div>
           <div className="mt-3">
             <div className="text-2xl sm:text-3xl font-semibold text-white">
               {formatMessageCostToman(metrics.avgCostPerQualifiedLeadUsd)}

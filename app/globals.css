@@ -168,7 +168,30 @@ body {
 
 .input-smooth:focus {
   border-color: #ededed;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Radar scanner live needle animation */
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.radar-needle {
+  transform-origin: 12px 12px;
+  transform-box: view-box;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Sweep continuously on group hover or direct hover */
+.group:hover .radar-needle,
+.radar-needle:hover,
+.animate-radar-sweep .radar-needle {
+  animation: radarSweep 1.8s linear infinite;
 }
 
 /* Micro-animations */

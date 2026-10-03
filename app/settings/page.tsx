@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
+import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import {
   CheckCircleIcon,
@@ -103,6 +104,14 @@ export default function ProductSettingsPage() {
     }
   };
 
+  const focusInput = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.focus();
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#000000] text-[#ededed]">
       <Navbar />
@@ -129,7 +138,7 @@ export default function ProductSettingsPage() {
               type="button"
               onClick={resetToLoaded}
               disabled={isSaving || isLoading}
-              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] text-xs text-neutral-300 transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs text-neutral-300 transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
               title="بازنشانی تغییرات ذخیره‌نشده"
             >
               <RefreshIcon className="w-3.5 h-3.5 text-neutral-400" />
@@ -157,10 +166,17 @@ export default function ProductSettingsPage() {
         {/* 4 Status Overview Tiles (Matching Dashboard Metrics Header Grid) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {/* Tile 1: Active Product */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-default">
-            <span className="text-xs text-neutral-400 font-medium">
-              محصول هدف رادار
-            </span>
+          <div
+            onClick={() => focusInput("product-name-input")}
+            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
+            title="کلیک برای ویرایش نام و شرح محصول"
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-neutral-400 font-medium">
+                محصول هدف رادار
+              </span>
+              <span className="text-[10px] text-neutral-500 opacity-80">ویرایش ↵</span>
+            </div>
             <div className="mt-3">
               <div className="text-base sm:text-lg font-semibold text-white truncate">
                 {name || "در حال بارگذاری..."}
@@ -172,7 +188,11 @@ export default function ProductSettingsPage() {
           </div>
 
           {/* Tile 2: ICP Status */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-default">
+          <div
+            onClick={() => focusInput("icp-textarea")}
+            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
+            title="کلیک برای ویرایش پرسونای خریدار ایده‌آل (ICP)"
+          >
             <div className="flex items-center justify-between gap-2">
               <span className="text-xs text-neutral-400 font-medium">
                 پرسونای مشتری (ICP)
@@ -190,7 +210,11 @@ export default function ProductSettingsPage() {
           </div>
 
           {/* Tile 3: Keywords Count */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-default">
+          <div
+            onClick={() => focusInput("keywords-input")}
+            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
+            title="کلیک برای افزودن یا ویرایش کلیدواژه‌های نظارت"
+          >
             <div className="flex items-center justify-between gap-2">
               <span className="text-xs text-neutral-400 font-medium">
                 کلیدواژه‌های نظارت
@@ -210,10 +234,23 @@ export default function ProductSettingsPage() {
           </div>
 
           {/* Tile 4: Storage Infrastructure */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-default">
-            <span className="text-xs text-neutral-400 font-medium">
-              ذخیره‌سازی و حریم داده
-            </span>
+          <div
+            onClick={() => {
+              setStatusMessage({
+                text: "پایگاه داده محلی پاکت‌بیس (SQLite) به صورت امن و بدون وابستگی به کلاد خارجی در حال اجرا است.",
+                type: "success",
+              });
+              setTimeout(() => setStatusMessage(null), 5000);
+            }}
+            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
+            title="کلیک برای بررسی وضعیت ذخیره‌سازی محلی"
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-neutral-400 font-medium">
+                ذخیره‌سازی و حریم داده
+              </span>
+              <span className="text-[10px] text-[#00e599]">بررسی ↵</span>
+            </div>
             <div className="mt-3">
               <div className="text-base sm:text-lg font-semibold text-white">
                 SQLite محلی
@@ -244,7 +281,7 @@ export default function ProductSettingsPage() {
             </div>
             <button
               onClick={() => setStatusMessage(null)}
-              className="text-neutral-400 hover:text-white text-xs px-2"
+              className="text-neutral-400 hover:text-white text-xs px-2 cursor-pointer"
             >
               ✕
             </button>
@@ -280,6 +317,7 @@ export default function ProductSettingsPage() {
                       نام تجاری محصول
                     </label>
                     <input
+                      id="product-name-input"
                       type="text"
                       required
                       value={name}
@@ -294,6 +332,7 @@ export default function ProductSettingsPage() {
                       شعار محوری (Tagline)
                     </label>
                     <input
+                      id="product-tagline-input"
                       type="text"
                       value={tagline}
                       onChange={(e) => setTagline(e.target.value)}
@@ -307,6 +346,7 @@ export default function ProductSettingsPage() {
                       شرح قابلیت‌ها و مزایای محصول
                     </label>
                     <textarea
+                      id="product-description-textarea"
                       rows={3}
                       required
                       value={description}
@@ -338,6 +378,7 @@ export default function ProductSettingsPage() {
                       پرسونای خریدار هدف (Ideal Customer Profile)
                     </label>
                     <textarea
+                      id="icp-textarea"
                       rows={3}
                       required
                       value={icp}
@@ -357,6 +398,7 @@ export default function ProductSettingsPage() {
                       </span>
                     </div>
                     <textarea
+                      id="valprops-textarea"
                       rows={4}
                       value={valPropsText}
                       onChange={(e) => setValPropsText(e.target.value)}
@@ -375,6 +417,7 @@ export default function ProductSettingsPage() {
                       </span>
                     </div>
                     <input
+                      id="keywords-input"
                       type="text"
                       value={keywordsText}
                       onChange={(e) => setKeywordsText(e.target.value)}
@@ -386,13 +429,16 @@ export default function ProductSettingsPage() {
                     {parsedKeywords.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-1.5 pt-2 border-t border-[#1f1f1f]">
                         {parsedKeywords.map((kw, i) => (
-                          <span
+                          <button
+                            type="button"
                             key={i}
-                            className="px-2.5 py-0.5 rounded-md text-[11px] bg-[#111111] text-neutral-300 border border-[#222222] flex items-center gap-1"
+                            onClick={() => focusInput("keywords-input")}
+                            title="کلیک برای ویرایش کلیدواژه‌ها"
+                            className="px-2.5 py-0.5 rounded-md text-[11px] bg-[#111111] hover:bg-[#1a1a1a] text-neutral-300 hover:text-white border border-[#222222] hover:border-[#383838] transition-all flex items-center gap-1 cursor-pointer active:scale-95"
                           >
                             <span className="text-neutral-500">#</span>
                             <span>{kw}</span>
-                          </span>
+                          </button>
                         ))}
                       </div>
                     )}
@@ -491,10 +537,10 @@ export default function ProductSettingsPage() {
       {/* Vercel-style minimalist footer matching dashboard */}
       <footer className="mt-auto border-t border-[#1f1f1f] bg-black py-4 px-4 text-xs text-neutral-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <RadarLogo className="w-3.5 h-3.5 text-neutral-400" />
-            <span>رادار • موتور هوشمند تشخیص تمایل خرید در جامعه کاربری</span>
-          </div>
+          <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+            <RadarLogo className="w-3.5 h-3.5 text-neutral-400 group-hover:text-white transition-colors" />
+            <span className="group-hover:text-neutral-300 transition-colors">رادار • موتور هوشمند تشخیص تمایل خرید در جامعه کاربری</span>
+          </Link>
           <span className="text-neutral-600">میزبانی بومی • دیتابیس پاکت‌بیس • مدل زبانی محلی/آفلاین</span>
         </div>
       </footer>

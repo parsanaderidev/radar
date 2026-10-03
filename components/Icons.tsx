@@ -26,8 +26,13 @@ export function RadarLogo({ className = "w-4 h-4", size, ...props }: IconProps) 
       <circle cx="12" cy="12" r="9.5" strokeWidth="1.8" />
       <circle cx="12" cy="12" r="5.5" strokeWidth="1.8" />
       <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
-      <path d="M12 12l6.36-6.36" strokeWidth="2.2" strokeLinecap="round" />
-      <circle cx="16.5" cy="7.5" r="1.2" fill="currentColor" stroke="none" />
+      <g
+        className="radar-needle"
+        style={{ transformOrigin: "12px 12px" }}
+      >
+        <path d="M12 12l6.36-6.36" strokeWidth="2.2" strokeLinecap="round" />
+        <circle cx="16.5" cy="7.5" r="1.2" fill="currentColor" stroke="none" />
+      </g>
     </svg>
   );
 }

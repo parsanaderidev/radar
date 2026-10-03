@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
+import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { MetricsHeader } from "@/components/MetricsHeader";
 import { LeadCard } from "@/components/LeadCard";
@@ -310,20 +311,25 @@ export default function LeadRadarDashboard() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Active Product Banner (Vercel Project Card Style) */}
         {activeProduct && (
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div className="space-y-1">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-all duration-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <Link
+              href="/settings"
+              className="space-y-1 group cursor-pointer flex-1"
+              title="مشاهده و ویرایش تنظیمات این محصول و پرسونای مشتری"
+            >
               <div className="flex items-center gap-2">
-                <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
+                <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium group-hover:border-neutral-700 transition-colors">
                   محصول هدف
                 </span>
-                <h1 className="text-sm sm:text-base font-semibold text-white">
-                  {activeProduct.name}
+                <h1 className="text-sm sm:text-base font-semibold text-white group-hover:text-[#00e599] transition-colors flex items-center gap-1.5">
+                  <span>{activeProduct.name}</span>
+                  <span className="text-xs text-neutral-500 opacity-0 group-hover:opacity-100 transition-opacity">← تنظیمات</span>
                 </h1>
               </div>
-              <p className="text-xs text-neutral-400 max-w-3xl line-clamp-1">
+              <p className="text-xs text-neutral-400 max-w-3xl line-clamp-1 group-hover:text-neutral-300 transition-colors">
                 {activeProduct.tagline || activeProduct.description}
               </p>
-            </div>
+            </Link>
 
             <div className="flex items-center gap-2.5 self-stretch md:self-auto justify-end">
               <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] text-neutral-500">
@@ -529,8 +535,8 @@ export default function LeadRadarDashboard() {
           </div>
         ) : filteredLeads.length === 0 ? (
           <div className="py-16 px-4 rounded-lg border border-[#1f1f1f] text-center space-y-3 bg-[#050505]">
-            <div className="w-12 h-12 mx-auto rounded-lg bg-[#111111] border border-[#222222] flex items-center justify-center text-white shadow-sm">
-              <RadarLogo className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 mx-auto rounded-lg bg-[#111111] border border-[#222222] hover:border-[#383838] flex items-center justify-center text-white shadow-sm group cursor-pointer transition-all active:scale-95">
+              <RadarLogo className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
             </div>
             <div className="space-y-1">
               <h3 className="text-sm font-medium text-neutral-200">
@@ -586,10 +592,10 @@ export default function LeadRadarDashboard() {
       {/* Vercel-style minimalist footer */}
       <footer className="mt-auto border-t border-[#1f1f1f] bg-black py-4 px-4 text-xs text-neutral-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <RadarLogo className="w-3.5 h-3.5 text-neutral-400" />
-            <span>رادار • موتور هوشمند تشخیص تمایل خرید در جامعه کاربری</span>
-          </div>
+          <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+            <RadarLogo className="w-3.5 h-3.5 text-neutral-400 group-hover:text-white transition-colors" />
+            <span className="group-hover:text-neutral-300 transition-colors">رادار • موتور هوشمند تشخیص تمایل خرید در جامعه کاربری</span>
+          </Link>
           <span className="text-neutral-600">میزبانی بومی • دیتابیس پاکت‌بیس • مدل زبانی محلی/آفلاین</span>
         </div>
       </footer>
