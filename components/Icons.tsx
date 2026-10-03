@@ -6,6 +6,52 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
 }
 
 /**
+ * Official Static Radar Logo Emblem (Inspired by Vercel's geometric minimalism)
+ */
+export function RadarLogo({ className = "w-4 h-4", size, ...props }: IconProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      width={size}
+      height={size}
+      {...props}
+    >
+      <circle cx="12" cy="12" r="9.5" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="5.5" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
+      <path d="M12 12l6.36-6.36" strokeWidth="2.2" strokeLinecap="round" />
+      <circle cx="16.5" cy="7.5" r="1.2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+/**
+ * Radar Badge (White rounded tile with black Radar emblem, matching Vercel's iconic brand mark)
+ */
+export function RadarBadge({
+  className = "w-7 h-7",
+  iconClassName = "w-4 h-4",
+}: {
+  className?: string;
+  iconClassName?: string;
+}) {
+  return (
+    <div
+      className={`flex items-center justify-center rounded-md bg-white text-black transition-transform group-hover:scale-105 shadow-sm ${className}`}
+    >
+      <RadarLogo className={iconClassName} />
+    </div>
+  );
+}
+
+/**
  * Vercel Iconic Triangle Logo - Smooth
  */
 export function VercelTriangleIcon({ className = "w-4 h-4", size, ...props }: IconProps) {

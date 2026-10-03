@@ -8,6 +8,7 @@ import {
   ServerIcon,
   CpuIcon,
   SparklesIcon,
+  RadarLogo,
 } from "@/components/Icons";
 import { getPocketBaseClient, type ProductRecord } from "@/lib/pocketbase";
 
@@ -92,15 +93,20 @@ export default function ProductSettingsPage() {
 
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 space-y-6">
         {/* Header */}
-        <div className="border-b border-[#1f1f1f] pb-4">
-          <div className="flex items-center gap-2">
-            <h1 className="text-lg font-semibold text-white">
-              تنظیمات محصول و پرسونای مشتری (ICP)
-            </h1>
+        <div className="border-b border-[#1f1f1f] pb-4 flex items-center justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-lg font-semibold text-white">
+                تنظیمات رادار و پرسونای مشتری (ICP)
+              </h1>
+            </div>
+            <p className="text-xs text-neutral-400 mt-1">
+              مشخصات محصول و پرسونای خریدار جهت ارزیابی هوشمند رادار و تفکیک نویز از تمایل خرید
+            </p>
           </div>
-          <p className="text-xs text-neutral-400 mt-1">
-            مشخصات محصول و پرسونای خریدار جهت ارزیابی هوشمند پیام‌ها و تفکیک نویز از تمایل خرید
-          </p>
+          <div className="hidden sm:flex items-center justify-center w-8 h-8 rounded-md bg-[#111111] border border-[#222222] text-neutral-300 shadow-sm">
+            <RadarLogo className="w-4 h-4 text-white" />
+          </div>
         </div>
 
         {/* Feedback Alert */}

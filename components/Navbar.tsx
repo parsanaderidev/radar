@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  VercelTriangleIcon,
+  RadarLogo,
   PlayIcon,
   RefreshIcon,
   SparklesIcon,
@@ -44,16 +44,16 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#1f1f1f] bg-black/85 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-        {/* Left: Vercel Brand & Breadcrumb */}
+        {/* Left: Radar Static Base Logo & Brand */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2.5 text-white group">
-            <div className="flex items-center justify-center w-7 h-7 rounded-md bg-white text-black transition-transform group-hover:scale-105">
-              <VercelTriangleIcon className="w-3.5 h-3.5" />
+            <div className="flex items-center justify-center w-7 h-7 rounded-md bg-white text-black transition-transform group-hover:scale-105 shadow-sm">
+              <RadarLogo className="w-4 h-4 text-black" />
             </div>
-            <div className="flex items-center gap-1.5 text-xs font-medium">
-              <span className="font-semibold text-white">رادار سرنخ</span>
+            <div className="flex items-center gap-2 text-xs font-medium">
+              <span className="font-bold text-white text-sm">رادار</span>
               <span className="text-neutral-600">/</span>
-              <span className="text-neutral-400">جامعه کاربری ایران</span>
+              <span className="text-neutral-400">سامانه هوشمند سرنخ</span>
             </div>
           </Link>
 

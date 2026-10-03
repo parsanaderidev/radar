@@ -8,7 +8,7 @@ import {
   SparklesIcon,
   RefreshIcon,
   PlayIcon,
-  RadarIcon,
+  RadarLogo,
 } from "@/components/Icons";
 import { getPocketBaseClient, type LeadRecord, type ProductRecord } from "@/lib/pocketbase";
 import { calculateRadarMetrics, toPersianDigits } from "@/lib/pricing";
@@ -275,21 +275,21 @@ export default function LeadRadarDashboard() {
           </div>
         ) : filteredLeads.length === 0 ? (
           <div className="py-16 px-4 rounded-lg border border-dashed border-[#222222] text-center space-y-3 bg-[#050505]">
-            <div className="w-10 h-10 mx-auto rounded-md bg-[#111] border border-[#222] flex items-center justify-center text-neutral-400">
-              <RadarIcon className="w-5 h-5 text-neutral-300" />
+            <div className="w-12 h-12 mx-auto rounded-lg bg-[#111111] border border-[#222222] flex items-center justify-center text-white shadow-sm">
+              <RadarLogo className="w-6 h-6 text-white" />
             </div>
             <div className="space-y-1">
               <h3 className="text-sm font-medium text-neutral-200">
                 هیچ پیامی با فیلترهای انتخابی موجود نیست
               </h3>
               <p className="text-xs text-neutral-500 max-w-sm mx-auto">
-                برای تزریق پیام جدید و مشاهده تریاژ هوشمند، دکمه «تزریق زنده پیام» را بزنید.
+                برای تزریق پیام جدید و مشاهده تریاژ هوشمند در رادار، دکمه «تزریق زنده پیام» را بزنید.
               </p>
             </div>
             <button
               onClick={handleSimulateFeed}
               disabled={isSimulating}
-              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95"
+              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95 shadow-sm"
             >
               <PlayIcon className="w-3 h-3 text-black" />
               <span>تزریق زنده پیام</span>
@@ -311,7 +311,10 @@ export default function LeadRadarDashboard() {
       {/* Vercel-style minimalist footer */}
       <footer className="mt-auto border-t border-[#1f1f1f] bg-black py-4 px-4 text-xs text-neutral-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>رادار هوشمند سرنخ • موتور تشخیص تمایل خرید در جامعه کاربری</span>
+          <div className="flex items-center gap-2">
+            <RadarLogo className="w-3.5 h-3.5 text-neutral-400" />
+            <span>رادار • موتور هوشمند تشخیص تمایل خرید در جامعه کاربری</span>
+          </div>
           <span className="text-neutral-600">میزبانی بومی • دیتابیس پاکت‌بیس • مدل زبانی محلی/آفلاین</span>
         </div>
       </footer>
