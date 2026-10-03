@@ -4,12 +4,11 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  RadarIcon,
+  VercelTriangleIcon,
   PlayIcon,
-  ServerIcon,
-  SettingsIcon,
   RefreshIcon,
   SparklesIcon,
+  SettingsIcon,
 } from "./Icons";
 import { cn } from "../lib/cn";
 
@@ -21,7 +20,6 @@ interface NavbarProps {
 export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
   const pathname = usePathname();
   const [pbStatus, setPbStatus] = useState<"checking" | "online" | "offline">("checking");
-  const [llmModel, setLlmModel] = useState<string>("llama3.1");
 
   useEffect(() => {
     async function checkHealth() {
@@ -44,118 +42,90 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        {/* Brand & Logo */}
+    <header className="sticky top-0 z-50 w-full border-b border-[#222] bg-black/80 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+        {/* Left: Vercel Brand & Breadcrumb */}
         <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500/20 via-cyan-500/20 to-blue-500/20 border border-emerald-500/30 text-emerald-400 group-hover:scale-105 transition-transform duration-200">
-              <RadarIcon className="w-6 h-6 animate-pulse text-emerald-400" />
-              <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-              </span>
+          <Link href="/" className="flex items-center gap-2.5 text-white group">
+            <div className="flex items-center justify-center w-7 h-7 rounded-md bg-white text-black transition-transform group-hover:scale-105">
+              <VercelTriangleIcon className="w-3.5 h-3.5" />
             </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-base sm:text-lg tracking-tight text-white">
-                  رادار جذب مشتری
-                </span>
-                <span className="text-xs px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
-                  Lead Radar
-                </span>
-              </div>
-              <span className="text-[11px] text-slate-400 hidden sm:inline">
-                هوش مصنوعی تشخیص سیگنال خرید در جوامع ایرانی (تلگرام، بله، فروم)
-              </span>
+            <div className="flex items-center gap-1.5 font-mono text-xs">
+              <span className="font-semibold text-white tracking-tight">radar</span>
+              <span className="text-neutral-600">/</span>
+              <span className="text-neutral-400">iran-community</span>
             </div>
           </Link>
+
+          {/* Vercel Status Indicator */}
+          <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-[#262626] bg-[#0c0c0c] text-[11px] font-mono text-neutral-400">
+            <span
+              className={cn(
+                "w-1.5 h-1.5 rounded-full",
+                pbStatus === "online"
+                  ? "bg-[#00e599] shadow-[0_0_8px_rgba(0,229,153,0.5)]"
+                  : pbStatus === "checking"
+                  ? "bg-[#f5a623] animate-ping"
+                  : "bg-[#e00]"
+              )}
+            />
+            <span className="text-neutral-300">
+              {pbStatus === "online" ? "PocketBase Ready" : pbStatus === "checking" ? "Connecting" : "Offline"}
+            </span>
+          </div>
         </div>
 
-        {/* Center / Navigation Links */}
-        <nav className="flex items-center gap-1 sm:gap-2">
+        {/* Center: Vercel Nav Underline Tabs */}
+        <nav className="flex items-center gap-1">
           <Link
             href="/"
             className={cn(
-              "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5",
               pathname === "/"
-                ? "bg-slate-800 text-white border border-slate-700"
-                : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"
+                ? "bg-[#1f1f1f] text-white"
+                : "text-neutral-400 hover:text-white hover:bg-[#141414]"
             )}
           >
-            <SparklesIcon className="w-4 h-4 text-emerald-400" />
+            <SparklesIcon className="w-3.5 h-3.5" />
             <span>صندوق سرنخ‌ها</span>
           </Link>
 
           <Link
             href="/settings"
             className={cn(
-              "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5",
               pathname === "/settings"
-                ? "bg-slate-800 text-white border border-slate-700"
-                : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"
+                ? "bg-[#1f1f1f] text-white"
+                : "text-neutral-400 hover:text-white hover:bg-[#141414]"
             )}
           >
-            <SettingsIcon className="w-4 h-4 text-slate-400" />
-            <span>تنظیمات محصول & ICP</span>
+            <SettingsIcon className="w-3.5 h-3.5" />
+            <span>محصول & ICP</span>
           </Link>
         </nav>
 
-        {/* Right side actions & statuses */}
-        <div className="flex items-center gap-3">
-          {/* PocketBase Live Status Pill */}
-          <div
-            className={cn(
-              "hidden md:flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono border",
-              pbStatus === "online"
-                ? "bg-emerald-950/40 text-emerald-300 border-emerald-800/50"
-                : pbStatus === "checking"
-                ? "bg-amber-950/40 text-amber-300 border-amber-800/50"
-                : "bg-rose-950/40 text-rose-300 border-rose-800/50"
-            )}
-            title="PocketBase SQLite Local Backend Status"
-          >
-            <ServerIcon className="w-3.5 h-3.5" />
-            <span
-              className={cn(
-                "w-1.5 h-1.5 rounded-full",
-                pbStatus === "online"
-                  ? "bg-emerald-400 animate-pulse"
-                  : pbStatus === "checking"
-                  ? "bg-amber-400 animate-ping"
-                  : "bg-rose-400"
-              )}
-            />
-            <span className="text-[11px]">
-              {pbStatus === "online"
-                ? "دیتابیس محلی متصل"
-                : pbStatus === "checking"
-                ? "بررسی دیتابیس..."
-                : "عدم اتصال PocketBase"}
-            </span>
-          </div>
-
-          {/* Simulate Live Feed CTA Button */}
+        {/* Right: Primary Vercel Button */}
+        <div className="flex items-center gap-2">
           {onSimulateFeed && (
             <button
               onClick={onSimulateFeed}
               disabled={isSimulating}
               className={cn(
-                "relative group overflow-hidden px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-2 shadow-lg",
+                "h-8 px-3 rounded-md text-xs font-medium transition-all duration-150 flex items-center gap-1.5",
                 isSimulating
-                  ? "bg-slate-800 text-slate-400 cursor-not-allowed border border-slate-700"
-                  : "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-950/50 hover:shadow-emerald-900/60 active:scale-95 border border-emerald-400/30"
+                  ? "bg-[#1f1f1f] text-neutral-500 border border-[#2a2a2a] cursor-not-allowed"
+                  : "bg-white text-black hover:bg-[#e6e6e6] active:scale-95 shadow-sm"
               )}
             >
               {isSimulating ? (
                 <>
-                  <RefreshIcon className="w-4 h-4 animate-spin text-emerald-400" />
-                  <span>در حال دریافت و تریاژ...</span>
+                  <RefreshIcon className="w-3.5 h-3.5 animate-spin" />
+                  <span>در حال ارزیابی...</span>
                 </>
               ) : (
                 <>
-                  <PlayIcon className="w-3.5 h-3.5 text-white" />
-                  <span>تزریق زنده پیام‌ها (Demo)</span>
+                  <PlayIcon className="w-3 h-3 text-black" />
+                  <span>تزریق زنده پیام</span>
                 </>
               )}
             </button>

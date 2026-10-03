@@ -1,14 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  HighIntentIcon,
-  ProblemAwareIcon,
-  NoiseIcon,
-  SparklesIcon,
-  CoinIcon,
-  FilterIcon,
-} from "./Icons";
+import { SearchIcon } from "./Icons";
 import { formatUsd, formatToman, type CommunityMetricsSummary } from "../lib/pricing";
 import { cn } from "../lib/cn";
 
@@ -32,113 +25,106 @@ export function MetricsHeader({
   onSearchChange,
 }: MetricsHeaderProps) {
   return (
-    <div className="space-y-6">
-      {/* 5 KPI Metric Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+    <div className="space-y-4">
+      {/* 5 Vercel Analytics Metric Tiles */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
         {/* Card 1: Total Messages */}
-        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-medium">کل پیام‌های رصدشده</span>
-            <span className="p-1.5 rounded-lg bg-slate-800 text-slate-300">
-              <SparklesIcon className="w-4 h-4" />
-            </span>
-          </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-mono">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+            Total Ingested
+          </span>
+          <div className="mt-3">
+            <div className="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-white">
               {metrics.totalMessages}
             </div>
-            <div className="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
-              <span>{metrics.totalEvaluated} پیام پردازش‌شده</span>
+            <div className="text-[11px] text-neutral-500 mt-1 font-mono">
+              {metrics.totalEvaluated} processed
             </div>
           </div>
         </div>
 
         {/* Card 2: Noise Filtered Ratio */}
-        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-medium">حذف نویز و بی‌ربط</span>
-            <span className="p-1.5 rounded-lg bg-slate-800 text-slate-400">
-              <NoiseIcon className="w-4 h-4" />
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+              Noise Filtered
+            </span>
+            <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-neutral-900 border border-neutral-800 text-neutral-400">
+              Ratio
             </span>
           </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold tracking-tight text-cyan-400 font-mono">
+          <div className="mt-3">
+            <div className="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-white">
               {metrics.noiseFilteredPercent}%
             </div>
-            <div className="text-[11px] text-slate-400 mt-1">
-              <span>{metrics.noiseMessages} چت روزمره و هرزنامه فیلتر شد</span>
+            <div className="text-[11px] text-neutral-500 mt-1 font-mono">
+              {metrics.noiseMessages} irrelevant dropped
             </div>
           </div>
         </div>
 
         {/* Card 3: Qualified Leads */}
-        <div className="p-4 rounded-2xl bg-gradient-to-b from-emerald-950/30 to-slate-900/80 border border-emerald-900/40 shadow-sm flex flex-col justify-between glow-emerald">
-          <div className="flex items-center justify-between text-emerald-400 mb-2">
-            <span className="text-xs font-medium">سرنخ‌های واجد شرایط (ICP)</span>
-            <span className="p-1.5 rounded-lg bg-emerald-900/50 text-emerald-400 border border-emerald-800/40">
-              <HighIntentIcon className="w-4 h-4 text-emerald-400" />
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between relative overflow-hidden">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+              Qualified ICP Leads
             </span>
+            <span className="flex h-1.5 w-1.5 rounded-full bg-[#00e599]" />
           </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold tracking-tight text-emerald-400 font-mono">
+          <div className="mt-3">
+            <div className="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-[#00e599]">
               {metrics.qualifiedLeads}
             </div>
-            <div className="text-[11px] text-emerald-300/80 mt-1 flex items-center gap-2">
-              <span>🔥 {metrics.highIntentCount} خرید فوری</span>
-              <span>•</span>
-              <span>⚠️ {metrics.problemAwareCount} دردمند</span>
+            <div className="text-[11px] text-neutral-400 mt-1 font-mono flex items-center gap-2">
+              <span className="text-[#00e599]">{metrics.highIntentCount} high</span>
+              <span className="text-neutral-600">•</span>
+              <span className="text-[#f5a623]">{metrics.problemAwareCount} pain</span>
             </div>
           </div>
         </div>
 
         {/* Card 4: Total Spend */}
-        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-medium">هزینه کل پردازش هوش</span>
-            <span className="p-1.5 rounded-lg bg-slate-800 text-amber-400">
-              <CoinIcon className="w-4 h-4" />
-            </span>
-          </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold tracking-tight text-amber-400 font-mono">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+            Compute Spend
+          </span>
+          <div className="mt-3">
+            <div className="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-white">
               {formatUsd(metrics.totalSpendUsd)}
             </div>
-            <div className="text-[11px] text-slate-400 mt-1">
-              <span>معادل تقریبی {formatToman(metrics.estimatedTomanSpend)}</span>
+            <div className="text-[11px] text-neutral-500 mt-1 font-mono">
+              ≈ {formatToman(metrics.estimatedTomanSpend)}
             </div>
           </div>
         </div>
 
         {/* Card 5: Avg Cost Per Lead */}
-        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-medium">بهای تمام‌شده هر سرنخ</span>
-            <span className="p-1.5 rounded-lg bg-slate-800 text-teal-400">
-              <SparklesIcon className="w-4 h-4" />
-            </span>
-          </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold tracking-tight text-teal-400 font-mono">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+            Cost Per Lead
+          </span>
+          <div className="mt-3">
+            <div className="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-white">
               {formatUsd(metrics.avgCostPerQualifiedLeadUsd)}
             </div>
-            <div className="text-[11px] text-slate-400 mt-1">
-              <span>در مقایسه با صدها هزار تومان بازاریابی سنتی</span>
+            <div className="text-[11px] text-neutral-500 mt-1 font-mono">
+              per qualified opportunity
             </div>
           </div>
         </div>
       </div>
 
-      {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3 rounded-2xl bg-slate-900/60 border border-slate-800/80">
-        {/* Intent level filters */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+      {/* Vercel-style Filter & Search Bar */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-2 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f]">
+        {/* Intent level filter tabs */}
+        <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0">
           <button
             onClick={() => onSelectIntent("all")}
             className={cn(
-              "px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-colors",
+              "px-3 py-1 rounded-md text-xs font-medium transition-colors whitespace-nowrap",
               selectedIntent === "all"
-                ? "bg-slate-700 text-white shadow-sm"
-                : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
+                ? "bg-[#222222] text-white"
+                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
             )}
           >
             همه موارد ({metrics.totalEvaluated})
@@ -146,61 +132,62 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("high_intent")}
             className={cn(
-              "px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-colors flex items-center gap-1.5",
+              "px-3 py-1 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "high_intent"
-                ? "bg-emerald-600 text-white shadow-sm"
-                : "text-emerald-400/80 hover:text-emerald-300 hover:bg-emerald-950/40"
+                ? "bg-[#222222] text-[#00e599]"
+                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
             )}
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00e599]" />
             <span>خرید قطعی ({metrics.highIntentCount})</span>
           </button>
           <button
             onClick={() => onSelectIntent("problem_aware")}
             className={cn(
-              "px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-colors flex items-center gap-1.5",
+              "px-3 py-1 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "problem_aware"
-                ? "bg-amber-600 text-white shadow-sm"
-                : "text-amber-400/80 hover:text-amber-300 hover:bg-amber-950/40"
+                ? "bg-[#222222] text-[#f5a623]"
+                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
             )}
           >
-            <span className="w-2 h-2 rounded-full bg-amber-400" />
-            <span>دردمند و ناراضی ({metrics.problemAwareCount})</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#f5a623]" />
+            <span>دردمند ({metrics.problemAwareCount})</span>
           </button>
           <button
             onClick={() => onSelectIntent("curious")}
             className={cn(
-              "px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-colors flex items-center gap-1.5",
+              "px-3 py-1 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "curious"
-                ? "bg-cyan-600 text-white shadow-sm"
-                : "text-cyan-400/80 hover:text-cyan-300 hover:bg-cyan-950/40"
+                ? "bg-[#222222] text-[#0070f3]"
+                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
             )}
           >
-            <span className="w-2 h-2 rounded-full bg-cyan-400" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0070f3]" />
             <span>کنجکاو ({metrics.curiousCount})</span>
           </button>
           <button
             onClick={() => onSelectIntent("irrelevant")}
             className={cn(
-              "px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-colors flex items-center gap-1.5",
+              "px-3 py-1 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "irrelevant"
-                ? "bg-slate-700 text-slate-200 shadow-sm"
-                : "text-slate-400 hover:text-slate-300 hover:bg-slate-800/40"
+                ? "bg-[#222222] text-neutral-300"
+                : "text-neutral-500 hover:text-neutral-300 hover:bg-[#141414]"
             )}
           >
-            <span className="w-2 h-2 rounded-full bg-slate-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-neutral-600" />
             <span>نویز ({metrics.irrelevantCount})</span>
           </button>
         </div>
 
-        {/* Search input */}
-        <div className="flex items-center gap-2">
+        {/* Minimal Search input */}
+        <div className="relative flex items-center min-w-[240px]">
+          <SearchIcon className="w-3.5 h-3.5 text-neutral-500 absolute right-2.5 pointer-events-none" />
           <input
             type="text"
-            placeholder="جستجو در پیام، فرستنده یا ویژگی..."
+            placeholder="فیلتر پیام، فرستنده یا ویژگی..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full sm:w-64 px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-emerald-500/50"
+            className="w-full pl-3 pr-8 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors font-sans"
           />
         </div>
       </div>

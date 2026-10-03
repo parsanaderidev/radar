@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import {
-  SettingsIcon,
   CheckCircleIcon,
   RefreshIcon,
   ServerIcon,
@@ -77,7 +76,7 @@ export default function ProductSettingsPage() {
       });
 
       setProduct(updated);
-      setStatusMessage({ text: "تنظیمات محصول و ICP با موفقیت در پایگاه داده ذخیره شد!", type: "success" });
+      setStatusMessage({ text: "تغییرات با موفقیت در دیتابیس ذخیره شد.", type: "success" });
       setTimeout(() => setStatusMessage(null), 4000);
     } catch (err: any) {
       console.error("Save error:", err);
@@ -88,229 +87,239 @@ export default function ProductSettingsPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#080d16] text-slate-100">
+    <div className="min-h-screen flex flex-col bg-[#000000] text-[#ededed]">
       <Navbar />
 
-      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 space-y-6">
         {/* Header */}
-        <div className="space-y-1">
+        <div className="border-b border-[#1f1f1f] pb-4">
           <div className="flex items-center gap-2">
-            <span className="p-1.5 rounded-lg bg-slate-800 text-slate-300">
-              <SettingsIcon className="w-5 h-5 text-emerald-400" />
-            </span>
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+            <h1 className="text-lg font-semibold text-white tracking-tight">
               تنظیمات محصول و پرسونای مشتری (ICP)
             </h1>
           </div>
-          <p className="text-xs sm:text-sm text-slate-400">
-            هوش مصنوعی از اطلاعات این بخش برای ارزیابی سیگنال‌های خرید در جوامع ایرانی، تطبیق نیازها با امکانات محصول و تدوین پاسخ‌های هوشمندانه استفاده می‌کند.
+          <p className="text-xs text-neutral-400 mt-1">
+            مشخصات محصول و پرسونای خریدار جهت ارزیابی دقیق هوش مصنوعی و تفکیک نویز از سیگنال خرید
           </p>
         </div>
 
         {/* Feedback Alert */}
         {statusMessage && (
           <div
-            className={`p-3.5 rounded-xl border text-xs sm:text-sm flex items-center gap-2 ${
+            className={`p-3 rounded-md border text-xs flex items-center gap-2 font-mono ${
               statusMessage.type === "success"
-                ? "bg-emerald-950/80 border-emerald-500/50 text-emerald-200"
-                : "bg-rose-950/80 border-rose-500/50 text-rose-200"
+                ? "bg-[#0c0c0c] border-[#00e599]/40 text-[#00e599]"
+                : "bg-[#0c0c0c] border-red-500/40 text-red-400"
             }`}
           >
             {statusMessage.type === "success" ? (
-              <CheckCircleIcon className="w-4 h-4 text-emerald-400 shrink-0" />
+              <CheckCircleIcon className="w-3.5 h-3.5 text-[#00e599] shrink-0" />
             ) : (
-              <span className="text-rose-400 font-bold">✕</span>
+              <span className="text-red-400 font-bold">✕</span>
             )}
             <span>{statusMessage.text}</span>
           </div>
         )}
 
-        {/* Form Container */}
         {isLoading ? (
-          <div className="py-20 flex flex-col items-center justify-center space-y-4 text-slate-400">
-            <RefreshIcon className="w-8 h-8 animate-spin text-emerald-400" />
-            <p className="text-sm">در حال دریافت تنظیمات از پایگاه داده...</p>
+          <div className="py-20 flex flex-col items-center justify-center space-y-3 text-neutral-500 font-mono text-xs">
+            <RefreshIcon className="w-5 h-5 animate-spin text-neutral-400" />
+            <span>Loading configuration...</span>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Main Form */}
-            <form onSubmit={handleSave} className="lg:col-span-2 space-y-5">
-              {/* Product Name */}
-              <div className="space-y-1.5 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-                <label className="text-xs font-semibold text-slate-200 block">
-                  نام محصول / برند تجاری
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="مثال: حساب‌آنلاین پارس"
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500/60"
-                />
+            {/* Main Vercel-Style Form */}
+            <form onSubmit={handleSave} className="lg:col-span-2 space-y-4">
+              {/* Card 1: Product Identity */}
+              <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] overflow-hidden">
+                <div className="p-4 space-y-3">
+                  <div>
+                    <h2 className="text-xs font-semibold text-neutral-200 uppercase font-mono tracking-wider">
+                      Product Identity
+                    </h2>
+                    <p className="text-xs text-neutral-500 mt-0.5">
+                      نام رسمی برند تجاری و شعار محوری محصول
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 pt-2">
+                    <div>
+                      <label className="text-xs font-medium text-neutral-300 block mb-1">
+                        نام محصول
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="مثال: حساب‌آنلاین پارس"
+                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white focus:outline-none focus:border-white transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-medium text-neutral-300 block mb-1">
+                        شعار محوری (Tagline)
+                      </label>
+                      <input
+                        type="text"
+                        value={tagline}
+                        onChange={(e) => setTagline(e.target.value)}
+                        placeholder="مثال: نرم‌افزار یکپارچه حسابداری ابری و صدور پیش‌فاکتور ریالی"
+                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white focus:outline-none focus:border-white transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-medium text-neutral-300 block mb-1">
+                        شرح قابلیت‌های محصول
+                      </label>
+                      <textarea
+                        rows={3}
+                        required
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white leading-relaxed focus:outline-none focus:border-white transition-colors"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Tagline */}
-              <div className="space-y-1.5 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-                <label className="text-xs font-semibold text-slate-200 block">
-                  شعار محوری و پیام اصلی (Tagline)
-                </label>
-                <input
-                  type="text"
-                  value={tagline}
-                  onChange={(e) => setTagline(e.target.value)}
-                  placeholder="مثال: نرم‌افزار یکپارچه حسابداری ابری و صدور خودکار پیش‌فاکتور ریالی"
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500/60"
-                />
-              </div>
+              {/* Card 2: ICP & Target Signals */}
+              <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] overflow-hidden">
+                <div className="p-4 space-y-3">
+                  <div>
+                    <h2 className="text-xs font-semibold text-neutral-200 uppercase font-mono tracking-wider">
+                      Ideal Customer Profile (ICP)
+                    </h2>
+                    <p className="text-xs text-neutral-500 mt-0.5">
+                      تعریف پرسونای مشتریان هدف برای آموزش مدل تریاژ
+                    </p>
+                  </div>
 
-              {/* Description */}
-              <div className="space-y-1.5 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-                <label className="text-xs font-semibold text-slate-200 block">
-                  شرح کامل قابلیت‌ها و راهکار محصول
-                </label>
-                <textarea
-                  rows={4}
-                  required
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="توضیح دهید محصول چه مسائلی از کسب‌وکارهای داخل ایران را حل می‌کند..."
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white leading-relaxed focus:outline-none focus:border-emerald-500/60"
-                />
-              </div>
+                  <div className="space-y-3 pt-2">
+                    <div>
+                      <label className="text-xs font-medium text-neutral-300 block mb-1">
+                        پرسونای خریدار ایده‌آل
+                      </label>
+                      <textarea
+                        rows={3}
+                        required
+                        value={icp}
+                        onChange={(e) => setIcp(e.target.value)}
+                        placeholder="استارتاپ‌ها، شرکت‌های بازرگانی و فروشگاه‌های آنلاین فعال در ایران..."
+                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white leading-relaxed focus:outline-none focus:border-white transition-colors"
+                      />
+                    </div>
 
-              {/* Ideal Customer Profile (ICP) */}
-              <div className="space-y-1.5 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-                <label className="text-xs font-semibold text-slate-200 block flex items-center justify-between">
-                  <span>پرسونای مشتری ایده‌آل (ICP)</span>
-                  <span className="text-[11px] text-emerald-400 font-normal">معیار سنجش انطباق سرنخ‌ها</span>
-                </label>
-                <textarea
-                  rows={4}
-                  required
-                  value={icp}
-                  onChange={(e) => setIcp(e.target.value)}
-                  placeholder="چه افرادی یا شرکت‌هایی بیشترین ارزش را از محصول شما دریافت می‌کنند؟ (مثلاً استارتاپ‌ها، حسابداران، فروشگاه‌های آنلاین)"
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white leading-relaxed focus:outline-none focus:border-emerald-500/60"
-                />
-              </div>
+                    <div>
+                      <label className="text-xs font-medium text-neutral-300 block mb-1">
+                        ارزش‌های پیشنهادی کلیدی (هر سطر یک مزیت)
+                      </label>
+                      <textarea
+                        rows={4}
+                        value={valPropsText}
+                        onChange={(e) => setValPropsText(e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs font-mono text-neutral-200 leading-relaxed focus:outline-none focus:border-white transition-colors"
+                      />
+                    </div>
 
-              {/* Value Propositions */}
-              <div className="space-y-1.5 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-                <label className="text-xs font-semibold text-slate-200 block flex items-center justify-between">
-                  <span>ارزش‌های پیشنهادی و مزیت‌های کلیدی (هر سطر یک مورد)</span>
-                  <span className="text-[11px] text-slate-400 font-normal">در پیشنهادات پاسخ هوش مصنوعی درج می‌شود</span>
-                </label>
-                <textarea
-                  rows={5}
-                  value={valPropsText}
-                  onChange={(e) => setValPropsText(e.target.value)}
-                  placeholder="سطر اول: اتصال مستقیم به سامانه مودیان&#10;سطر دوم: سرورهای ابری داخل ایران بدون قطعی ناشی از فیلترینگ"
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white leading-relaxed focus:outline-none focus:border-emerald-500/60 font-mono text-xs"
-                />
-              </div>
+                    <div>
+                      <label className="text-xs font-medium text-neutral-300 block mb-1">
+                        کلیدواژه‌های رصد در پیام‌رسان‌ها
+                      </label>
+                      <input
+                        type="text"
+                        value={keywordsText}
+                        onChange={(e) => setKeywordsText(e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white focus:outline-none focus:border-white transition-colors"
+                      />
+                    </div>
+                  </div>
+                </div>
 
-              {/* Keywords */}
-              <div className="space-y-1.5 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-                <label className="text-xs font-semibold text-slate-200 block flex items-center justify-between">
-                  <span>کلیدواژه‌های رصد در پیام‌رسان‌ها (با ویرگول جدا کنید)</span>
-                  <span className="text-[11px] text-slate-400 font-normal">کلمات نشان‌دهنده نیاز یا درد مشتری</span>
-                </label>
-                <input
-                  type="text"
-                  value={keywordsText}
-                  onChange={(e) => setKeywordsText(e.target.value)}
-                  placeholder="حسابداری، سامانه مودیان، پیش‌فاکتور، تحریم نرم‌افزار، تسویه شتاب"
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500/60"
-                />
-              </div>
-
-              {/* Submit CTA */}
-              <div className="flex items-center justify-end gap-3 pt-2">
-                <button
-                  type="submit"
-                  disabled={isSaving}
-                  className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold shadow-lg shadow-emerald-950/40 transition-all active:scale-95 flex items-center gap-2"
-                >
-                  {isSaving ? (
-                    <>
-                      <RefreshIcon className="w-4 h-4 animate-spin" />
-                      <span>در حال ذخیره‌سازی...</span>
-                    </>
-                  ) : (
-                    <>
-                      <CheckCircleIcon className="w-4 h-4" />
-                      <span>ذخیره تغییرات محصول</span>
-                    </>
-                  )}
-                </button>
+                {/* Vercel Card Footer */}
+                <div className="px-4 py-2.5 bg-[#0d0d0d] border-t border-[#1f1f1f] flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-neutral-500">
+                    Auto-saved to PocketBase SQLite
+                  </span>
+                  <button
+                    type="submit"
+                    disabled={isSaving}
+                    className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium transition-all active:scale-95 flex items-center gap-1.5"
+                  >
+                    {isSaving ? (
+                      <>
+                        <RefreshIcon className="w-3.5 h-3.5 animate-spin" />
+                        <span>Saving...</span>
+                      </>
+                    ) : (
+                      <span>Save Changes</span>
+                    )}
+                  </button>
+                </div>
               </div>
             </form>
 
-            {/* Sidebar Environment & Architecture Information */}
+            {/* Sidebar Specifications */}
             <div className="space-y-4">
               {/* Architecture specs card */}
-              <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
-                <div className="flex items-center gap-2 text-white font-semibold text-sm">
-                  <ServerIcon className="w-4 h-4 text-emerald-400" />
-                  <span>معماری بومی & بدون تحریم</span>
+              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] space-y-3">
+                <div className="flex items-center gap-2 text-white font-medium text-xs font-mono uppercase tracking-wider">
+                  <ServerIcon className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>Deployment Stack</span>
                 </div>
-                <div className="space-y-2 text-xs text-slate-300">
-                  <div className="flex justify-between py-1 border-b border-slate-800">
-                    <span className="text-slate-400">پایگاه داده:</span>
-                    <span className="font-mono text-emerald-400">PocketBase SQLite</span>
+                <div className="space-y-2 text-xs font-mono text-neutral-400">
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
+                    <span className="text-neutral-500">Database:</span>
+                    <span className="text-white">PocketBase (SQLite)</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-slate-800">
-                    <span className="text-slate-400">موقعیت هاست:</span>
-                    <span className="text-slate-200">سرور داخلی / Localhost</span>
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
+                    <span className="text-neutral-500">Host:</span>
+                    <span className="text-neutral-300">Domestic / Local</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-slate-800">
-                    <span className="text-slate-400">وابستگی خارجی:</span>
-                    <span className="text-emerald-400 font-semibold">صفر (Zero Cloud Lock-in)</span>
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
+                    <span className="text-neutral-500">Foreign Cloud:</span>
+                    <span className="text-[#00e599]">None (0%)</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-slate-400">موتور اشتراک زنده:</span>
-                    <span className="font-mono text-cyan-400">Server-Sent Events</span>
+                    <span className="text-neutral-500">Streaming:</span>
+                    <span className="text-white">SSE (Server-Sent)</span>
                   </div>
                 </div>
               </div>
 
               {/* LLM Gateway specs card */}
-              <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
-                <div className="flex items-center gap-2 text-white font-semibold text-sm">
-                  <CpuIcon className="w-4 h-4 text-teal-400" />
-                  <span>تنظیمات مدل هوش مصنوعی</span>
+              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] space-y-3">
+                <div className="flex items-center gap-2 text-white font-medium text-xs font-mono uppercase tracking-wider">
+                  <CpuIcon className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>Model Runtime</span>
                 </div>
-                <div className="space-y-2 text-xs text-slate-300">
-                  <div className="flex justify-between py-1 border-b border-slate-800">
-                    <span className="text-slate-400">اندپوینت ورودی:</span>
-                    <span className="font-mono text-slate-300 dir-ltr text-[11px]">
-                      {process.env.NEXT_PUBLIC_LLM_URL || "LLM_BASE_URL"}
-                    </span>
+                <div className="space-y-2 text-xs font-mono text-neutral-400">
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
+                    <span className="text-neutral-500">Default Model:</span>
+                    <span className="text-white">llama3.1</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-slate-800">
-                    <span className="text-slate-400">مدل پیش‌فرض:</span>
-                    <span className="font-mono text-amber-400">llama3.1 / qwen2.5</span>
-                  </div>
-                  <div className="flex justify-between py-1 border-b border-slate-800">
-                    <span className="text-slate-400">حالت رزرو (Fallback):</span>
-                    <span className="text-emerald-400">موتور تحلیلی زبان فارسی فعال</span>
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
+                    <span className="text-neutral-500">Fallback Engine:</span>
+                    <span className="text-[#00e599]">Active (Offline)</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-slate-400">تعرفه ورودی / خروجی:</span>
-                    <span className="font-mono text-slate-300">$0.15 / $0.60 per 1M</span>
+                    <span className="text-neutral-500">Pricing / 1M:</span>
+                    <span className="text-neutral-300">$0.15 / $0.60</span>
                   </div>
                 </div>
               </div>
 
-              {/* Prompt engineering tips card */}
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-950/30 to-slate-900/60 border border-emerald-900/30 space-y-2.5">
-                <div className="flex items-center gap-2 text-emerald-300 font-semibold text-xs">
-                  <SparklesIcon className="w-4 h-4 text-emerald-400" />
-                  <span>راهنمای بهینه‌سازی پرسونای رادار</span>
+              {/* Guidance tip card */}
+              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] space-y-2">
+                <div className="flex items-center gap-1.5 text-xs text-neutral-300 font-medium">
+                  <SparklesIcon className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>راهنمای پرامپت</span>
                 </div>
-                <p className="text-[11px] text-slate-300 leading-relaxed">
-                  هر چقدر جزئیات مزیت‌های رقابتی و دردهای مشتریان در پرسونای ICP دقیق‌تر باشد، هوش مصنوعی با دقت بالاتری پیام‌های تصادفی چت‌روم‌ها را از نیازهای خرید تفکیک کرده و پاسخ‌های طبیعی‌تر و اقناع‌کننده‌تری آماده می‌کند.
+                <p className="text-[11px] text-neutral-500 leading-relaxed">
+                  تکمیل دقیق کلمات کلیدی عامیانه و ارزش‌های رقابتی به هوش مصنوعی کمک می‌کند تا پیام‌های واقعی خرید در تلگرام و بله را با دقت بالا استخراج کند.
                 </p>
               </div>
             </div>
