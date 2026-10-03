@@ -115,7 +115,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
   return (
     <div
       className={cn(
-        "rounded-lg p-4 bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-all duration-150 space-y-3.5",
+        "rounded-lg p-4 bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-all duration-150 space-y-3.5",
         lead.lead_status === "dismissed" && "opacity-45 grayscale"
       )}
     >
@@ -123,29 +123,29 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           {/* Platform Tag */}
-          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-dotted border-[#262626] bg-[#111111] text-xs text-neutral-300 font-medium">
+          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#222222] bg-[#111111] text-xs text-neutral-300 font-medium">
             {platformInfo.icon}
             <span>{platformInfo.name}</span>
           </span>
 
           {/* Author Handle */}
-          <span className="text-xs text-neutral-300 dir-ltr bg-[#141414] border border-dotted border-[#262626] px-2 py-0.5 rounded-md">
+          <span className="text-xs text-neutral-300 dir-ltr bg-[#141414] border border-[#222222] px-2 py-0.5 rounded-md">
             {rawMsg?.author_handle || "@کاربر"}
           </span>
 
           {/* Status indicators */}
           {lead.lead_status === "contacted" && (
-            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-blue-950/40 border border-dotted border-blue-800/50 text-blue-400">
+            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-blue-950/40 border border-blue-800/50 text-blue-400">
               تماس برقرار شد
             </span>
           )}
           {lead.lead_status === "approved" && (
-            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-emerald-950/40 border border-dotted border-emerald-800/50 text-emerald-400">
+            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-emerald-950/40 border border-emerald-800/50 text-emerald-400">
               تأیید شده
             </span>
           )}
           {lead.lead_status === "dismissed" && (
-            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-neutral-900 border border-dotted border-neutral-800 text-neutral-500">
+            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-neutral-900 border border-neutral-800 text-neutral-500">
               رد شده
             </span>
           )}
@@ -153,14 +153,14 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
 
         {/* Intent Status & Score */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-dotted border-[#262626] bg-[#111111] text-xs">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[#222222] bg-[#111111] text-xs">
             <span className={cn("w-1.5 h-1.5 rounded-full", intent.dotColor)} />
             <span className={cn("font-medium", intent.textColor)}>{intent.label}</span>
           </div>
 
           <div
             className={cn(
-              "px-2.5 py-0.5 rounded-md text-xs font-semibold border border-dotted flex items-center gap-1.5",
+              "px-2.5 py-0.5 rounded-md text-xs font-semibold border flex items-center gap-1.5",
               intent.scoreBadge
             )}
             title="امتیاز هوش از ۱۰۰"
@@ -172,13 +172,13 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
       </div>
 
       {/* Message Content */}
-      <div className="p-3.5 rounded-md bg-[#000000] border border-dotted border-[#222222] space-y-2">
+      <div className="p-3.5 rounded-md bg-[#000000] border border-[#1a1a1a] space-y-2">
         <p className="text-sm leading-relaxed text-[#ededed] font-normal select-text">
           {rawMsg?.content}
         </p>
 
         {rawMsg?.thread_context && (
-          <div className="pt-2 border-t border-dotted border-[#222222] flex items-start gap-1.5 text-xs text-neutral-500">
+          <div className="pt-2 border-t border-[#1a1a1a] flex items-start gap-1.5 text-xs text-neutral-500">
             <span className="text-neutral-400 font-medium">زمینه گفتگو:</span>
             <span className="text-neutral-300">{rawMsg.thread_context}</span>
           </div>
@@ -188,7 +188,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
       {/* AI Reasoning & Matched Feature */}
       {lead.reasoning && (
         <div className="space-y-1.5 text-xs">
-          <div className="p-2.5 rounded-md bg-[#0d0d0d] border border-dotted border-[#222222] text-neutral-300 flex items-start gap-2">
+          <div className="p-2.5 rounded-md bg-[#0d0d0d] border border-[#1a1a1a] text-neutral-300 flex items-start gap-2">
             <SparklesIcon className="w-3.5 h-3.5 text-neutral-400 shrink-0 mt-0.5" />
             <p className="leading-relaxed">
               <span className="text-neutral-400 font-semibold">تحلیل هوش مصنوعی: </span>
@@ -197,7 +197,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
           </div>
 
           {lead.matched_feature && (
-            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-md bg-[#0d0d0d] border border-dotted border-[#222222] text-xs">
+            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-md bg-[#0d0d0d] border border-[#1a1a1a] text-xs">
               <span className="text-neutral-400 font-medium">ویژگی منطبق با محصول:</span>
               <span className="text-neutral-200 font-medium">{lead.matched_feature}</span>
             </div>
@@ -207,8 +207,8 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
 
       {/* Vercel-style Suggested Reply Box */}
       {lead.suggested_reply && lead.intent_level !== "irrelevant" && (
-        <div className="rounded-md bg-[#000000] border border-dotted border-[#262626] overflow-hidden">
-          <div className="flex items-center justify-between px-3 py-1.5 bg-[#0d0d0d] border-b border-dotted border-[#222222] text-xs">
+        <div className="rounded-md bg-[#000000] border border-[#1f1f1f] overflow-hidden">
+          <div className="flex items-center justify-between px-3 py-1.5 bg-[#0d0d0d] border-b border-[#1f1f1f] text-xs">
             <span className="text-[11px] font-medium text-neutral-400 flex items-center gap-1.5">
               <SparklesIcon className="w-3 h-3 text-[#00e599]" />
               <span>پاسخ پیشنهادی هوش مصنوعی</span>
@@ -217,7 +217,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={handleCopy}
               className={cn(
-                "h-6 px-2.5 rounded text-[11px] font-medium transition-colors flex items-center gap-1 border border-dotted",
+                "h-6 px-2.5 rounded text-[11px] font-medium transition-colors flex items-center gap-1 border",
                 copied
                   ? "bg-[#00e599] text-black border-[#00e599]"
                   : "bg-[#141414] hover:bg-[#1f1f1f] text-neutral-300 border-[#262626]"
@@ -235,7 +235,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
       )}
 
       {/* Footer: Token Ledger & Actions */}
-      <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-dotted border-[#222222]">
+      <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#1a1a1a]">
         {/* Token and micro-cost badge in Persian */}
         <div className="flex items-center gap-2 text-xs text-neutral-500">
           <CpuIcon className="w-3.5 h-3.5 text-neutral-500" />
@@ -257,7 +257,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={() => handleStatusChange("contacted")}
               disabled={isUpdating}
-              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-dotted border-[#262626] text-neutral-200 transition-colors flex items-center gap-1"
+              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-neutral-200 transition-colors flex items-center gap-1"
             >
               <CheckCircleIcon className="w-3.5 h-3.5 text-[#0070f3]" />
               <span>ارتباط برقرار شد</span>
@@ -268,7 +268,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={() => handleStatusChange("approved")}
               disabled={isUpdating}
-              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-dotted border-[#262626] text-neutral-200 transition-colors flex items-center gap-1"
+              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-neutral-200 transition-colors flex items-center gap-1"
             >
               <span>تأیید سرنخ</span>
             </button>
@@ -278,7 +278,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={() => handleStatusChange("dismissed")}
               disabled={isUpdating}
-              className="h-7 px-2.5 rounded-md text-xs text-neutral-500 hover:text-neutral-300 hover:bg-[#111111] transition-colors flex items-center gap-1 border border-dotted border-transparent hover:border-neutral-800"
+              className="h-7 px-2.5 rounded-md text-xs text-neutral-500 hover:text-neutral-300 hover:bg-[#111111] transition-colors flex items-center gap-1"
             >
               <XCircleIcon className="w-3.5 h-3.5" />
               <span>رد کردن</span>

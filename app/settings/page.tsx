@@ -109,10 +109,10 @@ export default function ProductSettingsPage() {
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Active Product Banner (Matching Vercel Project Card Style from Dashboard) */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-dotted border-neutral-800 text-neutral-400 font-medium">
+              <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
                 تنظیمات سیستم
               </span>
               <h1 className="text-sm sm:text-base font-semibold text-white">
@@ -129,7 +129,7 @@ export default function ProductSettingsPage() {
               type="button"
               onClick={resetToLoaded}
               disabled={isSaving || isLoading}
-              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-dotted border-[#262626] hover:border-[#404040] text-xs text-neutral-300 transition-colors flex items-center gap-1.5 disabled:opacity-50"
+              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] text-xs text-neutral-300 transition-colors flex items-center gap-1.5 disabled:opacity-50"
               title="بازنشانی تغییرات ذخیره‌نشده"
             >
               <RefreshIcon className="w-3.5 h-3.5 text-neutral-400" />
@@ -157,7 +157,7 @@ export default function ProductSettingsPage() {
         {/* 4 Status Overview Tiles (Matching Dashboard Metrics Header Grid) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {/* Tile 1: Active Product */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col justify-between">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
             <span className="text-xs text-neutral-400 font-medium">
               محصول هدف رادار
             </span>
@@ -172,7 +172,7 @@ export default function ProductSettingsPage() {
           </div>
 
           {/* Tile 2: ICP Status */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col justify-between">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
             <div className="flex items-center justify-between gap-2">
               <span className="text-xs text-neutral-400 font-medium">
                 پرسونای مشتری (ICP)
@@ -190,12 +190,12 @@ export default function ProductSettingsPage() {
           </div>
 
           {/* Tile 3: Keywords Count */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col justify-between">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
             <div className="flex items-center justify-between gap-2">
               <span className="text-xs text-neutral-400 font-medium">
                 کلیدواژه‌های نظارت
               </span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-neutral-900 border border-dotted border-neutral-800 text-neutral-400 font-medium">
+              <span className="text-[10px] px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
                 فیلتر زنده
               </span>
             </div>
@@ -210,7 +210,7 @@ export default function ProductSettingsPage() {
           </div>
 
           {/* Tile 4: Storage Infrastructure */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col justify-between">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
             <span className="text-xs text-neutral-400 font-medium">
               ذخیره‌سازی و حریم داده
             </span>
@@ -228,7 +228,7 @@ export default function ProductSettingsPage() {
         {/* Feedback Alert */}
         {statusMessage && (
           <div
-            className={`p-3 rounded-lg border border-dotted text-xs flex items-center justify-between gap-2 shadow-lg transition-all ${
+            className={`p-3 rounded-lg border text-xs flex items-center justify-between gap-2 shadow-lg transition-all ${
               statusMessage.type === "success"
                 ? "bg-[#061a12] border-[#00e599]/50 text-[#00e599]"
                 : "bg-[#1f0a0a] border-red-500/50 text-red-400"
@@ -252,7 +252,7 @@ export default function ProductSettingsPage() {
         )}
 
         {isLoading ? (
-          <div className="py-20 flex flex-col items-center justify-center space-y-3 text-neutral-500 text-xs rounded-lg border border-dotted border-[#262626] bg-[#050505]">
+          <div className="py-20 flex flex-col items-center justify-center space-y-3 text-neutral-500 text-xs rounded-lg border border-[#1f1f1f] bg-[#050505]">
             <RefreshIcon className="w-5 h-5 animate-spin text-neutral-400" />
             <span>در حال بارگذاری اطلاعات محصول از پاکت‌بیس...</span>
           </div>
@@ -261,15 +261,15 @@ export default function ProductSettingsPage() {
             {/* Main Form (2 Columns) */}
             <form onSubmit={handleSave} className="lg:col-span-2 space-y-6">
               {/* Card 1: Product Identity */}
-              <div className="rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors overflow-hidden space-y-4 p-5">
-                <div className="flex items-center justify-between border-b border-dotted border-[#222222] pb-3">
+              <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors overflow-hidden space-y-4 p-5">
+                <div className="flex items-center justify-between border-b border-[#1f1f1f] pb-3">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-white" />
                     <h2 className="text-xs font-semibold text-neutral-200">
                       هویت و مشخصات محصول
                     </h2>
                   </div>
-                  <span className="text-[11px] px-2 py-0.5 rounded-md bg-neutral-900 border border-dotted border-neutral-800 text-neutral-400">
+                  <span className="text-[11px] px-2 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400">
                     شناسنامه تجاری
                   </span>
                 </div>
@@ -285,7 +285,7 @@ export default function ProductSettingsPage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="مثال: حساب‌آنلاین پارس"
-                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-dotted border-[#333333] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-solid focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors"
                     />
                   </div>
 
@@ -298,7 +298,7 @@ export default function ProductSettingsPage() {
                       value={tagline}
                       onChange={(e) => setTagline(e.target.value)}
                       placeholder="مثال: نرم‌افزار یکپارچه حسابداری ابری و صدور پیش‌فاکتور ریالی"
-                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-dotted border-[#333333] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-solid focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors"
                     />
                   </div>
 
@@ -312,22 +312,22 @@ export default function ProductSettingsPage() {
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       placeholder="توضیح دهید محصول چه کاری انجام می‌دهد و چه مشکلی از کسب‌وکارها حل می‌کند..."
-                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-dotted border-[#333333] text-xs text-white placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-solid focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-white transition-colors"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Card 2: ICP & Target Signals */}
-              <div className="rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors overflow-hidden space-y-4 p-5">
-                <div className="flex items-center justify-between border-b border-dotted border-[#222222] pb-3">
+              <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors overflow-hidden space-y-4 p-5">
+                <div className="flex items-center justify-between border-b border-[#1f1f1f] pb-3">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#00e599]" />
                     <h2 className="text-xs font-semibold text-neutral-200">
                       پرسونای مشتری ایده‌آل (ICP) و کلیدواژه‌ها
                     </h2>
                   </div>
-                  <span className="text-[11px] px-2 py-0.5 rounded-md bg-neutral-900 border border-dotted border-neutral-800 text-neutral-400">
+                  <span className="text-[11px] px-2 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400">
                     هوش تریاژ
                   </span>
                 </div>
@@ -343,7 +343,7 @@ export default function ProductSettingsPage() {
                       value={icp}
                       onChange={(e) => setIcp(e.target.value)}
                       placeholder="استارتاپ‌ها، شرکت‌های بازرگانی و فروشگاه‌های آنلاین فعال در ایران..."
-                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-dotted border-[#333333] text-xs text-white placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-solid focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-white transition-colors"
                     />
                   </div>
 
@@ -361,7 +361,7 @@ export default function ProductSettingsPage() {
                       value={valPropsText}
                       onChange={(e) => setValPropsText(e.target.value)}
                       placeholder="بدون نیاز به سخت‌افزار جانبی&#10;پشتیبانی از قوانین مالیاتی پایانه‌های فروشگاهی&#10;اتصال مستقیم به سامانه مودیان"
-                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-dotted border-[#333333] text-xs text-neutral-200 placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-solid focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-white transition-colors"
                     />
                   </div>
 
@@ -379,16 +379,16 @@ export default function ProductSettingsPage() {
                       value={keywordsText}
                       onChange={(e) => setKeywordsText(e.target.value)}
                       placeholder="حسابداری, سامانه مودیان, فاکتور رسمی, پایانه فروشگاهی"
-                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-dotted border-[#333333] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-solid focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors"
                     />
 
                     {/* Keywords Preview Chips */}
                     {parsedKeywords.length > 0 && (
-                      <div className="mt-3 flex flex-wrap gap-1.5 pt-2 border-t border-dotted border-[#1f1f1f]">
+                      <div className="mt-3 flex flex-wrap gap-1.5 pt-2 border-t border-[#1f1f1f]">
                         {parsedKeywords.map((kw, i) => (
                           <span
                             key={i}
-                            className="px-2.5 py-0.5 rounded-md text-[11px] bg-[#111111] text-neutral-300 border border-dotted border-[#262626] flex items-center gap-1"
+                            className="px-2.5 py-0.5 rounded-md text-[11px] bg-[#111111] text-neutral-300 border border-[#222222] flex items-center gap-1"
                           >
                             <span className="text-neutral-500">#</span>
                             <span>{kw}</span>
@@ -400,7 +400,7 @@ export default function ProductSettingsPage() {
                 </div>
 
                 {/* Card Action Footer */}
-                <div className="pt-4 border-t border-dotted border-[#222222] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="pt-4 border-t border-[#1f1f1f] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                   <span className="text-[11px] text-neutral-500">
                     ذخیره‌سازی پایدار و مستقیم در دیتابیس پاکت‌بیس (SQLite محلی)
                   </span>
@@ -426,21 +426,21 @@ export default function ProductSettingsPage() {
             {/* Sidebar Specifications (1 Column) */}
             <div className="space-y-4">
               {/* Architecture specs card */}
-              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors space-y-3">
-                <div className="flex items-center gap-2 text-white font-medium text-xs pb-1 border-b border-dotted border-[#222222]">
+              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors space-y-3">
+                <div className="flex items-center gap-2 text-white font-medium text-xs pb-1 border-b border-[#1f1f1f]">
                   <ServerIcon className="w-3.5 h-3.5 text-neutral-400" />
                   <span>مشخصات زیرساخت بومی</span>
                 </div>
                 <div className="space-y-2 text-xs text-neutral-400">
-                  <div className="flex justify-between py-1 border-b border-dotted border-[#1a1a1a]">
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
                     <span className="text-neutral-500">پایگاه داده:</span>
                     <span className="text-white font-medium">پاکت‌بیس (SQLite محلی)</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-dotted border-[#1a1a1a]">
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
                     <span className="text-neutral-500">موقعیت سرور:</span>
                     <span className="text-neutral-300">داخلی / مستقل از خارج</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-dotted border-[#1a1a1a]">
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
                     <span className="text-neutral-500">کلاد خارجی:</span>
                     <span className="text-[#00e599] font-medium">صفر درصد (کاملاً مستقل)</span>
                   </div>
@@ -452,17 +452,17 @@ export default function ProductSettingsPage() {
               </div>
 
               {/* LLM Gateway specs card */}
-              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors space-y-3">
-                <div className="flex items-center gap-2 text-white font-medium text-xs pb-1 border-b border-dotted border-[#222222]">
+              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors space-y-3">
+                <div className="flex items-center gap-2 text-white font-medium text-xs pb-1 border-b border-[#1f1f1f]">
                   <CpuIcon className="w-3.5 h-3.5 text-neutral-400" />
                   <span>موتور هوش مصنوعی رادار</span>
                 </div>
                 <div className="space-y-2 text-xs text-neutral-400">
-                  <div className="flex justify-between py-1 border-b border-dotted border-[#1a1a1a]">
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
                     <span className="text-neutral-500">مدل اصلی:</span>
                     <span className="text-white font-medium">llama3.1 / qwen2.5</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-dotted border-[#1a1a1a]">
+                  <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
                     <span className="text-neutral-500">موتور پشتیبان:</span>
                     <span className="text-[#00e599] font-medium">فعال (تریاژ بدون اینترنت)</span>
                   </div>
@@ -474,8 +474,8 @@ export default function ProductSettingsPage() {
               </div>
 
               {/* Guidance tip card */}
-              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors space-y-2.5">
-                <div className="flex items-center gap-2 text-xs text-neutral-200 font-medium pb-1 border-b border-dotted border-[#222222]">
+              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors space-y-2.5">
+                <div className="flex items-center gap-2 text-xs text-neutral-200 font-medium pb-1 border-b border-[#1f1f1f]">
                   <SparklesIcon className="w-3.5 h-3.5 text-[#00e599]" />
                   <span>راهنمای پرامپت هوشمند</span>
                 </div>
@@ -489,7 +489,7 @@ export default function ProductSettingsPage() {
       </main>
 
       {/* Vercel-style minimalist footer matching dashboard */}
-      <footer className="mt-auto border-t border-dotted border-[#262626] bg-black py-4 px-4 text-xs text-neutral-500">
+      <footer className="mt-auto border-t border-[#1f1f1f] bg-black py-4 px-4 text-xs text-neutral-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <RadarLogo className="w-3.5 h-3.5 text-neutral-400" />

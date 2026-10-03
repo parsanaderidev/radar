@@ -122,10 +122,10 @@ body {
 /* Vercel card surface */
 .vercel-card {
   background: #0a0a0a;
-  border: 1px dotted #262626;
+  border: 1px solid #1f1f1f;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .vercel-card:hover {
-  border-color: #404040;
+  border-color: #333333;
 }

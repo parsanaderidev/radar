@@ -195,10 +195,10 @@ export default function LeadRadarDashboard() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Active Product Banner (Vercel Project Card Style) */}
         {activeProduct && (
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-dotted border-neutral-800 text-neutral-400 font-medium">
+                <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
                   محصول هدف
                 </span>
                 <h1 className="text-sm sm:text-base font-semibold text-white">
@@ -213,7 +213,7 @@ export default function LeadRadarDashboard() {
             <div className="flex items-center gap-2 self-stretch md:self-auto justify-end">
               <button
                 onClick={fetchData}
-                className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-dotted border-[#262626] hover:border-[#404040] text-xs text-neutral-300 transition-colors flex items-center gap-1.5"
+                className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] text-xs text-neutral-300 transition-colors flex items-center gap-1.5"
                 title="بروزرسانی داده‌ها"
               >
                 <RefreshIcon className="w-3.5 h-3.5 text-neutral-400" />
@@ -225,7 +225,7 @@ export default function LeadRadarDashboard() {
 
         {/* Live Simulation Alert */}
         {simulatedAlert && (
-          <div className="p-3 rounded-lg bg-[#0c0c0c] border border-dotted border-[#262626] text-xs text-neutral-200 flex items-center justify-between gap-2 shadow-lg">
+          <div className="p-3 rounded-lg bg-[#0c0c0c] border border-[#262626] text-xs text-neutral-200 flex items-center justify-between gap-2 shadow-lg">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00e599]" />
               <span>{simulatedAlert.message}</span>
@@ -251,12 +251,12 @@ export default function LeadRadarDashboard() {
         />
 
         {/* Feed Section Title */}
-        <div className="flex items-center justify-between border-b border-dotted border-[#262626] pb-3">
+        <div className="flex items-center justify-between border-b border-[#1f1f1f] pb-3">
           <div className="flex items-center gap-2">
             <h2 className="text-xs font-semibold text-neutral-300">
               جریان زنده پیام‌های جامعه کاربری
             </h2>
-            <span className="text-[11px] px-2 py-0.5 rounded-md bg-neutral-900 text-neutral-400 border border-dotted border-neutral-800">
+            <span className="text-[11px] px-2 py-0.5 rounded-md bg-neutral-900 text-neutral-400 border border-neutral-800">
               {toPersianDigits(filteredLeads.length)}
             </span>
           </div>
@@ -274,8 +274,8 @@ export default function LeadRadarDashboard() {
             <span>در حال بارگذاری جریان سرنخ‌ها...</span>
           </div>
         ) : filteredLeads.length === 0 ? (
-          <div className="py-16 px-4 rounded-lg border border-dotted border-[#262626] text-center space-y-3 bg-[#050505]">
-            <div className="w-12 h-12 mx-auto rounded-lg bg-[#111111] border border-dotted border-[#262626] flex items-center justify-center text-white shadow-sm">
+          <div className="py-16 px-4 rounded-lg border border-dashed border-[#222222] text-center space-y-3 bg-[#050505]">
+            <div className="w-12 h-12 mx-auto rounded-lg bg-[#111111] border border-[#222222] flex items-center justify-center text-white shadow-sm">
               <RadarLogo className="w-6 h-6 text-white" />
             </div>
             <div className="space-y-1">
@@ -309,7 +309,7 @@ export default function LeadRadarDashboard() {
       </main>
 
       {/* Vercel-style minimalist footer */}
-      <footer className="mt-auto border-t border-dotted border-[#262626] bg-black py-4 px-4 text-xs text-neutral-500">
+      <footer className="mt-auto border-t border-[#1f1f1f] bg-black py-4 px-4 text-xs text-neutral-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <RadarLogo className="w-3.5 h-3.5 text-neutral-400" />
