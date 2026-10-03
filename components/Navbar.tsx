@@ -51,7 +51,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
               <VercelTriangleIcon className="w-3.5 h-3.5" />
             </div>
             <div className="flex items-center gap-1.5 text-xs font-medium">
-              <span className="font-semibold text-white tracking-tight">رادار سرنخ</span>
+              <span className="font-semibold text-white">رادار سرنخ</span>
               <span className="text-neutral-600">/</span>
               <span className="text-neutral-400">جامعه کاربری ایران</span>
             </div>

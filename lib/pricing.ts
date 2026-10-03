@@ -48,20 +48,6 @@ export function toPersianDigits(value: string | number | undefined | null): stri
 }
 
 /**
- * Formats a number with Persian digit grouping (e.g. ۱٬۲۵۰)
- */
-export function formatPersianNumber(value: number | string | undefined | null): string {
-  if (value === undefined || value === null) return "۰";
-  const num = typeof value === "string" ? parseFloat(value) : value;
-  if (isNaN(num)) return toPersianDigits(value);
-  try {
-    return new Intl.NumberFormat("fa-IR").format(num);
-  } catch {
-    return toPersianDigits(num);
-  }
-}
-
-/**
  * Calculates USD cost for message evaluation based on token consumption.
  */
 export function calculateMessageCost(
@@ -189,37 +175,41 @@ export function calculateRadarMetrics(
 }
 
 /**
- * Format USD with Persian numerals (e.g. ۰.۰۰۰۴ دلار)
+ * Format USD with clean Persian numerals without unnecessary trailing zeroes (e.g. ۰.۰۰۸۶ دلار)
  */
 export function formatPersianUsd(amount: number): string {
   if (amount === 0) return "۰ دلار";
-  const formatted = amount < 0.01 ? amount.toFixed(5) : amount.toFixed(3);
-  return `${toPersianDigits(formatted)} دلار`;
+  const num = amount < 0.01 ? parseFloat(amount.toFixed(5)) : parseFloat(amount.toFixed(3));
+  return `${toPersianDigits(num)} دلار`;
 }
 
 /**
- * Format Toman currency in native Persian (e.g. ۵٬۳۴۰ تومان)
+ * Formats an integer or float with standard comma grouping and Persian digits without irregular spacing.
+ */
+export function formatPersianNumber(value: number | string | undefined | null): string {
+  if (value === undefined || value === null) return "۰";
+  const num = typeof value === "string" ? parseFloat(value) : value;
+  if (isNaN(num)) return toPersianDigits(value);
+  const parts = num.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return toPersianDigits(parts.join("."));
+}
+
+/**
+ * Format Toman currency in clean native Persian (e.g. ۷,۷۴۵ تومان)
  */
 export function formatPersianToman(tomans: number): string {
   if (!tomans || tomans === 0) return "۰ تومان";
-  try {
-    return `${new Intl.NumberFormat("fa-IR").format(tomans)} تومان`;
-  } catch {
-    return `${toPersianDigits(tomans)} تومان`;
-  }
+  return `${formatPersianNumber(Math.round(tomans))} تومان`;
 }
 
 /**
- * Micro cost in Toman equivalent for individual messages (e.g. ۳۴۰ تومان)
+ * Micro cost in Toman equivalent for individual messages (e.g. ۶۴۵ تومان)
  */
 export function formatMessageCostToman(usdAmount: number, rate: number = 900_000): string {
   const tomans = Math.round(usdAmount * rate);
   if (tomans < 10) return "کمتر از ۱۰ تومان";
-  try {
-    return `${new Intl.NumberFormat("fa-IR").format(tomans)} تومان`;
-  } catch {
-    return `${toPersianDigits(tomans)} تومان`;
-  }
+  return `${formatPersianNumber(tomans)} تومان`;
 }
 
 // Backward-compatible exports

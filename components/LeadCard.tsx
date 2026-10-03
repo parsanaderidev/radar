@@ -129,7 +129,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
           </span>
 
           {/* Author Handle */}
-          <span className="text-xs text-neutral-300 font-num dir-ltr bg-[#141414] border border-[#222222] px-2 py-0.5 rounded-md">
+          <span className="text-xs text-neutral-300 dir-ltr bg-[#141414] border border-[#222222] px-2 py-0.5 rounded-md">
             {rawMsg?.author_handle || "@کاربر"}
           </span>
 
@@ -160,12 +160,12 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
 
           <div
             className={cn(
-              "px-2 py-0.5 rounded-md text-xs font-num font-semibold border flex items-center gap-1",
+              "px-2.5 py-0.5 rounded-md text-xs font-semibold border flex items-center gap-1.5",
               intent.scoreBadge
             )}
             title="امتیاز هوش از ۱۰۰"
           >
-            <span className="text-[10px] text-neutral-500 font-normal">امتیاز:</span>
+            <span className="text-[10px] text-neutral-400 font-normal">امتیاز:</span>
             <span>{toPersianDigits(lead.intent_score)}</span>
           </div>
         </div>
@@ -237,16 +237,16 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
       {/* Footer: Token Ledger & Actions */}
       <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#1a1a1a]">
         {/* Token and micro-cost badge in Persian */}
-        <div className="flex items-center gap-2 text-[11px] text-neutral-500 font-num">
+        <div className="flex items-center gap-2 text-xs text-neutral-500">
           <CpuIcon className="w-3.5 h-3.5 text-neutral-500" />
           <span>
             {toPersianDigits(lead.input_tokens || 0)} توکن ورودی / {toPersianDigits(lead.output_tokens || 0)} خروجی
           </span>
-          <span>•</span>
+          <span className="text-neutral-600 px-1">•</span>
           <span className="text-neutral-300 font-medium">
             {formatMessageCostToman(lead.estimated_cost_usd || 0)}
           </span>
-          <span className="text-neutral-600 text-[10px]">
+          <span className="text-neutral-600 text-[11px]">
             ({formatPersianUsd(lead.estimated_cost_usd || 0)})
           </span>
         </div>

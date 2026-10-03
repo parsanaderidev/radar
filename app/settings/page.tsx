@@ -94,7 +94,7 @@ export default function ProductSettingsPage() {
         {/* Header */}
         <div className="border-b border-[#1f1f1f] pb-4">
           <div className="flex items-center gap-2">
-            <h1 className="text-lg font-semibold text-white tracking-tight">
+            <h1 className="text-lg font-semibold text-white">
               تنظیمات محصول و پرسونای مشتری (ICP)
             </h1>
           </div>
@@ -306,7 +306,7 @@ export default function ProductSettingsPage() {
                   </div>
                   <div className="flex justify-between py-1">
                     <span className="text-neutral-500">هزینه هر ۱M توکن:</span>
-                    <span className="text-neutral-300 font-num">۰.۱۵ / ۰.۶۰ دلار</span>
+                    <span className="text-neutral-300">۰.۱۵ / ۰.۶۰ دلار</span>
                   </div>
                 </div>
               </div>

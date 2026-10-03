@@ -201,7 +201,7 @@ export default function LeadRadarDashboard() {
                 <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
                   محصول هدف
                 </span>
-                <h1 className="text-sm sm:text-base font-semibold text-white tracking-tight">
+                <h1 className="text-sm sm:text-base font-semibold text-white">
                   {activeProduct.name}
                 </h1>
               </div>
@@ -256,7 +256,7 @@ export default function LeadRadarDashboard() {
             <h2 className="text-xs font-semibold text-neutral-300">
               جریان زنده پیام‌های جامعه کاربری
             </h2>
-            <span className="text-[11px] font-num px-2 py-0.5 rounded-md bg-neutral-900 text-neutral-400 border border-neutral-800">
+            <span className="text-[11px] px-2 py-0.5 rounded-md bg-neutral-900 text-neutral-400 border border-neutral-800">
               {toPersianDigits(filteredLeads.length)}
             </span>
           </div>

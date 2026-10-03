@@ -40,10 +40,10 @@ export function MetricsHeader({
             کل پیام‌های دریافتی
           </span>
           <div className="mt-3">
-            <div className="text-2xl sm:text-3xl font-num font-semibold tracking-tight text-white">
+            <div className="text-2xl sm:text-3xl font-semibold text-white">
               {toPersianDigits(metrics.totalMessages)}
             </div>
-            <div className="text-xs text-neutral-500 mt-1 font-num">
+            <div className="text-xs text-neutral-500 mt-1">
               {toPersianDigits(metrics.totalEvaluated)} پیام ارزیابی‌شده
             </div>
           </div>
@@ -51,19 +51,20 @@ export function MetricsHeader({
 
         {/* Card 2: Noise Filtered Ratio */}
         <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-neutral-400 font-medium">
               نرخ حذف نویز
             </span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400">
+            <span className="text-[10px] px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
               فیلتر خودکار
             </span>
           </div>
           <div className="mt-3">
-            <div className="text-2xl sm:text-3xl font-num font-semibold tracking-tight text-white">
-              {toPersianDigits(metrics.noiseFilteredPercent)}٪
+            <div className="text-2xl sm:text-3xl font-semibold text-white flex items-baseline gap-1">
+              <span>{toPersianDigits(metrics.noiseFilteredPercent)}</span>
+              <span className="text-base text-neutral-400 font-normal">٪</span>
             </div>
-            <div className="text-xs text-neutral-500 mt-1 font-num">
+            <div className="text-xs text-neutral-500 mt-1">
               {toPersianDigits(metrics.noiseMessages)} پیام نامرتبط پالایش شد
             </div>
           </div>
@@ -71,20 +72,20 @@ export function MetricsHeader({
 
         {/* Card 3: Qualified Leads */}
         <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between relative overflow-hidden">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-neutral-400 font-medium">
               سرنخ‌های واجد شرایط (ICP)
             </span>
             <span className="flex h-2 w-2 rounded-full bg-[#00e599] shadow-[0_0_8px_rgba(0,229,153,0.6)]" />
           </div>
           <div className="mt-3">
-            <div className="text-2xl sm:text-3xl font-num font-semibold tracking-tight text-[#00e599]">
+            <div className="text-2xl sm:text-3xl font-semibold text-[#00e599]">
               {toPersianDigits(metrics.qualifiedLeads)}
             </div>
-            <div className="text-xs text-neutral-400 mt-1 font-num flex items-center gap-2">
-              <span className="text-[#00e599]">{toPersianDigits(metrics.highIntentCount)} قطعی</span>
-              <span className="text-neutral-600">•</span>
-              <span className="text-[#f5a623]">{toPersianDigits(metrics.problemAwareCount)} دردمند</span>
+            <div className="text-xs text-neutral-400 mt-1 flex items-center gap-1.5 flex-wrap">
+              <span className="text-[#00e599] font-medium">{toPersianDigits(metrics.highIntentCount)} خرید قطعی</span>
+              <span className="text-neutral-600 px-1">•</span>
+              <span className="text-[#f5a623] font-medium">{toPersianDigits(metrics.problemAwareCount)} دردمند</span>
             </div>
           </div>
         </div>
@@ -95,10 +96,10 @@ export function MetricsHeader({
             هزینه پردازش هوش
           </span>
           <div className="mt-3">
-            <div className="text-2xl sm:text-3xl font-num font-semibold tracking-tight text-white">
+            <div className="text-2xl sm:text-3xl font-semibold text-white">
               {formatPersianToman(metrics.estimatedTomanSpend)}
             </div>
-            <div className="text-xs text-neutral-500 mt-1 font-num">
+            <div className="text-xs text-neutral-500 mt-1">
               معادل {formatPersianUsd(metrics.totalSpendUsd)}
             </div>
           </div>
@@ -110,10 +111,10 @@ export function MetricsHeader({
             هزینه به‌ازای هر سرنخ
           </span>
           <div className="mt-3">
-            <div className="text-2xl sm:text-3xl font-num font-semibold tracking-tight text-white">
+            <div className="text-2xl sm:text-3xl font-semibold text-white">
               {formatMessageCostToman(metrics.avgCostPerQualifiedLeadUsd)}
             </div>
-            <div className="text-xs text-neutral-500 mt-1 font-num">
+            <div className="text-xs text-neutral-500 mt-1">
               به‌ازای هر فرصت معتبر فروش
             </div>
           </div>

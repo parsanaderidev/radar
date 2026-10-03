@@ -68,14 +68,14 @@ body {
   background-repeat: no-repeat;
 }
 
-/* Tabular Persian numbers for alignment in cards & KPI metrics */
+/* Persian numbers and fonts: natural proportional kerning and normal spacing */
 .font-mono,
 .font-num,
 .tabular-nums {
-  font-family: var(--font-num) !important;
-  font-feature-settings: "ss01" 1, "tnum" 1, "locl" 1 !important;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
+  font-family: var(--font-sans) !important;
+  font-feature-settings: "ss01" 1, "locl" 1 !important;
+  font-variant-numeric: normal !important;
+  letter-spacing: normal !important;
 }
 
 /* Explicit technical code styling */
@@ -83,6 +83,7 @@ body {
   font-family: var(--font-code) !important;
   direction: ltr;
   unicode-bidi: isolate;
+  letter-spacing: normal;
 }
 
 /* Vercel-style clean selection */
