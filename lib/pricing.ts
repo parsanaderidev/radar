@@ -1,6 +1,6 @@
 /**
- * Cost Accounting Engine (Zero External Dependencies)
- * Precision tracking of LLM inference spend, per-token accounting, and ROI metrics.
+ * Cost Accounting Engine & Persian Typography Numerical Formatter
+ * Zero External Dependencies
  */
 
 export interface ModelPricingTier {
@@ -38,7 +38,31 @@ export const DEFAULT_PRICING_TIERS: Record<string, ModelPricingTier> = {
 };
 
 /**
- * Calculates the exact USD cost for a single message evaluation based on token consumption.
+ * Converts English digits (0-9) to Persian digits (۰-۹)
+ */
+export function toPersianDigits(value: string | number | undefined | null): string {
+  if (value === undefined || value === null) return "";
+  const str = String(value);
+  const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  return str.replace(/[0-9]/g, (w) => persianDigits[parseInt(w, 10)]);
+}
+
+/**
+ * Formats a number with Persian digit grouping (e.g. ۱٬۲۵۰)
+ */
+export function formatPersianNumber(value: number | string | undefined | null): string {
+  if (value === undefined || value === null) return "۰";
+  const num = typeof value === "string" ? parseFloat(value) : value;
+  if (isNaN(num)) return toPersianDigits(value);
+  try {
+    return new Intl.NumberFormat("fa-IR").format(num);
+  } catch {
+    return toPersianDigits(num);
+  }
+}
+
+/**
+ * Calculates USD cost for message evaluation based on token consumption.
  */
 export function calculateMessageCost(
   inputTokens: number,
@@ -87,7 +111,7 @@ export interface CommunityMetricsSummary {
   totalSpendUsd: number;
   avgCostPerMessageUsd: number;
   avgCostPerQualifiedLeadUsd: number;
-  estimatedTomanSpend: number;  // Optional domestic conversion
+  estimatedTomanSpend: number;  // Domestic Toman conversion
 }
 
 /**
@@ -99,7 +123,7 @@ export function calculateRadarMetrics(
     estimated_cost_usd?: number;
   }>,
   totalRawMessagesCount?: number,
-  usdToTomanExchangeRate: number = 900_000 // Approximate reference rate
+  usdToTomanExchangeRate: number = 900_000 // Reference rate: 90,000 Tomans per USD
 ): CommunityMetricsSummary {
   const totalEvaluated = leads.length;
   const totalMessages = Math.max(totalRawMessagesCount || 0, totalEvaluated);
@@ -165,19 +189,39 @@ export function calculateRadarMetrics(
 }
 
 /**
- * Format USD with 4 to 6 decimal places for micro-cent billing.
+ * Format USD with Persian numerals (e.g. ۰.۰۰۰۴ دلار)
  */
-export function formatUsd(amount: number): string {
-  if (amount === 0) return "$0.00";
-  if (amount < 0.01) {
-    return `$${amount.toFixed(5)}`;
-  }
-  return `$${amount.toFixed(3)}`;
+export function formatPersianUsd(amount: number): string {
+  if (amount === 0) return "۰ دلار";
+  const formatted = amount < 0.01 ? amount.toFixed(5) : amount.toFixed(3);
+  return `${toPersianDigits(formatted)} دلار`;
 }
 
 /**
- * Format Toman with Persian/English digit grouping.
+ * Format Toman currency in native Persian (e.g. ۵٬۳۴۰ تومان)
  */
-export function formatToman(tomans: number): string {
-  return new Intl.NumberFormat("fa-IR").format(tomans) + " تومان";
+export function formatPersianToman(tomans: number): string {
+  if (!tomans || tomans === 0) return "۰ تومان";
+  try {
+    return `${new Intl.NumberFormat("fa-IR").format(tomans)} تومان`;
+  } catch {
+    return `${toPersianDigits(tomans)} تومان`;
+  }
 }
+
+/**
+ * Micro cost in Toman equivalent for individual messages (e.g. ۳۴۰ تومان)
+ */
+export function formatMessageCostToman(usdAmount: number, rate: number = 900_000): string {
+  const tomans = Math.round(usdAmount * rate);
+  if (tomans < 10) return "کمتر از ۱۰ تومان";
+  try {
+    return `${new Intl.NumberFormat("fa-IR").format(tomans)} تومان`;
+  } catch {
+    return `${toPersianDigits(tomans)} تومان`;
+  }
+}
+
+// Backward-compatible exports
+export const formatUsd = (amount: number) => formatPersianUsd(amount);
+export const formatToman = (tomans: number) => formatPersianToman(tomans);

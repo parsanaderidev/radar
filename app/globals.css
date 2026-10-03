@@ -7,7 +7,7 @@
 @font-face {
   font-family: 'Estedad';
   src: url('/fonts/estedad/Estedad-VF.woff2') format('woff2-variations'),
-       url('/fonts/estedad/Estedad-Regular.woff2') format('woff2');
+    url('/fonts/estedad/Estedad-Regular.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -39,7 +39,8 @@
 
 :root {
   --font-sans: 'Estedad', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", monospace;
+  --font-num: 'Estedad', ui-monospace, monospace;
+  --font-code: ui-monospace, Menlo, Monaco, "Cascadia Mono", monospace;
 }
 
 *,
@@ -48,8 +49,14 @@
   font-family: var(--font-sans);
 }
 
+html {
+  direction: rtl;
+  color-scheme: dark;
+}
+
 body {
   font-family: var(--font-sans);
+  font-feature-settings: "ss01" 1, "cv01" 1, "locl" 1;
   background-color: #000000;
   color: #ededed;
   min-height: 100vh;
@@ -57,17 +64,25 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
   background-repeat: no-repeat;
 }
 
-/* Monospace overrides for code & technical metrics */
-code,
-kbd,
-samp,
-pre,
-.font-mono {
-  font-family: var(--font-mono) !important;
+/* Tabular Persian numbers for alignment in cards & KPI metrics */
+.font-mono,
+.font-num,
+.tabular-nums {
+  font-family: var(--font-num) !important;
+  font-feature-settings: "ss01" 1, "tnum" 1, "locl" 1 !important;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Explicit technical code styling */
+.font-code {
+  font-family: var(--font-code) !important;
+  direction: ltr;
+  unicode-bidi: isolate;
 }
 
 /* Vercel-style clean selection */
@@ -87,18 +102,18 @@ pre,
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #222222;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: #383838;
 }
 
 /* Vercel subtle grid lines background */
 .vercel-grid {
   background-size: 32px 32px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }

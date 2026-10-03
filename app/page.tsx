@@ -11,7 +11,7 @@ import {
   RadarIcon,
 } from "@/components/Icons";
 import { getPocketBaseClient, type LeadRecord, type ProductRecord } from "@/lib/pocketbase";
-import { calculateRadarMetrics } from "@/lib/pricing";
+import { calculateRadarMetrics, toPersianDigits } from "@/lib/pricing";
 
 export default function LeadRadarDashboard() {
   const [leads, setLeads] = useState<LeadRecord[]>([]);
@@ -90,7 +90,7 @@ export default function LeadRadarDashboard() {
     return () => {
       clearInterval(interval);
       if (isSubscribed) {
-        pb.collection("leads").unsubscribe("*").catch(() => {});
+        pb.collection("leads").unsubscribe("*").catch(() => { });
       }
     };
   }, [fetchData, pb]);
@@ -130,15 +130,15 @@ export default function LeadRadarDashboard() {
 
         const levelLabel =
           data.lead.intent_level === "high_intent"
-            ? "خرید قطعی (High Intent)"
+            ? "خرید قطعی"
             : data.lead.intent_level === "problem_aware"
-            ? "دردمند (Problem Aware)"
-            : data.lead.intent_level === "curious"
-            ? "کنجکاو (Curious)"
-            : "نویز فیلترشده";
+              ? "دردمند و ناراضی"
+              : data.lead.intent_level === "curious"
+                ? "کنجکاو"
+                : "نویز و نامرتبط";
 
         setSimulatedAlert({
-          message: `پیام جدید از ${data.lead.expand?.raw_message_id?.author_handle} وارد صف شد: ${levelLabel}`,
+          message: `پیام جدید از ${data.lead.expand?.raw_message_id?.author_handle || "کاربر"} وارد صف شد: ${levelLabel}`,
           type: "success",
         });
 
@@ -198,8 +198,8 @@ export default function LeadRadarDashboard() {
           <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 uppercase">
-                  Target Product
+                <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
+                  محصول هدف
                 </span>
                 <h1 className="text-sm sm:text-base font-semibold text-white tracking-tight">
                   {activeProduct.name}
@@ -213,11 +213,11 @@ export default function LeadRadarDashboard() {
             <div className="flex items-center gap-2 self-stretch md:self-auto justify-end">
               <button
                 onClick={fetchData}
-                className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] text-xs font-mono text-neutral-300 transition-colors flex items-center gap-1.5"
-                title="Refresh Feed"
+                className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] text-xs text-neutral-300 transition-colors flex items-center gap-1.5"
+                title="بروزرسانی داده‌ها"
               >
-                <RefreshIcon className="w-3 h-3 text-neutral-400" />
-                <span>Refresh</span>
+                <RefreshIcon className="w-3.5 h-3.5 text-neutral-400" />
+                <span>بروزرسانی داده‌ها</span>
               </button>
             </div>
           </div>
@@ -253,25 +253,25 @@ export default function LeadRadarDashboard() {
         {/* Feed Section Title */}
         <div className="flex items-center justify-between border-b border-[#1f1f1f] pb-3">
           <div className="flex items-center gap-2">
-            <h2 className="text-xs uppercase font-mono tracking-wider text-neutral-400">
-              Community Stream
+            <h2 className="text-xs font-semibold text-neutral-300">
+              جریان زنده پیام‌های جامعه کاربری
             </h2>
-            <span className="text-[11px] font-mono px-1.5 py-0.5 rounded bg-neutral-900 text-neutral-400 border border-neutral-800">
-              {filteredLeads.length}
+            <span className="text-[11px] font-num px-2 py-0.5 rounded-md bg-neutral-900 text-neutral-400 border border-neutral-800">
+              {toPersianDigits(filteredLeads.length)}
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono text-neutral-500">
+          <div className="flex items-center gap-2 text-xs text-neutral-500">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00e599]" />
-            <span className="hidden sm:inline">SSE Connected</span>
+            <span className="hidden sm:inline">ارتباط زنده لحظه‌ای (SSE)</span>
           </div>
         </div>
 
         {/* Leads Feed */}
         {isLoading ? (
-          <div className="py-20 flex flex-col items-center justify-center space-y-3 text-neutral-500 font-mono text-xs">
+          <div className="py-20 flex flex-col items-center justify-center space-y-3 text-neutral-500 text-xs">
             <RefreshIcon className="w-5 h-5 animate-spin text-neutral-400" />
-            <span>Loading stream...</span>
+            <span>در حال بارگذاری جریان سرنخ‌ها...</span>
           </div>
         ) : filteredLeads.length === 0 ? (
           <div className="py-16 px-4 rounded-lg border border-dashed border-[#222222] text-center space-y-3 bg-[#050505]">
@@ -289,10 +289,10 @@ export default function LeadRadarDashboard() {
             <button
               onClick={handleSimulateFeed}
               disabled={isSimulating}
-              className="h-8 px-3.5 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95"
+              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95"
             >
               <PlayIcon className="w-3 h-3 text-black" />
-              <span>Simulate Lead</span>
+              <span>تزریق زنده پیام</span>
             </button>
           </div>
         ) : (
@@ -309,10 +309,10 @@ export default function LeadRadarDashboard() {
       </main>
 
       {/* Vercel-style minimalist footer */}
-      <footer className="mt-auto border-t border-[#1f1f1f] bg-black py-4 px-4 text-xs font-mono text-neutral-500">
+      <footer className="mt-auto border-t border-[#1f1f1f] bg-black py-4 px-4 text-xs text-neutral-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>AI Lead Radar • Community Intent Engine</span>
-          <span className="text-neutral-600">Self-Hosted • PocketBase SQLite • Local LLM</span>
+          <span>رادار هوشمند سرنخ • موتور تشخیص تمایل خرید در جامعه کاربری</span>
+          <span className="text-neutral-600">میزبانی بومی • دیتابیس پاکت‌بیس • مدل زبانی محلی/آفلاین</span>
         </div>
       </footer>
     </div>

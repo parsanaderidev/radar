@@ -6,7 +6,7 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
 }
 
 /**
- * Vercel Iconic Triangle Logo
+ * Vercel Iconic Triangle Logo - Smooth
  */
 export function VercelTriangleIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
   return (
@@ -24,6 +24,9 @@ export function VercelTriangleIcon({ className = "w-4 h-4", size, ...props }: Ic
   );
 }
 
+/**
+ * Smooth Radar Icon
+ */
 export function RadarIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
   return (
     <svg
@@ -31,7 +34,7 @@ export function RadarIcon({ className = "w-4 h-4", size, ...props }: IconProps) 
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -41,14 +44,17 @@ export function RadarIcon({ className = "w-4 h-4", size, ...props }: IconProps) 
     >
       <path d="M19.07 4.93a10 10 0 0 0-14.14 0" />
       <path d="M16.24 7.76a6 6 0 0 0-8.48 0" />
-      <circle cx="12" cy="12" r="2" />
-      <path d="M12 12l4-4" />
+      <circle cx="12" cy="12" r="2.5" />
+      <path d="m13.8 10.2 3.7-3.7" />
       <path d="m4.93 19.07 4.24-4.24" />
       <path d="M12 22a10 10 0 0 0 10-10" />
     </svg>
   );
 }
 
+/**
+ * Smooth AI Sparkles
+ */
 export function SparklesIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
   return (
     <svg
@@ -56,7 +62,7 @@ export function SparklesIcon({ className = "w-4 h-4", size, ...props }: IconProp
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -64,11 +70,14 @@ export function SparklesIcon({ className = "w-4 h-4", size, ...props }: IconProp
       height={size}
       {...props}
     >
-      <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z" />
+      <path d="m12 3-1.6 5.2a2.5 2.5 0 0 1-1.6 1.6L3.6 11.4a.7.7 0 0 0 0 1.2l5.2 1.6a2.5 2.5 0 0 1 1.6 1.6l1.6 5.2a.7.7 0 0 0 1.2 0l1.6-5.2a2.5 2.5 0 0 1 1.6-1.6l5.2-1.6a.7.7 0 0 0 0-1.2l-5.2-1.6a2.5 2.5 0 0 1-1.6-1.6L13.2 3a.7.7 0 0 0-1.2 0Z" />
     </svg>
   );
 }
 
+/**
+ * High Intent Flame (Smooth)
+ */
 export function HighIntentIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
   return (
     <svg
@@ -76,7 +85,7 @@ export function HighIntentIcon({ className = "w-4 h-4", size, ...props }: IconPr
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -89,6 +98,9 @@ export function HighIntentIcon({ className = "w-4 h-4", size, ...props }: IconPr
   );
 }
 
+/**
+ * Problem Aware Alert (Smooth)
+ */
 export function ProblemAwareIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
   return (
     <svg
@@ -96,7 +108,7 @@ export function ProblemAwareIcon({ className = "w-4 h-4", size, ...props }: Icon
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -104,13 +116,16 @@ export function ProblemAwareIcon({ className = "w-4 h-4", size, ...props }: Icon
       height={size}
       {...props}
     >
-      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="9.5" />
       <line x1="12" y1="8" x2="12" y2="12" />
-      <line x1="12" y1="16" x2="12.01" y2="16" />
+      <circle cx="12" cy="16" r="0.75" fill="currentColor" />
     </svg>
   );
 }
 
+/**
+ * Noise Slash Circle (Smooth)
+ */
 export function NoiseIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
   return (
     <svg
@@ -118,7 +133,7 @@ export function NoiseIcon({ className = "w-4 h-4", size, ...props }: IconProps) 
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -126,12 +141,15 @@ export function NoiseIcon({ className = "w-4 h-4", size, ...props }: IconProps) 
       height={size}
       {...props}
     >
-      <circle cx="12" cy="12" r="9" />
-      <line x1="5.64" y1="5.64" x2="18.36" y2="18.36" />
+      <circle cx="12" cy="12" r="9.5" />
+      <line x1="5.5" y1="5.5" x2="18.5" y2="18.5" />
     </svg>
   );
 }
 
+/**
+ * Smooth Check Circle
+ */
 export function CheckCircleIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
   return (
     <svg
@@ -139,7 +157,7 @@ export function CheckCircleIcon({ className = "w-4 h-4", size, ...props }: IconP
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -153,6 +171,9 @@ export function CheckCircleIcon({ className = "w-4 h-4", size, ...props }: IconP
   );
 }
 
+/**
+ * Smooth X Circle
+ */
 export function XCircleIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
   return (
     <svg
@@ -160,7 +181,7 @@ export function XCircleIcon({ className = "w-4 h-4", size, ...props }: IconProps
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -168,13 +189,16 @@ export function XCircleIcon({ className = "w-4 h-4", size, ...props }: IconProps
       height={size}
       {...props}
     >
-      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="9.5" />
       <line x1="15" y1="9" x2="9" y2="15" />
       <line x1="9" y1="9" x2="15" y2="15" />
     </svg>
   );
 }
 
+/**
+ * Smooth Copy Icon
+ */
 export function CopyIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -182,7 +206,7 @@ export function CopyIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProp
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -190,12 +214,15 @@ export function CopyIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProp
       height={size}
       {...props}
     >
-      <rect width="13" height="13" x="9" y="9" rx="2" ry="2" />
+      <rect width="13" height="13" x="8.5" y="8.5" rx="2.5" />
       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
     </svg>
   );
 }
 
+/**
+ * Smooth Settings Gear
+ */
 export function SettingsIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
   return (
     <svg
@@ -203,7 +230,7 @@ export function SettingsIcon({ className = "w-4 h-4", size, ...props }: IconProp
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -217,6 +244,9 @@ export function SettingsIcon({ className = "w-4 h-4", size, ...props }: IconProp
   );
 }
 
+/**
+ * Smooth Play Button
+ */
 export function PlayIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -228,11 +258,14 @@ export function PlayIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProp
       height={size}
       {...props}
     >
-      <polygon points="6 3 20 12 6 21 6 3" />
+      <path d="M7 4.2a1 1 0 0 1 1.5-.86l12 7a1 1 0 0 1 0 1.72l-12 7A1 1 0 0 1 7 18.2V4.2z" />
     </svg>
   );
 }
 
+/**
+ * Smooth Refresh Loop
+ */
 export function RefreshIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -240,7 +273,7 @@ export function RefreshIcon({ className = "w-3.5 h-3.5", size, ...props }: IconP
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -256,6 +289,9 @@ export function RefreshIcon({ className = "w-3.5 h-3.5", size, ...props }: IconP
   );
 }
 
+/**
+ * Smooth Server Stack
+ */
 export function ServerIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -263,7 +299,7 @@ export function ServerIcon({ className = "w-3.5 h-3.5", size, ...props }: IconPr
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -271,14 +307,17 @@ export function ServerIcon({ className = "w-3.5 h-3.5", size, ...props }: IconPr
       height={size}
       {...props}
     >
-      <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
-      <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
-      <line x1="6" y1="6" x2="6.01" y2="6" />
-      <line x1="6" y1="18" x2="6.01" y2="18" />
+      <rect width="20" height="8" x="2" y="2" rx="2.5" />
+      <rect width="20" height="8" x="2" y="14" rx="2.5" />
+      <line x1="6" y1="6" x2="6.01" y2="6" strokeWidth="2.5" />
+      <line x1="6" y1="18" x2="6.01" y2="18" strokeWidth="2.5" />
     </svg>
   );
 }
 
+/**
+ * Smooth Processor CPU
+ */
 export function CpuIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -286,7 +325,7 @@ export function CpuIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -294,8 +333,8 @@ export function CpuIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps
       height={size}
       {...props}
     >
-      <rect width="16" height="16" x="4" y="4" rx="2" />
-      <rect width="6" height="6" x="9" y="9" rx="1" />
+      <rect width="16" height="16" x="4" y="4" rx="3" />
+      <rect width="6" height="6" x="9" y="9" rx="1.5" />
       <path d="M15 2v2" />
       <path d="M15 20v2" />
       <path d="M2 15h2" />
@@ -308,6 +347,9 @@ export function CpuIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps
   );
 }
 
+/**
+ * Smooth Telegram Paper Plane
+ */
 export function TelegramIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -315,7 +357,7 @@ export function TelegramIcon({ className = "w-3.5 h-3.5", size, ...props }: Icon
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -329,6 +371,9 @@ export function TelegramIcon({ className = "w-3.5 h-3.5", size, ...props }: Icon
   );
 }
 
+/**
+ * Smooth Bale Messenger Bubble
+ */
 export function BaleIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -336,7 +381,7 @@ export function BaleIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProp
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -349,6 +394,9 @@ export function BaleIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProp
   );
 }
 
+/**
+ * Smooth Twitter / X Logo
+ */
 export function TwitterXIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -365,6 +413,9 @@ export function TwitterXIcon({ className = "w-3.5 h-3.5", size, ...props }: Icon
   );
 }
 
+/**
+ * Smooth Forum Chat Bubbles
+ */
 export function ForumIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -372,7 +423,7 @@ export function ForumIcon({ className = "w-3.5 h-3.5", size, ...props }: IconPro
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -380,11 +431,14 @@ export function ForumIcon({ className = "w-3.5 h-3.5", size, ...props }: IconPro
       height={size}
       {...props}
     >
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      <path d="M21 15a2.5 2.5 0 0 1-2.5 2.5H7l-4 3.5V5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5z" />
     </svg>
   );
 }
 
+/**
+ * Smooth Search Loupe
+ */
 export function SearchIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -392,7 +446,7 @@ export function SearchIcon({ className = "w-3.5 h-3.5", size, ...props }: IconPr
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -400,12 +454,15 @@ export function SearchIcon({ className = "w-3.5 h-3.5", size, ...props }: IconPr
       height={size}
       {...props}
     >
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
+      <circle cx="11" cy="11" r="7.5" />
+      <path d="m21 21-4.35-4.35" />
     </svg>
   );
 }
 
+/**
+ * Smooth Arrow
+ */
 export function ArrowUpRightIcon({ className = "w-3.5 h-3.5", size, ...props }: IconProps) {
   return (
     <svg
@@ -413,7 +470,7 @@ export function ArrowUpRightIcon({ className = "w-3.5 h-3.5", size, ...props }: 
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}

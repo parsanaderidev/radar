@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" className="dark">
-      <body className="bg-slate-950 text-slate-100 min-h-screen selection:bg-emerald-500/30 selection:text-emerald-200">
+      <body className="bg-[#000000] text-[#ededed] min-h-screen selection:bg-white selection:text-black antialiased">
         {children}
       </body>
     </html>

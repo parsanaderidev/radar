@@ -42,7 +42,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#222] bg-black/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-[#1f1f1f] bg-black/85 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
         {/* Left: Vercel Brand & Breadcrumb */}
         <div className="flex items-center gap-3">
@@ -50,27 +50,27 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
             <div className="flex items-center justify-center w-7 h-7 rounded-md bg-white text-black transition-transform group-hover:scale-105">
               <VercelTriangleIcon className="w-3.5 h-3.5" />
             </div>
-            <div className="flex items-center gap-1.5 font-mono text-xs">
-              <span className="font-semibold text-white tracking-tight">radar</span>
+            <div className="flex items-center gap-1.5 text-xs font-medium">
+              <span className="font-semibold text-white tracking-tight">رادار سرنخ</span>
               <span className="text-neutral-600">/</span>
-              <span className="text-neutral-400">iran-community</span>
+              <span className="text-neutral-400">جامعه کاربری ایران</span>
             </div>
           </Link>
 
-          {/* Vercel Status Indicator */}
-          <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-[#262626] bg-[#0c0c0c] text-[11px] font-mono text-neutral-400">
+          {/* Status Indicator */}
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-[#262626] bg-[#0c0c0c] text-[11px] text-neutral-400">
             <span
               className={cn(
                 "w-1.5 h-1.5 rounded-full",
                 pbStatus === "online"
                   ? "bg-[#00e599] shadow-[0_0_8px_rgba(0,229,153,0.5)]"
                   : pbStatus === "checking"
-                  ? "bg-[#f5a623] animate-ping"
-                  : "bg-[#e00]"
+                    ? "bg-[#f5a623] animate-ping"
+                    : "bg-[#e00]"
               )}
             />
             <span className="text-neutral-300">
-              {pbStatus === "online" ? "PocketBase Ready" : pbStatus === "checking" ? "Connecting" : "Offline"}
+              {pbStatus === "online" ? "پاکت‌بیس متصل" : pbStatus === "checking" ? "در حال اتصال..." : "قطع ارتباط دیتابیس"}
             </span>
           </div>
         </div>
@@ -100,7 +100,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
             )}
           >
             <SettingsIcon className="w-3.5 h-3.5" />
-            <span>محصول & ICP</span>
+            <span>تنظیمات محصول & ICP</span>
           </Link>
         </nav>
 

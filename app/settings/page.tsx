@@ -76,7 +76,7 @@ export default function ProductSettingsPage() {
       });
 
       setProduct(updated);
-      setStatusMessage({ text: "تغییرات با موفقیت در دیتابیس ذخیره شد.", type: "success" });
+      setStatusMessage({ text: "تغییرات با موفقیت در دیتابیس پاکت‌بیس ذخیره شد.", type: "success" });
       setTimeout(() => setStatusMessage(null), 4000);
     } catch (err: any) {
       console.error("Save error:", err);
@@ -99,21 +99,20 @@ export default function ProductSettingsPage() {
             </h1>
           </div>
           <p className="text-xs text-neutral-400 mt-1">
-            مشخصات محصول و پرسونای خریدار جهت ارزیابی دقیق هوش مصنوعی و تفکیک نویز از سیگنال خرید
+            مشخصات محصول و پرسونای خریدار جهت ارزیابی هوشمند پیام‌ها و تفکیک نویز از تمایل خرید
           </p>
         </div>
 
         {/* Feedback Alert */}
         {statusMessage && (
           <div
-            className={`p-3 rounded-md border text-xs flex items-center gap-2 font-mono ${
-              statusMessage.type === "success"
+            className={`p-3 rounded-md border text-xs flex items-center gap-2 ${statusMessage.type === "success"
                 ? "bg-[#0c0c0c] border-[#00e599]/40 text-[#00e599]"
                 : "bg-[#0c0c0c] border-red-500/40 text-red-400"
-            }`}
+              }`}
           >
             {statusMessage.type === "success" ? (
-              <CheckCircleIcon className="w-3.5 h-3.5 text-[#00e599] shrink-0" />
+              <CheckCircleIcon className="w-4 h-4 text-[#00e599] shrink-0" />
             ) : (
               <span className="text-red-400 font-bold">✕</span>
             )}
@@ -122,30 +121,30 @@ export default function ProductSettingsPage() {
         )}
 
         {isLoading ? (
-          <div className="py-20 flex flex-col items-center justify-center space-y-3 text-neutral-500 font-mono text-xs">
+          <div className="py-20 flex flex-col items-center justify-center space-y-3 text-neutral-500 text-xs">
             <RefreshIcon className="w-5 h-5 animate-spin text-neutral-400" />
-            <span>Loading configuration...</span>
+            <span>در حال بارگذاری تنظیمات...</span>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Main Vercel-Style Form */}
+            {/* Main Form */}
             <form onSubmit={handleSave} className="lg:col-span-2 space-y-4">
               {/* Card 1: Product Identity */}
               <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] overflow-hidden">
                 <div className="p-4 space-y-3">
                   <div>
-                    <h2 className="text-xs font-semibold text-neutral-200 uppercase font-mono tracking-wider">
-                      Product Identity
+                    <h2 className="text-xs font-semibold text-neutral-200">
+                      هویت و مشخصات محصول
                     </h2>
                     <p className="text-xs text-neutral-500 mt-0.5">
-                      نام رسمی برند تجاری و شعار محوری محصول
+                      نام تجاری و شعار محوری جهت معرفی در پاسخ‌های پیشنهادی
                     </p>
                   </div>
 
                   <div className="space-y-3 pt-2">
                     <div>
                       <label className="text-xs font-medium text-neutral-300 block mb-1">
-                        نام محصول
+                        نام تجاری محصول
                       </label>
                       <input
                         type="text"
@@ -153,7 +152,7 @@ export default function ProductSettingsPage() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="مثال: حساب‌آنلاین پارس"
-                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white focus:outline-none focus:border-white transition-colors"
+                        className="w-full px-3 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white focus:outline-none focus:border-white transition-colors"
                       />
                     </div>
 
@@ -166,20 +165,20 @@ export default function ProductSettingsPage() {
                         value={tagline}
                         onChange={(e) => setTagline(e.target.value)}
                         placeholder="مثال: نرم‌افزار یکپارچه حسابداری ابری و صدور پیش‌فاکتور ریالی"
-                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white focus:outline-none focus:border-white transition-colors"
+                        className="w-full px-3 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white focus:outline-none focus:border-white transition-colors"
                       />
                     </div>
 
                     <div>
                       <label className="text-xs font-medium text-neutral-300 block mb-1">
-                        شرح قابلیت‌های محصول
+                        شرح قابلیت‌ها و مزایای محصول
                       </label>
                       <textarea
                         rows={3}
                         required
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white leading-relaxed focus:outline-none focus:border-white transition-colors"
+                        className="w-full px-3 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white leading-relaxed focus:outline-none focus:border-white transition-colors"
                       />
                     </div>
                   </div>
@@ -190,18 +189,18 @@ export default function ProductSettingsPage() {
               <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] overflow-hidden">
                 <div className="p-4 space-y-3">
                   <div>
-                    <h2 className="text-xs font-semibold text-neutral-200 uppercase font-mono tracking-wider">
-                      Ideal Customer Profile (ICP)
+                    <h2 className="text-xs font-semibold text-neutral-200">
+                      پرسونای مشتری ایده‌آل (ICP) و کلیدواژه‌ها
                     </h2>
                     <p className="text-xs text-neutral-500 mt-0.5">
-                      تعریف پرسونای مشتریان هدف برای آموزش مدل تریاژ
+                      تعریف پرسونای خریداران هدف برای آموزش مدل تریاژ هوشمند
                     </p>
                   </div>
 
                   <div className="space-y-3 pt-2">
                     <div>
                       <label className="text-xs font-medium text-neutral-300 block mb-1">
-                        پرسونای خریدار ایده‌آل
+                        پرسونای خریدار هدف
                       </label>
                       <textarea
                         rows={3}
@@ -209,40 +208,40 @@ export default function ProductSettingsPage() {
                         value={icp}
                         onChange={(e) => setIcp(e.target.value)}
                         placeholder="استارتاپ‌ها، شرکت‌های بازرگانی و فروشگاه‌های آنلاین فعال در ایران..."
-                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white leading-relaxed focus:outline-none focus:border-white transition-colors"
+                        className="w-full px-3 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white leading-relaxed focus:outline-none focus:border-white transition-colors"
                       />
                     </div>
 
                     <div>
                       <label className="text-xs font-medium text-neutral-300 block mb-1">
-                        ارزش‌های پیشنهادی کلیدی (هر سطر یک مزیت)
+                        ارزش‌های پیشنهادی و تمایزهای کلیدی (هر سطر یک مورد)
                       </label>
                       <textarea
                         rows={4}
                         value={valPropsText}
                         onChange={(e) => setValPropsText(e.target.value)}
-                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs font-mono text-neutral-200 leading-relaxed focus:outline-none focus:border-white transition-colors"
+                        className="w-full px-3 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 leading-relaxed focus:outline-none focus:border-white transition-colors"
                       />
                     </div>
 
                     <div>
                       <label className="text-xs font-medium text-neutral-300 block mb-1">
-                        کلیدواژه‌های رصد در پیام‌رسان‌ها
+                        کلیدواژه‌های رصد در پیام‌رسان‌ها (با کاما یا ویرگول جدا کنید)
                       </label>
                       <input
                         type="text"
                         value={keywordsText}
                         onChange={(e) => setKeywordsText(e.target.value)}
-                        className="w-full px-3 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white focus:outline-none focus:border-white transition-colors"
+                        className="w-full px-3 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white focus:outline-none focus:border-white transition-colors"
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Vercel Card Footer */}
-                <div className="px-4 py-2.5 bg-[#0d0d0d] border-t border-[#1f1f1f] flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-neutral-500">
-                    Auto-saved to PocketBase SQLite
+                {/* Card Footer */}
+                <div className="px-4 py-3 bg-[#0d0d0d] border-t border-[#1f1f1f] flex items-center justify-between">
+                  <span className="text-[11px] text-neutral-500">
+                    ذخیره‌سازی پایدار در پایگاه داده محلی پاکت‌بیس (SQLite)
                   </span>
                   <button
                     type="submit"
@@ -252,10 +251,10 @@ export default function ProductSettingsPage() {
                     {isSaving ? (
                       <>
                         <RefreshIcon className="w-3.5 h-3.5 animate-spin" />
-                        <span>Saving...</span>
+                        <span>در حال ذخیره...</span>
                       </>
                     ) : (
-                      <span>Save Changes</span>
+                      <span>ذخیره تغییرات</span>
                     )}
                   </button>
                 </div>
@@ -266,48 +265,48 @@ export default function ProductSettingsPage() {
             <div className="space-y-4">
               {/* Architecture specs card */}
               <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] space-y-3">
-                <div className="flex items-center gap-2 text-white font-medium text-xs font-mono uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-white font-medium text-xs">
                   <ServerIcon className="w-3.5 h-3.5 text-neutral-400" />
-                  <span>Deployment Stack</span>
+                  <span>مشخصات زیرساخت بومی</span>
                 </div>
-                <div className="space-y-2 text-xs font-mono text-neutral-400">
+                <div className="space-y-2 text-xs text-neutral-400">
                   <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
-                    <span className="text-neutral-500">Database:</span>
-                    <span className="text-white">PocketBase (SQLite)</span>
+                    <span className="text-neutral-500">پایگاه داده:</span>
+                    <span className="text-white">پاکت‌بیس (SQLite محلی)</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
-                    <span className="text-neutral-500">Host:</span>
-                    <span className="text-neutral-300">Domestic / Local</span>
+                    <span className="text-neutral-500">موقعیت سرور:</span>
+                    <span className="text-neutral-300">داخلی / بدون نیاز به خارج</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
-                    <span className="text-neutral-500">Foreign Cloud:</span>
-                    <span className="text-[#00e599]">None (0%)</span>
+                    <span className="text-neutral-500">کلاد خارجی:</span>
+                    <span className="text-[#00e599]">صفر درصد (کاملاً مستقل)</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-neutral-500">Streaming:</span>
-                    <span className="text-white">SSE (Server-Sent)</span>
+                    <span className="text-neutral-500">جریان داده:</span>
+                    <span className="text-white">ارتباط زنده لحظه‌ای (SSE)</span>
                   </div>
                 </div>
               </div>
 
               {/* LLM Gateway specs card */}
               <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] space-y-3">
-                <div className="flex items-center gap-2 text-white font-medium text-xs font-mono uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-white font-medium text-xs">
                   <CpuIcon className="w-3.5 h-3.5 text-neutral-400" />
-                  <span>Model Runtime</span>
+                  <span>موتور هوش مصنوعی</span>
                 </div>
-                <div className="space-y-2 text-xs font-mono text-neutral-400">
+                <div className="space-y-2 text-xs text-neutral-400">
                   <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
-                    <span className="text-neutral-500">Default Model:</span>
-                    <span className="text-white">llama3.1</span>
+                    <span className="text-neutral-500">مدل پیش‌فرض:</span>
+                    <span className="text-white">llama3.1 / qwen2.5</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-[#1f1f1f]">
-                    <span className="text-neutral-500">Fallback Engine:</span>
-                    <span className="text-[#00e599]">Active (Offline)</span>
+                    <span className="text-neutral-500">موتور پشتیبان:</span>
+                    <span className="text-[#00e599]">فعال (تریاژ بدون اینترنت)</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-neutral-500">Pricing / 1M:</span>
-                    <span className="text-neutral-300">$0.15 / $0.60</span>
+                    <span className="text-neutral-500">هزینه هر ۱M توکن:</span>
+                    <span className="text-neutral-300 font-num">۰.۱۵ / ۰.۶۰ دلار</span>
                   </div>
                 </div>
               </div>
@@ -316,10 +315,10 @@ export default function ProductSettingsPage() {
               <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] space-y-2">
                 <div className="flex items-center gap-1.5 text-xs text-neutral-300 font-medium">
                   <SparklesIcon className="w-3.5 h-3.5 text-neutral-400" />
-                  <span>راهنمای پرامپت</span>
+                  <span>راهنمای پرامپت هوشمند</span>
                 </div>
-                <p className="text-[11px] text-neutral-500 leading-relaxed">
-                  تکمیل دقیق کلمات کلیدی عامیانه و ارزش‌های رقابتی به هوش مصنوعی کمک می‌کند تا پیام‌های واقعی خرید در تلگرام و بله را با دقت بالا استخراج کند.
+                <p className="text-xs text-neutral-500 leading-relaxed">
+                  تکمیل دقیق کلمات کلیدی عامیانه بازار و مزیت‌های محصول به هوش مصنوعی امکان می‌دهد تا پیام‌های واقعی خرید در تلگرام و بله را با دقت بالا استخراج کند.
                 </p>
               </div>
             </div>
