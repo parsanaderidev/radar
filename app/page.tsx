@@ -274,7 +274,7 @@ export default function LeadRadarDashboard() {
             <span>در حال بارگذاری جریان سرنخ‌ها...</span>
           </div>
         ) : filteredLeads.length === 0 ? (
-          <div className="py-16 px-4 rounded-lg border border-dashed border-[#222222] text-center space-y-3 bg-[#050505]">
+          <div className="py-16 px-4 rounded-lg border border-[#1f1f1f] text-center space-y-3 bg-[#050505]">
             <div className="w-12 h-12 mx-auto rounded-lg bg-[#111111] border border-[#222222] flex items-center justify-center text-white shadow-sm">
               <RadarLogo className="w-6 h-6 text-white" />
             </div>
