@@ -1,12 +1,55 @@
 @import "tailwindcss";
 
+/* ========================================================
+   ESTEDAD FONT FAMILY (استعداد)
+   Locally hosted - zero external CDN dependency
+======================================================== */
+@font-face {
+  font-family: 'Estedad';
+  src: url('/fonts/estedad/Estedad-VF.woff2') format('woff2-variations'),
+       url('/fonts/estedad/Estedad-Regular.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Estedad';
+  src: url('/fonts/estedad/Estedad-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Estedad';
+  src: url('/fonts/estedad/Estedad-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Estedad';
+  src: url('/fonts/estedad/Estedad-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Vazirmatn", "Sahel", "Shabnam", "IRANSans", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Courier New", monospace;
+  --font-sans: 'Estedad', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", monospace;
+}
+
+*,
+*::before,
+*::after {
+  font-family: var(--font-sans);
 }
 
 body {
-  font-family: var(--font-system);
+  font-family: var(--font-sans);
   background-color: #000000;
   color: #ededed;
   min-height: 100vh;
@@ -16,6 +59,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
   background-repeat: no-repeat;
+}
+
+/* Monospace overrides for code & technical metrics */
+code,
+kbd,
+samp,
+pre,
+.font-mono {
+  font-family: var(--font-mono) !important;
 }
 
 /* Vercel-style clean selection */
@@ -51,7 +103,7 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-/* Vercel border glow */
+/* Vercel card surface */
 .vercel-card {
   background: #0a0a0a;
   border: 1px solid #1f1f1f;
@@ -60,10 +112,4 @@ body {
 
 .vercel-card:hover {
   border-color: #333333;
-}
-
-.vercel-badge {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: -0.01em;
 }
