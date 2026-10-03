@@ -128,7 +128,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("all")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap",
               selectedIntent === "all"
                 ? "bg-[#222222] text-white"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -139,7 +139,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("high_intent")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "high_intent"
                 ? "bg-[#222222] text-[#00e599]"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -151,7 +151,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("problem_aware")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "problem_aware"
                 ? "bg-[#222222] text-[#f5a623]"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -163,7 +163,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("curious")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "curious"
                 ? "bg-[#222222] text-[#0070f3]"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -175,7 +175,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("irrelevant")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "irrelevant"
                 ? "bg-[#222222] text-neutral-300"
                 : "text-neutral-500 hover:text-neutral-300 hover:bg-[#141414]"

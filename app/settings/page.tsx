@@ -129,7 +129,7 @@ export default function ProductSettingsPage() {
               type="button"
               onClick={resetToLoaded}
               disabled={isSaving || isLoading}
-              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] text-xs text-neutral-300 transition-colors flex items-center gap-1.5 disabled:opacity-50"
+              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] text-xs text-neutral-300 transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
               title="بازنشانی تغییرات ذخیره‌نشده"
             >
               <RefreshIcon className="w-3.5 h-3.5 text-neutral-400" />
@@ -140,7 +140,7 @@ export default function ProductSettingsPage() {
               type="button"
               onClick={() => handleSave()}
               disabled={isSaving || isLoading}
-              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95 shadow-sm disabled:opacity-50"
+              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSaving ? (
                 <>
@@ -408,7 +408,7 @@ export default function ProductSettingsPage() {
                   <button
                     type="submit"
                     disabled={isSaving}
-                    className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95 shadow-sm disabled:opacity-50"
+                    className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {isSaving ? (
                       <>

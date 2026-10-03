@@ -80,7 +80,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
           <Link
             href="/"
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer",
               pathname === "/"
                 ? "bg-[#1f1f1f] text-white"
                 : "text-neutral-400 hover:text-white hover:bg-[#141414]"
@@ -93,7 +93,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
           <Link
             href="/settings"
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer",
               pathname === "/settings"
                 ? "bg-[#1f1f1f] text-white"
                 : "text-neutral-400 hover:text-white hover:bg-[#141414]"
@@ -111,7 +111,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
               onClick={onSimulateFeed}
               disabled={isSimulating}
               className={cn(
-                "h-8 px-3 rounded-md text-xs font-medium transition-all duration-150 flex items-center gap-1.5",
+                "h-8 px-3 rounded-md text-xs font-medium transition-all duration-150 flex items-center gap-1.5 cursor-pointer",
                 isSimulating
                   ? "bg-[#1f1f1f] text-neutral-500 border border-[#2a2a2a] cursor-not-allowed"
                   : "bg-white text-black hover:bg-[#e6e6e6] active:scale-95 shadow-sm"
