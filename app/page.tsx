@@ -9,9 +9,14 @@ import {
   RefreshIcon,
   PlayIcon,
   RadarLogo,
+  TelegramIcon,
+  BaleIcon,
+  TwitterXIcon,
+  ForumIcon,
 } from "@/components/Icons";
 import { getPocketBaseClient, type LeadRecord, type ProductRecord } from "@/lib/pocketbase";
 import { calculateRadarMetrics, toPersianDigits } from "@/lib/pricing";
+import { cn } from "@/lib/cn";
 
 export default function LeadRadarDashboard() {
   const [leads, setLeads] = useState<LeadRecord[]>([]);
@@ -21,9 +26,11 @@ export default function LeadRadarDashboard() {
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
   const [simulatedAlert, setSimulatedAlert] = useState<{ message: string; type: "success" | "info" } | null>(null);
 
-  // Filters
+  // Filters & Sorting
   const [selectedIntent, setSelectedIntent] = useState<string>("all");
   const [selectedStatus, setSelectedStatus] = useState<string>("all");
+  const [selectedPlatform, setSelectedPlatform] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<"newest" | "highest_score" | "lowest_spend">("newest");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const pb = useMemo(() => getPocketBaseClient(), []);
@@ -161,13 +168,41 @@ export default function LeadRadarDashboard() {
     return calculateRadarMetrics(leads, totalRawMessages);
   }, [leads, totalRawMessages]);
 
+  const platformCounts = useMemo(() => {
+    const counts = {
+      all: 0,
+      telegram: 0,
+      bale: 0,
+      twitter_x: 0,
+      forum: 0,
+    };
+    leads.forEach((l) => {
+      if (selectedIntent !== "all" && l.intent_level !== selectedIntent) return;
+      if (selectedStatus !== "all" && l.lead_status !== selectedStatus) return;
+      counts.all++;
+      const p = l.expand?.raw_message_id?.expand?.source_id?.platform || "telegram";
+      if (p === "telegram") counts.telegram++;
+      else if (p === "bale") counts.bale++;
+      else if (p === "twitter_x") counts.twitter_x++;
+      else if (p === "forum") counts.forum++;
+      else counts.forum++;
+    });
+    return counts;
+  }, [leads, selectedIntent, selectedStatus]);
+
   const filteredLeads = useMemo(() => {
-    return leads.filter((lead) => {
+    let result = leads.filter((lead) => {
       if (selectedIntent !== "all" && lead.intent_level !== selectedIntent) {
         return false;
       }
       if (selectedStatus !== "all" && lead.lead_status !== selectedStatus) {
         return false;
+      }
+      if (selectedPlatform !== "all") {
+        const p = lead.expand?.raw_message_id?.expand?.source_id?.platform || "telegram";
+        if (p !== selectedPlatform) {
+          return false;
+        }
       }
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase();
@@ -186,7 +221,19 @@ export default function LeadRadarDashboard() {
       }
       return true;
     });
-  }, [leads, selectedIntent, selectedStatus, searchQuery]);
+
+    if (sortBy === "highest_score") {
+      result = [...result].sort((a, b) => (b.intent_score || 0) - (a.intent_score || 0));
+    } else if (sortBy === "lowest_spend") {
+      result = [...result].sort((a, b) => (a.estimated_cost_usd || 0) - (b.estimated_cost_usd || 0));
+    } else {
+      result = [...result].sort(
+        (a, b) => new Date(b.created || 0).getTime() - new Date(a.created || 0).getTime()
+      );
+    }
+
+    return result;
+  }, [leads, selectedIntent, selectedStatus, selectedPlatform, searchQuery, sortBy]);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#000000] text-[#ededed]">
@@ -264,6 +311,121 @@ export default function LeadRadarDashboard() {
           <div className="flex items-center gap-2 text-xs text-neutral-500">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00e599]" />
             <span className="hidden sm:inline">ارتباط زنده لحظه‌ای (SSE)</span>
+          </div>
+        </div>
+
+        {/* Messenger / Platform Filter & Sort Bar (Matching Vercel Aesthetic) */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-2 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f]">
+          {/* Messenger filter pills */}
+          <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0">
+            <button
+              onClick={() => setSelectedPlatform("all")}
+              className={cn(
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
+                selectedPlatform === "all"
+                  ? "bg-[#222222] text-white"
+                  : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
+              )}
+            >
+              <span>همه پیام‌رسان‌ها</span>
+              <span className="text-[11px] opacity-70">({toPersianDigits(platformCounts.all)})</span>
+            </button>
+
+            <button
+              onClick={() => setSelectedPlatform("telegram")}
+              className={cn(
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
+                selectedPlatform === "telegram"
+                  ? "bg-[#222222] text-[#229ed9]"
+                  : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
+              )}
+            >
+              <TelegramIcon className="w-3.5 h-3.5 text-[#229ed9]" />
+              <span>تلگرام</span>
+              <span className="text-[11px] opacity-70">({toPersianDigits(platformCounts.telegram)})</span>
+            </button>
+
+            <button
+              onClick={() => setSelectedPlatform("bale")}
+              className={cn(
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
+                selectedPlatform === "bale"
+                  ? "bg-[#222222] text-[#00e599]"
+                  : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
+              )}
+            >
+              <BaleIcon className="w-3.5 h-3.5 text-[#00e599]" />
+              <span>بله</span>
+              <span className="text-[11px] opacity-70">({toPersianDigits(platformCounts.bale)})</span>
+            </button>
+
+            <button
+              onClick={() => setSelectedPlatform("twitter_x")}
+              className={cn(
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
+                selectedPlatform === "twitter_x"
+                  ? "bg-[#222222] text-white"
+                  : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
+              )}
+            >
+              <TwitterXIcon className="w-3.5 h-3.5 text-neutral-300" />
+              <span>توییتر (X)</span>
+              <span className="text-[11px] opacity-70">({toPersianDigits(platformCounts.twitter_x)})</span>
+            </button>
+
+            <button
+              onClick={() => setSelectedPlatform("forum")}
+              className={cn(
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
+                selectedPlatform === "forum"
+                  ? "bg-[#222222] text-neutral-200"
+                  : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
+              )}
+            >
+              <ForumIcon className="w-3.5 h-3.5 text-neutral-400" />
+              <span>انجمن‌ها</span>
+              <span className="text-[11px] opacity-70">({toPersianDigits(platformCounts.forum)})</span>
+            </button>
+          </div>
+
+          {/* Sort controls */}
+          <div className="flex items-center gap-1.5 self-end sm:self-auto">
+            <span className="text-xs text-neutral-500 whitespace-nowrap">مرتب‌سازی:</span>
+            <div className="flex items-center gap-1 bg-[#000000] p-1 rounded-md border border-[#262626]">
+              <button
+                onClick={() => setSortBy("newest")}
+                className={cn(
+                  "px-2.5 py-1 rounded text-[11px] font-medium transition-colors whitespace-nowrap",
+                  sortBy === "newest"
+                    ? "bg-[#222222] text-white"
+                    : "text-neutral-400 hover:text-white"
+                )}
+              >
+                جدیدترین
+              </button>
+              <button
+                onClick={() => setSortBy("highest_score")}
+                className={cn(
+                  "px-2.5 py-1 rounded text-[11px] font-medium transition-colors whitespace-nowrap",
+                  sortBy === "highest_score"
+                    ? "bg-[#222222] text-[#00e599]"
+                    : "text-neutral-400 hover:text-[#00e599]"
+                )}
+              >
+                بالاترین امتیاز
+              </button>
+              <button
+                onClick={() => setSortBy("lowest_spend")}
+                className={cn(
+                  "px-2.5 py-1 rounded text-[11px] font-medium transition-colors whitespace-nowrap",
+                  sortBy === "lowest_spend"
+                    ? "bg-[#222222] text-white"
+                    : "text-neutral-400 hover:text-white"
+                )}
+              >
+                کمترین هزینه
+              </button>
+            </div>
           </div>
         </div>
 
