@@ -42,7 +42,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#1f1f1f] bg-black/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-dotted border-[#262626] bg-black/85 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
         {/* Left: Radar Static Base Logo & Brand */}
         <div className="flex items-center gap-3">
@@ -58,7 +58,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
           </Link>
 
           {/* Status Indicator */}
-          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-[#262626] bg-[#0c0c0c] text-[11px] text-neutral-400">
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-dotted border-[#262626] bg-[#0c0c0c] text-[11px] text-neutral-400">
             <span
               className={cn(
                 "w-1.5 h-1.5 rounded-full",
@@ -82,8 +82,8 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
             className={cn(
               "px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5",
               pathname === "/"
-                ? "bg-[#1f1f1f] text-white"
-                : "text-neutral-400 hover:text-white hover:bg-[#141414]"
+                ? "bg-[#1a1a1a] text-white border border-dotted border-[#333333]"
+                : "text-neutral-400 hover:text-white hover:bg-[#141414] border border-transparent"
             )}
           >
             <SparklesIcon className="w-3.5 h-3.5" />
@@ -95,12 +95,12 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
             className={cn(
               "px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5",
               pathname === "/settings"
-                ? "bg-[#1f1f1f] text-white"
-                : "text-neutral-400 hover:text-white hover:bg-[#141414]"
+                ? "bg-[#1a1a1a] text-white border border-dotted border-[#333333]"
+                : "text-neutral-400 hover:text-white hover:bg-[#141414] border border-transparent"
             )}
           >
             <SettingsIcon className="w-3.5 h-3.5" />
-            <span>تنظیمات محصول & ICP</span>
+            <span>تنظیمات محصول و پرسونای مشتری (ICP)</span>
           </Link>
         </nav>
 
@@ -113,7 +113,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
               className={cn(
                 "h-8 px-3 rounded-md text-xs font-medium transition-all duration-150 flex items-center gap-1.5",
                 isSimulating
-                  ? "bg-[#1f1f1f] text-neutral-500 border border-[#2a2a2a] cursor-not-allowed"
+                  ? "bg-[#1f1f1f] text-neutral-500 border border-dotted border-[#2a2a2a] cursor-not-allowed"
                   : "bg-white text-black hover:bg-[#e6e6e6] active:scale-95 shadow-sm"
               )}
             >

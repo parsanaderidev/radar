@@ -35,7 +35,7 @@ export function MetricsHeader({
       {/* 5 Vercel Analytics Metric Tiles */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
         {/* Card 1: Total Messages */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col justify-between">
           <span className="text-xs text-neutral-400 font-medium">
             کل پیام‌های دریافتی
           </span>
@@ -50,12 +50,12 @@ export function MetricsHeader({
         </div>
 
         {/* Card 2: Noise Filtered Ratio */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col justify-between">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-neutral-400 font-medium">
               نرخ حذف نویز
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
+            <span className="text-[10px] px-2 py-0.5 rounded bg-neutral-900 border border-dotted border-neutral-800 text-neutral-400 font-medium">
               فیلتر خودکار
             </span>
           </div>
@@ -71,7 +71,7 @@ export function MetricsHeader({
         </div>
 
         {/* Card 3: Qualified Leads */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between relative overflow-hidden">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col justify-between relative overflow-hidden">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-neutral-400 font-medium">
               سرنخ‌های واجد شرایط (ICP)
@@ -91,7 +91,7 @@ export function MetricsHeader({
         </div>
 
         {/* Card 4: Total Spend */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col justify-between">
           <span className="text-xs text-neutral-400 font-medium">
             هزینه پردازش هوش
           </span>
@@ -106,7 +106,7 @@ export function MetricsHeader({
         </div>
 
         {/* Card 5: Avg Cost Per Lead */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333] transition-colors flex flex-col justify-between">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626] hover:border-[#404040] transition-colors flex flex-col justify-between">
           <span className="text-xs text-neutral-400 font-medium">
             هزینه به‌ازای هر سرنخ
           </span>
@@ -122,7 +122,7 @@ export function MetricsHeader({
       </div>
 
       {/* Vercel-style Filter & Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-2 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f]">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-2 rounded-lg bg-[#0a0a0a] border border-dotted border-[#262626]">
         {/* Intent level filter tabs */}
         <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0">
           <button
@@ -130,8 +130,8 @@ export function MetricsHeader({
             className={cn(
               "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap",
               selectedIntent === "all"
-                ? "bg-[#222222] text-white"
-                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
+                ? "bg-[#222222] text-white border border-dotted border-[#383838]"
+                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414] border border-transparent"
             )}
           >
             همه موارد ({toPersianDigits(metrics.totalEvaluated)})
@@ -141,8 +141,8 @@ export function MetricsHeader({
             className={cn(
               "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "high_intent"
-                ? "bg-[#222222] text-[#00e599]"
-                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
+                ? "bg-[#222222] text-[#00e599] border border-dotted border-[#00e599]/40"
+                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414] border border-transparent"
             )}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#00e599]" />
@@ -153,8 +153,8 @@ export function MetricsHeader({
             className={cn(
               "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "problem_aware"
-                ? "bg-[#222222] text-[#f5a623]"
-                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
+                ? "bg-[#222222] text-[#f5a623] border border-dotted border-[#f5a623]/40"
+                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414] border border-transparent"
             )}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#f5a623]" />
@@ -165,8 +165,8 @@ export function MetricsHeader({
             className={cn(
               "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "curious"
-                ? "bg-[#222222] text-[#0070f3]"
-                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
+                ? "bg-[#222222] text-[#0070f3] border border-dotted border-[#0070f3]/40"
+                : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414] border border-transparent"
             )}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#0070f3]" />
@@ -177,8 +177,8 @@ export function MetricsHeader({
             className={cn(
               "px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "irrelevant"
-                ? "bg-[#222222] text-neutral-300"
-                : "text-neutral-500 hover:text-neutral-300 hover:bg-[#141414]"
+                ? "bg-[#222222] text-neutral-300 border border-dotted border-neutral-700"
+                : "text-neutral-500 hover:text-neutral-300 hover:bg-[#141414] border border-transparent"
             )}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-neutral-600" />
@@ -194,7 +194,7 @@ export function MetricsHeader({
             placeholder="جستجو در پیام، فرستنده یا ویژگی..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full pl-3 pr-9 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors"
+            className="w-full pl-3 pr-9 py-1.5 rounded-md bg-[#000000] border border-dotted border-[#333333] text-xs text-neutral-200 placeholder:text-neutral-600 focus:outline-none focus:border-solid focus:border-white transition-colors"
           />
         </div>
       </div>
