@@ -119,33 +119,72 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-/* Vercel card surface */
+/* Vercel card surface with butter-smooth hover physics */
 .vercel-card {
   background: #0a0a0a;
   border: 1px solid #1f1f1f;
-  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .vercel-card:hover {
   border-color: #333333;
+  background-color: #0d0d0d;
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.7);
+}
+
+/* Card hover elevate utility */
+.hover-card-elevate {
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-card-elevate:hover {
+  border-color: #333333;
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 24px -2px rgba(0, 0, 0, 0.65);
+}
+
+/* Tactile button feel */
+.btn-tactile {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-tactile:active {
+  transform: scale(0.965);
+}
+
+/* Input smooth focus */
+.input-smooth {
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.input-smooth:focus {
+  border-color: #ededed;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
 /* Micro-animations */
 @keyframes cardIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px) scale(0.995);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .animate-card-in {
-  animation: cardIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: cardIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes shimmer {
@@ -160,9 +199,9 @@ body {
 .animate-shimmer {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.02) 0%,
     rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.03) 100%
+    rgba(255, 255, 255, 0.02) 100%
   );
   background-size: 200% 100%;
   animation: shimmer 1.8s infinite linear;
@@ -172,13 +211,15 @@ body {
   0%, 100% {
     opacity: 1;
     transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 229, 153, 0.4);
   }
   50% {
-    opacity: 0.6;
-    transform: scale(0.96);
+    opacity: 0.55;
+    transform: scale(0.92);
+    box-shadow: 0 0 4px rgba(0, 229, 153, 0.15);
   }
 }
 
 .animate-pulse-glow {
-  animation: pulseGlow 2.5s infinite ease-in-out;
+  animation: pulseGlow 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }

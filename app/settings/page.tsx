@@ -157,7 +157,7 @@ export default function ProductSettingsPage() {
         {/* 4 Status Overview Tiles (Matching Dashboard Metrics Header Grid) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {/* Tile 1: Active Product */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-default">
             <span className="text-xs text-neutral-400 font-medium">
               محصول هدف رادار
             </span>
@@ -172,12 +172,12 @@ export default function ProductSettingsPage() {
           </div>
 
           {/* Tile 2: ICP Status */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-default">
             <div className="flex items-center justify-between gap-2">
               <span className="text-xs text-neutral-400 font-medium">
                 پرسونای مشتری (ICP)
               </span>
-              <span className="flex h-2 w-2 rounded-full bg-[#00e599] shadow-[0_0_8px_rgba(0,229,153,0.6)]" />
+              <span className="flex h-2 w-2 rounded-full bg-[#00e599] shadow-[0_0_8px_rgba(0,229,153,0.6)] animate-pulse-glow" />
             </div>
             <div className="mt-3">
               <div className="text-base sm:text-lg font-semibold text-[#00e599]">
@@ -190,7 +190,7 @@ export default function ProductSettingsPage() {
           </div>
 
           {/* Tile 3: Keywords Count */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-default">
             <div className="flex items-center justify-between gap-2">
               <span className="text-xs text-neutral-400 font-medium">
                 کلیدواژه‌های نظارت
@@ -210,7 +210,7 @@ export default function ProductSettingsPage() {
           </div>
 
           {/* Tile 4: Storage Infrastructure */}
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-default">
             <span className="text-xs text-neutral-400 font-medium">
               ذخیره‌سازی و حریم داده
             </span>
@@ -285,7 +285,7 @@ export default function ProductSettingsPage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="مثال: حساب‌آنلاین پارس"
-                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-white input-smooth transition-all"
                     />
                   </div>
 
@@ -298,7 +298,7 @@ export default function ProductSettingsPage() {
                       value={tagline}
                       onChange={(e) => setTagline(e.target.value)}
                       placeholder="مثال: نرم‌افزار یکپارچه حسابداری ابری و صدور پیش‌فاکتور ریالی"
-                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-white input-smooth transition-all"
                     />
                   </div>
 
@@ -312,7 +312,7 @@ export default function ProductSettingsPage() {
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       placeholder="توضیح دهید محصول چه کاری انجام می‌دهد و چه مشکلی از کسب‌وکارها حل می‌کند..."
-                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-white input-smooth transition-all"
                     />
                   </div>
                 </div>
@@ -343,7 +343,7 @@ export default function ProductSettingsPage() {
                       value={icp}
                       onChange={(e) => setIcp(e.target.value)}
                       placeholder="استارتاپ‌ها، شرکت‌های بازرگانی و فروشگاه‌های آنلاین فعال در ایران..."
-                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-white input-smooth transition-all"
                     />
                   </div>
 
@@ -361,7 +361,7 @@ export default function ProductSettingsPage() {
                       value={valPropsText}
                       onChange={(e) => setValPropsText(e.target.value)}
                       placeholder="بدون نیاز به سخت‌افزار جانبی&#10;پشتیبانی از قوانین مالیاتی پایانه‌های فروشگاهی&#10;اتصال مستقیم به سامانه مودیان"
-                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 placeholder:text-neutral-600 leading-relaxed focus:outline-none focus:border-white input-smooth transition-all"
                     />
                   </div>
 
@@ -379,7 +379,7 @@ export default function ProductSettingsPage() {
                       value={keywordsText}
                       onChange={(e) => setKeywordsText(e.target.value)}
                       placeholder="حسابداری, سامانه مودیان, فاکتور رسمی, پایانه فروشگاهی"
-                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors"
+                      className="w-full px-3.5 py-2 rounded-md bg-[#000000] border border-[#262626] text-xs text-white placeholder:text-neutral-600 focus:outline-none focus:border-white input-smooth transition-all"
                     />
 
                     {/* Keywords Preview Chips */}
@@ -426,7 +426,7 @@ export default function ProductSettingsPage() {
             {/* Sidebar Specifications (1 Column) */}
             <div className="space-y-4">
               {/* Architecture specs card */}
-              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors space-y-3">
+              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 space-y-3 cursor-default">
                 <div className="flex items-center gap-2 text-white font-medium text-xs pb-1 border-b border-[#1f1f1f]">
                   <ServerIcon className="w-3.5 h-3.5 text-neutral-400" />
                   <span>مشخصات زیرساخت بومی</span>
@@ -452,7 +452,7 @@ export default function ProductSettingsPage() {
               </div>
 
               {/* LLM Gateway specs card */}
-              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors space-y-3">
+              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 space-y-3 cursor-default">
                 <div className="flex items-center gap-2 text-white font-medium text-xs pb-1 border-b border-[#1f1f1f]">
                   <CpuIcon className="w-3.5 h-3.5 text-neutral-400" />
                   <span>موتور هوش مصنوعی رادار</span>
@@ -474,7 +474,7 @@ export default function ProductSettingsPage() {
               </div>
 
               {/* Guidance tip card */}
-              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors space-y-2.5">
+              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 space-y-2.5 cursor-default">
                 <div className="flex items-center gap-2 text-xs text-neutral-200 font-medium pb-1 border-b border-[#1f1f1f]">
                   <SparklesIcon className="w-3.5 h-3.5 text-[#00e599]" />
                   <span>راهنمای پرامپت هوشمند</span>

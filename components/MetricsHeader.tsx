@@ -35,7 +35,7 @@ export function MetricsHeader({
       {/* 5 Vercel Analytics Metric Tiles */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
         {/* Card 1: Total Messages */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between">
           <span className="text-xs text-neutral-400 font-medium">
             کل پیام‌های دریافتی
           </span>
@@ -50,7 +50,7 @@ export function MetricsHeader({
         </div>
 
         {/* Card 2: Noise Filtered Ratio */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-neutral-400 font-medium">
               نرخ حذف نویز
@@ -71,12 +71,12 @@ export function MetricsHeader({
         </div>
 
         {/* Card 3: Qualified Leads */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between relative overflow-hidden">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between relative overflow-hidden">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-neutral-400 font-medium">
               سرنخ‌های واجد شرایط (ICP)
             </span>
-            <span className="flex h-2 w-2 rounded-full bg-[#00e599] shadow-[0_0_8px_rgba(0,229,153,0.6)]" />
+            <span className="flex h-2 w-2 rounded-full bg-[#00e599] shadow-[0_0_8px_rgba(0,229,153,0.6)] animate-pulse-glow" />
           </div>
           <div className="mt-3">
             <div className="text-2xl sm:text-3xl font-semibold text-[#00e599]">
@@ -91,7 +91,7 @@ export function MetricsHeader({
         </div>
 
         {/* Card 4: Total Spend */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between">
           <span className="text-xs text-neutral-400 font-medium">
             هزینه پردازش هوش
           </span>
@@ -106,7 +106,7 @@ export function MetricsHeader({
         </div>
 
         {/* Card 5: Avg Cost Per Lead */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col justify-between">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between">
           <span className="text-xs text-neutral-400 font-medium">
             هزینه به‌ازای هر سرنخ
           </span>
@@ -194,7 +194,7 @@ export function MetricsHeader({
             placeholder="جستجو در پیام، فرستنده یا ویژگی..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full pl-3 pr-9 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors"
+            className="w-full pl-3 pr-9 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 placeholder:text-neutral-600 focus:outline-none focus:border-white input-smooth transition-all"
           />
         </div>
       </div>
