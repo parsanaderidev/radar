@@ -1,0 +1,40 @@
+{
+  "name": "radar",
+  "version": "0.1.0",
+  "description": "AI Lead Radar - Community Intent & Sales Lead Finder for Startups and SMBs operating in Iran",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "worker": "bun run scripts/worker.ts",
+    "seed": "bun run scripts/seed_demo.ts",
+    "setup:pb": "bun run pocketbase/setup_schema.ts",
+    "pb": "./pocketbase serve --http=0.0.0.0:8090"
+  },
+  "dependencies": {
+    "next": "16.3.8",
+    "pocketbase": "^0.28.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.8",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "packageManager": "bun@1.4.2",
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
+}
