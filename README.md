@@ -1,182 +1,335 @@
-# 📡 AI Lead Radar (رادار هوشمند سرنخ و سیگنال خرید)
+# Radar — AI Lead Radar
 
-> **Autonomous Sales-Intent Agent for Startups & SMBs Operating in Iran**  
-> پایشگر خودکار گروه‌ها، کانال‌ها و انجمن‌های ایرانی (تلگرام، بله، توییتر/X و فروم‌ها)، تفکیک نویز از سیگنال خرید واقعی، پیش‌نویس پاسخ متناسب با فرهنگ و زبان فارسی، و حسابداری دقیق هزینه پردازش توکن‌ها.
+> **Local-first B2B buying-intent engine for teams operating in Iran.**
+> Radar monitors Persian community platforms (Telegram, Bale, X/Twitter, forums), triages inbound messages in real time, separates genuine buying signals from noise, and drafts culturally appropriate Persian replies — with zero foreign-cloud dependency.
 
 [![Runtime: Bun](https://img.shields.io/badge/Runtime-Bun%201.4%2B-f472b6.svg)](https://bun.sh)
-[![Next.js: 16](https://img.shields.io/badge/Frontend-Next.js%2016%20App%20Router-000000.svg)](https://nextjs.org)
+[![Framework: Next.js 16](https://img.shields.io/badge/Framework-Next.js%2016%20App%20Router-000000.svg)](https://nextjs.org)
+[![React: 19](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev)
 [![Backend: PocketBase](https://img.shields.io/badge/Backend-PocketBase%20(SQLite)-b827fc.svg)](https://pocketbase.io)
+[![Styling: Tailwind 4](https://img.shields.io/badge/Styling-Tailwind%20CSS%20v4-38bdf8.svg)](https://tailwindcss.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
-[![Zero Foreign Cloud](https://img.shields.io/badge/Infrastructure-Zero%20Foreign%20Cloud-10b981.svg)](#critical-constraints-for-iran-operational-environment)
+[![Zero Foreign Cloud](https://img.shields.io/badge/Infrastructure-Zero%20Foreign%20Cloud-10b981.svg)](#1-zero-foreign-cloud-lock-in)
 
 ---
 
-## 🇮🇷 معماری منطبق بر شرایط عملیاتی و اینترنت ایران (Critical Constraints)
+## Table of Contents
 
-1. **عدم وابستگی به سرویس‌های ابری خارجی (Zero Foreign Cloud Lock-in)**:
-   - بدون نیاز به Firebase, Supabase, Vercel KV یا سرویس‌های آنالیتیکس خارجی که به دلیل تحریم‌ها یا فیلترینگ دچار قطعی می‌شوند.
-   - بک‌اند سبک، تک‌فایلی و مقیم بر سرور داخلی یا Localhost با دیتابیس توکار **PocketBase (SQLite)**.
-2. **کدنویسی خالص با تایپ‌اسکریپت و بدون کتابخانه‌های سنگین جانبی (Vanilla TypeScript First)**:
-   - حذف پکیج‌های حجیم شخص ثالث (مانند `clsx`, `tailwind-merge` یا آیکون‌های خارجی).
-   - توابع ادغام کلاس (`lib/cn.ts`)، کلاینت ارتباط با LLM (`lib/llm.ts`) و موتور حسابداری توکن‌ها (`lib/pricing.ts`) همگی به صورت دست‌نویس با Vanilla TypeScript پیاده‌سازی شده‌اند.
-3. **عدم استفاده از CDNهای مسدودشونده (Zero External CDNs)**:
-   - کلیه آیکون‌ها به صورت کامپوننت‌های توکار SVG در `components/Icons.tsx` قرار دارند.
-   - فونت‌ها از استک فونت‌های پیش‌فرض و سیستمی فارسی (Vazirmatn, Sahel, Shabnam, IRANSans, Tahoma) بهره می‌برند.
-4. **پشتیبانی بومی از راست‌به‌چپ (RTL) و اصطلاحات زبان فارسی**:
-   - تحلیل ادبیات محاوره‌ای و عامیانه گروه‌های کسب‌وکار ایرانی (مثل «سامانه مودیان کلافه‌مون کرده»، «جایگزین فیلتر نشده چی پیشنهاد میدید؟»، «تسویه ریالی شتاب»).
-   - تفکیک خودکار سیگنال‌های ۴گانه: **خرید قطعی (High Intent)**، **دردمند (Problem Aware)**، **کنجکاو (Curious)** و **نویز و چت روزمره (Irrelevant)**.
-5. **انعطاف در اتصال به مدل‌های زبانی (Resilient LLM Gateway)**:
-   - اتصال استاندارد به مدل‌های لوکال (Ollama / vLLM روی سرور GPU داخلی) یا گیت‌وی‌های واسط داخلی مطابق استاندارد OpenAI REST.
-   - همراه با **موتور تحلیلی رزرو داخلی (Persian Heuristic Engine Fallback)** برای شرایط قطعی اینترنت بین‌الملل.
+- [Overview](#overview)
+- [Operational Constraints](#operational-constraints)
+- [Key Features](#key-features)
+- [System Architecture](#system-architecture)
+- [Tech Stack](#tech-stack)
+- [Data Model](#data-model)
+- [Project Structure](#project-structure)
+- [Quickstart](#quickstart)
+- [Environment Variables](#environment-variables)
+- [API Reference](#api-reference)
+- [Design System](#design-system)
+- [License](#license)
 
 ---
 
-## 🏗️ معماری سیستم (System Architecture)
+## Overview
+
+Radar is an autonomous sales-intent agent. It ingests community messages from Iranian business channels, evaluates each message against a configured product and Ideal Customer Profile (ICP), and produces a structured lead record containing:
+
+- an **intent classification** and a **0–100 intent score**,
+- a **natural-language rationale** explaining the classification,
+- a **ready-to-send Persian reply draft**,
+- an **itemized cost report** (input/output tokens, USD, and IRR/IRT estimate).
+
+The entire pipeline — ingestion, triage, scoring, cost accounting, and the live dashboard — runs on a single machine or a domestic server. No external cloud service is required at any stage.
+
+---
+
+## Operational Constraints
+
+### 1. Zero Foreign Cloud Lock-in
+
+Sanctions and filtering make foreign SaaS unreliable in Iran. Radar therefore avoids Firebase, Supabase, Vercel KV, and third-party analytics entirely. The backend is a single self-hosted **PocketBase (SQLite)** binary running on localhost or a domestic server.
+
+### 2. Vanilla TypeScript First
+
+Heavy third-party utility packages (`clsx`, `tailwind-merge`, icon packs) are intentionally excluded. The class-merging helper (`lib/cn.ts`), the LLM client (`lib/llm.ts`), and the token-cost engine (`lib/pricing.ts`) are all hand-written.
+
+### 3. Zero External CDNs
+
+Every icon is an inline SVG component in `components/Icons.tsx`. Typography uses the self-hosted **Estedad** family shipped in `public/fonts/estedad/` — no Google Fonts, no CDN requests.
+
+### 4. Native Persian / RTL Support
+
+The interface renders right-to-left (`lang="fa"`, `dir="rtl"`) with Persian numerals, and the triage engine is tuned for colloquial Iranian business language — for example, *"سامانه مودیان کلافه‌مون کرده"* or *"تسویه ریالی شتاب"*. Messages are classified into four tiers:
+
+| Tier | Label | Meaning |
+| --- | --- | --- |
+| `high_intent` | High Intent | Explicit buying intent, budget, and timeline |
+| `problem_aware` | Problem Aware | Feels the pain, has not decided to buy |
+| `curious` | Curious | Exploratory interest, no urgency |
+| `irrelevant` | Irrelevant | Off-topic chatter and noise |
+
+### 5. Resilient LLM Gateway
+
+The evaluator speaks the OpenAI-compatible REST standard, so it connects to a local **Ollama / vLLM** instance on an internal GPU server or to a domestic proxy gateway. When the model endpoint is unreachable, a **Persian heuristic fallback engine** keeps triage running during international connectivity outages.
+
+---
+
+## Key Features
+
+- **Live dashboard over Server-Sent Events** — leads and KPIs update instantly via PocketBase subscriptions (`pb.collection("leads").subscribe("*")`), with no manual refresh.
+- **Five KPI cards** — total monitored messages, noise-reduction percentage, qualified leads, total token spend in USD, and cost per lead with IRR/IRT estimate.
+- **Simulate Live Feed** — a one-click demo injector that pushes realistic Persian community messages through the full triage pipeline; ideal for presentations.
+- **One-click reply copy** — generates and copies a natural, tone-matched Persian response draft.
+- **Lead lifecycle management** — move leads between `new`, `approved`, `contacted`, and `dismissed`.
+- **Platform filtering and sorting** — filter the feed by Telegram, Bale, X/Twitter, or forums.
+- **Product & ICP settings (`/settings`)** — manage value propositions, monitored keywords, and buyer persona at runtime.
+- **Precise cost accounting** — per-message input/output tokens, configurable USD rates, and derived local-currency cost.
+
+---
+
+## System Architecture
 
 ```mermaid
 graph TD
-    A[پیام‌رسان‌ها و جوامع ایرانی<br/>Telegram, Bale, Forum, X] -->|ورود پیام| B[مجموعه raw_messages<br/>PocketBase SQLite]
-    B -->|صف پردازش Pending| C[Triage Worker / Pipeline<br/>scripts/worker.ts]
-    C -->|ارسال پرامپت ارزیابی| D{LLM Gateway<br/>Ollama / Domestic Proxy}
-    D -->|پاسخ ساختاریافته JSON| C
-    C -->|محاسبه هزینه و نمره خرید| E[مجموعه leads<br/>PocketBase]
-    E -->|اشتراک لحظه‌ای SSE| F[داشبورد زنده Next.js 16<br/>app/page.tsx]
-    F -->|پیشنهاد پاسخ با ۱ کلیک| G[تیم فروش و بازاریابی استارتاپ]
+    A[Iranian Communities<br/>Telegram · Bale · X · Forums] -->|ingest| B[(raw_messages<br/>PocketBase / SQLite)]
+    B -->|pending queue| C[Triage Worker<br/>scripts/worker.ts]
+    C -->|prompt| D{LLM Gateway<br/>Ollama / vLLM / Domestic Proxy}
+    D -->|structured JSON| C
+    D -.->|offline fallback| E[Persian Heuristic Engine]
+    E --> C
+    C -->|score + cost| F[(leads<br/>PocketBase / SQLite)]
+    F -->|SSE subscription| G[Next.js 16 Dashboard<br/>app/page.tsx]
+    G -->|1-click draft| H[Sales & Marketing Team]
 ```
 
 ---
 
-## 📁 ساختار پروژه (Project Directory Structure)
+## Tech Stack
+
+| Layer | Technology |
+| --- | --- |
+| Runtime & package manager | Bun 1.4+ |
+| Frontend framework | Next.js 16 (App Router, Turbopack) · React 19 |
+| Language | TypeScript 5 (strict) |
+| Styling | Tailwind CSS v4 + vanilla CSS (`app/globals.css`) |
+| Database & realtime | PocketBase (embedded SQLite) + SSE subscriptions |
+| AI inference | OpenAI-compatible endpoint (Ollama / vLLM) with offline heuristic fallback |
+| Typography | Estedad (self-hosted WOFF2, RTL, Persian numerals) |
+
+---
+
+## Data Model
+
+| Collection | Purpose |
+| --- | --- |
+| `products` | Product identity, value propositions, monitored keywords, and ICP definition |
+| `sources` | Monitored channels and groups (Telegram, Bale, X, forums) |
+| `raw_messages` | Ingested messages with author handle, platform, thread context, and processing status |
+| `leads` | Evaluation records: intent level, intent score, reasoning, suggested reply, token usage, estimated cost, and lead status |
+
+---
+
+## Project Structure
 
 ```text
 radar/
-├── package.json               # پیکربندی اسکریپت‌ها با Bun 1.4+
-├── tsconfig.json              # تنظیمات سخت‌گیرانه TypeScript
-├── next.config.ts             # تنظیمات Next.js 16
-├── postcss.config.mjs         # پیکربندی Tailwind CSS v4
-├── LICENSE                    # مجوز MIT
-├── .env.example               # راهنمای متغیرهای محیطی
+├── package.json               # Scripts and Bun configuration
+├── tsconfig.json              # Strict TypeScript configuration
+├── next.config.ts             # Next.js 16 configuration
+├── postcss.config.mjs         # Tailwind CSS v4 pipeline
+├── LICENSE                    # MIT license
+├── .env.example               # Environment variable template
 ├── app/
-│   ├── globals.css            # استایل‌های سراسری، پالت دارک و فونت‌های سیستمی
-│   ├── layout.tsx             # لی‌اوت اصلی با قابلیت RTL و متادیتای SEO
-│   ├── page.tsx               # داشبورد اصلی رادار و اشتراک زنده سرنخ‌ها (SSE)
-│   ├── settings/page.tsx      # فرم مدیریت محصول و پرسونای مشتری (ICP)
+│   ├── globals.css            # Global styles, dark palette, self-hosted fonts
+│   ├── layout.tsx             # Root layout (RTL, metadata)
+│   ├── page.tsx               # Live dashboard and SSE lead feed
+│   ├── settings/page.tsx      # Product, keyword, and ICP management
 │   └── api/
-│       ├── analyze/route.ts   # اندپوینت تریاژ و ارزیابی تکی پیام
-│       └── simulate/route.ts  # اندپوینت شبیه‌ساز تزریق زنده پیام‌ها
+│       ├── analyze/route.ts   # Single-message triage endpoint
+│       └── simulate/route.ts  # Live demo message injector
 ├── components/
-│   ├── Icons.tsx              # آیکون‌های SVG خالص بدون نیاز به پکیج خارجی
-│   ├── Navbar.tsx             # نوبار با مانیتور سلامت دیتابیس و دکمه تزریق دمو
-│   ├── MetricsHeader.tsx      # ۵ کارت شاخص کلیدی عملکرد (KPI) و فیلترها
-│   └── LeadCard.tsx           # کارت نمایش سرنخ، نمره خرید، توکن‌ها و پاسخ پیشنهادی
+│   ├── Icons.tsx              # Inline SVG icons (no icon package)
+│   ├── Navbar.tsx             # Navbar with DB health monitor and demo trigger
+│   ├── MetricsHeader.tsx      # KPI cards and platform filters
+│   └── LeadCard.tsx           # Lead card: score, tokens, reply draft
 ├── lib/
-│   ├── cn.ts                  # تابع ترکیب کلاس‌های شرطی (Vanilla TS)
-│   ├── pocketbase.ts          # کلاینت تایپ‌شده PocketBase و احراز هویت ادمین
-│   ├── llm.ts                 # کلاینت مستقل ارتباط با هوش مصنوعی و موتور فال‌بک
-│   └── pricing.ts             # موتور محاسبه هزینه میکروسنت توکن‌ها و معادل تومانی
+│   ├── cn.ts                  # Conditional class merger (vanilla TS)
+│   ├── pocketbase.ts          # Typed PocketBase client and superuser auth
+│   ├── llm.ts                 # LLM client and offline fallback evaluator
+│   └── pricing.ts             # Token cost engine (USD + local currency)
 ├── pocketbase/
-│   ├── pocketbase             # باینری سرور محلی PocketBase (در گیت ایگنور است)
-│   └── setup_schema.ts        # اسکریپت ساخت خودکار جداول و فیلدها
+│   ├── pocketbase             # Local PocketBase binary (git-ignored)
+│   └── setup_schema.ts        # Idempotent schema and seed bootstrap
+├── public/fonts/estedad/      # Self-hosted Estedad font files
 └── scripts/
-    ├── seed_demo.ts           # اسکریپت تزریق ۲۶ پیام واقعی جامعه کسب‌وکار ایران
-    └── worker.ts              # پایپ‌لاین تریاژ خودکار پیام‌ها و ارزیابی سرنخ‌ها
+    ├── seed_demo.ts           # 26 realistic Persian community messages
+    └── worker.ts              # Automated triage pipeline
 ```
 
 ---
 
-## 🚀 راهنمای سریع راه‌اندازی (Quickstart Guide)
+## Quickstart
 
-### ۱. پیش‌نیازها
-- نصب [Bun 1.4+](https://bun.sh)
-- سیستم‌عامل لینوکس / سرور ایرانی یا مک/ویندوز
+### 1. Prerequisites
 
-### ۲. نصب وابستگی‌ها
+- [Bun 1.4+](https://bun.sh)
+- Linux, macOS, or Windows
+
+### 2. Install dependencies
+
 ```bash
 bun install
 ```
 
-### ۳. تنظیم متغیرهای محیطی
-یک کپی از فایل `.env.example` با نام `.env` بسازید:
+### 3. Configure environment
+
 ```bash
 cp .env.example .env
 ```
 
-### ۴. اجرای دیتابیس پاکت‌بیس (PocketBase)
-سرور جیبی و سریع پاکت‌بیس را به صورت محلی اجرا کنید:
+Review the values in [Environment Variables](#environment-variables).
+
+### 4. Start PocketBase
+
 ```bash
 bun run pb
-# یا به شکل مستقیم:
-./pocketbase/pocketbase serve --http="0.0.0.0:8090"
+# equivalent to:
+# ./pocketbase/pocketbase serve --http="0.0.0.0:8090"
 ```
-> داشبورد مدیریت پاکت‌بیس در نشانی `http://127.0.0.1:8090/_/` قابل دسترسی است.
 
-### ۵. ساخت خودکار جداول و داده‌های اولیه
-در ترمینال دیگر، اسکریپت راه‌اندازی اسکیما را اجرا کنید:
+The PocketBase admin dashboard is available at `http://127.0.0.1:8090/_/`.
+
+### 5. Create the schema
+
+In a second terminal:
+
 ```bash
 bun run setup:pb
 ```
-این اسکریپت کالکشن‌های زیر را همراه با روابط و فیلدهای لازم می‌سازد:
-- `products`: مشخصات محصول B2B (شامل محصول نمونه «حساب‌آنلاین پارس»، ارزش‌های پیشنهادی و کلمات کلیدی).
-- `sources`: کانال‌ها و گروه‌های تحت رصد (تلگرام، بله، فروم و توییتر/X).
-- `raw_messages`: صف پیام‌های خام و پردازش‌نشده.
-- `leads`: سرنخ‌های امتیازدهی‌شده همراه با استدلال هوش مصنوعی و هزینه‌ها.
 
-### ۶. تزریق پیام‌های نمونه واقعی جوامع ایرانی
-برای تست اولیه سامانه با ۲۶ پیام واقعی (شامل ۵ پیام با قصد خرید قطعی، ۵ پیام دردمند و ۱۶ پیام نویز و روزمره):
+This creates `products`, `sources`, `raw_messages`, and `leads` with all relations and fields, plus a demo product record.
+
+### 6. Seed demo data (optional)
+
+Loads 26 realistic Persian community messages — 5 high-intent, 5 problem-aware, and 16 noise:
+
 ```bash
 bun run seed
 ```
 
-### ۷. اجرای پایپ‌لاین تریاژ و ارزیابی
-برای ارزیابی پیام‌های معلق با هوش مصنوعی و ایجاد سرنخ‌ها:
+### 7. Run the triage pipeline
+
 ```bash
 bun run worker
 ```
 
-### ۸. اجرای سرور فرانت‌اند و داشبورد زنده
+### 8. Start the dashboard
+
 ```bash
 bun dev
 ```
-اکنون مرورگر خود را باز کرده و به نشانی **`http://localhost:3000`** بروید.
+
+Open `http://localhost:3000`.
+
+### Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `bun dev` | Start the Next.js development server |
+| `bun run build` | Production build |
+| `bun run start` | Serve the production build |
+| `bun run pb` | Start the local PocketBase server |
+| `bun run setup:pb` | Create/verify the PocketBase schema |
+| `bun run seed` | Insert 26 demo community messages |
+| `bun run worker` | Triage all pending messages and create leads |
 
 ---
 
-## 💎 امکانات و قابلیت‌های برجسته (Key Features)
+## Environment Variables
 
-- **داشبورد زنده و Real-Time**: اتصال زنده به پایگاه داده از طریق Server-Sent Events (SSE)؛ به محض ورود یا تغییر سرنخ، داشبورد بدون رفرش بروزرسانی می‌شود.
-- **دکمه تزریق زنده پیام‌ها (Simulate Live Feed)**: تعبیه‌شده در بالای صفحه برای دموی زنده در ارائه‌ها و جلسات فروش استارتاپی.
-- **۵ کارت شاخص کلیدی عملکرد (KPIs)**:
-  1. تعداد کل پیام‌های رصدشده
-  2. درصد نویز و هرزنامه‌های فیلترشده (Noise Reduction %)
-  3. تعداد سرنخ‌های واجد شرایط خرید (Qualified Leads)
-  4. هزینه کل مصرف توکن‌ها به دلار (با دقت ۶ رقم اعشار)
-  5. بهای تمام‌شده پردازش به ازای هر سرنخ + برآورد ریالی/تومانی
-- **کپی سریع پیش‌نویس پاسخ**: کپی متن شخصی‌سازی‌شده و طبیعی متناسب با لحن پیام با ۱ کلیک.
-- **تغییر وضعیت سرنخ**: امکان تغییر وضعیت به «تأییدشده»، «ارتباط برقرار شد» یا «نادیده گرفتن».
-- **تنظیمات پویا در `/settings`**: مدیریت لحظه‌ای ارزش‌های محصول، کلمات کلیدی پایش و پرسونای مشتری (ICP).
+| Variable | Default | Description |
+| --- | --- | --- |
+| `POCKETBASE_URL` | `http://127.0.0.1:8090` | Server-side PocketBase address |
+| `NEXT_PUBLIC_POCKETBASE_URL` | `http://127.0.0.1:8090` | Browser-facing PocketBase address |
+| `POCKETBASE_ADMIN_EMAIL` | `admin@leadradar.local` | Superuser email for schema setup |
+| `POCKETBASE_ADMIN_PASSWORD` | — | Superuser password (**change in production**) |
+| `LLM_BASE_URL` | `http://localhost:11434/v1` | OpenAI-compatible endpoint (Ollama / vLLM / domestic gateway) |
+| `LLM_API_KEY` | `dummy` | API key, if the endpoint requires one |
+| `LLM_MODEL` | `llama3.1` | Model identifier used for triage |
+| `INPUT_TOKEN_COST_PER_MILLION` | `0.15` | USD per 1M input tokens |
+| `OUTPUT_TOKEN_COST_PER_MILLION` | `0.60` | USD per 1M output tokens |
 
 ---
 
-## 🔌 مستندات وب‌سرویس‌ها (REST API Endpoints)
-
-### `POST /api/simulate`
-تزریق یک پیام جامعه فرضی به صف و تریاژ آنی آن برای شبیه‌سازی زنده:
-```bash
-curl -X POST http://localhost:3000/api/simulate -H "Content-Type: application/json" -d '{}'
-```
+## API Reference
 
 ### `POST /api/analyze`
-ارزیابی آنی یک پیام دلخواه بر اساس پرسونای محصول:
+
+Triages a single message — either an existing `raw_messages` record by ID or ad-hoc text.
+
 ```bash
 curl -X POST http://localhost:3000/api/analyze \
   -H "Content-Type: application/json" \
   -d '{
     "content": "سلام، دنبال یه نرم‌افزار حسابداری ابری خوب برای شرکتمون هستیم که سامانه مودیان رو پشتیبانی کنه. چی پیشنهاد می‌دید؟",
-    "author_handle": "@iran_founder"
+    "author_handle": "@iran_founder",
+    "platform": "telegram"
   }'
+```
+
+**Request body**
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `raw_message_id` | `string` | Triage an already-ingested message (alternative to `content`) |
+| `content` | `string` | Message text to evaluate |
+| `author_handle` | `string` | Optional, defaults to `@guest_user` |
+| `thread_context` | `string` | Optional surrounding conversation |
+| `platform` | `string` | Optional: `telegram`, `bale`, `twitter_x`, `forum` |
+| `product_id` | `string` | Optional; defaults to the first configured product |
+
+**Response** — `200 OK`
+
+```json
+{
+  "success": true,
+  "evaluation": {
+    "intent_level": "high_intent",
+    "intent_score": 92,
+    "reasoning": "…",
+    "suggested_reply": "…",
+    "input_tokens": 812,
+    "output_tokens": 194,
+    "estimated_cost_usd": 0.00024
+  }
+}
+```
+
+### `POST /api/simulate`
+
+Injects a realistic community message into the feed and triages it immediately. Pass an optional `index` to select a specific demo message; otherwise one is chosen at random.
+
+```bash
+curl -X POST http://localhost:3000/api/simulate \
+  -H "Content-Type: application/json" \
+  -d '{}'
 ```
 
 ---
 
-## 📜 لایسنس
-این پروژه تحت مجوز [MIT License](LICENSE) منتشر شده است.
+## Design System
+
+The UI follows a high-contrast, Vercel-inspired dark aesthetic:
+
+- **Backgrounds** — `#000000` page, `#0a0a0a` cards
+- **Borders** — solid `#1f1f1f`, hover `#333333` (dotted/dashed borders are prohibited)
+- **Accent** — `#00e599` emerald
+- **Motion** — Apple/Vercel easing `cubic-bezier(0.16, 1, 0.3, 1)`, card elevation on hover (`translateY(-1.5px)`), tactile press states (`active:scale-95`)
+- **Radar emblem** — a continuous 360° sweep animation (`.radar-needle`, `@keyframes radarSweep`) on the logo in `components/Icons.tsx`
+- **Layout** — sticky specification sidebar on `/settings`, pointer-cursor interaction on all cards, tiles, and filter pills
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE).
