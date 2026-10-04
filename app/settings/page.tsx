@@ -469,8 +469,8 @@ export default function ProductSettingsPage() {
               </div>
             </form>
 
-            {/* Sidebar Specifications (1 Column) */}
-            <div className="space-y-4">
+            {/* Sidebar Specifications (1 Column - Sticky on Desktop) */}
+            <div className="space-y-4 lg:sticky lg:top-20 self-start">
               {/* Architecture specs card */}
               <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 space-y-3 cursor-default">
                 <div className="flex items-center gap-2 text-white font-medium text-xs pb-1 border-b border-[#1f1f1f]">
