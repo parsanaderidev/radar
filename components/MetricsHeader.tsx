@@ -37,7 +37,7 @@ export function MetricsHeader({
         <div
           onClick={() => onSelectIntent("all")}
           className={cn(
-            "p-4 rounded-lg bg-[#0a0a0a] border-2 hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
+            "p-4 rounded-lg bg-[#0a0a0a] border-2 hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]",
             selectedIntent === "all" ? "border-white/60" : "border-[#333333]"
           )}
           title="مشاهده همه پیام‌های دریافتی"
@@ -64,7 +64,7 @@ export function MetricsHeader({
         <div
           onClick={() => onSelectIntent("irrelevant")}
           className={cn(
-            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
+            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]",
             selectedIntent === "irrelevant" ? "border-neutral-400 ring-1 ring-neutral-400/20" : "border-[#1f1f1f]"
           )}
           title="مشاهده پیام‌های فیلترشده نویز و نامرتبط"
@@ -92,7 +92,7 @@ export function MetricsHeader({
         <div
           onClick={() => onSelectIntent("high_intent")}
           className={cn(
-            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between relative overflow-hidden cursor-pointer active:scale-[0.98]",
+            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between relative overflow-hidden cursor-pointer active:scale-[0.985]",
             selectedIntent === "high_intent" ? "border-[#00e599]/60 ring-1 ring-[#00e599]/20" : "border-[#1f1f1f]"
           )}
           title="مشاهده سرنخ‌های واجد شرایط خرید قطعی"
@@ -119,7 +119,7 @@ export function MetricsHeader({
         <div
           onClick={() => onSelectIntent("problem_aware")}
           className={cn(
-            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
+            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]",
             selectedIntent === "problem_aware" ? "border-[#f5a623]/60 ring-1 ring-[#f5a623]/20" : "border-[#1f1f1f]"
           )}
           title="مشاهده پیام‌های کاربران دردمند و ناراضی"
@@ -144,7 +144,7 @@ export function MetricsHeader({
         <div
           onClick={() => onSelectIntent("curious")}
           className={cn(
-            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
+            "p-4 rounded-lg bg-[#0a0a0a] border hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]",
             selectedIntent === "curious" ? "border-[#0070f3]/60 ring-1 ring-[#0070f3]/20" : "border-[#1f1f1f]"
           )}
           title="مشاهده پیام‌های کاربران کنجکاو"
@@ -167,15 +167,15 @@ export function MetricsHeader({
       </div>
 
       {/* Vercel-style Filter & Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-2 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f]">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-2 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] transition-colors duration-200">
         {/* Intent level filter tabs */}
         <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0">
           <button
             onClick={() => onSelectIntent("all")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap",
               selectedIntent === "all"
-                ? "bg-[#222222] text-white"
+                ? "bg-[#222222] text-white shadow-sm"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
             )}
           >
@@ -184,9 +184,9 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("high_intent")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "high_intent"
-                ? "bg-[#222222] text-[#00e599]"
+                ? "bg-[#222222] text-[#00e599] shadow-sm"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
             )}
           >
@@ -196,9 +196,9 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("problem_aware")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "problem_aware"
-                ? "bg-[#222222] text-[#f5a623]"
+                ? "bg-[#222222] text-[#f5a623] shadow-sm"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
             )}
           >
@@ -208,9 +208,9 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("curious")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "curious"
-                ? "bg-[#222222] text-[#0070f3]"
+                ? "bg-[#222222] text-[#0070f3] shadow-sm"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
             )}
           >
@@ -220,9 +220,9 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("irrelevant")}
             className={cn(
-              "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+              "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
               selectedIntent === "irrelevant"
-                ? "bg-[#222222] text-neutral-300"
+                ? "bg-[#222222] text-neutral-300 shadow-sm"
                 : "text-neutral-500 hover:text-neutral-300 hover:bg-[#141414]"
             )}
           >
@@ -233,13 +233,13 @@ export function MetricsHeader({
 
         {/* Minimal Search input */}
         <div className="relative flex items-center min-w-[260px]">
-          <SearchIcon className="w-3.5 h-3.5 text-neutral-500 absolute right-3 pointer-events-none" />
+          <SearchIcon className="w-3.5 h-3.5 text-neutral-500 absolute right-3 pointer-events-none transition-colors" />
           <input
             type="text"
             placeholder="جستجو در پیام، فرستنده یا ویژگی..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full pl-3 pr-9 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 placeholder:text-neutral-600 focus:outline-none focus:border-white input-smooth transition-all"
+            className="w-full pl-3 pr-9 py-1.5 rounded-md bg-[#000000] border border-[#262626] text-xs text-neutral-200 placeholder:text-neutral-600 focus:outline-none focus:border-white input-smooth"
           />
         </div>
       </div>

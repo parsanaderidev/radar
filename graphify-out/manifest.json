@@ -48,21 +48,21 @@
     "semantic_hash": ""
   },
   "app/login/page.tsx": {
-    "mtime": 1791230322.4956036,
-    "seen": 1791230418.51708,
-    "ast_hash": "3f9f699d300eeeebc10f2228b6ed14e0",
+    "mtime": 1791232521.190414,
+    "seen": 1791232537.4245996,
+    "ast_hash": "e7d14251599801bdbc0fa40990222b65",
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1791226535.79393,
-    "seen": 1791227511.910173,
-    "ast_hash": "e730c0c3a3937638d2ff0f38b59dc759",
-    "semantic_hash": "e730c0c3a3937638d2ff0f38b59dc759"
+    "mtime": 1791232469.3544185,
+    "seen": 1791232537.4246008,
+    "ast_hash": "323bb0f22c22d3734fb4cbbd4fda53ca",
+    "semantic_hash": ""
   },
   "app/settings/page.tsx": {
-    "mtime": 1791230117.6016212,
-    "seen": 1791230140.1080022,
-    "ast_hash": "12f767ba483c7f97052c2445e49a14e1",
+    "mtime": 1791232503.1334155,
+    "seen": 1791232537.424602,
+    "ast_hash": "b39b9c41b2fd30eae68692279a2171a6",
     "semantic_hash": ""
   },
   "components/Icons.tsx": {
@@ -72,22 +72,22 @@
     "semantic_hash": ""
   },
   "components/LeadCard.tsx": {
-    "mtime": 1791229251.1926959,
-    "seen": 1791229328.4610875,
-    "ast_hash": "4194c491a4bebebf4e6a3982520ec0b3",
+    "mtime": 1791232388.4384253,
+    "seen": 1791232537.424604,
+    "ast_hash": "d3d85ec193401c390577cc13c359e060",
     "semantic_hash": ""
   },
   "components/MetricsHeader.tsx": {
-    "mtime": 1791231804.0564759,
-    "seen": 1791231838.0193012,
-    "ast_hash": "d43d2646f8c329a05e8ea954080bdd7d",
+    "mtime": 1791232358.436428,
+    "seen": 1791232537.4246047,
+    "ast_hash": "f0c551ccc01508c87335662ffda63b5a",
     "semantic_hash": ""
   },
   "components/Navbar.tsx": {
-    "mtime": 1791071485.5744874,
-    "seen": 1791227511.9101765,
-    "ast_hash": "09bab3f060e068fee5188544bdbc6618",
-    "semantic_hash": "09bab3f060e068fee5188544bdbc6618"
+    "mtime": 1791232416.297423,
+    "seen": 1791232537.4246054,
+    "ast_hash": "10d35be5cdd2af901c517620dcd4fb11",
+    "semantic_hash": ""
   },
   "lib/auth.ts": {
     "mtime": 1791230290.2456062,

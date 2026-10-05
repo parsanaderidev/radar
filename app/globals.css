@@ -123,89 +123,98 @@ body {
 .vercel-card {
   background: #0a0a0a;
   border: 1px solid #1f1f1f;
-  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 
 .vercel-card:hover {
   border-color: #333333;
   background-color: #0d0d0d;
-  transform: translateY(-1.5px);
-  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.7);
+  transform: translateY(-1.5px) translateZ(0);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.75);
 }
 
 /* ========================================================
    Tactile 1px Border Expansion on Hover
-   Makes borders visually 1px thicker on hover without layout shift
+   Makes borders visually 1px thicker on hover with silky smooth color interpolation
 ======================================================== */
 [class*="hover:border"] {
-  outline: 0px solid transparent;
+  outline: 1px solid transparent;
   outline-offset: 0px;
-  transition-property: color, background-color, border-color, outline, outline-color, box-shadow, transform;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+              outline-color 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 
 [class*="hover:border"]:hover {
-  outline: 1px solid rgba(255, 255, 255, 0.22);
-  outline-offset: 0px;
+  outline-color: rgba(255, 255, 255, 0.26);
 }
 
 [class*="hover:border-rose"]:hover {
-  outline-color: rgba(244, 63, 94, 0.45);
+  outline-color: rgba(244, 63, 94, 0.5);
 }
 
 [class*="hover:border-[#00e599]"]:hover,
 [class*="hover:border-emerald"]:hover {
-  outline-color: rgba(0, 229, 153, 0.45);
+  outline-color: rgba(0, 229, 153, 0.5);
 }
 
 [class*="hover:border-[#f5a623]"]:hover,
 [class*="hover:border-amber"]:hover {
-  outline-color: rgba(245, 166, 35, 0.45);
+  outline-color: rgba(245, 166, 35, 0.5);
 }
 
 [class*="hover:border-[#0070f3]"]:hover,
 [class*="hover:border-blue"]:hover {
-  outline-color: rgba(0, 112, 243, 0.45);
+  outline-color: rgba(0, 112, 243, 0.5);
 }
-
 
 /* Card hover elevate utility */
 .hover-card-elevate {
-  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 
 .hover-card-elevate:hover {
   border-color: #333333;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px -2px rgba(0, 0, 0, 0.65);
+  transform: translateY(-1.5px) translateZ(0);
+  box-shadow: 0 8px 28px -2px rgba(0, 0, 0, 0.7);
 }
 
 /* Tactile button feel */
 .btn-tactile {
-  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
 }
 
 .btn-tactile:active {
-  transform: scale(0.965);
+  transform: scale(0.97) translateZ(0);
+  transition-duration: 0.1s;
 }
 
 /* Input smooth focus */
 .input-smooth {
-  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .input-smooth:focus {
-  border-color: #ededed;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25), 0 0 14px -2px rgba(255, 255, 255, 0.1);
 }
 
 /* Radar scanner live needle animation */
@@ -233,18 +242,49 @@ body {
 
 /* Micro-animations */
 @keyframes cardIn {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(10px) scale(0.995);
+    transform: translateY(12px) scale(0.988);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
 .animate-card-in {
-  animation: cardIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: cardIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes shimmer {
@@ -271,15 +311,24 @@ body {
   0%, 100% {
     opacity: 1;
     transform: scale(1);
-    box-shadow: 0 0 10px rgba(0, 229, 153, 0.4);
+    box-shadow: 0 0 12px rgba(0, 229, 153, 0.45);
   }
   50% {
-    opacity: 0.55;
-    transform: scale(0.92);
+    opacity: 0.6;
+    transform: scale(0.93);
     box-shadow: 0 0 4px rgba(0, 229, 153, 0.15);
   }
 }
 
 .animate-pulse-glow {
-  animation: pulseGlow 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  animation: pulseGlow 2.4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reusable silky-smooth transitions */
+.smooth-all {
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.smooth-transform {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }

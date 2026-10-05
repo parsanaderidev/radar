@@ -78,12 +78,12 @@ function LoginForm() {
             required
             autoFocus
             autoComplete="current-password"
-            className="w-full pl-10 pr-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all dir-ltr text-left"
+            className="w-full pl-10 pr-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200 ease-out dir-ltr text-left"
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute left-2.5 p-1 rounded text-neutral-400 hover:text-white transition-colors cursor-pointer"
+            className="absolute left-2.5 p-1 rounded text-neutral-400 hover:text-white transition-colors duration-200 cursor-pointer"
             title={showPassword ? "مخفی‌سازی رمز عبور" : "نمایش رمز عبور"}
             aria-label={showPassword ? "مخفی‌سازی رمز عبور" : "نمایش رمز عبور"}
           >
@@ -95,7 +95,7 @@ function LoginForm() {
       <button
         type="submit"
         disabled={isLoading || !password.trim()}
-        className="w-full h-10 rounded-lg bg-white text-black text-xs font-semibold hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.99]"
+        className="w-full h-10 rounded-lg bg-white text-black text-xs font-semibold hover:bg-[#eaeaea] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all duration-200 ease-out flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.98]"
       >
         {isLoading ? (
           <>
@@ -110,7 +110,7 @@ function LoginForm() {
       <div className="pt-2 text-center">
         <Link
           href="/"
-          className="text-xs text-neutral-400 hover:text-neutral-200 transition-colors inline-flex items-center gap-1"
+          className="text-xs text-neutral-400 hover:text-neutral-200 transition-colors duration-200 inline-flex items-center gap-1"
         >
           <span>بازگشت به صندوق سرنخ‌ها</span>
           <span className="text-neutral-600">←</span>
@@ -123,11 +123,11 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#000000] text-[#ededed] px-4 selection:bg-white selection:text-black">
-      <div className="w-full max-w-sm space-y-6">
+      <div className="w-full max-w-sm space-y-6 animate-fade-in">
         {/* Brand / Logo */}
         <div className="flex flex-col items-center text-center space-y-3">
           <Link href="/" className="flex items-center gap-2.5 group cursor-pointer">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-black transition-transform duration-200 group-hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-black transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
               <RadarLogo className="w-5 h-5 text-black" />
             </div>
           </Link>

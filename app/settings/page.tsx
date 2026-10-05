@@ -143,7 +143,7 @@ export default function ProductSettingsPage() {
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Active Product Banner */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
@@ -163,7 +163,7 @@ export default function ProductSettingsPage() {
               type="button"
               onClick={resetToLoaded}
               disabled={isSaving || isLoading}
-              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs text-neutral-300 transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs text-neutral-300 transition-all duration-200 ease-out active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-sm"
               title="بازنشانی تغییرات ذخیره‌نشده"
             >
               <RefreshIcon className="w-3.5 h-3.5 text-neutral-400" />
@@ -174,7 +174,7 @@ export default function ProductSettingsPage() {
               type="button"
               onClick={() => handleSave()}
               disabled={isSaving || isLoading}
-              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#eaeaea] hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] text-xs font-medium inline-flex items-center gap-1.5 transition-all duration-200 ease-out active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSaving ? (
                 <>
@@ -189,7 +189,7 @@ export default function ProductSettingsPage() {
             <button
               type="button"
               onClick={handleLogout}
-              className="h-8 px-3 rounded-md bg-neutral-900 hover:bg-rose-950/40 border border-neutral-800 hover:border-rose-900/60 text-neutral-400 hover:text-rose-300 text-xs transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
+              className="h-8 px-3 rounded-md bg-neutral-900 hover:bg-rose-950/40 border border-neutral-800 hover:border-rose-900/60 text-neutral-400 hover:text-rose-300 text-xs transition-all duration-200 ease-out active:scale-95 flex items-center gap-1 cursor-pointer"
               title="خروج از پنل مدیریت"
             >
               <span>خروج</span>
@@ -202,7 +202,7 @@ export default function ProductSettingsPage() {
           {/* Tile 1: Active Product */}
           <div
             onClick={() => focusInput("product-name-input")}
-            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
+            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
             title="کلیک برای ویرایش نام و شرح محصول"
           >
             <div className="flex items-center justify-between">
@@ -224,7 +224,7 @@ export default function ProductSettingsPage() {
           {/* Tile 2: ICP Status */}
           <div
             onClick={() => focusInput("icp-textarea")}
-            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
+            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
             title="کلیک برای ویرایش پرسونای خریدار ایده‌آل (ICP)"
           >
             <div className="flex items-center justify-between gap-2">
@@ -246,7 +246,7 @@ export default function ProductSettingsPage() {
           {/* Tile 3: Keywords Count */}
           <div
             onClick={() => focusInput("keywords-input")}
-            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
+            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
             title="کلیک برای افزودن یا ویرایش کلیدواژه‌های نظارت"
           >
             <div className="flex items-center justify-between gap-2">
@@ -276,7 +276,7 @@ export default function ProductSettingsPage() {
               });
               setTimeout(() => setStatusMessage(null), 5000);
             }}
-            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
+            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
             title="کلیک برای بررسی وضعیت ذخیره‌سازی محلی"
           >
             <div className="flex items-center justify-between">

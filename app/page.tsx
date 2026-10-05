@@ -330,29 +330,29 @@ export default function LeadRadarDashboard() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Active Product Banner (Vercel Project Card Style) */}
         {activeProduct && (
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-all duration-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <Link
               href="/settings"
               className="space-y-1 group cursor-pointer flex-1"
               title="مشاهده و ویرایش تنظیمات این محصول و پرسونای مشتری"
             >
               <div className="flex items-center gap-2">
-                <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium group-hover:border-neutral-700 transition-colors">
+                <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium group-hover:border-neutral-700 transition-colors duration-200">
                   محصول هدف
                 </span>
-                <h1 className="text-sm sm:text-base font-semibold text-white group-hover:text-[#00e599] transition-colors flex items-center gap-1.5">
+                <h1 className="text-sm sm:text-base font-semibold text-white group-hover:text-[#00e599] transition-colors duration-200 flex items-center gap-1.5">
                   <span>{activeProduct.name}</span>
-                  <span className="text-xs text-neutral-500 opacity-0 group-hover:opacity-100 transition-opacity">← تنظیمات</span>
+                  <span className="text-xs text-neutral-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">← تنظیمات</span>
                 </h1>
               </div>
-              <p className="text-xs text-neutral-400 max-w-3xl line-clamp-1 group-hover:text-neutral-300 transition-colors">
+              <p className="text-xs text-neutral-400 max-w-3xl line-clamp-1 group-hover:text-neutral-300 transition-colors duration-200">
                 {activeProduct.tagline || activeProduct.description}
               </p>
             </Link>
 
             <div className="flex items-center gap-2.5 self-stretch md:self-auto justify-end">
               <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] text-neutral-500">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00e599]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow" />
                 <span>همگام‌شده:</span>
                 <span className="text-neutral-300 font-medium">{lastRefreshedAt}</span>
               </span>
@@ -361,12 +361,12 @@ export default function LeadRadarDashboard() {
                 onClick={handleManualRefresh}
                 disabled={isRefreshing || isLoading}
                 className={cn(
-                  "h-8 px-3.5 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs font-medium text-neutral-200 transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-sm",
+                  "h-8 px-3.5 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs font-medium text-neutral-200 transition-all duration-200 ease-out active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-sm",
                   isRefreshing && "bg-[#181818] border-[#383838] text-white"
                 )}
                 title="بازخوانی داده‌ها از پایگاه داده محلی پاکت‌بیس"
               >
-                <RefreshIcon className={cn("w-3.5 h-3.5 text-neutral-400 transition-transform", isRefreshing && "animate-spin text-white")} />
+                <RefreshIcon className={cn("w-3.5 h-3.5 text-neutral-400 transition-transform duration-300", isRefreshing && "animate-spin text-white")} />
                 <span>{isRefreshing ? "در حال دریافت..." : "بروزرسانی داده‌ها"}</span>
               </button>
             </div>
@@ -424,9 +424,9 @@ export default function LeadRadarDashboard() {
             <button
               onClick={() => setSelectedPlatform("all")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
                 selectedPlatform === "all"
-                  ? "bg-[#222222] text-white"
+                  ? "bg-[#222222] text-white shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
               )}
             >
@@ -437,9 +437,9 @@ export default function LeadRadarDashboard() {
             <button
               onClick={() => setSelectedPlatform("telegram")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
                 selectedPlatform === "telegram"
-                  ? "bg-[#222222] text-[#229ed9]"
+                  ? "bg-[#222222] text-[#229ed9] shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
               )}
             >
@@ -451,9 +451,9 @@ export default function LeadRadarDashboard() {
             <button
               onClick={() => setSelectedPlatform("bale")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
                 selectedPlatform === "bale"
-                  ? "bg-[#222222] text-[#00e599]"
+                  ? "bg-[#222222] text-[#00e599] shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
               )}
             >
@@ -465,9 +465,9 @@ export default function LeadRadarDashboard() {
             <button
               onClick={() => setSelectedPlatform("twitter_x")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
                 selectedPlatform === "twitter_x"
-                  ? "bg-[#222222] text-white"
+                  ? "bg-[#222222] text-white shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
               )}
             >
@@ -479,9 +479,9 @@ export default function LeadRadarDashboard() {
             <button
               onClick={() => setSelectedPlatform("forum")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
                 selectedPlatform === "forum"
-                  ? "bg-[#222222] text-neutral-200"
+                  ? "bg-[#222222] text-neutral-200 shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
               )}
             >
@@ -498,9 +498,9 @@ export default function LeadRadarDashboard() {
               <button
                 onClick={() => setSortBy("newest")}
                 className={cn(
-                  "px-2.5 py-1 rounded text-[11px] font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap",
+                  "px-2.5 py-1 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap",
                   sortBy === "newest"
-                    ? "bg-[#222222] text-white"
+                    ? "bg-[#222222] text-white shadow-sm"
                     : "text-neutral-400 hover:text-white"
                 )}
               >
@@ -509,9 +509,9 @@ export default function LeadRadarDashboard() {
               <button
                 onClick={() => setSortBy("highest_score")}
                 className={cn(
-                  "px-2.5 py-1 rounded text-[11px] font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap",
+                  "px-2.5 py-1 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap",
                   sortBy === "highest_score"
-                    ? "bg-[#222222] text-[#00e599]"
+                    ? "bg-[#222222] text-[#00e599] shadow-sm"
                     : "text-neutral-400 hover:text-[#00e599]"
                 )}
               >
@@ -520,9 +520,9 @@ export default function LeadRadarDashboard() {
               <button
                 onClick={() => setSortBy("lowest_spend")}
                 className={cn(
-                  "px-2.5 py-1 rounded text-[11px] font-medium transition-all active:scale-95 cursor-pointer whitespace-nowrap",
+                  "px-2.5 py-1 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap",
                   sortBy === "lowest_spend"
-                    ? "bg-[#222222] text-white"
+                    ? "bg-[#222222] text-white shadow-sm"
                     : "text-neutral-400 hover:text-white"
                 )}
               >

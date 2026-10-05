@@ -115,7 +115,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
   return (
     <div
       className={cn(
-        "rounded-lg p-4 bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-all duration-200 space-y-3.5 animate-card-in hover:shadow-[0_4px_24px_rgba(0,0,0,0.6)]",
+        "rounded-lg p-4 bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu space-y-3.5 animate-card-in will-change-transform",
         lead.lead_status === "dismissed" && "opacity-45 grayscale"
       )}
     >
@@ -217,10 +217,10 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={handleCopy}
               className={cn(
-                "h-6 px-2.5 rounded text-[11px] font-medium transition-all active:scale-95 flex items-center gap-1 border cursor-pointer",
+                "h-6 px-2.5 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 flex items-center gap-1 border cursor-pointer",
                 copied
                   ? "bg-[#00e599] text-black border-[#00e599] scale-105"
-                  : "bg-[#141414] hover:bg-[#1f1f1f] text-neutral-300 border-[#262626]"
+                  : "bg-[#141414] hover:bg-[#1f1f1f] hover:border-[#383838] text-neutral-300 border-[#262626]"
               )}
             >
               {copied ? (
@@ -257,7 +257,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={() => handleStatusChange("contacted")}
               disabled={isUpdating}
-              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-neutral-200 transition-all active:scale-95 flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] hover:border-[#383838] text-neutral-200 transition-all duration-200 ease-out active:scale-95 flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
             >
               <CheckCircleIcon className="w-3.5 h-3.5 text-[#0070f3]" />
               <span>ارتباط برقرار شد</span>
@@ -268,7 +268,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={() => handleStatusChange("approved")}
               disabled={isUpdating}
-              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-neutral-200 transition-all active:scale-95 flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] hover:border-[#383838] text-neutral-200 transition-all duration-200 ease-out active:scale-95 flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
             >
               <span>تأیید سرنخ</span>
             </button>
@@ -278,7 +278,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={() => handleStatusChange("dismissed")}
               disabled={isUpdating}
-              className="h-7 px-2.5 rounded-md text-xs text-neutral-500 hover:text-neutral-300 hover:bg-[#111111] transition-all active:scale-95 flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-7 px-2.5 rounded-md text-xs text-neutral-500 hover:text-neutral-300 hover:bg-[#111111] transition-all duration-200 ease-out active:scale-95 flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
             >
               <XCircleIcon className="w-3.5 h-3.5" />
               <span>رد کردن</span>
