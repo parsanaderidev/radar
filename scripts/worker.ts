@@ -4,8 +4,8 @@ import { formatUsd } from "../lib/pricing";
 import type { ProductRecord, RawMessageRecord } from "../lib/pocketbase";
 
 const PB_URL = process.env.POCKETBASE_URL || "http://127.0.0.1:8090";
-const ADMIN_EMAIL = process.env.POCKETBASE_ADMIN_EMAIL || "admin@leadradar.local";
-const ADMIN_PASSWORD = process.env.POCKETBASE_ADMIN_PASSWORD || "RadarSecure123456!";
+const ADMIN_EMAIL = process.env.POCKETBASE_ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.POCKETBASE_ADMIN_PASSWORD;
 
 export async function processSingleMessage(
   pb: PocketBase,
@@ -70,6 +70,13 @@ export async function processSingleMessage(
 }
 
 export async function runTriageWorker() {
+  if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+    console.error(
+      "❌ [Triage Worker Error] POCKETBASE_ADMIN_EMAIL and POCKETBASE_ADMIN_PASSWORD must be configured in environment."
+    );
+    process.exit(1);
+  }
+
   console.log(`[Triage Worker] Initializing connection to ${PB_URL}...`);
   const pb = new PocketBase(PB_URL);
 
@@ -82,7 +89,8 @@ export async function runTriageWorker() {
     }
     console.log("[Triage Worker] Authenticated with PocketBase.");
   } catch (err: any) {
-    console.warn("[Triage Worker] Superuser auth skipped or failed, proceeding with public rules:", err?.message || err);
+    console.error("[Triage Worker] Superuser authentication failed:", err?.message || err);
+    process.exit(1);
   }
 
   // Get active product

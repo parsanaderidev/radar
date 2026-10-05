@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import {
   CheckCircleIcon,
@@ -15,6 +16,7 @@ import { getPocketBaseClient, type ProductRecord } from "@/lib/pocketbase";
 import { toPersianDigits } from "@/lib/pricing";
 
 export default function ProductSettingsPage() {
+  const router = useRouter();
   const [product, setProduct] = useState<ProductRecord | null>(null);
   const [name, setName] = useState("");
   const [tagline, setTagline] = useState("");
@@ -77,6 +79,16 @@ export default function ProductSettingsPage() {
       .filter(Boolean);
   }, [valPropsText]);
 
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      router.push("/login");
+      router.refresh();
+    } catch (e) {
+      console.error("Logout error", e);
+    }
+  };
+
   const handleSave = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!product) return;
@@ -84,17 +96,31 @@ export default function ProductSettingsPage() {
     setStatusMessage(null);
 
     try {
-      const updated = await pb.collection("products").update<ProductRecord>(product.id, {
-        name,
-        tagline,
-        description,
-        ideal_customer_profile: icp,
-        value_propositions: parsedValProps,
-        keywords: parsedKeywords,
+      const res = await fetch("/api/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: product.id,
+          name,
+          tagline,
+          description,
+          ideal_customer_profile: icp,
+          value_propositions: parsedValProps,
+          keywords: parsedKeywords,
+        }),
       });
 
-      setProduct(updated);
-      setStatusMessage({ text: "تنظیمات با موفقیت در پایگاه داده محلی ذخیره شد.", type: "success" });
+      const data = await res.json();
+      if (!res.ok) {
+        if (res.status === 401) {
+          router.push("/login?from=/settings");
+          return;
+        }
+        throw new Error(data.error || "خطا در ذخیره‌سازی");
+      }
+
+      setProduct(data.product);
+      setStatusMessage({ text: "تنظیمات با موفقیت در پایگاه داده امن ذخیره شد.", type: "success" });
       setTimeout(() => setStatusMessage(null), 4000);
     } catch (err: any) {
       console.error("Save error:", err);
@@ -117,7 +143,7 @@ export default function ProductSettingsPage() {
       <Navbar />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
-        {/* Active Product Banner (Matching Vercel Project Card Style from Dashboard) */}
+        {/* Active Product Banner */}
         <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
@@ -159,6 +185,15 @@ export default function ProductSettingsPage() {
               ) : (
                 <span>ذخیره تغییرات</span>
               )}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="h-8 px-3 rounded-md bg-neutral-900 hover:bg-rose-950/40 border border-neutral-800 hover:border-rose-900/60 text-neutral-400 hover:text-rose-300 text-xs transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
+              title="خروج از پنل مدیریت"
+            >
+              <span>خروج</span>
             </button>
           </div>
         </div>

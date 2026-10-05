@@ -1,10 +1,18 @@
 import PocketBase from "pocketbase";
 
 const PB_URL = process.env.POCKETBASE_URL || "http://127.0.0.1:8090";
-const ADMIN_EMAIL = process.env.POCKETBASE_ADMIN_EMAIL || "admin@leadradar.local";
-const ADMIN_PASSWORD = process.env.POCKETBASE_ADMIN_PASSWORD || "RadarSecure123456!";
+const ADMIN_EMAIL = process.env.POCKETBASE_ADMIN_EMAIL || "";
+const ADMIN_PASSWORD = process.env.POCKETBASE_ADMIN_PASSWORD || "";
 
 export async function setupSchema() {
+  if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+    console.error(
+      "❌ [PocketBase Setup Error] Missing required environment variables:\n" +
+        "   POCKETBASE_ADMIN_EMAIL and POCKETBASE_ADMIN_PASSWORD must be defined in your .env file."
+    );
+    process.exit(1);
+  }
+
   console.log(`[PocketBase] Connecting to ${PB_URL}...`);
   const pb = new PocketBase(PB_URL);
 
@@ -18,7 +26,9 @@ export async function setupSchema() {
     console.log("[PocketBase] Superuser authenticated successfully.");
   } catch (err: any) {
     console.error(`[PocketBase] Authentication failed:`, err?.message || err);
-    console.log("[PocketBase] Tip: If superuser does not exist, run: ./pocketbase/pocketbase superuser upsert admin@leadradar.local RadarSecure123456!");
+    console.log(
+      `[PocketBase] Tip: If superuser does not exist, run: ./pocketbase/pocketbase superuser upsert ${ADMIN_EMAIL} <PASSWORD>`
+    );
     process.exit(1);
   }
 
@@ -26,6 +36,7 @@ export async function setupSchema() {
   const getCollection = (name: string) => existingCollections.find((c) => c.name === name);
 
   // 1. PRODUCTS COLLECTION
+  // Hardened: list/view allowed; create/update/delete restricted to superuser (null)
   let productsColl = getCollection("products");
   if (!productsColl) {
     console.log("[PocketBase] Creating 'products' collection...");
@@ -34,9 +45,9 @@ export async function setupSchema() {
       type: "base",
       listRule: "",
       viewRule: "",
-      createRule: "",
-      updateRule: "",
-      deleteRule: "",
+      createRule: null,
+      updateRule: null,
+      deleteRule: null,
       fields: [
         { name: "name", type: "text", required: true },
         { name: "tagline", type: "text", required: false },
@@ -50,10 +61,18 @@ export async function setupSchema() {
     });
     console.log("[PocketBase] Created 'products' collection (id: " + productsColl!.id + ")");
   } else {
-    console.log("[PocketBase] 'products' collection already exists.");
+    console.log("[PocketBase] 'products' collection exists. Enforcing secure access rules...");
+    await pb.collections.update(productsColl.id, {
+      listRule: "",
+      viewRule: "",
+      createRule: null,
+      updateRule: null,
+      deleteRule: null,
+    });
   }
 
   // 2. SOURCES COLLECTION
+  // Hardened: list/view allowed; mutations restricted to superuser (null)
   let sourcesColl = getCollection("sources");
   if (!sourcesColl) {
     console.log("[PocketBase] Creating 'sources' collection...");
@@ -62,9 +81,9 @@ export async function setupSchema() {
       type: "base",
       listRule: "",
       viewRule: "",
-      createRule: "",
-      updateRule: "",
-      deleteRule: "",
+      createRule: null,
+      updateRule: null,
+      deleteRule: null,
       fields: [
         { name: "name", type: "text", required: true },
         {
@@ -87,10 +106,18 @@ export async function setupSchema() {
     });
     console.log("[PocketBase] Created 'sources' collection (id: " + sourcesColl!.id + ")");
   } else {
-    console.log("[PocketBase] 'sources' collection already exists.");
+    console.log("[PocketBase] 'sources' collection exists. Enforcing secure access rules...");
+    await pb.collections.update(sourcesColl.id, {
+      listRule: "",
+      viewRule: "",
+      createRule: null,
+      updateRule: null,
+      deleteRule: null,
+    });
   }
 
   // 3. RAW_MESSAGES COLLECTION
+  // Hardened: list/view allowed (for dashboard count); create/update/delete restricted to superuser (null)
   let rawMessagesColl = getCollection("raw_messages");
   if (!rawMessagesColl) {
     console.log("[PocketBase] Creating 'raw_messages' collection...");
@@ -99,9 +126,9 @@ export async function setupSchema() {
       type: "base",
       listRule: "",
       viewRule: "",
-      createRule: "",
-      updateRule: "",
-      deleteRule: "",
+      createRule: null,
+      updateRule: null,
+      deleteRule: null,
       fields: [
         {
           name: "source_id",
@@ -128,10 +155,18 @@ export async function setupSchema() {
     });
     console.log("[PocketBase] Created 'raw_messages' collection (id: " + rawMessagesColl!.id + ")");
   } else {
-    console.log("[PocketBase] 'raw_messages' collection already exists.");
+    console.log("[PocketBase] 'raw_messages' collection exists. Enforcing secure access rules...");
+    await pb.collections.update(rawMessagesColl.id, {
+      listRule: "",
+      viewRule: "",
+      createRule: null,
+      updateRule: null,
+      deleteRule: null,
+    });
   }
 
   // 4. LEADS COLLECTION
+  // Hardened: list/view allowed for dashboard; create/update/delete restricted to superuser (null)
   let leadsColl = getCollection("leads");
   if (!leadsColl) {
     console.log("[PocketBase] Creating 'leads' collection...");
@@ -140,9 +175,9 @@ export async function setupSchema() {
       type: "base",
       listRule: "",
       viewRule: "",
-      createRule: "",
-      updateRule: "",
-      deleteRule: "",
+      createRule: null,
+      updateRule: null,
+      deleteRule: null,
       fields: [
         {
           name: "raw_message_id",
@@ -191,7 +226,14 @@ export async function setupSchema() {
     });
     console.log("[PocketBase] Created 'leads' collection (id: " + leadsColl!.id + ")");
   } else {
-    console.log("[PocketBase] 'leads' collection already exists.");
+    console.log("[PocketBase] 'leads' collection exists. Enforcing secure access rules...");
+    await pb.collections.update(leadsColl.id, {
+      listRule: "",
+      viewRule: "",
+      createRule: null,
+      updateRule: null,
+      deleteRule: null,
+    });
   }
 
   // Ensure default product exists
@@ -249,7 +291,7 @@ export async function setupSchema() {
   }
 
   console.log("\n=======================================================");
-  console.log("✅ PocketBase Schema Setup & Initial Data Complete!");
+  console.log("🔒 PocketBase Schema Setup & Security Rules Complete!");
   console.log("=======================================================\n");
   return {
     productsCollId: productsColl!.id,

@@ -41,3 +41,8 @@ pocketbase/pocketbase
 .env
 !.env.example
 
+# build info & tool cache
+*.tsbuildinfo
+graphify-out/cache/
+graphify-out/.graphify_*
+

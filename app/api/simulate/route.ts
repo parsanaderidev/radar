@@ -2,10 +2,34 @@ import { NextResponse } from "next/server";
 import { getPocketBaseClient, authenticateSuperuser, type ProductRecord } from "@/lib/pocketbase";
 import { DEMO_COMMUNITY_MESSAGES } from "@/scripts/seed_demo";
 import { processSingleMessage } from "@/scripts/worker";
+import { isAuthenticatedRequest } from "@/lib/auth";
+import { rateLimiter, getClientIp } from "@/lib/rateLimit";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
+  // 1. Authentication check
+  const isAuth = await isAuthenticatedRequest(req);
+  if (!isAuth) {
+    return NextResponse.json(
+      { error: "Unauthorized. Valid session or Bearer API key required." },
+      { status: 401 }
+    );
+  }
+
+  // 2. Rate limiting (max 10 simulate calls per minute per IP)
+  const clientIp = getClientIp(req);
+  const rl = rateLimiter.check(`simulate:${clientIp}`, 10, 60 * 1000);
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded. Please wait before simulating more messages." },
+      {
+        status: 429,
+        headers: { "Retry-After": Math.ceil(rl.resetInMs / 1000).toString() },
+      }
+    );
+  }
+
   try {
     const pb = getPocketBaseClient();
     await authenticateSuperuser(pb);
@@ -27,14 +51,16 @@ export async function POST(req: Request) {
       sourceByPlatform[s.platform] = s.id;
     }
 
-    // Pick a message to simulate (either random or from request index)
     let body: any = {};
     try {
       body = await req.json();
     } catch {}
 
     const randomIndex = Math.floor(Math.random() * DEMO_COMMUNITY_MESSAGES.length);
-    const chosenIndex = typeof body.index === "number" ? body.index % DEMO_COMMUNITY_MESSAGES.length : randomIndex;
+    const chosenIndex =
+      typeof body.index === "number" && Number.isInteger(body.index)
+        ? Math.abs(body.index) % DEMO_COMMUNITY_MESSAGES.length
+        : randomIndex;
     const msgDef = DEMO_COMMUNITY_MESSAGES[chosenIndex];
 
     const sourceId = sourceByPlatform[msgDef.platform] || sources[0]?.id;
@@ -67,7 +93,7 @@ export async function POST(req: Request) {
   } catch (err: any) {
     console.error("[API /simulate] Error:", err);
     return NextResponse.json(
-      { error: err?.message || "Failed to simulate community message" },
+      { error: "Failed to simulate community message. Please check server logs." },
       { status: 500 }
     );
   }

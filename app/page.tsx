@@ -146,13 +146,22 @@ export default function LeadRadarDashboard() {
     };
   }, [fetchData, pb]);
 
-  // Handle lead status updates
+  // Handle lead status updates via secure backend API
   const handleUpdateStatus = async (
     leadId: string,
     status: "new" | "approved" | "contacted" | "dismissed"
   ) => {
     try {
-      await pb.collection("leads").update(leadId, { lead_status: status });
+      const res = await fetch("/api/leads/status", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ leadId, status }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to update lead status");
+      }
+
       setLeads((prev) =>
         prev.map((l) => (l.id === leadId ? { ...l, lead_status: status } : l))
       );
@@ -175,6 +184,16 @@ export default function LeadRadarDashboard() {
       });
 
       const data = await res.json();
+
+      if (res.status === 401) {
+        setSimulatedAlert({
+          message: "جهت تزریق آزمایشی پیام، ابتدا باید وارد حساب مدیریت شوید (از منوی تنظیمات).",
+          type: "info",
+        });
+        setTimeout(() => setSimulatedAlert(null), 6000);
+        return;
+      }
+
       if (res.ok && data.success && data.lead) {
         setLeads((prev) => [data.lead, ...prev.filter((l) => l.id !== data.lead.id)]);
         setTotalRawMessages((prev) => prev + 1);

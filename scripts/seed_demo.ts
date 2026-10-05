@@ -1,5 +1,6 @@
 import PocketBase from "pocketbase";
 import { setupSchema } from "../pocketbase/setup_schema";
+import { authenticateSuperuser } from "../lib/pocketbase";
 
 export interface DemoMessageDefinition {
   author_handle: string;
@@ -197,16 +198,10 @@ export async function seedDemoMessages() {
   await setupSchema();
 
   // Superuser auth
-  const ADMIN_EMAIL = process.env.POCKETBASE_ADMIN_EMAIL || "admin@leadradar.local";
-  const ADMIN_PASSWORD = process.env.POCKETBASE_ADMIN_PASSWORD || "RadarSecure123456!";
-  try {
-    if (pb.collection("_superusers") && typeof pb.collection("_superusers").authWithPassword === "function") {
-      await pb.collection("_superusers").authWithPassword(ADMIN_EMAIL, ADMIN_PASSWORD);
-    } else if (pb.admins) {
-      await pb.admins.authWithPassword(ADMIN_EMAIL, ADMIN_PASSWORD);
-    }
-  } catch (err: any) {
-    console.error("[Seed Demo] Auth error:", err?.message || err);
+  const authOk = await authenticateSuperuser(pb);
+  if (!authOk) {
+    console.error("[Seed Demo] Superuser authentication failed. Ensure POCKETBASE_ADMIN_PASSWORD is set correctly.");
+    process.exit(1);
   }
 
   // Fetch sources mapping

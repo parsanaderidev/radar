@@ -90,11 +90,18 @@ export function getPocketBaseClient(): PocketBase {
 }
 
 /**
- * Authenticates as superuser / admin for background workers & migrations
+ * Authenticates as superuser / admin for background workers & server APIs.
+ * Requires explicit environment variables; does not fall back to hardcoded passwords.
  */
 export async function authenticateSuperuser(pb: PocketBase): Promise<boolean> {
-  const adminEmail = process.env.POCKETBASE_ADMIN_EMAIL || "admin@leadradar.local";
-  const adminPassword = process.env.POCKETBASE_ADMIN_PASSWORD || "RadarSecure123456!";
+  const adminEmail = process.env.POCKETBASE_ADMIN_EMAIL;
+  const adminPassword = process.env.POCKETBASE_ADMIN_PASSWORD;
+
+  if (!adminEmail || !adminPassword) {
+    throw new Error(
+      "[PocketBase Auth] Missing required credentials: POCKETBASE_ADMIN_EMAIL and POCKETBASE_ADMIN_PASSWORD must be configured in environment."
+    );
+  }
 
   try {
     if (pb.collection("_superusers") && typeof pb.collection("_superusers").authWithPassword === "function") {
@@ -106,8 +113,8 @@ export async function authenticateSuperuser(pb: PocketBase): Promise<boolean> {
       return true;
     }
     return false;
-  } catch (err) {
-    console.error("[PocketBase] Superuser authentication failed:", err);
+  } catch (err: any) {
+    console.error("[PocketBase] Superuser authentication failed:", err?.message || err);
     return false;
   }
 }
