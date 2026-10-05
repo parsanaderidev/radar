@@ -37,8 +37,8 @@ export function MetricsHeader({
         <div
           onClick={() => onSelectIntent("all")}
           className={cn(
-            "p-4 rounded-lg bg-[#0a0a0a] border hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
-            selectedIntent === "all" ? "border-white/40 ring-1 ring-white/10" : "border-[#1f1f1f]"
+            "p-4 rounded-lg bg-[#0a0a0a] border-2 hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 flex flex-col justify-between cursor-pointer active:scale-[0.98]",
+            selectedIntent === "all" ? "border-white/60" : "border-[#333333]"
           )}
           title="مشاهده همه پیام‌های دریافتی"
         >
