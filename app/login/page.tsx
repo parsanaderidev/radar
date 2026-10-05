@@ -42,18 +42,19 @@ function LoginForm() {
         throw new Error(data.error || "رمز عبور وارد شده نادرست است.");
       }
 
-      router.push(from);
-      router.refresh();
+      // Hard redirect to target destination ensuring session cookie is applied
+      window.location.href = from;
     } catch (err: any) {
       setError(err?.message || "خطا در برقراری ارتباط با سرور رخ داد. لطفاً مجدداً تلاش فرمایید.");
-    } finally {
       setIsLoading(false);
     }
   };
 
   const handleQuickFill = () => {
     setPassword(defaultAdminPass);
-    navigator.clipboard?.writeText(defaultAdminPass);
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(defaultAdminPass).catch(() => {});
+    }
     setCopied(true);
     setError(null);
     setTimeout(() => setCopied(false), 2500);
@@ -139,9 +140,6 @@ function LoginForm() {
             درج خودکار
           </button>
         </div>
-        <p className="text-[10px] text-neutral-500">
-          تنظیم‌شده در متغیر محیطی <span className="font-mono text-neutral-400">POCKETBASE_ADMIN_PASSWORD</span> در فایل <span className="font-mono text-neutral-400">.env</span>
-        </p>
       </div>
 
       <div className="pt-2 text-center">

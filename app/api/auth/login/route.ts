@@ -41,6 +41,15 @@ export async function POST(req: Request) {
     const cookieHeader = formatSessionSetCookie(token);
 
     const response = NextResponse.json({ success: true, message: "ورود به سیستم با موفقیت انجام شد." });
+    response.cookies.set({
+      name: "radar_session",
+      value: token,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 86400,
+      path: "/",
+    });
     response.headers.set("Set-Cookie", cookieHeader);
     return response;
   } catch (err) {
