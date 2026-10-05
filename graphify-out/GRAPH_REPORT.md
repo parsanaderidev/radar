@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-05)
 
 ## Corpus Check
-- 37 files · ~20,421 words
+- 37 files · ~20,487 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 266 nodes · 461 edges · 18 communities (8 shown, 10 thin omitted)
+- 267 nodes · 462 edges · 18 communities (8 shown, 10 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d556a7de`
+- Built from commit: `50e86210`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -64,7 +64,7 @@
 
 ### Community 0 - "Icons.tsx"
 Cohesion: 0.08
-Nodes (39): dynamic, LeadRadarDashboard(), ProductSettingsPage(), BaleIcon(), CheckCircleIcon(), CopyIcon(), CpuIcon(), EyeIcon() (+31 more)
+Nodes (40): dynamic, LeadRadarDashboard(), ProductSettingsPage(), BaleIcon(), CheckCircleIcon(), CopyIcon(), CpuIcon(), EyeIcon() (+32 more)
 
 ### Community 1 - "analyze/route.ts"
 Cohesion: 0.10
@@ -91,7 +91,7 @@ Cohesion: 0.06
 Nodes (30): 1. Prerequisites, 1. Zero Foreign Cloud Lock-in, 2. Install dependencies, 2. Vanilla TypeScript First, 3. Configure environment, 3. Zero External CDNs, 4. Native Persian / RTL Support, 4. Start PocketBase (+22 more)
 
 ## Knowledge Gaps
-- **102 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+97 more)
+- **103 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+98 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -105,9 +105,9 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `isAuthenticatedRequest()` connect `auth.ts` to `analyze/route.ts`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
-  _102 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _103 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08065458796025717 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07853107344632769 - nodes in this community are weakly interconnected._
 - **Should `analyze/route.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.10122448979591837 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**

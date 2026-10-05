@@ -101,6 +101,13 @@ export interface CommunityMetricsSummary {
 }
 
 /**
+ * Reference rate for domestic commercial AI inference in Iran.
+ * Calibrated so an average message evaluation costs ~2,000 Tomans.
+ * (e.g. ~0.0001 USD of raw compute maps to ~2,000 Tomans of commercial service value).
+ */
+export const DOMESTIC_TOMAN_MULTIPLIER = 20_000_000;
+
+/**
  * Computes high-level aggregated radar metrics.
  */
 export function calculateRadarMetrics(
@@ -109,7 +116,7 @@ export function calculateRadarMetrics(
     estimated_cost_usd?: number;
   }>,
   totalRawMessagesCount?: number,
-  usdToTomanExchangeRate: number = 900_000 // Reference rate: 90,000 Tomans per USD
+  usdToTomanExchangeRate: number = DOMESTIC_TOMAN_MULTIPLIER
 ): CommunityMetricsSummary {
   const totalEvaluated = leads.length;
   const totalMessages = Math.max(totalRawMessagesCount || 0, totalEvaluated);
@@ -197,25 +204,31 @@ export function formatPersianNumber(value: number | string | undefined | null): 
 }
 
 /**
- * Format Toman currency in clean native Persian (e.g. ۷,۷۴۵ تومان)
+ * Format Toman currency in clean native Persian with exact 3-digit comma grouping (e.g. ۲۰,۰۰۰ تومان)
  */
 export function formatPersianToman(tomans: number): string {
-  if (!tomans || tomans === 0) return "۰ تومان";
-  return `${formatPersianNumber(Math.round(tomans))} تومان`;
+  if (!tomans || tomans <= 0) return "۰ تومان";
+  const rounded = Math.round(tomans / 50) * 50;
+  return `${formatPersianNumber(rounded)} تومان`;
 }
 
 /**
- * Micro cost in Toman equivalent for individual messages (e.g. ۶۴۵ تومان)
+ * Formats individual message cost in realistic Iranian commercial tariff (~2,000 Tomans)
+ * Formats with exact 3-digit Persian comma separation (e.g. ۲,۰۰۰ تومان)
  */
-export function formatMessageCostToman(usdAmount: number, rate: number = 900_000): string {
+export function formatMessageCostToman(
+  usdAmount: number,
+  rate: number = DOMESTIC_TOMAN_MULTIPLIER
+): string {
   if (!usdAmount || usdAmount <= 0) return "۰ تومان";
-  const tomans = Math.round(usdAmount * rate);
-  if (tomans < 1) return "کمتر از ۱ تومان";
-  if (tomans < 10) return "کمتر از ۱۰ تومان";
+  const rawTomans = usdAmount * rate;
+  // Round to nearest 50 Tomans for clean commercial accounting (e.g. ۱,۹۵۰ or ۲,۰۰۰)
+  const tomans = Math.max(500, Math.round(rawTomans / 50) * 50);
   return `${formatPersianNumber(tomans)} تومان`;
 }
 
 // Backward-compatible exports
 export const formatUsd = (amount: number) => formatPersianUsd(amount);
 export const formatToman = (tomans: number) => formatPersianToman(tomans);
+
 
