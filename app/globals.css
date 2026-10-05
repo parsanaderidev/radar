@@ -136,6 +136,43 @@ body {
   box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.7);
 }
 
+/* ========================================================
+   Tactile 1px Border Expansion on Hover
+   Makes borders visually 1px thicker on hover without layout shift
+======================================================== */
+[class*="hover:border"] {
+  outline: 0px solid transparent;
+  outline-offset: 0px;
+  transition-property: color, background-color, border-color, outline, outline-color, box-shadow, transform;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[class*="hover:border"]:hover {
+  outline: 1px solid rgba(255, 255, 255, 0.22);
+  outline-offset: 0px;
+}
+
+[class*="hover:border-rose"]:hover {
+  outline-color: rgba(244, 63, 94, 0.45);
+}
+
+[class*="hover:border-[#00e599]"]:hover,
+[class*="hover:border-emerald"]:hover {
+  outline-color: rgba(0, 229, 153, 0.45);
+}
+
+[class*="hover:border-[#f5a623]"]:hover,
+[class*="hover:border-amber"]:hover {
+  outline-color: rgba(245, 166, 35, 0.45);
+}
+
+[class*="hover:border-[#0070f3]"]:hover,
+[class*="hover:border-blue"]:hover {
+  outline-color: rgba(0, 112, 243, 0.45);
+}
+
+
 /* Card hover elevate utility */
 .hover-card-elevate {
   transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
