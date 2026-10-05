@@ -40,14 +40,18 @@ export async function POST(req: Request) {
     const token = await createSessionToken();
     const cookieHeader = formatSessionSetCookie(token);
 
-    const response = NextResponse.json({ success: true, message: "ورود به سیستم با موفقیت انجام شد." });
+    const response = NextResponse.json({
+      success: true,
+      message: "ورود به سیستم با موفقیت انجام شد.",
+      token,
+    });
     response.cookies.set({
       name: "radar_session",
       value: token,
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
-      maxAge: 86400,
+      maxAge: 30 * 24 * 60 * 60,
       path: "/",
     });
     response.headers.set("Set-Cookie", cookieHeader);

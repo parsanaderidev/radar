@@ -5,7 +5,7 @@
  */
 
 const SESSION_COOKIE_NAME = "radar_session";
-const SESSION_MAX_AGE_SECONDS = 86400; // 24 hours
+const SESSION_MAX_AGE_SECONDS = 30 * 24 * 60 * 60; // 30 days persistent remember-me session
 
 /**
  * Derives a consistent signing key for HMAC

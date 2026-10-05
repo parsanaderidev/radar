@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-05)
 
 ## Corpus Check
-- 37 files · ~20,571 words
+- 37 files · ~20,421 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 266 nodes · 463 edges · 18 communities (8 shown, 10 thin omitted)
+- 266 nodes · 461 edges · 18 communities (8 shown, 10 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2d1f26c0`
+- Built from commit: `d556a7de`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -107,7 +107,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
   _102 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08182349503214495 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08065458796025717 - nodes in this community are weakly interconnected._
 - **Should `analyze/route.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.10122448979591837 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**

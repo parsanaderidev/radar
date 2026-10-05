@@ -3,12 +3,11 @@
 import React, { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { RadarLogo, RefreshIcon, EyeIcon, EyeOffIcon, SparklesIcon, CheckCircleIcon } from "@/components/Icons";
+import { RadarLogo, RefreshIcon, EyeIcon, EyeOffIcon } from "@/components/Icons";
 
 export const dynamic = "force-dynamic";
 
 function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const from = searchParams.get("from") || "/settings";
 
@@ -16,14 +15,11 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
-
-  const defaultAdminPass = "RadarSecure123456!";
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!password.trim()) {
-      setError("لطفاً ابتدا رمز عبور مدیریت را وارد نمایید.");
+      setError("لطفاً رمز عبور را وارد کنید.");
       return;
     }
 
@@ -39,25 +35,22 @@ function LoginForm() {
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "رمز عبور وارد شده نادرست است.");
+        throw new Error(data.error || "رمز عبور نادرست است.");
       }
 
-      // Hard redirect to target destination ensuring session cookie is applied
+      // Remember session token in client storage
+      if (data.token) {
+        try {
+          localStorage.setItem("radar_session", data.token);
+        } catch {}
+      }
+
+      // Hard redirect ensuring 30-day cookie is transmitted cleanly to middleware
       window.location.href = from;
     } catch (err: any) {
-      setError(err?.message || "خطا در برقراری ارتباط با سرور رخ داد. لطفاً مجدداً تلاش فرمایید.");
+      setError(err?.message || "خطا در احراز هویت رخ داد.");
       setIsLoading(false);
     }
-  };
-
-  const handleQuickFill = () => {
-    setPassword(defaultAdminPass);
-    if (navigator?.clipboard?.writeText) {
-      navigator.clipboard.writeText(defaultAdminPass).catch(() => {});
-    }
-    setCopied(true);
-    setError(null);
-    setTimeout(() => setCopied(false), 2500);
   };
 
   return (
@@ -73,7 +66,7 @@ function LoginForm() {
 
       <div className="space-y-1.5">
         <label htmlFor="admin-password" className="block text-xs font-medium text-neutral-300">
-          رمز عبور مدیریت سیستم
+          رمز عبور مدیر سیستم
         </label>
         <div className="relative flex items-center">
           <input
@@ -81,11 +74,11 @@ function LoginForm() {
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="رمز عبور مدیر را وارد کنید"
+            placeholder="••••••••••••••••"
             required
             autoFocus
             autoComplete="current-password"
-            className="w-full pl-10 pr-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all dir-ltr text-left"
+            className="w-full pl-10 pr-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all dir-ltr text-left"
           />
           <button
             type="button"
@@ -107,40 +100,12 @@ function LoginForm() {
         {isLoading ? (
           <>
             <RefreshIcon className="w-4 h-4 animate-spin" />
-            <span>در حال بررسی و احراز هویت...</span>
+            <span>در حال بررسی اعتبار...</span>
           </>
         ) : (
-          <span>تأیید و ورود به تنظیمات</span>
+          <span>تأیید و ورود</span>
         )}
       </button>
-
-      {/* Admin Credential Helper Card in Persian */}
-      <div className="p-3 rounded-lg bg-[#0d0d0d] border border-[#222222] text-[11px] text-neutral-400 space-y-1.5">
-        <div className="flex items-center justify-between text-neutral-300 font-medium">
-          <div className="flex items-center gap-1.5">
-            <SparklesIcon className="w-3.5 h-3.5 text-neutral-400" />
-            <span>رمز عبور پیش‌فرض مدیر:</span>
-          </div>
-          {copied && (
-            <span className="text-[10px] text-[#00e599] flex items-center gap-1">
-              <CheckCircleIcon className="w-3 h-3 text-[#00e599]" />
-              <span>درج شد</span>
-            </span>
-          )}
-        </div>
-        <div className="flex items-center justify-between gap-2 p-1.5 rounded bg-black/60 border border-[#1f1f1f]">
-          <span className="font-mono text-xs text-neutral-200 dir-ltr select-all">
-            {defaultAdminPass}
-          </span>
-          <button
-            type="button"
-            onClick={handleQuickFill}
-            className="text-[10px] text-neutral-300 hover:text-white px-2 py-0.5 rounded bg-[#1e1e1e] hover:bg-[#2e2e2e] transition-colors cursor-pointer"
-          >
-            درج خودکار
-          </button>
-        </div>
-      </div>
 
       <div className="pt-2 text-center">
         <Link
@@ -167,20 +132,14 @@ export default function LoginPage() {
             </div>
           </Link>
           <div className="space-y-1">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-neutral-800 bg-neutral-900/60 text-[11px] text-neutral-400 mb-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00e599]" />
-              <span>احراز هویت مدیر سیستم</span>
-            </div>
-            <h1 className="text-base sm:text-lg font-semibold text-white">
-              ورود به تنظیمات محصول و پرسونای مشتری (ICP)
-            </h1>
-            <p className="text-xs text-neutral-400 leading-relaxed">
-              جهت ویرایش مشخصات محصول، کلمات کلیدی رصد و تنظیمات پرسونای خریدار ایده‌آل رمز عبور مدیریت را وارد نمایید.
+            <h1 className="text-lg font-semibold text-white">ورود به پنل مدیریت رادار</h1>
+            <p className="text-xs text-neutral-400">
+              جهت دسترسی به تنظیمات محصول و پرسونای مشتری (ICP) رمز عبور مدیر را وارد کنید.
             </p>
           </div>
         </div>
 
-        <Suspense fallback={<div className="text-center text-xs text-neutral-500">در حال بارگذاری فرم ورود...</div>}>
+        <Suspense fallback={<div className="text-center text-xs text-neutral-500">در حال بارگذاری...</div>}>
           <LoginForm />
         </Suspense>
       </div>
