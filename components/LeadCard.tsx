@@ -12,7 +12,7 @@ import {
   SparklesIcon,
   CpuIcon,
 } from "./Icons";
-import { toPersianDigits, formatMessageCostToman, formatPersianUsd } from "../lib/pricing";
+import { toPersianDigits, formatMessageCostToman } from "../lib/pricing";
 import { cn } from "../lib/cn";
 import type { LeadRecord } from "../lib/pocketbase";
 
@@ -246,12 +246,8 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
           <span>
             {toPersianDigits(lead.input_tokens || 0)} توکن ورودی / {toPersianDigits(lead.output_tokens || 0)} خروجی
           </span>
-          <span className="text-neutral-600 px-1">•</span>
           <span className="text-neutral-300 font-medium">
-            {formatMessageCostToman(lead.estimated_cost_usd || 0)}
-          </span>
-          <span className="text-neutral-600 text-[11px]">
-            ({formatPersianUsd(lead.estimated_cost_usd || 0)})
+            هزینه: {formatMessageCostToman(lead.estimated_cost_usd || 0)}
           </span>
         </div>
 

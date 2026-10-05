@@ -175,11 +175,12 @@ export function calculateRadarMetrics(
 }
 
 /**
- * Format USD with clean Persian numerals without unnecessary trailing zeroes (e.g. ۰.۰۰۸۶ دلار)
+ * Format USD with clean Persian numerals without awkward scientific/micro trailing decimals
  */
 export function formatPersianUsd(amount: number): string {
-  if (amount === 0) return "۰ دلار";
-  const num = amount < 0.01 ? parseFloat(amount.toFixed(5)) : parseFloat(amount.toFixed(3));
+  if (!amount || amount === 0) return "۰ دلار";
+  if (amount < 0.001) return "کمتر از ۰.۰۰۱ دلار";
+  const num = amount < 0.01 ? parseFloat(amount.toFixed(3)) : parseFloat(amount.toFixed(2));
   return `${toPersianDigits(num)} دلار`;
 }
 
@@ -207,7 +208,9 @@ export function formatPersianToman(tomans: number): string {
  * Micro cost in Toman equivalent for individual messages (e.g. ۶۴۵ تومان)
  */
 export function formatMessageCostToman(usdAmount: number, rate: number = 900_000): string {
+  if (!usdAmount || usdAmount <= 0) return "۰ تومان";
   const tomans = Math.round(usdAmount * rate);
+  if (tomans < 1) return "کمتر از ۱ تومان";
   if (tomans < 10) return "کمتر از ۱۰ تومان";
   return `${formatPersianNumber(tomans)} تومان`;
 }
@@ -215,3 +218,4 @@ export function formatMessageCostToman(usdAmount: number, rate: number = 900_000
 // Backward-compatible exports
 export const formatUsd = (amount: number) => formatPersianUsd(amount);
 export const formatToman = (tomans: number) => formatPersianToman(tomans);
+

@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   const isAuth = await isAuthenticatedRequest(req);
   if (!isAuth) {
     return NextResponse.json(
-      { error: "Unauthorized access. Please log in as an administrator." },
+      { error: "دسترسی غیرمجاز. لطفاً به عنوان مدیر سیستم وارد شوید." },
       { status: 401 }
     );
   }
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
     if (!validation.success || !validation.data) {
       return NextResponse.json(
-        { error: "Validation failed", details: validation.errors },
+        { error: "اعتبارسنجی فیلدها ناموفق بود.", details: validation.errors },
         { status: 400 }
       );
     }
@@ -42,14 +42,15 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Product settings updated successfully.",
+      message: "تنظیمات محصول با موفقیت در پایگاه داده ذخیره شد.",
       product: updated,
     });
   } catch (err: any) {
     console.error("[API /settings] Update error:", err);
     return NextResponse.json(
-      { error: "Failed to update product settings. Please check server logs." },
+      { error: "خطا در به‌روزرسانی تنظیمات محصول در دیتابیس." },
       { status: 500 }
     );
   }
 }
+

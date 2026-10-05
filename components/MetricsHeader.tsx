@@ -5,7 +5,6 @@ import { SearchIcon } from "./Icons";
 import {
   toPersianDigits,
   formatPersianToman,
-  formatPersianUsd,
   formatMessageCostToman,
   type CommunityMetricsSummary,
 } from "../lib/pricing";
@@ -136,7 +135,7 @@ export function MetricsHeader({
               {formatPersianToman(metrics.estimatedTomanSpend)}
             </div>
             <div className="text-xs text-neutral-500 mt-1">
-              معادل {formatPersianUsd(metrics.totalSpendUsd)}
+              مجموع هزینه مصرفی توکن‌ها
             </div>
           </div>
         </div>
