@@ -12,10 +12,10 @@
     "semantic_hash": ""
   },
   "app/api/auth/logout/route.ts": {
-    "mtime": 1791226268.154953,
-    "seen": 1791227511.9101603,
-    "ast_hash": "f50efac93646ae8a565823d607e7684f",
-    "semantic_hash": "f50efac93646ae8a565823d607e7684f"
+    "mtime": 1791230103.2816224,
+    "seen": 1791230140.1079934,
+    "ast_hash": "cb2cd15b8a88f89627e89df4b6bed91c",
+    "semantic_hash": ""
   },
   "app/api/auth/session/route.ts": {
     "mtime": 1791226279.414952,
@@ -60,10 +60,10 @@
     "semantic_hash": "e730c0c3a3937638d2ff0f38b59dc759"
   },
   "app/settings/page.tsx": {
-    "mtime": 1791226515.7809317,
-    "seen": 1791227511.9101737,
-    "ast_hash": "b46c5813bd4ab35ce6fc2b1b99a7914f",
-    "semantic_hash": "b46c5813bd4ab35ce6fc2b1b99a7914f"
+    "mtime": 1791230117.6016212,
+    "seen": 1791230140.1080022,
+    "ast_hash": "12f767ba483c7f97052c2445e49a14e1",
+    "semantic_hash": ""
   },
   "components/Icons.tsx": {
     "mtime": 1791229096.6247091,

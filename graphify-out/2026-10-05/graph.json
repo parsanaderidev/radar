@@ -259,7 +259,7 @@
       "file_type": "code",
       "norm_label": "loginpage()",
       "source_file": "app/login/page.tsx",
-      "source_location": "L160"
+      "source_location": "L158"
     },
     {
       "id": "app_page_leadradardashboard",
@@ -6472,7 +6472,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/login/page.tsx",
-      "source_location": "L160",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -8457,5 +8457,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6103d0abb8def8869fc4a4105fc3874a05b26ae2"
+  "built_at_commit": "b43f02027810332bdd9b254ae2262ea5f3c394a3"
 }

@@ -3255,7 +3255,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/api/auth/logout/route.ts",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -3483,7 +3483,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/settings/page.tsx",
-      "source_location": "L263",
+      "source_location": "L262",
       "weight": 1.0
     },
     {
@@ -8457,5 +8457,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b43f02027810332bdd9b254ae2262ea5f3c394a3"
+  "built_at_commit": "2d1f26c09076eec674a3b7e1891130094287aeaf"
 }

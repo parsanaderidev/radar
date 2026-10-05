@@ -82,8 +82,7 @@ export default function ProductSettingsPage() {
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
-      router.push("/login");
-      router.refresh();
+      window.location.href = "/login?from=/settings";
     } catch (e) {
       console.error("Logout error", e);
     }
