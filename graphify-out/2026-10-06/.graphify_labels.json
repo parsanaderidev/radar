@@ -1,0 +1,20 @@
+{
+  "0": "Icons.tsx",
+  "1": "analyze/route.ts",
+  "2": "compilerOptions",
+  "3": "package.json",
+  "4": "auth.ts",
+  "5": "devDependencies",
+  "6": "Radar — AI Lead Radar",
+  "7": "AGENTS.md",
+  "8": "ConcurrencyLimiter",
+  "9": "InMemoryRateLimiter",
+  "10": "layout.tsx",
+  "11": "next.config.ts",
+  "12": "next-env.d.ts",
+  "13": "postcss.config.mjs",
+  "14": "rules/graphify.md",
+  "15": "ponytail.md",
+  "16": "workflows/graphify.md",
+  "17": "CLAUDE.md"
+}

@@ -120,47 +120,50 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
       )}
     >
       {/* Top Header Row */}
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
           {/* Platform Tag */}
-          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#222222] bg-[#111111] text-xs text-neutral-300 font-medium">
+          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#222222] bg-[#111111] text-xs text-neutral-300 font-medium shrink-0">
             {platformInfo.icon}
             <span>{platformInfo.name}</span>
           </span>
 
           {/* Author Handle */}
-          <span className="text-xs text-neutral-300 dir-ltr bg-[#141414] border border-[#222222] px-2 py-0.5 rounded-md">
+          <span
+            className="text-xs text-neutral-300 dir-ltr bg-[#141414] border border-[#222222] px-2 py-0.5 rounded-md max-w-[150px] sm:max-w-[200px] truncate"
+            title={rawMsg?.author_handle || "@کاربر"}
+          >
             {rawMsg?.author_handle || "@کاربر"}
           </span>
 
           {/* Status indicators */}
           {lead.lead_status === "contacted" && (
-            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-blue-950/40 border border-blue-800/50 text-blue-400">
+            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-blue-950/40 border border-blue-800/50 text-blue-400 shrink-0">
               تماس برقرار شد
             </span>
           )}
           {lead.lead_status === "approved" && (
-            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-emerald-950/40 border border-emerald-800/50 text-emerald-400">
+            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-emerald-950/40 border border-emerald-800/50 text-emerald-400 shrink-0">
               تأیید شده
             </span>
           )}
           {lead.lead_status === "dismissed" && (
-            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-neutral-900 border border-neutral-800 text-neutral-500">
+            <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-neutral-900 border border-neutral-800 text-neutral-500 shrink-0">
               رد شده
             </span>
           )}
         </div>
 
         {/* Intent Status & Score */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[#222222] bg-[#111111] text-xs">
-            <span className={cn("w-1.5 h-1.5 rounded-full", intent.dotColor)} />
+        <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[#222222] bg-[#111111] text-xs shrink-0">
+            <span className={cn("w-1.5 h-1.5 rounded-full shrink-0", intent.dotColor)} />
             <span className={cn("font-medium", intent.textColor)}>{intent.label}</span>
           </div>
 
           <div
             className={cn(
-              "px-2.5 py-0.5 rounded-md text-xs font-semibold border flex items-center gap-1.5",
+              "px-2.5 py-0.5 rounded-md text-xs font-semibold border flex items-center gap-1.5 shrink-0",
               intent.scoreBadge
             )}
             title="امتیاز هوش از ۱۰۰"
@@ -239,27 +242,29 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
       )}
 
       {/* Footer: Token Ledger & Actions */}
-      <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#1a1a1a]">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 pt-2.5 border-t border-[#1a1a1a]">
         {/* Token and micro-cost badge in Persian */}
-        <div className="flex items-center gap-2 text-xs text-neutral-500">
-          <CpuIcon className="w-3.5 h-3.5 text-neutral-500" />
-          <span>
-            {toPersianDigits(lead.input_tokens || 0)} توکن ورودی / {toPersianDigits(lead.output_tokens || 0)} خروجی
-          </span>
-          <span className="text-neutral-300 font-medium">
+        <div className="flex items-center justify-between sm:justify-start gap-2 text-xs text-neutral-500 w-full sm:w-auto">
+          <div className="flex items-center gap-1.5">
+            <CpuIcon className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
+            <span className="truncate">
+              {toPersianDigits(lead.input_tokens || 0)} / {toPersianDigits(lead.output_tokens || 0)} توکن
+            </span>
+          </div>
+          <span className="text-neutral-300 font-medium shrink-0">
             هزینه: {formatMessageCostToman(lead.estimated_cost_usd || 0)}
           </span>
         </div>
 
         {/* Workflow Action Buttons */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 w-full sm:w-auto justify-end flex-wrap sm:flex-nowrap">
           {lead.lead_status !== "contacted" && (
             <button
               onClick={() => handleStatusChange("contacted")}
               disabled={isUpdating}
-              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] hover:border-[#383838] text-neutral-200 transition-all duration-200 ease-out active:scale-95 flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-8 sm:h-7 px-3 sm:px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] hover:border-[#383838] text-neutral-200 transition-all duration-200 ease-out active:scale-95 flex items-center justify-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 flex-1 sm:flex-initial"
             >
-              <CheckCircleIcon className="w-3.5 h-3.5 text-[#0070f3]" />
+              <CheckCircleIcon className="w-3.5 h-3.5 text-[#0070f3] shrink-0" />
               <span>ارتباط برقرار شد</span>
             </button>
           )}
@@ -268,7 +273,7 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={() => handleStatusChange("approved")}
               disabled={isUpdating}
-              className="h-7 px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] hover:border-[#383838] text-neutral-200 transition-all duration-200 ease-out active:scale-95 flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-8 sm:h-7 px-3 sm:px-2.5 rounded-md text-xs font-medium bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] hover:border-[#383838] text-neutral-200 transition-all duration-200 ease-out active:scale-95 flex items-center justify-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 flex-1 sm:flex-initial"
             >
               <span>تأیید سرنخ</span>
             </button>
@@ -278,9 +283,9 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
             <button
               onClick={() => handleStatusChange("dismissed")}
               disabled={isUpdating}
-              className="h-7 px-2.5 rounded-md text-xs text-neutral-500 hover:text-neutral-300 hover:bg-[#111111] transition-all duration-200 ease-out active:scale-95 flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-8 sm:h-7 px-3 sm:px-2.5 rounded-md text-xs text-neutral-500 hover:text-neutral-300 hover:bg-[#111111] transition-all duration-200 ease-out active:scale-95 flex items-center justify-center gap-1 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 flex-1 sm:flex-initial"
             >
-              <XCircleIcon className="w-3.5 h-3.5" />
+              <XCircleIcon className="w-3.5 h-3.5 shrink-0" />
               <span>رد کردن</span>
             </button>
           )}

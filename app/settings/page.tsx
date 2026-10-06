@@ -141,10 +141,10 @@ export default function ProductSettingsPage() {
     <div className="min-h-screen flex flex-col bg-[#000000] text-[#ededed]">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* Active Product Banner */}
-        <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="space-y-1">
+        <div className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+          <div className="space-y-1 w-full sm:w-auto">
             <div className="flex items-center gap-2">
               <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
                 تنظیمات سیستم
@@ -153,17 +153,17 @@ export default function ProductSettingsPage() {
                 تنظیمات محصول و پرسونای مشتری (ICP)
               </h1>
             </div>
-            <p className="text-xs text-neutral-400 max-w-3xl line-clamp-1">
+            <p className="text-xs text-neutral-400 max-w-3xl line-clamp-2 sm:line-clamp-1">
               مدیریت هویت محصول، مزایای رقابتی و تعریف پرسونای خریدار ایده‌آل (ICP) برای هدایت موتور هوشمند رادار
             </p>
           </div>
 
-          <div className="flex items-center gap-2 self-stretch md:self-auto justify-end">
+          <div className="flex items-center gap-2 self-stretch sm:self-auto justify-end flex-wrap sm:flex-nowrap pt-2 sm:pt-0 border-t border-[#1a1a1a] sm:border-0 w-full sm:w-auto">
             <button
               type="button"
               onClick={resetToLoaded}
               disabled={isSaving || isLoading}
-              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs text-neutral-300 transition-all duration-200 ease-out active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-sm"
+              className="h-8 px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs text-neutral-300 transition-all duration-200 ease-out active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-sm flex-1 sm:flex-initial"
               title="بازنشانی تغییرات ذخیره‌نشده"
             >
               <RefreshIcon className="w-3.5 h-3.5 text-neutral-400" />
@@ -174,7 +174,7 @@ export default function ProductSettingsPage() {
               type="button"
               onClick={() => handleSave()}
               disabled={isSaving || isLoading}
-              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#eaeaea] hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] text-xs font-medium inline-flex items-center gap-1.5 transition-all duration-200 ease-out active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#eaeaea] hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] text-xs font-medium inline-flex items-center justify-center gap-1.5 transition-all duration-200 ease-out active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 flex-1 sm:flex-initial"
             >
               {isSaving ? (
                 <>
@@ -189,7 +189,7 @@ export default function ProductSettingsPage() {
             <button
               type="button"
               onClick={handleLogout}
-              className="h-8 px-3 rounded-md bg-neutral-900 hover:bg-rose-950/40 border border-neutral-800 hover:border-rose-900/60 text-neutral-400 hover:text-rose-300 text-xs transition-all duration-200 ease-out active:scale-95 flex items-center gap-1 cursor-pointer"
+              className="h-8 px-3 rounded-md bg-neutral-900 hover:bg-rose-950/40 border border-neutral-800 hover:border-rose-900/60 text-neutral-400 hover:text-rose-300 text-xs transition-all duration-200 ease-out active:scale-95 flex items-center justify-center gap-1 cursor-pointer shrink-0"
               title="خروج از پنل مدیریت"
             >
               <span>خروج</span>
@@ -198,11 +198,11 @@ export default function ProductSettingsPage() {
         </div>
 
         {/* 4 Status Overview Tiles (Matching Dashboard Metrics Header Grid) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
           {/* Tile 1: Active Product */}
           <div
             onClick={() => focusInput("product-name-input")}
-            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
+            className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
             title="کلیک برای ویرایش نام و شرح محصول"
           >
             <div className="flex items-center justify-between">
@@ -211,11 +211,11 @@ export default function ProductSettingsPage() {
               </span>
               <span className="text-[10px] text-neutral-500 opacity-80">ویرایش ↵</span>
             </div>
-            <div className="mt-3">
-              <div className="text-base sm:text-lg font-semibold text-white truncate">
+            <div className="mt-2.5 sm:mt-3">
+              <div className="text-sm sm:text-base lg:text-lg font-semibold text-white truncate">
                 {name || "در حال بارگذاری..."}
               </div>
-              <div className="text-xs text-neutral-500 mt-1 truncate">
+              <div className="text-[11px] sm:text-xs text-neutral-500 mt-1 truncate">
                 {tagline || "شعار تعریف نشده"}
               </div>
             </div>
@@ -224,20 +224,20 @@ export default function ProductSettingsPage() {
           {/* Tile 2: ICP Status */}
           <div
             onClick={() => focusInput("icp-textarea")}
-            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
+            className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
             title="کلیک برای ویرایش پرسونای خریدار ایده‌آل (ICP)"
           >
             <div className="flex items-center justify-between gap-2">
-              <span className="text-xs text-neutral-400 font-medium">
+              <span className="text-xs text-neutral-400 font-medium truncate">
                 پرسونای مشتری (ICP)
               </span>
-              <span className="flex h-2 w-2 rounded-full bg-[#00e599] shadow-[0_0_8px_rgba(0,229,153,0.6)] animate-pulse-glow" />
+              <span className="flex h-2 w-2 rounded-full bg-[#00e599] shadow-[0_0_8px_rgba(0,229,153,0.6)] animate-pulse-glow shrink-0" />
             </div>
-            <div className="mt-3">
-              <div className="text-base sm:text-lg font-semibold text-[#00e599]">
+            <div className="mt-2.5 sm:mt-3">
+              <div className="text-sm sm:text-base lg:text-lg font-semibold text-[#00e599]">
                 {icp ? "آماده و فعال" : "در انتظار تکمیل"}
               </div>
-              <div className="text-xs text-neutral-500 mt-1">
+              <div className="text-[11px] sm:text-xs text-neutral-500 mt-1 truncate">
                 الگوی تریاژ پیام‌های ورودی
               </div>
             </div>
@@ -246,23 +246,23 @@ export default function ProductSettingsPage() {
           {/* Tile 3: Keywords Count */}
           <div
             onClick={() => focusInput("keywords-input")}
-            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
+            className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
             title="کلیک برای افزودن یا ویرایش کلیدواژه‌های نظارت"
           >
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs text-neutral-400 font-medium">
+            <div className="flex items-center justify-between gap-1.5">
+              <span className="text-xs text-neutral-400 font-medium truncate">
                 کلیدواژه‌های نظارت
               </span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
-                فیلتر زنده
+              <span className="text-[10px] px-1.5 sm:px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium shrink-0">
+                فیلتر
               </span>
             </div>
-            <div className="mt-3">
-              <div className="text-base sm:text-lg font-semibold text-white">
+            <div className="mt-2.5 sm:mt-3">
+              <div className="text-sm sm:text-base lg:text-lg font-semibold text-white">
                 {toPersianDigits(parsedKeywords.length)} عبارت
               </div>
-              <div className="text-xs text-neutral-500 mt-1">
-                رصد در تلگرام، بله و انجمن‌ها
+              <div className="text-[11px] sm:text-xs text-neutral-500 mt-1 truncate">
+                رصد در پیام‌رسان‌ها
               </div>
             </div>
           </div>
@@ -276,21 +276,21 @@ export default function ProductSettingsPage() {
               });
               setTimeout(() => setStatusMessage(null), 5000);
             }}
-            className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
+            className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-1 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col justify-between cursor-pointer active:scale-[0.985]"
             title="کلیک برای بررسی وضعیت ذخیره‌سازی محلی"
           >
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-neutral-400 font-medium">
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-xs text-neutral-400 font-medium truncate">
                 ذخیره‌سازی و حریم داده
               </span>
-              <span className="text-[10px] text-[#00e599]">بررسی ↵</span>
+              <span className="text-[10px] text-[#00e599] shrink-0">بررسی ↵</span>
             </div>
-            <div className="mt-3">
-              <div className="text-base sm:text-lg font-semibold text-white">
+            <div className="mt-2.5 sm:mt-3">
+              <div className="text-sm sm:text-base lg:text-lg font-semibold text-white">
                 SQLite محلی
               </div>
-              <div className="text-xs text-[#00e599] mt-1">
-                ۱۰۰٪ مستقل از کلاد خارجی
+              <div className="text-[11px] sm:text-xs text-[#00e599] mt-1 truncate">
+                ۱۰۰٪ مستقل از کلاد
               </div>
             </div>
           </div>
@@ -332,7 +332,7 @@ export default function ProductSettingsPage() {
             {/* Main Form (2 Columns) */}
             <form onSubmit={handleSave} className="lg:col-span-2 space-y-6">
               {/* Card 1: Product Identity */}
-              <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors overflow-hidden space-y-4 p-5">
+              <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors overflow-hidden space-y-4 p-4 sm:p-5">
                 <div className="flex items-center justify-between border-b border-[#1f1f1f] pb-3">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-white" />
@@ -393,7 +393,7 @@ export default function ProductSettingsPage() {
               </div>
 
               {/* Card 2: ICP & Target Signals */}
-              <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors overflow-hidden space-y-4 p-5">
+              <div className="rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] transition-colors overflow-hidden space-y-4 p-4 sm:p-5">
                 <div className="flex items-center justify-between border-b border-[#1f1f1f] pb-3">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#00e599]" />
@@ -488,7 +488,7 @@ export default function ProductSettingsPage() {
                   <button
                     type="submit"
                     disabled={isSaving}
-                    className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                    className="w-full sm:w-auto h-9 sm:h-8 px-5 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-semibold sm:font-medium inline-flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shrink-0"
                   >
                     {isSaving ? (
                       <>
@@ -506,7 +506,7 @@ export default function ProductSettingsPage() {
             {/* Sidebar Specifications (1 Column - Sticky on Desktop) */}
             <div className="space-y-4 lg:sticky lg:top-20 self-start">
               {/* Architecture specs card */}
-              <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 space-y-3 cursor-default">
+              <div className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:bg-[#0d0d0d] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-200 space-y-3 cursor-default">
                 <div className="flex items-center gap-2 text-white font-medium text-xs pb-1 border-b border-[#1f1f1f]">
                   <ServerIcon className="w-3.5 h-3.5 text-neutral-400" />
                   <span>مشخصات زیرساخت بومی</span>

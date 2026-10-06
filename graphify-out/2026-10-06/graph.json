@@ -3530,7 +3530,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/LeadCard.tsx",
-      "source_location": "L172",
+      "source_location": "L169",
       "weight": 1.0
     },
     {
@@ -3542,7 +3542,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/LeadCard.tsx",
-      "source_location": "L255",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -3602,7 +3602,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/Navbar.tsx",
-      "source_location": "L66",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -8455,5 +8455,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b8b526835d3ca7a8c3f9f63a210c59b4b6f00a76"
+  "built_at_commit": "50e86210d20f95268a0cb2e122708571742fe01b"
 }

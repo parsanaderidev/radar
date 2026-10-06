@@ -327,13 +327,13 @@ export default function LeadRadarDashboard() {
     <div className="min-h-screen flex flex-col bg-[#000000] text-[#ededed]">
       <Navbar onSimulateFeed={handleSimulateFeed} isSimulating={isSimulating} />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* Active Product Banner (Vercel Project Card Style) */}
         {activeProduct && (
-          <div className="p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
             <Link
               href="/settings"
-              className="space-y-1 group cursor-pointer flex-1"
+              className="space-y-1 group cursor-pointer flex-1 w-full sm:w-auto"
               title="مشاهده و ویرایش تنظیمات این محصول و پرسونای مشتری"
             >
               <div className="flex items-center gap-2">
@@ -345,15 +345,15 @@ export default function LeadRadarDashboard() {
                   <span className="text-xs text-neutral-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">← تنظیمات</span>
                 </h1>
               </div>
-              <p className="text-xs text-neutral-400 max-w-3xl line-clamp-1 group-hover:text-neutral-300 transition-colors duration-200">
+              <p className="text-xs text-neutral-400 max-w-3xl line-clamp-2 sm:line-clamp-1 group-hover:text-neutral-300 transition-colors duration-200">
                 {activeProduct.tagline || activeProduct.description}
               </p>
             </Link>
 
-            <div className="flex items-center gap-2.5 self-stretch md:self-auto justify-end">
-              <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] text-neutral-500">
+            <div className="flex items-center gap-2.5 self-stretch sm:self-auto justify-between sm:justify-end pt-2 sm:pt-0 border-t border-[#1a1a1a] sm:border-0 w-full sm:w-auto">
+              <span className="inline-flex items-center gap-1.5 text-[11px] text-neutral-500">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow" />
-                <span>همگام‌شده:</span>
+                <span className="hidden xs:inline">همگام‌شده:</span>
                 <span className="text-neutral-300 font-medium">{lastRefreshedAt}</span>
               </span>
 
@@ -361,7 +361,7 @@ export default function LeadRadarDashboard() {
                 onClick={handleManualRefresh}
                 disabled={isRefreshing || isLoading}
                 className={cn(
-                  "h-8 px-3.5 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs font-medium text-neutral-200 transition-all duration-200 ease-out active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-sm",
+                  "h-8 px-3 sm:px-3.5 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs font-medium text-neutral-200 transition-all duration-200 ease-out active:scale-95 flex items-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-sm shrink-0",
                   isRefreshing && "bg-[#181818] border-[#383838] text-white"
                 )}
                 title="بازخوانی داده‌ها از پایگاه داده محلی پاکت‌بیس"
@@ -377,12 +377,12 @@ export default function LeadRadarDashboard() {
         {simulatedAlert && (
           <div className="p-3 rounded-lg bg-[#0c0c0c] border border-[#262626] text-xs text-neutral-200 flex items-center justify-between gap-2 shadow-lg animate-card-in">
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00e599]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] shrink-0" />
               <span>{simulatedAlert.message}</span>
             </div>
             <button
               onClick={() => setSimulatedAlert(null)}
-              className="text-neutral-500 hover:text-neutral-200 text-xs px-2 cursor-pointer"
+              className="text-neutral-500 hover:text-neutral-200 text-xs px-2 cursor-pointer shrink-0"
             >
               ✕
             </button>
@@ -412,19 +412,19 @@ export default function LeadRadarDashboard() {
           </div>
 
           <div className="flex items-center gap-2 text-xs text-neutral-500">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow shrink-0" />
             <span className="hidden sm:inline">ارتباط زنده لحظه‌ای (SSE)</span>
           </div>
         </div>
 
         {/* Messenger / Platform Filter & Sort Bar (Matching Vercel Aesthetic) */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-2 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f]">
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 p-2 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f]">
           {/* Messenger filter pills */}
-          <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0">
+          <div className="flex items-center gap-1 overflow-x-auto pb-1.5 md:pb-0 no-scrollbar scrollbar-none flex-nowrap -mx-0.5 px-0.5">
             <button
               onClick={() => setSelectedPlatform("all")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0",
                 selectedPlatform === "all"
                   ? "bg-[#222222] text-white shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -437,7 +437,7 @@ export default function LeadRadarDashboard() {
             <button
               onClick={() => setSelectedPlatform("telegram")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0",
                 selectedPlatform === "telegram"
                   ? "bg-[#222222] text-[#229ed9] shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -451,7 +451,7 @@ export default function LeadRadarDashboard() {
             <button
               onClick={() => setSelectedPlatform("bale")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0",
                 selectedPlatform === "bale"
                   ? "bg-[#222222] text-[#00e599] shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -465,7 +465,7 @@ export default function LeadRadarDashboard() {
             <button
               onClick={() => setSelectedPlatform("twitter_x")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0",
                 selectedPlatform === "twitter_x"
                   ? "bg-[#222222] text-white shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -479,7 +479,7 @@ export default function LeadRadarDashboard() {
             <button
               onClick={() => setSelectedPlatform("forum")}
               className={cn(
-                "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5",
+                "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0",
                 selectedPlatform === "forum"
                   ? "bg-[#222222] text-neutral-200 shadow-sm"
                   : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -492,13 +492,13 @@ export default function LeadRadarDashboard() {
           </div>
 
           {/* Sort controls */}
-          <div className="flex items-center gap-1.5 self-end sm:self-auto">
-            <span className="text-xs text-neutral-500 whitespace-nowrap">مرتب‌سازی:</span>
-            <div className="flex items-center gap-1 bg-[#000000] p-1 rounded-md border border-[#262626]">
+          <div className="flex items-center justify-between sm:justify-end gap-1.5 w-full md:w-auto pt-2 md:pt-0 border-t border-[#1a1a1a] md:border-0">
+            <span className="text-xs text-neutral-500 whitespace-nowrap shrink-0">مرتب‌سازی:</span>
+            <div className="flex items-center gap-1 bg-[#000000] p-1 rounded-md border border-[#262626] flex-1 sm:flex-initial justify-between sm:justify-start">
               <button
                 onClick={() => setSortBy("newest")}
                 className={cn(
-                  "px-2.5 py-1 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap",
+                  "px-2 sm:px-2.5 py-1 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex-1 sm:flex-initial text-center",
                   sortBy === "newest"
                     ? "bg-[#222222] text-white shadow-sm"
                     : "text-neutral-400 hover:text-white"
@@ -509,7 +509,7 @@ export default function LeadRadarDashboard() {
               <button
                 onClick={() => setSortBy("highest_score")}
                 className={cn(
-                  "px-2.5 py-1 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap",
+                  "px-2 sm:px-2.5 py-1 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex-1 sm:flex-initial text-center",
                   sortBy === "highest_score"
                     ? "bg-[#222222] text-[#00e599] shadow-sm"
                     : "text-neutral-400 hover:text-[#00e599]"
@@ -520,7 +520,7 @@ export default function LeadRadarDashboard() {
               <button
                 onClick={() => setSortBy("lowest_spend")}
                 className={cn(
-                  "px-2.5 py-1 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap",
+                  "px-2 sm:px-2.5 py-1 rounded text-[11px] font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex-1 sm:flex-initial text-center",
                   sortBy === "lowest_spend"
                     ? "bg-[#222222] text-white shadow-sm"
                     : "text-neutral-400 hover:text-white"
@@ -553,7 +553,7 @@ export default function LeadRadarDashboard() {
             ))}
           </div>
         ) : filteredLeads.length === 0 ? (
-          <div className="py-16 px-4 rounded-lg border border-[#1f1f1f] text-center space-y-3 bg-[#050505]">
+          <div className="py-12 sm:py-16 px-4 rounded-lg border border-[#1f1f1f] text-center space-y-3 bg-[#050505]">
             <div className="w-12 h-12 mx-auto rounded-lg bg-[#111111] border border-[#222222] hover:border-[#383838] flex items-center justify-center text-white shadow-sm group cursor-pointer transition-all active:scale-95">
               <RadarLogo className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
             </div>
@@ -592,15 +592,15 @@ export default function LeadRadarDashboard() {
               >
                 <button
                   onClick={() => setVisibleCount((prev) => prev + 8)}
-                  className="px-4 py-2 rounded-md bg-[#0d0d0d] hover:bg-[#161616] border border-[#1f1f1f] hover:border-[#333333] text-xs text-neutral-300 transition-all active:scale-95 flex items-center gap-2 cursor-pointer shadow-sm"
+                  className="w-full sm:w-auto px-4 py-2.5 sm:py-2 rounded-md bg-[#0d0d0d] hover:bg-[#161616] border border-[#1f1f1f] hover:border-[#333333] text-xs text-neutral-300 transition-all duration-200 ease-out active:scale-95 flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                 >
                   <span>مشاهده سرنخ‌های بیشتر</span>
                   <span className="text-[11px] px-2 py-0.5 rounded bg-neutral-900 text-neutral-400 border border-neutral-800">
                     {toPersianDigits(filteredLeads.length - visibleCount)} مورد باقی‌مانده
                   </span>
                 </button>
-                <span className="text-[11px] text-neutral-600">
-                  نمایش {toPersianDigits(visibleLeads.length)} از {toPersianDigits(filteredLeads.length)} پیام (بارگذاری هوشمند تدریجی)
+                <span className="text-[11px] text-neutral-600 text-center">
+                  نمایش {toPersianDigits(visibleLeads.length)} از {toPersianDigits(filteredLeads.length)} پیام (بارگذاری تدریجی)
                 </span>
               </div>
             )}
@@ -609,10 +609,10 @@ export default function LeadRadarDashboard() {
       </main>
 
       {/* Vercel-style minimalist footer */}
-      <footer className="mt-auto border-t border-[#1f1f1f] bg-black py-4 px-4 text-xs text-neutral-500">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-            <RadarLogo className="w-3.5 h-3.5 text-neutral-400 group-hover:text-white transition-colors" />
+      <footer className="mt-auto border-t border-[#1f1f1f] bg-black py-4 px-3 sm:px-6 text-xs text-neutral-500">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-right">
+          <Link href="/" className="flex items-center gap-2 group cursor-pointer justify-center sm:justify-start">
+            <RadarLogo className="w-3.5 h-3.5 text-neutral-400 group-hover:text-white transition-colors shrink-0" />
             <span className="group-hover:text-neutral-300 transition-colors">رادار • موتور هوشمند تشخیص تمایل خرید در جامعه کاربری</span>
           </Link>
           <span className="text-neutral-600">میزبانی بومی • دیتابیس پاکت‌بیس • مدل زبانی محلی/آفلاین</span>

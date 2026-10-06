@@ -1,0 +1,385 @@
+{
+  "communities": {
+    "0": [
+      "app_login_page",
+      "app_login_page_dynamic",
+      "app_login_page_loginform",
+      "app_login_page_loginpage",
+      "app_page",
+      "app_page_leadradardashboard",
+      "app_settings_page",
+      "components_icons",
+      "components_icons_arrowuprighticon",
+      "components_icons_baleicon",
+      "components_icons_checkcircleicon",
+      "components_icons_copyicon",
+      "components_icons_cpuicon",
+      "components_icons_forumicon",
+      "components_icons_highintenticon",
+      "components_icons_iconprops",
+      "components_icons_noiseicon",
+      "components_icons_playicon",
+      "components_icons_problemawareicon",
+      "components_icons_radarbadge",
+      "components_icons_radaricon",
+      "components_icons_radarlogo",
+      "components_icons_refreshicon",
+      "components_icons_searchicon",
+      "components_icons_servericon",
+      "components_icons_settingsicon",
+      "components_icons_sparklesicon",
+      "components_icons_telegramicon",
+      "components_icons_twitterxicon",
+      "components_icons_verceltriangleicon",
+      "components_icons_xcircleicon",
+      "components_leadcard",
+      "components_leadcard_leadcardprops",
+      "components_navbar",
+      "components_navbar_navbar",
+      "components_navbar_navbar_checkhealth",
+      "components_navbar_navbarprops",
+      "lib_cn",
+      "lib_cn_cn",
+      "lib_pocketbase_leadrecord",
+      "lib_pricing_calculateradarmetrics"
+    ],
+    "1": [
+      "app_api_analyze_route",
+      "app_api_analyze_route_dynamic",
+      "app_api_analyze_route_post",
+      "app_api_leads_status_route",
+      "app_api_leads_status_route_dynamic",
+      "app_api_leads_status_route_post",
+      "app_api_settings_route",
+      "app_api_settings_route_dynamic",
+      "app_api_settings_route_post",
+      "app_api_simulate_route",
+      "app_api_simulate_route_dynamic",
+      "app_api_simulate_route_post",
+      "lib_pocketbase",
+      "lib_pocketbase_authenticatesuperuser",
+      "lib_pocketbase_getpocketbaseclient",
+      "lib_pocketbase_getpocketbaseurl",
+      "lib_pocketbase_productrecord",
+      "lib_pocketbase_rawmessagerecord",
+      "lib_pocketbase_sourcerecord",
+      "lib_pricing_formatusd",
+      "lib_ratelimit",
+      "lib_ratelimit_getclientip",
+      "lib_ratelimit_ratelimiter",
+      "lib_ratelimit_ratelimitrecord",
+      "lib_validation",
+      "lib_validation_sanitizestring",
+      "lib_validation_validateanalyzeinput",
+      "lib_validation_validateleadstatusinput",
+      "lib_validation_validatesettingsinput",
+      "lib_validation_validationerror",
+      "lib_validation_validationresult",
+      "pocketbase_setup_schema",
+      "pocketbase_setup_schema_setupschema",
+      "scripts_seed_demo",
+      "scripts_seed_demo_demo_community_messages",
+      "scripts_seed_demo_demomessagedefinition",
+      "scripts_seed_demo_seeddemomessages",
+      "scripts_worker",
+      "scripts_worker_processsinglemessage",
+      "scripts_worker_runtriageworker"
+    ],
+    "2": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_esnext",
+      "ref_mts",
+      "ref_next_dev_types_ts",
+      "ref_next_env_d_ts",
+      "ref_next_types_ts",
+      "ref_node_modules",
+      "ref_ts",
+      "ref_tsx",
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_incremental",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_plugins",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_exclude",
+      "tsconfig_include"
+    ],
+    "3": [
+      "next",
+      "package",
+      "package_dependencies",
+      "package_dependencies_next",
+      "package_dependencies_pocketbase",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_description",
+      "package_ignorescripts",
+      "package_name",
+      "package_packagemanager",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_pb",
+      "package_scripts_seed",
+      "package_scripts_setup_pb",
+      "package_scripts_start",
+      "package_scripts_worker",
+      "package_trusteddependencies",
+      "package_version",
+      "pocketbase",
+      "react",
+      "react_dom",
+      "ref_sharp",
+      "ref_unrs_resolver"
+    ],
+    "4": [
+      "app_api_auth_login_route",
+      "app_api_auth_login_route_dynamic",
+      "app_api_auth_login_route_post",
+      "app_api_auth_logout_route",
+      "app_api_auth_logout_route_dynamic",
+      "app_api_auth_logout_route_post",
+      "app_api_auth_session_route",
+      "app_api_auth_session_route_dynamic",
+      "app_api_auth_session_route_get",
+      "lib_auth",
+      "lib_auth_createsessiontoken",
+      "lib_auth_formatsessionclearcookie",
+      "lib_auth_formatsessionsetcookie",
+      "lib_auth_getadminpassword",
+      "lib_auth_getcryptokey",
+      "lib_auth_getradarapikey",
+      "lib_auth_getsessiontokenfromrequest",
+      "lib_auth_isauthenticatedrequest",
+      "lib_auth_timingsafeequal",
+      "lib_auth_validatesessiontoken",
+      "proxy",
+      "proxy_config",
+      "proxy_proxy"
+    ],
+    "5": [
+      "eslint",
+      "eslint_config_next",
+      "package_devdependencies",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_next",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_tailwindcss_postcss",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript",
+      "tailwindcss",
+      "tailwindcss_postcss",
+      "types_node",
+      "types_react",
+      "types_react_dom",
+      "typescript"
+    ],
+    "6": [
+      "app_settings_page_productsettingspage",
+      "app_settings_page_productsettingspage_loadproduct",
+      "components_leadcard_leadcard",
+      "components_metricsheader",
+      "components_metricsheader_metricsheader",
+      "components_metricsheader_metricsheaderprops",
+      "lib_pricing",
+      "lib_pricing_communitymetricssummary",
+      "lib_pricing_default_pricing_tiers",
+      "lib_pricing_formatmessagecosttoman",
+      "lib_pricing_formatpersiannumber",
+      "lib_pricing_formatpersiantoman",
+      "lib_pricing_formatpersianusd",
+      "lib_pricing_formattoman",
+      "lib_pricing_modelpricingtier",
+      "lib_pricing_topersiandigits"
+    ],
+    "7": [
+      "lib_llm",
+      "lib_llm_buildprompt",
+      "lib_llm_escapexml",
+      "lib_llm_evaluatemessageinput",
+      "lib_llm_evaluatemessagewithllm",
+      "lib_llm_heuristicpersianevaluator",
+      "lib_llm_intentevaluationresult",
+      "lib_llm_sanitizesuggestedreply",
+      "lib_pricing_calculatemessagecost",
+      "lib_ratelimit_llmconcurrencylimiter"
+    ],
+    "8": [
+      "lib_ratelimit_concurrencylimiter",
+      "lib_ratelimit_concurrencylimiter_acquire",
+      "lib_ratelimit_concurrencylimiter_active",
+      "lib_ratelimit_concurrencylimiter_constructor",
+      "lib_ratelimit_concurrencylimiter_release"
+    ],
+    "9": [
+      "lib_ratelimit_inmemoryratelimiter",
+      "lib_ratelimit_inmemoryratelimiter_check",
+      "lib_ratelimit_inmemoryratelimiter_cleanup",
+      "lib_ratelimit_inmemoryratelimiter_constructor",
+      "lib_ratelimit_inmemoryratelimiter_reset"
+    ],
+    "10": [
+      "app_layout",
+      "app_layout_metadata",
+      "app_layout_rootlayout",
+      "app_layout_viewport"
+    ],
+    "11": [
+      "next_config",
+      "next_config_nextconfig",
+      "next_config_securityheaders"
+    ],
+    "12": [
+      "next_env_d",
+      "next_env_d_rationale_6"
+    ],
+    "13": [
+      "postcss_config",
+      "postcss_config_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.10365853658536585,
+    "1": 0.12435897435897436,
+    "2": 0.06896551724137931,
+    "3": 0.07977207977207977,
+    "4": 0.17786561264822134,
+    "5": 0.11764705882352941,
+    "6": 0.26666666666666666,
+    "7": 0.35555555555555557,
+    "8": 0.4,
+    "9": 0.5,
+    "10": 0.5,
+    "11": 0.6666666666666666,
+    "12": 1.0,
+    "13": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "lib_auth_isauthenticatedrequest",
+      "label": "isAuthenticatedRequest()",
+      "degree": 14
+    },
+    {
+      "id": "lib_pocketbase_getpocketbaseclient",
+      "label": "getPocketBaseClient()",
+      "degree": 14
+    },
+    {
+      "id": "lib_pocketbase_authenticatesuperuser",
+      "label": "authenticateSuperuser()",
+      "degree": 11
+    },
+    {
+      "id": "lib_pricing_topersiandigits",
+      "label": "toPersianDigits()",
+      "degree": 11
+    },
+    {
+      "id": "lib_cn_cn",
+      "label": "cn()",
+      "degree": 9
+    },
+    {
+      "id": "lib_llm_evaluatemessagewithllm",
+      "label": "evaluateMessageWithLLM()",
+      "degree": 9
+    },
+    {
+      "id": "lib_pocketbase_productrecord",
+      "label": "ProductRecord",
+      "degree": 9
+    },
+    {
+      "id": "lib_ratelimit_getclientip",
+      "label": "getClientIp()",
+      "degree": 9
+    },
+    {
+      "id": "app_api_analyze_route_post",
+      "label": "POST()",
+      "degree": 8
+    }
+  ],
+  "surprises": [
+    {
+      "source": "POST()",
+      "target": "isAuthenticatedRequest()",
+      "source_files": [
+        "app/api/analyze/route.ts",
+        "lib/auth.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "POST()",
+      "target": "evaluateMessageWithLLM()",
+      "source_files": [
+        "app/api/analyze/route.ts",
+        "lib/llm.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "POST()",
+      "target": "getClientIp()",
+      "source_files": [
+        "app/api/auth/login/route.ts",
+        "lib/rateLimit.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "GET()",
+      "target": "isAuthenticatedRequest()",
+      "source_files": [
+        "app/api/auth/session/route.ts",
+        "lib/auth.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `GET()` unexpectedly reaches hub `isAuthenticatedRequest()`"
+    },
+    {
+      "source": "POST()",
+      "target": "isAuthenticatedRequest()",
+      "source_files": [
+        "app/api/settings/route.ts",
+        "lib/auth.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

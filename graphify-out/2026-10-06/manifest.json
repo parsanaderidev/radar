@@ -42,27 +42,27 @@
     "semantic_hash": "27c8dda2f1e022ec909082773620e961"
   },
   "app/layout.tsx": {
-    "mtime": 1791232655.5720568,
-    "seen": 1791310773.157234,
-    "ast_hash": "b54cbb55f7469d3e2552a1a513beb79f",
+    "mtime": 1791229347.9156876,
+    "seen": 1791230010.4756215,
+    "ast_hash": "9d7c55762990fe14d1aae3f8f1b822eb",
     "semantic_hash": ""
   },
   "app/login/page.tsx": {
-    "mtime": 1791310727.33135,
-    "seen": 1791310773.1572351,
-    "ast_hash": "6a72fb5f8972ae37aceaa3fc4cbc87e8",
+    "mtime": 1791232521.190414,
+    "seen": 1791232537.4245996,
+    "ast_hash": "e7d14251599801bdbc0fa40990222b65",
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1791310531.300367,
-    "seen": 1791310773.1572363,
-    "ast_hash": "1cd8f179f34e0c6c909430abc5d6bf44",
+    "mtime": 1791232469.3544185,
+    "seen": 1791232537.4246008,
+    "ast_hash": "323bb0f22c22d3734fb4cbbd4fda53ca",
     "semantic_hash": ""
   },
   "app/settings/page.tsx": {
-    "mtime": 1791310711.7313516,
-    "seen": 1791310773.1572373,
-    "ast_hash": "3ff004343147f236f90dd6f4b5aeed72",
+    "mtime": 1791232503.1334155,
+    "seen": 1791232537.424602,
+    "ast_hash": "b39b9c41b2fd30eae68692279a2171a6",
     "semantic_hash": ""
   },
   "components/Icons.tsx": {
@@ -72,21 +72,21 @@
     "semantic_hash": ""
   },
   "components/LeadCard.tsx": {
-    "mtime": 1791310418.5203767,
-    "seen": 1791310773.15724,
-    "ast_hash": "748a2582a59ab88d5ec67cc84218dbc7",
+    "mtime": 1791232388.4384253,
+    "seen": 1791232537.424604,
+    "ast_hash": "d3d85ec193401c390577cc13c359e060",
     "semantic_hash": ""
   },
   "components/MetricsHeader.tsx": {
-    "mtime": 1791310362.0943816,
-    "seen": 1791310773.1572406,
-    "ast_hash": "0fe17a541cfd7c4d45d29e54f538f3bd",
+    "mtime": 1791232358.436428,
+    "seen": 1791232537.4246047,
+    "ast_hash": "f0c551ccc01508c87335662ffda63b5a",
     "semantic_hash": ""
   },
   "components/Navbar.tsx": {
-    "mtime": 1791310285.7623882,
-    "seen": 1791310773.1572413,
-    "ast_hash": "c99b07de800a603f53b8e7bd81fe87b5",
+    "mtime": 1791232416.297423,
+    "seen": 1791232537.4246054,
+    "ast_hash": "10d35be5cdd2af901c517620dcd4fb11",
     "semantic_hash": ""
   },
   "lib/auth.ts": {

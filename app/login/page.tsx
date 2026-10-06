@@ -56,7 +56,7 @@ function LoginForm() {
   return (
     <form
       onSubmit={handleLogin}
-      className="p-6 rounded-xl bg-[#0a0a0a] border border-[#1f1f1f] shadow-[0_8px_32px_rgba(0,0,0,0.8)] space-y-4 text-right"
+      className="p-5 sm:p-6 rounded-xl bg-[#0a0a0a] border border-[#1f1f1f] shadow-[0_8px_32px_rgba(0,0,0,0.8)] space-y-4 text-right"
     >
       {error && (
         <div className="p-3 rounded-lg bg-rose-950/40 border border-rose-800/60 text-rose-300 text-xs text-center font-medium animate-shake">
