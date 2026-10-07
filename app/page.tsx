@@ -111,6 +111,7 @@ interface PricingPlan {
   messageLimit: string;
   ctaText: string;
   ctaLink: string;
+  featuresHeader: string;
   features: string[];
 }
 
@@ -127,6 +128,7 @@ const PRICING_PLANS: PricingPlan[] = [
     messageLimit: "۱۰,۰۰۰ پیام ماهانه • سقف مصرف فعال",
     ctaText: "شروع کار با رادار",
     ctaLink: "/dashboard",
+    featuresHeader: "امکانات و سطح هوشمندی (قابلیت‌های فعال):",
     features: [
       "پایش و شنود هوشمند پیام‌ها در پیام‌رسان‌های بله و تلگرام",
       "موتور تشخیص هوشمند نیت خرید، استخراج نیاز و فوریت مشتری",
@@ -151,6 +153,7 @@ const PRICING_PLANS: PricingPlan[] = [
     messageLimit: "۵۰,۰۰۰ پیام ماهانه • در حال توسعه",
     ctaText: "به‌زودی در دسترس قرار می‌گیرد",
     ctaLink: "#pricing",
+    featuresHeader: "قابلیت‌های آینده در نقشه راه توسعه:",
     features: [
       "اتصال خودکار به سامانه‌های مدیریت ارتباط با مشتریان",
       "پایش همزمان چندین کانال و جوامع آنلاین به صورت خودکار",
@@ -1086,89 +1089,99 @@ export default function PersianLandingPage() {
             </div>
           </div>
 
-          {/* کارت‌های قیمت‌گذاری: استارتر (فعال) و رشد (شفاف با نشان مرکزی به‌زودی) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-8 mb-16 text-right items-stretch">
+          {/* کارت‌های قیمت‌گذاری: استارتر (فعال) و رشد (شیشه‌ای شفاف و مینیمال با نشان متقارن به‌زودی) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 max-w-[940px] mx-auto gap-6 sm:gap-7 mb-16 text-right items-stretch justify-center">
             {PRICING_PLANS.map((plan) => (
               <div
                 key={plan.id}
-                className={`relative rounded-2xl p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 min-h-[640px] ${
+                className={`relative rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 min-h-[540px] overflow-hidden ${
                   plan.isUpcoming
-                    ? "bg-white/[0.02] border border-white/10 backdrop-blur-md opacity-85 hover:border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.03)]"
-                    : "bg-[#0d0d0d] border-2 border-[#00e599] shadow-[0_0_50px_rgba(0,229,153,0.18)]"
+                    ? "backdrop-blur-xl bg-white/[0.03] border border-white/10 hover:border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.35)]"
+                    : "bg-[#0d0d0d] border border-[#00e599]/60 shadow-[0_0_35px_rgba(0,229,153,0.12)] hover:border-[#00e599]"
                 }`}
               >
-                {/* نشان وسط برای پلن رشد (به‌زودی) */}
+                {/* های‌لایت شیدری ملایم لبه بالای کارت شیشه‌ای رشد */}
                 {plan.isUpcoming && (
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
-                    <div className="px-7 py-3 rounded-full bg-[#121212]/95 border border-[#383838] text-white text-sm font-black shadow-[0_0_40px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#f5a623] animate-pulse" />
-                      <span>به‌زودی</span>
-                    </div>
-                  </div>
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
                 )}
 
-                {/* برچسب فعال بودن برای استارتر */}
-                {plan.badge && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10">
-                    <span className="px-4 py-1.5 rounded-full bg-[#00e599] text-black text-xs font-bold shadow-lg flex items-center gap-1.5 whitespace-nowrap">
-                      <SparklesIcon className="w-3.5 h-3.5 text-black" />
-                      <span>{plan.badge}</span>
+                {/* برچسب متقارن بالای کارت */}
+                {plan.isUpcoming ? (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                    <span className="px-3.5 py-1 rounded-full bg-[#161616] border border-[#2e2e2e] text-neutral-300 text-xs font-semibold shadow-md flex items-center gap-1.5 whitespace-nowrap">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                      <span>به‌زودی</span>
                     </span>
                   </div>
+                ) : (
+                  plan.badge && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                      <span className="px-3.5 py-1 rounded-full bg-[#00e599] text-black text-xs font-bold shadow-md flex items-center gap-1.5 whitespace-nowrap">
+                        <SparklesIcon className="w-3.5 h-3.5 text-black" />
+                        <span>{plan.badge}</span>
+                      </span>
+                    </div>
+                  )
                 )}
 
+                {/* محتوای داخلی کارت */}
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl sm:text-2xl font-black text-white">{plan.name}</h3>
+                  {/* سربرگ کارت در مرکز */}
+                  <div className="text-center mb-5">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-1.5">{plan.name}</h3>
+                    <p className="text-xs text-neutral-400 leading-relaxed min-h-[34px] max-w-sm mx-auto">
+                      {plan.audience}
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-[13px] text-neutral-400 leading-relaxed mb-6 min-h-[42px]">
-                    {plan.audience}
-                  </p>
 
-                  {/* قیمت پلن */}
-                  <div className="pb-6 mb-6 border-b border-[#1c1c1c]">
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="text-3xl sm:text-4xl font-black text-white">
+                  {/* قیمت پلن در مرکز */}
+                  <div className="text-center pb-5 mb-5 border-b border-[#1c1c1c] flex flex-col items-center">
+                    <div className="flex items-baseline justify-center gap-1.5">
+                      <span className="text-2xl sm:text-3xl font-extrabold text-white">
                         {billingCycle === "annual" ? plan.annualEquivalentMonthly : plan.monthlyPrice}
                       </span>
-                      <span className="text-xs sm:text-sm text-neutral-400">/ ماه</span>
+                      <span className="text-xs text-neutral-400">/ ماه</span>
                     </div>
                     {billingCycle === "annual" && (
-                      <div className="text-xs text-emerald-400 mt-1.5 font-medium">
+                      <div className="text-[11px] text-emerald-400 mt-1 font-medium">
                         صورت‌حساب سالانه با ۲۰٪ صرفه‌جویی
                       </div>
                     )}
-                    <div className="mt-3.5 inline-block px-3 py-1.5 rounded-lg bg-[#141414] border border-[#242424] text-xs font-mono font-medium text-neutral-300">
+                    <div className="mt-2.5 inline-block px-3 py-1 rounded-md bg-[#141414] border border-[#242424] text-[11px] font-mono text-neutral-300">
                       {plan.messageLimit}
                     </div>
                   </div>
 
-                  {/* لیست امکانات */}
-                  <div className="space-y-3.5 mb-8">
-                    <div className="text-xs font-bold text-neutral-400 mb-2">امکانات و سطح هوشمندی:</div>
+                  {/* لیست امکانات با عنوان اختصاصی هر پلن */}
+                  <div className="space-y-2.5 mb-6 max-w-md mx-auto w-full">
+                    <div className="text-xs font-bold text-neutral-400 mb-2">
+                      {plan.featuresHeader}
+                    </div>
                     {plan.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-neutral-300 leading-relaxed">
-                        <CheckIcon className={`w-4 h-4 shrink-0 mt-0.5 ${plan.isUpcoming ? "text-neutral-500" : "text-[#00e599]"}`} />
+                      <div key={idx} className="flex items-start gap-2 text-xs text-neutral-300 leading-relaxed">
+                        <CheckIcon className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${plan.isUpcoming ? "text-neutral-500" : "text-[#00e599]"}`} />
                         <span>{feat}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* دکمه عملیاتی پلن */}
-                {plan.isUpcoming ? (
-                  <div className="w-full h-12 rounded-xl text-xs sm:text-sm font-bold bg-[#141414] text-neutral-400 border border-[#242424] flex items-center justify-center select-none cursor-default">
-                    <span>{plan.ctaText}</span>
-                  </div>
-                ) : (
-                  <Link
-                    href={plan.ctaLink}
-                    className="w-full h-12 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 shadow-md bg-white text-black hover:bg-neutral-200 shadow-[0_0_25px_rgba(255,255,255,0.3)]"
-                  >
-                    <span>{plan.ctaText}</span>
-                    <span>←</span>
-                  </Link>
-                )}
+                {/* دکمه عملیاتی پلن در پایین کارت */}
+                <div className="w-full max-w-md mx-auto mt-2">
+                  {plan.isUpcoming ? (
+                    <div className="w-full h-11 rounded-xl text-xs sm:text-sm font-medium bg-[#141414] text-neutral-400 border border-[#242424] flex items-center justify-center select-none cursor-default shadow-inner">
+                      <span>{plan.ctaText}</span>
+                    </div>
+                  ) : (
+                    <Link
+                      href={plan.ctaLink}
+                      className="w-full h-11 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 shadow-md bg-white text-black hover:bg-neutral-200 shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+                    >
+                      <span>{plan.ctaText}</span>
+                      <span>←</span>
+                    </Link>
+                  )}
+                </div>
               </div>
             ))}
           </div>
