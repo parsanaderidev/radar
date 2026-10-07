@@ -4,15 +4,15 @@
   "graph": {},
   "nodes": [
     {
-      "id": "app_page_samplefeeditem",
-      "label": "SampleFeedItem",
+      "id": "app_page_samplesignal",
+      "label": "SampleSignal",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "Icons.tsx",
       "file_type": "code",
-      "norm_label": "samplefeeditem",
+      "norm_label": "samplesignal",
       "source_file": "app/page.tsx",
       "source_location": "L25"
     },
@@ -443,16 +443,16 @@
       "source_location": "L123"
     },
     {
-      "id": "app_page_vercelstylelandingpage",
-      "label": "VercelStyleLandingPage()",
+      "id": "app_page_persianlandingpage",
+      "label": "PersianLandingPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "Icons.tsx",
       "file_type": "code",
-      "norm_label": "vercelstylelandingpage()",
+      "norm_label": "persianlandingpage()",
       "source_file": "app/page.tsx",
-      "source_location": "L98"
+      "source_location": "L99"
     },
     {
       "id": "app_settings_page_productsettingspage",
@@ -1746,15 +1746,15 @@
       "source_location": "L1"
     },
     {
-      "id": "app_page_sample_leads",
-      "label": "SAMPLE_LEADS",
+      "id": "app_page_sample_signals",
+      "label": "SAMPLE_SIGNALS",
       "_origin": "ast",
       "community": 0,
       "community_name": "Icons.tsx",
       "file_type": "code",
-      "norm_label": "sample_leads",
+      "norm_label": "sample_signals",
       "source_file": "app/page.tsx",
-      "source_location": "L41"
+      "source_location": "L42"
     },
     {
       "id": "app_settings_page",
@@ -6198,7 +6198,7 @@
     },
     {
       "source": "app_landing_page",
-      "target": "app_page_vercelstylelandingpage",
+      "target": "app_page_persianlandingpage",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6294,18 +6294,6 @@
     },
     {
       "source": "app_page",
-      "target": "components_icons_checkcircle2icon",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "app/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "app_page",
       "target": "components_icons_checkicon",
       "relation": "imports",
       "_origin": "ast",
@@ -6355,6 +6343,18 @@
     {
       "source": "app_page",
       "target": "components_icons_playicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_page",
+      "target": "components_icons_radarbadge",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8618,7 +8618,7 @@
     },
     {
       "source": "app_page",
-      "target": "app_page_samplefeeditem",
+      "target": "app_page_samplesignal",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8629,24 +8629,24 @@
     },
     {
       "source": "app_page",
-      "target": "app_page_sample_leads",
+      "target": "app_page_sample_signals",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
       "source": "app_page",
-      "target": "app_page_vercelstylelandingpage",
+      "target": "app_page_persianlandingpage",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L98",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -11516,5 +11516,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5a2f69f671f5db4f981f0bb95928c568c44df88b"
+  "built_at_commit": "d37925e37a9d053cfa093063f4e2f1df6999730b"
 }

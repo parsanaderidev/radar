@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-07)
 
 ## Corpus Check
-- 53 files · ~31,361 words
+- 53 files · ~33,159 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 367 nodes · 625 edges · 22 communities (13 shown, 9 thin omitted)
+- 368 nodes · 625 edges · 22 communities (13 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `418748ca`
+- Built from commit: `a949d551`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -68,7 +68,7 @@
 
 ### Community 0 - "Icons.tsx"
 Cohesion: 0.07
-Nodes (49): LeadRadarDashboard(), dynamic, DEMO_LEAD, VercelStyleLandingPage(), ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps, SUGGESTIONS (+41 more)
+Nodes (49): LeadRadarDashboard(), dynamic, SAMPLE_SIGNALS, SampleSignal, VercelStyleLandingPage(), ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps (+41 more)
 
 ### Community 1 - "analyze/route.ts"
 Cohesion: 0.10
@@ -115,7 +115,7 @@ Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
 ## Knowledge Gaps
-- **151 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+146 more)
+- **152 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+147 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -123,15 +123,15 @@ Nodes (3): cleanOutput(), dynamic, POST()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `getPocketBaseClient()` connect `analyze/route.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+  _High betweenness centrality (0.038) - this node is a cross-community bridge._
 - **Why does `ProductRecord` connect `analyze/route.ts` to `Icons.tsx`?**
   _High betweenness centrality (0.024) - this node is a cross-community bridge._
 - **Why does `RefreshIcon()` connect `Icons.tsx` to `voice-orb.tsx`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
-  _151 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _152 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06915113871635611 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06720321931589537 - nodes in this community are weakly interconnected._
 - **Should `analyze/route.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.10122448979591837 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**

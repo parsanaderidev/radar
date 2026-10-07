@@ -1,7 +1,7 @@
 # Graph Report - Radar  (2026-10-07)
 
 ## Corpus Check
-- 53 files · ~31,578 words
+- 53 files · ~32,325 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5a2f69f6`
+- Built from commit: `d37925e3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -68,7 +68,7 @@
 
 ### Community 0 - "Icons.tsx"
 Cohesion: 0.07
-Nodes (50): LeadRadarDashboard(), dynamic, SAMPLE_LEADS, SampleFeedItem, VercelStyleLandingPage(), ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps (+42 more)
+Nodes (50): LeadRadarDashboard(), dynamic, PersianLandingPage(), SAMPLE_SIGNALS, SampleSignal, ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps (+42 more)
 
 ### Community 1 - "analyze/route.ts"
 Cohesion: 0.10

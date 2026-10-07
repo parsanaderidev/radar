@@ -54,9 +54,9 @@
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1791385232.5486708,
-    "seen": 1791385368.281159,
-    "ast_hash": "527c84260b9396d6d106c00ecf9888d9",
+    "mtime": 1791386323.0195768,
+    "seen": 1791386444.1694548,
+    "ast_hash": "174b1a5e0347eaa0398748be72c7e21b",
     "semantic_hash": ""
   },
   "app/settings/page.tsx": {
@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "components/Navbar.tsx": {
-    "mtime": 1791385135.2026792,
-    "seen": 1791385368.281169,
-    "ast_hash": "1f06c5200244169759cdb2597cb9a98a",
+    "mtime": 1791385870.6583457,
+    "seen": 1791386444.169467,
+    "ast_hash": "0fd0bd47650967a5d29c7d4dd96534b7",
     "semantic_hash": ""
   },
   "lib/auth.ts": {
