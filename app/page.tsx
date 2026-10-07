@@ -123,23 +123,18 @@ const PRICING_PLANS: PricingPlan[] = [
     isPopular: true,
     isUpcoming: false,
     audience: "طراحی‌شده برای پایش بی‌درنگ، کشف هوشمند فرصت‌ها و شروع فوری مذاکره فروش با هوش مصنوعی رادار",
-    monthlyPrice: "۲,۴۰۰,۰۰۰ تومان",
-    annualEquivalentMonthly: "۱,۹۲۰,۰۰۰ تومان",
+    monthlyPrice: "۶۹۰,۰۰۰ تومان",
+    annualEquivalentMonthly: "۵۵۰,۰۰۰ تومان",
     messageLimit: "۱۰,۰۰۰ پیام ماهانه • سقف مصرف فعال",
     ctaText: "شروع کار با رادار",
     ctaLink: "/dashboard",
-    featuresHeader: "امکانات و سطح هوشمندی (قابلیت‌های فعال):",
+    featuresHeader: "امکانات کلیدی و فعال:",
     features: [
-      "پایش و شنود هوشمند پیام‌ها در پیام‌رسان‌های بله و تلگرام",
-      "موتور تشخیص هوشمند نیت خرید، استخراج نیاز و فوریت مشتری",
-      "انطباق خودکار با ویژگی‌های محصول هدف و پرسونای مخاطبان",
-      "رتبه‌بندی کیفی و تریاژ دقیق سرنخ‌ها (بالا، متوسط، کم)",
-      "استخراج زمینه مکالمه و ارائه استدلال چرایی انتخاب سرنخ",
-      "تولید خودکار پیش‌نویس پاسخ شخصی‌سازی‌شده جهت شروع مذاکره",
-      "صندوق هوشمند سرنخ‌ها با قابلیت تغییر وضعیت و مدیریت پیگیری",
-      "محاسبه و شفافیت کامل هزینه هوش مصنوعی به ازای هر تحلیل",
-      "تنظیمات اختصاصی محصول هدف و شاخص‌های انطباق",
-      "پایگاه‌داده اختصاصی و پایدار برای نگهداری امن سرنخ‌ها",
+      "پایش هوشمند و بی‌درنگ در پیام‌رسان‌های بله و تلگرام",
+      "تشخیص نیت خرید، استخراج نیاز و رتبه‌بندی کیفی سرنخ‌ها",
+      "انطباق هوشمند زمینه مکالمه با محصول و پرسونای هدف شما",
+      "تولید خودکار پیش‌نویس پاسخ شخصی‌سازی‌شده در چند ثانیه",
+      "صندوق تریاژ سرنخ‌ها و گزارش شفاف هزینه هوش مصنوعی",
     ],
   },
   {
@@ -148,19 +143,19 @@ const PRICING_PLANS: PricingPlan[] = [
     isPopular: false,
     isUpcoming: true,
     audience: "طراحی‌شده برای سازمان‌ها و تیم‌های توسعه‌یافته با نیاز به پردازش در مقیاس بالا و اتصال به ابزارهای فروش",
-    monthlyPrice: "۶,۸۰۰,۰۰۰ تومان",
-    annualEquivalentMonthly: "۵,۴۴۰,۰۰۰ تومان",
+    monthlyPrice: "۲,۱۹۰,۰۰۰ تومان",
+    annualEquivalentMonthly: "۱,۷۵۰,۰۰۰ تومان",
     messageLimit: "۵۰,۰۰۰ پیام ماهانه • در حال توسعه",
     ctaText: "به‌زودی در دسترس قرار می‌گیرد",
     ctaLink: "#pricing",
-    featuresHeader: "قابلیت‌های آینده در نقشه راه توسعه:",
+    featuresHeader: "قابلیت‌های نقشه راه توسعه:",
     features: [
-      "اتصال خودکار به سامانه‌های مدیریت ارتباط با مشتریان",
-      "پایش همزمان چندین کانال و جوامع آنلاین به صورت خودکار",
-      "امکان استفاده همزمان چند کاربر برای اعضای تیم فروش",
-      "پشتیبانی و تحلیل همزمان چند محصول و سناریوی فروش مجزا",
-      "ارسال اعلان‌های آنی از طریق وب‌هوک و پیام‌رسان",
-      "اولویت پردازش اختصاصی در صف هوش مصنوعی",
+      "تمامی امکانات قبلی",
+      "اتصال خودکار وب‌هوک به سامانه‌های مدیریت مشتریان (CRM)",
+      "پایش همزمان چندین کانال و جوامع آنلاین هدف",
+      "دسترسی تیمی چندکاربره برای کارشناسان فروش",
+      "تحلیل همزمان چند محصول و پرسونای فروش مجزا",
+      "اولویت پردازش اختصاصی با ظرفیت ۵۰,۰۰۰ پیام",
     ],
   },
 ];
@@ -521,11 +516,8 @@ export default function PersianLandingPage() {
         <section className="relative flex min-h-[min(calc(100svh-180px),720px)] flex-col justify-center items-center px-4 sm:px-6 max-w-[1240px] mx-auto select-none pt-16 pb-20 text-center">
           <div className="relative z-10 flex flex-col items-center justify-center max-w-4xl mx-auto">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.18] sm:leading-[1.14] mb-6 text-center text-balance">
-              هوشمندی کشف فرصت‌های فروش.
-              <br />
-              <span className="bg-gradient-to-b from-white via-neutral-200 to-neutral-500 bg-clip-text text-transparent">
-                از میان هیاهو تا معامله موفق.
-              </span>
+              هوشمندی کشف فرصت‌های فروش
+              از میان هیاهو تا معامله موفق.
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal text-center text-balance">
@@ -1094,29 +1086,31 @@ export default function PersianLandingPage() {
             {PRICING_PLANS.map((plan) => (
               <div
                 key={plan.id}
-                className={`relative rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 min-h-[540px] overflow-hidden ${
+                className={`relative rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 min-h-[540px] ${
                   plan.isUpcoming
                     ? "backdrop-blur-xl bg-white/[0.03] border border-white/10 hover:border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.35)]"
                     : "bg-[#0d0d0d] border border-[#00e599]/60 shadow-[0_0_35px_rgba(0,229,153,0.12)] hover:border-[#00e599]"
                 }`}
               >
-                {/* های‌لایت شیدری ملایم لبه بالای کارت شیشه‌ای رشد */}
-                {plan.isUpcoming && (
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-                )}
+                {/* لایه داخلی با overflow-hidden برای افکت‌های لبه و جلوگیری از بریده‌شدن نشان‌های بیرونی */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                  {plan.isUpcoming && (
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+                  )}
+                </div>
 
-                {/* برچسب متقارن بالای کارت */}
+                {/* برچسب متقارن بالای کارت با z-index بالا و بدون بریدگی */}
                 {plan.isUpcoming ? (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                    <span className="px-3.5 py-1 rounded-full bg-[#161616] border border-[#2e2e2e] text-neutral-300 text-xs font-semibold shadow-md flex items-center gap-1.5 whitespace-nowrap">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+                    <span className="px-3.5 py-1 rounded-full bg-[#161616] border border-[#2e2e2e] text-neutral-300 text-xs font-semibold shadow-lg flex items-center gap-1.5 whitespace-nowrap">
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
                       <span>به‌زودی</span>
                     </span>
                   </div>
                 ) : (
                   plan.badge && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <span className="px-3.5 py-1 rounded-full bg-[#00e599] text-black text-xs font-bold shadow-md flex items-center gap-1.5 whitespace-nowrap">
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+                      <span className="px-3.5 py-1 rounded-full bg-[#00e599] text-black text-xs font-bold shadow-lg flex items-center gap-1.5 whitespace-nowrap">
                         <SparklesIcon className="w-3.5 h-3.5 text-black" />
                         <span>{plan.badge}</span>
                       </span>
