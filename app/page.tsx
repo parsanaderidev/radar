@@ -104,6 +104,7 @@ interface PricingPlan {
   name: string;
   badge?: string;
   isPopular?: boolean;
+  isUpcoming?: boolean;
   audience: string;
   monthlyPrice: string;
   annualEquivalentMonthly: string;
@@ -116,95 +117,61 @@ interface PricingPlan {
 const PRICING_PLANS: PricingPlan[] = [
   {
     id: "starter",
-    name: "استارتر (Starter)",
-    audience: "مناسب افراد، تیم‌های کوچک و اعتبارسنجی اولیه بازار",
+    name: "پلن استارتر",
+    badge: "فعال و در دسترس • نسخه عملیاتی رادار",
+    isPopular: true,
+    isUpcoming: false,
+    audience: "طراحی‌شده برای پایش بی‌درنگ، کشف هوشمند فرصت‌ها و شروع فوری مذاکره فروش با هوش مصنوعی رادار",
     monthlyPrice: "۲,۴۰۰,۰۰۰ تومان",
     annualEquivalentMonthly: "۱,۹۲۰,۰۰۰ تومان",
-    messageLimit: "۱۰,۰۰۰ پیام ماهانه",
-    ctaText: "شروع با پلن استارتر",
+    messageLimit: "۱۰,۰۰۰ پیام ماهانه • سقف مصرف فعال",
+    ctaText: "شروع کار با رادار",
     ctaLink: "/dashboard",
     features: [
-      "تشخیص پایه نیت خرید (Intent Detection)",
-      "دسترسی کامل به داشبورد سرنخ‌ها",
-      "تحلیل اولیه زمینه و بافت مکالمه",
-      "پیش‌نویس اولیه پیام ارتباطی",
-      "گزارش پایه هزینه‌ها و مصرف توکن",
-      "۱ کاربر و ۱ کانال ارتباطی فعال",
+      "پایش و شنود هوشمند پیام‌ها در پیام‌رسان‌های بله و تلگرام",
+      "موتور تشخیص هوشمند نیت خرید، استخراج نیاز و فوریت مشتری",
+      "انطباق خودکار با ویژگی‌های محصول هدف و پرسونای مخاطبان",
+      "رتبه‌بندی کیفی و تریاژ دقیق سرنخ‌ها (بالا، متوسط، کم)",
+      "استخراج زمینه مکالمه و ارائه استدلال چرایی انتخاب سرنخ",
+      "تولید خودکار پیش‌نویس پاسخ شخصی‌سازی‌شده جهت شروع مذاکره",
+      "صندوق هوشمند سرنخ‌ها با قابلیت تغییر وضعیت و مدیریت پیگیری",
+      "محاسبه و شفافیت کامل هزینه هوش مصنوعی به ازای هر تحلیل",
+      "تنظیمات اختصاصی محصول هدف و شاخص‌های انطباق",
+      "پایگاه‌داده اختصاصی و پایدار برای نگهداری امن سرنخ‌ها",
     ],
   },
   {
     id: "growth",
-    name: "رشد (Growth)",
-    badge: "محبوب‌ترین • پیشنهاد رادار",
-    isPopular: true,
-    audience: "مناسب تیم‌های فروش و بازاریابی در حال رشد با نیاز به کشف پیوسته",
+    name: "پلن رشد",
+    isPopular: false,
+    isUpcoming: true,
+    audience: "طراحی‌شده برای سازمان‌ها و تیم‌های توسعه‌یافته با نیاز به پردازش در مقیاس بالا و اتصال به ابزارهای فروش",
     monthlyPrice: "۶,۸۰۰,۰۰۰ تومان",
     annualEquivalentMonthly: "۵,۴۴۰,۰۰۰ تومان",
-    messageLimit: "۵۰,۰۰۰ پیام ماهانه",
-    ctaText: "انتخاب پلن رشد",
-    ctaLink: "/dashboard",
+    messageLimit: "۵۰,۰۰۰ پیام ماهانه • در حال توسعه",
+    ctaText: "به‌زودی در دسترس قرار می‌گیرد",
+    ctaLink: "#pricing",
     features: [
-      "هوشمندی پیشرفته تشخیص نیت خرید",
-      "هوشمندی کامل فرصت‌ها و تحلیل بافت",
-      "انطباق دقیق با ویژگی‌ها و مزایای محصول",
-      "استدلال و چرایی هوش مصنوعی برای هر لید",
-      "پیش‌نویس پاسخ شخصی‌سازی‌شده و حرفه‌ای",
-      "تحلیل دقیق مصرف و اقتصاد توکن",
-      "۵ کاربر همزمان برای تیم فروش",
-      "پایش همزمان ۳ کانال (بله، تلگرام، توییتر)",
-    ],
-  },
-  {
-    id: "pro",
-    name: "حرفه‌ای (Pro)",
-    audience: "برای تیم‌های فروش پیشرفته با حجم داده بالا و نیاز به یکپارچگی",
-    monthlyPrice: "۱۸,۰۰۰,۰۰۰ تومان",
-    annualEquivalentMonthly: "۱۴,۴۰۰,۰۰۰ تومان",
-    messageLimit: "۲۰۰,۰۰۰ پیام ماهانه",
-    ctaText: "مقیاس‌بخشی با رادار",
-    ctaLink: "/dashboard",
-    features: [
-      "امتیازدهی پیشرفته فرصت‌ها و تریاژ فوری",
-      "انطباق چندمحصولی پیشرفته با پرسوناهای مجزا",
-      "پایش تمامی جوامع و انجمن‌های تخصصی",
-      "گزارش‌گیری پیشرفته و تحلیل‌های آماری",
-      "همکاری تیمی نامحدود (تا ۱۵ کاربر)",
-      "اتصال وب‌هوک مستقیم به نرم‌افزار CRM دیدار",
-      "اولویت بالای صف پردازش هوش مصنوعی",
-    ],
-  },
-  {
-    id: "enterprise",
-    name: "سازمانی (Enterprise)",
-    audience: "برای سازمان‌ها و شرکت‌های بزرگ با نیازمندی‌های مقیاس کلان و سفارشی",
-    monthlyPrice: "قیمت‌گذاری سفارشی",
-    annualEquivalentMonthly: "قرارداد سالانه سازمانی",
-    messageLimit: "حجم نامحدود پیام",
-    ctaText: "تماس با بخش فروش",
-    ctaLink: "/settings",
-    features: [
-      "حجم پایش نامحدود و منابع اختصاصی",
-      "استقرار اختصاصی محلی (On-Premise / Air-gapped)",
-      "امنیت ایزوله سازمانی بدون خروج داده",
-      "اتصال اختصاصی به سامانه‌های CRM و ERP",
-      "مدیریت چندسازمانی و چندتیمی (Multi-Tenant)",
-      "تنظیم پرامپت‌ها و مدل‌های اختصاصی سازمانی",
-      "توافق‌نامه سطح خدمات (SLA) و پشتیبانی ۲۴/۷ اختصاصی",
+      "اتصال خودکار به سامانه‌های مدیریت ارتباط با مشتریان",
+      "پایش همزمان چندین کانال و جوامع آنلاین به صورت خودکار",
+      "امکان استفاده همزمان چند کاربر برای اعضای تیم فروش",
+      "پشتیبانی و تحلیل همزمان چند محصول و سناریوی فروش مجزا",
+      "ارسال اعلان‌های آنی از طریق وب‌هوک و پیام‌رسان",
+      "اولویت پردازش اختصاصی در صف هوش مصنوعی",
     ],
   },
 ];
 
 const COMPARISON_DIMENSIONS = [
-  { label: "سقف پایش پیام ماهانه", starter: "۱۰,۰۰۰ پیام", growth: "۵۰,۰۰۰ پیام", pro: "۲۰۰,۰۰۰ پیام", enterprise: "نامحدود / سفارشی" },
-  { label: "هوشمندی تشخیص نیت", starter: "پایه", growth: "پیشرفته", pro: "عمیق چندسطحی", enterprise: "مدل سفارشی سازمانی" },
-  { label: "هوشمندی استخراج فرصت", starter: "پایه", growth: "کامل", pro: "پیشرفته", enterprise: "سفارشی و چندمتغیره" },
-  { label: "انطباق با ویژگی‌های محصول", starter: "تک‌محصول پایه", growth: "کامل", pro: "چندمحصولی پیشرفته", enterprise: "سفارشی سازمانی" },
-  { label: "پیش‌نویس پیام‌های ارتباطی", starter: "پایه", growth: "شخصی‌سازی‌شده", pro: "هوشمند چندلحنی", enterprise: "اختصاصی سازمانی" },
-  { label: "تحلیل مصرف و اقتصاد توکن", starter: "پایه", growth: "تحلیلی", pro: "پیشرفته", enterprise: "گزارش حسابداری رسمی" },
-  { label: "تعداد کانال‌های تحت پایش", starter: "۱ کانال", growth: "۳ کانال", pro: "تمامی کانال‌ها", enterprise: "کانال‌های اختصاصی سازمان" },
-  { label: "تعداد اعضای تیم فروش", starter: "۱ کاربر", growth: "۵ کاربر", pro: "۱۵ کاربر", enterprise: "نامحدود" },
-  { label: "یکپارچگی و اتصال به CRM", starter: "—", growth: "اختیاری / وب‌هوک", pro: "مستقیم (دیدار و هاب‌اسپات)", enterprise: "اتصال سفارشی سازمانی" },
-  { label: "پیکربندی اختصاصی و حریم داده", starter: "—", growth: "—", pro: "محدود", enterprise: "کاملاً ایزوله محلی" },
+  { label: "سقف پایش پیام ماهانه", starter: "۱۰,۰۰۰ پیام", growth: "۵۰,۰۰۰ پیام (به‌زودی)" },
+  { label: "هوشمندی تشخیص نیت خرید", starter: "فعال (استخراج نیاز و فوریت)", growth: "پیشرفته چندلایه" },
+  { label: "انطباق با ویژگی‌های محصول", starter: "فعال (تک‌محصول هدف)", growth: "چندمحصولی همزمان" },
+  { label: "تولید پاسخ‌های پیشنهادی", starter: "فعال (شخصی‌سازی‌شده)", growth: "شخصی‌سازی پیشرفته چندلحنی" },
+  { label: "صندوق و تریاژ سرنخ‌ها", starter: "فعال با وضعیت پیگیری", growth: "پیشرفته با ارجاع تیمی" },
+  { label: "محاسبه شفاف هزینه مصرف", starter: "فعال (به ازای هر پیام)", growth: "گزارش تحلیلی پیشرفته" },
+  { label: "کانال‌های تحت پایش", starter: "پیام‌رسان‌های بله و تلگرام", growth: "چندکاناله گسترده" },
+  { label: "تعداد اعضای تیم فروش", starter: "۱ کاربر فعال", growth: "چند کاربر همزمان" },
+  { label: "اتصال به سامانه مدیریت مشتریان", starter: "—", growth: "اتصال وب‌هوک و یکپارچگی" },
 ];
 
 export default function PersianLandingPage() {
@@ -1080,7 +1047,7 @@ export default function PersianLandingPage() {
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111111] border border-[#242424] text-xs text-neutral-300 mb-4 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-[#00e599] animate-pulse" />
-              <span>مدل تجاری B2B SaaS • مصرف‌محور (Usage-Based)</span>
+              <span>مدل اشتراک مبتنی بر مصرف هوشمند</span>
             </div>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight flex flex-wrap justify-center text-center mb-4 text-balance">
               سرمایه‌گذاری بر پایه کشف فرصت، نه اشتراک صوری
@@ -1119,20 +1086,30 @@ export default function PersianLandingPage() {
             </div>
           </div>
 
-          {/* کارت‌های چهارگانه قیمت‌گذاری (بزرگ‌تر و جادارتر) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 mb-16 text-right items-stretch">
+          {/* کارت‌های قیمت‌گذاری: استارتر (فعال) و رشد (شفاف با نشان مرکزی به‌زودی) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-8 mb-16 text-right items-stretch">
             {PRICING_PLANS.map((plan) => (
               <div
                 key={plan.id}
-                className={`relative rounded-2xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[600px] ${
-                  plan.isPopular
-                    ? "bg-[#0d0d0d] border-2 border-[#00e599] shadow-[0_0_45px_rgba(0,229,153,0.18)] lg:-translate-y-2 lg:scale-[1.02] z-10"
-                    : "bg-[#090909] border border-[#1f1f1f] hover:border-[#383838]"
+                className={`relative rounded-2xl p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 min-h-[640px] ${
+                  plan.isUpcoming
+                    ? "bg-white/[0.02] border border-white/10 backdrop-blur-md opacity-85 hover:border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.03)]"
+                    : "bg-[#0d0d0d] border-2 border-[#00e599] shadow-[0_0_50px_rgba(0,229,153,0.18)]"
                 }`}
               >
-                {/* برچسب محبوب‌ترین پلن */}
+                {/* نشان وسط برای پلن رشد (به‌زودی) */}
+                {plan.isUpcoming && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+                    <div className="px-7 py-3 rounded-full bg-[#121212]/95 border border-[#383838] text-white text-sm font-black shadow-[0_0_40px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#f5a623] animate-pulse" />
+                      <span>به‌زودی</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* برچسب فعال بودن برای استارتر */}
                 {plan.badge && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10">
                     <span className="px-4 py-1.5 rounded-full bg-[#00e599] text-black text-xs font-bold shadow-lg flex items-center gap-1.5 whitespace-nowrap">
                       <SparklesIcon className="w-3.5 h-3.5 text-black" />
                       <span>{plan.badge}</span>
@@ -1154,11 +1131,9 @@ export default function PersianLandingPage() {
                       <span className="text-3xl sm:text-4xl font-black text-white">
                         {billingCycle === "annual" ? plan.annualEquivalentMonthly : plan.monthlyPrice}
                       </span>
-                      {plan.id !== "enterprise" && (
-                        <span className="text-xs sm:text-sm text-neutral-400">/ ماه</span>
-                      )}
+                      <span className="text-xs sm:text-sm text-neutral-400">/ ماه</span>
                     </div>
-                    {billingCycle === "annual" && plan.id !== "enterprise" && (
+                    {billingCycle === "annual" && (
                       <div className="text-xs text-emerald-400 mt-1.5 font-medium">
                         صورت‌حساب سالانه با ۲۰٪ صرفه‌جویی
                       </div>
@@ -1173,7 +1148,7 @@ export default function PersianLandingPage() {
                     <div className="text-xs font-bold text-neutral-400 mb-2">امکانات و سطح هوشمندی:</div>
                     {plan.features.map((feat, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-neutral-300 leading-relaxed">
-                        <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0 mt-0.5" />
+                        <CheckIcon className={`w-4 h-4 shrink-0 mt-0.5 ${plan.isUpcoming ? "text-neutral-500" : "text-[#00e599]"}`} />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -1181,17 +1156,19 @@ export default function PersianLandingPage() {
                 </div>
 
                 {/* دکمه عملیاتی پلن */}
-                <Link
-                  href={plan.ctaLink}
-                  className={`w-full h-12 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 shadow-md ${
-                    plan.isPopular
-                      ? "bg-white text-black hover:bg-neutral-200 shadow-[0_0_25px_rgba(255,255,255,0.3)]"
-                      : "bg-[#141414] hover:bg-[#1f1f1f] text-white border border-[#282828] hover:border-neutral-500"
-                  }`}
-                >
-                  <span>{plan.ctaText}</span>
-                  <span>←</span>
-                </Link>
+                {plan.isUpcoming ? (
+                  <div className="w-full h-12 rounded-xl text-xs sm:text-sm font-bold bg-[#141414] text-neutral-400 border border-[#242424] flex items-center justify-center select-none cursor-default">
+                    <span>{plan.ctaText}</span>
+                  </div>
+                ) : (
+                  <Link
+                    href={plan.ctaLink}
+                    className="w-full h-12 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 shadow-md bg-white text-black hover:bg-neutral-200 shadow-[0_0_25px_rgba(255,255,255,0.3)]"
+                  >
+                    <span>{plan.ctaText}</span>
+                    <span>←</span>
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -1232,7 +1209,7 @@ export default function PersianLandingPage() {
               <div className="p-5 sm:p-6 rounded-xl bg-[#0e0e0e] border border-[#1c1c1c] space-y-2">
                 <div className="text-xs text-neutral-500 font-medium">۰۴. بستن معامله</div>
                 <div className="text-sm sm:text-base font-bold text-amber-400">درآمد مستقیم</div>
-                <p className="text-xs text-neutral-400 leading-relaxed">ارسال پاسخ اختصاصی در ۳ ثانیه و هدایت لید به CRM</p>
+                <p className="text-xs text-neutral-400 leading-relaxed">ارسال پاسخ اختصاصی در ۳ ثانیه و هدایت لید به سامانه فروش</p>
               </div>
             </div>
           </div>
@@ -1245,10 +1222,10 @@ export default function PersianLandingPage() {
               <div>
                 <div className="text-base sm:text-lg font-bold text-white flex items-center gap-2.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#00e599] animate-pulse" />
-                  <span>پنل شفافیت مصرف ماهانه (نمونه لایو سازمان)</span>
+                  <span>پنل شفافیت مصرف ماهانه (نمونه زنده سازمان)</span>
                 </div>
                 <div className="text-xs sm:text-sm text-neutral-400 mt-1">
-                  پلن فعال: رشد (Growth) • پایش خودکار ۳۴,۲۰۰ پیام در ۳۰ روز گذشته
+                  پلن فعال: استارتر • پایش و غربالگری هوشمند پیام‌ها
                 </div>
               </div>
               <span className="text-xs px-3 py-1.5 rounded-lg bg-[#141414] text-neutral-300 border border-[#252525] font-medium">
@@ -1259,7 +1236,7 @@ export default function PersianLandingPage() {
             {/* نوار بصری پیشرفت مصرف */}
             <div className="space-y-2.5 mb-7">
               <div className="flex justify-between text-xs sm:text-sm text-neutral-400">
-                <span>مصرف ظرفیت پیام‌ها: ۳۴,۲۰۰ از ۵۰,۰۰۰ پیام</span>
+                <span>مصرف ظرفیت پیام‌ها: ۶,۸۴۰ از ۱۰,۰۰۰ پیام</span>
                 <span className="font-bold text-white font-mono">۶۸.۴٪</span>
               </div>
               <div className="w-full h-3.5 rounded-full bg-[#161616] overflow-hidden p-0.5 border border-[#262626]">
@@ -1274,19 +1251,19 @@ export default function PersianLandingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
               <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
                 <div className="text-neutral-500 text-xs">پیام‌های پایش‌شده:</div>
-                <div className="text-base sm:text-lg font-black text-white mt-1.5">۳۴,۲۰۰ پیام</div>
+                <div className="text-base sm:text-lg font-black text-white mt-1.5">۶,۸۴۰ پیام</div>
               </div>
               <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
                 <div className="text-neutral-500 text-xs">فرصت‌های باکیفیت کشف‌شده:</div>
-                <div className="text-base sm:text-lg font-black text-[#00e599] mt-1.5">۸۴۲ سرنخ معتبر</div>
+                <div className="text-base sm:text-lg font-black text-[#00e599] mt-1.5">۱۸۴ سرنخ معتبر</div>
               </div>
               <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
                 <div className="text-neutral-500 text-xs">میانگین هزینه هر تحلیل:</div>
-                <div className="text-base sm:text-lg font-black text-sky-400 mt-1.5">۹ تومان (~۰.۰۰۰۱۲ دلار)</div>
+                <div className="text-base sm:text-lg font-black text-sky-400 mt-1.5">۹ تومان</div>
               </div>
               <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
                 <div className="text-neutral-500 text-xs">اعتبار باقی‌مانده دوره:</div>
-                <div className="text-base sm:text-lg font-black text-neutral-200 mt-1.5">۱۵,۸۰۰ پیام</div>
+                <div className="text-base sm:text-lg font-black text-neutral-200 mt-1.5">۳,۱۶۰ پیام</div>
               </div>
             </div>
           </div>
@@ -1296,43 +1273,32 @@ export default function PersianLandingPage() {
           ======================================================== */}
           <div className="rounded-2xl bg-[#090909] border border-[#1f1f1f] p-8 sm:p-10 mb-14 shadow-2xl text-right">
             <h3 className="text-lg sm:text-xl font-black text-white mb-2">
-              چرا ارتقای پلن برای سازمان شما منطقی است؟
+              مسیر ارتقا و توسعه پلتفرم رادار
             </h3>
             <p className="text-xs sm:text-sm text-neutral-400 mb-7 leading-relaxed">
-              مسیر رشد پلتفرم همگام با افزایش مقیاس و نیازهای داده‌ای تیم‌های فروش توسعه می‌یابد:
+              قابلیت‌های پلتفرم همگام با افزایش نیازهای داده‌ای و عملیاتی تیم‌های فروش گسترش می‌یابد:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
-              {/* ارتقا ۱ */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+              {/* ارتقا ۱: استارتر */}
               <div className="p-5 sm:p-6 rounded-xl bg-[#0d0d0d] border border-[#1c1c1c] space-y-2.5">
                 <div className="font-bold text-white flex items-center justify-between pb-2 border-b border-[#181818] text-sm">
-                  <span>استارتر ← رشد (Growth)</span>
-                  <span className="text-[#00e599] text-xs">افزایش عمق هوشمندی</span>
+                  <span>پلن استارتر (هم‌اکنون فعال)</span>
+                  <span className="text-[#00e599] text-xs font-bold">کشف مستقیم فرصت‌ها</span>
                 </div>
                 <p className="text-neutral-400 leading-relaxed text-xs sm:text-[13px]">
-                  زمانی که تیم فروش نیازمند درک عمیق‌تر زمینه مکالمه، انطباق با ویژگی‌های دقیق محصول و دسترسی چند کاربر همزمان برای پیگیری است.
+                  تمام امکانات کلیدی عملیاتی: غربالگری مداوم پیام‌های پیام‌رسان‌ها، تشخیص دقیق نیت خرید، انطباق با محصول، رتبه‌بندی فرصت‌ها و تولید پاسخ‌های پیشنهادی برای مذاکره فوری.
                 </p>
               </div>
 
-              {/* ارتقا ۲ */}
+              {/* ارتقا ۲: رشد */}
               <div className="p-5 sm:p-6 rounded-xl bg-[#0d0d0d] border border-[#1c1c1c] space-y-2.5">
                 <div className="font-bold text-white flex items-center justify-between pb-2 border-b border-[#181818] text-sm">
-                  <span>رشد ← حرفه‌ای (Pro)</span>
-                  <span className="text-sky-400 text-xs">اتوماسیون و CRM</span>
+                  <span>پلن رشد (به‌زودی)</span>
+                  <span className="text-amber-400 text-xs font-bold">اتصال و مقیاس‌پذیری</span>
                 </div>
                 <p className="text-neutral-400 leading-relaxed text-xs sm:text-[13px]">
-                  زمانی که سازمان در چند کانال فعال شده و نیازمند اتصال خودکار سرنخ‌ها به CRM، گزارش‌گیری پیشرفته و مدیریت تا ۱۵ عضو تیم است.
-                </p>
-              </div>
-
-              {/* ارتقا ۳ */}
-              <div className="p-5 sm:p-6 rounded-xl bg-[#0d0d0d] border border-[#1c1c1c] space-y-2.5">
-                <div className="font-bold text-white flex items-center justify-between pb-2 border-b border-[#181818] text-sm">
-                  <span>حرفه‌ای ← سازمانی (Enterprise)</span>
-                  <span className="text-amber-400 text-xs">مقیاس و امنیت ایزوله</span>
-                </div>
-                <p className="text-neutral-400 leading-relaxed text-xs sm:text-[13px]">
-                  زمانی که استقرار محلی On-Premise، امنیت ایزوله Air-Gapped، داده‌های نامحدود، مدیریت تننت‌ها و توافق‌نامه رسمی SLA ضرورت دارد.
+                  افزایش سقف پیام‌ها به ۵۰,۰۰۰ پیام ماهانه، اتصال مستقیم به سامانه‌های مدیریت ارتباط با مشتریان، پایش همزمان چندین کانال و کاربری چندنفره برای تیم‌های فروش.
                 </p>
               </div>
             </div>
@@ -1367,10 +1333,8 @@ export default function PersianLandingPage() {
                   <thead>
                     <tr className="border-b border-[#1f1f1f] bg-[#0e0e0e] text-neutral-400 font-bold">
                       <th className="p-4 sm:p-5 text-right font-bold text-white">قابلیت کلیدی</th>
-                      <th className="p-4 sm:p-5 text-center">استارتر</th>
-                      <th className="p-4 sm:p-5 text-center text-[#00e599]">رشد (محبوب‌ترین)</th>
-                      <th className="p-4 sm:p-5 text-center">حرفه‌ای</th>
-                      <th className="p-4 sm:p-5 text-center">سازمانی</th>
+                      <th className="p-4 sm:p-5 text-center text-[#00e599]">استارتر (فعال)</th>
+                      <th className="p-4 sm:p-5 text-center text-amber-400">رشد (به‌زودی)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1382,10 +1346,8 @@ export default function PersianLandingPage() {
                         }`}
                       >
                         <td className="p-4 sm:p-5 font-semibold text-white">{row.label}</td>
-                        <td className="p-4 sm:p-5 text-center text-neutral-400">{row.starter}</td>
-                        <td className="p-4 sm:p-5 text-center text-emerald-300 font-bold">{row.growth}</td>
-                        <td className="p-4 sm:p-5 text-center text-neutral-300">{row.pro}</td>
-                        <td className="p-4 sm:p-5 text-center text-neutral-300 font-bold">{row.enterprise}</td>
+                        <td className="p-4 sm:p-5 text-center text-emerald-300 font-bold">{row.starter}</td>
+                        <td className="p-4 sm:p-5 text-center text-neutral-300">{row.growth}</td>
                       </tr>
                     ))}
                   </tbody>
