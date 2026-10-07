@@ -54,9 +54,9 @@
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1791310531.300367,
-    "seen": 1791310773.1572363,
-    "ast_hash": "1cd8f179f34e0c6c909430abc5d6bf44",
+    "mtime": 1791385232.5486708,
+    "seen": 1791385368.281159,
+    "ast_hash": "527c84260b9396d6d106c00ecf9888d9",
     "semantic_hash": ""
   },
   "app/settings/page.tsx": {
@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "components/Navbar.tsx": {
-    "mtime": 1791384532.6567311,
-    "seen": 1791384705.2180412,
-    "ast_hash": "e28596088e86714e5ecbf6b48fe976a4",
+    "mtime": 1791385135.2026792,
+    "seen": 1791385368.281169,
+    "ast_hash": "1f06c5200244169759cdb2597cb9a98a",
     "semantic_hash": ""
   },
   "lib/auth.ts": {
@@ -132,8 +132,8 @@
     "semantic_hash": "79f7d8e7f45e214ff127a5bf4363b3af"
   },
   "next-env.d.ts": {
-    "mtime": 1791374064.7171164,
-    "seen": 1791374090.071713,
+    "mtime": 1791385330.9758546,
+    "seen": 1791385368.2812014,
     "ast_hash": "8195d2c60ce847a459ae9d308d6a5724",
     "semantic_hash": ""
   },
@@ -312,21 +312,21 @@
     "semantic_hash": ""
   },
   "app/landing/page.tsx": {
-    "mtime": 1791384625.721723,
-    "seen": 1791384705.2180314,
-    "ast_hash": "2c99de2ef3e605533b872b6ce810154b",
-    "semantic_hash": ""
-  },
-  "app/pitch/page.tsx": {
-    "mtime": 1791384394.198743,
-    "seen": 1791384705.2180357,
-    "ast_hash": "b040868d2fb81a62997f4733afbb4c53",
+    "mtime": 1791385249.8386693,
+    "seen": 1791385368.2811542,
+    "ast_hash": "57865c0f31b284d5f411301d60496de7",
     "semantic_hash": ""
   },
   "PriCoders/TECHNICAL_DOCUMENTATION.md": {
     "mtime": 1791384428.2817402,
     "seen": 1791384705.218069,
     "ast_hash": "db98c97e8c2c49b7228309648d4764e3",
+    "semantic_hash": ""
+  },
+  "app/dashboard/page.tsx": {
+    "mtime": 1791385094.7158334,
+    "seen": 1791385368.2811522,
+    "ast_hash": "1cd8f179f34e0c6c909430abc5d6bf44",
     "semantic_hash": ""
   }
 }

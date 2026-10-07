@@ -4,6 +4,19 @@
   "graph": {},
   "nodes": [
     {
+      "id": "app_page_samplefeeditem",
+      "label": "SampleFeedItem",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "samplefeeditem",
+      "source_file": "app/page.tsx",
+      "source_location": "L25"
+    },
+    {
       "id": "components_assistant_assistantsuggestions_assistantsuggestionsprops",
       "label": "AssistantSuggestionsProps",
       "_callable": true,
@@ -439,7 +452,7 @@
       "file_type": "code",
       "norm_label": "vercelstylelandingpage()",
       "source_file": "app/page.tsx",
-      "source_location": "L42"
+      "source_location": "L98"
     },
     {
       "id": "app_settings_page_productsettingspage",
@@ -1733,15 +1746,15 @@
       "source_location": "L1"
     },
     {
-      "id": "app_page_demo_lead",
-      "label": "DEMO_LEAD",
+      "id": "app_page_sample_leads",
+      "label": "SAMPLE_LEADS",
       "_origin": "ast",
       "community": 0,
       "community_name": "Icons.tsx",
       "file_type": "code",
-      "norm_label": "demo_lead",
+      "norm_label": "sample_leads",
       "source_file": "app/page.tsx",
-      "source_location": "L23"
+      "source_location": "L41"
     },
     {
       "id": "app_settings_page",
@@ -8605,13 +8618,24 @@
     },
     {
       "source": "app_page",
-      "target": "app_page_demo_lead",
+      "target": "app_page_samplefeeditem",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L23",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "app_page",
+      "target": "app_page_sample_leads",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.tsx",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -8622,7 +8646,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L42",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -11492,5 +11516,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "418748caac0634c056939888b5355cc8e42701f6"
+  "built_at_commit": "5a2f69f671f5db4f981f0bb95928c568c44df88b"
 }

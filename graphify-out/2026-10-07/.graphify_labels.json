@@ -9,7 +9,7 @@
   "7": "AGENTS.md",
   "8": "مستندات فنی و معماری سامانه رادار (Radar)",
   "9": "InMemoryRateLimiter",
-  "10": "AssistantMessages.tsx",
+  "10": "voice-orb.tsx",
   "11": "next.config.ts",
   "12": "next-env.d.ts",
   "13": "postcss.config.mjs",
@@ -19,5 +19,6 @@
   "17": "CLAUDE.md",
   "18": "ConcurrencyLimiter",
   "19": "components.json",
+  "20": "ease.ts",
   "21": "assistant/route.ts"
 }
