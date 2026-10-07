@@ -126,10 +126,10 @@ export function RadarAssistant({ context: externalContext }: RadarAssistantProps
           aria-expanded={isOpen}
           aria-label={isOpen ? "بستن دستیار رادار" : "باز کردن دستیار رادار"}
           title={isOpen ? "بستن دستیار رادار (Esc)" : "دستیار هوشمند رادار"}
-          className={`relative w-12 h-12 sm:w-13 sm:h-13 rounded-full flex items-center justify-center transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-300 group ${
+          className={`relative w-12 h-12 sm:w-13 sm:h-13 rounded-full flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-300 group transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isOpen
               ? "bg-[#141414] hover:bg-[#1a1918] border border-[#2d2d2a] shadow-[0_6px_20px_rgba(0,0,0,0.8)]"
-              : "bg-transparent border border-transparent"
+              : "bg-transparent border border-transparent hover:scale-105 active:scale-95"
           }`}
         >
           {/* Voice Orb (always mounted for zero-lag instant transition, no WebGL re-init) */}
