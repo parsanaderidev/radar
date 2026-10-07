@@ -79,7 +79,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
               {pbStatus === "online" ? "متصل" : pbStatus === "checking" ? "اتصال..." : "قطع"}
             </span>
           </div>
-        </div>m
+        </div>
 
         {/* Center: Vercel Nav Underline Tabs */}
         <nav className="flex items-center gap-1 shrink-0">
@@ -92,7 +92,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
                 : "text-neutral-400 hover:text-white hover:bg-[#141414]"
             )}
           >
-            <span className="hidden sm:inline">معرفی رادار (Overview)</span>
+            <span className="hidden sm:inline">معرفی رادار</span>
             <span className="sm:hidden">معرفی</span>
           </Link>
 
@@ -120,8 +120,8 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
             )}
           >
             <SettingsIcon className="w-3.5 h-3.5 shrink-0" />
-            <span className="hidden xl:inline">تنظیمات محصول و پرسونای مشتری (ICP)</span>
-            <span className="hidden sm:inline xl:hidden">تنظیمات (ICP)</span>
+            <span className="hidden xl:inline">تنظیمات محصول و مشتری هدف</span>
+            <span className="hidden sm:inline xl:hidden">تنظیمات هدف</span>
             <span className="sm:hidden">تنظیمات</span>
           </Link>
         </nav>
