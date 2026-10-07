@@ -173,6 +173,19 @@
       "source_location": "L15"
     },
     {
+      "id": "lib_ratelimit_concurrencylimiter",
+      "label": "ConcurrencyLimiter",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "analyze/route.ts",
+      "file_type": "code",
+      "norm_label": "concurrencylimiter",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L103"
+    },
+    {
       "id": "lib_ratelimit_ratelimitrecord",
       "label": "RateLimitRecord",
       "_callable": true,
@@ -225,6 +238,32 @@
       "source_location": "L5"
     },
     {
+      "id": "components_agents_voice_orb_renderer_orbframe",
+      "label": "OrbFrame",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "orbframe",
+      "source_file": "components/agents/voice-orb/renderer.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_agents_voice_orb_voiceorbprops",
+      "label": "VoiceOrbProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "voiceorbprops",
+      "source_file": "components/agents/voice-orb.tsx",
+      "source_location": "L24"
+    },
+    {
       "id": "components_assistant_assistantinput_assistantinputprops",
       "label": "AssistantInputProps",
       "_callable": true,
@@ -248,7 +287,7 @@
       "file_type": "code",
       "norm_label": "assistantmessagesprops",
       "source_file": "components/assistant/AssistantMessages.tsx",
-      "source_location": "L8"
+      "source_location": "L9"
     },
     {
       "id": "components_assistant_assistantpanel_assistantpanelprops",
@@ -261,7 +300,7 @@
       "file_type": "code",
       "norm_label": "assistantpanelprops",
       "source_file": "components/assistant/AssistantPanel.tsx",
-      "source_location": "L9"
+      "source_location": "L11"
     },
     {
       "id": "components_assistant_radarassistant_radarassistantprops",
@@ -340,45 +379,6 @@
       "norm_label": "suggestedquestion",
       "source_file": "components/assistant/types.ts",
       "source_location": "L28"
-    },
-    {
-      "id": "components_agents_voice_orb_renderer_orbframe",
-      "label": "OrbFrame",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "orbframe",
-      "source_file": "components/agents/voice-orb/renderer.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_agents_voice_orb_voiceorbprops",
-      "label": "VoiceOrbProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "voiceorbprops",
-      "source_file": "components/agents/voice-orb.tsx",
-      "source_location": "L24"
-    },
-    {
-      "id": "lib_ratelimit_concurrencylimiter",
-      "label": "ConcurrencyLimiter",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "ConcurrencyLimiter",
-      "file_type": "code",
-      "norm_label": "concurrencylimiter",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L103"
     },
     {
       "id": "lib_ratelimit_inmemoryratelimiter",
@@ -1054,6 +1054,54 @@
       "source_location": "L231"
     },
     {
+      "id": "lib_ratelimit_concurrencylimiter_acquire",
+      "label": ".acquire()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "analyze/route.ts",
+      "file_type": "code",
+      "norm_label": ".acquire()",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L111"
+    },
+    {
+      "id": "lib_ratelimit_concurrencylimiter_active",
+      "label": ".active()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "analyze/route.ts",
+      "file_type": "code",
+      "norm_label": ".active()",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L123"
+    },
+    {
+      "id": "lib_ratelimit_concurrencylimiter_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "analyze/route.ts",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L107"
+    },
+    {
+      "id": "lib_ratelimit_concurrencylimiter_release",
+      "label": ".release()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "analyze/route.ts",
+      "file_type": "code",
+      "norm_label": ".release()",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L119"
+    },
+    {
       "id": "lib_ratelimit_getclientip",
       "label": "getClientIp()",
       "_callable": true,
@@ -1174,6 +1222,54 @@
       "source_location": "L20"
     },
     {
+      "id": "components_agents_voice_orb_level",
+      "label": "level()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "level()",
+      "source_file": "components/agents/voice-orb.tsx",
+      "source_location": "L41"
+    },
+    {
+      "id": "components_agents_voice_orb_renderer_createorbrenderer",
+      "label": "createOrbRenderer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "createorbrenderer()",
+      "source_file": "components/agents/voice-orb/renderer.ts",
+      "source_location": "L100"
+    },
+    {
+      "id": "components_agents_voice_orb_renderer_rgb",
+      "label": "rgb()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "rgb()",
+      "source_file": "components/agents/voice-orb/renderer.ts",
+      "source_location": "L84"
+    },
+    {
+      "id": "components_agents_voice_orb_voiceorb",
+      "label": "VoiceOrb()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "voiceorb()",
+      "source_file": "components/agents/voice-orb.tsx",
+      "source_location": "L45"
+    },
+    {
       "id": "components_assistant_assistant_service_askradarassistant",
       "label": "askRadarAssistant()",
       "_callable": true,
@@ -1219,19 +1315,31 @@
       "file_type": "code",
       "norm_label": "assistantmessages()",
       "source_file": "components/assistant/AssistantMessages.tsx",
-      "source_location": "L70"
+      "source_location": "L81"
     },
     {
-      "id": "components_assistant_assistantmessages_streamingtext",
-      "label": "StreamingText()",
+      "id": "components_assistant_assistantmessages_cleanformatting",
+      "label": "cleanFormatting()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "AssistantMessages.tsx",
       "file_type": "code",
-      "norm_label": "streamingtext()",
+      "norm_label": "cleanformatting()",
       "source_file": "components/assistant/AssistantMessages.tsx",
       "source_location": "L20"
+    },
+    {
+      "id": "components_assistant_assistantmessages_typewritertext",
+      "label": "TypewriterText()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "typewritertext()",
+      "source_file": "components/assistant/AssistantMessages.tsx",
+      "source_location": "L36"
     },
     {
       "id": "components_assistant_assistantpanel_assistantpanel",
@@ -1243,7 +1351,7 @@
       "file_type": "code",
       "norm_label": "assistantpanel()",
       "source_file": "components/assistant/AssistantPanel.tsx",
-      "source_location": "L20"
+      "source_location": "L22"
     },
     {
       "id": "components_assistant_radarassistant_radarassistant",
@@ -1270,64 +1378,28 @@
       "source_location": "L517"
     },
     {
-      "id": "components_agents_voice_orb_level",
-      "label": "level()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "level()",
-      "source_file": "components/agents/voice-orb.tsx",
-      "source_location": "L41"
-    },
-    {
-      "id": "components_agents_voice_orb_renderer_createorbrenderer",
-      "label": "createOrbRenderer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "createorbrenderer()",
-      "source_file": "components/agents/voice-orb/renderer.ts",
-      "source_location": "L100"
-    },
-    {
-      "id": "components_agents_voice_orb_renderer_rgb",
-      "label": "rgb()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "rgb()",
-      "source_file": "components/agents/voice-orb/renderer.ts",
-      "source_location": "L84"
-    },
-    {
-      "id": "components_agents_voice_orb_voiceorb",
-      "label": "VoiceOrb()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "voiceorb()",
-      "source_file": "components/agents/voice-orb.tsx",
-      "source_location": "L45"
-    },
-    {
       "id": "lib_utils_cn",
       "label": "cn()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
       "file_type": "code",
       "norm_label": "cn()",
       "source_file": "lib/utils.ts",
       "source_location": "L4"
+    },
+    {
+      "id": "app_api_assistant_route_cleanoutput",
+      "label": "cleanOutput()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "assistant/route.ts",
+      "file_type": "code",
+      "norm_label": "cleanoutput()",
+      "source_file": "app/api/assistant/route.ts",
+      "source_location": "L31"
     },
     {
       "id": "app_api_assistant_route_post",
@@ -1339,7 +1411,7 @@
       "file_type": "code",
       "norm_label": "post()",
       "source_file": "app/api/assistant/route.ts",
-      "source_location": "L31"
+      "source_location": "L39"
     },
     {
       "id": "app_api_auth_login_route_post",
@@ -1508,54 +1580,6 @@
       "norm_label": "proxy()",
       "source_file": "proxy.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "lib_ratelimit_concurrencylimiter_acquire",
-      "label": ".acquire()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "ConcurrencyLimiter",
-      "file_type": "code",
-      "norm_label": ".acquire()",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L111"
-    },
-    {
-      "id": "lib_ratelimit_concurrencylimiter_active",
-      "label": ".active()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "ConcurrencyLimiter",
-      "file_type": "code",
-      "norm_label": ".active()",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L123"
-    },
-    {
-      "id": "lib_ratelimit_concurrencylimiter_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "ConcurrencyLimiter",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L107"
-    },
-    {
-      "id": "lib_ratelimit_concurrencylimiter_release",
-      "label": ".release()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "ConcurrencyLimiter",
-      "file_type": "code",
-      "norm_label": ".release()",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L119"
     },
     {
       "id": "lib_ratelimit_inmemoryratelimiter_check",
@@ -1991,6 +2015,39 @@
       "source_location": "L4"
     },
     {
+      "id": "components_agents_voice_orb",
+      "label": "voice-orb.tsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "voice-orb.tsx",
+      "source_file": "components/agents/voice-orb.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_agents_voice_orb_default_colors",
+      "label": "DEFAULT_COLORS",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "default_colors",
+      "source_file": "components/agents/voice-orb.tsx",
+      "source_location": "L40"
+    },
+    {
+      "id": "components_agents_voice_orb_renderer",
+      "label": "renderer.ts",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "renderer.ts",
+      "source_file": "components/agents/voice-orb/renderer.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "components_assistant_assistant_service",
       "label": "assistant-service.ts",
       "_origin": "ast",
@@ -2054,6 +2111,138 @@
       "file_type": "code",
       "norm_label": "types.ts",
       "source_file": "components/assistant/types.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_ease",
+      "label": "ease.ts",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "ease.ts",
+      "source_file": "lib/ease.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_ease_ease_drawer",
+      "label": "EASE_DRAWER",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "ease_drawer",
+      "source_file": "lib/ease.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "lib_ease_ease_in_out",
+      "label": "EASE_IN_OUT",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "ease_in_out",
+      "source_file": "lib/ease.ts",
+      "source_location": "L2"
+    },
+    {
+      "id": "lib_ease_ease_out",
+      "label": "EASE_OUT",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "ease_out",
+      "source_file": "lib/ease.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_ease_ease_out_css",
+      "label": "EASE_OUT_CSS",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "ease_out_css",
+      "source_file": "lib/ease.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "lib_ease_spring_glide",
+      "label": "SPRING_GLIDE",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "spring_glide",
+      "source_file": "lib/ease.ts",
+      "source_location": "L49"
+    },
+    {
+      "id": "lib_ease_spring_layout",
+      "label": "SPRING_LAYOUT",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "spring_layout",
+      "source_file": "lib/ease.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "lib_ease_spring_mouse",
+      "label": "SPRING_MOUSE",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "spring_mouse",
+      "source_file": "lib/ease.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "lib_ease_spring_panel",
+      "label": "SPRING_PANEL",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "spring_panel",
+      "source_file": "lib/ease.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "lib_ease_spring_press",
+      "label": "SPRING_PRESS",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "spring_press",
+      "source_file": "lib/ease.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "lib_ease_spring_swap",
+      "label": "SPRING_SWAP",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "spring_swap",
+      "source_file": "lib/ease.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "lib_utils",
+      "label": "utils.ts",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "AssistantMessages.tsx",
+      "file_type": "code",
+      "norm_label": "utils.ts",
+      "source_file": "lib/utils.ts",
       "source_location": "L1"
     },
     {
@@ -2223,171 +2412,6 @@
       "node_kind": "page",
       "norm_label": "claude.md",
       "source_file": "CLAUDE.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_agents_voice_orb",
-      "label": "voice-orb.tsx",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "voice-orb.tsx",
-      "source_file": "components/agents/voice-orb.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_agents_voice_orb_default_colors",
-      "label": "DEFAULT_COLORS",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "default_colors",
-      "source_file": "components/agents/voice-orb.tsx",
-      "source_location": "L40"
-    },
-    {
-      "id": "components_agents_voice_orb_renderer",
-      "label": "renderer.ts",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "renderer.ts",
-      "source_file": "components/agents/voice-orb/renderer.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_ease",
-      "label": "ease.ts",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "ease.ts",
-      "source_file": "lib/ease.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_ease_ease_drawer",
-      "label": "EASE_DRAWER",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "ease_drawer",
-      "source_file": "lib/ease.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "lib_ease_ease_in_out",
-      "label": "EASE_IN_OUT",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "ease_in_out",
-      "source_file": "lib/ease.ts",
-      "source_location": "L2"
-    },
-    {
-      "id": "lib_ease_ease_out",
-      "label": "EASE_OUT",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "ease_out",
-      "source_file": "lib/ease.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_ease_ease_out_css",
-      "label": "EASE_OUT_CSS",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "ease_out_css",
-      "source_file": "lib/ease.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "lib_ease_spring_glide",
-      "label": "SPRING_GLIDE",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "spring_glide",
-      "source_file": "lib/ease.ts",
-      "source_location": "L49"
-    },
-    {
-      "id": "lib_ease_spring_layout",
-      "label": "SPRING_LAYOUT",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "spring_layout",
-      "source_file": "lib/ease.ts",
-      "source_location": "L33"
-    },
-    {
-      "id": "lib_ease_spring_mouse",
-      "label": "SPRING_MOUSE",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "spring_mouse",
-      "source_file": "lib/ease.ts",
-      "source_location": "L41"
-    },
-    {
-      "id": "lib_ease_spring_panel",
-      "label": "SPRING_PANEL",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "spring_panel",
-      "source_file": "lib/ease.ts",
-      "source_location": "L25"
-    },
-    {
-      "id": "lib_ease_spring_press",
-      "label": "SPRING_PRESS",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "spring_press",
-      "source_file": "lib/ease.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "lib_ease_spring_swap",
-      "label": "SPRING_SWAP",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "spring_swap",
-      "source_file": "lib/ease.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "lib_utils",
-      "label": "utils.ts",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "voice-orb.tsx",
-      "file_type": "code",
-      "norm_label": "utils.ts",
-      "source_file": "lib/utils.ts",
       "source_location": "L1"
     },
     {
@@ -2886,171 +2910,6 @@
       "source_location": "L25"
     },
     {
-      "id": "package_dependencies",
-      "label": "dependencies",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "dependencies",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "package_dependencies_clsx",
-      "label": "clsx",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "clsx",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "package_dependencies_motion",
-      "label": "motion",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "motion",
-      "source_file": "package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "package_dependencies_next",
-      "label": "next",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "next",
-      "source_file": "package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "package_dependencies_pocketbase",
-      "label": "pocketbase",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "pocketbase",
-      "source_file": "package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "package_dependencies_react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "package_dependencies_react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "package_dependencies_tailwind_merge",
-      "label": "tailwind-merge",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "tailwind-merge",
-      "source_file": "package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "clsx",
-      "label": "clsx",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "clsx",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "motion",
-      "label": "motion",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "motion",
-      "source_file": "package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "next",
-      "label": "next",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "next",
-      "source_file": "package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "pocketbase",
-      "label": "pocketbase",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "pocketbase",
-      "source_file": "package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "tailwind_merge",
-      "label": "tailwind-merge",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "tailwind-merge",
-      "source_file": "package.json",
-      "source_location": "L22"
-    },
-    {
       "id": "app_api_assistant_route",
       "label": "assistant/route.ts",
       "_origin": "ast",
@@ -3082,6 +2941,94 @@
       "norm_label": "package.json",
       "source_file": "package.json",
       "source_location": "L1"
+    },
+    {
+      "id": "package_dependencies",
+      "label": "dependencies",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "dependencies",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "package_dependencies_clsx",
+      "label": "clsx",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "clsx",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "package_dependencies_motion",
+      "label": "motion",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "motion",
+      "source_file": "package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "package_dependencies_next",
+      "label": "next",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "next",
+      "source_file": "package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "package_dependencies_pocketbase",
+      "label": "pocketbase",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "pocketbase",
+      "source_file": "package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "package_dependencies_react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "package_dependencies_react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "package_dependencies_tailwind_merge",
+      "label": "tailwind-merge",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "tailwind-merge",
+      "source_file": "package.json",
+      "source_location": "L22"
     },
     {
       "id": "package_description",
@@ -3249,6 +3196,72 @@
       "source_location": "L3"
     },
     {
+      "id": "clsx",
+      "label": "clsx",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "clsx",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "motion",
+      "label": "motion",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "motion",
+      "source_file": "package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "next",
+      "label": "next",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "next",
+      "source_file": "package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "pocketbase",
+      "label": "pocketbase",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "pocketbase",
+      "source_file": "package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L21"
+    },
+    {
       "id": "ref_sharp",
       "label": "sharp",
       "_origin": "ast",
@@ -3269,6 +3282,17 @@
       "norm_label": "unrs-resolver",
       "source_file": "package.json",
       "source_location": "L35"
+    },
+    {
+      "id": "tailwind_merge",
+      "label": "tailwind-merge",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "tailwind-merge",
+      "source_file": "package.json",
+      "source_location": "L22"
     },
     {
       "id": "app_api_auth_login_route",
@@ -4039,6 +4063,18 @@
       "weight": 1.0
     },
     {
+      "source": "app_api_assistant_route_post",
+      "target": "app_api_assistant_route_cleanoutput",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "app/api/assistant/route.ts",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
       "source": "app_api_auth_login_route_post",
       "target": "lib_auth_getadminpassword",
       "relation": "calls",
@@ -4396,6 +4432,18 @@
       "context": "call",
       "source_file": "components/assistant/assistant-service.ts",
       "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "components_assistant_assistantmessages_typewritertext",
+      "target": "components_assistant_assistantmessages_cleanformatting",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "components/assistant/AssistantMessages.tsx",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -4928,7 +4976,7 @@
     },
     {
       "source": "components_assistant_assistantmessages_assistantmessagesprops",
-      "target": "components_assistant_types_assistantstatus",
+      "target": "components_assistant_types_assistantmessage",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4940,14 +4988,14 @@
     },
     {
       "source": "components_assistant_assistantmessages_assistantmessagesprops",
-      "target": "components_assistant_types_assistantmessage",
+      "target": "components_assistant_types_assistantstatus",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "components/assistant/AssistantMessages.tsx",
-      "source_location": "L9",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -4959,7 +5007,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "components/assistant/AssistantPanel.tsx",
-      "source_location": "L12",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -4971,7 +5019,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "components/assistant/AssistantPanel.tsx",
-      "source_location": "L13",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -6116,30 +6164,6 @@
     },
     {
       "source": "components_assistant_assistantmessages",
-      "target": "components_icons_highintenticon",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/assistant/AssistantMessages.tsx",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "components_assistant_assistantmessages",
-      "target": "components_icons_sparklesicon",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/assistant/AssistantMessages.tsx",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "components_assistant_assistantmessages",
       "target": "components_icons_xcircleicon",
       "relation": "imports",
       "_origin": "ast",
@@ -6151,32 +6175,20 @@
       "weight": 1.0
     },
     {
+      "source": "components_assistant_assistantmessages",
+      "target": "components_agents_voice_orb_voiceorb",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/assistant/AssistantMessages.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
       "source": "components_assistant_assistantpanel",
       "target": "components_assistant_types_assistantmessage",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/assistant/AssistantPanel.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "components_assistant_assistantpanel",
-      "target": "components_assistant_types_assistantstatus",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/assistant/AssistantPanel.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "components_assistant_assistantpanel",
-      "target": "components_assistant_assistantmessages_assistantmessages",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6188,7 +6200,19 @@
     },
     {
       "source": "components_assistant_assistantpanel",
-      "target": "components_assistant_assistantinput_assistantinput",
+      "target": "components_assistant_types_assistantstatus",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/assistant/AssistantPanel.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "components_assistant_assistantpanel",
+      "target": "components_assistant_assistantmessages_assistantmessages",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6200,7 +6224,7 @@
     },
     {
       "source": "components_assistant_assistantpanel",
-      "target": "components_icons_refreshicon",
+      "target": "components_assistant_assistantinput_assistantinput",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6208,6 +6232,30 @@
       "context": "import",
       "source_file": "components/assistant/AssistantPanel.tsx",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "components_assistant_assistantpanel",
+      "target": "components_icons_refreshicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/assistant/AssistantPanel.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "components_assistant_assistantpanel",
+      "target": "components_agents_voice_orb_voiceorb",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/assistant/AssistantPanel.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -7387,20 +7435,20 @@
       "weight": 1.0
     },
     {
-      "source": "components_assistant_assistantpanel",
-      "target": "components_assistant_types",
+      "source": "components_assistant_assistantmessages",
+      "target": "components_agents_voice_orb",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
-      "source_file": "components/assistant/AssistantPanel.tsx",
-      "source_location": "L4",
+      "source_file": "components/assistant/AssistantMessages.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
       "source": "components_assistant_assistantpanel",
-      "target": "components_assistant_assistantmessages",
+      "target": "components_assistant_types",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7412,7 +7460,7 @@
     },
     {
       "source": "components_assistant_assistantpanel",
-      "target": "components_assistant_assistantinput",
+      "target": "components_assistant_assistantmessages",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7424,7 +7472,7 @@
     },
     {
       "source": "components_assistant_assistantpanel",
-      "target": "components_icons",
+      "target": "components_assistant_assistantinput",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7432,6 +7480,30 @@
       "context": "import",
       "source_file": "components/assistant/AssistantPanel.tsx",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "components_assistant_assistantpanel",
+      "target": "components_icons",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/assistant/AssistantPanel.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "components_assistant_assistantpanel",
+      "target": "components_agents_voice_orb",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/assistant/AssistantPanel.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -7789,13 +7861,24 @@
     },
     {
       "source": "app_api_assistant_route",
-      "target": "app_api_assistant_route_post",
+      "target": "app_api_assistant_route_cleanoutput",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/api/assistant/route.ts",
       "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "app_api_assistant_route",
+      "target": "app_api_assistant_route_post",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/assistant/route.ts",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -8262,13 +8345,24 @@
     },
     {
       "source": "components_assistant_assistantmessages",
-      "target": "components_assistant_assistantmessages_streamingtext",
+      "target": "components_assistant_assistantmessages_cleanformatting",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/assistant/AssistantMessages.tsx",
       "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "components_assistant_assistantmessages",
+      "target": "components_assistant_assistantmessages_typewritertext",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/assistant/AssistantMessages.tsx",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -8279,7 +8373,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/assistant/AssistantMessages.tsx",
-      "source_location": "L70",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -8290,18 +8384,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/assistant/AssistantMessages.tsx",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "components_assistant_assistantpanel",
-      "target": "components_assistant_assistantpanel_assistantpanel",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "components/assistant/AssistantPanel.tsx",
-      "source_location": "L20",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -8312,7 +8395,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/assistant/AssistantPanel.tsx",
-      "source_location": "L9",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "components_assistant_assistantpanel",
+      "target": "components_assistant_assistantpanel_assistantpanel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/assistant/AssistantPanel.tsx",
+      "source_location": "L22",
       "weight": 1.0
     },
     {

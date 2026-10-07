@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback, useMemo } from "react";
 import { usePathname } from "next/navigation";
+import { motion } from "motion/react";
 import { VoiceOrb } from "@/components/agents/voice-orb";
 import { AssistantPanel } from "./AssistantPanel";
 import { askRadarAssistant } from "./assistant-service";
@@ -120,16 +121,24 @@ export function RadarAssistant({ context: externalContext }: RadarAssistantProps
 
       {/* Floating Trigger Button (Bottom-Right corner) */}
       <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
-        <button
+        <motion.button
           type="button"
           onClick={togglePanel}
           aria-expanded={isOpen}
           aria-label={isOpen ? "بستن دستیار رادار" : "باز کردن دستیار رادار"}
           title={isOpen ? "بستن دستیار رادار (Esc)" : "دستیار هوشمند رادار"}
-          className={`relative w-12 h-12 sm:w-13 sm:h-13 rounded-full flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-300 group transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          whileHover={!isOpen ? { scale: 1.07 } : undefined}
+          whileTap={!isOpen ? { scale: 0.94 } : undefined}
+          transition={{
+            type: "spring",
+            stiffness: 350,
+            damping: 24,
+            mass: 0.6,
+          }}
+          className={`relative w-12 h-12 sm:w-13 sm:h-13 rounded-full flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-300 group select-none transform-gpu ${
             isOpen
               ? "bg-[#141414] hover:bg-[#1a1918] border border-[#2d2d2a] shadow-[0_6px_20px_rgba(0,0,0,0.8)]"
-              : "bg-transparent border border-transparent hover:scale-105 active:scale-95"
+              : "bg-transparent border border-transparent"
           }`}
         >
           {/* Voice Orb (always mounted for zero-lag instant transition, no WebGL re-init) */}
@@ -166,7 +175,7 @@ export function RadarAssistant({ context: externalContext }: RadarAssistantProps
               <path d="m6 6 12 12" />
             </svg>
           </div>
-        </button>
+        </motion.button>
       </div>
     </>
   );

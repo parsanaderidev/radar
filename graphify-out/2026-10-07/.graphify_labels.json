@@ -7,7 +7,6 @@
   "5": "devDependencies",
   "6": "Radar — AI Lead Radar",
   "7": "AGENTS.md",
-  "8": "ConcurrencyLimiter",
   "9": "InMemoryRateLimiter",
   "10": "AssistantMessages.tsx",
   "11": "next.config.ts",
@@ -17,8 +16,6 @@
   "15": "ponytail.md",
   "16": "workflows/graphify.md",
   "17": "CLAUDE.md",
-  "18": "voice-orb.tsx",
   "19": "components.json",
-  "20": "dependencies",
   "21": "assistant/route.ts"
 }

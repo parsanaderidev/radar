@@ -234,9 +234,9 @@
     "semantic_hash": ""
   },
   "app/api/assistant/route.ts": {
-    "mtime": 1791373653.27247,
-    "seen": 1791374090.0716603,
-    "ast_hash": "51c98b0d324ed75108a0affadbf54d2f",
+    "mtime": 1791375198.6293368,
+    "seen": 1791375887.037926,
+    "ast_hash": "f4fb75077889152df646c7f722d572a4",
     "semantic_hash": ""
   },
   "components.json": {
@@ -264,15 +264,15 @@
     "semantic_hash": ""
   },
   "components/assistant/AssistantMessages.tsx": {
-    "mtime": 1791374977.197356,
-    "seen": 1791375110.2467997,
-    "ast_hash": "ac3c9865e42cbf93aa74e69a1352dbe5",
+    "mtime": 1791375522.585309,
+    "seen": 1791375887.037947,
+    "ast_hash": "8cde3a93bdac812d9f1124a4968848e1",
     "semantic_hash": ""
   },
   "components/assistant/AssistantPanel.tsx": {
-    "mtime": 1791375059.3063488,
-    "seen": 1791375110.2468011,
-    "ast_hash": "0bbaba77776baee57207450f900f35d7",
+    "mtime": 1791375800.4755898,
+    "seen": 1791375887.0379477,
+    "ast_hash": "630f3b3b100e47955b74e799e54cc411",
     "semantic_hash": ""
   },
   "components/assistant/AssistantSuggestions.tsx": {
@@ -282,15 +282,15 @@
     "semantic_hash": ""
   },
   "components/assistant/RadarAssistant.tsx": {
-    "mtime": 1791375045.55035,
-    "seen": 1791375110.2468038,
-    "ast_hash": "4231c3e75d1a5ca5ce4ca172830ac356",
+    "mtime": 1791376791.8221996,
+    "seen": 1791376808.990945,
+    "ast_hash": "a13e7f9bd91f7954b96c67ca6315cf4f",
     "semantic_hash": ""
   },
   "components/assistant/assistant-service.ts": {
-    "mtime": 1791373676.2224681,
-    "seen": 1791374090.0716977,
-    "ast_hash": "4b5d2dede521b5bb1169e5e641054e8e",
+    "mtime": 1791375247.3133326,
+    "seen": 1791375887.0379508,
+    "ast_hash": "777dbb031bab88d85f887430333cfe3e",
     "semantic_hash": ""
   },
   "components/assistant/types.ts": {
