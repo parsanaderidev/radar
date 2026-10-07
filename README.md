@@ -190,27 +190,50 @@ cp .env.example .env
 
 Review the values in [Environment Variables](#environment-variables).
 
-### 4. Start PocketBase
+### 4. Download the PocketBase binary
+
+The server binary is git-ignored (`pocketbase/pocketbase`), so it is not
+included in a fresh clone. Download the matching OS/arch build from the
+[PocketBase releases](https://github.com/pocketbase/pocketbase/releases)
+and place it at `pocketbase/pocketbase`. Example for macOS (arm64):
+
+```bash
+cd pocketbase
+curl -L -o pb.zip https://github.com/pocketbase/pocketbase/releases/download/v0.40.4/pocketbase_0.40.4_darwin_arm64.zip
+unzip -o pb.zip pocketbase
+chmod +x pocketbase
+rm pb.zip
+cd ..
+```
+
+Pick the `linux_amd64`, `darwin_arm64`, or `windows_amd64` zip that matches
+your machine. Any recent v0.2x+ server works with the `pocketbase` JS client.
+
+### 5. Start PocketBase
 
 ```bash
 bun run pb
 # equivalent to:
-# ./pocketbase/pocketbase serve --http="0.0.0.0:8090"
+# ./pocketbase/pocketbase serve --http=127.0.0.1:8090
 ```
 
 The PocketBase admin dashboard is available at `http://127.0.0.1:8090/_/`.
 
-### 5. Create the schema
+### 6. Create the superuser, then the schema
 
-In a second terminal:
+`bun run setup:pb` authenticates with the superuser from your `.env`, so the
+superuser must exist first. In a second terminal (PocketBase still running):
 
 ```bash
+# Values must match POCKETBASE_ADMIN_EMAIL / POCKETBASE_ADMIN_PASSWORD in .env
+./pocketbase/pocketbase superuser upsert "admin@leadradar.local" "your-secure-password-min-16-chars"
+
 bun run setup:pb
 ```
 
 This creates `products`, `sources`, `raw_messages`, and `leads` with all relations and fields, plus a demo product record.
 
-### 6. Seed demo data (optional)
+### 7. Seed demo data (optional)
 
 Loads 26 realistic Persian community messages — 5 high-intent, 5 problem-aware, and 16 noise:
 
@@ -218,13 +241,13 @@ Loads 26 realistic Persian community messages — 5 high-intent, 5 problem-aware
 bun run seed
 ```
 
-### 7. Run the triage pipeline
+### 8. Run the triage pipeline
 
 ```bash
 bun run worker
 ```
 
-### 8. Start the dashboard
+### 9. Start the dashboard
 
 ```bash
 bun dev

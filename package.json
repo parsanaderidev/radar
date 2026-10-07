@@ -10,7 +10,7 @@
     "worker": "bun run scripts/worker.ts",
     "seed": "bun run scripts/seed_demo.ts",
     "setup:pb": "bun run pocketbase/setup_schema.ts",
-    "pb": "./pocketbase serve --http=127.0.0.1:8090"
+    "pb": "./pocketbase/pocketbase serve --http=127.0.0.1:8090"
   },
   "dependencies": {
     "clsx": "^2.1.1",
