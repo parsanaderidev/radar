@@ -23,6 +23,7 @@
 - [Data Model](#data-model)
 - [Project Structure](#project-structure)
 - [Quickstart](#quickstart)
+- [Deployment](#deployment)
 - [Environment Variables](#environment-variables)
 - [API Reference](#api-reference)
 - [Design System](#design-system)
@@ -269,6 +270,103 @@ Open `http://localhost:3000`.
 
 ---
 
+## Deployment
+
+### Architecture on the server
+
+```text
+Internet → Caddy (TLS, ports 80/443)
+  ├─ https://radar.example.com    → Next.js 127.0.0.1:3000 (dashboard + API)
+  └─ https://pb.example.com       → PocketBase 127.0.0.1:8090 (SQLite in pb_data/)
+systemd timer every 3 min → bun run scripts/worker.ts (one-shot triage, then exits)
+Optional: Ollama / vLLM / domestic gateway (without one, the Persian heuristic fallback keeps triage running)
+```
+
+Only 80/443 are exposed. Ports 3000/8090 stay on localhost.
+
+### One-command deploy (Debian-based servers)
+
+On the server, as a user with sudo:
+
+```bash
+git clone <repo-url> /opt/radar && cd /opt/radar
+sudo bash DEPLOY.sh --domain radar.example.com
+```
+
+This single command does everything below: installs Bun, Caddy, and the
+PocketBase `linux_amd64` binary; creates `.env` (generating secrets it isn't
+given); creates the superuser and schema; patches the CSP for your domains;
+builds the app; installs and starts `systemd` units (`radar-pb`,
+`radar-web`, `radar-worker.timer`); writes the Caddy vhosts; and runs health
+checks.
+
+```bash
+sudo bash DEPLOY.sh --help   # full option list
+sudo bash DEPLOY.sh \
+  --domain radar.example.com \
+  --pb-domain pb.example.com \
+  --email admin@example.com \
+  --worker-interval 5min
+```
+
+Secrets (`--admin-password`, `--radar-password`, `--api-key`, `--llm-key`)
+can be passed as flags or entered at hidden prompts; anything omitted is
+generated with `openssl rand` and printed once at the end. The script is
+idempotent — re-running it updates config and rebuilds rather than
+duplicating anything.
+
+### What DEPLOY.sh does, step by step
+
+1. Installs system deps (`curl`, `unzip`, `openssl`), Bun to `/opt/bun`
+   (symlinked as `/usr/local/bin/bun`), and Caddy from its official apt repo.
+2. Downloads the pinned PocketBase `linux_amd64` binary into `pocketbase/`
+   (git-ignored, same as local dev).
+3. Creates `pocketbase/` superuser (`superuser upsert`, idempotent), then
+   `bun run setup:pb`. Never runs `seed` in production.
+4. Patches `connect-src` in `next.config.ts` with your domains (idempotent —
+   skipped if already present), then `bun run build`.
+5. Installs/enables `radar-pb.service`, `radar-web.service`, and
+   `radar-worker.{service,timer}`, all running as the unprivileged `radar`
+   user, and (re)starts them.
+6. Writes a marked `# BEGIN RADAR` block into `/etc/caddy/Caddyfile`,
+   reloads Caddy (automatic TLS certificates), and polls the public URLs.
+
+### Manual deployment (without the script)
+
+```bash
+bun install
+./pocketbase/pocketbase superuser upsert "$POCKETBASE_ADMIN_EMAIL" "$POCKETBASE_ADMIN_PASSWORD"
+bun run setup:pb
+bun run build
+bun run start            # port 3000
+./pocketbase/pocketbase serve --http=127.0.0.1:8090
+# every few minutes via cron/systemd timer:
+bun run scripts/worker.ts
+```
+
+### Production checklist
+
+- `NEXT_PUBLIC_POCKETBASE_URL` must be the **public** PB origin — the
+  browser connects to PocketBase directly for the live SSE feed
+  (`lib/pocketbase.ts`). Localhost values only work for local dev.
+- `next.config.ts` `connect-src` must list that PB origin (plus `wss:`).
+  `DEPLOY.sh` patches this; manual deploys must do it by hand **before**
+  building, since `NEXT_PUBLIC_*` values are baked in at build time — always
+  build on the server after the production `.env` is final.
+- Set `RADAR_ADMIN_PASSWORD`. Unset, `/login` falls back to the PocketBase
+  admin password and then to `"BuildX"` (`lib/auth.ts`).
+- Login cookies are `Secure` in production, so HTTPS is mandatory —
+  `/login` won't hold a session over plain HTTP.
+- The assistant chat endpoint (`app/api/assistant/route.ts`) defaults to
+  `https://openrouter.ai/api/v1` and has no heuristic fallback (unlike
+  triage). Point `LLM_BASE_URL` at a domestic gateway for that endpoint, or
+  expect it to fail under filtering.
+- Back up `pb_data/` nightly — it is the entire database. PocketBase also
+  has built-in backup to S3-compatible storage under Settings > Backups.
+- Firewall: allow 80/443 only; keep 3000/8090 on loopback.
+
+---
+
 ## Environment Variables
 
 | Variable | Default | Description |
@@ -277,6 +375,8 @@ Open `http://localhost:3000`.
 | `NEXT_PUBLIC_POCKETBASE_URL` | `http://127.0.0.1:8090` | Browser-facing PocketBase address |
 | `POCKETBASE_ADMIN_EMAIL` | `admin@leadradar.local` | Superuser email for schema setup |
 | `POCKETBASE_ADMIN_PASSWORD` | — | Superuser password (**change in production**) |
+| `RADAR_ADMIN_PASSWORD` | falls back to `POCKETBASE_ADMIN_PASSWORD`, then `"BuildX"` | Dashboard `/login` password (**always set in production**) |
+| `RADAR_API_KEY` | — | Programmatic API key for worker / ingestion webhooks |
 | `LLM_BASE_URL` | `http://localhost:11434/v1` | OpenAI-compatible endpoint (Ollama / vLLM / domestic gateway) |
 | `LLM_API_KEY` | `dummy` | API key, if the endpoint requires one |
 | `LLM_MODEL` | `llama3.1` | Model identifier used for triage |
