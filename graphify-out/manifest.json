@@ -264,27 +264,27 @@
     "semantic_hash": ""
   },
   "components/assistant/AssistantMessages.tsx": {
-    "mtime": 1791373823.5324554,
-    "seen": 1791374090.0716927,
-    "ast_hash": "c011928257e6e02715caf28b43fa1dc4",
+    "mtime": 1791374251.9724185,
+    "seen": 1791374333.7536514,
+    "ast_hash": "cf8c24bcefe12f05d572a3dd3c2be105",
     "semantic_hash": ""
   },
   "components/assistant/AssistantPanel.tsx": {
-    "mtime": 1791373731.4364634,
-    "seen": 1791374090.071694,
-    "ast_hash": "5b41d585bc7798e134716eeea184ed63",
+    "mtime": 1791374268.6794171,
+    "seen": 1791374333.7536597,
+    "ast_hash": "6e8fc34569873b57c464fc3ed29d3bed",
     "semantic_hash": ""
   },
   "components/assistant/AssistantSuggestions.tsx": {
-    "mtime": 1791373835.8504543,
-    "seen": 1791374090.071695,
-    "ast_hash": "f927a43b92dc15a3fa0cb6368255c537",
+    "mtime": 1791374234.8924198,
+    "seen": 1791374333.7536612,
+    "ast_hash": "2088d9d87a8abc2eab48589693cd3bd9",
     "semantic_hash": ""
   },
   "components/assistant/RadarAssistant.tsx": {
-    "mtime": 1791373760.460461,
-    "seen": 1791374090.0716968,
-    "ast_hash": "8a3a8edb203035851344c6580fcb3103",
+    "mtime": 1791374294.6034148,
+    "seen": 1791374333.7536638,
+    "ast_hash": "58d7eaebae35811003b1dd8ca4c21c3a",
     "semantic_hash": ""
   },
   "components/assistant/assistant-service.ts": {

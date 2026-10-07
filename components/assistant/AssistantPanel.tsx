@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { AssistantMessage, AssistantStatus } from "./types";
 import { AssistantMessages } from "./AssistantMessages";
 import { AssistantInput } from "./AssistantInput";
-import { RadarLogo, RefreshIcon } from "@/components/Icons";
+import { RefreshIcon } from "@/components/Icons";
 
 interface AssistantPanelProps {
   isOpen: boolean;
@@ -47,33 +47,25 @@ export function AssistantPanel({
       ref={panelRef}
       role="dialog"
       aria-modal="true"
-      aria-label="پنل گفتگوی دستیار رادار"
-      className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[400px] h-[520px] max-h-[calc(100vh-110px)] flex flex-col rounded-2xl bg-[#0a0a0a] border border-[#222222] shadow-[0_16px_50px_rgba(0,0,0,0.85)] backdrop-blur-xl overflow-hidden animate-fade-in transition-all duration-300"
+      aria-label="پنل دستیار رادار"
+      className="fixed bottom-19 right-4 sm:bottom-22 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[380px] h-[490px] max-h-[calc(100vh-100px)] flex flex-col rounded-2xl bg-[#090909] border border-[#202020] shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-xl overflow-hidden animate-fade-in transition-all duration-300"
     >
-      {/* Panel Header */}
-      <div className="h-14 px-4 border-b border-[#1f1f1f] bg-[#0c0c0c] flex items-center justify-between gap-2 shrink-0">
-        <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-lg bg-white text-black flex items-center justify-center shadow-sm">
-            <RadarLogo className="w-4 h-4 text-black" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-white">دستیار رادار</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow" />
-            </div>
-            <div className="text-[10px] text-neutral-400">راهنمای نیت خرید و سرنخ‌ها</div>
-          </div>
+      {/* Minimal Header */}
+      <div className="h-11 px-3.5 border-b border-[#1a1a1a] bg-[#0c0c0c] flex items-center justify-between gap-2 shrink-0">
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+          <span className="text-xs font-semibold text-white tracking-wide">دستیار رادار</span>
         </div>
 
-        {/* Header Controls: Clear & Close */}
+        {/* Minimal Controls */}
         <div className="flex items-center gap-1">
           {messages.length > 0 && (
             <button
               type="button"
               onClick={onClearMessages}
-              title="پاک کردن پیام‌ها"
-              aria-label="پاک کردن پیام‌ها"
-              className="p-1.5 rounded-md text-neutral-400 hover:text-white hover:bg-neutral-900 transition-colors text-xs cursor-pointer"
+              title="پاک کردن گفتگو"
+              aria-label="پاک کردن گفتگو"
+              className="p-1 rounded-md text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors text-xs cursor-pointer"
             >
               <RefreshIcon className="w-3.5 h-3.5" />
             </button>
@@ -82,16 +74,27 @@ export function AssistantPanel({
           <button
             type="button"
             onClick={onClose}
-            title="بستن دستیار (Esc)"
+            title="بستن (Esc)"
             aria-label="بستن دستیار"
-            className="w-7 h-7 rounded-md text-neutral-400 hover:text-white hover:bg-neutral-900 transition-colors flex items-center justify-center text-sm cursor-pointer"
+            className="w-6 h-6 rounded-md text-neutral-400 hover:text-white hover:bg-neutral-800 transition-all flex items-center justify-center cursor-pointer"
           >
-            ✕
+            <svg
+              className="w-3.5 h-3.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
           </button>
         </div>
       </div>
 
-      {/* Panel Body: Message Stream */}
+      {/* Message Stream */}
       <AssistantMessages
         messages={messages}
         status={status}
@@ -100,15 +103,12 @@ export function AssistantPanel({
         onRetry={onRetry}
       />
 
-      {/* Panel Footer: Input & Disclaimer */}
-      <div className="shrink-0 bg-[#0a0a0a]">
+      {/* Input */}
+      <div className="shrink-0 bg-[#090909]">
         <AssistantInput
           onSendMessage={onSendMessage}
           disabled={status === "thinking"}
         />
-        <div className="px-3 py-1.5 text-center text-[10px] text-neutral-500 border-t border-[#161616]">
-          تحلیل پاسخ‌ها منحصراً متمرکز بر داده‌ها و تریاژ داخلی رادار است.
-        </div>
       </div>
     </div>
   );
