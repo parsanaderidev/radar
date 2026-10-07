@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { RadarAssistant } from "@/components/assistant/RadarAssistant";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,6 +26,7 @@ export default function RootLayout({
     <html lang="fa" dir="rtl" className="dark">
       <body className="bg-[#000000] text-[#ededed] min-h-screen selection:bg-white selection:text-black antialiased">
         {children}
+        <RadarAssistant />
       </body>
     </html>
   );
