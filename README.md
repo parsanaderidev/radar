@@ -55,7 +55,7 @@ Heavy third-party utility packages (`clsx`, `tailwind-merge`, icon packs) are in
 
 ### 3. Zero External CDNs
 
-Every icon is an inline SVG component in `components/Icons.tsx`. Typography uses the self-hosted **Estedad** family shipped in `public/fonts/estedad/` — no Google Fonts, no CDN requests.
+Every icon is an inline SVG component in `components/Icons.tsx`. Typography uses the self-hosted **Ravi** family shipped in `public/fonts/ravi/` (with fallback to Estedad) — no Google Fonts, no CDN requests.
 
 ### 4. Native Persian / RTL Support
 
@@ -114,7 +114,7 @@ graph TD
 | Styling | Tailwind CSS v4 + vanilla CSS (`app/globals.css`) |
 | Database & realtime | PocketBase (embedded SQLite) + SSE subscriptions |
 | AI inference | OpenAI-compatible endpoint (Ollama / vLLM) with offline heuristic fallback |
-| Typography | Estedad (self-hosted WOFF2, RTL, Persian numerals) |
+| Typography | Ravi (self-hosted TTF, RTL, full Persian typography, fallback to Estedad) |
 
 ---
 
@@ -160,6 +160,7 @@ radar/
 ├── pocketbase/
 │   ├── pocketbase             # Local PocketBase binary (git-ignored)
 │   └── setup_schema.ts        # Idempotent schema and seed bootstrap
+├── public/fonts/ravi/         # Self-hosted Ravi font files (Thin to ExtraBold)
 ├── public/fonts/estedad/      # Self-hosted Estedad font files
 └── scripts/
     ├── seed_demo.ts           # 26 realistic Persian community messages

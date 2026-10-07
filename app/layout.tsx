@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" className="dark">
-      <body className="bg-[#000000] text-[#ededed] min-h-screen selection:bg-white selection:text-black antialiased">
+      <body className="bg-[#000000] text-[#ededed] min-h-screen selection:bg-white selection:text-black antialiased font-sans">
         {children}
         <RadarAssistant />
       </body>
