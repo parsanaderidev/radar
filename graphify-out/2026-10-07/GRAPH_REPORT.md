@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-07)
 
 ## Corpus Check
-- 50 files · ~26,235 words
+- 50 files · ~26,426 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 339 nodes · 579 edges · 22 communities (12 shown, 10 thin omitted)
+- 340 nodes · 579 edges · 22 communities (12 shown, 10 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `19903562`
+- Built from commit: `6790710b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -25,7 +25,7 @@
 - AGENTS.md
 - ConcurrencyLimiter
 - InMemoryRateLimiter
-- AssistantPanel.tsx
+- AssistantMessages.tsx
 - next.config.ts
 - next-env.d.ts
 - postcss.config.mjs
@@ -94,8 +94,8 @@ Nodes (17): eslint, eslint-config-next, devDependencies, eslint, eslint-config-n
 Cohesion: 0.06
 Nodes (30): 1. Prerequisites, 1. Zero Foreign Cloud Lock-in, 2. Install dependencies, 2. Vanilla TypeScript First, 3. Configure environment, 3. Zero External CDNs, 4. Native Persian / RTL Support, 4. Start PocketBase (+22 more)
 
-### Community 10 - "AssistantPanel.tsx"
-Cohesion: 0.15
+### Community 10 - "AssistantMessages.tsx"
+Cohesion: 0.14
 Nodes (18): metadata, viewport, askRadarAssistant(), fallbackDomainAssistant(), AssistantInput(), AssistantInputProps, AssistantMessages(), AssistantMessagesProps (+10 more)
 
 ### Community 18 - "voice-orb.tsx"
@@ -119,11 +119,11 @@ Nodes (15): clsx, motion, next, dependencies, clsx, motion, next, pocketbase (+7
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `getPocketBaseClient()` connect `analyze/route.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.042) - this node is a cross-community bridge._
-- **Why does `RadarLogo()` connect `Icons.tsx` to `AssistantPanel.tsx`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **Why does `RefreshIcon()` connect `Icons.tsx` to `AssistantPanel.tsx`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+  _High betweenness centrality (0.041) - this node is a cross-community bridge._
+- **Why does `RefreshIcon()` connect `Icons.tsx` to `AssistantMessages.tsx`?**
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+- **Why does `ProductRecord` connect `analyze/route.ts` to `Icons.tsx`?**
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
   _137 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**

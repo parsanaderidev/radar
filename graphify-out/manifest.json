@@ -234,9 +234,9 @@
     "semantic_hash": ""
   },
   "app/api/assistant/route.ts": {
-    "mtime": 1791373653.27247,
-    "seen": 1791374090.0716603,
-    "ast_hash": "51c98b0d324ed75108a0affadbf54d2f",
+    "mtime": 1791375198.6293368,
+    "seen": 1791375887.037926,
+    "ast_hash": "f4fb75077889152df646c7f722d572a4",
     "semantic_hash": ""
   },
   "components.json": {
@@ -258,39 +258,39 @@
     "semantic_hash": ""
   },
   "components/assistant/AssistantInput.tsx": {
-    "mtime": 1791374619.0153868,
-    "seen": 1791374733.3440132,
-    "ast_hash": "20cff7e654c91d4a6fdab8c3a8c86c66",
+    "mtime": 1791374863.5143657,
+    "seen": 1791375110.2467978,
+    "ast_hash": "9af5bbea51783c292e6026a358cc3a3d",
     "semantic_hash": ""
   },
   "components/assistant/AssistantMessages.tsx": {
-    "mtime": 1791374251.9724185,
-    "seen": 1791374333.7536514,
-    "ast_hash": "cf8c24bcefe12f05d572a3dd3c2be105",
+    "mtime": 1791375522.585309,
+    "seen": 1791375887.037947,
+    "ast_hash": "8cde3a93bdac812d9f1124a4968848e1",
     "semantic_hash": ""
   },
   "components/assistant/AssistantPanel.tsx": {
-    "mtime": 1791374268.6794171,
-    "seen": 1791374333.7536597,
-    "ast_hash": "6e8fc34569873b57c464fc3ed29d3bed",
+    "mtime": 1791375800.4755898,
+    "seen": 1791375887.0379477,
+    "ast_hash": "630f3b3b100e47955b74e799e54cc411",
     "semantic_hash": ""
   },
   "components/assistant/AssistantSuggestions.tsx": {
-    "mtime": 1791374641.7113848,
-    "seen": 1791374733.3440163,
-    "ast_hash": "1fc7bdca63921d92250eefecf34a36d1",
+    "mtime": 1791374998.8670545,
+    "seen": 1791375110.2468023,
+    "ast_hash": "2c5ed03839d76706d115f44ca7538dce",
     "semantic_hash": ""
   },
   "components/assistant/RadarAssistant.tsx": {
-    "mtime": 1791374685.670381,
-    "seen": 1791374733.3440175,
-    "ast_hash": "1fbe265c7acef0cde0b1b161b0805b04",
+    "mtime": 1791375831.9272823,
+    "seen": 1791375887.0379498,
+    "ast_hash": "519ec11c113cb9774ad5621323cf7d42",
     "semantic_hash": ""
   },
   "components/assistant/assistant-service.ts": {
-    "mtime": 1791373676.2224681,
-    "seen": 1791374090.0716977,
-    "ast_hash": "4b5d2dede521b5bb1169e5e641054e8e",
+    "mtime": 1791375247.3133326,
+    "seen": 1791375887.0379508,
+    "ast_hash": "777dbb031bab88d85f887430333cfe3e",
     "semantic_hash": ""
   },
   "components/assistant/types.ts": {

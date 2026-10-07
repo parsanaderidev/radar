@@ -258,33 +258,33 @@
     "semantic_hash": ""
   },
   "components/assistant/AssistantInput.tsx": {
-    "mtime": 1791373691.588467,
-    "seen": 1791374090.071692,
-    "ast_hash": "19a52cfba135f37532804d5abbe31161",
+    "mtime": 1791374863.5143657,
+    "seen": 1791375110.2467978,
+    "ast_hash": "9af5bbea51783c292e6026a358cc3a3d",
     "semantic_hash": ""
   },
   "components/assistant/AssistantMessages.tsx": {
-    "mtime": 1791373823.5324554,
-    "seen": 1791374090.0716927,
-    "ast_hash": "c011928257e6e02715caf28b43fa1dc4",
+    "mtime": 1791374977.197356,
+    "seen": 1791375110.2467997,
+    "ast_hash": "ac3c9865e42cbf93aa74e69a1352dbe5",
     "semantic_hash": ""
   },
   "components/assistant/AssistantPanel.tsx": {
-    "mtime": 1791373731.4364634,
-    "seen": 1791374090.071694,
-    "ast_hash": "5b41d585bc7798e134716eeea184ed63",
+    "mtime": 1791375059.3063488,
+    "seen": 1791375110.2468011,
+    "ast_hash": "0bbaba77776baee57207450f900f35d7",
     "semantic_hash": ""
   },
   "components/assistant/AssistantSuggestions.tsx": {
-    "mtime": 1791373835.8504543,
-    "seen": 1791374090.071695,
-    "ast_hash": "f927a43b92dc15a3fa0cb6368255c537",
+    "mtime": 1791374998.8670545,
+    "seen": 1791375110.2468023,
+    "ast_hash": "2c5ed03839d76706d115f44ca7538dce",
     "semantic_hash": ""
   },
   "components/assistant/RadarAssistant.tsx": {
-    "mtime": 1791373760.460461,
-    "seen": 1791374090.0716968,
-    "ast_hash": "8a3a8edb203035851344c6580fcb3103",
+    "mtime": 1791375045.55035,
+    "seen": 1791375110.2468038,
+    "ast_hash": "4231c3e75d1a5ca5ce4ca172830ac356",
     "semantic_hash": ""
   },
   "components/assistant/assistant-service.ts": {

@@ -75,9 +75,21 @@ export function AssistantInput({
         disabled={disabled || !input.trim()}
         title="ارسال پیام (Enter)"
         aria-label="ارسال پیام"
-        className="h-9 w-9 rounded-lg bg-stone-100 text-black hover:bg-white hover:shadow-[0_0_16px_rgba(255,245,230,0.35)] disabled:bg-neutral-900 disabled:text-neutral-600 border border-transparent disabled:border-[#262626] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center cursor-pointer disabled:cursor-not-allowed active:scale-95 shadow-sm shrink-0"
+        className="h-9 w-9 rounded-lg bg-stone-100 text-black hover:bg-white hover:shadow-[0_0_16px_rgba(255,245,230,0.35)] disabled:bg-neutral-900 disabled:text-neutral-600 border border-transparent disabled:border-[#262626] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center cursor-pointer disabled:cursor-not-allowed active:scale-95 shadow-sm shrink-0 group"
       >
-        <ArrowUpRightIcon className="w-4 h-4 rotate-45 transform" />
+        {/* Leftward pointing arrow (←) for RTL Persian workflow */}
+        <svg
+          className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M19 12H5" />
+          <path d="M12 19l-7-7 7-7" />
+        </svg>
       </button>
     </form>
   );

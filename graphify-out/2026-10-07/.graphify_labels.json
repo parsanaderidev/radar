@@ -9,7 +9,7 @@
   "7": "AGENTS.md",
   "8": "ConcurrencyLimiter",
   "9": "InMemoryRateLimiter",
-  "10": "AssistantPanel.tsx",
+  "10": "AssistantMessages.tsx",
   "11": "next.config.ts",
   "12": "next-env.d.ts",
   "13": "postcss.config.mjs",

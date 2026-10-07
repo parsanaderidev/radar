@@ -1,21 +1,21 @@
 # Graph Report - Radar  (2026-10-07)
 
 ## Corpus Check
-- 50 files · ~26,136 words
+- 50 files · ~26,521 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 339 nodes · 576 edges · 21 communities (12 shown, 9 thin omitted)
+- 342 nodes · 585 edges · 19 communities (11 shown, 8 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `afacfa2d`
+- Built from commit: `6790710b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- app/page.tsx
+- Icons.tsx
 - analyze/route.ts
 - compilerOptions
 - package.json
@@ -24,16 +24,14 @@
 - Radar — AI Lead Radar
 - AGENTS.md
 - InMemoryRateLimiter
-- Icons.tsx
+- AssistantMessages.tsx
 - next.config.ts
 - next-env.d.ts
 - postcss.config.mjs
 - rules/graphify.md
 - ponytail.md
 - workflows/graphify.md
-- voice-orb.tsx
 - components.json
-- dependencies
 - assistant/route.ts
 
 ## God Nodes (most connected - your core abstractions)
@@ -63,11 +61,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (21 total, 9 thin omitted)
+## Communities (19 total, 8 thin omitted)
 
-### Community 0 - "app/page.tsx"
-Cohesion: 0.14
-Nodes (27): LeadRadarDashboard(), BaleIcon(), CopyIcon(), PlayIcon(), SearchIcon(), SparklesIcon(), TelegramIcon(), TwitterXIcon() (+19 more)
+### Community 0 - "Icons.tsx"
+Cohesion: 0.07
+Nodes (44): dynamic, LeadRadarDashboard(), ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps, SUGGESTIONS, BaleIcon(), CheckCircleIcon() (+36 more)
 
 ### Community 1 - "analyze/route.ts"
 Cohesion: 0.09
@@ -78,8 +76,8 @@ Cohesion: 0.07
 Nodes (28): dom, dom.iterable, esnext, **/*.mts, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts, node_modules (+20 more)
 
 ### Community 3 - "package.json"
-Cohesion: 0.12
-Nodes (17): description, ignoreScripts, name, packageManager, private, scripts, build, dev (+9 more)
+Cohesion: 0.06
+Nodes (32): clsx, motion, next, dependencies, clsx, motion, next, pocketbase (+24 more)
 
 ### Community 4 - "auth.ts"
 Cohesion: 0.18
@@ -93,40 +91,36 @@ Nodes (17): eslint, eslint-config-next, devDependencies, eslint, eslint-config-n
 Cohesion: 0.06
 Nodes (30): 1. Prerequisites, 1. Zero Foreign Cloud Lock-in, 2. Install dependencies, 2. Vanilla TypeScript First, 3. Configure environment, 3. Zero External CDNs, 4. Native Persian / RTL Support, 4. Start PocketBase (+22 more)
 
-### Community 10 - "Icons.tsx"
+### Community 10 - "AssistantMessages.tsx"
 Cohesion: 0.07
-Nodes (35): metadata, viewport, dynamic, ProductSettingsPage(), askRadarAssistant(), fallbackDomainAssistant(), AssistantInput(), AssistantInputProps (+27 more)
-
-### Community 18 - "voice-orb.tsx"
-Cohesion: 0.12
-Nodes (18): DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb(), VoiceOrbProps, EASE_DRAWER (+10 more)
+Nodes (38): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+30 more)
 
 ### Community 19 - "components.json"
 Cohesion: 0.12
 Nodes (15): aliases, components, hooks, lib, ui, utils, rsc, $schema (+7 more)
 
-### Community 20 - "dependencies"
-Cohesion: 0.13
-Nodes (15): clsx, motion, next, dependencies, clsx, motion, next, pocketbase (+7 more)
+### Community 21 - "assistant/route.ts"
+Cohesion: 0.67
+Nodes (3): cleanOutput(), dynamic, POST()
 
 ## Knowledge Gaps
 - **137 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+132 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `getPocketBaseClient()` connect `analyze/route.ts` to `app/page.tsx`, `Icons.tsx`?**
+- **Why does `getPocketBaseClient()` connect `analyze/route.ts` to `Icons.tsx`?**
   _High betweenness centrality (0.041) - this node is a cross-community bridge._
-- **Why does `RefreshIcon()` connect `Icons.tsx` to `app/page.tsx`?**
-  _High betweenness centrality (0.035) - this node is a cross-community bridge._
-- **Why does `ProductRecord` connect `analyze/route.ts` to `app/page.tsx`, `Icons.tsx`?**
-  _High betweenness centrality (0.027) - this node is a cross-community bridge._
+- **Why does `RefreshIcon()` connect `Icons.tsx` to `AssistantMessages.tsx`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+- **Why does `ProductRecord` connect `analyze/route.ts` to `Icons.tsx`?**
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
   _137 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `app/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.13903743315508021 - nodes in this community are weakly interconnected._
+- **Should `Icons.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.07475678443420379 - nodes in this community are weakly interconnected._
 - **Should `analyze/route.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.08686868686868687 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**

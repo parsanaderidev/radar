@@ -26,7 +26,15 @@ CRITICAL CONSTRAINTS:
 3. NEVER claim to browse the external internet or access external databases.
 4. NEVER claim you modified or deleted a lead, or contacted a customer autonomously.
 5. If user asks in Persian, reply in fluent, natural Persian. If asked in English, reply in English.
-6. Format your answers clearly using clean markdown with bullet points and bold highlights. Keep responses helpful, concise, and professional.`;
+6. FORMATTING: Do NOT use markdown asterisks (such as ** or ***) anywhere in your response. Write plain, clean, elegant text with simple bullet points (•) where needed.`;
+
+function cleanOutput(text: string): string {
+  if (!text) return "";
+  let clean = text.replace(/\*{1,3}(.*?)\*{1,3}/g, "$1");
+  clean = clean.replace(/^\s*\*\s+/gm, "• ");
+  clean = clean.replace(/\*/g, "");
+  return clean.trim();
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -85,7 +93,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({
           id: `assistant-msg-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
           role: "assistant",
-          content: replyContent.trim(),
+          content: cleanOutput(replyContent),
           timestamp: Date.now(),
         });
       }
