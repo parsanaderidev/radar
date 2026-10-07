@@ -117,7 +117,7 @@ export default function PersianLandingPage() {
   return (
     <div className="min-h-screen bg-[#000000] text-[#ededed] selection:bg-white selection:text-black antialiased font-sans pb-28">
       {/* ========================================================
-          پس‌زمینه: بافت نقطه‌ای مینیمال و نور ملایم محلی (بدون مثلث)
+          پس‌زمینه: بافت نقطه‌ای مینیمال و نور ملایم محلی 
       ======================================================== */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div
@@ -765,11 +765,11 @@ export default function PersianLandingPage() {
             (عنوان وسط‌چین، متن ثانویه کوچک‌تر)
         ======================================================== */}
         <section id="deep-dive-3" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
-          <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-14">
+          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mb-14">
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight flex flex-wrap justify-center text-center mb-3">
               پاسخ اختصاصی و اقدام فروش در ۳ ثانیه
             </h2>
-            <p className="text-xs sm:text-sm text-neutral-400 text-center max-w-xl mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-neutral-400 text-center max-w-3xl mx-auto leading-relaxed">
               تحلیل عمیق درد کاربر و آماده‌سازی پیشنهاد متناسب در لحظه با قابلیت کپی فوری و ارسال مستقیم به ارتباط با مشتریان.
             </p>
           </div>

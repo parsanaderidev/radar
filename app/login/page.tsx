@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useState, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { RadarLogo, RefreshIcon, EyeIcon, EyeOffIcon } from "@/components/Icons";
+import { RadarLogo, RadarBadge, RefreshIcon, EyeIcon, EyeOffIcon, SparklesIcon } from "@/components/Icons";
 
 export const dynamic = "force-dynamic";
 
 function LoginForm() {
   const searchParams = useSearchParams();
-  const from = searchParams.get("from") || "/settings";
+  const from = searchParams.get("from") || "/dashboard";
 
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("BuildX");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -54,94 +54,124 @@ function LoginForm() {
   };
 
   return (
-    <form
-      onSubmit={handleLogin}
-      className="p-5 sm:p-6 rounded-xl bg-[#0a0a0a] border border-[#1f1f1f] shadow-[0_8px_32px_rgba(0,0,0,0.8)] space-y-4 text-right"
-    >
-      {error && (
-        <div className="p-3 rounded-lg bg-rose-950/40 border border-rose-800/60 text-rose-300 text-xs text-center font-medium animate-shake">
-          {error}
-        </div>
-      )}
-
-      <div className="space-y-1.5">
-        <label htmlFor="admin-password" className="block text-xs font-medium text-neutral-300">
-          رمز عبور مدیر سیستم
-        </label>
-        <div className="relative flex items-center">
-          <input
-            id="admin-password"
-            type={showPassword ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••••••••••"
-            required
-            autoFocus
-            autoComplete="current-password"
-            className="w-full pl-10 pr-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200 ease-out dir-ltr text-left"
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute left-2.5 p-1 rounded text-neutral-400 hover:text-white transition-colors duration-200 cursor-pointer"
-            title={showPassword ? "مخفی‌سازی رمز عبور" : "نمایش رمز عبور"}
-            aria-label={showPassword ? "مخفی‌سازی رمز عبور" : "نمایش رمز عبور"}
-          >
-            {showPassword ? <EyeOffIcon className="w-4 h-4" /> : <EyeIcon className="w-4 h-4" />}
-          </button>
-        </div>
-      </div>
-
-      <button
-        type="submit"
-        disabled={isLoading || !password.trim()}
-        className="w-full h-10 rounded-lg bg-white text-black text-xs font-semibold hover:bg-[#eaeaea] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all duration-200 ease-out flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.98]"
-      >
-        {isLoading ? (
-          <>
-            <RefreshIcon className="w-4 h-4 animate-spin" />
-            <span>در حال بررسی اعتبار...</span>
-          </>
-        ) : (
-          <span>تأیید و ورود</span>
+    <div className="rounded-2xl bg-[#090909]/90 border border-[#202020] p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.9)] backdrop-blur-xl">
+      <form onSubmit={handleLogin} className="space-y-4 text-right">
+        {error && (
+          <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 text-rose-300 text-xs text-center font-medium animate-shake">
+            {error}
+          </div>
         )}
-      </button>
 
-      <div className="pt-2 text-center">
-        <Link
-          href="/"
-          className="text-xs text-neutral-400 hover:text-neutral-200 transition-colors duration-200 inline-flex items-center gap-1"
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-xs">
+            <label htmlFor="admin-password" className="font-medium text-neutral-300">
+              رمز عبور سامانه
+            </label>
+            <span className="text-[11px] text-neutral-500">
+              پیش‌فرض: <span className="font-mono text-emerald-400 select-all">BuildX</span>
+            </span>
+          </div>
+
+          <div className="relative flex items-center">
+            <input
+              id="admin-password"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="BuildX"
+              required
+              autoFocus
+              autoComplete="current-password"
+              className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-[#121212] border border-[#282828] text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200 ease-out dir-ltr text-left"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute left-2.5 p-1 rounded-lg text-neutral-400 hover:text-white transition-colors duration-200 cursor-pointer"
+              title={showPassword ? "مخفی‌سازی رمز عبور" : "نمایش رمز عبور"}
+              aria-label={showPassword ? "مخفی‌سازی رمز عبور" : "نمایش رمز عبور"}
+            >
+              {showPassword ? <EyeOffIcon className="w-4 h-4" /> : <EyeIcon className="w-4 h-4" />}
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          disabled={isLoading || !password.trim()}
+          className="w-full h-11 rounded-xl bg-white text-black text-xs font-bold hover:bg-[#e8e8e8] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all duration-200 ease-out flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.98]"
         >
-          <span>بازگشت به صندوق سرنخ‌ها</span>
-          <span className="text-neutral-600">←</span>
-        </Link>
-      </div>
-    </form>
+          {isLoading ? (
+            <>
+              <RefreshIcon className="w-4 h-4 animate-spin text-black" />
+              <span>در حال اعتبارسنجی...</span>
+            </>
+          ) : (
+            <>
+              <SparklesIcon className="w-4 h-4 text-black" />
+              <span>تأیید و ورود به سیستم</span>
+            </>
+          )}
+        </button>
+
+        <div className="pt-2 border-t border-[#181818] flex items-center justify-between text-xs text-neutral-400">
+          <Link
+            href="/dashboard"
+            className="hover:text-white transition-colors inline-flex items-center gap-1"
+          >
+            <span>ورود به صندوق سرنخ‌ها</span>
+            <span>←</span>
+          </Link>
+          <Link
+            href="/"
+            className="hover:text-white transition-colors"
+          >
+            معرفی رادار
+          </Link>
+        </div>
+      </form>
+    </div>
   );
 }
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#000000] text-[#ededed] px-4 selection:bg-white selection:text-black">
-      <div className="w-full max-w-sm space-y-6 animate-fade-in">
-        {/* Brand / Logo */}
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#000000] text-[#ededed] px-4 selection:bg-white selection:text-black relative overflow-hidden">
+      {/* Background ambient glow */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div
+          className="absolute inset-0 opacity-[0.14]"
+          style={{
+            backgroundImage: "radial-gradient(#444 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] vercel-hero-glow blur-[120px] rounded-full pointer-events-none" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-[400px] space-y-6">
+        {/* Brand Header */}
         <div className="flex flex-col items-center text-center space-y-3">
-          <Link href="/" className="flex items-center gap-2.5 group cursor-pointer">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-black transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-              <RadarLogo className="w-5 h-5 text-black" />
-            </div>
+          <Link href="/" className="inline-flex items-center gap-2 group cursor-pointer focus:outline-none">
+            <RadarBadge className="w-10 h-10 rounded-xl shadow-[0_0_25px_rgba(255,255,255,0.2)]" iconClassName="w-5 h-5 text-black" />
           </Link>
           <div className="space-y-1">
-            <h1 className="text-lg font-semibold text-white">ورود به پنل مدیریت رادار</h1>
+            <h1 className="text-xl font-bold text-white tracking-tight">ورود به سامانه رادار</h1>
             <p className="text-xs text-neutral-400">
-              جهت دسترسی به تنظیمات محصول و پرسونای مشتری (ICP) رمز عبور مدیر را وارد کنید.
+              موتور هوشمندی کشف فرصت‌های فروش • <span className="font-mono text-neutral-300">PriCoders</span>
             </p>
           </div>
         </div>
 
+        {/* Form Container */}
         <Suspense fallback={<div className="text-center text-xs text-neutral-500">در حال بارگذاری...</div>}>
           <LoginForm />
         </Suspense>
+
+        {/* Footer Attribution */}
+        <div className="text-center text-[11px] text-neutral-600 font-mono">
+          © 2026 PriCoders Radar Engine
+        </div>
       </div>
     </div>
   );

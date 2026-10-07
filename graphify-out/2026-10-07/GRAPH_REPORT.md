@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-07)
 
 ## Corpus Check
-- 53 files · ~33,159 words
+- 53 files · ~32,329 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 368 nodes · 625 edges · 22 communities (13 shown, 9 thin omitted)
+- 368 nodes · 626 edges · 22 communities (13 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a949d551`
+- Built from commit: `3fdba73d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -68,7 +68,7 @@
 
 ### Community 0 - "Icons.tsx"
 Cohesion: 0.07
-Nodes (49): LeadRadarDashboard(), dynamic, SAMPLE_SIGNALS, SampleSignal, VercelStyleLandingPage(), ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps (+41 more)
+Nodes (50): LeadRadarDashboard(), dynamic, PersianLandingPage(), SAMPLE_SIGNALS, SampleSignal, ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps (+42 more)
 
 ### Community 1 - "analyze/route.ts"
 Cohesion: 0.10
@@ -131,7 +131,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
   _152 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06720321931589537 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0676056338028169 - nodes in this community are weakly interconnected._
 - **Should `analyze/route.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.10122448979591837 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**

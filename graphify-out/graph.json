@@ -440,7 +440,7 @@
       "file_type": "code",
       "norm_label": "loginpage()",
       "source_file": "app/login/page.tsx",
-      "source_location": "L123"
+      "source_location": "L137"
     },
     {
       "id": "app_page_persianlandingpage",
@@ -789,18 +789,6 @@
       "norm_label": "verceltriangleicon()",
       "source_file": "components/Icons.tsx",
       "source_location": "L62"
-    },
-    {
-      "id": "components_icons_xcircleicon",
-      "label": "XCircleIcon()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Icons.tsx",
-      "file_type": "code",
-      "norm_label": "xcircleicon()",
-      "source_file": "components/Icons.tsx",
-      "source_location": "L228"
     },
     {
       "id": "components_leadcard_leadcard",
@@ -1391,6 +1379,18 @@
       "source_location": "L517"
     },
     {
+      "id": "components_icons_xcircleicon",
+      "label": "XCircleIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "voice-orb.tsx",
+      "file_type": "code",
+      "norm_label": "xcircleicon()",
+      "source_file": "components/Icons.tsx",
+      "source_location": "L228"
+    },
+    {
       "id": "lib_utils_cn",
       "label": "cn()",
       "_callable": true,
@@ -1520,7 +1520,7 @@
       "file_type": "code",
       "norm_label": "createsessiontoken()",
       "source_file": "lib/auth.ts",
-      "source_location": "L69"
+      "source_location": "L64"
     },
     {
       "id": "lib_auth_formatsessionclearcookie",
@@ -1532,7 +1532,7 @@
       "file_type": "code",
       "norm_label": "formatsessionclearcookie()",
       "source_file": "lib/auth.ts",
-      "source_location": "L179"
+      "source_location": "L174"
     },
     {
       "id": "lib_auth_formatsessionsetcookie",
@@ -1544,7 +1544,7 @@
       "file_type": "code",
       "norm_label": "formatsessionsetcookie()",
       "source_file": "lib/auth.ts",
-      "source_location": "L169"
+      "source_location": "L164"
     },
     {
       "id": "lib_auth_getadminpassword",
@@ -1580,7 +1580,7 @@
       "file_type": "code",
       "norm_label": "getradarapikey()",
       "source_file": "lib/auth.ts",
-      "source_location": "L40"
+      "source_location": "L35"
     },
     {
       "id": "lib_auth_getsessiontokenfromrequest",
@@ -1592,7 +1592,7 @@
       "file_type": "code",
       "norm_label": "getsessiontokenfromrequest()",
       "source_file": "lib/auth.ts",
-      "source_location": "L124"
+      "source_location": "L119"
     },
     {
       "id": "lib_auth_isauthenticatedrequest",
@@ -1604,7 +1604,7 @@
       "file_type": "code",
       "norm_label": "isauthenticatedrequest()",
       "source_file": "lib/auth.ts",
-      "source_location": "L140"
+      "source_location": "L135"
     },
     {
       "id": "lib_auth_timingsafeequal",
@@ -1616,7 +1616,7 @@
       "file_type": "code",
       "norm_label": "timingsafeequal()",
       "source_file": "lib/auth.ts",
-      "source_location": "L47"
+      "source_location": "L42"
     },
     {
       "id": "lib_auth_validatesessiontoken",
@@ -1628,7 +1628,7 @@
       "file_type": "code",
       "norm_label": "validatesessiontoken()",
       "source_file": "lib/auth.ts",
-      "source_location": "L86"
+      "source_location": "L81"
     },
     {
       "id": "proxy_proxy",
@@ -2206,6 +2206,17 @@
       "norm_label": "types.ts",
       "source_file": "components/assistant/types.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "lib_ease_spring_glide",
+      "label": "SPRING_GLIDE",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "voice-orb.tsx",
+      "file_type": "code",
+      "norm_label": "spring_glide",
+      "source_file": "lib/ease.ts",
+      "source_location": "L49"
     },
     {
       "id": "lib_utils",
@@ -2936,17 +2947,6 @@
       "norm_label": "ease_out_css",
       "source_file": "lib/ease.ts",
       "source_location": "L6"
-    },
-    {
-      "id": "lib_ease_spring_glide",
-      "label": "SPRING_GLIDE",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "ease.ts",
-      "file_type": "code",
-      "norm_label": "spring_glide",
-      "source_file": "lib/ease.ts",
-      "source_location": "L49"
     },
     {
       "id": "lib_ease_spring_layout",
@@ -4681,7 +4681,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/settings/page.tsx",
-      "source_location": "L262",
+      "source_location": "L264",
       "weight": 1.0
     },
     {
@@ -4873,7 +4873,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/auth.ts",
-      "source_location": "L70",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -4885,7 +4885,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/auth.ts",
-      "source_location": "L72",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -4897,7 +4897,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/auth.ts",
-      "source_location": "L145",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -4909,7 +4909,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/auth.ts",
-      "source_location": "L146",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -4921,7 +4921,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/auth.ts",
-      "source_location": "L148",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -4933,7 +4933,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/auth.ts",
-      "source_location": "L157",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -4945,19 +4945,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/auth.ts",
-      "source_location": "L159",
-      "weight": 1.0
-    },
-    {
-      "source": "lib_auth_validatesessiontoken",
-      "target": "lib_auth_getadminpassword",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "lib/auth.ts",
-      "source_location": "L103",
+      "source_location": "L154",
       "weight": 1.0
     },
     {
@@ -4969,7 +4957,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/auth.ts",
-      "source_location": "L108",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_auth_validatesessiontoken",
+      "target": "lib_auth_getadminpassword",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/auth.ts",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -6246,6 +6246,18 @@
     },
     {
       "source": "app_login_page",
+      "target": "components_icons_radarbadge",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/login/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "app_login_page",
       "target": "components_icons_radarlogo",
       "relation": "imports",
       "_origin": "ast",
@@ -6259,6 +6271,18 @@
     {
       "source": "app_login_page",
       "target": "components_icons_refreshicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/login/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "app_login_page",
+      "target": "components_icons_sparklesicon",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8602,7 +8626,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/login/page.tsx",
-      "source_location": "L123",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -9504,7 +9528,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/auth.ts",
-      "source_location": "L124",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
@@ -9526,7 +9550,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/auth.ts",
-      "source_location": "L140",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -9537,7 +9561,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/auth.ts",
-      "source_location": "L169",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -9548,7 +9572,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/auth.ts",
-      "source_location": "L179",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -9570,7 +9594,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/auth.ts",
-      "source_location": "L40",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -9581,7 +9605,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/auth.ts",
-      "source_location": "L47",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -9592,7 +9616,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/auth.ts",
-      "source_location": "L69",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -9603,7 +9627,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/auth.ts",
-      "source_location": "L86",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -11516,5 +11540,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d37925e37a9d053cfa093063f4e2f1df6999730b"
+  "built_at_commit": "3fdba73d76b91bd41cc8c04c4fcf3233c9e50b1f"
 }

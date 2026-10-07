@@ -119,8 +119,10 @@ export default function ProductSettingsPage() {
       }
 
       setProduct(data.product);
-      setStatusMessage({ text: "تنظیمات با موفقیت در پایگاه داده امن ذخیره شد.", type: "success" });
-      setTimeout(() => setStatusMessage(null), 4000);
+      setStatusMessage({ text: "تنظیمات با موفقیت ذخیره شد. در حال انتقال به صندوق سرنخ‌ها...", type: "success" });
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 700);
     } catch (err: any) {
       console.error("Save error:", err);
       setStatusMessage({ text: `خطا در ذخیره‌سازی: ${err?.message || "مشکلی رخ داد"}`, type: "error" });
@@ -150,11 +152,11 @@ export default function ProductSettingsPage() {
                 تنظیمات سیستم
               </span>
               <h1 className="text-sm sm:text-base font-semibold text-white">
-                تنظیمات محصول و پرسونای مشتری (ICP)
+                تنظیمات محصول و مشتری هدف
               </h1>
             </div>
             <p className="text-xs text-neutral-400 max-w-3xl line-clamp-2 sm:line-clamp-1">
-              مدیریت هویت محصول، مزایای رقابتی و تعریف پرسونای خریدار ایده‌آل (ICP) برای هدایت موتور هوشمند رادار
+              مدیریت هویت محصول، مزایای رقابتی و تعریف پرسونای خریدار ایده‌آل برای هدایت موتور هوشمند رادار
             </p>
           </div>
 

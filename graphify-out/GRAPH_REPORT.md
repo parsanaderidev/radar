@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-07)
 
 ## Corpus Check
-- 53 files · ~32,325 words
+- 53 files · ~32,387 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 368 nodes · 626 edges · 22 communities (13 shown, 9 thin omitted)
+- 368 nodes · 628 edges · 22 communities (13 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d37925e3`
+- Built from commit: `3fdba73d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -68,7 +68,7 @@
 
 ### Community 0 - "Icons.tsx"
 Cohesion: 0.07
-Nodes (50): LeadRadarDashboard(), dynamic, PersianLandingPage(), SAMPLE_SIGNALS, SampleSignal, ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps (+42 more)
+Nodes (49): LeadRadarDashboard(), dynamic, PersianLandingPage(), SAMPLE_SIGNALS, SampleSignal, ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps (+41 more)
 
 ### Community 1 - "analyze/route.ts"
 Cohesion: 0.10
@@ -99,16 +99,16 @@ Cohesion: 0.11
 Nodes (17): Opportunity Intelligence Engine, توسعه داده شده توسط تیم PriCoders, سطوح نیت:, مستندات فنی و معماری سامانه رادار (Radar), ۱. معرفی و جایگاه محصول (Product Positioning), ۱۰. نقشه راه توسعه و مقیاس‌پذیری آینده (Future Scaling Roadmap), ۲. نمای کلی معماری سیستم (System Architecture), ۳. لایه‌های فناوری (Technology Stack) (+9 more)
 
 ### Community 10 - "voice-orb.tsx"
-Cohesion: 0.10
-Nodes (28): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+20 more)
+Cohesion: 0.09
+Nodes (30): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+22 more)
 
 ### Community 19 - "components.json"
 Cohesion: 0.12
 Nodes (15): aliases, components, hooks, lib, ui, utils, rsc, $schema (+7 more)
 
 ### Community 20 - "ease.ts"
-Cohesion: 0.18
-Nodes (10): EASE_DRAWER, EASE_IN_OUT, EASE_OUT, EASE_OUT_CSS, SPRING_GLIDE, SPRING_LAYOUT, SPRING_MOUSE, SPRING_PANEL (+2 more)
+Cohesion: 0.20
+Nodes (9): EASE_DRAWER, EASE_IN_OUT, EASE_OUT, EASE_OUT_CSS, SPRING_LAYOUT, SPRING_MOUSE, SPRING_PANEL, SPRING_PRESS (+1 more)
 
 ### Community 21 - "assistant/route.ts"
 Cohesion: 0.67
@@ -123,15 +123,15 @@ Nodes (3): cleanOutput(), dynamic, POST()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `getPocketBaseClient()` connect `analyze/route.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.038) - this node is a cross-community bridge._
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `ProductRecord` connect `analyze/route.ts` to `Icons.tsx`?**
   _High betweenness centrality (0.024) - this node is a cross-community bridge._
 - **Why does `RefreshIcon()` connect `Icons.tsx` to `voice-orb.tsx`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
   _152 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.0676056338028169 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06956521739130435 - nodes in this community are weakly interconnected._
 - **Should `analyze/route.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.10122448979591837 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
