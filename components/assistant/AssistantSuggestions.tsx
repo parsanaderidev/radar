@@ -56,7 +56,7 @@ export function AssistantSuggestions({
               type="button"
               disabled={disabled}
               onClick={() => onSelectSuggestion(item.text)}
-              className="w-full text-right px-3 py-2 rounded-lg bg-[#111111] hover:bg-[#181818] border border-[#222222] hover:border-[#383838] text-xs text-neutral-300 hover:text-white transition-all duration-200 ease-out flex items-center justify-between group cursor-pointer active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full text-right px-3 py-2 rounded-lg bg-[#111111] hover:bg-[#181716] border border-[#222220] hover:border-stone-400/50 hover:shadow-[0_2px_12px_rgba(255,245,220,0.06)] text-xs text-neutral-300 hover:text-stone-100 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-between group cursor-pointer active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span className="truncate leading-relaxed">{item.text}</span>
               <Icon className="w-3.5 h-3.5 text-neutral-500 group-hover:text-white transition-colors shrink-0 mr-2" />

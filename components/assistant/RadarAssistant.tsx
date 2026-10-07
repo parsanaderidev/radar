@@ -28,33 +28,33 @@ export function RadarAssistant({ context: externalContext }: RadarAssistantProps
     [externalContext, pathname]
   );
 
-  // Pure black and white (monochrome) VoiceOrb visual configurations
+  // Warm monochrome VoiceOrb visual configurations
   const orbConfig = useMemo(() => {
     switch (status) {
       case "thinking":
         return {
           activity: 0.85,
           speed: 1.8,
-          colors: ["#ffffff", "#ffffff", "#1a1a1a"] as const,
+          colors: ["#fafaf7", "#ffffff", "#171615"] as const,
         };
       case "error":
         return {
           activity: 0.45,
           speed: 1.0,
-          colors: ["#e5e5e5", "#ffffff", "#262626"] as const,
+          colors: ["#f5f0eb", "#ffffff", "#262220"] as const,
         };
       case "responding":
         return {
           activity: 0.65,
           speed: 1.4,
-          colors: ["#ffffff", "#ffffff", "#000000"] as const,
+          colors: ["#ffffff", "#ffffff", "#0c0c0a"] as const,
         };
       case "idle":
       default:
         return {
           activity: 0.12,
           speed: 0.65,
-          colors: ["#e0e0e0", "#ffffff", "#000000"] as const,
+          colors: ["#f0eee6", "#ffffff", "#0c0c0a"] as const,
         };
     }
   }, [status]);
@@ -126,16 +126,16 @@ export function RadarAssistant({ context: externalContext }: RadarAssistantProps
           aria-expanded={isOpen}
           aria-label={isOpen ? "بستن دستیار رادار" : "باز کردن دستیار رادار"}
           title={isOpen ? "بستن دستیار رادار (Esc)" : "دستیار هوشمند رادار"}
-          className={`relative rounded-full flex items-center justify-center transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white group ${
+          className={`relative rounded-full flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-300 group ${
             isOpen
-              ? "w-11 h-11 sm:w-12 sm:h-12 bg-[#121212] hover:bg-[#1a1a1a] border border-[#2b2b2b] hover:border-neutral-400 shadow-[0_6px_20px_rgba(0,0,0,0.8)]"
-              : "w-13 h-13 sm:w-14 sm:h-14 bg-black border border-[#242424] hover:border-neutral-400 hover:scale-105 shadow-[0_8px_24px_rgba(0,0,0,0.85)]"
+              ? "w-10 h-10 sm:w-11 sm:h-11 bg-[#121212] hover:bg-[#1a1918] border border-[#2d2d2a] hover:border-stone-300 shadow-[0_6px_20px_rgba(0,0,0,0.8)]"
+              : "w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-0 hover:scale-110 shadow-none"
           }`}
         >
           {isOpen ? (
-            /* Refined, perfectly centered cross with smooth hover */
+            /* Refined, perfectly centered cross with warm, smooth hover */
             <svg
-              className="w-4 h-4 text-neutral-300 group-hover:text-white transition-all duration-200 group-hover:rotate-90 group-hover:scale-110"
+              className="w-4 h-4 text-stone-400 group-hover:text-stone-100 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-90 group-hover:scale-110"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -147,13 +147,13 @@ export function RadarAssistant({ context: externalContext }: RadarAssistantProps
               <path d="m6 6 12 12" />
             </svg>
           ) : (
-            /* Pure Black & White Voice Orb (No extra text, no badges, just orb) */
-            <div className="w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center pointer-events-none">
+            /* Pure Borderless Voice Orb */
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center pointer-events-none transition-transform duration-500">
               <VoiceOrb
                 activity={orbConfig.activity}
                 speed={orbConfig.speed}
                 colors={orbConfig.colors}
-                className="w-11 h-11 sm:w-12 sm:h-12"
+                className="w-12 h-12 sm:w-14 sm:h-14"
               />
             </div>
           )}

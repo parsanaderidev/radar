@@ -258,9 +258,9 @@
     "semantic_hash": ""
   },
   "components/assistant/AssistantInput.tsx": {
-    "mtime": 1791373691.588467,
-    "seen": 1791374090.071692,
-    "ast_hash": "19a52cfba135f37532804d5abbe31161",
+    "mtime": 1791374619.0153868,
+    "seen": 1791374733.3440132,
+    "ast_hash": "20cff7e654c91d4a6fdab8c3a8c86c66",
     "semantic_hash": ""
   },
   "components/assistant/AssistantMessages.tsx": {
@@ -276,15 +276,15 @@
     "semantic_hash": ""
   },
   "components/assistant/AssistantSuggestions.tsx": {
-    "mtime": 1791374234.8924198,
-    "seen": 1791374333.7536612,
-    "ast_hash": "2088d9d87a8abc2eab48589693cd3bd9",
+    "mtime": 1791374641.7113848,
+    "seen": 1791374733.3440163,
+    "ast_hash": "1fc7bdca63921d92250eefecf34a36d1",
     "semantic_hash": ""
   },
   "components/assistant/RadarAssistant.tsx": {
-    "mtime": 1791374294.6034148,
-    "seen": 1791374333.7536638,
-    "ast_hash": "58d7eaebae35811003b1dd8ca4c21c3a",
+    "mtime": 1791374685.670381,
+    "seen": 1791374733.3440175,
+    "ast_hash": "1fbe265c7acef0cde0b1b161b0805b04",
     "semantic_hash": ""
   },
   "components/assistant/assistant-service.ts": {

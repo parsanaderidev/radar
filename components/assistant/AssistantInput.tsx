@@ -42,7 +42,7 @@ export function AssistantInput({
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative flex items-center gap-1.5 p-2 bg-[#0a0a0a] border-t border-[#1f1f1f]"
+      className="relative flex items-center gap-1.5 p-2 bg-[#090909] border-t border-[#1b1b1a]"
     >
       <div className="relative flex-1 flex items-center">
         <input
@@ -54,14 +54,14 @@ export function AssistantInput({
           disabled={disabled}
           placeholder={placeholder}
           aria-label="پرسش از دستیار رادار"
-          className="w-full h-9 pl-8 pr-3 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-white/80 focus:ring-1 focus:ring-white/30 transition-all duration-200 ease-out disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full h-9 pl-8 pr-3 rounded-lg bg-[#141414] border border-[#262624] text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-stone-300 focus:ring-1 focus:ring-stone-400/30 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] disabled:opacity-50 disabled:cursor-not-allowed"
         />
 
         {input.length > 0 && (
           <button
             type="button"
             onClick={() => setInput("")}
-            className="absolute left-2 text-neutral-500 hover:text-neutral-300 text-xs p-1 cursor-pointer transition-colors"
+            className="absolute left-2 text-neutral-500 hover:text-stone-300 text-xs p-1 cursor-pointer transition-colors duration-200"
             title="پاک کردن متن"
             aria-label="پاک کردن متن"
           >
@@ -75,7 +75,7 @@ export function AssistantInput({
         disabled={disabled || !input.trim()}
         title="ارسال پیام (Enter)"
         aria-label="ارسال پیام"
-        className="h-9 w-9 rounded-lg bg-white text-black hover:bg-neutral-200 disabled:bg-neutral-900 disabled:text-neutral-600 border border-transparent disabled:border-[#262626] transition-all duration-200 ease-out flex items-center justify-center cursor-pointer disabled:cursor-not-allowed active:scale-95 shadow-sm shrink-0"
+        className="h-9 w-9 rounded-lg bg-stone-100 text-black hover:bg-white hover:shadow-[0_0_16px_rgba(255,245,230,0.35)] disabled:bg-neutral-900 disabled:text-neutral-600 border border-transparent disabled:border-[#262626] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center cursor-pointer disabled:cursor-not-allowed active:scale-95 shadow-sm shrink-0"
       >
         <ArrowUpRightIcon className="w-4 h-4 rotate-45 transform" />
       </button>
