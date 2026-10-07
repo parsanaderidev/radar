@@ -84,19 +84,6 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
         {/* Center: Vercel Nav Underline Tabs */}
         <nav className="flex items-center gap-1 shrink-0">
           <Link
-            href="/"
-            className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out flex items-center gap-1.5 cursor-pointer active:scale-95",
-              pathname === "/"
-                ? "bg-[#1f1f1f] text-white shadow-sm"
-                : "text-neutral-400 hover:text-white hover:bg-[#141414]"
-            )}
-          >
-            <span className="hidden sm:inline">معرفی رادار</span>
-            <span className="sm:hidden">معرفی</span>
-          </Link>
-
-          <Link
             href="/dashboard"
             className={cn(
               "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out flex items-center gap-1.5 cursor-pointer active:scale-95",
