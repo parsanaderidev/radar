@@ -96,12 +96,125 @@ const SAMPLE_SIGNALS: SampleSignal[] = [
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/* ساختار پلن‌های قیمت‌گذاری مدل B2B SaaS + مصرف‌محور                         */
+/* -------------------------------------------------------------------------- */
+interface PricingPlan {
+  id: string;
+  name: string;
+  badge?: string;
+  isPopular?: boolean;
+  audience: string;
+  monthlyPrice: string;
+  annualEquivalentMonthly: string;
+  messageLimit: string;
+  ctaText: string;
+  ctaLink: string;
+  features: string[];
+}
+
+const PRICING_PLANS: PricingPlan[] = [
+  {
+    id: "starter",
+    name: "استارتر (Starter)",
+    audience: "مناسب افراد، تیم‌های کوچک و اعتبارسنجی اولیه بازار",
+    monthlyPrice: "۲,۴۰۰,۰۰۰ تومان",
+    annualEquivalentMonthly: "۱,۹۲۰,۰۰۰ تومان",
+    messageLimit: "۱۰,۰۰۰ پیام ماهانه",
+    ctaText: "شروع با پلن استارتر",
+    ctaLink: "/dashboard",
+    features: [
+      "تشخیص پایه نیت خرید (Intent Detection)",
+      "دسترسی کامل به داشبورد سرنخ‌ها",
+      "تحلیل اولیه زمینه و بافت مکالمه",
+      "پیش‌نویس اولیه پیام ارتباطی",
+      "گزارش پایه هزینه‌ها و مصرف توکن",
+      "۱ کاربر و ۱ کانال ارتباطی فعال",
+    ],
+  },
+  {
+    id: "growth",
+    name: "رشد (Growth)",
+    badge: "محبوب‌ترین • پیشنهاد رادار",
+    isPopular: true,
+    audience: "مناسب تیم‌های فروش و بازاریابی در حال رشد با نیاز به کشف پیوسته",
+    monthlyPrice: "۶,۸۰۰,۰۰۰ تومان",
+    annualEquivalentMonthly: "۵,۴۴۰,۰۰۰ تومان",
+    messageLimit: "۵۰,۰۰۰ پیام ماهانه",
+    ctaText: "انتخاب پلن رشد",
+    ctaLink: "/dashboard",
+    features: [
+      "هوشمندی پیشرفته تشخیص نیت خرید",
+      "هوشمندی کامل فرصت‌ها و تحلیل بافت",
+      "انطباق دقیق با ویژگی‌ها و مزایای محصول",
+      "استدلال و چرایی هوش مصنوعی برای هر لید",
+      "پیش‌نویس پاسخ شخصی‌سازی‌شده و حرفه‌ای",
+      "تحلیل دقیق مصرف و اقتصاد توکن",
+      "۵ کاربر همزمان برای تیم فروش",
+      "پایش همزمان ۳ کانال (بله، تلگرام، توییتر)",
+    ],
+  },
+  {
+    id: "pro",
+    name: "حرفه‌ای (Pro)",
+    audience: "برای تیم‌های فروش پیشرفته با حجم داده بالا و نیاز به یکپارچگی",
+    monthlyPrice: "۱۸,۰۰۰,۰۰۰ تومان",
+    annualEquivalentMonthly: "۱۴,۴۰۰,۰۰۰ تومان",
+    messageLimit: "۲۰۰,۰۰۰ پیام ماهانه",
+    ctaText: "مقیاس‌بخشی با رادار",
+    ctaLink: "/dashboard",
+    features: [
+      "امتیازدهی پیشرفته فرصت‌ها و تریاژ فوری",
+      "انطباق چندمحصولی پیشرفته با پرسوناهای مجزا",
+      "پایش تمامی جوامع و انجمن‌های تخصصی",
+      "گزارش‌گیری پیشرفته و تحلیل‌های آماری",
+      "همکاری تیمی نامحدود (تا ۱۵ کاربر)",
+      "اتصال وب‌هوک مستقیم به نرم‌افزار CRM دیدار",
+      "اولویت بالای صف پردازش هوش مصنوعی",
+    ],
+  },
+  {
+    id: "enterprise",
+    name: "سازمانی (Enterprise)",
+    audience: "برای سازمان‌ها و شرکت‌های بزرگ با نیازمندی‌های مقیاس کلان و سفارشی",
+    monthlyPrice: "قیمت‌گذاری سفارشی",
+    annualEquivalentMonthly: "قرارداد سالانه سازمانی",
+    messageLimit: "حجم نامحدود پیام",
+    ctaText: "تماس با بخش فروش",
+    ctaLink: "/settings",
+    features: [
+      "حجم پایش نامحدود و منابع اختصاصی",
+      "استقرار اختصاصی محلی (On-Premise / Air-gapped)",
+      "امنیت ایزوله سازمانی بدون خروج داده",
+      "اتصال اختصاصی به سامانه‌های CRM و ERP",
+      "مدیریت چندسازمانی و چندتیمی (Multi-Tenant)",
+      "تنظیم پرامپت‌ها و مدل‌های اختصاصی سازمانی",
+      "توافق‌نامه سطح خدمات (SLA) و پشتیبانی ۲۴/۷ اختصاصی",
+    ],
+  },
+];
+
+const COMPARISON_DIMENSIONS = [
+  { label: "سقف پایش پیام ماهانه", starter: "۱۰,۰۰۰ پیام", growth: "۵۰,۰۰۰ پیام", pro: "۲۰۰,۰۰۰ پیام", enterprise: "نامحدود / سفارشی" },
+  { label: "هوشمندی تشخیص نیت", starter: "پایه", growth: "پیشرفته", pro: "عمیق چندسطحی", enterprise: "مدل سفارشی سازمانی" },
+  { label: "هوشمندی استخراج فرصت", starter: "پایه", growth: "کامل", pro: "پیشرفته", enterprise: "سفارشی و چندمتغیره" },
+  { label: "انطباق با ویژگی‌های محصول", starter: "تک‌محصول پایه", growth: "کامل", pro: "چندمحصولی پیشرفته", enterprise: "سفارشی سازمانی" },
+  { label: "پیش‌نویس پیام‌های ارتباطی", starter: "پایه", growth: "شخصی‌سازی‌شده", pro: "هوشمند چندلحنی", enterprise: "اختصاصی سازمانی" },
+  { label: "تحلیل مصرف و اقتصاد توکن", starter: "پایه", growth: "تحلیلی", pro: "پیشرفته", enterprise: "گزارش حسابداری رسمی" },
+  { label: "تعداد کانال‌های تحت پایش", starter: "۱ کانال", growth: "۳ کانال", pro: "تمامی کانال‌ها", enterprise: "کانال‌های اختصاصی سازمان" },
+  { label: "تعداد اعضای تیم فروش", starter: "۱ کاربر", growth: "۵ کاربر", pro: "۱۵ کاربر", enterprise: "نامحدود" },
+  { label: "یکپارچگی و اتصال به CRM", starter: "—", growth: "اختیاری / وب‌هوک", pro: "مستقیم (دیدار و هاب‌اسپات)", enterprise: "اتصال سفارشی سازمانی" },
+  { label: "پیکربندی اختصاصی و حریم داده", starter: "—", growth: "—", pro: "محدود", enterprise: "کاملاً ایزوله محلی" },
+];
+
 export default function PersianLandingPage() {
   const [selectedSignalId, setSelectedSignalId] = useState<string>("sig-1");
   const [copiedReply, setCopiedReply] = useState<boolean>(false);
   const [productsOpen, setProductsOpen] = useState<boolean>(false);
   const [resourcesOpen, setResourcesOpen] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
+  const [showTable, setShowTable] = useState<boolean>(false);
 
   const selectedSignal = useMemo(
     () => SAMPLE_SIGNALS.find((s) => s.id === selectedSignalId) || SAMPLE_SIGNALS[0],
@@ -127,12 +240,11 @@ export default function PersianLandingPage() {
             backgroundSize: "28px 28px",
           }}
         />
-        {/* نور نرم بالای صفحه بدون هیچ‌گونه شکل هندسی مثلثی */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[380px] vercel-hero-glow blur-[140px] rounded-full pointer-events-none" />
       </div>
 
       {/* ========================================================
-          ۰۱. هدر ناوبری اصلی (با لوگوی رادار و کلیدهای هم‌خوان)
+          ۰۱. هدر ناوبری اصلی
       ======================================================== */}
       <header
         id="marketing-header"
@@ -300,12 +412,12 @@ export default function PersianLandingPage() {
                       </li>
                       <li>
                         <a
-                          href="#economics"
+                          href="#pricing"
                           onClick={() => setResourcesOpen(false)}
                           className="block p-2 rounded-lg hover:bg-[#181818] text-white transition-colors"
                         >
-                          <div className="font-semibold">محاسبه بازگشت سرمایه</div>
-                          <div className="text-[11px] text-neutral-500">مقایسه با تیم‌های فروش سنتی</div>
+                          <div className="font-semibold">مدل تجاری و قیمت‌گذاری</div>
+                          <div className="text-[11px] text-neutral-500">پلن‌های مصرف‌محور و سرمایه‌گذاری</div>
                         </a>
                       </li>
                       <li>
@@ -326,13 +438,16 @@ export default function PersianLandingPage() {
               <a href="#channels" className="px-3 py-1.5 rounded-lg hover:text-white hover:bg-[#121212] transition-colors">
                 کانال‌ها
               </a>
+              <a href="#pricing" className="px-3 py-1.5 rounded-lg hover:text-white hover:bg-[#121212] transition-colors">
+                قیمت‌گذاری
+              </a>
               <a href="#economics" className="px-3 py-1.5 rounded-lg hover:text-white hover:bg-[#121212] transition-colors">
                 هزینه‌ها
               </a>
             </nav>
           </div>
 
-          {/* دکمه‌های کنشی هدر با گوشه‌های منطبق بر کارت‌های داشبورد (rounded-xl / rounded-lg) */}
+          {/* دکمه‌های کنشی هدر */}
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/settings"
@@ -385,6 +500,13 @@ export default function PersianLandingPage() {
               پیکربندی مشتری ایده‌آل
             </Link>
             <a
+              href="#pricing"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 text-sm text-neutral-300 hover:bg-[#141414] rounded-lg"
+            >
+              قیمت‌گذاری و مدل تجاری
+            </a>
+            <a
               href="#channels"
               onClick={() => setMobileMenuOpen(false)}
               className="block p-2 text-sm text-neutral-300 hover:bg-[#141414] rounded-lg"
@@ -403,7 +525,7 @@ export default function PersianLandingPage() {
       </header>
 
       {/* ========================================================
-          ۰۲. بنر اعلانات بالایی (بدون مثلث در کنار PriCoders)
+          ۰۲. بنر اعلانات بالایی
       ======================================================== */}
       <div className="relative z-10 flex justify-center items-center w-full min-h-[44px] py-2 border-b border-[#141414] bg-black/40">
         <div className="flex flex-wrap gap-2.5 items-center justify-center px-4 text-xs text-center">
@@ -425,11 +547,9 @@ export default function PersianLandingPage() {
       <main className="relative z-10">
         {/* ========================================================
             ۰۳. بخش هیرو: متن کاملاً وسط‌چین با پوشش خطی متوازن
-            (حذف بج بالا، حذف مثلث پس‌زمینه و حذف کادر قابلیت‌ها)
         ======================================================== */}
         <section className="relative flex min-h-[min(calc(100svh-180px),720px)] flex-col justify-center items-center px-4 sm:px-6 max-w-[1240px] mx-auto select-none pt-16 pb-20 text-center">
           <div className="relative z-10 flex flex-col items-center justify-center max-w-4xl mx-auto">
-            {/* عنوان اصلی وسط‌چین با چرخش متن زیبا */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.18] sm:leading-[1.14] mb-6 text-center text-balance">
               هوشمندی کشف فرصت‌های فروش.
               <br />
@@ -438,12 +558,10 @@ export default function PersianLandingPage() {
               </span>
             </h1>
 
-            {/* زیرعنوان متوازن */}
             <p className="text-sm sm:text-base md:text-lg text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal text-center text-balance">
               رادار به جای جست‌وجوی سطحی کلمات کلیدی، بافت و مکالمات بومی در بله، تلگرام، توییتر و فروم‌ها را درک می‌کند، شدت قصد خرید را می‌سنجد و سرنخ‌های آماده معامله را به تیم فروش تحویل می‌دهد.
             </p>
 
-            {/* دکمه‌های عملیاتی وسط‌چین منطبق با گوشه‌های کارت‌های داشبورد (rounded-xl) */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-10">
               <Link
                 href="/dashboard"
@@ -455,15 +573,14 @@ export default function PersianLandingPage() {
               </Link>
 
               <a
-                href="#deep-dive-1"
+                href="#pricing"
                 className="w-full sm:w-auto h-11 px-6 rounded-xl font-medium text-xs sm:text-sm bg-[#0a0a0a] hover:bg-[#141414] text-white border border-[#2b2b2b] hover:border-neutral-500 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
               >
-                <span>بررسی پایپ‌لاین هوشمند</span>
+                <span>مشاهده پلن‌های سرمایه‌گذاری</span>
                 <span className="text-neutral-500">↓</span>
               </a>
             </div>
 
-            {/* نشانگر ارزش محوری */}
             <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-neutral-500">
               <span>ارزش محوری:</span>
               <span className="text-neutral-200 font-semibold">از میان هیاهو تا فرصت فروش</span>
@@ -518,7 +635,7 @@ export default function PersianLandingPage() {
                 <span className="text-sm font-semibold tracking-wide">گیت‌هاب دیسکاشنز</span>
               </div>
 
-              {/* سری تکراری برای چرخش کاملاً پیوسته و بدون پرش */}
+              {/* سری تکراری برای چرخش کاملاً پیوسته */}
               <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
                 <BaleIcon className="w-5 h-5 text-emerald-400" />
                 <span className="text-sm font-semibold tracking-wide">پیام‌رسان بله</span>
@@ -553,7 +670,6 @@ export default function PersianLandingPage() {
 
         {/* ========================================================
             ۰۵. بخش عمیق ۱: شنود هوشمند در سرچشمه گفت‌وگوها
-            (عنوان وسط‌چین، متن ثانویه کوچک‌تر، کارت‌های گرد شده مطابق داشبورد)
         ======================================================== */}
         <section id="deep-dive-1" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
           <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-14">
@@ -654,7 +770,6 @@ export default function PersianLandingPage() {
 
         {/* ========================================================
             ۰۶. بخش عمیق ۲: سنجش نیت خرید با تفکیک ۴ سطحی
-            (عنوان وسط‌چین، متن ثانویه کوچک‌تر، چیدمان متناوب)
         ======================================================== */}
         <section id="deep-dive-2" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
           <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-14">
@@ -667,7 +782,7 @@ export default function PersianLandingPage() {
           </div>
 
           <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* ستون متنی در سمت راست (در حالت چیدمان معکوس) */}
+            {/* ستون متنی */}
             <div className="flex flex-col gap-6 lg:col-span-4 order-2 lg:order-1 text-right">
               <p className="text-lg sm:text-xl text-neutral-300 leading-relaxed">
                 <span className="text-white font-bold">بیش از ۹۲٪ دقت</span> در تفکیک افراد صرفاً کنجکاو از خریدارانی که بودجه و فوریت اعلام‌شده دارند.
@@ -762,7 +877,6 @@ export default function PersianLandingPage() {
 
         {/* ========================================================
             ۰۷. بخش عمیق ۳: پاسخ اختصاصی و اقدام فروش در ۳ ثانیه
-            (عنوان وسط‌چین، متن ثانویه کوچک‌تر)
         ======================================================== */}
         <section id="deep-dive-3" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mb-14">
@@ -865,7 +979,6 @@ export default function PersianLandingPage() {
 
         {/* ========================================================
             ۰۸. کارت‌های بنتو: ویژگی‌های منتشرشده در رادار
-            (با دستیار صوتی VoiceOrb در تم کاملاً مشکی و سفید)
         ======================================================== */}
         <section id="shipped" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
           <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-14">
@@ -878,7 +991,7 @@ export default function PersianLandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-5 text-right">
-            {/* کارت ۱: دستیار صوتی با تم مشکی و سفید (Black and White) */}
+            {/* کارت ۱: دستیار صوتی */}
             <div id="voice-orb" className="md:col-span-6 rounded-xl bg-[#090909] border border-[#1f1f1f] p-6 shadow-xl flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -894,7 +1007,6 @@ export default function PersianLandingPage() {
                 </p>
               </div>
 
-              {/* نمایشگر VoiceOrb کاملاً مشکی و سفید */}
               <div className="p-6 rounded-xl bg-[#040404] border border-[#191919] flex items-center justify-center min-h-[170px] filter grayscale">
                 <div className="scale-90">
                   <VoiceOrb colors={["#ffffff", "#888888", "#111111"] as const} />
@@ -960,7 +1072,331 @@ export default function PersianLandingPage() {
         </section>
 
         {/* ========================================================
-            ۰۹. بخش فراخوان نهایی (کارت‌های گرد شده و متوازن)
+            ۰۹. بخش اختصاصی مدل تجاری و قیمت‌گذاری (Business Model & Pricing)
+            B2B SaaS + Usage-Based Pricing بر مبنای ارزش واقعی و مصرف هوشمند
+        ======================================================== */}
+        <section id="pricing" className="py-28 px-4 sm:px-6 max-w-[1380px] mx-auto border-t border-[#141414]">
+          {/* سربرگ بخش قیمت‌گذاری */}
+          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111111] border border-[#242424] text-xs text-neutral-300 mb-4 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#00e599] animate-pulse" />
+              <span>مدل تجاری B2B SaaS • مصرف‌محور (Usage-Based)</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight flex flex-wrap justify-center text-center mb-4 text-balance">
+              سرمایه‌گذاری بر پایه کشف فرصت، نه اشتراک صوری
+            </h2>
+            <p className="text-xs sm:text-sm md:text-base text-neutral-400 text-center max-w-2xl mx-auto leading-relaxed text-balance">
+              مشتریان رادار متناسب با میزان هوشمندی و کشف فرصت‌هایی که مصرف می‌کنند پرداخت انجام می‌دهند؛ رادار ابزاری برای خلق مستقیم درآمد است.
+            </p>
+
+            {/* سوئیچ پرداخت ماهانه / سالانه */}
+            <div className="mt-8 p-1.5 rounded-xl bg-[#0c0c0c] border border-[#222222] inline-flex items-center gap-1.5 shadow-inner">
+              <button
+                type="button"
+                onClick={() => setBillingCycle("monthly")}
+                className={`px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                  billingCycle === "monthly"
+                    ? "bg-[#222222] text-white shadow-sm"
+                    : "text-neutral-400 hover:text-white"
+                }`}
+              >
+                پرداخت ماهانه
+              </button>
+              <button
+                type="button"
+                onClick={() => setBillingCycle("annual")}
+                className={`px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+                  billingCycle === "annual"
+                    ? "bg-[#222222] text-white shadow-sm"
+                    : "text-neutral-400 hover:text-white"
+                }`}
+              >
+                <span>پرداخت سالانه</span>
+                <span className="px-2 py-0.5 rounded-md bg-[#00e599]/15 text-[#00e599] text-[11px] font-bold border border-[#00e599]/30">
+                  ۲۰٪ تخفیف
+                </span>
+              </button>
+            </div>
+          </div>
+
+          {/* کارت‌های چهارگانه قیمت‌گذاری (بزرگ‌تر و جادارتر) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 mb-16 text-right items-stretch">
+            {PRICING_PLANS.map((plan) => (
+              <div
+                key={plan.id}
+                className={`relative rounded-2xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[600px] ${
+                  plan.isPopular
+                    ? "bg-[#0d0d0d] border-2 border-[#00e599] shadow-[0_0_45px_rgba(0,229,153,0.18)] lg:-translate-y-2 lg:scale-[1.02] z-10"
+                    : "bg-[#090909] border border-[#1f1f1f] hover:border-[#383838]"
+                }`}
+              >
+                {/* برچسب محبوب‌ترین پلن */}
+                {plan.badge && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                    <span className="px-4 py-1.5 rounded-full bg-[#00e599] text-black text-xs font-bold shadow-lg flex items-center gap-1.5 whitespace-nowrap">
+                      <SparklesIcon className="w-3.5 h-3.5 text-black" />
+                      <span>{plan.badge}</span>
+                    </span>
+                  </div>
+                )}
+
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xl sm:text-2xl font-black text-white">{plan.name}</h3>
+                  </div>
+                  <p className="text-xs sm:text-[13px] text-neutral-400 leading-relaxed mb-6 min-h-[42px]">
+                    {plan.audience}
+                  </p>
+
+                  {/* قیمت پلن */}
+                  <div className="pb-6 mb-6 border-b border-[#1c1c1c]">
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-3xl sm:text-4xl font-black text-white">
+                        {billingCycle === "annual" ? plan.annualEquivalentMonthly : plan.monthlyPrice}
+                      </span>
+                      {plan.id !== "enterprise" && (
+                        <span className="text-xs sm:text-sm text-neutral-400">/ ماه</span>
+                      )}
+                    </div>
+                    {billingCycle === "annual" && plan.id !== "enterprise" && (
+                      <div className="text-xs text-emerald-400 mt-1.5 font-medium">
+                        صورت‌حساب سالانه با ۲۰٪ صرفه‌جویی
+                      </div>
+                    )}
+                    <div className="mt-3.5 inline-block px-3 py-1.5 rounded-lg bg-[#141414] border border-[#242424] text-xs font-mono font-medium text-neutral-300">
+                      {plan.messageLimit}
+                    </div>
+                  </div>
+
+                  {/* لیست امکانات */}
+                  <div className="space-y-3.5 mb-8">
+                    <div className="text-xs font-bold text-neutral-400 mb-2">امکانات و سطح هوشمندی:</div>
+                    {plan.features.map((feat, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-neutral-300 leading-relaxed">
+                        <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* دکمه عملیاتی پلن */}
+                <Link
+                  href={plan.ctaLink}
+                  className={`w-full h-12 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 shadow-md ${
+                    plan.isPopular
+                      ? "bg-white text-black hover:bg-neutral-200 shadow-[0_0_25px_rgba(255,255,255,0.3)]"
+                      : "bg-[#141414] hover:bg-[#1f1f1f] text-white border border-[#282828] hover:border-neutral-500"
+                  }`}
+                >
+                  <span>{plan.ctaText}</span>
+                  <span>←</span>
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* ========================================================
+              بخش ارزش تجاری و بازگشت سرمایه (Business Value Formula)
+          ======================================================== */}
+          <div className="rounded-2xl bg-[#090909] border border-[#1f1f1f] p-8 sm:p-10 mb-14 shadow-2xl text-center">
+            <div className="max-w-3xl mx-auto mb-8">
+              <span className="text-xs sm:text-sm text-[#00e599] font-bold tracking-wider uppercase mb-1.5 block">
+                زنجیره خلق ارزش تجاری رادار
+              </span>
+              <h3 className="text-xl sm:text-3xl font-black text-white mb-2.5">
+                زمان کمتر برای جست‌وجو، زمان بیشتر برای بستن قرارداد
+              </h3>
+              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-xl mx-auto">
+                مدل درآمدی رادار مستقیماً بر مبنای بازدهی مالی تیم فروش طراحی شده است:
+              </p>
+            </div>
+
+            {/* زنجیره ارزش پیوسته (باکس‌های بزرگ‌تر) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 text-right">
+              <div className="p-5 sm:p-6 rounded-xl bg-[#0e0e0e] border border-[#1c1c1c] space-y-2">
+                <div className="text-xs text-neutral-500 font-medium">۰۱. پایش پیام‌ها</div>
+                <div className="text-sm sm:text-base font-bold text-white">غربالگری مکالمات</div>
+                <p className="text-xs text-neutral-400 leading-relaxed">جمع‌آوری مداوم پیام‌های جوامع بله، تلگرام و فروم‌ها</p>
+              </div>
+              <div className="p-5 sm:p-6 rounded-xl bg-[#0e0e0e] border border-[#1c1c1c] space-y-2">
+                <div className="text-xs text-neutral-500 font-medium">۰۲. استخراج فرصت</div>
+                <div className="text-sm sm:text-base font-bold text-emerald-400">حذف ۹۸٪ نویز</div>
+                <p className="text-xs text-neutral-400 leading-relaxed">کشف سیگنال‌های واقعی خرید از میان شلوغی گفت‌وگوها</p>
+              </div>
+              <div className="p-5 sm:p-6 rounded-xl bg-[#0e0e0e] border border-[#1c1c1c] space-y-2">
+                <div className="text-xs text-neutral-500 font-medium">۰۳. اعتبارسنجی نیت</div>
+                <div className="text-sm sm:text-base font-bold text-sky-400">استخراج بودجه و فوریت</div>
+                <p className="text-xs text-neutral-400 leading-relaxed">تفکیک خریداران قطعی و آماده‌سازی پیشنهاد متناسب</p>
+              </div>
+              <div className="p-5 sm:p-6 rounded-xl bg-[#0e0e0e] border border-[#1c1c1c] space-y-2">
+                <div className="text-xs text-neutral-500 font-medium">۰۴. بستن معامله</div>
+                <div className="text-sm sm:text-base font-bold text-amber-400">درآمد مستقیم</div>
+                <p className="text-xs text-neutral-400 leading-relaxed">ارسال پاسخ اختصاصی در ۳ ثانیه و هدایت لید به CRM</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ========================================================
+              تجسم شفافیت مصرف هوش مصنوعی (Usage Transparency Widget)
+          ======================================================== */}
+          <div className="rounded-2xl bg-[#090909] border border-[#1f1f1f] p-8 sm:p-10 mb-14 shadow-2xl text-right">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-[#1a1a1a]">
+              <div>
+                <div className="text-base sm:text-lg font-bold text-white flex items-center gap-2.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#00e599] animate-pulse" />
+                  <span>پنل شفافیت مصرف ماهانه (نمونه لایو سازمان)</span>
+                </div>
+                <div className="text-xs sm:text-sm text-neutral-400 mt-1">
+                  پلن فعال: رشد (Growth) • پایش خودکار ۳۴,۲۰۰ پیام در ۳۰ روز گذشته
+                </div>
+              </div>
+              <span className="text-xs px-3 py-1.5 rounded-lg bg-[#141414] text-neutral-300 border border-[#252525] font-medium">
+                ۱۴ روز تا تمدید دوره
+              </span>
+            </div>
+
+            {/* نوار بصری پیشرفت مصرف */}
+            <div className="space-y-2.5 mb-7">
+              <div className="flex justify-between text-xs sm:text-sm text-neutral-400">
+                <span>مصرف ظرفیت پیام‌ها: ۳۴,۲۰۰ از ۵۰,۰۰۰ پیام</span>
+                <span className="font-bold text-white font-mono">۶۸.۴٪</span>
+              </div>
+              <div className="w-full h-3.5 rounded-full bg-[#161616] overflow-hidden p-0.5 border border-[#262626]">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-[#00e599] transition-all duration-500 shadow-[0_0_12px_rgba(0,229,153,0.4)]"
+                  style={{ width: "68.4%" }}
+                />
+              </div>
+            </div>
+
+            {/* کارت‌های شاخص شفافیت مصرف (بزرگ‌تر) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+              <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
+                <div className="text-neutral-500 text-xs">پیام‌های پایش‌شده:</div>
+                <div className="text-base sm:text-lg font-black text-white mt-1.5">۳۴,۲۰۰ پیام</div>
+              </div>
+              <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
+                <div className="text-neutral-500 text-xs">فرصت‌های باکیفیت کشف‌شده:</div>
+                <div className="text-base sm:text-lg font-black text-[#00e599] mt-1.5">۸۴۲ سرنخ معتبر</div>
+              </div>
+              <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
+                <div className="text-neutral-500 text-xs">میانگین هزینه هر تحلیل:</div>
+                <div className="text-base sm:text-lg font-black text-sky-400 mt-1.5">۹ تومان (~۰.۰۰۰۱۲ دلار)</div>
+              </div>
+              <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
+                <div className="text-neutral-500 text-xs">اعتبار باقی‌مانده دوره:</div>
+                <div className="text-base sm:text-lg font-black text-neutral-200 mt-1.5">۱۵,۸۰۰ پیام</div>
+              </div>
+            </div>
+          </div>
+
+          {/* ========================================================
+              منطق ارتقای پلن‌ها (Value-Based Upgrade Logic)
+          ======================================================== */}
+          <div className="rounded-2xl bg-[#090909] border border-[#1f1f1f] p-8 sm:p-10 mb-14 shadow-2xl text-right">
+            <h3 className="text-lg sm:text-xl font-black text-white mb-2">
+              چرا ارتقای پلن برای سازمان شما منطقی است؟
+            </h3>
+            <p className="text-xs sm:text-sm text-neutral-400 mb-7 leading-relaxed">
+              مسیر رشد پلتفرم همگام با افزایش مقیاس و نیازهای داده‌ای تیم‌های فروش توسعه می‌یابد:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
+              {/* ارتقا ۱ */}
+              <div className="p-5 sm:p-6 rounded-xl bg-[#0d0d0d] border border-[#1c1c1c] space-y-2.5">
+                <div className="font-bold text-white flex items-center justify-between pb-2 border-b border-[#181818] text-sm">
+                  <span>استارتر ← رشد (Growth)</span>
+                  <span className="text-[#00e599] text-xs">افزایش عمق هوشمندی</span>
+                </div>
+                <p className="text-neutral-400 leading-relaxed text-xs sm:text-[13px]">
+                  زمانی که تیم فروش نیازمند درک عمیق‌تر زمینه مکالمه، انطباق با ویژگی‌های دقیق محصول و دسترسی چند کاربر همزمان برای پیگیری است.
+                </p>
+              </div>
+
+              {/* ارتقا ۲ */}
+              <div className="p-5 sm:p-6 rounded-xl bg-[#0d0d0d] border border-[#1c1c1c] space-y-2.5">
+                <div className="font-bold text-white flex items-center justify-between pb-2 border-b border-[#181818] text-sm">
+                  <span>رشد ← حرفه‌ای (Pro)</span>
+                  <span className="text-sky-400 text-xs">اتوماسیون و CRM</span>
+                </div>
+                <p className="text-neutral-400 leading-relaxed text-xs sm:text-[13px]">
+                  زمانی که سازمان در چند کانال فعال شده و نیازمند اتصال خودکار سرنخ‌ها به CRM، گزارش‌گیری پیشرفته و مدیریت تا ۱۵ عضو تیم است.
+                </p>
+              </div>
+
+              {/* ارتقا ۳ */}
+              <div className="p-5 sm:p-6 rounded-xl bg-[#0d0d0d] border border-[#1c1c1c] space-y-2.5">
+                <div className="font-bold text-white flex items-center justify-between pb-2 border-b border-[#181818] text-sm">
+                  <span>حرفه‌ای ← سازمانی (Enterprise)</span>
+                  <span className="text-amber-400 text-xs">مقیاس و امنیت ایزوله</span>
+                </div>
+                <p className="text-neutral-400 leading-relaxed text-xs sm:text-[13px]">
+                  زمانی که استقرار محلی On-Premise، امنیت ایزوله Air-Gapped، داده‌های نامحدود، مدیریت تننت‌ها و توافق‌نامه رسمی SLA ضرورت دارد.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ========================================================
+              جدول مقایسه جامع قابلیت‌های پلن‌ها (Feature Comparison Table)
+          ======================================================== */}
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => setShowTable(!showTable)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#111111] hover:bg-[#1a1a1a] border border-[#242424] hover:border-neutral-500 text-xs text-white font-medium transition-all cursor-pointer mb-6 active:scale-95"
+            >
+              <span>{showTable ? "بستن جدول مقایسه کامل" : "مشاهده جدول مقایسه دقیق قابلیت‌ها"}</span>
+              <svg
+                viewBox="0 0 16 16"
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${showTable ? "rotate-180" : ""}`}
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="m12.06 6.75-.53.53-2.82 2.82a1 1 0 0 1-1.42 0L4.47 7.28l-.53-.53L5 5.69l.53.53L8 8.69l2.47-2.47.53-.53z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+
+            {showTable && (
+              <div className="rounded-2xl bg-[#090909] border border-[#1f1f1f] overflow-x-auto shadow-2xl animate-card-in text-right">
+                <table className="w-full text-xs sm:text-[13px] text-neutral-300">
+                  <thead>
+                    <tr className="border-b border-[#1f1f1f] bg-[#0e0e0e] text-neutral-400 font-bold">
+                      <th className="p-4 sm:p-5 text-right font-bold text-white">قابلیت کلیدی</th>
+                      <th className="p-4 sm:p-5 text-center">استارتر</th>
+                      <th className="p-4 sm:p-5 text-center text-[#00e599]">رشد (محبوب‌ترین)</th>
+                      <th className="p-4 sm:p-5 text-center">حرفه‌ای</th>
+                      <th className="p-4 sm:p-5 text-center">سازمانی</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {COMPARISON_DIMENSIONS.map((row, i) => (
+                      <tr
+                        key={i}
+                        className={`border-b border-[#161616] transition-colors hover:bg-[#0f0f0f] ${
+                          i % 2 === 0 ? "bg-[#090909]" : "bg-[#060606]"
+                        }`}
+                      >
+                        <td className="p-4 sm:p-5 font-semibold text-white">{row.label}</td>
+                        <td className="p-4 sm:p-5 text-center text-neutral-400">{row.starter}</td>
+                        <td className="p-4 sm:p-5 text-center text-emerald-300 font-bold">{row.growth}</td>
+                        <td className="p-4 sm:p-5 text-center text-neutral-300">{row.pro}</td>
+                        <td className="p-4 sm:p-5 text-center text-neutral-300 font-bold">{row.enterprise}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* ========================================================
+            ۱۰. بخش فراخوان نهایی (کارت‌های گرد شده و متوازن)
         ======================================================== */}
         <section className="relative py-28 px-4 sm:px-6 max-w-[1240px] mx-auto text-center border-t border-[#141414] overflow-hidden">
           <div className="relative z-10 max-w-2xl mx-auto">
@@ -992,7 +1428,7 @@ export default function PersianLandingPage() {
       </main>
 
       {/* ========================================================
-          ۱۰. فوتر در موقعیت ثابت (Fixed Position Footer Bar)
+          ۱۱. فوتر در موقعیت ثابت (Fixed Position Footer Bar)
           شامل لوگوی بازگشته رادار، وضعیت سامانه‌ها و نشان PriCoders
       ======================================================== */}
       <footer className="fixed bottom-0 inset-x-0 z-40 border-t border-[#1a1a1a] bg-black/95 backdrop-blur-md px-4 sm:px-8 py-3 text-xs text-neutral-400 shadow-2xl">
@@ -1012,6 +1448,10 @@ export default function PersianLandingPage() {
             <Link href="/dashboard" className="hover:text-white transition-colors">
               پایش لیدها
             </Link>
+            <span className="text-neutral-700">|</span>
+            <a href="#pricing" className="hover:text-white transition-colors">
+              قیمت‌گذاری
+            </a>
             <span className="text-neutral-700">|</span>
             <a href="#deep-dive-2" className="hover:text-white transition-colors">
               ماتریس نیت
