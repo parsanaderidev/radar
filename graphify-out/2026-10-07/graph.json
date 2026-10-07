@@ -4,6 +4,19 @@
   "graph": {},
   "nodes": [
     {
+      "id": "app_pitch_page_slidedata",
+      "label": "SlideData",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "slidedata",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L17"
+    },
+    {
       "id": "components_assistant_assistantsuggestions_assistantsuggestionsprops",
       "label": "AssistantSuggestionsProps",
       "_callable": true,
@@ -171,19 +184,6 @@
       "norm_label": "sourcerecord",
       "source_file": "lib/pocketbase.ts",
       "source_location": "L15"
-    },
-    {
-      "id": "lib_ratelimit_concurrencylimiter",
-      "label": "ConcurrencyLimiter",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "analyze/route.ts",
-      "file_type": "code",
-      "norm_label": "concurrencylimiter",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L103"
     },
     {
       "id": "lib_ratelimit_ratelimitrecord",
@@ -381,6 +381,19 @@
       "source_location": "L28"
     },
     {
+      "id": "lib_ratelimit_concurrencylimiter",
+      "label": "ConcurrencyLimiter",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "ConcurrencyLimiter",
+      "file_type": "code",
+      "norm_label": "concurrencylimiter",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L103"
+    },
+    {
       "id": "lib_ratelimit_inmemoryratelimiter",
       "label": "InMemoryRateLimiter",
       "_callable": true,
@@ -392,6 +405,18 @@
       "norm_label": "inmemoryratelimiter",
       "source_file": "lib/rateLimit.ts",
       "source_location": "L11"
+    },
+    {
+      "id": "app_landing_page_landingpage",
+      "label": "LandingPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "landingpage()",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L41"
     },
     {
       "id": "app_login_page_loginform",
@@ -428,6 +453,18 @@
       "norm_label": "leadradardashboard()",
       "source_file": "app/page.tsx",
       "source_location": "L22"
+    },
+    {
+      "id": "app_pitch_page_pitchdeckpage",
+      "label": "PitchDeckPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "pitchdeckpage()",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L25"
     },
     {
       "id": "app_settings_page_productsettingspage",
@@ -478,6 +515,18 @@
       "source_location": "L428"
     },
     {
+      "id": "components_icons_checkcircle2icon",
+      "label": "CheckCircle2Icon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "checkcircle2icon()",
+      "source_file": "components/Icons.tsx",
+      "source_location": "L602"
+    },
+    {
       "id": "components_icons_checkcircleicon",
       "label": "CheckCircleIcon()",
       "_callable": true,
@@ -488,6 +537,18 @@
       "norm_label": "checkcircleicon()",
       "source_file": "components/Icons.tsx",
       "source_location": "L204"
+    },
+    {
+      "id": "components_icons_checkicon",
+      "label": "CheckIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "checkicon()",
+      "source_file": "components/Icons.tsx",
+      "source_location": "L582"
     },
     {
       "id": "components_icons_copyicon",
@@ -536,6 +597,18 @@
       "norm_label": "eyeofficon()",
       "source_file": "components/Icons.tsx",
       "source_location": "L559"
+    },
+    {
+      "id": "components_icons_flameicon",
+      "label": "FlameIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "flameicon()",
+      "source_file": "components/Icons.tsx",
+      "source_location": "L606"
     },
     {
       "id": "components_icons_forumicon",
@@ -1054,54 +1127,6 @@
       "source_location": "L231"
     },
     {
-      "id": "lib_ratelimit_concurrencylimiter_acquire",
-      "label": ".acquire()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "analyze/route.ts",
-      "file_type": "code",
-      "norm_label": ".acquire()",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L111"
-    },
-    {
-      "id": "lib_ratelimit_concurrencylimiter_active",
-      "label": ".active()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "analyze/route.ts",
-      "file_type": "code",
-      "norm_label": ".active()",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L123"
-    },
-    {
-      "id": "lib_ratelimit_concurrencylimiter_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "analyze/route.ts",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L107"
-    },
-    {
-      "id": "lib_ratelimit_concurrencylimiter_release",
-      "label": ".release()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "analyze/route.ts",
-      "file_type": "code",
-      "norm_label": ".release()",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L119"
-    },
-    {
       "id": "lib_ratelimit_getclientip",
       "label": "getClientIp()",
       "_callable": true,
@@ -1390,6 +1415,54 @@
       "source_location": "L4"
     },
     {
+      "id": "lib_ratelimit_concurrencylimiter_acquire",
+      "label": ".acquire()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "ConcurrencyLimiter",
+      "file_type": "code",
+      "norm_label": ".acquire()",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L111"
+    },
+    {
+      "id": "lib_ratelimit_concurrencylimiter_active",
+      "label": ".active()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "ConcurrencyLimiter",
+      "file_type": "code",
+      "norm_label": ".active()",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L123"
+    },
+    {
+      "id": "lib_ratelimit_concurrencylimiter_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "ConcurrencyLimiter",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L107"
+    },
+    {
+      "id": "lib_ratelimit_concurrencylimiter_release",
+      "label": ".release()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "ConcurrencyLimiter",
+      "file_type": "code",
+      "norm_label": ".release()",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L119"
+    },
+    {
       "id": "app_api_assistant_route_cleanoutput",
       "label": "cleanOutput()",
       "_callable": true,
@@ -1630,6 +1703,28 @@
       "source_location": "L65"
     },
     {
+      "id": "app_landing_page",
+      "label": "landing/page.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "landing/page.tsx",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_landing_page_demo_lead",
+      "label": "DEMO_LEAD",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "demo_lead",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L22"
+    },
+    {
       "id": "app_login_page",
       "label": "login/page.tsx",
       "_origin": "ast",
@@ -1660,6 +1755,17 @@
       "file_type": "code",
       "norm_label": "app/page.tsx",
       "source_file": "app/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_pitch_page",
+      "label": "pitch/page.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Icons.tsx",
+      "file_type": "code",
+      "norm_label": "pitch/page.tsx",
+      "source_file": "app/pitch/page.tsx",
       "source_location": "L1"
     },
     {
@@ -3975,6 +4081,222 @@
       "norm_label": "this is not the next.js you know",
       "source_file": "AGENTS.md",
       "source_location": "L3"
+    },
+    {
+      "id": "pricoders_technical_documentation",
+      "label": "TECHNICAL_DOCUMENTATION.md",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "technical_documentation.md",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "pricoders_technical_documentation_opportunity_intelligence_engine",
+      "label": "Opportunity Intelligence Engine",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "opportunity intelligence engine",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L2"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u062a\u0648\u0633\u0639\u0647_\u062f\u0627\u062f\u0647_\u0634\u062f\u0647_\u062a\u0648\u0633\u0637_\u062a\u06cc\u0645_pricoders",
+      "label": "\u062a\u0648\u0633\u0639\u0647 \u062f\u0627\u062f\u0647 \u0634\u062f\u0647 \u062a\u0648\u0633\u0637 \u062a\u06cc\u0645 PriCoders",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u062a\u0648\u0633\u0639\u0647 \u062f\u0627\u062f\u0647 \u0634\u062f\u0647 \u062a\u0648\u0633\u0637 \u062a\u06cc\u0645 pricoders",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u0633\u0637\u0648\u062d_\u0646\u06cc\u062a",
+      "label": "\u0633\u0637\u0648\u062d \u0646\u06cc\u062a:",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0633\u0637\u0648\u062d \u0646\u06cc\u062a:",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L86"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "label": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (radar)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f1_\u0645\u0639\u0631\u0641\u06cc_\u0648_\u062c\u0627\u06cc\u06af\u0627\u0647_\u0645\u062d\u0635\u0648\u0644_product_positioning",
+      "label": "\u06f1. \u0645\u0639\u0631\u0641\u06cc \u0648 \u062c\u0627\u06cc\u06af\u0627\u0647 \u0645\u062d\u0635\u0648\u0644 (Product Positioning)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f1. \u0645\u0639\u0631\u0641\u06cc \u0648 \u062c\u0627\u06cc\u06af\u0627\u0647 \u0645\u062d\u0635\u0648\u0644 (product positioning)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f1\u06f0_\u0646\u0642\u0634\u0647_\u0631\u0627\u0647_\u062a\u0648\u0633\u0639\u0647_\u0648_\u0645\u0642\u06cc\u0627\u0633_\u067e\u0630\u06cc\u0631\u06cc_\u0622\u06cc\u0646\u062f\u0647_future_scaling_roadmap",
+      "label": "\u06f1\u06f0. \u0646\u0642\u0634\u0647 \u0631\u0627\u0647 \u062a\u0648\u0633\u0639\u0647 \u0648 \u0645\u0642\u06cc\u0627\u0633\u200c\u067e\u0630\u06cc\u0631\u06cc \u0622\u06cc\u0646\u062f\u0647 (Future Scaling Roadmap)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f1\u06f0. \u0646\u0642\u0634\u0647 \u0631\u0627\u0647 \u062a\u0648\u0633\u0639\u0647 \u0648 \u0645\u0642\u06cc\u0627\u0633\u200c\u067e\u0630\u06cc\u0631\u06cc \u0627\u06cc\u0646\u062f\u0647 (future scaling roadmap)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L143"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f2_\u0646\u0645\u0627\u06cc_\u06a9\u0644\u06cc_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u06cc\u0633\u062a\u0645_system_architecture",
+      "label": "\u06f2. \u0646\u0645\u0627\u06cc \u06a9\u0644\u06cc \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u06cc\u0633\u062a\u0645 (System Architecture)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f2. \u0646\u0645\u0627\u06cc \u06a9\u0644\u06cc \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u06cc\u0633\u062a\u0645 (system architecture)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L15"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f3_\u0644\u0627\u06cc\u0647_\u0647\u0627\u06cc_\u0641\u0646\u0627\u0648\u0631\u06cc_technology_stack",
+      "label": "\u06f3. \u0644\u0627\u06cc\u0647\u200c\u0647\u0627\u06cc \u0641\u0646\u0627\u0648\u0631\u06cc (Technology Stack)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f3. \u0644\u0627\u06cc\u0647\u200c\u0647\u0627\u06cc \u0641\u0646\u0627\u0648\u0631\u06cc (technology stack)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L33"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f4_\u0645\u062f\u0644_\u062f\u0627\u062f\u0647_\u067e\u0627\u06cc\u06af\u0627\u0647_\u062f\u0627\u062f\u0647_data_model_schema",
+      "label": "\u06f4. \u0645\u062f\u0644 \u062f\u0627\u062f\u0647 \u067e\u0627\u06cc\u06af\u0627\u0647 \u062f\u0627\u062f\u0647 (Data Model & Schema)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f4. \u0645\u062f\u0644 \u062f\u0627\u062f\u0647 \u067e\u0627\u06cc\u06af\u0627\u0647 \u062f\u0627\u062f\u0647 (data model & schema)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L46"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f4_\u06f1_\u0645\u062c\u0645\u0648\u0639\u0647_raw_messages_\u067e\u06cc\u0627\u0645_\u0647\u0627\u06cc_\u062e\u0627\u0645_\u062c\u0645\u0639_\u0622\u0648\u0631\u06cc_\u0634\u062f\u0647",
+      "label": "\u06f4.\u06f1. \u0645\u062c\u0645\u0648\u0639\u0647 `raw_messages` (\u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u062e\u0627\u0645 \u062c\u0645\u0639\u200c\u0622\u0648\u0631\u06cc\u200c\u0634\u062f\u0647)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f4.\u06f1. \u0645\u062c\u0645\u0648\u0639\u0647 `raw_messages` (\u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u062e\u0627\u0645 \u062c\u0645\u0639\u200c\u0627\u0648\u0631\u06cc\u200c\u0634\u062f\u0647)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f4_\u06f2_\u0645\u062c\u0645\u0648\u0639\u0647_leads_\u0633\u0631\u0646\u062e_\u0647\u0627_\u0648_\u0641\u0631\u0635\u062a_\u0647\u0627\u06cc_\u062a\u062d\u0644\u06cc\u0644_\u0634\u062f\u0647",
+      "label": "\u06f4.\u06f2. \u0645\u062c\u0645\u0648\u0639\u0647 `leads` (\u0633\u0631\u0646\u062e\u200c\u0647\u0627 \u0648 \u0641\u0631\u0635\u062a\u200c\u0647\u0627\u06cc \u062a\u062d\u0644\u06cc\u0644\u200c\u0634\u062f\u0647)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f4.\u06f2. \u0645\u062c\u0645\u0648\u0639\u0647 `leads` (\u0633\u0631\u0646\u062e\u200c\u0647\u0627 \u0648 \u0641\u0631\u0635\u062a\u200c\u0647\u0627\u06cc \u062a\u062d\u0644\u06cc\u0644\u200c\u0634\u062f\u0647)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L56"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f4_\u06f3_\u0645\u062c\u0645\u0648\u0639\u0647_products_\u067e\u0631\u0648\u0641\u0627\u06cc\u0644_\u0645\u062d\u0635\u0648\u0644\u0627\u062a_\u0648_\u067e\u0631\u0633\u0648\u0646\u0627\u06cc_\u0645\u0634\u062a\u0631\u06cc_icp",
+      "label": "\u06f4.\u06f3. \u0645\u062c\u0645\u0648\u0639\u0647 `products` (\u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u0645\u062d\u0635\u0648\u0644\u0627\u062a \u0648 \u067e\u0631\u0633\u0648\u0646\u0627\u06cc \u0645\u0634\u062a\u0631\u06cc - ICP)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f4.\u06f3. \u0645\u062c\u0645\u0648\u0639\u0647 `products` (\u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u0645\u062d\u0635\u0648\u0644\u0627\u062a \u0648 \u067e\u0631\u0633\u0648\u0646\u0627\u06cc \u0645\u0634\u062a\u0631\u06cc - icp)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L68"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f5_\u0645\u0648\u062a\u0648\u0631_\u062a\u0634\u062e\u06cc\u0635_\u0646\u06cc\u062a_\u062e\u0631\u06cc\u062f_intent_engine",
+      "label": "\u06f5. \u0645\u0648\u062a\u0648\u0631 \u062a\u0634\u062e\u06cc\u0635 \u0646\u06cc\u062a \u062e\u0631\u06cc\u062f (Intent Engine)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f5. \u0645\u0648\u062a\u0648\u0631 \u062a\u0634\u062e\u06cc\u0635 \u0646\u06cc\u062a \u062e\u0631\u06cc\u062f (intent engine)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L77"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f6_\u0644\u0627\u06cc\u0647_\u0627\u0633\u062a\u0646\u062a\u0627\u062c_\u0648_\u0645\u0648\u062a\u0648\u0631_\u0641\u0627\u0644_\u0628\u06a9_llm_fallback_engine",
+      "label": "\u06f6. \u0644\u0627\u06cc\u0647 \u0627\u0633\u062a\u0646\u062a\u0627\u062c \u0648 \u0645\u0648\u062a\u0648\u0631 \u0641\u0627\u0644\u200c\u0628\u06a9 (LLM & Fallback Engine)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f6. \u0644\u0627\u06cc\u0647 \u0627\u0633\u062a\u0646\u062a\u0627\u062c \u0648 \u0645\u0648\u062a\u0648\u0631 \u0641\u0627\u0644\u200c\u0628\u06a9 (llm & fallback engine)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L94"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f7_\u0627\u0645\u0646\u06cc\u062a_\u0648_\u0645\u062d\u0627\u0641\u0638\u062a_\u062f\u0631_\u0628\u0631\u0627\u0628\u0631_\u062a\u0632\u0631\u06cc\u0642_\u067e\u0631\u0627\u0645\u067e\u062a_prompt_injection_protection",
+      "label": "\u06f7. \u0627\u0645\u0646\u06cc\u062a \u0648 \u0645\u062d\u0627\u0641\u0638\u062a \u062f\u0631 \u0628\u0631\u0627\u0628\u0631 \u062a\u0632\u0631\u06cc\u0642 \u067e\u0631\u0627\u0645\u067e\u062a (Prompt Injection Protection)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f7. \u0627\u0645\u0646\u06cc\u062a \u0648 \u0645\u062d\u0627\u0641\u0638\u062a \u062f\u0631 \u0628\u0631\u0627\u0628\u0631 \u062a\u0632\u0631\u06cc\u0642 \u067e\u0631\u0627\u0645\u067e\u062a (prompt injection protection)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L115"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f8_\u0645\u0648\u062a\u0648\u0631_\u0634\u0641\u0627\u0641\u06cc\u062a_\u0647\u0632\u06cc\u0646\u0647_cost_engine",
+      "label": "\u06f8. \u0645\u0648\u062a\u0648\u0631 \u0634\u0641\u0627\u0641\u06cc\u062a \u0647\u0632\u06cc\u0646\u0647 (Cost Engine)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f8. \u0645\u0648\u062a\u0648\u0631 \u0634\u0641\u0627\u0641\u06cc\u062a \u0647\u0632\u06cc\u0646\u0647 (cost engine)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L125"
+    },
+    {
+      "id": "pricoders_technical_documentation_\u06f9_\u0645\u0639\u0645\u0627\u0631\u06cc_\u062c\u0645\u0639_\u0622\u0648\u0631\u06cc_\u062f\u0627\u062f\u0647_\u0648_\u06a9\u0631\u0627\u0648\u0644\u0631\u0647\u0627_crawling_ingestion",
+      "label": "\u06f9. \u0645\u0639\u0645\u0627\u0631\u06cc \u062c\u0645\u0639\u200c\u0622\u0648\u0631\u06cc \u062f\u0627\u062f\u0647 \u0648 \u06a9\u0631\u0627\u0648\u0644\u0631\u0647\u0627 (Crawling & Ingestion)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u0645\u0633\u062a\u0646\u062f\u0627\u062a \u0641\u0646\u06cc \u0648 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u0627\u0645\u0627\u0646\u0647 \u0631\u0627\u062f\u0627\u0631 (Radar)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u06f9. \u0645\u0639\u0645\u0627\u0631\u06cc \u062c\u0645\u0639\u200c\u0627\u0648\u0631\u06cc \u062f\u0627\u062f\u0647 \u0648 \u06a9\u0631\u0627\u0648\u0644\u0631\u0647\u0627 (crawling & ingestion)",
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L136"
     }
   ],
   "links": [
@@ -5671,6 +5993,162 @@
       "weight": 1.0
     },
     {
+      "source": "app_landing_page",
+      "target": "components_agents_voice_orb_voiceorb",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_baleicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_checkcircle2icon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_checkicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_copyicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_flameicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_forumicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_playicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_radarlogo",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_refreshicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_sparklesicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_telegramicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons_twitterxicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "app_layout",
       "target": "components_assistant_radarassistant_radarassistant",
       "relation": "imports",
@@ -5932,6 +6410,114 @@
       "context": "import",
       "source_file": "app/page.tsx",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons_baleicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons_checkcircle2icon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons_flameicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons_forumicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons_playicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons_radarlogo",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons_sparklesicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons_telegramicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons_twitterxicon",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -7183,6 +7769,30 @@
       "weight": 1.0
     },
     {
+      "source": "app_landing_page",
+      "target": "components_agents_voice_orb",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "components_icons",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "app_layout",
       "target": "components_assistant_radarassistant",
       "relation": "imports_from",
@@ -7288,6 +7898,18 @@
       "context": "import",
       "source_file": "app/page.tsx",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "components_icons",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -8014,6 +8636,28 @@
       "weight": 1.0
     },
     {
+      "source": "app_landing_page",
+      "target": "app_landing_page_demo_lead",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "app_landing_page",
+      "target": "app_landing_page_landingpage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
       "source": "app_layout",
       "target": "app_layout_rootlayout",
       "relation": "contains",
@@ -8088,6 +8732,28 @@
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
       "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "app_pitch_page_slidedata",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pitch_page",
+      "target": "app_pitch_page_pitchdeckpage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pitch/page.tsx",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -8770,6 +9436,39 @@
       "confidence_score": 1.0,
       "source_file": "components/Icons.tsx",
       "source_location": "L559",
+      "weight": 1.0
+    },
+    {
+      "source": "components_icons",
+      "target": "components_icons_checkicon",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/Icons.tsx",
+      "source_location": "L582",
+      "weight": 1.0
+    },
+    {
+      "source": "components_icons",
+      "target": "components_icons_checkcircle2icon",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/Icons.tsx",
+      "source_location": "L602",
+      "weight": 1.0
+    },
+    {
+      "source": "components_icons",
+      "target": "components_icons_flameicon",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/Icons.tsx",
+      "source_location": "L606",
       "weight": 1.0
     },
     {
@@ -9972,6 +10671,193 @@
       "weight": 1.0
     },
     {
+      "source": "pricoders_technical_documentation",
+      "target": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_opportunity_intelligence_engine",
+      "target": "pricoders_technical_documentation_\u062a\u0648\u0633\u0639\u0647_\u062f\u0627\u062f\u0647_\u0634\u062f\u0647_\u062a\u0648\u0633\u0637_\u062a\u06cc\u0645_pricoders",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f7_\u0627\u0645\u0646\u06cc\u062a_\u0648_\u0645\u062d\u0627\u0641\u0638\u062a_\u062f\u0631_\u0628\u0631\u0627\u0628\u0631_\u062a\u0632\u0631\u06cc\u0642_\u067e\u0631\u0627\u0645\u067e\u062a_prompt_injection_protection",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f8_\u0645\u0648\u062a\u0648\u0631_\u0634\u0641\u0627\u0641\u06cc\u062a_\u0647\u0632\u06cc\u0646\u0647_cost_engine",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f9_\u0645\u0639\u0645\u0627\u0631\u06cc_\u062c\u0645\u0639_\u0622\u0648\u0631\u06cc_\u062f\u0627\u062f\u0647_\u0648_\u06a9\u0631\u0627\u0648\u0644\u0631\u0647\u0627_crawling_ingestion",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L136",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f1\u06f0_\u0646\u0642\u0634\u0647_\u0631\u0627\u0647_\u062a\u0648\u0633\u0639\u0647_\u0648_\u0645\u0642\u06cc\u0627\u0633_\u067e\u0630\u06cc\u0631\u06cc_\u0622\u06cc\u0646\u062f\u0647_future_scaling_roadmap",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L143",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f2_\u0646\u0645\u0627\u06cc_\u06a9\u0644\u06cc_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u06cc\u0633\u062a\u0645_system_architecture",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_opportunity_intelligence_engine",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f3_\u0644\u0627\u06cc\u0647_\u0647\u0627\u06cc_\u0641\u0646\u0627\u0648\u0631\u06cc_technology_stack",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f4_\u0645\u062f\u0644_\u062f\u0627\u062f\u0647_\u067e\u0627\u06cc\u06af\u0627\u0647_\u062f\u0627\u062f\u0647_data_model_schema",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f1_\u0645\u0639\u0631\u0641\u06cc_\u0648_\u062c\u0627\u06cc\u06af\u0627\u0647_\u0645\u062d\u0635\u0648\u0644_product_positioning",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f5_\u0645\u0648\u062a\u0648\u0631_\u062a\u0634\u062e\u06cc\u0635_\u0646\u06cc\u062a_\u062e\u0631\u06cc\u062f_intent_engine",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u0645\u0633\u062a\u0646\u062f\u0627\u062a_\u0641\u0646\u06cc_\u0648_\u0645\u0639\u0645\u0627\u0631\u06cc_\u0633\u0627\u0645\u0627\u0646\u0647_\u0631\u0627\u062f\u0627\u0631_radar",
+      "target": "pricoders_technical_documentation_\u06f6_\u0644\u0627\u06cc\u0647_\u0627\u0633\u062a\u0646\u062a\u0627\u062c_\u0648_\u0645\u0648\u062a\u0648\u0631_\u0641\u0627\u0644_\u0628\u06a9_llm_fallback_engine",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u06f4_\u0645\u062f\u0644_\u062f\u0627\u062f\u0647_\u067e\u0627\u06cc\u06af\u0627\u0647_\u062f\u0627\u062f\u0647_data_model_schema",
+      "target": "pricoders_technical_documentation_\u06f4_\u06f1_\u0645\u062c\u0645\u0648\u0639\u0647_raw_messages_\u067e\u06cc\u0627\u0645_\u0647\u0627\u06cc_\u062e\u0627\u0645_\u062c\u0645\u0639_\u0622\u0648\u0631\u06cc_\u0634\u062f\u0647",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u06f4_\u0645\u062f\u0644_\u062f\u0627\u062f\u0647_\u067e\u0627\u06cc\u06af\u0627\u0647_\u062f\u0627\u062f\u0647_data_model_schema",
+      "target": "pricoders_technical_documentation_\u06f4_\u06f2_\u0645\u062c\u0645\u0648\u0639\u0647_leads_\u0633\u0631\u0646\u062e_\u0647\u0627_\u0648_\u0641\u0631\u0635\u062a_\u0647\u0627\u06cc_\u062a\u062d\u0644\u06cc\u0644_\u0634\u062f\u0647",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u06f4_\u0645\u062f\u0644_\u062f\u0627\u062f\u0647_\u067e\u0627\u06cc\u06af\u0627\u0647_\u062f\u0627\u062f\u0647_data_model_schema",
+      "target": "pricoders_technical_documentation_\u06f4_\u06f3_\u0645\u062c\u0645\u0648\u0639\u0647_products_\u067e\u0631\u0648\u0641\u0627\u06cc\u0644_\u0645\u062d\u0635\u0648\u0644\u0627\u062a_\u0648_\u067e\u0631\u0633\u0648\u0646\u0627\u06cc_\u0645\u0634\u062a\u0631\u06cc_icp",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "pricoders_technical_documentation_\u06f5_\u0645\u0648\u062a\u0648\u0631_\u062a\u0634\u062e\u06cc\u0635_\u0646\u06cc\u062a_\u062e\u0631\u06cc\u062f_intent_engine",
+      "target": "pricoders_technical_documentation_\u0633\u0637\u0648\u062d_\u0646\u06cc\u062a",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PriCoders/TECHNICAL_DOCUMENTATION.md",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
       "source": "proxy",
       "target": "proxy_config",
       "relation": "contains",
@@ -10737,5 +11623,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "59a74ac24c7d76fdd6adc3ac45131879801c3f30"
+  "built_at_commit": "4b48c0b3ec10f953bad00f265098f9bc219e7520"
 }

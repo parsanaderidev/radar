@@ -92,9 +92,22 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
                 : "text-neutral-400 hover:text-white hover:bg-[#141414]"
             )}
           >
+            <span className="hidden sm:inline">معرفی رادار (Overview)</span>
+            <span className="sm:hidden">معرفی</span>
+          </Link>
+
+          <Link
+            href="/dashboard"
+            className={cn(
+              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out flex items-center gap-1.5 cursor-pointer active:scale-95",
+              pathname === "/dashboard"
+                ? "bg-[#1f1f1f] text-white shadow-sm"
+                : "text-neutral-400 hover:text-white hover:bg-[#141414]"
+            )}
+          >
             <SparklesIcon className="w-3.5 h-3.5 shrink-0" />
             <span className="hidden sm:inline">صندوق سرنخ‌ها</span>
-            <span className="sm:hidden">سرنخ‌ها</span>
+            <span className="sm:hidden">داشبورد</span>
           </Link>
 
           <Link
@@ -110,32 +123,6 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
             <span className="hidden xl:inline">تنظیمات محصول و پرسونای مشتری (ICP)</span>
             <span className="hidden sm:inline xl:hidden">تنظیمات (ICP)</span>
             <span className="sm:hidden">تنظیمات</span>
-          </Link>
-
-          <Link
-            href="/landing"
-            className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out flex items-center gap-1.5 cursor-pointer active:scale-95",
-              pathname === "/landing"
-                ? "bg-[#1f1f1f] text-white shadow-sm"
-                : "text-neutral-400 hover:text-white hover:bg-[#141414]"
-            )}
-          >
-            <span className="hidden sm:inline">معرفی محصول</span>
-            <span className="sm:hidden">معرفی</span>
-          </Link>
-
-          <Link
-            href="/pitch"
-            className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out flex items-center gap-1.5 cursor-pointer active:scale-95 text-amber-400 hover:text-amber-300",
-              pathname === "/pitch"
-                ? "bg-amber-950/40 border border-amber-800/40 text-amber-300 shadow-sm"
-                : "hover:bg-[#141414]"
-            )}
-          >
-            <span className="hidden sm:inline">پیچ‌دک ارائه</span>
-            <span className="sm:hidden">ارائه</span>
           </Link>
         </nav>
 

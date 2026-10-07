@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-07)
 
 ## Corpus Check
-- 50 files · ~26,553 words
+- 53 files · ~34,485 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 342 nodes · 585 edges · 19 communities (11 shown, 8 thin omitted)
+- 369 nodes · 634 edges · 21 communities (12 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `59a74ac2`
+- Built from commit: `4b48c0b3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -23,6 +23,7 @@
 - devDependencies
 - Radar — AI Lead Radar
 - AGENTS.md
+- مستندات فنی و معماری سامانه رادار (Radar)
 - InMemoryRateLimiter
 - AssistantMessages.tsx
 - next.config.ts
@@ -31,6 +32,7 @@
 - rules/graphify.md
 - ponytail.md
 - workflows/graphify.md
+- ConcurrencyLimiter
 - components.json
 - assistant/route.ts
 
@@ -39,12 +41,12 @@
 2. `isAuthenticatedRequest()` - 14 edges
 3. `getPocketBaseClient()` - 14 edges
 4. `Radar — AI Lead Radar` - 14 edges
-5. `authenticateSuperuser()` - 11 edges
-6. `toPersianDigits()` - 11 edges
-7. `Quickstart` - 10 edges
-8. `cn()` - 9 edges
-9. `evaluateMessageWithLLM()` - 9 edges
-10. `ProductRecord` - 9 edges
+5. `مستندات فنی و معماری سامانه رادار (Radar)` - 12 edges
+6. `authenticateSuperuser()` - 11 edges
+7. `toPersianDigits()` - 11 edges
+8. `Quickstart` - 10 edges
+9. `cn()` - 9 edges
+10. `evaluateMessageWithLLM()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `POST()` --calls--> `isAuthenticatedRequest()`  [EXTRACTED]
@@ -61,15 +63,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (19 total, 8 thin omitted)
+## Communities (21 total, 9 thin omitted)
 
 ### Community 0 - "Icons.tsx"
 Cohesion: 0.07
-Nodes (44): dynamic, LeadRadarDashboard(), ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps, SUGGESTIONS, BaleIcon(), CheckCircleIcon() (+36 more)
+Nodes (49): DEMO_LEAD, dynamic, LeadRadarDashboard(), SlideData, ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps, SUGGESTIONS (+41 more)
 
 ### Community 1 - "analyze/route.ts"
-Cohesion: 0.09
-Nodes (40): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, POST() (+32 more)
+Cohesion: 0.10
+Nodes (39): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, POST() (+31 more)
 
 ### Community 2 - "compilerOptions"
 Cohesion: 0.07
@@ -91,6 +93,10 @@ Nodes (17): eslint, eslint-config-next, devDependencies, eslint, eslint-config-n
 Cohesion: 0.06
 Nodes (30): 1. Prerequisites, 1. Zero Foreign Cloud Lock-in, 2. Install dependencies, 2. Vanilla TypeScript First, 3. Configure environment, 3. Zero External CDNs, 4. Native Persian / RTL Support, 4. Start PocketBase (+22 more)
 
+### Community 8 - "مستندات فنی و معماری سامانه رادار (Radar)"
+Cohesion: 0.11
+Nodes (17): Opportunity Intelligence Engine, توسعه داده شده توسط تیم PriCoders, سطوح نیت:, مستندات فنی و معماری سامانه رادار (Radar), ۱. معرفی و جایگاه محصول (Product Positioning), ۱۰. نقشه راه توسعه و مقیاس‌پذیری آینده (Future Scaling Roadmap), ۲. نمای کلی معماری سیستم (System Architecture), ۳. لایه‌های فناوری (Technology Stack) (+9 more)
+
 ### Community 10 - "AssistantMessages.tsx"
 Cohesion: 0.07
 Nodes (38): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+30 more)
@@ -104,24 +110,24 @@ Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
 ## Knowledge Gaps
-- **137 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+132 more)
+- **152 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+147 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `getPocketBaseClient()` connect `analyze/route.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.041) - this node is a cross-community bridge._
-- **Why does `RefreshIcon()` connect `Icons.tsx` to `AssistantMessages.tsx`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+  _High betweenness centrality (0.038) - this node is a cross-community bridge._
 - **Why does `ProductRecord` connect `analyze/route.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
+  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+- **Why does `RefreshIcon()` connect `Icons.tsx` to `AssistantMessages.tsx`?**
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
-  _137 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _152 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07475678443420379 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06885758998435054 - nodes in this community are weakly interconnected._
 - **Should `analyze/route.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.08686868686868687 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10122448979591837 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._

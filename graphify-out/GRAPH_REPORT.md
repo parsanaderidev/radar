@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-07)
 
 ## Corpus Check
-- 53 files · ~34,485 words
+- 53 files · ~31,361 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 369 nodes · 634 edges · 21 communities (12 shown, 9 thin omitted)
+- 367 nodes · 625 edges · 22 communities (13 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4b48c0b3`
+- Built from commit: `418748ca`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -25,7 +25,7 @@
 - AGENTS.md
 - مستندات فنی و معماری سامانه رادار (Radar)
 - InMemoryRateLimiter
-- AssistantMessages.tsx
+- voice-orb.tsx
 - next.config.ts
 - next-env.d.ts
 - postcss.config.mjs
@@ -34,6 +34,7 @@
 - workflows/graphify.md
 - ConcurrencyLimiter
 - components.json
+- ease.ts
 - assistant/route.ts
 
 ## God Nodes (most connected - your core abstractions)
@@ -63,11 +64,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (21 total, 9 thin omitted)
+## Communities (22 total, 9 thin omitted)
 
 ### Community 0 - "Icons.tsx"
 Cohesion: 0.07
-Nodes (49): DEMO_LEAD, dynamic, LeadRadarDashboard(), SlideData, ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps, SUGGESTIONS (+41 more)
+Nodes (49): LeadRadarDashboard(), dynamic, DEMO_LEAD, VercelStyleLandingPage(), ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps, SUGGESTIONS (+41 more)
 
 ### Community 1 - "analyze/route.ts"
 Cohesion: 0.10
@@ -97,20 +98,24 @@ Nodes (30): 1. Prerequisites, 1. Zero Foreign Cloud Lock-in, 2. Install dependen
 Cohesion: 0.11
 Nodes (17): Opportunity Intelligence Engine, توسعه داده شده توسط تیم PriCoders, سطوح نیت:, مستندات فنی و معماری سامانه رادار (Radar), ۱. معرفی و جایگاه محصول (Product Positioning), ۱۰. نقشه راه توسعه و مقیاس‌پذیری آینده (Future Scaling Roadmap), ۲. نمای کلی معماری سیستم (System Architecture), ۳. لایه‌های فناوری (Technology Stack) (+9 more)
 
-### Community 10 - "AssistantMessages.tsx"
-Cohesion: 0.07
-Nodes (38): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+30 more)
+### Community 10 - "voice-orb.tsx"
+Cohesion: 0.10
+Nodes (28): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+20 more)
 
 ### Community 19 - "components.json"
 Cohesion: 0.12
 Nodes (15): aliases, components, hooks, lib, ui, utils, rsc, $schema (+7 more)
+
+### Community 20 - "ease.ts"
+Cohesion: 0.18
+Nodes (10): EASE_DRAWER, EASE_IN_OUT, EASE_OUT, EASE_OUT_CSS, SPRING_GLIDE, SPRING_LAYOUT, SPRING_MOUSE, SPRING_PANEL (+2 more)
 
 ### Community 21 - "assistant/route.ts"
 Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
 ## Knowledge Gaps
-- **152 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+147 more)
+- **151 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+146 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -118,15 +123,15 @@ Nodes (3): cleanOutput(), dynamic, POST()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `getPocketBaseClient()` connect `analyze/route.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.038) - this node is a cross-community bridge._
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `ProductRecord` connect `analyze/route.ts` to `Icons.tsx`?**
   _High betweenness centrality (0.024) - this node is a cross-community bridge._
-- **Why does `RefreshIcon()` connect `Icons.tsx` to `AssistantMessages.tsx`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `RefreshIcon()` connect `Icons.tsx` to `voice-orb.tsx`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
-  _152 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _151 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06885758998435054 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06915113871635611 - nodes in this community are weakly interconnected._
 - **Should `analyze/route.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.10122448979591837 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**

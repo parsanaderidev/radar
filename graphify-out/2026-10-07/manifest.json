@@ -66,9 +66,9 @@
     "semantic_hash": ""
   },
   "components/Icons.tsx": {
-    "mtime": 1791229096.6247091,
-    "seen": 1791229328.4610817,
-    "ast_hash": "7c34268a8a2be2af11cf0c7de0753bd9",
+    "mtime": 1791384603.135725,
+    "seen": 1791384705.2180386,
+    "ast_hash": "6513a4b6eaa226a02867e578fb4636ec",
     "semantic_hash": ""
   },
   "components/LeadCard.tsx": {
@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "components/Navbar.tsx": {
-    "mtime": 1791310285.7623882,
-    "seen": 1791310773.1572413,
-    "ast_hash": "c99b07de800a603f53b8e7bd81fe87b5",
+    "mtime": 1791384532.6567311,
+    "seen": 1791384705.2180412,
+    "ast_hash": "e28596088e86714e5ecbf6b48fe976a4",
     "semantic_hash": ""
   },
   "lib/auth.ts": {
@@ -309,6 +309,24 @@
     "mtime": 1791373312.0254996,
     "seen": 1791374090.07171,
     "ast_hash": "5a6fd53fdcf2be529e9cc0b718fde352",
+    "semantic_hash": ""
+  },
+  "app/landing/page.tsx": {
+    "mtime": 1791384625.721723,
+    "seen": 1791384705.2180314,
+    "ast_hash": "2c99de2ef3e605533b872b6ce810154b",
+    "semantic_hash": ""
+  },
+  "app/pitch/page.tsx": {
+    "mtime": 1791384394.198743,
+    "seen": 1791384705.2180357,
+    "ast_hash": "b040868d2fb81a62997f4733afbb4c53",
+    "semantic_hash": ""
+  },
+  "PriCoders/TECHNICAL_DOCUMENTATION.md": {
+    "mtime": 1791384428.2817402,
+    "seen": 1791384705.218069,
+    "ast_hash": "db98c97e8c2c49b7228309648d4764e3",
     "semantic_hash": ""
   }
 }
