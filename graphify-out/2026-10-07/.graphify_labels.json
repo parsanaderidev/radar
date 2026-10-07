@@ -1,13 +1,13 @@
 {
   "0": "Icons.tsx",
-  "1": "analyze/route.ts",
+  "1": "llm.ts",
   "2": "compilerOptions",
   "3": "package.json",
   "4": "auth.ts",
   "5": "devDependencies",
   "6": "Radar — AI Lead Radar",
   "7": "AGENTS.md",
-  "8": "مستندات فنی و معماری سامانه رادار (Radar)",
+  "8": "طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و پرونده جذب سرمایه",
   "9": "InMemoryRateLimiter",
   "10": "voice-orb.tsx",
   "11": "next.config.ts",
@@ -17,8 +17,8 @@
   "15": "ponytail.md",
   "16": "workflows/graphify.md",
   "17": "CLAUDE.md",
-  "18": "ConcurrencyLimiter",
+  "18": "مستندات فنی و معماری جامع سامانه رادار (Radar)",
   "19": "components.json",
-  "20": "ease.ts",
+  "20": "ConcurrencyLimiter",
   "21": "assistant/route.ts"
 }

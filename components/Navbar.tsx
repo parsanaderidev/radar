@@ -42,7 +42,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#1f1f1f] bg-black/85 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-[#1f1f1f] bg-black/85 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 h-14 flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: Radar Static Base Logo & Brand */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
@@ -59,7 +59,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
 
           {/* Status Indicator */}
           <div
-            className="flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 rounded-full border border-[#262626] bg-[#0c0c0c] text-[11px] text-neutral-400 transition-colors duration-200"
+            className="inline-flex items-center justify-center gap-1.5 px-2 py-0.5 sm:px-2.5 rounded-full border border-[#262626] bg-[#0c0c0c] text-[11px] text-neutral-400 transition-colors duration-200"
             title={pbStatus === "online" ? "پاکت‌بیس متصل" : pbStatus === "checking" ? "در حال اتصال..." : "قطع ارتباط دیتابیس"}
           >
             <span
@@ -86,7 +86,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
           <Link
             href="/dashboard"
             className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out flex items-center gap-1.5 cursor-pointer active:scale-95",
+              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out inline-flex items-center justify-center gap-1.5 cursor-pointer active:scale-95",
               pathname === "/dashboard"
                 ? "bg-[#1f1f1f] text-white shadow-sm"
                 : "text-neutral-400 hover:text-white hover:bg-[#141414]"
@@ -100,7 +100,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
           <Link
             href="/settings"
             className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out flex items-center gap-1.5 cursor-pointer active:scale-95",
+              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out inline-flex items-center justify-center gap-1.5 cursor-pointer active:scale-95",
               pathname === "/settings"
                 ? "bg-[#1f1f1f] text-white shadow-sm"
                 : "text-neutral-400 hover:text-white hover:bg-[#141414]"
@@ -120,7 +120,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
               onClick={onSimulateFeed}
               disabled={isSimulating}
               className={cn(
-                "h-8 px-2.5 sm:px-3.5 rounded-md text-xs font-medium transition-all duration-200 ease-out flex items-center gap-1.5 cursor-pointer active:scale-95",
+                "h-8 px-2.5 sm:px-3.5 rounded-md text-xs font-medium transition-all duration-200 ease-out inline-flex items-center justify-center gap-1.5 cursor-pointer active:scale-95",
                 isSimulating
                   ? "bg-[#1f1f1f] text-neutral-500 border border-[#2a2a2a] cursor-not-allowed"
                   : "bg-white text-black hover:bg-[#eaeaea] hover:shadow-[0_0_18px_rgba(255,255,255,0.3)] shadow-sm"

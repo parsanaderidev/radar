@@ -1,29 +1,29 @@
 # Graph Report - Radar  (2026-10-07)
 
 ## Corpus Check
-- 53 files · ~32,387 words
+- 54 files · ~38,649 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 368 nodes · 628 edges · 22 communities (13 shown, 9 thin omitted)
+- 395 nodes · 661 edges · 22 communities (13 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3fdba73d`
+- Built from commit: `1494a540`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - Icons.tsx
-- analyze/route.ts
+- llm.ts
 - compilerOptions
 - package.json
 - auth.ts
 - devDependencies
 - Radar — AI Lead Radar
 - AGENTS.md
-- مستندات فنی و معماری سامانه رادار (Radar)
+- طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و پرونده جذب سرمایه
 - InMemoryRateLimiter
 - voice-orb.tsx
 - next.config.ts
@@ -32,9 +32,9 @@
 - rules/graphify.md
 - ponytail.md
 - workflows/graphify.md
-- ConcurrencyLimiter
+- مستندات فنی و معماری جامع سامانه رادار (Radar)
 - components.json
-- ease.ts
+- ConcurrencyLimiter
 - assistant/route.ts
 
 ## God Nodes (most connected - your core abstractions)
@@ -42,12 +42,12 @@
 2. `isAuthenticatedRequest()` - 14 edges
 3. `getPocketBaseClient()` - 14 edges
 4. `Radar — AI Lead Radar` - 14 edges
-5. `مستندات فنی و معماری سامانه رادار (Radar)` - 12 edges
-6. `authenticateSuperuser()` - 11 edges
-7. `toPersianDigits()` - 11 edges
-8. `Quickstart` - 10 edges
-9. `cn()` - 9 edges
-10. `evaluateMessageWithLLM()` - 9 edges
+5. `toPersianDigits()` - 12 edges
+6. `طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و پرونده جذب سرمایه` - 12 edges
+7. `evaluateMessageWithLLM()` - 11 edges
+8. `authenticateSuperuser()` - 11 edges
+9. `مستندات فنی و معماری جامع سامانه رادار (Radar)` - 11 edges
+10. `Quickstart` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `POST()` --calls--> `isAuthenticatedRequest()`  [EXTRACTED]
@@ -67,12 +67,12 @@
 ## Communities (22 total, 9 thin omitted)
 
 ### Community 0 - "Icons.tsx"
-Cohesion: 0.07
-Nodes (49): LeadRadarDashboard(), dynamic, PersianLandingPage(), SAMPLE_SIGNALS, SampleSignal, ProductSettingsPage(), AssistantSuggestions(), AssistantSuggestionsProps (+41 more)
+Cohesion: 0.06
+Nodes (54): LeadRadarDashboard(), dynamic, COMPARISON_DIMENSIONS, PersianLandingPage(), PRICING_PLANS, PricingPlan, SAMPLE_SIGNALS, SampleSignal (+46 more)
 
-### Community 1 - "analyze/route.ts"
+### Community 1 - "llm.ts"
 Cohesion: 0.10
-Nodes (39): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, POST() (+31 more)
+Nodes (41): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, POST() (+33 more)
 
 ### Community 2 - "compilerOptions"
 Cohesion: 0.07
@@ -94,45 +94,45 @@ Nodes (17): eslint, eslint-config-next, devDependencies, eslint, eslint-config-n
 Cohesion: 0.06
 Nodes (30): 1. Prerequisites, 1. Zero Foreign Cloud Lock-in, 2. Install dependencies, 2. Vanilla TypeScript First, 3. Configure environment, 3. Zero External CDNs, 4. Native Persian / RTL Support, 4. Start PocketBase (+22 more)
 
-### Community 8 - "مستندات فنی و معماری سامانه رادار (Radar)"
-Cohesion: 0.11
-Nodes (17): Opportunity Intelligence Engine, توسعه داده شده توسط تیم PriCoders, سطوح نیت:, مستندات فنی و معماری سامانه رادار (Radar), ۱. معرفی و جایگاه محصول (Product Positioning), ۱۰. نقشه راه توسعه و مقیاس‌پذیری آینده (Future Scaling Roadmap), ۲. نمای کلی معماری سیستم (System Architecture), ۳. لایه‌های فناوری (Technology Stack) (+9 more)
+### Community 8 - "طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و پرونده جذب سرمایه"
+Cohesion: 0.09
+Nodes (21): الف. تفکیک کامل لایه‌های هزینه واقعی یک مشترک در ایران:, ب. جدول اقتصاد واحد و حاشیه سود هر پلن (Unit Economics):, خندق دفاعی استراتژیک رادار (Strategic Moats):, سامانه هوش مصنوعی رادار (Radar AI) — PriCoders, شاخص‌های کلیدی اقتصاد کسب‌وکار در یک نگاه:, طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و پرونده جذب سرمایه, واقعیت بی‌رحم بازار ایران و بازارهای نوظهور:, پرسونای ۱: «مهندس راد» — مدیرعامل / بنیان‌گذار شرکت نرم‌افزاری B2B SaaS (+13 more)
 
 ### Community 10 - "voice-orb.tsx"
-Cohesion: 0.09
-Nodes (30): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+22 more)
+Cohesion: 0.07
+Nodes (39): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+31 more)
+
+### Community 18 - "مستندات فنی و معماری جامع سامانه رادار (Radar)"
+Cohesion: 0.12
+Nodes (15): Opportunity Intelligence & Sales Automation Engine — PriCoders, استقرار سرور در شرایط اینترنت ایران:, مستندات فنی و معماری جامع سامانه رادار (Radar), ۱. بیانیه مأموریت فنی و رویکرد طراحی (Technical Philosophy), ۲. نمودار کلان جریان داده و خط پردازش (End-to-End System Architecture), ۳. پشته فناوری (Technology Stack), ۴. کالبدشکافی خط تریاژ سه‌لایه رادار (Progressive Triage Deep Dive), ۴.۱ لایه ۰: فیلتر قطعی و ترافیکی (Deterministic Rule Filter) (+7 more)
 
 ### Community 19 - "components.json"
 Cohesion: 0.12
 Nodes (15): aliases, components, hooks, lib, ui, utils, rsc, $schema (+7 more)
-
-### Community 20 - "ease.ts"
-Cohesion: 0.20
-Nodes (9): EASE_DRAWER, EASE_IN_OUT, EASE_OUT, EASE_OUT_CSS, SPRING_LAYOUT, SPRING_MOUSE, SPRING_PANEL, SPRING_PRESS (+1 more)
 
 ### Community 21 - "assistant/route.ts"
 Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
 ## Knowledge Gaps
-- **152 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+147 more)
+- **170 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+165 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `getPocketBaseClient()` connect `analyze/route.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
-- **Why does `ProductRecord` connect `analyze/route.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+- **Why does `getPocketBaseClient()` connect `llm.ts` to `Icons.tsx`?**
+  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `ProductRecord` connect `llm.ts` to `Icons.tsx`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **Why does `RefreshIcon()` connect `Icons.tsx` to `voice-orb.tsx`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
-  _152 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _170 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06956521739130435 - nodes in this community are weakly interconnected._
-- **Should `analyze/route.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.10122448979591837 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0627027027027027 - nodes in this community are weakly interconnected._
+- **Should `llm.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.09728506787330317 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._

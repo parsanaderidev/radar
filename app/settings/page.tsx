@@ -143,12 +143,12 @@ export default function ProductSettingsPage() {
     <div className="min-h-screen flex flex-col bg-[#000000] text-[#ededed]">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 pt-20 sm:pt-24 pb-8 space-y-4 sm:space-y-6">
         {/* Active Product Banner */}
         <div className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
           <div className="space-y-1 w-full sm:w-auto">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
+              <span className="inline-flex items-center justify-center text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium">
                 تنظیمات سیستم
               </span>
               <h1 className="text-sm sm:text-base font-semibold text-white">

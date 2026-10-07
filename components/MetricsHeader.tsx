@@ -20,6 +20,40 @@ interface MetricsHeaderProps {
   onSearchChange: (query: string) => void;
 }
 
+function AnimatedNumber({ value }: { value: number }) {
+  const [displayValue, setDisplayValue] = React.useState(0);
+
+  React.useEffect(() => {
+    let startTimestamp: number | null = null;
+    const startValue = displayValue;
+    const endValue = value;
+    const duration = 650; // ms
+
+    if (startValue === endValue) return;
+
+    let frameId: number;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      // ease-out cubic
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(startValue + (endValue - startValue) * easeProgress);
+      setDisplayValue(current);
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(step);
+      } else {
+        setDisplayValue(endValue);
+      }
+    };
+
+    frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
+  }, [value]);
+
+  return <span>{toPersianDigits(displayValue)}</span>;
+}
+
 export function MetricsHeader({
   metrics,
   selectedIntent,
@@ -52,10 +86,10 @@ export function MetricsHeader({
           </div>
           <div className="mt-2.5 sm:mt-3">
             <div className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white">
-              {toPersianDigits(metrics.totalMessages)}
+              <AnimatedNumber value={metrics.totalMessages} />
             </div>
             <div className="text-[11px] sm:text-xs text-neutral-500 mt-1">
-              {toPersianDigits(metrics.totalEvaluated)} پیام ارزیابی‌شده
+              <AnimatedNumber value={metrics.totalEvaluated} /> پیام ارزیابی‌شده
             </div>
           </div>
         </div>
@@ -73,17 +107,17 @@ export function MetricsHeader({
             <span className="text-xs text-neutral-400 font-medium truncate">
               نرخ حذف نویز
             </span>
-            <span className="text-[10px] px-1.5 sm:px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium shrink-0">
+            <span className="inline-flex items-center justify-center text-[10px] px-1.5 sm:px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium shrink-0">
               فیلتر
             </span>
           </div>
           <div className="mt-2.5 sm:mt-3">
             <div className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white flex items-baseline gap-1">
-              <span>{toPersianDigits(metrics.noiseFilteredPercent)}</span>
+              <AnimatedNumber value={metrics.noiseFilteredPercent} />
               <span className="text-sm sm:text-base text-neutral-400 font-normal">٪</span>
             </div>
             <div className="text-[11px] sm:text-xs text-neutral-500 mt-1 truncate">
-              {toPersianDigits(metrics.noiseMessages)} پیام نامرتبط
+              <AnimatedNumber value={metrics.noiseMessages} /> پیام نامرتبط
             </div>
           </div>
         </div>
@@ -105,12 +139,12 @@ export function MetricsHeader({
           </div>
           <div className="mt-2.5 sm:mt-3">
             <div className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00e599]">
-              {toPersianDigits(metrics.qualifiedLeads)}
+              <AnimatedNumber value={metrics.qualifiedLeads} />
             </div>
             <div className="text-[11px] sm:text-xs text-neutral-400 mt-1 flex items-center gap-1 flex-wrap">
-              <span className="text-[#00e599] font-medium">{toPersianDigits(metrics.highIntentCount)} قطعی</span>
+              <span className="text-[#00e599] font-medium inline-flex items-center gap-0.5"><AnimatedNumber value={metrics.highIntentCount} /> قطعی</span>
               <span className="text-neutral-600 px-0.5">•</span>
-              <span className="text-[#f5a623] font-medium">{toPersianDigits(metrics.problemAwareCount)} دردمند</span>
+              <span className="text-[#f5a623] font-medium inline-flex items-center gap-0.5"><AnimatedNumber value={metrics.problemAwareCount} /> دردمند</span>
             </div>
           </div>
         </div>
@@ -128,7 +162,7 @@ export function MetricsHeader({
             <span className="text-xs text-neutral-400 font-medium truncate">
               هزینه پردازش هوش
             </span>
-            <span className="text-[10px] text-[#f5a623] opacity-80 shrink-0">دردمند ↵</span>
+            <span className="inline-flex items-center justify-center text-[10px] text-[#f5a623] opacity-80 shrink-0">دردمند ↵</span>
           </div>
           <div className="mt-2.5 sm:mt-3">
             <div className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white truncate">
@@ -153,7 +187,7 @@ export function MetricsHeader({
             <span className="text-xs text-neutral-400 font-medium truncate">
               هزینه به‌ازای هر سرنخ
             </span>
-            <span className="text-[10px] text-[#0070f3] opacity-80 shrink-0">کنجکاو ↵</span>
+            <span className="inline-flex items-center justify-center text-[10px] text-[#0070f3] opacity-80 shrink-0">کنجکاو ↵</span>
           </div>
           <div className="mt-2.5 sm:mt-3">
             <div className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white truncate">
@@ -173,7 +207,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("all")}
             className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap shrink-0",
+              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap inline-flex items-center justify-center shrink-0",
               selectedIntent === "all"
                 ? "bg-[#222222] text-white shadow-sm"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -184,7 +218,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("high_intent")}
             className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0",
+              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap inline-flex items-center justify-center gap-1.5 shrink-0",
               selectedIntent === "high_intent"
                 ? "bg-[#222222] text-[#00e599] shadow-sm"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -196,7 +230,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("problem_aware")}
             className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0",
+              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap inline-flex items-center justify-center gap-1.5 shrink-0",
               selectedIntent === "problem_aware"
                 ? "bg-[#222222] text-[#f5a623] shadow-sm"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -208,7 +242,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("curious")}
             className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0",
+              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap inline-flex items-center justify-center gap-1.5 shrink-0",
               selectedIntent === "curious"
                 ? "bg-[#222222] text-[#0070f3] shadow-sm"
                 : "text-neutral-400 hover:text-neutral-200 hover:bg-[#141414]"
@@ -220,7 +254,7 @@ export function MetricsHeader({
           <button
             onClick={() => onSelectIntent("irrelevant")}
             className={cn(
-              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0",
+              "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out active:scale-95 cursor-pointer whitespace-nowrap inline-flex items-center justify-center gap-1.5 shrink-0",
               selectedIntent === "irrelevant"
                 ? "bg-[#222222] text-neutral-300 shadow-sm"
                 : "text-neutral-500 hover:text-neutral-300 hover:bg-[#141414]"
