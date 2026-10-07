@@ -79,7 +79,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
               {pbStatus === "online" ? "متصل" : pbStatus === "checking" ? "اتصال..." : "قطع"}
             </span>
           </div>
-        </div>
+        </div>m
 
         {/* Center: Vercel Nav Underline Tabs */}
         <nav className="flex items-center gap-1 shrink-0">

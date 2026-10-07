@@ -12,7 +12,6 @@ import {
   TwitterXIcon,
   ForumIcon,
   CheckIcon,
-  CheckCircle2Icon,
   CopyIcon,
   FlameIcon,
   SettingsIcon,
@@ -20,827 +19,1200 @@ import {
 import { VoiceOrb } from "@/components/agents/voice-orb";
 
 /* -------------------------------------------------------------------------- */
-/* SAMPLE INTERACTIVE FEED DATA FOR VERCEL-STYLE TERMINAL                    */
+/* SAMPLE FEED DATA FOR INTERACTIVE TERMINALS & PREVIEWS                      */
 /* -------------------------------------------------------------------------- */
-interface SampleFeedItem {
+interface SampleSignal {
   id: string;
-  platform: "bale" | "telegram" | "twitter" | "forum";
-  platformName: string;
-  author: string;
-  timeAgo: string;
+  channel: "bale" | "telegram" | "twitter" | "forum";
+  channelTitle: string;
+  sender: string;
+  timestamp: string;
   score: number;
   tier: "HIGH INTENT" | "PROBLEM AWARE" | "CURIOUS" | "IRRELEVANT";
   tierColor: string;
-  rawMessage: string;
-  reasoning: string;
-  productMatch: string;
+  text: string;
+  analysis: string;
+  urgency: "فوری (۲۴ ساعت)" | "متوسط (۱ هفته)" | "کم (عمومی)";
+  budget: string;
   suggestedReply: string;
   cost: string;
 }
 
-const SAMPLE_LEADS: SampleFeedItem[] = [
+const SAMPLE_SIGNALS: SampleSignal[] = [
   {
-    id: "lead-1",
-    platform: "bale",
-    platformName: "بله / گروه فین‌تک و استارتاپ",
-    author: "علیرضا فراهانی (مدیر عملیات)",
-    timeAgo: "۱۰ دقیقه پیش",
+    id: "sig-1",
+    channel: "bale",
+    channelTitle: "بله / گروه فین‌تک و خدمات مالی",
+    sender: "علیرضا فراهانی (مدیر عملیات)",
+    timestamp: "۸ دقیقه پیش",
     score: 94,
     tier: "HIGH INTENT",
     tierColor: "#00e599",
-    rawMessage:
-      "ما برای تیم ۲۰ نفرمون به شدت دنبال یه راهکار مطمئن اتوماسیون پیگیری لیدها در کانال‌ها هستیم. روزی ۳ ساعت وقت تیم فروش هدر میره. بودجه ماهانه آماده تا ۱۵ میلیون داریم. چه نرم‌افزاری پیشنهاد می‌دید؟",
-    reasoning:
+    text: "ما برای تیم ۲۰ نفرمون به شدت دنبال یه راهکار مطمئن اتوماسیون پیگیری لیدها در کانال‌ها هستیم. روزی ۳ ساعت وقت تیم فروش هدر میره. بودجه ماهانه آماده تا ۱۵ میلیون داریم. چه نرم‌افزاری پیشنهاد می‌دید؟",
+    analysis:
       "اعلام صریح مشکل اتلاف زمان (۳ ساعت روزانه)، ابعاد تیم (۲۰ نفر)، سقف بودجه قطعی (۱۵ میلیون تومان) و فوریت بالا در انتخاب ابزار.",
-    productMatch: "سیستم پایش و غربالگری هوشمند لید با انطباق ICP رادار",
+    urgency: "فوری (۲۴ ساعت)",
+    budget: "۱۵,۰۰۰,۰۰۰ تومان / ماهانه",
     suggestedReply:
       "درود علیرضا عزیز، رادار دقیقاً این چالش را حل می‌کند: پایش خودکار مکالمات و استخراج سرنخ‌های آماده خرید بدون دخالت دستی. خوشحال می‌شویم یک جلسه دموی زنده روی کانال‌های هدف شما هماهنگ کنیم.",
     cost: "$0.00014 (~۹ تومان)",
   },
   {
-    id: "lead-2",
-    platform: "telegram",
-    platformName: "تلگرام / سوپرگروه مدیران فروش B2B",
-    author: "سارا موحد (مدیر رشد)",
-    timeAgo: "۲۵ دقیقه پیش",
+    id: "sig-2",
+    channel: "telegram",
+    channelTitle: "تلگرام / سوپرگروه مدیران فروش B2B",
+    sender: "سارا موحد (مدیر رشد)",
+    timestamp: "۲۱ دقیقه پیش",
     score: 82,
     tier: "HIGH INTENT",
     tierColor: "#00e599",
-    rawMessage:
-      "کسی تجربه استفاده از سرویس‌های ایرانی برای کشف مشتریان بالقوه در گروه‌ها داره؟ دنبال راهکاری هستیم که با CRM دیدار یکپارچه بشه.",
-    reasoning:
+    text: "کسی تجربه استفاده از سرویس‌های ایرانی برای کشف مشتریان بالقوه در گروه‌ها داره؟ دنبال راهکاری هستیم که با CRM دیدار یکپارچه بشه.",
+    analysis:
       "نیاز مشخص به کشف سرنخ در گروه‌های محلی، درخواست معرفی سرویس ایرانی و پیش‌شرط اتصال به CRM دیدار.",
-    productMatch: "یکپارچگی وب‌هوک و صدور مستقیم لید به CRM",
+    urgency: "متوسط (۱ هفته)",
+    budget: "تعیین نشده (آماده مذاکره)",
     suggestedReply:
       "درود سارا گرامی، رادار سیگنال‌های خرید در پیام‌رسان‌ها را کشف کرده و از طریق وب‌هوک مستقیم به CRM دیدار منتقل می‌کند. برای تست نسخه دمو در خدمت شما هستیم.",
     cost: "$0.00012 (~۸ تومان)",
   },
   {
-    id: "lead-3",
-    platform: "forum",
-    platformName: "فروم تخصصی وب‌فارسی",
-    author: "مهدی کاظمی (بنیان‌گذار)",
-    timeAgo: "۱ ساعت پیش",
+    id: "sig-3",
+    channel: "forum",
+    channelTitle: "فروم توسعه‌دهندگان و استارتاپ‌ها",
+    sender: "مهدی کاظمی (بنیان‌گذار)",
+    timestamp: "۵۴ دقیقه پیش",
     score: 65,
     tier: "PROBLEM AWARE",
     tierColor: "#f5a623",
-    rawMessage:
-      "چطور می‌تونیم بدون تبلیغات کلیکی پرهزینه، اولین ۱۰۰ مشتری سازمانی نرم‌افزارمون رو در کامیونیتی‌ها پیدا کنیم؟",
-    reasoning:
-      "آگاهی از چالش کشف مشتری اولیه و اجتناب از هزینه‌های تبلیغات سنتی، مناسب برای مشاوره استراتژی فروش B2B.",
-    productMatch: "پایش هدفمند کامیونیتی‌ها برای استارتاپ‌های نوپا",
+    text: "چطور می‌تونیم بدون تبلیغات کلیکی پرهزینه، اولین ۱۰۰ مشتری سازمانی نرم‌افزارمون رو در کامیونیتی‌ها پیدا کنیم؟",
+    analysis:
+      "آگاهی از چالش کشف مشتری اولیه و اجتناب از هزینه‌های تبلیغات سنتی، مناسب برای آموزش و تبدیل به مشتری سازمانی.",
+    urgency: "متوسط (۱ هفته)",
+    budget: "استارتاپی",
     suggestedReply:
-      "سلام مهدی عزیز، پایش گفت‌وگوهای نیازمحور در فروم‌ها یکی از پربازده‌ترین روش‌هاست؛ رادار این کار را به شکل اتوماتیک برای شما انجام می‌دهد.",
+      "سلام مهدی عزیز، پایش هدفمند گفت‌وگوهای نیازمحور در فروم‌ها یکی از پربازده‌ترین روش‌هاست؛ رادار این کار را به شکل اتوماتیک برای شما انجام می‌دهد.",
     cost: "$0.00011 (~۷ تومان)",
   },
 ];
 
 export default function VercelStyleLandingPage() {
-  const [selectedLeadId, setSelectedLeadId] = useState<string>("lead-1");
-  const [activeCodeTab, setActiveCodeTab] = useState<"analysis" | "raw" | "json">("analysis");
-  const [copied, setCopied] = useState<boolean>(false);
+  const [activeCapability, setActiveCapability] = useState<number>(0);
+  const [selectedSignalId, setSelectedSignalId] = useState<string>("sig-1");
+  const [activeCodeTab, setActiveCodeTab] = useState<"curl" | "typescript" | "python">("typescript");
+  const [copiedReply, setCopiedReply] = useState<boolean>(false);
+  const [copiedCode, setCopiedCode] = useState<boolean>(false);
+  const [productsOpen, setProductsOpen] = useState<boolean>(false);
+  const [resourcesOpen, setResourcesOpen] = useState<boolean>(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
-  const selectedLead = useMemo(
-    () => SAMPLE_LEADS.find((l) => l.id === selectedLeadId) || SAMPLE_LEADS[0],
-    [selectedLeadId]
+  const selectedSignal = useMemo(
+    () => SAMPLE_SIGNALS.find((s) => s.id === selectedSignalId) || SAMPLE_SIGNALS[0],
+    [selectedSignalId]
   );
 
   const handleCopyReply = () => {
-    navigator.clipboard.writeText(selectedLead.suggestedReply);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    navigator.clipboard.writeText(selectedSignal.suggestedReply);
+    setCopiedReply(true);
+    setTimeout(() => setCopiedReply(false), 2000);
+  };
+
+  const handleCopyCode = (codeText: string) => {
+    navigator.clipboard.writeText(codeText);
+    setCopiedCode(true);
+    setTimeout(() => setCopiedCode(false), 2000);
+  };
+
+  const sampleCodeSnippets = {
+    typescript: `import { RadarClient } from "@pricoders/radar";
+
+const radar = new RadarClient({
+  endpoint: "http://127.0.0.1:8090",
+  apiKey: process.env.RADAR_API_KEY,
+});
+
+// Stream real-time high-intent buying signals
+const stream = await radar.signals.subscribe({
+  minScore: 75,
+  platforms: ["bale", "telegram", "twitter"],
+  onSignal: (opportunity) => {
+    console.log("⚡ New Buying Signal Detected:", opportunity.author);
+    console.log("Intent Score:", opportunity.score);
+    console.log("Suggested Outreach:", opportunity.suggestedReply);
+  },
+});`,
+    curl: `curl -X POST http://127.0.0.1:8090/api/radar/score \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "message": "به شدت دنبال ابزار اتوماسیون لید برای تیم ۲۰ نفره با بودجه آماده هستیم",
+    "channel": "bale",
+    "icpId": "b2b_saas_sales"
+  }'`,
+    python: `from pricoders_radar import RadarClient
+
+radar = RadarClient(endpoint="http://127.0.0.1:8090")
+
+# Score intent and extract budget in real-time
+signal = radar.analyze_message(
+    content="ما برای تیممون دنبال نرم‌افزار مدیریت لید هستیم بودجه ۱۵ میلیون داریم",
+    channel="telegram"
+)
+
+if signal.score >= 75:
+    radar.crm.push_lead(signal, crm="didar")`,
   };
 
   return (
     <div className="min-h-screen bg-[#000000] text-[#ededed] selection:bg-white selection:text-black antialiased font-sans">
       {/* ========================================================
-          VERCEL-STYLE GEOMETRIC GRID & CONE GRADIENT
+          BACKGROUND: VERCEL GEOMETRIC DOT GRID & AMBIENT GLOW
       ======================================================== */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Subtle dot matrix grid */}
         <div
-          className="absolute inset-0 opacity-[0.15]"
+          className="absolute inset-0 opacity-[0.14]"
           style={{
-            backgroundImage: "radial-gradient(#333 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
+            backgroundImage: "radial-gradient(#444 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
           }}
         />
         {/* Top ambient illumination cone */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[400px] bg-gradient-to-b from-white/10 via-white/2 to-transparent blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] vercel-hero-glow blur-[120px] rounded-full pointer-events-none" />
       </div>
 
       {/* ========================================================
-          NAVBAR: EXACT VERCEL GEOMETRIC MINIMALISM
+          01 STICKY HEADER (Vercel Architecture)
       ======================================================== */}
-      <header className="sticky top-0 z-50 w-full border-b border-[#1b1b1b] bg-black/75 backdrop-blur-xl transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-4">
-          {/* Brand Identity */}
-          <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2.5 group cursor-pointer">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white text-black flex items-center justify-center font-bold shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]">
-                <RadarLogo className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-black" />
+      <header
+        id="marketing-header"
+        className="sticky top-0 z-50 w-full border-b border-[#1c1c1c] bg-black/80 backdrop-blur-xl transition-all"
+      >
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-4">
+          {/* Logo & Wordmark */}
+          <div className="flex items-center gap-6">
+            <Link href="/" className="inline-flex items-center gap-2.5 group cursor-pointer focus:outline-none">
+              {/* Vercel Geometric Triangle Icon */}
+              <div className="w-6 h-6 rounded-md bg-white text-black flex items-center justify-center font-bold shadow-sm transition-transform duration-300 group-hover:scale-105">
+                <svg viewBox="0 0 115 100" height="13" width="15" fill="currentColor">
+                  <path fillRule="evenodd" d="M57.5 0 115 100H0z" clipRule="evenodd" />
+                </svg>
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-sm sm:text-base text-white tracking-tight">رادار</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#141414] text-neutral-400 border border-[#262626] font-mono">
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#141414] text-neutral-400 border border-[#262626] font-mono">
                   PriCoders
                 </span>
               </div>
             </Link>
+
+            {/* Nav Menu */}
+            <nav className="hidden md:flex items-center gap-1 text-xs text-neutral-400 font-medium">
+              {/* Products Dropdown */}
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setProductsOpen(!productsOpen);
+                    setResourcesOpen(false);
+                  }}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-md hover:text-white hover:bg-[#121212] transition-colors cursor-pointer"
+                >
+                  <span>محصولات</span>
+                  <svg
+                    viewBox="0 0 16 16"
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="m12.06 6.75-.53.53-2.82 2.82a1 1 0 0 1-1.42 0L4.47 7.28l-.53-.53L5 5.69l.53.53L8 8.69l2.47-2.47.53-.53z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+
+                {productsOpen && (
+                  <div
+                    onMouseLeave={() => setProductsOpen(false)}
+                    className="absolute top-full right-0 mt-2 w-[480px] p-4 rounded-xl bg-[#0c0c0c] border border-[#222222] shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-50 animate-card-in"
+                  >
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <div className="text-[11px] font-mono font-bold text-neutral-500 uppercase mb-2">Agent Stack</div>
+                        <ul className="space-y-1.5 text-xs">
+                          <li>
+                            <Link
+                              href="/dashboard"
+                              onClick={() => setProductsOpen(false)}
+                              className="block p-1.5 rounded-md hover:bg-[#181818] text-white hover:text-[#00e599] transition-colors"
+                            >
+                              <div className="font-semibold">پایش لحظه‌ای (Signal Stream)</div>
+                              <div className="text-[11px] text-neutral-500">جریان زنده مکالمات با رتبه‌بندی نیت</div>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/settings"
+                              onClick={() => setProductsOpen(false)}
+                              className="block p-1.5 rounded-md hover:bg-[#181818] text-white hover:text-[#00e599] transition-colors"
+                            >
+                              <div className="font-semibold">موتور تطبیق ICP</div>
+                              <div className="text-[11px] text-neutral-500">پروفایل مشتری ایده‌آل و کلمات نیازمحور</div>
+                            </Link>
+                          </li>
+                          <li>
+                            <a
+                              href="#voice-orb"
+                              onClick={() => setProductsOpen(false)}
+                              className="block p-1.5 rounded-md hover:bg-[#181818] text-white hover:text-[#00e599] transition-colors"
+                            >
+                              <div className="font-semibold">VoiceOrb Co-Pilot</div>
+                              <div className="text-[11px] text-neutral-500">دستیار صوتی و متنی تحلیل مکالمات</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div className="text-[11px] font-mono font-bold text-neutral-500 uppercase mb-2">Core Platform</div>
+                        <ul className="space-y-1.5 text-xs">
+                          <li>
+                            <a
+                              href="#economics"
+                              onClick={() => setProductsOpen(false)}
+                              className="block p-1.5 rounded-md hover:bg-[#181818] text-white hover:text-[#00e599] transition-colors"
+                            >
+                              <div className="font-semibold">اقتصاد هوش مصنوعی</div>
+                              <div className="text-[11px] text-neutral-500">هزینه کمتر از ۱۰ تومان به ازای هر پیام</div>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#architecture"
+                              onClick={() => setProductsOpen(false)}
+                              className="block p-1.5 rounded-md hover:bg-[#181818] text-white hover:text-[#00e599] transition-colors"
+                            >
+                              <div className="font-semibold">حریم خصوصی PocketBase</div>
+                              <div className="text-[11px] text-neutral-500">دیتابیس کاملاً محلی و امن بدون نشت داده</div>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#channels"
+                              onClick={() => setProductsOpen(false)}
+                              className="block p-1.5 rounded-md hover:bg-[#181818] text-white hover:text-[#00e599] transition-colors"
+                            >
+                              <div className="font-semibold">آداپتورهای پیام‌رسان</div>
+                              <div className="text-[11px] text-neutral-500">پشتیبانی همزمان بله، تلگرام، X و فروم‌ها</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Resources Dropdown */}
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setResourcesOpen(!resourcesOpen);
+                    setProductsOpen(false);
+                  }}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-md hover:text-white hover:bg-[#121212] transition-colors cursor-pointer"
+                >
+                  <span>منابع و مستندات</span>
+                  <svg
+                    viewBox="0 0 16 16"
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`}
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="m12.06 6.75-.53.53-2.82 2.82a1 1 0 0 1-1.42 0L4.47 7.28l-.53-.53L5 5.69l.53.53L8 8.69l2.47-2.47.53-.53z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+
+                {resourcesOpen && (
+                  <div
+                    onMouseLeave={() => setResourcesOpen(false)}
+                    className="absolute top-full right-0 mt-2 w-[280px] p-3 rounded-xl bg-[#0c0c0c] border border-[#222222] shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-50 animate-card-in"
+                  >
+                    <ul className="space-y-1 text-xs">
+                      <li>
+                        <a
+                          href="#architecture"
+                          onClick={() => setResourcesOpen(false)}
+                          className="block p-2 rounded-md hover:bg-[#181818] text-white transition-colors"
+                        >
+                          <div className="font-semibold">معماری فنی (Whitepaper)</div>
+                          <div className="text-[11px] text-neutral-500">تحلیل پایپ‌لاین ۴ سطحی نیت‌سنجی</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#code"
+                          onClick={() => setResourcesOpen(false)}
+                          className="block p-2 rounded-md hover:bg-[#181818] text-white transition-colors"
+                        >
+                          <div className="font-semibold">API و SDK رادار</div>
+                          <div className="text-[11px] text-neutral-500">کد نمونه TypeScript و Python</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#shipped"
+                          onClick={() => setResourcesOpen(false)}
+                          className="block p-2 rounded-md hover:bg-[#181818] text-white transition-colors"
+                        >
+                          <div className="font-semibold">تغییرات اخیر (Changelog)</div>
+                          <div className="text-[11px] text-neutral-500">ویژگی‌های نسخه ۲.۴ پریکدرز</div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              <a href="#channels" className="px-3 py-1.5 rounded-md hover:text-white hover:bg-[#121212] transition-colors">
+                کانال‌ها
+              </a>
+              <a href="#economics" className="px-3 py-1.5 rounded-md hover:text-white hover:bg-[#121212] transition-colors">
+                اقتصاد توکن
+              </a>
+            </nav>
           </div>
 
-          {/* Vercel Nav Tabs */}
-          <nav className="hidden md:flex items-center gap-1 text-xs text-neutral-400 font-medium">
-            <a href="#pipeline" className="px-3 py-1.5 rounded-md hover:text-white hover:bg-[#121212] transition-colors">
-              خط لوله هوشمندی
-            </a>
-            <a href="#intent" className="px-3 py-1.5 rounded-md hover:text-white hover:bg-[#121212] transition-colors">
-              موتور نیت‌سنجی
-            </a>
-            <a href="#console" className="px-3 py-1.5 rounded-md hover:text-white hover:bg-[#121212] transition-colors">
-              کنسول ارزیابی
-            </a>
-            <a href="#economics" className="px-3 py-1.5 rounded-md hover:text-white hover:bg-[#121212] transition-colors">
-              اقتصاد هوش مصنوعی
-            </a>
-            <a href="#architecture" className="px-3 py-1.5 rounded-md hover:text-white hover:bg-[#121212] transition-colors">
-              معماری فنی
-            </a>
-          </nav>
-
-          {/* Action CTAs */}
+          {/* Right Action CTAs (Vercel Exact Pill Buttons) */}
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/settings"
-              className="hidden sm:inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-medium text-neutral-300 hover:text-white bg-[#111111] border border-[#262626] hover:border-neutral-500 transition-colors cursor-pointer"
+              className="hidden sm:inline-flex items-center gap-1.5 h-8 px-3 rounded-md text-xs font-medium text-neutral-300 hover:text-white bg-[#0e0e0e] border border-[#262626] hover:border-neutral-500 transition-colors cursor-pointer"
             >
               <SettingsIcon className="w-3.5 h-3.5" />
-              <span>تنظیمات ICP</span>
+              <span>پیکربندی ICP</span>
             </Link>
+
             <Link
               href="/dashboard"
-              className="inline-flex items-center gap-1.5 h-8 sm:h-9 px-3.5 sm:px-4 rounded-lg text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-1.5 h-8 sm:h-9 px-4 rounded-md text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)] active:scale-95 cursor-pointer"
             >
               <span>ورود به داشبورد</span>
-              <span className="text-black font-mono">←</span>
+              <span className="font-mono text-black">←</span>
             </Link>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-1.5 rounded-md text-neutral-400 hover:text-white hover:bg-[#181818]"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
+                {mobileMenuOpen ? (
+                  <path d="M18 6L6 18M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Drawer */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-b border-[#222222] bg-[#080808] px-4 py-4 space-y-3">
+            <Link
+              href="/dashboard"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 text-sm text-white font-medium hover:bg-[#141414] rounded-md"
+            >
+              داشبورد لیدها
+            </Link>
+            <Link
+              href="/settings"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 text-sm text-neutral-300 hover:bg-[#141414] rounded-md"
+            >
+              تنظیمات ICP
+            </Link>
+            <a
+              href="#channels"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 text-sm text-neutral-300 hover:bg-[#141414] rounded-md"
+            >
+              کانال‌های تحت پایش
+            </a>
+            <a
+              href="#economics"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 text-sm text-neutral-300 hover:bg-[#141414] rounded-md"
+            >
+              اقتصاد هوش مصنوعی
+            </a>
+          </div>
+        )}
       </header>
+
+      {/* ========================================================
+          02 TOP ANNOUNCEMENT BANNER (Vercel "Ship 26" Style)
+      ======================================================== */}
+      <div className="relative z-10 flex justify-center items-center w-full min-h-[44px] py-2 border-b border-[#141414] bg-black/40">
+        <div className="flex flex-wrap gap-2.5 items-center justify-center px-4 text-xs">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse" />
+          <span className="text-neutral-400">
+            رونمایی رسمی نسخه ۲.۴: موتور هوشمندی فرصت‌های فروش توسعه‌یافته توسط تیم
+          </span>
+          <span className="text-white font-semibold">PriCoders</span>
+          <span className="text-neutral-600">▲</span>
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium text-white border border-[#2b2b2b] hover:border-neutral-500 bg-[#0e0e0e] hover:bg-[#161616] transition-all cursor-pointer"
+          >
+            <span>مشاهده زنده سیگنال‌ها</span>
+            <span>←</span>
+          </Link>
+        </div>
+      </div>
 
       <main className="relative z-10">
         {/* ========================================================
-            01 HERO SECTION (Vercel Style)
+            03 HERO SECTION (Exact Vercel Redesign Architecture)
         ======================================================== */}
-        <section className="pt-20 pb-20 sm:pt-28 sm:pb-32 px-4 sm:px-6 max-w-5xl mx-auto text-center">
-          {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0d0d0d] border border-[#242424] hover:border-neutral-600 transition-colors text-xs text-neutral-300 mb-8 shadow-inner">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow" />
-            <span className="font-mono text-neutral-400">OPPORTUNITY INTELLIGENCE ENGINE</span>
-            <span className="text-neutral-600">▲</span>
-            <span className="text-white font-medium">PriCoders</span>
-          </div>
-
-          {/* Master Headline */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-[1.18] sm:leading-[1.12] mb-6">
-            هزاران پیام و گفت‌وگو.
-            <br />
-            <span className="bg-gradient-to-b from-white via-neutral-100 to-neutral-500 bg-clip-text text-transparent">
-              تنها چند فرصت خرید واقعی.
-            </span>
-            <br />
-            <span className="text-white underline decoration-neutral-700 underline-offset-8">
-              رادار آن‌ها را شکار می‌کند.
-            </span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-sm sm:text-lg text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-            رادار به جای جست‌وجوی سطحی کلمات کلیدی، کل مکالمه و زمینه گفت‌وگو در جوامع آنلاین را می‌فهمد، شدت قصد خرید را می‌سنجد و فرصت‌ها را اولویت‌بندی می‌کند.
-          </p>
-
-          {/* Vercel Value Prop Chip */}
-          <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#0a0a0a] border border-[#222222] text-xs font-mono text-neutral-300 mb-10">
-            <span className="text-neutral-500">ارزش محوری:</span>
-            <span className="text-white font-bold">از میان هیاهو تا فرصت فروش</span>
-            <span className="text-neutral-600">/</span>
-            <span className="text-neutral-400">From Noise to Opportunity</span>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto mb-16">
-            <Link
-              href="/dashboard"
-              className="w-full sm:w-auto h-11 px-7 rounded-xl font-bold text-xs sm:text-sm bg-white text-black hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(255,255,255,0.3)] active:scale-95 cursor-pointer"
-            >
-              <SparklesIcon className="w-4 h-4 text-black" />
-              <span>مشاهده زنده داشبورد لیدها</span>
-            </Link>
-
-            <a
-              href="#console"
-              className="w-full sm:w-auto h-11 px-6 rounded-xl font-medium text-xs sm:text-sm bg-[#0e0e0e] hover:bg-[#181818] text-white border border-[#2b2b2b] hover:border-neutral-500 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
-            >
-              <span>تست زنده کنسول هوشمندی</span>
-              <span className="text-neutral-500">↓</span>
-            </a>
-          </div>
-
-          {/* Micro Stats Bar */}
-          <div className="pt-8 border-t border-[#181818] grid grid-cols-2 sm:grid-cols-4 gap-4 text-right">
-            <div className="p-3.5 rounded-xl bg-[#090909] border border-[#1b1b1b]">
-              <div className="text-[11px] font-mono text-neutral-500 mb-1">01 / ANALYZED CONTEXT</div>
-              <div className="text-sm font-bold text-white">متن کامل + بافت مکالمه</div>
+        <section className="relative flex min-h-[min(calc(100svh-110px),920px)] flex-col justify-center px-4 sm:px-6 max-w-[1240px] mx-auto select-none pt-12 pb-16">
+          <div className="relative flex flex-1 flex-col items-center justify-between lg:flex-row lg:items-center gap-12">
+            {/* Center Background Geometric Cone Glow (Vercel Style) */}
+            <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+              <div className="relative w-[340px] sm:w-[540px] lg:w-[720px] aspect-[3/2] vercel-hero-triangle-glow blur-[100px] opacity-75" />
+              {/* Subtle Geometric Cone Triangle Outline */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-96 sm:h-96 opacity-10 pointer-events-none">
+                <svg viewBox="0 0 100 100" className="w-full h-full text-white" fill="none" stroke="currentColor" strokeWidth="0.8">
+                  <polygon points="50,10 90,85 10,85" />
+                  <circle cx="50" cy="60" r="22" strokeDasharray="2 3" />
+                </svg>
+              </div>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#090909] border border-[#1b1b1b]">
-              <div className="text-[11px] font-mono text-neutral-500 mb-1">02 / INTENT TIERS</div>
-              <div className="text-sm font-bold text-[#00e599]">۴ سطح نیت‌سنجی خرید</div>
+
+            {/* Left Column: Hero Master Typography & CTAs */}
+            <div className="relative z-10 flex w-full max-w-[560px] flex-col items-center text-center lg:items-start lg:text-right">
+              {/* Vercel Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0a0a0a] border border-[#242424] hover:border-neutral-600 transition-colors text-xs text-neutral-300 mb-6 shadow-inner">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow" />
+                <span className="font-mono text-neutral-400">OPPORTUNITY INFRASTRUCTURE</span>
+                <span className="text-neutral-600">▲</span>
+                <span className="text-white font-medium">PriCoders</span>
+              </div>
+
+              {/* Giant Master Headline */}
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.14] mb-6">
+                هوشمندی کشف فرصت.
+                <br />
+                <span className="bg-gradient-to-b from-white via-neutral-200 to-neutral-500 bg-clip-text text-transparent">
+                  از میان هیاهو تا معامله.
+                </span>
+              </h1>
+
+              {/* Subheadline with Mono Font */}
+              <p className="text-sm sm:text-base text-neutral-400 max-w-lg mb-8 leading-relaxed font-normal">
+                رادار به جای جست‌وجوی سطحی کلمات کلیدی، بستر و مکالمات بومی در بله، تلگرام، توییتر و فروم‌ها را می‌فهمد، شدت قصد خرید را می‌سنجد و سرنخ‌های آماده معامله را به تیم فروش تحویل می‌دهد.
+              </p>
+
+              {/* CTA Action Buttons (Vercel Style Full-Pill) */}
+              <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto mb-10">
+                <Link
+                  href="/dashboard"
+                  className="w-full sm:w-auto h-11 px-7 rounded-full font-bold text-xs sm:text-sm bg-white text-black hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(255,255,255,0.3)] active:scale-95 cursor-pointer"
+                >
+                  <SparklesIcon className="w-4 h-4 text-black" />
+                  <span>راه‌اندازی زنده داشبورد</span>
+                  <span className="font-mono text-black">←</span>
+                </Link>
+
+                <a
+                  href="#deep-dive-1"
+                  className="w-full sm:w-auto h-11 px-6 rounded-full font-medium text-xs sm:text-sm bg-[#0a0a0a] hover:bg-[#141414] text-white border border-[#2b2b2b] hover:border-neutral-500 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+                >
+                  <span>بررسی معماری سیستم</span>
+                  <span className="text-neutral-500">↓</span>
+                </a>
+              </div>
+
+              {/* Core Value Statement */}
+              <div className="flex items-center gap-3 text-xs text-neutral-500 font-mono">
+                <span>ارزش محوری:</span>
+                <span className="text-neutral-300 font-semibold">From Noise to Opportunity</span>
+                <span className="text-neutral-700">|</span>
+                <span className="text-emerald-400">۹۲٪ دقت تفکیک نیت</span>
+              </div>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#090909] border border-[#1b1b1b]">
-              <div className="text-[11px] font-mono text-neutral-500 mb-1">03 / COST PER LEAD</div>
-              <div className="text-sm font-bold text-sky-400">کمتر از ۱۰ تومان / پیام</div>
-            </div>
-            <div className="p-3.5 rounded-xl bg-[#090909] border border-[#1b1b1b]">
-              <div className="text-[11px] font-mono text-neutral-500 mb-1">04 / LOCAL PRIVACY</div>
-              <div className="text-sm font-bold text-purple-400">دیتابیس مستقل PocketBase</div>
+
+            {/* Right Column: Platform Capabilities Selector (Exact Vercel Hero Component) */}
+            <div className="relative z-10 w-full max-w-[480px]">
+              <div className="rounded-2xl bg-[#090909]/90 border border-[#222222] p-5 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#181818]">
+                  <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
+                    <span className="w-2 h-2 rounded-full bg-[#00e599] animate-pulse" />
+                    <span>قابلیت‌های پلتفرم رادار</span>
+                  </div>
+                  <span className="text-[11px] font-mono text-neutral-500">v2.4 STABLE</span>
+                </div>
+
+                <div className="space-y-3">
+                  {/* Item 1 */}
+                  <div
+                    onClick={() => setActiveCapability(0)}
+                    className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+                      activeCapability === 0
+                        ? "bg-[#141414] border-neutral-400 shadow-md"
+                        : "bg-[#0b0b0b] border-[#1d1d1d] hover:border-neutral-700"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-sm font-bold text-white">برای نمایندگان و تیم‌های فروش</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1c1c1c] text-neutral-400 border border-[#2c2c2c]">
+                        01 / AGENTS
+                      </span>
+                    </div>
+                    <p className="text-xs text-neutral-400 leading-relaxed">
+                      پایش مداوم و بومی کانال‌های بله، تلگرام، X و فروم‌ها؛ بدون نیاز به پیمایش دستی و صرف ساعت‌ها زمان بیهوده.
+                    </p>
+                  </div>
+
+                  {/* Item 2 */}
+                  <div
+                    onClick={() => setActiveCapability(1)}
+                    className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+                      activeCapability === 1
+                        ? "bg-[#141414] border-neutral-400 shadow-md"
+                        : "bg-[#0b0b0b] border-[#1d1d1d] hover:border-neutral-700"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-sm font-bold text-white">برای اولویت‌بندی شدت نیاز (Intent)</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1c1c1c] text-neutral-400 border border-[#2c2c2c]">
+                        02 / PRIORITIZE
+                      </span>
+                    </div>
+                    <p className="text-xs text-neutral-400 leading-relaxed">
+                      دسته‌بندی ۴ سطحی هوشمند از ۰ تا ۱۰۰، تفکیک خریداران با بودجه آماده از کنجکاوهای معمولی قبل از اقدام رقبا.
+                    </p>
+                  </div>
+
+                  {/* Item 3 */}
+                  <div
+                    onClick={() => setActiveCapability(2)}
+                    className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+                      activeCapability === 2
+                        ? "bg-[#141414] border-neutral-400 shadow-md"
+                        : "bg-[#0b0b0b] border-[#1d1d1d] hover:border-neutral-700"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-sm font-bold text-white">اتوماسیون اقدام و پاسخ‌سازی</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1c1c1c] text-neutral-400 border border-[#2c2c2c]">
+                        03 / ACTION
+                      </span>
+                    </div>
+                    <p className="text-xs text-neutral-400 leading-relaxed">
+                      تولید پاسخ شخصی‌سازی‌شده متناسب با درد اصلی کاربر، محاسبه دقیق توکن و ارسال وب‌هوک مستقیم به CRM سازمان.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[#181818] flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                  <span>PocketBase Local Engine</span>
+                  <span className="text-emerald-400">Zero Cloud Leakage</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ========================================================
-            02 LIVE INTERACTIVE CONSOLE (Heart of the Vercel Demo)
+            04 CONTINUOUS CHANNELS & PARTNERS MARQUEE (Vercel Style)
         ======================================================== */}
-        <section id="console" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#141414]">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="text-xs font-mono font-bold text-[#00e599] tracking-wider uppercase mb-2">
-              LIVE CONSOLE // INTERACTIVE DEMO
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-3">
-              کنسول زنده غربالگری و هوشمندی فرصت‌ها
-            </h2>
-            <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
-              روی هر یک از پیام‌های استخراج‌شده کلیک کنید تا شناسنامه، استدلال و پاسخ پیشنهادی آن را ببینید.
+        <section id="channels" className="py-14 border-y border-[#181818] bg-[#050505] overflow-hidden">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 mb-6 text-center">
+            <p className="text-xs font-mono text-neutral-500 tracking-wider uppercase">
+              CHANNELS & COMMUNITIES MONITORED IN REAL-TIME
             </p>
           </div>
 
-          <div className="rounded-2xl bg-[#080808] border border-[#1f1f1f] shadow-[0_20px_70px_rgba(0,0,0,0.9)] overflow-hidden text-right">
-            {/* Window Top Controls */}
-            <div className="h-11 px-4 border-b border-[#181818] bg-[#0c0c0c] flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-[#262626]" />
-                <span className="w-3 h-3 rounded-full bg-[#262626]" />
-                <span className="w-3 h-3 rounded-full bg-[#262626]" />
-                <span className="mr-2 text-[11px] font-mono text-neutral-500">radar-feed-stream.local</span>
+          <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+            <div className="animate-marquee flex items-center gap-12 sm:gap-16">
+              {/* Channel 1: Bale */}
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <BaleIcon className="w-5 h-5 text-emerald-400" />
+                <span className="text-sm font-semibold tracking-wide">بله (Bale Messenger)</span>
               </div>
-              <div className="flex items-center gap-2 text-[11px] font-mono text-[#00e599]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow" />
-                <span>REALTIME INGESTION ACTIVE</span>
+
+              {/* Channel 2: Telegram */}
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <TelegramIcon className="w-5 h-5 text-sky-400" />
+                <span className="text-sm font-semibold tracking-wide">تلگرام (Telegram Supergroups)</span>
+              </div>
+
+              {/* Channel 3: Twitter / X */}
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <TwitterXIcon className="w-5 h-5 text-white" />
+                <span className="text-sm font-semibold tracking-wide">توییتر / X</span>
+              </div>
+
+              {/* Channel 4: Forums */}
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <ForumIcon className="w-5 h-5 text-amber-400" />
+                <span className="text-sm font-semibold tracking-wide">انجمن‌ها و فروم‌های تخصصی</span>
+              </div>
+
+              {/* Channel 5: Virgool */}
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-[10px] font-bold text-white">
+                  V
+                </div>
+                <span className="text-sm font-semibold tracking-wide">ویرگول (Virgool Tech)</span>
+              </div>
+
+              {/* Channel 6: GitHub Discussions */}
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-white">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                <span className="text-sm font-semibold tracking-wide">گیت‌هاب دیسکاشنز</span>
+              </div>
+
+              {/* Duplicate set for seamless loop */}
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <BaleIcon className="w-5 h-5 text-emerald-400" />
+                <span className="text-sm font-semibold tracking-wide">بله (Bale Messenger)</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <TelegramIcon className="w-5 h-5 text-sky-400" />
+                <span className="text-sm font-semibold tracking-wide">تلگرام (Telegram Supergroups)</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <TwitterXIcon className="w-5 h-5 text-white" />
+                <span className="text-sm font-semibold tracking-wide">توییتر / X</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors shrink-0">
+                <ForumIcon className="w-5 h-5 text-amber-400" />
+                <span className="text-sm font-semibold tracking-wide">انجمن‌ها و فروم‌های تخصصی</span>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Console Workspace: Left Feed List, Right Inspector */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x lg:divide-x-reverse divide-[#181818]">
-              {/* Left Column (5 cols): Stream List */}
-              <div className="lg:col-span-5 p-4 sm:p-5 space-y-2.5 bg-[#090909]">
-                <div className="text-[11px] font-mono font-bold text-neutral-500 mb-2 px-1">
-                  INCOMING COMMUNITY MESSAGES:
+        {/* ========================================================
+            05 PLATFORM PILLAR 1: NOTION-STYLE LAYOUT
+            Left (Col 1-8): Preview Card with Ambient Glow
+            Right (Col 10-12): Quote Stat & Features
+        ======================================================== */}
+        <section id="deep-dive-1" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
+          <div className="mb-12">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight max-w-2xl">
+              شنود هوشمند در سرچشمه گفت‌وگوها
+            </h2>
+          </div>
+
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Ambient Glow behind Preview Card */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-white w-full h-40 rounded-full blur-[140px] opacity-[0.05] pointer-events-none lg:col-span-8"
+            />
+
+            {/* Left 8-Column Preview Card: Live Ingestion Monitor */}
+            <div className="relative isolate w-full lg:col-span-8 rounded-2xl bg-[#090909] border border-[#202020] p-5 shadow-2xl overflow-hidden">
+              <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#181818]">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-[#222]" />
+                  <span className="w-3 h-3 rounded-full bg-[#222]" />
+                  <span className="w-3 h-3 rounded-full bg-[#222]" />
+                  <span className="font-mono text-xs text-neutral-400 mr-2">live-stream-ingest.sh</span>
                 </div>
+                <div className="flex items-center gap-2 text-xs font-mono text-[#00e599]">
+                  <span className="w-2 h-2 rounded-full bg-[#00e599] animate-pulse" />
+                  <span>STREAMING ACTIVE</span>
+                </div>
+              </div>
 
-                {SAMPLE_LEADS.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setSelectedLeadId(item.id)}
-                    className={`w-full text-right p-3.5 rounded-xl border transition-all cursor-pointer ${
-                      selectedLeadId === item.id
+              {/* Feed Item Previews */}
+              <div className="space-y-3">
+                {SAMPLE_SIGNALS.map((sig) => (
+                  <div
+                    key={sig.id}
+                    onClick={() => setSelectedSignalId(sig.id)}
+                    className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+                      selectedSignalId === sig.id
                         ? "bg-[#141414] border-neutral-500 shadow-md"
-                        : "bg-[#0b0b0b] border-[#1c1c1c] hover:border-neutral-700"
+                        : "bg-[#0b0b0b] border-[#1a1a1a] hover:border-neutral-700"
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        {item.platform === "bale" && <BaleIcon className="w-3.5 h-3.5 text-[#00e599]" />}
-                        {item.platform === "telegram" && <TelegramIcon className="w-3.5 h-3.5 text-sky-400" />}
-                        {item.platform === "forum" && <ForumIcon className="w-3.5 h-3.5 text-purple-400" />}
-                        <span className="text-xs font-bold text-white">{item.author}</span>
+                        {sig.channel === "bale" && <BaleIcon className="w-4 h-4 text-emerald-400" />}
+                        {sig.channel === "telegram" && <TelegramIcon className="w-4 h-4 text-sky-400" />}
+                        {sig.channel === "forum" && <ForumIcon className="w-4 h-4 text-amber-400" />}
+                        <span className="text-xs font-semibold text-white">{sig.channelTitle}</span>
+                        <span className="text-[11px] text-neutral-500">({sig.sender})</span>
                       </div>
                       <span
                         className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full"
                         style={{
-                          backgroundColor: `${item.tierColor}18`,
-                          color: item.tierColor,
-                          border: `1px solid ${item.tierColor}40`,
+                          backgroundColor: `${sig.tierColor}15`,
+                          color: sig.tierColor,
+                          border: `1px solid ${sig.tierColor}33`,
                         }}
                       >
-                        {item.score}٪
+                        {sig.tier} ({sig.score})
                       </span>
                     </div>
-
-                    <p className="text-[11px] text-neutral-400 line-clamp-2 leading-relaxed mb-2">
-                      {item.rawMessage}
-                    </p>
-
-                    <div className="flex items-center justify-between text-[10px] text-neutral-500 font-mono">
-                      <span>{item.platformName}</span>
-                      <span>{item.timeAgo}</span>
-                    </div>
-                  </button>
+                    <p className="text-xs text-neutral-300 leading-relaxed line-clamp-2">{sig.text}</p>
+                  </div>
                 ))}
               </div>
 
-              {/* Right Column (7 cols): Lead Inspector */}
-              <div className="lg:col-span-7 p-5 sm:p-6 bg-[#060606] flex flex-col justify-between">
-                <div>
-                  {/* Inspector Header */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#181818] mb-4">
-                    <div>
-                      <div className="text-sm font-bold text-white flex items-center gap-2">
-                        <span>{selectedLead.author}</span>
-                        <span
-                          className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full"
-                          style={{
-                            backgroundColor: `${selectedLead.tierColor}18`,
-                            color: selectedLead.tierColor,
-                            border: `1px solid ${selectedLead.tierColor}40`,
-                          }}
-                        >
-                          {selectedLead.tier} ({selectedLead.score}٪)
-                        </span>
-                      </div>
-                      <div className="text-[11px] text-neutral-400 font-mono mt-0.5">
-                        {selectedLead.platformName} • {selectedLead.timeAgo}
-                      </div>
-                    </div>
+              <div className="mt-4 pt-3 border-t border-[#181818] flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                <span>فیلتر معنایی: حذف ۹۸.۵٪ پیام‌های فاقد نیت خرید</span>
+                <span className="text-neutral-400">۳ از ۳ سیگنال با امتیاز بالا</span>
+              </div>
+            </div>
 
-                    <div className="text-[11px] font-mono text-neutral-400 bg-[#121212] px-2.5 py-1 rounded-md border border-[#222222]">
-                      هزینه تحلیل: {selectedLead.cost}
-                    </div>
+            {/* Right 4-Column Stat & Features */}
+            <div className="flex flex-col gap-8 lg:col-span-4 lg:col-start-9">
+              <p className="text-xl sm:text-2xl text-neutral-400 leading-relaxed">
+                <span className="text-white font-bold">پریکدرز هزاران مکالمه</span> را روزانه در رادار رصد کرده و بدون ایجاد مزاحمت، خریداران تشنه راهکار را استخراج می‌کند.
+              </p>
+
+              <ul className="flex flex-col gap-3 p-0 m-0 list-none text-xs sm:text-sm">
+                <li className="text-neutral-500 font-mono uppercase text-xs">قابلیت‌های کلیدی خط لوله</li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>پایش پیوسته کانال‌های ایرانی و خارجی (Bale & TG)</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>فیلتر هوشمند هرزنامه‌ها و مکالمات عمومی بی‌هدف</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>جریان داده بلادرنگ مبتنی بر پروتکل SSE</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>تطبیق فوری با کلمات کلیدی و نیازهای پروفایل ICP</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            06 PLATFORM PILLAR 2: ZAPIER-STYLE (ALTERNATING LAYOUT)
+            Left (Col 1-4): Stat Quote & Features
+            Right (Col 5-12): Preview Card with Ambient Glow
+        ======================================================== */}
+        <section id="deep-dive-2" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
+          <div className="mb-12">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight max-w-2xl">
+              سنجش نیت خرید با تفکیک ۴ سطحی
+            </h2>
+          </div>
+
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Ambient Glow behind Preview Card */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[#00e599] w-full h-40 rounded-full blur-[140px] opacity-[0.06] pointer-events-none lg:col-span-8 lg:col-start-5"
+            />
+
+            {/* Left 4-Column Stat & Features */}
+            <div className="flex flex-col gap-8 lg:col-span-4 order-2 lg:order-1">
+              <p className="text-xl sm:text-2xl text-neutral-400 leading-relaxed">
+                <span className="text-white font-bold">بیش از ۹۲٪ دقت</span> در تفکیک افراد صرفاً کنجکاو از مشتریانی که بودجه و فوریت خرید قطعی دارند.
+              </p>
+
+              <ul className="flex flex-col gap-3 p-0 m-0 list-none text-xs sm:text-sm">
+                <li className="text-neutral-500 font-mono uppercase text-xs">مزایای موتور نیت‌سنجی</li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>امتیازدهی نیت از ۰ تا ۱۰۰ بر پایه بافت متن</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>استخراج هوشمند رقم بودجه و بازه زمانی فوریت</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>جلوگیری کامل از اتلاف وقت با لیدهای کم‌کیفیت</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>تنظیم داینامیک آستانه حساسیت غربالگری</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right 8-Column Preview Card: 4-Tier Intent Matrix */}
+            <div className="relative isolate w-full lg:col-span-8 lg:col-start-5 rounded-2xl bg-[#090909] border border-[#202020] p-6 shadow-2xl overflow-hidden order-1 lg:order-2">
+              <div className="flex items-center justify-between pb-3 mb-5 border-b border-[#181818]">
+                <div className="font-mono text-xs text-neutral-400">ماتریس رتبه‌بندی نیت (Intent Classification)</div>
+                <div className="text-xs font-mono text-emerald-400">SCORE: {selectedSignal.score}/100</div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
+                {/* Tier 1 */}
+                <div className="p-3.5 rounded-xl bg-[#0d0d0d] border border-[#00e599]/30 hover:border-[#00e599] transition-all">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-xs font-bold text-[#00e599]">HIGH INTENT (۷۵ - ۱۰۰)</span>
+                    <FlameIcon className="w-4 h-4 text-[#00e599]" />
                   </div>
+                  <div className="text-xs text-white font-semibold mb-1">آماده خرید و تصمیم‌گیری</div>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    درد فوری، بودجه مشخص و درخواست صریح ابزار یا فروشنده جایگزین.
+                  </p>
+                </div>
 
-                  {/* Inspector Tabs */}
-                  <div className="flex items-center gap-2 mb-4">
+                {/* Tier 2 */}
+                <div className="p-3.5 rounded-xl bg-[#0d0d0d] border border-amber-500/30 hover:border-amber-500 transition-all">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-xs font-bold text-amber-400">PROBLEM AWARE (۴۵ - ۷۴)</span>
+                    <span className="w-2 h-2 rounded-full bg-amber-400" />
+                  </div>
+                  <div className="text-xs text-white font-semibold mb-1">آگاه از درد و به دنبال راه‌حل</div>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    بیان چالش‌های کاری، نارضایتی از وضع فعلی اما بدون بودجه قطعی اعلام‌شده.
+                  </p>
+                </div>
+
+                {/* Tier 3 */}
+                <div className="p-3.5 rounded-xl bg-[#0d0d0d] border border-blue-500/20 hover:border-blue-500 transition-all">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-xs font-bold text-sky-400">CURIOUS (۲۰ - ۴۴)</span>
+                    <span className="w-2 h-2 rounded-full bg-sky-400" />
+                  </div>
+                  <div className="text-xs text-white font-semibold mb-1">کنجکاوی عمومی و تحقیق بازار</div>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    پرسش درباره قیمت‌ها یا تکنولوژی‌ها بدون اعلام فوریت اجرایی.
+                  </p>
+                </div>
+
+                {/* Tier 4 */}
+                <div className="p-3.5 rounded-xl bg-[#0d0d0d] border border-neutral-700/40 hover:border-neutral-500 transition-all">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-xs font-bold text-neutral-400">IRRELEVANT (۰ - ۱۹)</span>
+                    <span className="w-2 h-2 rounded-full bg-neutral-600" />
+                  </div>
+                  <div className="text-xs text-white font-semibold mb-1">گفت‌وگوهای نامرتبط و نویز</div>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    تبلیغات هرزنامه، گپ عمومی و مکالمات نامربوط به حوزه فعالیت کسب‌وکار.
+                  </p>
+                </div>
+              </div>
+
+              {/* Analysis of selected signal */}
+              <div className="p-3.5 rounded-xl bg-[#060606] border border-[#1b1b1b]">
+                <div className="text-[11px] font-mono text-neutral-500 mb-1">استدلال هوش مصنوعی روی سیگنال انتخابی:</div>
+                <div className="text-xs text-neutral-200 leading-relaxed">{selectedSignal.analysis}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            07 PLATFORM PILLAR 3: MINTLIFY-STYLE (ACTION & AI DRAFT)
+            Left (Col 1-8): Preview Card with AI Inspector
+            Right (Col 10-12): Stat Quote & Actionable Features
+        ======================================================== */}
+        <section id="deep-dive-3" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
+          <div className="mb-12">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight max-w-2xl">
+              پاسخ اختصاصی و اقدام فروش در ۳ ثانیه
+            </h2>
+          </div>
+
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Ambient Glow */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-sky-500 w-full h-40 rounded-full blur-[140px] opacity-[0.05] pointer-events-none lg:col-span-8"
+            />
+
+            {/* Left 8-Column Preview Card: AI Outreach Inspector */}
+            <div className="relative isolate w-full lg:col-span-8 rounded-2xl bg-[#090909] border border-[#202020] p-6 shadow-2xl overflow-hidden">
+              <div className="flex items-center justify-between pb-3 mb-5 border-b border-[#181818]">
+                <div className="flex items-center gap-2">
+                  <SparklesIcon className="w-4 h-4 text-[#00e599]" />
+                  <span className="font-mono text-xs text-white">تحلیلگر و پیش‌نویس خودکار رادار</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#161616] text-neutral-400 border border-[#262626]">
+                    هزینه: {selectedSignal.cost}
+                  </span>
+                </div>
+              </div>
+
+              {/* Lead Details Breakdown */}
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="p-3 rounded-xl bg-[#0d0d0d] border border-[#1c1c1c]">
+                    <div className="text-[11px] font-mono text-neutral-500 mb-1">میزان فوریت خرید:</div>
+                    <div className="text-xs font-bold text-emerald-400">{selectedSignal.urgency}</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#0d0d0d] border border-[#1c1c1c]">
+                    <div className="text-[11px] font-mono text-neutral-500 mb-1">بودجه تخمینی استخراج‌شده:</div>
+                    <div className="text-xs font-bold text-white font-mono">{selectedSignal.budget}</div>
+                  </div>
+                </div>
+
+                {/* Suggested Reply Box */}
+                <div className="p-4 rounded-xl bg-[#060606] border border-[#252525]">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-semibold text-white">پیش‌نویس پیام شخصی‌سازی‌شده برای ارسال:</span>
                     <button
                       type="button"
-                      onClick={() => setActiveCodeTab("analysis")}
-                      className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                        activeCodeTab === "analysis"
-                          ? "bg-white text-black font-bold"
-                          : "text-neutral-400 hover:text-white bg-[#111111]"
-                      }`}
+                      onClick={handleCopyReply}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-[#161616] hover:bg-[#222222] text-neutral-200 border border-[#2c2c2c] transition-colors cursor-pointer"
                     >
-                      تحلیل هوشمند (Analysis)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setActiveCodeTab("raw")}
-                      className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                        activeCodeTab === "raw"
-                          ? "bg-white text-black font-bold"
-                          : "text-neutral-400 hover:text-white bg-[#111111]"
-                      }`}
-                    >
-                      متن خام پیام
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setActiveCodeTab("json")}
-                      className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                        activeCodeTab === "json"
-                          ? "bg-white text-black font-bold"
-                          : "text-neutral-400 hover:text-white bg-[#111111]"
-                      }`}
-                    >
-                      خروجی ساخت‌یافته JSON
+                      {copiedReply ? (
+                        <>
+                          <CheckIcon className="w-3.5 h-3.5 text-emerald-400" />
+                          <span className="text-emerald-400">کپی شد!</span>
+                        </>
+                      ) : (
+                        <>
+                          <CopyIcon className="w-3.5 h-3.5" />
+                          <span>کپی متن پاسخ</span>
+                        </>
+                      )}
                     </button>
                   </div>
-
-                  {/* Tab 1: Analysis */}
-                  {activeCodeTab === "analysis" && (
-                    <div className="space-y-3 animate-fade-in">
-                      <div className="p-3.5 rounded-xl bg-[#0c0c0c] border border-[#1a1a1a]">
-                        <div className="text-[11px] font-bold text-amber-400 mb-1 flex items-center gap-1.5">
-                          <FlameIcon className="w-3.5 h-3.5 text-amber-400" />
-                          <span>استدلال هوش مصنوعی (AI Reasoning):</span>
-                        </div>
-                        <p className="text-xs text-neutral-300 leading-relaxed">
-                          {selectedLead.reasoning}
-                        </p>
-                      </div>
-
-                      <div className="p-3.5 rounded-xl bg-[#0c0c0c] border border-[#1a1a1a]">
-                        <div className="text-[11px] font-bold text-[#00e599] mb-1 flex items-center gap-1.5">
-                          <SparklesIcon className="w-3.5 h-3.5 text-[#00e599]" />
-                          <span>انطباق با محصول (Product ICP Match):</span>
-                        </div>
-                        <p className="text-xs text-neutral-300 leading-relaxed">
-                          {selectedLead.productMatch}
-                        </p>
-                      </div>
-
-                      <div className="p-3.5 rounded-xl bg-[#121212] border border-[#242424]">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-[11px] font-bold text-sky-400">
-                            پیش‌نویس پاسخ آماده برای نماینده فروش:
-                          </span>
-                          <button
-                            type="button"
-                            onClick={handleCopyReply}
-                            className="px-2 py-0.5 rounded bg-[#1e1e1e] hover:bg-[#282828] text-neutral-300 hover:text-white text-[11px] flex items-center gap-1 transition-colors cursor-pointer"
-                          >
-                            {copied ? (
-                              <>
-                                <CheckIcon className="w-3 h-3 text-[#00e599]" />
-                                <span className="text-[#00e599]">کپی شد</span>
-                              </>
-                            ) : (
-                              <>
-                                <CopyIcon className="w-3 h-3" />
-                                <span>کپی متن</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
-                        <p className="text-xs text-neutral-200 leading-relaxed bg-[#0a0a0a] p-3 rounded-lg border border-[#1a1a1a]">
-                          {selectedLead.suggestedReply}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Tab 2: Raw Message */}
-                  {activeCodeTab === "raw" && (
-                    <div className="p-4 rounded-xl bg-[#0c0c0c] border border-[#1a1a1a] text-xs sm:text-sm text-neutral-200 leading-relaxed font-mono animate-fade-in">
-                      «{selectedLead.rawMessage}»
-                    </div>
-                  )}
-
-                  {/* Tab 3: JSON */}
-                  {activeCodeTab === "json" && (
-                    <div className="p-4 rounded-xl bg-[#0c0c0c] border border-[#1a1a1a] text-[11px] text-[#00e599] font-mono leading-relaxed overflow-x-auto text-left dir-ltr animate-fade-in">
-                      <pre>
-                        {JSON.stringify(
-                          {
-                            id: selectedLead.id,
-                            author: selectedLead.author,
-                            intent_score: selectedLead.score,
-                            intent_tier: selectedLead.tier,
-                            analysis_cost: selectedLead.cost,
-                            reasoning: selectedLead.reasoning,
-                            product_match: selectedLead.productMatch,
-                          },
-                          null,
-                          2
-                        )}
-                      </pre>
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-5 pt-3 border-t border-[#181818] flex items-center justify-between text-xs">
-                  <span className="text-neutral-500 font-mono text-[11px]">STATUS: QUALIFIED OPPORTUNITY</span>
-                  <Link
-                    href="/dashboard"
-                    className="text-white hover:underline flex items-center gap-1 font-medium cursor-pointer"
-                  >
-                    <span>مدیریت کامل در داشبورد رادار</span>
-                    <span>←</span>
-                  </Link>
+                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-sans">{selectedSignal.suggestedReply}</p>
                 </div>
               </div>
+
+              <div className="mt-4 pt-3 border-t border-[#181818] flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                <span>زنجیره پشتیبان چندمدله: Claude 3.5 Sonnet → DeepSeek V3 → Gemini Flash</span>
+                <span className="text-[#00e599]">یکپارچگی مستقیم با CRM</span>
+              </div>
+            </div>
+
+            {/* Right 4-Column Stat & Features */}
+            <div className="flex flex-col gap-8 lg:col-span-4 lg:col-start-9">
+              <p className="text-xl sm:text-2xl text-neutral-400 leading-relaxed">
+                <span className="text-white font-bold">۱۵ دقیقه زمان جست‌وجو</span> و پیام‌نگاری دستی، به ۳ ثانیه بررسی و تأیید نهایی توسط کارشناس فروش تبدیل می‌شود.
+              </p>
+
+              <ul className="flex flex-col gap-3 p-0 m-0 list-none text-xs sm:text-sm">
+                <li className="text-neutral-500 font-mono uppercase text-xs">اتوماسیون هوشمند فروش</li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>تولید پاسخ فارسی با لحن محترمانه و حرفه‌ای</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>انطباق پیام با ویژگی‌های ارزش‌آفرین محصول</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>ارسال اتوماتیک لید به وب‌هوک و CRM دیدار یا Hubspot</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-white font-medium">
+                  <CheckIcon className="w-4 h-4 text-[#00e599] shrink-0" />
+                  <span>شفافیت کامل در هزینه‌های توکن و پردازش</span>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
 
         {/* ========================================================
-            03 THE 5-STAGE PIPELINE (Vercel Grid)
+            08 "RECENTLY SHIPPED" BENTO GRID (Vercel Style)
         ======================================================== */}
-        <section id="pipeline" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#141414]">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="text-xs font-mono font-bold text-sky-400 tracking-wider uppercase mb-2">
-              02 // THE PIPELINE
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-4">
-              خط لوله هوشمندی رادار در ۵ گام
+        <section id="shipped" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
+          <div className="mb-12">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              ویژگی‌های منتشر شده در رادار ۲.۴
             </h2>
-            <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
-              از پایش مکالمات تا آماده‌سازی پیام و اقدام قطعی برای کارشناس فروش.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3.5">
-            <div className="p-5 rounded-2xl bg-[#090909] border border-[#1b1b1b] flex flex-col justify-between hover:border-neutral-700 transition-colors">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+            {/* Bento Card 1 (Span 6): VoiceOrb AI Sales Co-Pilot */}
+            <div id="voice-orb" className="md:col-span-6 rounded-2xl bg-[#090909] border border-[#1f1f1f] p-6 shadow-xl flex flex-col justify-between">
               <div>
-                <div className="text-[11px] font-mono font-bold text-neutral-500 mb-2">01 // COLLECT</div>
-                <h3 className="text-sm font-bold text-white mb-2">جمع‌آوری پیام</h3>
-                <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                  دریافت پیام‌ها از بله، تلگرام، توییتر و انجمن‌های تخصصی.
-                </p>
-              </div>
-              <div className="flex items-center gap-1.5 text-neutral-400">
-                <BaleIcon className="w-3.5 h-3.5 text-[#00e599]" />
-                <TelegramIcon className="w-3.5 h-3.5 text-sky-400" />
-                <TwitterXIcon className="w-3.5 h-3.5 text-neutral-300" />
-                <ForumIcon className="w-3.5 h-3.5 text-purple-400" />
-              </div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-[#090909] border border-[#1b1b1b] flex flex-col justify-between hover:border-neutral-700 transition-colors">
-              <div>
-                <div className="text-[11px] font-mono font-bold text-sky-400 mb-2">02 // UNDERSTAND</div>
-                <h3 className="text-sm font-bold text-white mb-2">درک بافت</h3>
-                <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                  تحلیل معنایی بافت مکالمه و لحن گوینده با LLM محلی/ابری.
-                </p>
-              </div>
-              <span className="text-[10px] text-sky-400 font-mono">Semantic Parser</span>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-[#090909] border border-[#1b1b1b] flex flex-col justify-between hover:border-neutral-700 transition-colors">
-              <div>
-                <div className="text-[11px] font-mono font-bold text-amber-400 mb-2">03 // SCORE</div>
-                <h3 className="text-sm font-bold text-white mb-2">امتیازدهی نیت</h3>
-                <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                  محاسبه نمره ۰ تا ۱۰۰ شدت قصد خرید و تطابق با محصول.
-                </p>
-              </div>
-              <span className="text-[10px] text-amber-400 font-mono">0 - 100 Metric</span>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-[#090909] border border-[#1b1b1b] flex flex-col justify-between hover:border-neutral-700 transition-colors">
-              <div>
-                <div className="text-[11px] font-mono font-bold text-[#00e599] mb-2">04 // PRIORITIZE</div>
-                <h3 className="text-sm font-bold text-white mb-2">اولویت‌بندی</h3>
-                <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                  رتبه‌بندی فرصت‌های طلایی و فیلتر کردن اتوماتیک پیام‌های بی‌ربط.
-                </p>
-              </div>
-              <span className="text-[10px] text-[#00e599] font-mono">High Intent First</span>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-[#090909] border border-[#1b1b1b] flex flex-col justify-between hover:border-neutral-700 transition-colors">
-              <div>
-                <div className="text-[11px] font-mono font-bold text-purple-400 mb-2">05 // ACT</div>
-                <h3 className="text-sm font-bold text-white mb-2">اقدام فروش</h3>
-                <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                  ارائه سناریوی پاسخ، استدلال و محاسبه هزینه برای شروع مذاکره.
-                </p>
-              </div>
-              <span className="text-[10px] text-purple-400 font-mono">Draft & Copy</span>
-            </div>
-          </div>
-        </section>
-
-        {/* ========================================================
-            04 INTENT TIERS (Vercel Cards)
-        ======================================================== */}
-        <section id="intent" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#141414]">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="text-xs font-mono font-bold text-[#00e599] tracking-wider uppercase mb-2">
-              03 // INTENT ENGINE
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-4">
-              تفکیک ۴ سطح شدت قصد خرید
-            </h2>
-            <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
-              رادار پیام‌ها را بر اساس میزان تمایل خریدار به حل مشکل و پتانسیل تجاری در ۴ سطح رده‌بندی می‌کند.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-5 rounded-2xl bg-[#080d09] border border-[#16301e] flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-black text-[#00e599] font-mono">HIGH INTENT</span>
-                  <span className="text-xs font-mono font-bold text-[#00e599]">۷۵ – ۱۰۰</span>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#141414] border border-[#262626] text-[11px] font-mono text-[#00e599]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse" />
+                    <span>VOICE INTELLIGENCE CO-PILOT</span>
+                  </div>
+                  <span className="text-xs text-neutral-500 font-mono">PRI-VOICE-01</span>
                 </div>
-                <h3 className="text-sm font-bold text-white mb-2">قصد صریح خرید</h3>
-                <p className="text-xs text-neutral-300 leading-relaxed">
-                  نیاز فوری، اعلام بودجه یا جستجوی راه‌حل. اولویت شماره یک تیم فروش برای تماس فوری.
+                <h3 className="text-xl font-bold text-white mb-2">دستیار صوتی و هوشمند VoiceOrb</h3>
+                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-6">
+                  بررسی صوتی لیدها، شنیدن خلاصه فرصت‌ها در حین کار و پرسش صوتی درباره وضعیت پایپ‌لاین فروش بدون نیاز به کلیک.
                 </p>
               </div>
-            </div>
 
-            <div className="p-5 rounded-2xl bg-[#0e0c06] border border-[#2d220e] flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-black text-amber-400 font-mono">PROBLEM AWARE</span>
-                  <span className="text-xs font-mono font-bold text-amber-400">۴۵ – ۷۴</span>
+              {/* Interactive VoiceOrb Showcase Component */}
+              <div className="p-4 rounded-xl bg-[#040404] border border-[#191919] flex items-center justify-center min-h-[160px]">
+                <div className="scale-90">
+                  <VoiceOrb />
                 </div>
-                <h3 className="text-sm font-bold text-white mb-2">آگاه از چالش</h3>
-                <p className="text-xs text-neutral-300 leading-relaxed">
-                  کاربر با درد مشخصی روبروست و به دنبال راهکار و مقایسه سرویس‌ها می‌گردد.
-                </p>
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#070b0f] border border-[#142330] flex flex-col justify-between">
+            {/* Bento Card 2 (Span 6): Local PocketBase Privacy */}
+            <div id="architecture" className="md:col-span-6 rounded-2xl bg-[#090909] border border-[#1f1f1f] p-6 shadow-xl flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-black text-sky-400 font-mono">CURIOUS</span>
-                  <span className="text-xs font-mono font-bold text-sky-400">۲۰ – ۴۴</span>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#141414] border border-[#262626] text-[11px] font-mono text-purple-400">
+                    <span>ZERO CLOUD LEAKAGE</span>
+                  </div>
+                  <span className="text-xs text-neutral-500 font-mono">POCKETBASE v0.25</span>
                 </div>
-                <h3 className="text-sm font-bold text-white mb-2">کنجکاو / سوال کلی</h3>
-                <p className="text-xs text-neutral-300 leading-relaxed">
-                  علاقه اولیه یا پرسش عمومی بدون فوریت زمانی در حال حاضر.
+                <h3 className="text-xl font-bold text-white mb-2">حریم خصوصی و ذخیره‌سازی محلی</h3>
+                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-6">
+                  تمام سرنخ‌ها، متن پیام‌ها و تنظیمات ICP داخل موتور محلی PocketBase ذخیره می‌شوند؛ هیچ داده‌ای به کلادهای تجاری نامطمئن نشت نمی‌کند.
                 </p>
               </div>
-            </div>
 
-            <div className="p-5 rounded-2xl bg-[#0a0a0a] border border-[#1c1c1c] flex flex-col justify-between opacity-75">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-black text-neutral-400 font-mono">IRRELEVANT</span>
-                  <span className="text-xs font-mono font-bold text-neutral-400">۰ – ۱۹</span>
+              <div className="p-4 rounded-xl bg-[#040404] border border-[#191919] font-mono text-xs text-neutral-300 space-y-2">
+                <div className="flex items-center justify-between text-neutral-500 pb-2 border-b border-[#141414]">
+                  <span>Local SQLite Storage</span>
+                  <span className="text-emerald-400">Running on 127.0.0.1:8090</span>
                 </div>
-                <h3 className="text-sm font-bold text-white mb-2">نامرتبط / اسپم</h3>
-                <p className="text-xs text-neutral-400 leading-relaxed">
-                  پیام‌های عمومی و غیرتجاری که به صورت خودکار فیلتر و بایگانی می‌شوند.
-                </p>
+                <div className="text-[11px] text-neutral-400">
+                  <div>• Collections: leads, raw_messages, products, icp_configs</div>
+                  <div>• Latency: &lt; 2ms query execution speed</div>
+                  <div>• Encryption: Local database files with restricted access</div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* ========================================================
-            05 AI ECONOMICS & INFRASTRUCTURE TRANSPARENCY
-        ======================================================== */}
-        <section id="economics" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#141414]">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="text-xs font-mono font-bold text-emerald-400 tracking-wider uppercase mb-2">
-              04 // AI ECONOMICS
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-4">
-              شفافیت کامل در هزینه‌های هوش مصنوعی
-            </h2>
-            <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
-              هزینه کشف هر فرصت چقدر است؟ در رادار، هیچ هزینه محاسباتی پنهان نمی‌ماند.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-[#090909] border border-[#1b1b1b] text-center">
-              <div className="text-3xl sm:text-4xl font-black text-white mb-2 font-mono">
-                $0.00012
-              </div>
-              <div className="text-xs font-bold text-neutral-300 mb-2 font-mono">AVG COST / MESSAGE</div>
+            {/* Bento Card 3 (Span 4): Prompt Injection Defense */}
+            <div className="md:col-span-4 rounded-2xl bg-[#090909] border border-[#1f1f1f] p-5 shadow-xl">
+              <div className="text-xs font-mono text-amber-400 mb-2">NEURAL GUARDRAILS</div>
+              <h4 className="text-base font-bold text-white mb-1.5">محافظت ضد تزریق پرامپت</h4>
               <p className="text-xs text-neutral-400 leading-relaxed">
-                حدود ۷ تا ۱۰ تومان برای تحلیل کامل معنایی، نیت‌سنجی، استدلال و پیشنهاد پاسخ با معماری هیبریدی.
+                پالایش حملات مهندسی معکوس و پیام‌های فریبنده کاربران برای جلوگیری از پاسخ‌های ناخواسته هوش مصنوعی.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#090909] border border-[#1b1b1b] text-center">
-              <div className="text-3xl sm:text-4xl font-black text-[#00e599] mb-2 font-mono">
-                ۹۸٪ صرفه‌جویی
-              </div>
-              <div className="text-xs font-bold text-neutral-300 mb-2 font-mono">VS MANUAL SDR TIME</div>
+            {/* Bento Card 4 (Span 4): Token Economics */}
+            <div id="economics" className="md:col-span-4 rounded-2xl bg-[#090909] border border-[#1f1f1f] p-5 shadow-xl">
+              <div className="text-xs font-mono text-emerald-400 mb-2">AI ECONOMICS</div>
+              <h4 className="text-base font-bold text-white mb-1.5">اقتصاد شفاف توکن‌ها</h4>
               <p className="text-xs text-neutral-400 leading-relaxed">
-                بررسی دستی ۱۰۰۰ پیام ساعت‌ها زمان می‌برد؛ رادار در چند ثانیه با هزینه ناچیز فرصت‌ها را جدا می‌کند.
+                هزینه میانگین ۹ تومان برای هر پیام تحلیل‌شده؛ ۹۹٪ ارزان‌تر از هزینه‌های حقوق SDR و بررسی انسانی سنتی.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#090909] border border-[#1b1b1b] text-center">
-              <div className="text-3xl sm:text-4xl font-black text-sky-400 mb-2 font-mono">
-                ۱۰۰٪ مستقل
-              </div>
-              <div className="text-xs font-bold text-neutral-300 mb-2 font-mono">LOCAL & OFFLINE READY</div>
+            {/* Bento Card 5 (Span 4): Iranian Protocol Adapters */}
+            <div className="md:col-span-4 rounded-2xl bg-[#090909] border border-[#1f1f1f] p-5 shadow-xl">
+              <div className="text-xs font-mono text-sky-400 mb-2">NATIVE ADAPTERS</div>
+              <h4 className="text-base font-bold text-white mb-1.5">پشتیبانی بومی زبان فارسی</h4>
               <p className="text-xs text-neutral-400 leading-relaxed">
-                پایگاه داده محلی PocketBase و امکان اتصال به موتورهای محلی Ollama و vLLM بدون وابستگی به کلاد خارجی.
+                شناسایی ظرایف زبانی، اصطلاحات عامیانه و چت‌های اختصاری تلگرام و بله با توکنایزر اختصاصی فارسی.
               </p>
             </div>
           </div>
         </section>
 
         {/* ========================================================
-            06 BENTO USE CASES
+            09 DEVELOPER API & CODE TERMINAL (Vercel Style)
         ======================================================== */}
-        <section id="use-cases" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#141414]">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="text-xs font-mono font-bold text-neutral-400 tracking-wider uppercase mb-2">
-              05 // ENTERPRISE USE CASES
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-4">
-              کاربردهای رادار برای رشد کسب‌وکار
+        <section id="code" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
+          <div className="mb-12">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              یکپارچگی در چند دقیقه با API رادار
             </h2>
-            <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
-              طراحی شده برای تیم‌های فروش سازمانی، بازاریابی B2B و استارتاپ‌های محصول‌محور.
+            <p className="text-sm text-neutral-400 mt-2">
+              سیگنال‌های خرید را مستقیم در وب‌سایت، CRM یا اتوماسیون‌های سفارشی پایتون و تایپ‌اسکریپت دریافت کنید.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="p-5 rounded-2xl bg-[#080808] border border-[#1a1a1a]">
-              <div className="font-bold text-white text-sm mb-2">هوشمندی فروش (Sales Intelligence)</div>
-              <p className="text-xs text-neutral-400 leading-relaxed">
-                ورود زودهنگام به گفتگو پیش از آنکه مشتری به راهکار رقیب مراجعه کند.
-              </p>
+          <div className="rounded-2xl bg-[#070707] border border-[#1f1f1f] shadow-2xl overflow-hidden text-left" dir="ltr">
+            {/* Terminal Tab Bar */}
+            <div className="h-11 px-4 border-b border-[#181818] bg-[#0c0c0c] flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setActiveCodeTab("typescript")}
+                  className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
+                    activeCodeTab === "typescript" ? "bg-[#1c1c1c] text-white" : "text-neutral-500 hover:text-neutral-300"
+                  }`}
+                >
+                  TypeScript
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveCodeTab("python")}
+                  className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
+                    activeCodeTab === "python" ? "bg-[#1c1c1c] text-white" : "text-neutral-500 hover:text-neutral-300"
+                  }`}
+                >
+                  Python
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveCodeTab("curl")}
+                  className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
+                    activeCodeTab === "curl" ? "bg-[#1c1c1c] text-white" : "text-neutral-500 hover:text-neutral-300"
+                  }`}
+                >
+                  cURL
+                </button>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => handleCopyCode(sampleCodeSnippets[activeCodeTab])}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono text-neutral-400 hover:text-white bg-[#141414] hover:bg-[#1f1f1f] border border-[#242424] transition-colors cursor-pointer"
+              >
+                {copiedCode ? <CheckIcon className="w-3.5 h-3.5 text-emerald-400" /> : <CopyIcon className="w-3.5 h-3.5" />}
+                <span>{copiedCode ? "Copied" : "Copy"}</span>
+              </button>
             </div>
-            <div className="p-5 rounded-2xl bg-[#080808] border border-[#1a1a1a]">
-              <div className="font-bold text-white text-sm mb-2">پایش پیوسته جوامع (Community Monitoring)</div>
-              <p className="text-xs text-neutral-400 leading-relaxed">
-                پایش ۲۴ ساعته کانال‌ها و گروه‌های تخصصی بدون نیاز به نیروی انسانی شیفت.
-              </p>
-            </div>
-            <div className="p-5 rounded-2xl bg-[#080808] border border-[#1a1a1a]">
-              <div className="font-bold text-white text-sm mb-2">کشف مشتریان اولیه (Startup Discovery)</div>
-              <p className="text-xs text-neutral-400 leading-relaxed">
-                یافتن ۱۰۰ مشتری اول برای استارتاپ‌های نوپا بدون صرف هزینه‌های سنگین تبلیغات کلیکی.
-              </p>
-            </div>
-            <div className="p-5 rounded-2xl bg-[#080808] border border-[#1a1a1a]">
-              <div className="font-bold text-white text-sm mb-2">تحقیقات رقبا (Competitive Intelligence)</div>
-              <p className="text-xs text-neutral-400 leading-relaxed">
-                فهم نقاط ضعف ابزارهای رقبا مستقیماً از زبان گلایه‌های کاربران در جوامع آنلاین.
-              </p>
-            </div>
-            <div className="p-5 rounded-2xl bg-[#080808] border border-[#1a1a1a]">
-              <div className="font-bold text-white text-sm mb-2">توسعه محصول بر مبنای نیاز (Customer Pain)</div>
-              <p className="text-xs text-neutral-400 leading-relaxed">
-                شناسایی فیچرهایی که بیشترین تکرار درخواست را از طرف مشتریان دارند.
-              </p>
-            </div>
-            <div className="p-5 rounded-2xl bg-[#080808] border border-[#1a1a1a]">
-              <div className="font-bold text-white text-sm mb-2">شرکت‌های خدمات و آژانس‌ها (Agencies)</div>
-              <p className="text-xs text-neutral-400 leading-relaxed">
-                پیدا کردن پروژه‌ها و کارفرمایان بالقوه در گروه‌های تخصصی برنامه‌نویسی و دیجیتال مارکتینگ.
-              </p>
+
+            {/* Code Body */}
+            <div className="p-5 font-mono text-xs sm:text-sm text-neutral-300 overflow-x-auto leading-relaxed">
+              <pre>
+                <code>{sampleCodeSnippets[activeCodeTab]}</code>
+              </pre>
             </div>
           </div>
         </section>
 
         {/* ========================================================
-            07 ARCHITECTURE (PriCoders Engineering Specs)
+            10 GIANT HIGH-IMPACT CTA (Vercel Style)
         ======================================================== */}
-        <section id="architecture" className="py-20 px-4 sm:px-6 max-w-5xl mx-auto border-t border-[#141414]">
-          <div className="p-8 sm:p-10 rounded-3xl bg-[#090909] border border-[#1f1f1f] text-right">
-            <div className="text-xs font-mono font-bold text-amber-400 mb-2">ENGINEERING ARCHITECTURE // PRICODERS</div>
-            <h2 className="text-xl sm:text-3xl font-extrabold text-white mb-4">
-              معماری فنی رادار: استقلال، پایداری و امنیت
-            </h2>
-            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-6">
-              رادار با ترکیب Next.js 16، پایگاه داده بلادرنگ PocketBase، و زنجیره فال‌بک استنتاج چندمدلی پیاده‌سازی شده است.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
-              <div className="p-4 rounded-xl bg-[#050505] border border-[#1a1a1a]">
-                <div className="text-[#00e599] font-bold mb-1">CURRENT MVP CAPABILITIES:</div>
-                <ul className="space-y-1.5 text-neutral-400">
-                  <li>• Local PocketBase with zero latency SSE</li>
-                  <li>• Semantic Intent Classification (0-100)</li>
-                  <li>• Realtime Simulation & Feed Ingestion</li>
-                  <li>• In-App AI Assistant with VoiceOrb</li>
-                  <li>• Token Cost & Pricing Analytics</li>
-                </ul>
-              </div>
-
-              <div className="p-4 rounded-xl bg-[#050505] border border-[#1a1a1a]">
-                <div className="text-sky-400 font-bold mb-1">ROADMAP TO PRODUCTION:</div>
-                <ul className="space-y-1.5 text-neutral-400">
-                  <li>• Official Bale & Telegram Crawlers</li>
-                  <li>• Bi-directional CRM Sync (Didar, HubSpot)</li>
-                  <li>• Fine-Tuned Persian Intent Model</li>
-                  <li>• Multi-Tenant SaaS Architecture</li>
-                  <li>• Long-Term Lead Memory Graph</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ========================================================
-            08 GIANT CALL TO ACTION (Vercel Style)
-        ======================================================== */}
-        <section className="py-28 sm:py-36 px-4 sm:px-6 max-w-4xl mx-auto text-center border-t border-[#141414] relative">
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-[600px] h-[300px] bg-gradient-to-b from-white/8 to-transparent blur-[140px] rounded-full" />
+        <section className="relative py-28 px-4 sm:px-6 max-w-[1240px] mx-auto text-center border-t border-[#141414] overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+            <div className="w-[600px] h-[300px] vercel-hero-glow blur-[140px] opacity-75" />
           </div>
 
-          <div className="relative z-10">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
-              جست‌وجوی دستی در میان هیاهو را متوقف کنید.
-              <br />
-              <span className="text-white underline decoration-neutral-600 underline-offset-8">
-                فرصت‌های واقعی خرید را شکار کنید.
-              </span>
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-6">
+              آماده‌اید اولین سیگنال واقعی را شکار کنید؟
             </h2>
-
-            <p className="text-neutral-400 text-sm sm:text-base mb-10 max-w-lg mx-auto leading-relaxed">
-              داشبورد عملیاتی رادار آماده است تا تفاوت میان نویزهای بی‌ارزش و خریداران واقعی را به شما نشان دهد.
+            <p className="text-sm sm:text-base text-neutral-400 leading-relaxed mb-10">
+              گفت‌وگوهای شلوغ پیام‌رسان‌ها را به جریان مستمر و باکیفیت فرصت‌های فروش سازمانتان تبدیل نمایید.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <Link
                 href="/dashboard"
-                className="w-full sm:w-auto h-12 px-8 rounded-xl font-bold text-xs sm:text-sm bg-white text-black hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 shadow-[0_0_35px_rgba(255,255,255,0.3)] active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto h-12 px-8 rounded-full font-bold text-sm bg-white text-black hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 shadow-[0_0_35px_rgba(255,255,255,0.35)] active:scale-95 cursor-pointer"
               >
                 <SparklesIcon className="w-4 h-4 text-black" />
-                <span>ورود به داشبورد رادار (Live Demo)</span>
+                <span>ورود به کنسول رادار</span>
+                <span className="font-mono text-black">←</span>
               </Link>
-
               <Link
                 href="/settings"
-                className="w-full sm:w-auto h-12 px-8 rounded-xl font-medium text-xs sm:text-sm bg-[#111111] hover:bg-[#1a1a1a] text-white border border-[#262626] hover:border-neutral-500 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto h-12 px-7 rounded-full font-medium text-sm bg-[#0d0d0d] hover:bg-[#171717] text-white border border-[#2b2b2b] hover:border-neutral-500 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
               >
-                <SettingsIcon className="w-4 h-4" />
-                <span>تنظیمات پرسونای محصول (ICP)</span>
+                <span>شخصی‌سازی کلمات و ICP</span>
               </Link>
             </div>
           </div>
@@ -848,100 +1220,115 @@ export default function VercelStyleLandingPage() {
       </main>
 
       {/* ========================================================
-          09 VERCEL MULTI-COLUMN FOOTER
+          11 COMPREHENSIVE FOOTER (Vercel Directory Architecture)
       ======================================================== */}
-      <footer className="border-t border-[#141414] bg-[#050505] pt-14 pb-12 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-xs">
-            {/* Col 1: Brand */}
-            <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="w-6 h-6 rounded-md bg-white text-black flex items-center justify-center font-bold">
-                  <RadarLogo className="w-3.5 h-3.5 text-black" />
-                </div>
-                <span className="font-bold text-white text-sm">رادار (Radar)</span>
-              </div>
-              <p className="text-neutral-400 text-xs leading-relaxed mb-4">
-                موتور هوشمندی فرصت‌های فروش برای کشف و اولویت‌بندی سیگنال‌های خرید در گفت‌وگوهای آنلاین.
-              </p>
-              <div className="text-[11px] font-mono text-neutral-500">
-                DEVELOPED BY PRICODERS
-              </div>
-            </div>
-
-            {/* Col 2: Product */}
+      <footer className="border-t border-[#181818] bg-[#030303] text-neutral-400 py-16 px-4 sm:px-6">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-16">
+            {/* Column 1: Products */}
             <div>
-              <div className="font-bold text-white mb-3">محصول و ابزارها</div>
-              <ul className="space-y-2 text-neutral-400">
+              <div className="text-xs font-mono font-bold text-white uppercase tracking-wider mb-4">محصولات رادار</div>
+              <ul className="space-y-2.5 text-xs">
                 <li>
                   <Link href="/dashboard" className="hover:text-white transition-colors">
-                    داشبورد عملیاتی لیدها
+                    پایش لیدها (Signal Stream)
                   </Link>
                 </li>
                 <li>
                   <Link href="/settings" className="hover:text-white transition-colors">
-                    تنظیمات محصول و ICP
+                    پیکربندی ICP هوشمند
                   </Link>
                 </li>
                 <li>
-                  <a href="#pipeline" className="hover:text-white transition-colors">
-                    خط لوله ۵ مرحله‌ای
+                  <a href="#voice-orb" className="hover:text-white transition-colors">
+                    دستیار صوتی VoiceOrb
                   </a>
                 </li>
                 <li>
-                  <a href="#intent" className="hover:text-white transition-colors">
-                    موتور نیت‌سنجی
+                  <a href="#deep-dive-2" className="hover:text-white transition-colors">
+                    موتور نیت‌سنجی ۴ سطحی
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Col 3: Architecture & Privacy */}
+            {/* Column 2: Channels */}
             <div>
-              <div className="font-bold text-white mb-3">معماری و امنیت</div>
-              <ul className="space-y-2 text-neutral-400">
+              <div className="text-xs font-mono font-bold text-white uppercase tracking-wider mb-4">کانال‌های پشتیبانی‌شده</div>
+              <ul className="space-y-2.5 text-xs">
+                <li>
+                  <span className="hover:text-white transition-colors cursor-default">پیام‌رسان بله (Bale)</span>
+                </li>
+                <li>
+                  <span className="hover:text-white transition-colors cursor-default">سوپرگروه‌های تلگرام</span>
+                </li>
+                <li>
+                  <span className="hover:text-white transition-colors cursor-default">توییتر / X</span>
+                </li>
+                <li>
+                  <span className="hover:text-white transition-colors cursor-default">انجمن‌ها و فروم‌های تخصصی</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Resources */}
+            <div>
+              <div className="text-xs font-mono font-bold text-white uppercase tracking-wider mb-4">منابع و مستندات</div>
+              <ul className="space-y-2.5 text-xs">
+                <li>
+                  <a href="#architecture" className="hover:text-white transition-colors">
+                    معماری فنی سیستم
+                  </a>
+                </li>
+                <li>
+                  <a href="#code" className="hover:text-white transition-colors">
+                    راهنمای یکپارچگی API
+                  </a>
+                </li>
                 <li>
                   <a href="#economics" className="hover:text-white transition-colors">
-                    شفافیت هزینه توکن
+                    محاسبه اقتصاد و توکن‌ها
                   </a>
                 </li>
                 <li>
-                  <span className="text-neutral-400">دیتابیس محلی PocketBase</span>
-                </li>
-                <li>
-                  <span className="text-neutral-400">پشتیبانی رویدادهای زنده SSE</span>
-                </li>
-                <li>
-                  <span className="text-neutral-400">فال‌بک چندلایه‌ای LLM</span>
+                  <a href="#shipped" className="hover:text-white transition-colors">
+                    تغییرات اخیر (Changelog)
+                  </a>
                 </li>
               </ul>
             </div>
 
-            {/* Col 4: PriCoders */}
+            {/* Column 4: PriCoders */}
             <div>
-              <div className="font-bold text-white mb-3">درباره PriCoders</div>
-              <ul className="space-y-2 text-neutral-400">
+              <div className="text-xs font-mono font-bold text-white uppercase tracking-wider mb-4">تیم PriCoders</div>
+              <ul className="space-y-2.5 text-xs">
                 <li>
-                  <span className="text-neutral-400">توسعه توسط تیم PriCoders</span>
+                  <span className="text-white font-medium">Radar Opportunity Intelligence</span>
                 </li>
-                <li>
-                  <span className="text-neutral-400">نسخه MVP آماده ارزیابی</span>
+                <li className="text-neutral-500 text-[11px] leading-relaxed">
+                  طراحی و پیاده‌سازی سامانه غربالگری و تحلیل نیت خرید مبتنی بر یادگیری ماشین و پردازش محلی.
                 </li>
-                <li>
-                  <span className="text-neutral-400">پاییز ۱۴۰۴</span>
+                <li className="pt-2 text-neutral-400">
+                  <span>وضعیت: آماده ارائه به سرمایه‌گذاران و داوران</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-[#141414] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#00e599]" />
-              <span>تمام سیستم‌های رادار فعال و متصل هستند.</span>
+          {/* Bottom Bar with Status Indicator */}
+          <div className="pt-8 border-t border-[#141414] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+            <div className="flex items-center gap-3">
+              <div className="w-5 h-5 rounded-md bg-white text-black flex items-center justify-center font-bold">
+                <svg viewBox="0 0 115 100" height="10" width="12" fill="currentColor">
+                  <path fillRule="evenodd" d="M57.5 0 115 100H0z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <span className="text-neutral-400">© 2026 PriCoders Radar Engine. تمام حقوق محفوظ است.</span>
             </div>
 
-            <div>
-              © 2026 PriCoders. از میان هیاهو تا فرصت فروش (From Noise to Opportunity).
+            <div className="flex items-center gap-2 text-emerald-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>All Systems Operational ▲ PocketBase & SSE Connected</span>
             </div>
           </div>
         </div>

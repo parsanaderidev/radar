@@ -353,3 +353,37 @@ body {
 .smooth-transform {
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Vercel Marquee Animation */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Vercel Ambient Hero Glow */
+.vercel-hero-glow {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 0%,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    transparent 70%
+  );
+}
+
+.vercel-hero-triangle-glow {
+  background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.15), rgba(0, 229, 153, 0.08) 35%, transparent 65%);
+}
