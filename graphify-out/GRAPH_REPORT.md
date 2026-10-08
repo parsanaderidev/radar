@@ -1,25 +1,25 @@
 # Graph Report - Radar  (2026-10-08)
 
 ## Corpus Check
-- 73 files · ~74,760 words
+- 73 files · ~76,257 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 573 nodes · 1050 edges · 31 communities (22 shown, 9 thin omitted)
+- 621 nodes · 1098 edges · 44 communities (36 shown, 8 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e2411029`
+- Built from commit: `d028d8f4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - Icons.tsx
-- auth.ts
+- getAuthSession
 - voice-orb.tsx
 - pipeline.ts
-- package.json
+- dependencies
 - طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی
 - compilerOptions
 - components.json
@@ -30,7 +30,7 @@
 - Radar Emblem
 - Public PocketBase URL Constraint
 - ConcurrencyLimiter
-- InMemoryRateLimiter
+- pocketbase.ts
 - assistant/route.ts
 - AGENTS.md
 - rules/graphify.md
@@ -41,10 +41,23 @@
 - فهرست اسلایدهای ارائه
 - devDependencies
 - pdf_maker.ts
-- ingest.ts
-- logout/route.ts
+- telegram/route.ts
+- auth.ts
 - proxy.ts
 - next.config.ts
+- rateLimit.ts
+- getClientIp
+- package.json
+- scripts
+- اسلاید ۱۰: جمع‌بندی، پیشنهاد سرمایه‌گذاری و سپاسگزاری (08. Thank You)
+- اسلاید ۶: چرخه کارکرد فنی و گام‌های پردازش (04. How Radar Works?)
+- اسلاید ۸: ارزش اقتصادی، اقتصاد واحد و سودآوری (06. Business Value)
+- اسلاید ۳: مسئله بازار و واقعیت تلخ فروش سازمانی (01. The Problem)
+- اسلاید ۵: معرفی راه‌حل — سامانه هوشمند رادار (03. Radar)
+- اسلاید ۷: پشته فناوری، زیرساخت و پایداری محلی (05. The Tech)
+- اسلاید ۹: تیم توسعه و مهندسی سیستم (07. Our Team)
+- اسلاید ۱: عنوان، هویت محصول و بیانیه ارزش (Cover Slide)
+- اسلاید ۴: بینش بازار، ظرفیت تقاضا و اندازه مارکت (02. Market Insights)
 
 ## God Nodes (most connected - your core abstractions)
 1. `getPocketBaseClient()` - 26 edges
@@ -59,16 +72,16 @@
 10. `طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `POST()` --calls--> `isAuthenticatedRequest()`  [EXTRACTED]
+  app/api/analyze/route.ts → lib/auth.ts
 - `POST()` --calls--> `triageAdHocMessage()`  [EXTRACTED]
   app/api/analyze/route.ts → lib/pipeline.ts
-- `POST()` --calls--> `validateAnalyzeInput()`  [EXTRACTED]
-  app/api/analyze/route.ts → lib/validation.ts
-- `GET()` --calls--> `getAuthSession()`  [EXTRACTED]
-  app/api/auth/session/route.ts → lib/auth.ts
-- `POST()` --calls--> `ingestExternalMessage()`  [EXTRACTED]
-  app/api/ingest/bale/route.ts → lib/ingest.ts
-- `POST()` --calls--> `ingestExternalMessage()`  [EXTRACTED]
-  app/api/ingest/telegram/route.ts → lib/ingest.ts
+- `POST()` --calls--> `triagePendingMessage()`  [EXTRACTED]
+  app/api/analyze/route.ts → lib/pipeline.ts
+- `POST()` --calls--> `getClientIp()`  [EXTRACTED]
+  app/api/analyze/route.ts → lib/rateLimit.ts
+- `POST()` --calls--> `timingSafeEqual()`  [EXTRACTED]
+  app/api/auth/login/route.ts → lib/auth.ts
 
 ## Import Cycles
 - None detected.
@@ -78,27 +91,27 @@
 - **3-Layer Triage Pipeline** — readme_triage_pipeline, readme_layer0_deterministic, readme_layer1_screen, readme_layer2_llm [EXTRACTED 1.00]
 - **Telegram and Bale Webhook Ingest** — readme_telegram_ingest_endpoint, readme_bale_ingest_endpoint, readme_telegram_webhook_secret, readme_bale_webhook_secret, readme_setwebhook_registration [EXTRACTED 1.00]
 
-## Communities (31 total, 9 thin omitted)
+## Communities (44 total, 8 thin omitted)
 
 ### Community 0 - "Icons.tsx"
 Cohesion: 0.06
 Nodes (58): LeadRadarDashboard(), dynamic, dynamic, dynamic, OnboardingPage(), COMPARISON_DIMENSIONS, PersianLandingPage(), PRICING_PLANS (+50 more)
 
-### Community 1 - "auth.ts"
-Cohesion: 0.06
-Nodes (78): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+70 more)
+### Community 1 - "getAuthSession"
+Cohesion: 0.16
+Nodes (17): dynamic, GET(), dynamic, GET(), POST(), dynamic, GET(), register() (+9 more)
 
 ### Community 2 - "voice-orb.tsx"
 Cohesion: 0.07
-Nodes (38): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+30 more)
+Nodes (39): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+31 more)
 
 ### Community 3 - "pipeline.ts"
-Cohesion: 0.09
-Nodes (36): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+28 more)
+Cohesion: 0.10
+Nodes (35): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+27 more)
 
-### Community 4 - "package.json"
-Cohesion: 0.06
-Nodes (32): clsx, motion, next, dependencies, clsx, motion, next, pocketbase (+24 more)
+### Community 4 - "dependencies"
+Cohesion: 0.13
+Nodes (15): clsx, motion, next, dependencies, clsx, motion, next, pocketbase (+7 more)
 
 ### Community 5 - "طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی"
 Cohesion: 0.06
@@ -136,13 +149,17 @@ Nodes (6): Concentric Circles Motif, Monochrome Minimalism, Radar Emblem, Rounde
 Cohesion: 0.40
 Nodes (6): CSP connect-src Constraint, DEPLOY.sh One-Shot Production Deploy, NEXT_PUBLIC Bake Time Constraint, pb_data Nightly Backup, Public PocketBase URL Constraint, Secure Cookies HTTPS Requirement
 
+### Community 15 - "pocketbase.ts"
+Cohesion: 0.18
+Nodes (18): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, dynamic (+10 more)
+
 ### Community 16 - "assistant/route.ts"
 Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
 ### Community 24 - "فهرست اسلایدهای ارائه"
-Cohesion: 0.13
-Nodes (14): اسلاید ۱: عنوان، هویت محصول و بیانیه ارزش, اسلاید ۱۰: نقشه راه توسعه محصول و افق رشد, اسلاید ۱۱: تیم توسعه، دستاوردها و پیشنهاد سرمایه‌گذاری, اسلاید ۲: مسئله بازار و واقعیت تلخ فروش در ایران, اسلاید ۳: چرا راهکارهای فعلی بازار ناکارآمد هستند؟, اسلاید ۴: معرفی راه‌حل — سامانه هوشمند رادار, اسلاید ۵: چرخه کارکرد فنی و دموی پردازش پیام, اسلاید ۶: خندق دفاعی، تمایز فناوری و پایداری داخلی (+6 more)
+Cohesion: 0.25
+Nodes (7): اسلاید ۲: فهرست مطالب ارائه (List of Contents), راهنمای تفصیلی سناریوی ارائه، پیام‌های محوری و چیدمان اسلایدها — PriCoders, عناوین بخش‌های ارائه:, فهرست اسلایدهای ارائه, محتوای اسلایدهای ارائه سرمایه‌پذیری رادار (Pitch Deck), چیدمان المان‌های قالب کانوا:, یادداشت گوینده:
 
 ### Community 25 - "devDependencies"
 Cohesion: 0.12
@@ -152,37 +169,89 @@ Nodes (17): eslint, eslint-config-next, devDependencies, eslint, eslint-config-n
 Cohesion: 0.17
 Nodes (12): buildHtmlPage(), docsDir, escapeHtml(), fontsDir, formatInline(), mdFiles, parseMarkdown(), closeTable() (+4 more)
 
-### Community 27 - "ingest.ts"
-Cohesion: 0.23
-Nodes (13): escapeFilterValue(), findOrCreateSource(), ingestExternalMessage(), IngestMessageInput, IngestOutcome, IngestPlatform, sourceName(), sanitizeString() (+5 more)
+### Community 27 - "telegram/route.ts"
+Cohesion: 0.16
+Nodes (20): BaleMessage, checkSecret(), dynamic, POST(), checkSecret(), dynamic, POST(), TelegramChat (+12 more)
 
-### Community 28 - "logout/route.ts"
-Cohesion: 0.60
-Nodes (4): dynamic, POST(), formatOnboardedClearCookie(), formatSessionClearCookie()
+### Community 28 - "auth.ts"
+Cohesion: 0.16
+Nodes (15): dynamic, POST(), AuthSession, formatOnboardedClearCookie(), formatSessionClearCookie(), getCryptoKey(), getRadarApiKey(), getSessionTokenFromRequest() (+7 more)
 
 ### Community 29 - "proxy.ts"
 Cohesion: 0.50
 Nodes (4): config, middleware, parseEdgeJwtPayload(), proxy()
 
+### Community 31 - "rateLimit.ts"
+Cohesion: 0.17
+Nodes (13): dynamic, POST(), dynamic, POST(), checkUserPlanLimit(), llmConcurrencyLimiter, PLAN_LIMITS, PlanRateLimitConfig (+5 more)
+
+### Community 32 - "getClientIp"
+Cohesion: 0.32
+Nodes (12): dynamic, POST(), dynamic, POST(), POST(), createSessionToken(), formatOnboardedSetCookie(), formatSessionSetCookie() (+4 more)
+
+### Community 33 - "package.json"
+Cohesion: 0.24
+Nodes (9): description, ignoreScripts, name, packageManager, private, trustedDependencies, version, sharp (+1 more)
+
+### Community 34 - "scripts"
+Cohesion: 0.25
+Nodes (8): scripts, build, dev, pb, seed, setup:pb, start, worker
+
+### Community 35 - "اسلاید ۱۰: جمع‌بندی، پیشنهاد سرمایه‌گذاری و سپاسگزاری (08. Thank You)"
+Cohesion: 0.29
+Nodes (7): اسلاید ۱۰: جمع‌بندی، پیشنهاد سرمایه‌گذاری و سپاسگزاری (08. Thank You), برنامه تخصیص دقیق منابع (۳.۵ میلیارد تومان):, درگاه‌های دسترسی و دمو:, متن انگلیسی باکس نهایی:, پیشنهاد سرمایه‌پذیری (Investment Ask):, چیدمان المان‌های قالب کانوا:, یادداشت گوینده:
+
+### Community 36 - "اسلاید ۶: چرخه کارکرد فنی و گام‌های پردازش (04. How Radar Works?)"
+Cohesion: 0.29
+Nodes (7): اسلاید ۶: چرخه کارکرد فنی و گام‌های پردازش (04. How Radar Works?), متن انگلیسی گام‌ها:, چیدمان المان‌های قالب کانوا:, کارت گام اول (`01: Multi-Channel Ingest & Fast Filter`):, کارت گام دوم (`02: Deep LLM Analysis & Budget Match`):, کارت گام سوم (`03: Instant Alert & Lead Conversion`):, یادداشت گوینده:
+
+### Community 37 - "اسلاید ۸: ارزش اقتصادی، اقتصاد واحد و سودآوری (06. Business Value)"
+Cohesion: 0.29
+Nodes (7): اسلاید ۸: ارزش اقتصادی، اقتصاد واحد و سودآوری (06. Business Value), ماتریس تعرفه‌ها و سطوح درآمدی:, متن انگلیسی اسلاید:, نمودار مقایسه‌ای روش سنتی در برابر رادار (Bar Chart):, چیدمان المان‌های قالب کانوا:, کالبدشکافی بهای تمام‌شده و حاشیه سود (پلن استارتر ۱,۸۹۰,۰۰۰ تومانی):, یادداشت گوینده:
+
+### Community 38 - "اسلاید ۳: مسئله بازار و واقعیت تلخ فروش سازمانی (01. The Problem)"
+Cohesion: 0.33
+Nodes (6): اسلاید ۳: مسئله بازار و واقعیت تلخ فروش سازمانی (01. The Problem), شاخص‌های کلیدی اسلاید:, پاراگراف دوم: ناکارآمدی و بهای سنگین روش‌های دستی, پاراگراف نخست: نبض خرید در پیام‌رسان‌ها و چالش نویز فرساینده, چیدمان المان‌های قالب کانوا:, یادداشت گوینده:
+
+### Community 39 - "اسلاید ۵: معرفی راه‌حل — سامانه هوشمند رادار (03. Radar)"
+Cohesion: 0.33
+Nodes (6): اسلاید ۵: معرفی راه‌حل — سامانه هوشمند رادار (03. Radar), متن انگلیسی کارت‌ها:, متن توصیفی سمت چپ:, چیدمان المان‌های قالب کانوا:, یادداشت گوینده:, ۳ کارت مشخصه در سمت راست:
+
+### Community 40 - "اسلاید ۷: پشته فناوری، زیرساخت و پایداری محلی (05. The Tech)"
+Cohesion: 0.33
+Nodes (6): اسلاید ۷: پشته فناوری، زیرساخت و پایداری محلی (05. The Tech), متن انگلیسی کادرها:, چیدمان المان‌های قالب کانوا:, کادر دوم: هوش مصنوعی بومی و تاب‌آوری ۱۰۰ درصدی (Domestic Resilience), کادر نخست: هسته پرسرعت و پایگاه داده بلادرنگ (High-Performance Core), یادداشت گوینده:
+
+### Community 41 - "اسلاید ۹: تیم توسعه و مهندسی سیستم (07. Our Team)"
+Cohesion: 0.33
+Nodes (6): اسلاید ۹: تیم توسعه و مهندسی سیستم (07. Our Team), مشخصات سروش بابایی (Soroush Babaei):, مشخصات پارسا نادری (Parsa Naderi):, پیام هویتی تیم:, چیدمان المان‌های قالب کانوا:, یادداشت گوینده:
+
+### Community 42 - "اسلاید ۱: عنوان، هویت محصول و بیانیه ارزش (Cover Slide)"
+Cohesion: 0.40
+Nodes (5): اسلاید ۱: عنوان، هویت محصول و بیانیه ارزش (Cover Slide), متن کارت شاخص و بیانیه ارزش:, پیام محوری اسلاید:, چیدمان المان‌های قالب کانوا:, یادداشت گوینده:
+
+### Community 43 - "اسلاید ۴: بینش بازار، ظرفیت تقاضا و اندازه مارکت (02. Market Insights)"
+Cohesion: 0.40
+Nodes (5): اسلاید ۴: بینش بازار، ظرفیت تقاضا و اندازه مارکت (02. Market Insights), تحلیل ابعاد بازار رادار در ایران:, متن انگلیسی قالب:, چیدمان المان‌های قالب کانوا:, یادداشت گوینده:
+
 ## Knowledge Gaps
-- **245 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+240 more)
+- **283 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+278 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `getPocketBaseClient()` connect `auth.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `getPocketBaseClient()` connect `pocketbase.ts` to `Icons.tsx`, `getAuthSession`, `getClientIp`, `telegram/route.ts`, `rateLimit.ts`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Why does `RefreshIcon()` connect `Icons.tsx` to `voice-orb.tsx`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `ProductRecord` connect `auth.ts` to `Icons.tsx`, `pipeline.ts`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `ProductRecord` connect `pocketbase.ts` to `Icons.tsx`, `getAuthSession`, `pipeline.ts`, `telegram/route.ts`, `rateLimit.ts`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **What connects `DEBIAN_FRONTEND`, `dynamic`, `dynamic` to the rest of the system?**
-  _245 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _283 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.055651176133103844 - nodes in this community are weakly interconnected._
-- **Should `auth.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06383838383838383 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05593803786574871 - nodes in this community are weakly interconnected._
 - **Should `voice-orb.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07020408163265306 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06823529411764706 - nodes in this community are weakly interconnected._
+- **Should `pipeline.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.1039136302294197 - nodes in this community are weakly interconnected._
