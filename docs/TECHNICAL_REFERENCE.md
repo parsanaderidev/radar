@@ -275,18 +275,22 @@ Mode خاموش)، و HTTPS عمومی (Caddy در DEPLOY.sh تأمین می‌�
 
 | متد و مسیر | احراز | Rate limit | ورودی | خروجی |
 | --- | --- | --- | --- | --- |
-| `POST /api/analyze` | ✅ | ۱۵/min/IP | `raw_message_id` یا `content` + `author_handle?`، `thread_context?`، `platform?`، `product_id?` | `{success, layer?, lead?, evalResult?/evaluation?}` |
-| `POST /api/simulate` | ✅ | ۱۰/min/IP | `{index?}` | `{success, layer, lead (expand), evalResult}` |
+| `POST /api/analyze` | ✅ | ۱۵/min/IP (پلن) | `raw_message_id` یا `content` + `author_handle?`، `thread_context?`، `platform?`، `product_id?` | `{success, layer?, lead?, evalResult?/evaluation?}` |
+| `POST /api/simulate` | ✅ | پلن کاربر (سهمیه روزانه) | `{index?}` | `{success, layer, lead (expand), evalResult}` |
+| `POST /api/leads/fetch-initial` | کوکی سشن | سهمیه پلن | — | اسکن ۳ پیام اولیه بازار برای کاربر، تریاژ و ذخیره پایدار در پاکت‌بیس |
+| `POST /api/leads/status` | کوکی سشن | ۶۰/min/IP | `{leadId, status, notes?}` | ذخیره خودکار وضعیت و یادداشت در پاکت‌بیس و اعتبارسنجی مالکیت داده |
+| `POST /api/settings` | ✅ | — | فیلدهای محصول (اعتبارسنجی کامل) | ذخیره پایدار محصول اختصاصی و همگام‌سازی پروفایل کاربر |
+| `POST /api/bot/cron` | secret/Bearer/سشن | کنترل فرکانس | — | اجرای چرخه اسکنر خودکار ساعتی برای کاربران فعال طبق سقف پلن |
+| `GET /api/bot/status` | کوکی سشن | — | — | وضعیت فعال/غیرفعال بات ساعتی، سقف پیام در ساعت و زمان آخرین اجرا |
+| `POST /api/bot/toggle` | کوکی سشن | — | `{active: boolean}` | فعال یا متوقف‌کردن بات اسکنر ساعتی برای کاربر جاری در دیتابیس |
 | `POST /api/ingest/telegram` | secret/Bearer | ۱۲۰/min/IP | Telegram update JSON | `{success, layer, lead, evalResult}` / `{ignored}` / `{deduped}` |
 | `POST /api/ingest/bale` | secret/Bearer | ۱۲۰/min/IP | Bale update JSON | همان بالا |
-| `POST /api/leads/status` | ❌ (عمومی) | ۴۰/min/IP | `{leadId, status}` | `{success, lead}` |
-| `POST /api/settings` | ✅ | — | فیلدهای محصول (اعتبارسنجی کامل) | `{success, product}` |
 | `POST /api/assistant` | ❌ | ❌ | `{message, context?}` | `{id, role, content, timestamp}` |
-| `POST /api/auth/register` | — | — | `{name, email, password}` | ایجاد کاربر، ست‌کردن کوکی‌ها، ریدایرکت به `/onboarding` |
-| `POST /api/auth/login` | — | — | `{email, password}` یا `{password}` ادمین | اعتبارسنجی دوگانه، ست‌کردن کوکی‌ها، هدایت به `/leads` یا `/onboarding` |
+| `POST /api/auth/register` | — | — | `{name, email, password, passwordConfirm}` | ایجاد کاربر با پلن free، ست‌کردن کوکی‌ها، هدایت به `/onboarding` |
+| `POST /api/auth/login` | — | — | `{email, password}` یا `{password}` ادمین | اعتبارسنجی دوگانه، بارگذاری سوابق قبلی، هدایت به `/leads` یا `/onboarding` |
 | `POST /api/auth/logout` | — | — | — | پاک‌کردن کوکی‌های `radar_session` و `radar_onboarded` |
-| `GET /api/auth/session` | کوکی | — | — | وضعیت نشست، هویت کاربر و پرچم `onboarded` |
-| `POST /api/onboarding` | کوکی سشن | — | فیلدهای شرکت، سمت، محصول و ICP | ذخیره اطلاعات سازمانی، ست‌کردن پرچم آنبورد، هدایت به `/leads` |
+| `GET /api/auth/session` | کوکی | — | — | وضعیت نشست، هویت کاربر، پلن و پرچم `has_fetched_initial` |
+| `POST /api/onboarding` | کوکی سشن | — | فیلدهای شرکت، سمت، محصول و ICP | ایجاد محصول اختصاصی در پاکت‌بیس، عدم تزریق داده ماک، هدایت به `/leads` |
 
 اعتبارسنجی ورودی‌ها در `lib/validation.ts` (سقف طول، strip کاراکترهای
 کنترلی، allowlist پلتفرم‌ها). سقف‌ها: `content` ≤ ۳۰۰۰، `thread_context` ≤
@@ -323,8 +327,18 @@ Mode خاموش)، و HTTPS عمومی (Caddy در DEPLOY.sh تأمین می‌�
 - **تجربه کاربری و جهت ورودی‌های حساس (LTR Inputs):**
   - ورودی‌های ایمیل و رمز عبور مجهز به ویژگی نیتیو `dir="ltr"` و کلاس‌های `[direction:ltr] text-left` همراه با پدینگ استاندارد آیکون چشم (`pl-10 pr-3.5`) برای تراز صحیح و عدم تداخل زبان فارسی/انگلیسی.
 - **API key:** `RADAR_API_KEY` (Bearer) برای worker و pushهای برنامه‌ای؛
-  مقایسه زمان‌ثابت (`timingSafeEqual`). رمز ادمین هم به‌عنوان Bearer پذیرفته
-  می‌شود.
+- **تفکیک داده چندمستأجری و ذخیره خودکار در پاکت‌بیس (Multi-Tenant Auto-Save):**
+  - فیلد رابطه `user_id` روی کالکشن‌های `leads`، `raw_messages` و `products` جهت اطمینان از ایزولاسیون کامل داده میان کاربران مختلف.
+  - کاربران بازگشتی پس از ورود تنها سرنخ‌ها و داده‌های اختصاصی محصول خود را مشاهده می‌کنند (`filter: user_id = "${user.id}"`).
+  - تمامی تغییرات در داشبورد (تغییر وضعیت سرنخ به `approved`, `contacted`, `dismissed`، یادداشت‌های پیگیری مشتری، ویرایش محصول و ICP) بلافاصله در دیتابیس لوکال SQLite پاکت‌بیس Auto-Save شده و نشانگر همگام‌سازی لحظه‌ای در بالای کارتابل نمایش داده می‌شود.
+- **بات اسکنر خودکار ساعتی (Autonomous Hourly Harvester Bot):**
+  - ماژول `lib/botScheduler.ts` متصل به چرخه راه‌اندازی سرور از طریق `instrumentation.ts`.
+  - اسکن و کشف خودکار پیام‌های جامعه کاربری در پس‌زمینه در هر ساعت بدون نیاز به کلیک دستی کاربر.
+  - رعایت سقف ساعتی پلن کاربری (رایگان: ۲ پیام/ساعت، استارتر: ۶ پیام/ساعت، رشد: ۲۰ پیام/ساعت، سازمانی: ۵۰ پیام/ساعت).
+  - امکان فعال/متوقف‌سازی بات به ازای هر کاربر از طریق سوئیچ وضعیت در بنر کارتابل (`/api/bot/toggle`).
+- **کنترل نرخ و سهمیه‌بندی بر اساس پلن (Plan-Based Rate Limiting):**
+  - تعریف پلن‌های `free`، `starter`، `growth` و `enterprise` با سقف درخواست در دقیقه و سهمیه روزانه پایش پیام‌ها در `lib/rateLimit.ts`.
+  - هدایت کاربران جدید پس از آنبوردینگ به کارتابل خالی بدون تزریق داده‌های ساختگی (Mock Data) و امکان اسکن تعاملی اولیه با دکمه اختصاصی.
 - **وب‌هوک‌ها:** مقایسه زمان‌ثابت secret در هدر اختصاصی هر پلتفرم.
 - **سطح دیتابیس:** تفکیک هویت کاربران در `users` با قانون `id = @request.auth.id`؛ سایر کالکشن‌های داده با `create/update/delete = null` (فقط سوپریوزر سروری).
 - **دفاع تزریق پرامپت (۴ لایه):** کپسوله‌سازی XML پیام غیرقابل‌اعتماد،
@@ -334,16 +348,13 @@ Mode خاموش)، و HTTPS عمومی (Caddy در DEPLOY.sh تأمین می‌�
   `frame-ancestors 'none'` ،HSTS ،`X-Frame-Options: DENY` و غیره.
 - **Rate limiting** حافظه‌ای sliding-window برای همه مسیرهای حساس.
 
-### ⚠️ یافته‌های امنیتی باز (نیازمند اقدام)
+### ⚠️ یافته‌های امنیتی باز و وضعیت برطرف‌سازی
 
 1. **کلید OpenRouter هاردکدشده** در `app/api/assistant/route.ts:51` به‌عنوان
    fallback (`sk-or-v1-...`). این کلید باید revoke و از سورس حذف شود (فقط از
    env خوانده شود) و تاریخچه گیت بررسی/پاک‌سازی شود.
-2. **`POST /api/assistant` بدون احراز هویت و بدون rate limit** است — هر بازدیدکننده
-   می‌تواند با هزینه شما توکن مصرف کند. پیشنهاد: همان `isAuthenticatedRequest`
-   + سقف نرخی مثل simulate.
-3. **`POST /api/leads/status` عمومی** است (تغییر وضعیت لید بدون لاگین).
-   اگر داشبورد روی اینترنت عمومی است، به احراز نیاز دارد.
+2. **`POST /api/assistant` بدون احراز هویت و بدون rate limit** است — پیشنهاد: افزودن سقف نرخی مثل simulate.
+3. ✅ **مسیر `POST /api/leads/status` ایمن‌سازی شد**: اکنون احراز هویت سشن کاربر، بررسی عدم دسترسی به لیدهای سایر مستأجران، و سقف ۶۰ درخواست در دقیقه را اعمال می‌کند.
 4. مغایرت مستندات: پرامپت دستیار امتیاز نیت را ۱ تا ۱۰ توصیف می‌کند درحالی‌که
    سیستم ۰ تا ۱۰۰ است.
 

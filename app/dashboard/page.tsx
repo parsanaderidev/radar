@@ -15,7 +15,7 @@ import {
   TwitterXIcon,
   ForumIcon,
 } from "@/components/Icons";
-import { getPocketBaseClient, type LeadRecord, type ProductRecord } from "@/lib/pocketbase";
+import { getPocketBaseClient, type LeadRecord, type ProductRecord, type UserRecord } from "@/lib/pocketbase";
 import { calculateRadarMetrics, toPersianDigits } from "@/lib/pricing";
 import { cn } from "@/lib/cn";
 
@@ -23,9 +23,19 @@ export default function LeadRadarDashboard() {
   const [leads, setLeads] = useState<LeadRecord[]>([]);
   const [totalRawMessages, setTotalRawMessages] = useState<number>(0);
   const [activeProduct, setActiveProduct] = useState<ProductRecord | null>(null);
+  const [currentUser, setCurrentUser] = useState<UserRecord | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
+  const [isFetchingInitial, setIsFetchingInitial] = useState<boolean>(false);
   const [simulatedAlert, setSimulatedAlert] = useState<{ message: string; type: "success" | "info" } | null>(null);
+  const [autoSaveStatus, setAutoSaveStatus] = useState<string>("همگام با پایگاه داده پاکت‌بیس");
+  const [botStatus, setBotStatus] = useState<{
+    botActive: boolean;
+    hourlyLimit: number;
+    plan: string;
+    lastBotRun: string | null;
+  } | null>(null);
+  const [isTogglingBot, setIsTogglingBot] = useState<boolean>(false);
 
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const [lastRefreshedAt, setLastRefreshedAt] = useState<string>("هم‌اکنون");
@@ -41,22 +51,66 @@ export default function LeadRadarDashboard() {
 
   const pb = useMemo(() => getPocketBaseClient(), []);
 
-  // Fetch leads and metrics data
+  // Fetch leads and metrics data with multi-tenant isolation
   const fetchData = useCallback(async () => {
     try {
+      // 1. Session detection
+      const sessRes = await fetch("/api/auth/session")
+        .then((r) => r.json())
+        .catch(() => null);
+
+      const user: UserRecord | null = sessRes?.authenticated ? sessRes.user : null;
+      setCurrentUser(user);
+
+      const isTenantUser = user && user.id && user.id !== "admin";
+      const filterStr = isTenantUser ? `user_id = "${user.id}"` : "";
+
+      // 2. Fetch scoped leads
       const leadsRes = await pb.collection("leads").getFullList<LeadRecord>({
         sort: "-created",
+        filter: filterStr || undefined,
         expand: "raw_message_id.source_id,product_id",
       });
       setLeads(leadsRes);
 
-      const rawRes = await pb.collection("raw_messages").getList(1, 1);
+      // 3. Fetch scoped raw messages count
+      const rawRes = await pb.collection("raw_messages").getList(1, 1, {
+        filter: filterStr || undefined,
+      });
       setTotalRawMessages(rawRes.totalItems);
 
-      const prodRes = await pb.collection("products").getList<ProductRecord>(1, 1);
-      if (prodRes.items.length > 0) {
-        setActiveProduct(prodRes.items[0]);
+      // 4. Fetch scoped product
+      if (isTenantUser) {
+        let userProd: ProductRecord | null = null;
+        if (user.product_id) {
+          try {
+            userProd = await pb.collection("products").getOne<ProductRecord>(user.product_id);
+          } catch {}
+        }
+        if (!userProd) {
+          try {
+            userProd = await pb
+              .collection("products")
+              .getFirstListItem<ProductRecord>(`user_id = "${user.id}"`);
+          } catch {}
+        }
+        if (userProd) {
+          setActiveProduct(userProd);
+        }
+      } else {
+        const prodRes = await pb.collection("products").getList<ProductRecord>(1, 1);
+        if (prodRes.items.length > 0) {
+          setActiveProduct(prodRes.items[0]);
+        }
       }
+
+      // 5. Fetch bot scheduler status
+      fetch("/api/bot/status")
+        .then((r) => (r.ok ? r.json() : null))
+        .then((b) => {
+          if (b) setBotStatus(b);
+        })
+        .catch(() => {});
     } catch (err) {
       console.error("[Dashboard] Error fetching leads:", err);
     } finally {
@@ -68,26 +122,33 @@ export default function LeadRadarDashboard() {
   const handleManualRefresh = async () => {
     setIsRefreshing(true);
     try {
+      const sessRes = await fetch("/api/auth/session")
+        .then((r) => r.json())
+        .catch(() => null);
+
+      const user: UserRecord | null = sessRes?.authenticated ? sessRes.user : currentUser;
+      const isTenantUser = user && user.id && user.id !== "admin";
+      const filterStr = isTenantUser ? `user_id = "${user.id}"` : "";
+
       const leadsRes = await pb.collection("leads").getFullList<LeadRecord>({
         sort: "-created",
+        filter: filterStr || undefined,
         expand: "raw_message_id.source_id,product_id",
       });
       setLeads(leadsRes);
 
-      const rawRes = await pb.collection("raw_messages").getList(1, 1);
+      const rawRes = await pb.collection("raw_messages").getList(1, 1, {
+        filter: filterStr || undefined,
+      });
       setTotalRawMessages(rawRes.totalItems);
-
-      const prodRes = await pb.collection("products").getList<ProductRecord>(1, 1);
-      if (prodRes.items.length > 0) {
-        setActiveProduct(prodRes.items[0]);
-      }
 
       const now = new Date();
       const timeStr = now.toLocaleTimeString("fa-IR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
       setLastRefreshedAt(timeStr);
+      setAutoSaveStatus("همگام با پایگاه داده پاکت‌بیس");
 
       setSimulatedAlert({
-        message: `اطلاعات با موفقیت بازخوانی شد: ${toPersianDigits(leadsRes.length)} سرنخ و ${toPersianDigits(rawRes.totalItems)} پیام ارزیابی‌شده در پایگاه داده محلی پاکت‌بیس همگام گردید.`,
+        message: `اطلاعات با موفقیت بازخوانی شد: ${toPersianDigits(leadsRes.length)} سرنخ اختصاصی در پایگاه داده محلی پاکت‌بیس همگام گردید.`,
         type: "success",
       });
       setTimeout(() => setSimulatedAlert(null), 4000);
@@ -109,6 +170,13 @@ export default function LeadRadarDashboard() {
     let isSubscribed = false;
     pb.collection("leads")
       .subscribe("*", async (e) => {
+        // Multi-tenant guard: if this lead belongs to another user, ignore
+        if (currentUser && currentUser.id !== "admin") {
+          if (e.record.user_id && e.record.user_id !== currentUser.id) {
+            return;
+          }
+        }
+
         if (e.action === "create") {
           try {
             const expanded = await pb.collection("leads").getOne<LeadRecord>(e.record.id, {
@@ -116,6 +184,8 @@ export default function LeadRadarDashboard() {
             });
             setLeads((prev) => [expanded, ...prev.filter((l) => l.id !== expanded.id)]);
             setTotalRawMessages((prev) => prev + 1);
+            setAutoSaveStatus("پیام جدید به طور خودکار در پاکت‌بیس ذخیره شد");
+            setTimeout(() => setAutoSaveStatus("همگام با پایگاه داده پاکت‌بیس"), 4000);
           } catch {
             setLeads((prev) => [e.record as any, ...prev.filter((l) => l.id !== e.record.id)]);
           }
@@ -144,18 +214,85 @@ export default function LeadRadarDashboard() {
         pb.collection("leads").unsubscribe("*").catch(() => { });
       }
     };
-  }, [fetchData, pb]);
+  }, [fetchData, pb, currentUser]);
 
-  // Handle lead status updates via secure backend API
+  // First-time manual scan & message fetch handler
+  const handleFetchInitial = async () => {
+    if (isFetchingInitial) return;
+    setIsFetchingInitial(true);
+    setSimulatedAlert(null);
+
+    try {
+      const res = await fetch("/api/leads/fetch-initial", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "خطا در واکشی پیام‌ها");
+      }
+
+      if (data.leads && Array.isArray(data.leads)) {
+        setLeads(data.leads);
+        setTotalRawMessages(data.leads.length);
+        setAutoSaveStatus("داده‌های اولیه با موفقیت در پاکت‌بیس ذخیره شدند");
+        setTimeout(() => setAutoSaveStatus("همگام با پایگاه داده پاکت‌بیس"), 4000);
+
+        setSimulatedAlert({
+          message: `اسکن اولیه با موفقیت انجام شد: ${toPersianDigits(data.leads.length)} پیام مرتبط از بازار استخراج و به طور خودکار در پاکت‌بیس ثبت شد.`,
+          type: "success",
+        });
+        setTimeout(() => setSimulatedAlert(null), 5000);
+      }
+    } catch (err: any) {
+      console.error("[Dashboard] Initial fetch error:", err);
+      setSimulatedAlert({
+        message: err?.message || "خطا در برقراری ارتباط با سرور",
+        type: "info",
+      });
+    } finally {
+      setIsFetchingInitial(false);
+    }
+  };
+
+  // Toggle autonomous hourly harvester bot
+  const handleToggleBot = async () => {
+    if (isTogglingBot || !botStatus) return;
+    setIsTogglingBot(true);
+    try {
+      const res = await fetch("/api/bot/toggle", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ active: !botStatus.botActive }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setBotStatus((prev) => (prev ? { ...prev, botActive: data.botActive } : null));
+        setAutoSaveStatus(
+          data.botActive ? "اسکنر خودکار ساعتی فعال شد" : "اسکنر خودکار ساعتی متوقف شد"
+        );
+        setTimeout(() => setAutoSaveStatus("همگام با پایگاه داده پاکت‌بیس"), 3500);
+      }
+    } catch (err) {
+      console.error("Bot toggle error:", err);
+    } finally {
+      setIsTogglingBot(false);
+    }
+  };
+
+  // Handle lead status updates via secure backend API with notes support
   const handleUpdateStatus = async (
     leadId: string,
-    status: "new" | "approved" | "contacted" | "dismissed"
+    status: "new" | "approved" | "contacted" | "dismissed",
+    notes?: string
   ) => {
+    setAutoSaveStatus("در حال ذخیره‌سازی در پاکت‌بیس...");
     try {
       const res = await fetch("/api/leads/status", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ leadId, status }),
+        body: JSON.stringify({ leadId, status, notes }),
       });
 
       if (!res.ok) {
@@ -163,10 +300,18 @@ export default function LeadRadarDashboard() {
       }
 
       setLeads((prev) =>
-        prev.map((l) => (l.id === leadId ? { ...l, lead_status: status } : l))
+        prev.map((l) =>
+          l.id === leadId
+            ? { ...l, lead_status: status, ...(notes !== undefined ? { notes } : {}) }
+            : l
+        )
       );
+      setAutoSaveStatus("تغییرات با موفقیت در پاکت‌بیس ذخیره شد");
+      setTimeout(() => setAutoSaveStatus("همگام با پایگاه داده پاکت‌بیس"), 3000);
     } catch (err) {
       console.error("[Dashboard] Error updating lead status:", err);
+      setAutoSaveStatus("خطا در همگام‌سازی پاکت‌بیس");
+      setTimeout(() => setAutoSaveStatus("همگام با پایگاه داده پاکت‌بیس"), 4000);
     }
   };
 
@@ -330,16 +475,27 @@ export default function LeadRadarDashboard() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 pt-20 sm:pt-24 pb-8 space-y-4 sm:space-y-6">
         {/* Active Product Banner (Vercel Project Card Style) */}
         {activeProduct && (
-          <div className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+          <div className="p-3.5 sm:p-4 rounded-lg bg-[#0a0a0a] border border-[#1f1f1f] hover:border-[#333333] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
             <Link
               href="/settings"
-              className="space-y-1 group cursor-pointer flex-1 w-full sm:w-auto"
+              className="space-y-1 group cursor-pointer flex-1 w-full md:w-auto"
               title="مشاهده و ویرایش تنظیمات این محصول و پرسونای مشتری"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className="inline-flex items-center justify-center text-[10px] px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-medium group-hover:border-neutral-700 transition-colors duration-200">
                   محصول هدف
                 </span>
+                {currentUser?.plan && (
+                  <span className="inline-flex items-center text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/40 border border-emerald-800/40 text-[#00e599] font-medium">
+                    {currentUser.plan === "free"
+                      ? "پلن رایگان"
+                      : currentUser.plan === "starter"
+                        ? "پلن استارتر"
+                        : currentUser.plan === "growth"
+                          ? "پلن رشد"
+                          : "پلن سازمانی"}
+                  </span>
+                )}
                 <h1 className="text-sm sm:text-base font-semibold text-white group-hover:text-[#00e599] transition-colors duration-200 flex items-center gap-1.5">
                   <span>{activeProduct.name}</span>
                   <span className="text-xs text-neutral-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">← تنظیمات</span>
@@ -350,24 +506,45 @@ export default function LeadRadarDashboard() {
               </p>
             </Link>
 
-            <div className="flex items-center gap-2.5 self-stretch sm:self-auto justify-between sm:justify-end pt-2 sm:pt-0 border-t border-[#1a1a1a] sm:border-0 w-full sm:w-auto">
-              <span className="inline-flex items-center justify-center gap-1.5 text-[11px] text-neutral-500">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow" />
-                <span className="hidden xs:inline">همگام‌شده:</span>
-                <span className="text-neutral-300 font-medium">{lastRefreshedAt}</span>
+            <div className="flex items-center gap-2 self-stretch md:self-auto justify-between md:justify-end pt-2 md:pt-0 border-t border-[#1a1a1a] md:border-0 w-full md:w-auto flex-wrap sm:flex-nowrap">
+              {/* PocketBase Auto-Save Status Badge */}
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#111111] border border-[#222222] text-[11px] text-neutral-300 shrink-0" title="تمامی تغییرات، وضعیت‌ها و پیام‌ها به صورت خودکار در پاکت‌بیس ذخیره می‌شوند">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow shrink-0" />
+                <span className="truncate max-w-[190px]">{autoSaveStatus}</span>
               </span>
+
+              {/* Hourly Bot Harvester Toggle */}
+              <button
+                onClick={handleToggleBot}
+                disabled={isTogglingBot}
+                className={cn(
+                  "h-8 px-2.5 rounded-md border text-xs font-medium transition-all duration-200 ease-out active:scale-95 inline-flex items-center justify-center gap-1.5 cursor-pointer disabled:cursor-not-allowed shadow-sm shrink-0",
+                  botStatus?.botActive
+                    ? "bg-[#0d1f17] hover:bg-[#11291f] border-emerald-800/50 text-[#00e599]"
+                    : "bg-[#141414] hover:bg-[#1c1c1c] border-neutral-800 text-neutral-400"
+                )}
+                title="اسکنر خودکار ساعتی پیام‌های بازار را دوره‌ای دریافت و در پاکت‌بیس ثبت می‌کند"
+              >
+                <span className={cn("w-1.5 h-1.5 rounded-full shrink-0", botStatus?.botActive ? "bg-[#00e599] animate-pulse-glow" : "bg-neutral-600")} />
+                <span>
+                  {botStatus?.botActive ? "اسکنر ساعتی" : "اسکنر ساعتی"}
+                </span>
+                <span className="text-[10px] opacity-75">
+                  ({toPersianDigits(botStatus?.hourlyLimit || 2)}/ساعت)
+                </span>
+              </button>
 
               <button
                 onClick={handleManualRefresh}
                 disabled={isRefreshing || isLoading}
                 className={cn(
-                  "h-8 px-3 sm:px-3.5 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs font-medium text-neutral-200 transition-all duration-200 ease-out active:scale-95 inline-flex items-center justify-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-sm shrink-0",
+                  "h-8 px-2.5 sm:px-3 rounded-md bg-[#111111] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#383838] text-xs font-medium text-neutral-200 transition-all duration-200 ease-out active:scale-95 inline-flex items-center justify-center gap-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-sm shrink-0",
                   isRefreshing && "bg-[#181818] border-[#383838] text-white"
                 )}
                 title="بازخوانی داده‌ها از پایگاه داده محلی پاکت‌بیس"
               >
                 <RefreshIcon className={cn("w-3.5 h-3.5 text-neutral-400 transition-transform duration-300", isRefreshing && "animate-spin text-white")} />
-                <span>{isRefreshing ? "در حال دریافت..." : "بروزرسانی داده‌ها"}</span>
+                <span className="hidden sm:inline">{isRefreshing ? "در حال دریافت..." : "بروزرسانی"}</span>
               </button>
             </div>
           </div>
@@ -552,6 +729,61 @@ export default function LeadRadarDashboard() {
               </div>
             ))}
           </div>
+        ) : leads.length === 0 ? (
+          <div className="py-12 sm:py-16 px-6 rounded-lg border border-[#1f1f1f] text-center space-y-4 bg-[#050505] max-w-2xl mx-auto shadow-2xl">
+            <div className="w-14 h-14 mx-auto rounded-xl bg-[#111111] border border-[#262626] flex items-center justify-center text-white shadow-lg">
+              <RadarLogo className="w-7 h-7 text-[#00e599]" />
+            </div>
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-800/40 text-[#00e599] text-xs font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse-glow" />
+                <span>تنظیمات محصول و پرسونای هدف با موفقیت ثبت شد</span>
+              </div>
+              <h3 className="text-base sm:text-lg font-semibold text-white">
+                صندوق پیام‌های شما آماده شروع پایش است
+              </h3>
+              <p className="text-xs sm:text-sm text-neutral-400 max-w-lg mx-auto leading-relaxed">
+                رادار اطلاعات محصول شما ({activeProduct?.name || "محصول شما"}) را دریافت کرده است. برای شروع پایش جامعه کاربری و ارزیابی تمایل خرید با مدل هوش مصنوعی، دکمه زیر را بزنید. تمام داده‌ها به طور خودکار در پایگاه داده محلی پاکت‌بیس ذخیره خواهند شد.
+              </p>
+            </div>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={handleFetchInitial}
+                disabled={isFetchingInitial}
+                className="h-10 px-5 rounded-md bg-[#00e599] hover:bg-[#00c985] text-black text-xs sm:text-sm font-semibold inline-flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(0,229,153,0.3)] cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isFetchingInitial ? (
+                  <>
+                    <RefreshIcon className="w-4 h-4 animate-spin text-black" />
+                    <span>در حال اسکن و ارزیابی هوشمند...</span>
+                  </>
+                ) : (
+                  <>
+                    <SparklesIcon className="w-4 h-4 text-black" />
+                    <span>شروع اسکن و دریافت پیام‌های بازار</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                onClick={handleSimulateFeed}
+                disabled={isSimulating}
+                className="h-10 px-4 rounded-md bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-neutral-300 text-xs font-medium inline-flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer disabled:cursor-not-allowed"
+              >
+                <PlayIcon className="w-3.5 h-3.5 text-neutral-400" />
+                <span>تزریق یک پیام آزمایشی</span>
+              </button>
+            </div>
+
+            <div className="pt-3 text-[11px] text-neutral-500 border-t border-[#1a1a1a] flex items-center justify-center gap-2 flex-wrap">
+              <span>بات اسکنر ساعتی فعال است</span>
+              <span>•</span>
+              <span>ذخیره‌سازی پایدار در PocketBase SQLite</span>
+              <span>•</span>
+              <span>حفظ حریم خصوصی و امنیت محلی</span>
+            </div>
+          </div>
         ) : filteredLeads.length === 0 ? (
           <div className="py-12 sm:py-16 px-4 rounded-lg border border-[#1f1f1f] text-center space-y-3 bg-[#050505]">
             <div className="w-12 h-12 mx-auto rounded-lg bg-[#111111] border border-[#222222] hover:border-[#383838] flex items-center justify-center text-white shadow-sm group cursor-pointer transition-all active:scale-95">
@@ -562,17 +794,30 @@ export default function LeadRadarDashboard() {
                 هیچ پیامی با فیلترهای انتخابی موجود نیست
               </h3>
               <p className="text-xs text-neutral-500 max-w-sm mx-auto">
-                برای تزریق پیام جدید و مشاهده تریاژ هوشمند در رادار، دکمه «تزریق زنده پیام» را بزنید.
+                فیلترهای انتخابی پیام‌ها را محدود کرده‌اند. می‌توانید فیلترها را بازنشانی کنید یا پیام جدیدی اضافه نمایید.
               </p>
             </div>
-            <button
-              onClick={handleSimulateFeed}
-              disabled={isSimulating}
-              className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed"
-            >
-              <PlayIcon className="w-3 h-3 text-black" />
-              <span>تزریق زنده پیام</span>
-            </button>
+            <div className="flex items-center justify-center gap-2">
+              <button
+                onClick={() => {
+                  setSelectedIntent("all");
+                  setSelectedStatus("all");
+                  setSelectedPlatform("all");
+                  setSearchQuery("");
+                }}
+                className="h-8 px-3.5 rounded-md bg-[#161616] hover:bg-[#222222] border border-[#2a2a2a] text-neutral-200 text-xs font-medium cursor-pointer transition-all"
+              >
+                بازنشانی همه فیلترها
+              </button>
+              <button
+                onClick={handleSimulateFeed}
+                disabled={isSimulating}
+                className="h-8 px-4 rounded-md bg-white text-black hover:bg-[#e6e6e6] text-xs font-medium inline-flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer disabled:cursor-not-allowed"
+              >
+                <PlayIcon className="w-3 h-3 text-black" />
+                <span>تزریق زنده پیام</span>
+              </button>
+            </div>
           </div>
         ) : (
           <div className="space-y-3">

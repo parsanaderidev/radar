@@ -11,6 +11,11 @@ export interface UserRecord {
   product_description?: string;
   ideal_customer_profile?: string;
   onboarding_completed?: boolean;
+  plan?: "free" | "starter" | "growth" | "enterprise";
+  product_id?: string;
+  has_fetched_initial?: boolean;
+  bot_active?: boolean;
+  last_bot_run?: string;
   created?: string;
   updated?: string;
 }
@@ -23,6 +28,7 @@ export interface ProductRecord {
   value_propositions: string[];
   ideal_customer_profile: string;
   keywords: string[];
+  user_id?: string;
   created?: string;
   updated?: string;
 }
@@ -45,6 +51,7 @@ export interface RawMessageRecord {
   thread_context?: string;
   posted_at?: string;
   status: "pending" | "processed" | "filtered" | "error";
+  user_id?: string;
   created?: string;
   updated?: string;
   expand?: {
@@ -56,6 +63,7 @@ export interface LeadRecord {
   id: string;
   raw_message_id: string;
   product_id: string;
+  user_id?: string;
   intent_score: number;
   intent_level: "high_intent" | "problem_aware" | "curious" | "irrelevant";
   reasoning: string;
@@ -65,11 +73,13 @@ export interface LeadRecord {
   output_tokens: number;
   estimated_cost_usd: number;
   lead_status: "new" | "approved" | "contacted" | "dismissed";
+  notes?: string;
   created?: string;
   updated?: string;
   expand?: {
     raw_message_id?: RawMessageRecord;
     product_id?: ProductRecord;
+    user_id?: UserRecord;
   };
 }
 

@@ -86,14 +86,16 @@ export async function isDuplicateContent(
  */
 async function recordFilteredLead(
   pb: PocketBase,
-  rawMsg: { id: string },
+  rawMsg: { id: string; user_id?: string },
   product: ProductRecord,
   score: number,
   reasoning: string,
-  modelUsed: string
+  modelUsed: string,
+  userId?: string
 ): Promise<{ lead: any; evalResult: IntentEvaluationResult }> {
   const evalResult = filteredEvaluation(score, reasoning, modelUsed);
-  const lead = await pb.collection("leads").create({
+  const effectiveUserId = userId || rawMsg.user_id || product.user_id || undefined;
+  const leadData: any = {
     raw_message_id: rawMsg.id,
     product_id: product.id,
     intent_score: evalResult.intent_score,
@@ -105,7 +107,11 @@ async function recordFilteredLead(
     output_tokens: 0,
     estimated_cost_usd: 0,
     lead_status: "new",
-  });
+  };
+  if (effectiveUserId) {
+    leadData.user_id = effectiveUserId;
+  }
+  const lead = await pb.collection("leads").create(leadData);
   await pb.collection("raw_messages").update(rawMsg.id, { status: "filtered" }).catch((err: any) => {
     // Non-fatal: the lead is already recorded; a strict schema (missing the
     // "filtered" status value) must not fail the whole triage.
@@ -121,7 +127,8 @@ async function recordFilteredLead(
 export async function processSingleMessage(
   pb: PocketBase,
   rawMsg: RawMessageRecord,
-  product: ProductRecord
+  product: ProductRecord,
+  userId?: string
 ) {
   try {
     const platform = (rawMsg as any).expand?.source_id?.platform || "community";
@@ -133,7 +140,8 @@ export async function processSingleMessage(
       product,
     });
 
-    const lead = await pb.collection("leads").create({
+    const effectiveUserId = userId || rawMsg.user_id || product.user_id || undefined;
+    const leadData: any = {
       raw_message_id: rawMsg.id,
       product_id: product.id,
       intent_score:
@@ -148,7 +156,12 @@ export async function processSingleMessage(
       output_tokens: evalResult.output_tokens,
       estimated_cost_usd: evalResult.estimated_cost_usd,
       lead_status: "new",
-    });
+    };
+    if (effectiveUserId) {
+      leadData.user_id = effectiveUserId;
+    }
+
+    const lead = await pb.collection("leads").create(leadData);
 
     await pb.collection("raw_messages").update(rawMsg.id, { status: "processed" });
 
@@ -183,9 +196,11 @@ export async function processSingleMessage(
 export async function triagePendingMessage(
   pb: PocketBase,
   rawMsg: RawMessageRecord,
-  product: ProductRecord
+  product: ProductRecord,
+  userId?: string
 ): Promise<TriageOutcome> {
   const model = process.env.LLM_MODEL || "llama3.1";
+  const effectiveUserId = userId || rawMsg.user_id || product.user_id || undefined;
 
   // --- Layer 0a: static rules ---
   const pre = prefilterMessage(rawMsg.content);
@@ -196,7 +211,8 @@ export async function triagePendingMessage(
       product,
       pre.reason === "injection" ? 0 : 5,
       pre.reasonFa,
-      `${model} (Layer 0 deterministic filter)`
+      `${model} (Layer 0 deterministic filter)`,
+      effectiveUserId
     );
     console.log(`⊘ Filtered msg ${rawMsg.id} | [LAYER 0:${pre.reason}] | author: ${rawMsg.author_handle}`);
     return { lead, evalResult, layer: "layer0" };
@@ -210,7 +226,8 @@ export async function triagePendingMessage(
       product,
       5,
       "متن تکراری در بازه ۲۴ ساعت گذشته شناسایی و بدون مصرف توکن فیلتر شد.",
-      `${model} (Layer 0 hash dedupe)`
+      `${model} (Layer 0 hash dedupe)`,
+      effectiveUserId
     );
     console.log(`⊘ Filtered msg ${rawMsg.id} | [LAYER 0:duplicate] | author: ${rawMsg.author_handle}`);
     return { lead, evalResult, layer: "layer0" };
@@ -225,14 +242,15 @@ export async function triagePendingMessage(
       product,
       12,
       "پیام فاقد سیگنال خرید، درد کاری یا تطابق با کلیدواژه‌های محصول تشخیص داده شد و به ارزیابی عمیق ارسال نشد.",
-      `${model} (Layer 1 intent screen)`
+      `${model} (Layer 1 intent screen)`,
+      effectiveUserId
     );
     console.log(`⊘ Filtered msg ${rawMsg.id} | [LAYER 1:unqualified] | author: ${rawMsg.author_handle}`);
     return { lead, evalResult, layer: "layer1" };
   }
 
   // --- Layer 2: deep evaluation ---
-  const { lead, evalResult } = await processSingleMessage(pb, rawMsg, product);
+  const { lead, evalResult } = await processSingleMessage(pb, rawMsg, product, effectiveUserId);
   return { lead, evalResult, layer: "layer2" };
 }
 

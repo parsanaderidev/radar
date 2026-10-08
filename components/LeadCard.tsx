@@ -19,12 +19,19 @@ import type { LeadRecord } from "../lib/pocketbase";
 
 interface LeadCardProps {
   lead: LeadRecord;
-  onUpdateStatus: (leadId: string, status: "new" | "approved" | "contacted" | "dismissed") => Promise<void>;
+  onUpdateStatus: (
+    leadId: string,
+    status: "new" | "approved" | "contacted" | "dismissed",
+    notes?: string
+  ) => Promise<void>;
 }
 
 export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
   const [copied, setCopied] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [notes, setNotes] = useState(lead.notes || "");
+  const [showNotes, setShowNotes] = useState(!!lead.notes);
+  const [isSavingNotes, setIsSavingNotes] = useState(false);
 
   const rawMsg = lead.expand?.raw_message_id;
   const platform = rawMsg?.expand?.source_id?.platform || "telegram";
@@ -43,9 +50,19 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
   const handleStatusChange = async (status: "new" | "approved" | "contacted" | "dismissed") => {
     setIsUpdating(true);
     try {
-      await onUpdateStatus(lead.id, status);
+      await onUpdateStatus(lead.id, status, notes);
     } finally {
       setIsUpdating(false);
+    }
+  };
+
+  const handleSaveNotes = async () => {
+    if (notes === (lead.notes || "")) return;
+    setIsSavingNotes(true);
+    try {
+      await onUpdateStatus(lead.id, lead.lead_status, notes);
+    } finally {
+      setIsSavingNotes(false);
     }
   };
 
@@ -247,6 +264,50 @@ export function LeadCard({ lead, onUpdateStatus }: LeadCardProps) {
           </div>
         </div>
       )}
+
+      {/* Quick Notes / Follow-up Comment Auto-saved to PocketBase */}
+      <div className="pt-1">
+        {!showNotes ? (
+          <button
+            onClick={() => setShowNotes(true)}
+            className="text-[11px] text-neutral-500 hover:text-neutral-300 transition-colors inline-flex items-center gap-1 cursor-pointer"
+          >
+            <span>+ افزودن یادداشت پیگیری</span>
+          </button>
+        ) : (
+          <div className="space-y-1.5 p-2 rounded-md bg-[#0a0a0a] border border-[#1a1a1a]">
+            <div className="flex items-center justify-between text-[11px] text-neutral-400">
+              <span className="font-medium">یادداشت پیگیری سرنخ (ذخیره مستقیم در پاکت‌بیس):</span>
+              <button
+                onClick={() => setShowNotes(false)}
+                className="text-neutral-500 hover:text-neutral-300 text-[10px] cursor-pointer"
+              >
+                بستن
+              </button>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                onBlur={handleSaveNotes}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSaveNotes();
+                }}
+                placeholder="مثلاً: در تلگرام پیام داده شد، منتظر پاسخ مشتری..."
+                className="flex-1 px-2.5 py-1 text-xs bg-[#111111] border border-[#222222] rounded text-neutral-200 focus:outline-none focus:border-[#00e599] transition-colors"
+              />
+              <button
+                onClick={handleSaveNotes}
+                disabled={isSavingNotes || notes === (lead.notes || "")}
+                className="h-6 px-2.5 rounded text-[11px] bg-[#1a1a1a] hover:bg-[#262626] border border-[#333333] text-neutral-200 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all"
+              >
+                {isSavingNotes ? "در حال ذخیره..." : "ذخیره در دیتابیس"}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Footer: Token Ledger & Actions */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 pt-2.5 border-t border-[#1a1a1a]">

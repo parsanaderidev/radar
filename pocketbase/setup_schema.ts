@@ -38,7 +38,7 @@ export async function setupSchema() {
   // 0. USERS COLLECTION (Auth) - Ensure onboarding and profile fields
   const usersColl = getCollection("users");
   if (usersColl) {
-    console.log("[PocketBase] Ensuring 'users' collection has onboarding fields...");
+    console.log("[PocketBase] Ensuring 'users' collection has onboarding and multi-tenancy fields...");
     const existingFieldNames = new Set((usersColl.fields as any[]).map((f) => f.name));
     const newOnboardingFields = [
       { name: "company", type: "text", required: false },
@@ -47,6 +47,17 @@ export async function setupSchema() {
       { name: "product_description", type: "text", required: false },
       { name: "ideal_customer_profile", type: "text", required: false },
       { name: "onboarding_completed", type: "bool", required: false },
+      {
+        name: "plan",
+        type: "select",
+        values: ["free", "starter", "growth", "enterprise"],
+        maxSelect: 1,
+        required: false,
+      },
+      { name: "product_id", type: "text", required: false },
+      { name: "has_fetched_initial", type: "bool", required: false },
+      { name: "bot_active", type: "bool", required: false },
+      { name: "last_bot_run", type: "date", required: false },
     ];
     let updatedFields = [...(usersColl.fields as any[])];
     let fieldsAdded = false;
@@ -58,9 +69,9 @@ export async function setupSchema() {
     }
     if (fieldsAdded) {
       await pb.collections.update(usersColl.id, { fields: updatedFields });
-      console.log("[PocketBase] Added onboarding fields to 'users' collection.");
+      console.log("[PocketBase] Added onboarding & plan fields to 'users' collection.");
     } else {
-      console.log("[PocketBase] 'users' collection already has all onboarding fields.");
+      console.log("[PocketBase] 'users' collection already has all onboarding & plan fields.");
     }
   }
 
@@ -84,6 +95,13 @@ export async function setupSchema() {
         { name: "value_propositions", type: "json", required: false },
         { name: "ideal_customer_profile", type: "text", required: true },
         { name: "keywords", type: "json", required: false },
+        {
+          name: "user_id",
+          type: "relation",
+          collectionId: usersColl!.id,
+          maxSelect: 1,
+          required: false,
+        },
         { name: "created", type: "autodate", onCreate: true, onUpdate: false },
         { name: "updated", type: "autodate", onCreate: true, onUpdate: true },
       ],
@@ -98,6 +116,27 @@ export async function setupSchema() {
       updateRule: null,
       deleteRule: null,
     });
+    try {
+      const full = await pb.collections.getOne(productsColl.id);
+      const hasUserId = (full.fields as any[]).some((f) => f.name === "user_id");
+      if (!hasUserId && usersColl) {
+        await pb.collections.update(productsColl.id, {
+          fields: [
+            ...(full.fields as any[]),
+            {
+              name: "user_id",
+              type: "relation",
+              collectionId: usersColl.id,
+              maxSelect: 1,
+              required: false,
+            },
+          ],
+        });
+        console.log("[PocketBase] Migrated 'products' to include 'user_id' relation.");
+      }
+    } catch (err: any) {
+      console.warn("[PocketBase] products user_id migration skipped:", err?.message || err);
+    }
   }
 
   // 2. SOURCES COLLECTION
@@ -178,6 +217,13 @@ export async function setupSchema() {
           maxSelect: 1,
           required: true,
         },
+        {
+          name: "user_id",
+          type: "relation",
+          collectionId: usersColl!.id,
+          maxSelect: 1,
+          required: false,
+        },
         { name: "created", type: "autodate", onCreate: true, onUpdate: false },
         { name: "updated", type: "autodate", onCreate: true, onUpdate: true },
       ],
@@ -192,17 +238,35 @@ export async function setupSchema() {
       updateRule: null,
       deleteRule: null,
     });
-    // Migrate the status select to include "filtered" (Layer 0/1 rejections).
+    // Migrate the status select to include "filtered" and ensure user_id exists
     try {
       const full = await pb.collections.getOne(rawMessagesColl.id);
-      const statusField: any = (full.fields as any[]).find((f) => f.name === "status");
+      let updatedFields = [...(full.fields as any[])];
+      let hasChanges = false;
+
+      const statusField: any = updatedFields.find((f) => f.name === "status");
       if (statusField && Array.isArray(statusField.values) && !statusField.values.includes("filtered")) {
-        await pb.collections.update(rawMessagesColl.id, {
-          fields: (full.fields as any[]).map((f) =>
-            f.name === "status" ? { ...f, values: [...f.values, "filtered"] } : f
-          ),
+        updatedFields = updatedFields.map((f) =>
+          f.name === "status" ? { ...f, values: [...f.values, "filtered"] } : f
+        );
+        hasChanges = true;
+      }
+
+      const hasUserId = updatedFields.some((f) => f.name === "user_id");
+      if (!hasUserId && usersColl) {
+        updatedFields.push({
+          name: "user_id",
+          type: "relation",
+          collectionId: usersColl.id,
+          maxSelect: 1,
+          required: false,
         });
-        console.log("[PocketBase] Migrated 'raw_messages.status' to include 'filtered'.");
+        hasChanges = true;
+      }
+
+      if (hasChanges) {
+        await pb.collections.update(rawMessagesColl.id, { fields: updatedFields });
+        console.log("[PocketBase] Migrated 'raw_messages' fields (filtered status / user_id).");
       }
     } catch (err: any) {
       console.warn("[PocketBase] Status migration skipped:", err?.message || err);
@@ -236,6 +300,13 @@ export async function setupSchema() {
           collectionId: productsColl!.id,
           maxSelect: 1,
           required: true,
+        },
+        {
+          name: "user_id",
+          type: "relation",
+          collectionId: usersColl!.id,
+          maxSelect: 1,
+          required: false,
         },
         {
           name: "intent_score",
@@ -278,17 +349,45 @@ export async function setupSchema() {
       updateRule: null,
       deleteRule: null,
     });
-    // Migrate intent_score to required: false so zero values (0) are accepted in Go/PocketBase
+    // Migrate intent_score to required: false and ensure user_id relation exists
     try {
       const full = await pb.collections.getOne(leadsColl.id);
-      const scoreField: any = (full.fields as any[]).find((f) => f.name === "intent_score");
+      let updatedFields = [...(full.fields as any[])];
+      let hasChanges = false;
+
+      const scoreField: any = updatedFields.find((f) => f.name === "intent_score");
       if (scoreField && scoreField.required === true) {
-        await pb.collections.update(leadsColl.id, {
-          fields: (full.fields as any[]).map((f) =>
-            f.name === "intent_score" ? { ...f, required: false } : f
-          ),
+        updatedFields = updatedFields.map((f) =>
+          f.name === "intent_score" ? { ...f, required: false } : f
+        );
+        hasChanges = true;
+      }
+
+      const hasUserId = updatedFields.some((f) => f.name === "user_id");
+      if (!hasUserId && usersColl) {
+        updatedFields.push({
+          name: "user_id",
+          type: "relation",
+          collectionId: usersColl.id,
+          maxSelect: 1,
+          required: false,
         });
-        console.log("[PocketBase] Migrated 'leads.intent_score' to required: false.");
+        hasChanges = true;
+      }
+
+      const hasNotes = updatedFields.some((f) => f.name === "notes");
+      if (!hasNotes) {
+        updatedFields.push({
+          name: "notes",
+          type: "text",
+          required: false,
+        });
+        hasChanges = true;
+      }
+
+      if (hasChanges) {
+        await pb.collections.update(leadsColl.id, { fields: updatedFields });
+        console.log("[PocketBase] Migrated 'leads' fields (intent_score required:false / user_id / notes).");
       }
     } catch (err: any) {
       console.warn("[PocketBase] leads migration skipped:", err?.message || err);

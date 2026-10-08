@@ -127,6 +127,7 @@ export function validateAnalyzeInput(body: any): ValidationResult<{
 export function validateLeadStatusInput(body: any): ValidationResult<{
   leadId: string;
   status: "new" | "approved" | "contacted" | "dismissed";
+  notes?: string;
 }> {
   const errors: ValidationError[] = [];
 
@@ -143,6 +144,15 @@ export function validateLeadStatusInput(body: any): ValidationResult<{
     errors.push({ field: "status", message: `Status must be one of: ${allowedStatuses.join(", ")}` });
   }
 
+  let notes: string | undefined = undefined;
+  if (body.notes !== undefined) {
+    if (typeof body.notes === "string") {
+      notes = sanitizeString(body.notes, 2000);
+    } else {
+      errors.push({ field: "notes", message: "Notes must be a string." });
+    }
+  }
+
   if (errors.length > 0) {
     return { success: false, errors };
   }
@@ -152,6 +162,7 @@ export function validateLeadStatusInput(body: any): ValidationResult<{
     data: {
       leadId: body.leadId,
       status: body.status,
+      notes,
     },
   };
 }

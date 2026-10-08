@@ -78,10 +78,14 @@ The evaluator speaks the OpenAI-compatible REST standard, so it connects to a lo
 ## Key Features
 
 - **Live dashboard over Server-Sent Events** — leads and KPIs update instantly via PocketBase subscriptions (`pb.collection("leads").subscribe("*")`), with no manual refresh.
+- **Autonomous Hourly Harvester Bot** — automatically scans and triages community messages every hour in the background, respecting each user's plan rate limit (`free: 2/hr`, `starter: 6/hr`, `growth: 20/hr`, `enterprise: 50/hr`) without requiring manual button clicks.
+- **PocketBase Auto-Save & Data Persistence** — lead statuses, team follow-up notes, settings, and inbound messages auto-save immediately to local PocketBase SQLite, with live sync badges on the dashboard.
+- **Multi-Tenant Isolation & Zero Pre-seeded Mock Data** — fresh user registrations land on a clean, private workspace with an interactive guided card (`«شروع اسکن و دریافت پیام‌های بازار»`), and returning users always reload their preserved leads.
+- **Plan-Based Rate Limiting & Quotas** — granular sliding-window minute limits and daily message quotas enforced per tenant across `free`, `starter`, `growth`, and `enterprise` tiers.
 - **Five KPI cards** — total monitored messages, noise-reduction percentage, qualified leads, total token spend in USD, and cost per lead with IRR/IRT estimate.
 - **Simulate Live Feed** — a one-click demo injector that pushes realistic Persian community messages through the full triage pipeline; ideal for presentations.
-- **One-click reply copy** — generates and copies a natural, tone-matched Persian response draft.
-- **Lead lifecycle management** — move leads between `new`, `approved`, `contacted`, and `dismissed`.
+- **One-click reply copy & Follow-up notes** — generates and copies tone-matched Persian response drafts and allows inline follow-up remarks saved to PocketBase.
+- **Lead lifecycle management** — move leads between `new`, `approved`, `contacted`, and `dismissed` with instant database persistence.
 - **Platform filtering and sorting** — filter the feed by Telegram, Bale, X/Twitter, or forums.
 - **Production-Ready SaaS Auth & Onboarding** — complete user registration (`/register`), ICP onboarding (`/onboarding`), login (`/login`), and dedicated leads management (`/leads`) with Next.js 16 Edge proxy route protection, secure HttpOnly 30-day session cookies, and multi-tenant user profile isolation.
 - **Product & ICP settings (`/settings`)** — manage value propositions, monitored keywords, and buyer persona at runtime.

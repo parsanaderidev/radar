@@ -45,9 +45,34 @@ export default function ProductSettingsPage() {
   useEffect(() => {
     async function loadProduct() {
       try {
-        const res = await pb.collection("products").getList<ProductRecord>(1, 1);
-        if (res.items.length > 0) {
-          const p = res.items[0];
+        const sessRes = await fetch("/api/auth/session")
+          .then((r) => r.json())
+          .catch(() => null);
+        const user = sessRes?.authenticated ? sessRes.user : null;
+        let p: ProductRecord | null = null;
+
+        if (user && user.id && user.id !== "admin") {
+          if (user.product_id) {
+            try {
+              p = await pb.collection("products").getOne<ProductRecord>(user.product_id);
+            } catch {}
+          }
+          if (!p) {
+            try {
+              const res = await pb.collection("products").getList<ProductRecord>(1, 1, {
+                filter: `user_id = "${user.id}"`,
+              });
+              if (res.items.length > 0) p = res.items[0];
+            } catch {}
+          }
+        }
+
+        if (!p) {
+          const res = await pb.collection("products").getList<ProductRecord>(1, 1);
+          if (res.items.length > 0) p = res.items[0];
+        }
+
+        if (p) {
           setProduct(p);
           setName(p.name);
           setTagline(p.tagline || "");

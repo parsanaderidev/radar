@@ -2,31 +2,50 @@ import { NextResponse } from "next/server";
 import { getPocketBaseClient, authenticateSuperuser, type ProductRecord } from "@/lib/pocketbase";
 import { DEMO_COMMUNITY_MESSAGES } from "@/scripts/seed_demo";
 import { triagePendingMessage } from "@/lib/pipeline";
-import { isAuthenticatedRequest } from "@/lib/auth";
-import { rateLimiter, getClientIp } from "@/lib/rateLimit";
+import { getAuthSession } from "@/lib/auth";
+import { checkUserPlanLimit, rateLimiter, getClientIp } from "@/lib/rateLimit";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   // 1. Authentication check
-  const isAuth = await isAuthenticatedRequest(req);
-  if (!isAuth) {
+  const session = await getAuthSession(req);
+  if (!session.isAuthenticated || !session.user) {
     return NextResponse.json(
-      { error: "Unauthorized. Valid session or Bearer API key required." },
+      { error: "جلسه کاری شما نامعتبر است. لطفاً ابتدا وارد حساب کاربری خود شوید." },
       { status: 401 }
     );
   }
 
-  // 2. Rate limiting (max 10 simulate calls per minute per IP)
-  const clientIp = getClientIp(req);
-  const rl = rateLimiter.check(`simulate:${clientIp}`, 10, 60 * 1000);
-  if (!rl.allowed) {
+  // 2. Plan-based rate limiting & daily quota check
+  const userPlan = session.user.plan || "free";
+  const planCheck = checkUserPlanLimit(session.user.id, userPlan, "simulate");
+  if (!planCheck.allowed) {
     return NextResponse.json(
-      { error: "Rate limit exceeded. Please wait before simulating more messages." },
+      {
+        error: planCheck.errorFa,
+        plan: userPlan,
+        planNameFa: planCheck.planNameFa,
+        remainingMinute: planCheck.remainingMinute,
+        remainingDaily: planCheck.remainingDaily,
+      },
       {
         status: 429,
-        headers: { "Retry-After": Math.ceil(rl.resetInMs / 1000).toString() },
+        headers: {
+          "Retry-After": planCheck.resetInMs ? Math.ceil(planCheck.resetInMs / 1000).toString() : "60",
+          "X-User-Plan": userPlan,
+        },
       }
+    );
+  }
+
+  // Secondary IP sliding guard (max 30 requests/min per IP)
+  const clientIp = getClientIp(req);
+  const ipCheck = rateLimiter.check(`simulate-ip:${clientIp}`, 30, 60 * 1000);
+  if (!ipCheck.allowed) {
+    return NextResponse.json(
+      { error: "تعداد درخواست‌ها بیش از حد مجاز است. لطفاً کمی بعد تلاش کنید." },
+      { status: 429 }
     );
   }
 
@@ -34,15 +53,34 @@ export async function POST(req: Request) {
     const pb = getPocketBaseClient();
     await authenticateSuperuser(pb);
 
-    // Get product
-    const products = await pb.collection("products").getList<ProductRecord>(1, 1);
-    if (products.totalItems === 0) {
+    // 3. User-isolated product resolution:
+    // First try user's own product; if none, fall back to system product
+    let product: ProductRecord | null = null;
+    if (session.user.product_id) {
+      try {
+        product = await pb.collection("products").getOne<ProductRecord>(session.user.product_id);
+      } catch {}
+    }
+    if (!product && session.user.id !== "admin") {
+      try {
+        product = await pb
+          .collection("products")
+          .getFirstListItem<ProductRecord>(`user_id = "${session.user.id}"`);
+      } catch {}
+    }
+    if (!product) {
+      const products = await pb.collection("products").getList<ProductRecord>(1, 1);
+      if (products.totalItems > 0) {
+        product = products.items[0];
+      }
+    }
+
+    if (!product) {
       return NextResponse.json(
-        { error: "No product configured in database. Run pocketbase/setup_schema.ts first." },
+        { error: "هیچ شناسنامه محصولی در سامانه یافت نشد. لطفاً در صفحه تنظیمات محصول خود را مشخص فرمایید." },
         { status: 400 }
       );
     }
-    const product = products.items[0];
 
     // Get sources
     const sources = await pb.collection("sources").getFullList();
@@ -65,8 +103,9 @@ export async function POST(req: Request) {
 
     const sourceId = sourceByPlatform[msgDef.platform] || sources[0]?.id;
 
-    // Create raw message
-    const rawMsg = await pb.collection("raw_messages").create<any>({
+    // Create raw message with user isolation
+    const effectiveUserId = session.user.id !== "admin" ? session.user.id : undefined;
+    const rawMsgData: any = {
       source_id: sourceId,
       external_id: `live_sim_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
       author_handle: msgDef.author_handle,
@@ -74,10 +113,20 @@ export async function POST(req: Request) {
       thread_context: msgDef.thread_context || "",
       posted_at: new Date().toISOString(),
       status: "pending",
-    });
+    };
+    if (effectiveUserId) {
+      rawMsgData.user_id = effectiveUserId;
+    }
 
-    // Ingest & evaluate immediately
-    const { lead, evalResult, layer } = await triagePendingMessage(pb, rawMsg as any, product);
+    const rawMsg = await pb.collection("raw_messages").create<any>(rawMsgData);
+
+    // Ingest & evaluate immediately with user scoping
+    const { lead, evalResult, layer } = await triagePendingMessage(
+      pb,
+      rawMsg as any,
+      product,
+      effectiveUserId
+    );
 
     // Expand lead relations for immediate UI consumption
     const fullLead = await pb.collection("leads").getOne(lead.id, {
@@ -86,10 +135,12 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Simulated message triaged successfully",
+      message: "پیام جدید با موفقیت دریافت و ارزیابی شد.",
       layer,
       lead: fullLead,
       evalResult,
+      plan: userPlan,
+      remainingDaily: planCheck.remainingDaily,
     });
   } catch (err: any) {
     console.error("[API /simulate] Error:", err);

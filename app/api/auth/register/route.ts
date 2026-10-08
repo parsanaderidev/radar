@@ -51,6 +51,8 @@ export async function POST(req: Request) {
         passwordConfirm,
         name: name.trim(),
         onboarding_completed: false,
+        plan: "free",
+        has_fetched_initial: false,
       });
     } catch (createErr: any) {
       const errMsg = createErr?.data?.data?.email?.message || createErr?.message || "";

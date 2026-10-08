@@ -48,6 +48,54 @@ export async function POST(req: Request) {
     const pb = new PocketBase(getPocketBaseUrl());
     await authenticateSuperuser(pb);
 
+    // Dedicated product for this tenant/user
+    let userProductId: string | undefined;
+    try {
+      if (session.user.id !== "admin") {
+        let existingUserProd: ProductRecord | null = null;
+        try {
+          existingUserProd = await pb
+            .collection("products")
+            .getFirstListItem<ProductRecord>(`user_id = "${session.user.id}"`);
+        } catch {
+          existingUserProd = null;
+        }
+
+        if (existingUserProd) {
+          await pb.collection("products").update(existingUserProd.id, {
+            name: product_name.trim(),
+            description: product_description.trim(),
+            ideal_customer_profile: ideal_customer_profile.trim(),
+            keywords: [product_name.trim(), company.trim()],
+          });
+          userProductId = existingUserProd.id;
+        } else {
+          const newProd = await pb.collection("products").create({
+            name: product_name.trim(),
+            description: product_description.trim(),
+            ideal_customer_profile: ideal_customer_profile.trim(),
+            value_propositions: [product_description.trim()],
+            keywords: [product_name.trim(), company.trim()],
+            user_id: session.user.id,
+          });
+          userProductId = newProd.id;
+        }
+      } else {
+        // Admin user updating the primary demo product
+        const existingProds = await pb.collection("products").getList<ProductRecord>(1, 1);
+        if (existingProds.items.length > 0) {
+          userProductId = existingProds.items[0].id;
+          await pb.collection("products").update(userProductId, {
+            name: product_name.trim(),
+            description: product_description.trim(),
+            ideal_customer_profile: ideal_customer_profile.trim(),
+          });
+        }
+      }
+    } catch (prodErr) {
+      console.warn("[Onboarding API] Product sync warning:", prodErr);
+    }
+
     // If regular user (not master admin), update their record in PocketBase users collection
     if (session.user.id !== "admin") {
       const updateData: Partial<UserRecord> = {
@@ -57,36 +105,16 @@ export async function POST(req: Request) {
         product_description: product_description.trim(),
         ideal_customer_profile: ideal_customer_profile.trim(),
         onboarding_completed: true,
+        has_fetched_initial: false, // User starts fresh without sample data
       };
+      if (userProductId) {
+        updateData.product_id = userProductId;
+      }
       if (name && typeof name === "string" && name.trim()) {
         updateData.name = name.trim();
       }
 
       await pb.collection("users").update(session.user.id, updateData);
-    }
-
-    // Also update/sync the product in products collection so the triage pipeline matches this user's product
-    try {
-      const existingProds = await pb.collection("products").getList<ProductRecord>(1, 1);
-      if (existingProds.items.length > 0) {
-        const prodId = existingProds.items[0].id;
-        await pb.collection("products").update(prodId, {
-          name: product_name.trim(),
-          description: product_description.trim(),
-          ideal_customer_profile: ideal_customer_profile.trim(),
-        });
-      } else {
-        await pb.collection("products").create({
-          name: product_name.trim(),
-          description: product_description.trim(),
-          ideal_customer_profile: ideal_customer_profile.trim(),
-          value_propositions: [product_description.trim()],
-          keywords: [product_name.trim(), company.trim()],
-        });
-      }
-    } catch (prodErr) {
-      console.warn("[Onboarding API] Product sync warning:", prodErr);
-      // Non-fatal if product sync has minor schema conflict, user onboarding is primary
     }
 
     const isProd = process.env.NODE_ENV === "production";
