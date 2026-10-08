@@ -19,10 +19,10 @@ export interface BotRunResult {
 
 // Plan-based hourly ingestion limits
 export const BOT_HOURLY_LIMITS: Record<PlanKey, number> = {
-  free: 2,         // 2 messages per hour
-  starter: 6,      // 6 messages per hour
-  growth: 20,      // 20 messages per hour
-  enterprise: 50,  // 50 messages per hour
+  free: 10,        // 10 messages per hour (free trial)
+  starter: 30,     // 30 messages per hour (Starter plan: 1,890,000 Tomans)
+  growth: 80,      // 80 messages per hour (Growth plan: 4,890,000 Tomans)
+  enterprise: 200, // 200 messages per hour (Enterprise plan)
 };
 
 // Realistic community pool messages covering Iranian tech/business ecosystem
