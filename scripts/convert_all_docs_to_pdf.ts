@@ -261,10 +261,11 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: 'Ravi', Tahoma, sans-serif !important;
     }
 
     body {
-      font-family: 'Ravi', Tahoma, sans-serif;
+      font-family: 'Ravi', Tahoma, sans-serif !important;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.75;
@@ -272,6 +273,14 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
       direction: rtl;
       text-align: right;
       -webkit-font-smoothing: antialiased;
+    }
+
+    code, pre, .inline-code, .mermaid-code, .code-lang {
+      font-family: 'Ravi', Consolas, 'JetBrains Mono', Monaco, monospace !important;
+    }
+
+    .doc-quote, .callout, .callout-body, .callout-title, blockquote {
+      font-family: 'Ravi', Tahoma, sans-serif !important;
     }
 
     /* Floating Top Toolbar */
@@ -639,12 +648,19 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
     }
 
     /* =========================================================================
-       PRINT STYLES: Black & White / Dark Theme with Zero Empty Waste
+       PRINT STYLES: 100% Full Bleed Black & White with Zero White Margins
     ========================================================================= */
     @media print {
       @page {
         size: A4 portrait;
-        margin: 10mm 10mm 10mm 10mm;
+        margin: 0 !important;
+      }
+      html {
+        background-color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
       body {
         background-color: #000000 !important;
@@ -653,6 +669,8 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
         print-color-adjust: exact !important;
         font-size: 11pt;
         line-height: 1.5;
+        margin: 0 !important;
+        padding: 12mm 14mm !important;
       }
       .top-bar {
         display: none !important;

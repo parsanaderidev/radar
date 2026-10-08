@@ -147,8 +147,30 @@ CDN خارجی، رابط کاملاً RTL با اعداد فارسی.
 
 ### `products` — شناسنامه محصول و ICP
 
+### `users` — کاربران و احراز هویت چندمستأجری
+
+| فیلد | نوع | توضیح و عملکرد |
+| --- | --- | --- |
+| `id` | text | شناسه یکتای کاربر در پایگاه داده SQLite پاکت‌بیس |
+| `email` | email (unique) | ایمیل کاری جهت ورود به سامانه و دریافت گزارش‌ها |
+| `name` | text | نام و نام خانوادگی کاربر |
+| `company` | text | نام شرکت یا سازمان متبوع |
+| `role` | text | سمت سازمانی (مدیر فروش، مدیر رشد، بنیان‌گذار) |
+| `product_name` | text | نام محصول اصلی تحت پایش کاربر |
+| `product_description` | text | شرح ارزش‌آفرینی و ویژگی‌های محصول برای پرامپت L2 |
+| `ideal_customer_profile` | text | مشخصات دقیق پرسونای خریدار ایده‌آل (ICP) |
+| `onboarding_completed` | bool | وضعیت تکمیل موفق فرآیند ثبت‌نام و آنبوردینگ |
+| `plan` | select | سطح اشتراک کاربر: `free \| starter \| growth \| enterprise` |
+| `product_id` | text | شناسه رکورد محصول اختصاصی کاربر در جدول `products` |
+| `has_fetched_initial` | bool | نشانگر واکشی پیام‌های اولیه توسط کاربر (Zero Mock Data) |
+| `bot_active` | bool | وضعیت فعال بودن اسکنر پس‌زمینه خودکار برای این کاربر |
+| `last_bot_run` | date | تاریخ و زمان آخرین اجرای موفق اسکن خودکار ساعتی |
+
+### `products` — مشخصات محصول و ICP
+
 | فیلد | نوع | توضیح |
 | --- | --- | --- |
+| `user_id` | relation → `users` | شناسه کاربر مالک محصول جهت ایزولاسیون کامل داده‌ها |
 | `name` | text (required) | نام محصول |
 | `tagline` | text | تگ‌لاین |
 | `description` | text (required) | شرح — وارد پرامپت L2 می‌شود |
@@ -182,6 +204,7 @@ CDN خارجی، رابط کاملاً RTL با اعداد فارسی.
 | --- | --- | --- |
 | `raw_message_id` | relation → `raw_messages` (required) | پیام مبدأ |
 | `product_id` | relation → `products` (required) | محصول مبنای ارزیابی |
+| `user_id` | relation → `users` | شناسه کاربر مالک لید (تفکیک چندمستأجری داده‌ها) |
 | `intent_score` | number 0–100 (required) | امتیاز نیت |
 | `intent_level` | select (required) | چهار سطح نیت |
 | `reasoning` | text | استدلال فارسی |
@@ -190,6 +213,7 @@ CDN خارجی، رابط کاملاً RTL با اعداد فارسی.
 | `input_tokens` / `output_tokens` | number | حسابداری توکن (برای L0/L1 صفر) |
 | `estimated_cost_usd` | number | هزینه دلاری (برای L0/L1 صفر) |
 | `lead_status` | select | چرخه حیات: `new → approved/contacted/dismissed` |
+| `notes` | text | یادداشت‌های پیگیری کارشناس فروش (Auto-Saved در دیتابیس) |
 
 رابطه‌ها: `PRODUCTS ||--o{ LEADS` ،`RAW_MESSAGES ||--o{ LEADS` ،`SOURCES ||--o{ RAW_MESSAGES`.
 
