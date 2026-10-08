@@ -1,6 +1,6 @@
 {
   "0": "Icons.tsx",
-  "1": "pocketbase.ts",
+  "1": "auth.ts",
   "2": "voice-orb.tsx",
   "3": "pipeline.ts",
   "4": "package.json",
@@ -26,8 +26,10 @@
   "24": "Radar — Technical Reference (مرجع فنی جامع)",
   "25": "devDependencies",
   "26": "راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders",
-  "27": "auth.ts",
+  "27": "ingest.ts",
   "28": "راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders",
   "29": "proxy.ts",
-  "30": "next.config.ts"
+  "30": "next.config.ts",
+  "31": "build_docs_html.ts",
+  "32": "logout/route.ts"
 }
