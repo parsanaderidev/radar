@@ -395,18 +395,6 @@
     "ast_hash": "63cb4e1eff817834a27ebdab5c505848",
     "semantic_hash": ""
   },
-  "docs/PITCH_DECK_CONTENT.md": {
-    "mtime": 1791472477.504716,
-    "seen": 1791472627.3205228,
-    "ast_hash": "d9d89036b7d6ec436cfca573903d558a",
-    "semantic_hash": ""
-  },
-  "docs/TECHNICAL_REFERENCE.md": {
-    "mtime": 1791472408.9527218,
-    "seen": 1791472627.320524,
-    "ast_hash": "dbac7889e7a21b0ded81b3de7b548104",
-    "semantic_hash": ""
-  },
   "app/api/bot/cron/route.ts": {
     "mtime": 1791463333.3005042,
     "seen": 1791466380.5151742,
@@ -444,45 +432,57 @@
     "semantic_hash": ""
   },
   "docs/BusinessPlan.html": {
-    "mtime": 1791472510.649713,
-    "seen": 1791472627.3205202,
+    "mtime": 1791473019.0146692,
+    "seen": 1791473026.271848,
     "ast_hash": "3638c7508361b82d05e0004bebd68164",
     "semantic_hash": ""
   },
-  "docs/PITCH_DECK_CONTENT.html": {
-    "mtime": 1791472511.367713,
-    "seen": 1791472627.320522,
+  "docs/BusinessPlan.pdf": {
+    "mtime": 1791473019.7376692,
+    "seen": 1791473026.271853,
+    "ast_hash": "e95af38febc285017e77267c1ed47309",
+    "semantic_hash": ""
+  },
+  "scripts/converter/pdf_maker.ts": {
+    "mtime": 1791473012.0456698,
+    "seen": 1791473026.2718384,
+    "ast_hash": "9a8fb167689058c8a35acb3caf735f2a",
+    "semantic_hash": ""
+  },
+  "docs/Content.html": {
+    "mtime": 1791473019.8036692,
+    "seen": 1791473026.2718499,
     "ast_hash": "7e776eadd05b3b9ed70081d158152236",
     "semantic_hash": ""
   },
-  "docs/TECHNICAL_REFERENCE.html": {
-    "mtime": 1791472509.7917132,
-    "seen": 1791472627.3205233,
+  "docs/Content.md": {
+    "mtime": 1791472477.504716,
+    "seen": 1791473026.2718508,
+    "ast_hash": "d9d89036b7d6ec436cfca573903d558a",
+    "semantic_hash": ""
+  },
+  "docs/TechnicalDocumentation.html": {
+    "mtime": 1791473018.1816692,
+    "seen": 1791473026.2718515,
     "ast_hash": "fa514bd04230ff341a8e14f63f6327fd",
     "semantic_hash": ""
   },
-  "docs/BusinessPlan.pdf": {
-    "mtime": 1791472511.3027132,
-    "seen": 1791472627.3205247,
-    "ast_hash": "c6e346977a81dd6e59836e66c22e2eac",
+  "docs/TechnicalDocumentation.md": {
+    "mtime": 1791472408.9527218,
+    "seen": 1791473026.2718523,
+    "ast_hash": "dbac7889e7a21b0ded81b3de7b548104",
     "semantic_hash": ""
   },
-  "docs/PITCH_DECK_CONTENT.pdf": {
-    "mtime": 1791472511.976713,
-    "seen": 1791472627.3205256,
-    "ast_hash": "ca77a6ac4e776e7a33a1abdfa9fd6409",
+  "docs/Content.pdf": {
+    "mtime": 1791473020.479669,
+    "seen": 1791473026.271854,
+    "ast_hash": "8ded699265ea32d3df9e6b50a98ee779",
     "semantic_hash": ""
   },
-  "docs/TECHNICAL_REFERENCE.pdf": {
-    "mtime": 1791472510.579713,
-    "seen": 1791472627.3205261,
-    "ast_hash": "39037ef093b181c1f7de302a1ff18a47",
-    "semantic_hash": ""
-  },
-  "scripts/converter/convert_all_docs_to_pdf.ts": {
-    "mtime": 1791472264.4337344,
-    "seen": 1791472627.3205113,
-    "ast_hash": "5384d726c0642cbae2a9659659e99119",
+  "docs/TechnicalDocumentation.pdf": {
+    "mtime": 1791473018.9546692,
+    "seen": 1791473026.2718546,
+    "ast_hash": "099f9db0c98a848c0edfcd18020a932d",
     "semantic_hash": ""
   }
 }

@@ -1045,7 +1045,7 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
 // Active documents in docs/
 const mdFiles = [
   {
-    file: "TECHNICAL_REFERENCE.md",
+    file: "TechnicalDocumentation.md",
     title: "مرجع فنی و راهنمای پیاده‌سازی سامانه رادار",
     subtitle: "مستندات معماری نرم‌افزار، ساختار داده‌ها، خط تریاژ سه‌لایه، احراز هویت چندمستأجری و زمان‌بند خودکار پس‌زمینه",
     category: "معماری فنی و مهندسی",
@@ -1057,7 +1057,7 @@ const mdFiles = [
     category: "طرح تجاری و استراتژی",
   },
   {
-    file: "PITCH_DECK_CONTENT.md",
+    file: "Content.md",
     title: "محتوا و سناریوی ارائه سرمایه‌پذیری رادار",
     subtitle: "سناریوی اسلایدبه‌اسلاید، پیام‌های محوری، آمار بازار و برنامه جذب سرمایه",
     category: "ارائه به سرمایه‌گذار",

@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8b80003a`
+- Built from commit: `e2411029`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -23,7 +23,7 @@
 - طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی
 - compilerOptions
 - components.json
-- convert_all_docs_to_pdf.ts
+- سامانه رادار — مرجع فنی جامع و راهنمای پیاده‌سازی
 - DEPLOY.sh
 - Favicon SVG Image
 - 3-Layer Triage Pipeline
@@ -38,9 +38,9 @@
 - workflows/graphify.md
 - next-env.d.ts
 - postcss.config.mjs
-- سامانه رادار — مرجع فنی جامع و راهنمای پیاده‌سازی
-- devDependencies
 - فهرست اسلایدهای ارائه
+- devDependencies
+- pdf_maker.ts
 - ingest.ts
 - logout/route.ts
 - proxy.ts
@@ -112,9 +112,9 @@ Nodes (28): dom, dom.iterable, esnext, **/*.mts, .next/dev/types/**/*.ts, next-e
 Cohesion: 0.12
 Nodes (15): aliases, components, hooks, lib, ui, utils, rsc, $schema (+7 more)
 
-### Community 8 - "convert_all_docs_to_pdf.ts"
-Cohesion: 0.17
-Nodes (12): buildHtmlPage(), docsDir, escapeHtml(), fontsDir, formatInline(), mdFiles, parseMarkdown(), closeTable() (+4 more)
+### Community 8 - "سامانه رادار — مرجع فنی جامع و راهنمای پیاده‌سازی"
+Cohesion: 0.05
+Nodes (43): PriCoders — مهندسی نرم‌افزار و معماری سیستم‌های هوشمند, اجرای تک‌دستوری استقرار روی سرورهای دبیان و اوبونتو:, الف. پایگاه داده و آدرس‌های سیستمی, ب. امنیت و دسترسی‌های اجرایی, تحلیل مقایسه‌ای اقتصاد رادار با روش‌های سنتی:, تفکیک وظایف ماژول‌های اصلی:, ج. درگاه‌های وب‌هوک پیام‌رسان‌ها, د. مدل‌های هوش مصنوعی و نرخ توکن‌ها (+35 more)
 
 ### Community 9 - "DEPLOY.sh"
 Cohesion: 0.36
@@ -140,17 +140,17 @@ Nodes (6): CSP connect-src Constraint, DEPLOY.sh One-Shot Production Deploy, NEX
 Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
-### Community 24 - "سامانه رادار — مرجع فنی جامع و راهنمای پیاده‌سازی"
-Cohesion: 0.05
-Nodes (43): PriCoders — مهندسی نرم‌افزار و معماری سیستم‌های هوشمند, اجرای تک‌دستوری استقرار روی سرورهای دبیان و اوبونتو:, الف. پایگاه داده و آدرس‌های سیستمی, ب. امنیت و دسترسی‌های اجرایی, تحلیل مقایسه‌ای اقتصاد رادار با روش‌های سنتی:, تفکیک وظایف ماژول‌های اصلی:, ج. درگاه‌های وب‌هوک پیام‌رسان‌ها, د. مدل‌های هوش مصنوعی و نرخ توکن‌ها (+35 more)
+### Community 24 - "فهرست اسلایدهای ارائه"
+Cohesion: 0.13
+Nodes (14): اسلاید ۱: عنوان، هویت محصول و بیانیه ارزش, اسلاید ۱۰: نقشه راه توسعه محصول و افق رشد, اسلاید ۱۱: تیم توسعه، دستاوردها و پیشنهاد سرمایه‌گذاری, اسلاید ۲: مسئله بازار و واقعیت تلخ فروش در ایران, اسلاید ۳: چرا راهکارهای فعلی بازار ناکارآمد هستند؟, اسلاید ۴: معرفی راه‌حل — سامانه هوشمند رادار, اسلاید ۵: چرخه کارکرد فنی و دموی پردازش پیام, اسلاید ۶: خندق دفاعی، تمایز فناوری و پایداری داخلی (+6 more)
 
 ### Community 25 - "devDependencies"
 Cohesion: 0.12
 Nodes (17): eslint, eslint-config-next, devDependencies, eslint, eslint-config-next, tailwindcss, @tailwindcss/postcss, @types/node (+9 more)
 
-### Community 26 - "فهرست اسلایدهای ارائه"
-Cohesion: 0.13
-Nodes (14): اسلاید ۱: عنوان، هویت محصول و بیانیه ارزش, اسلاید ۱۰: نقشه راه توسعه محصول و افق رشد, اسلاید ۱۱: تیم توسعه، دستاوردها و پیشنهاد سرمایه‌گذاری, اسلاید ۲: مسئله بازار و واقعیت تلخ فروش در ایران, اسلاید ۳: چرا راهکارهای فعلی بازار ناکارآمد هستند؟, اسلاید ۴: معرفی راه‌حل — سامانه هوشمند رادار, اسلاید ۵: چرخه کارکرد فنی و دموی پردازش پیام, اسلاید ۶: خندق دفاعی، تمایز فناوری و پایداری داخلی (+6 more)
+### Community 26 - "pdf_maker.ts"
+Cohesion: 0.17
+Nodes (12): buildHtmlPage(), docsDir, escapeHtml(), fontsDir, formatInline(), mdFiles, parseMarkdown(), closeTable() (+4 more)
 
 ### Community 27 - "ingest.ts"
 Cohesion: 0.23
