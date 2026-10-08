@@ -133,6 +133,7 @@ recorded as zero-cost `irrelevant` leads so the noise-reduction KPI stays honest
 
 | Collection | Purpose |
 | --- | --- |
+| `users` | Multi-tenant auth records: email, name, company, role, product profile, ICP definition, and onboarding completion status |
 | `products` | Product identity, value propositions, monitored keywords, and ICP definition |
 | `sources` | Monitored channels and groups (Telegram, Bale, X, forums) |
 | `raw_messages` | Ingested messages with author handle, platform, thread context, and processing status |
@@ -148,34 +149,60 @@ radar/
 ├── tsconfig.json              # Strict TypeScript configuration
 ├── next.config.ts             # Next.js 16 configuration
 ├── postcss.config.mjs         # Tailwind CSS v4 pipeline
+├── proxy.ts                   # Next.js 16 Edge proxy & route protection
+├── DEPLOY.sh                  # One-command production deployment script
 ├── LICENSE                    # MIT license
 ├── .env.example               # Environment variable template
 ├── app/
 │   ├── globals.css            # Global styles, dark palette, self-hosted fonts
 │   ├── layout.tsx             # Root layout (RTL, metadata)
-│   ├── page.tsx               # Live dashboard and SSE lead feed
-│   ├── settings/page.tsx      # Product, keyword, and ICP management
+│   ├── page.tsx               # Live landing page & public presentation
+│   ├── leads/page.tsx         # Authenticated Lead Inbox dashboard (protected)
+│   ├── dashboard/page.tsx     # Live SSE lead feed + KPI cards (protected)
+│   ├── settings/page.tsx      # Product, keyword, and ICP management (protected)
+│   ├── login/page.tsx         # User authentication with LTR input direction
+│   ├── register/page.tsx      # Account creation with validation & LTR password fields
+│   ├── onboarding/page.tsx    # Guided product, ICP & organization onboarding flow
 │   └── api/
-│       ├── analyze/route.ts   # Single-message triage endpoint
-│       └── simulate/route.ts  # Live demo message injector
+│       ├── auth/
+│       │   ├── register/route.ts # User registration & session generation
+│       │   ├── login/route.ts    # Dual-auth (PocketBase JWT + admin fallback)
+│       │   ├── logout/route.ts   # Session revocation & cookie clearing
+│       │   └── session/route.ts  # Session status & user profile inspector
+│       ├── onboarding/route.ts   # Company & product ICP onboarding endpoint
+│       ├── analyze/route.ts      # Single-message triage endpoint
+│       ├── simulate/route.ts     # Live demo message injector
+│       ├── ingest/
+│       │   ├── telegram/route.ts # Telegram bot webhook receiver
+│       │   └── bale/route.ts     # Bale bot webhook receiver
+│       ├── leads/status/route.ts # Lead lifecycle state management
+│       ├── settings/route.ts     # Product & ICP configuration updates
+│       └── assistant/route.ts    # In-dashboard contextual conversational assistant
 ├── components/
 │   ├── Icons.tsx              # Inline SVG icons (no icon package)
-│   ├── Navbar.tsx             # Navbar with DB health monitor and demo trigger
+│   ├── Navbar.tsx             # Navbar with DB health monitor, auth status, & actions
 │   ├── MetricsHeader.tsx      # KPI cards and platform filters
 │   └── LeadCard.tsx           # Lead card: score, tokens, reply draft
 ├── lib/
+│   ├── auth.ts                # JWT/HMAC token validation, session cookies, multi-tenancy
 │   ├── cn.ts                  # Conditional class merger (vanilla TS)
-│   ├── pocketbase.ts          # Typed PocketBase client and superuser auth
-│   ├── llm.ts                 # LLM client and offline fallback evaluator
-│   └── pricing.ts             # Token cost engine (USD + local currency)
+│   ├── ingest.ts              # Webhook processing, deduplication, and source provisioning
+│   ├── llm.ts                 # LLM client and offline heuristic fallback evaluator
+│   ├── pipeline.ts            # Unified 3-layer triage pipeline (L0, L1, L2)
+│   ├── pocketbase.ts          # Typed PocketBase client, superuser auth, and models
+│   ├── prefilter.ts           # L0 deterministic regex rules & L1 intent screening
+│   ├── pricing.ts             # Token cost engine (USD + local currency IRR/IRT)
+│   ├── rateLimit.ts           # Sliding-window IP rate limiter & LLM concurrency gate
+│   └── validation.ts          # Request sanitization & bounds enforcement
 ├── pocketbase/
 │   ├── pocketbase             # Local PocketBase binary (git-ignored)
-│   └── setup_schema.ts        # Idempotent schema and seed bootstrap
+│   └── setup_schema.ts        # Idempotent schema migrations and seed bootstrap
 ├── public/fonts/ravi/         # Self-hosted Ravi font files (Thin to ExtraBold)
 ├── public/fonts/estedad/      # Self-hosted Estedad font files
+├── docs/                      # Technical documentation, business plan, & pitch deck
 └── scripts/
     ├── seed_demo.ts           # 26 realistic Persian community messages
-    └── worker.ts              # Automated triage pipeline
+    └── worker.ts              # Automated background triage worker
 ```
 
 ---
@@ -478,6 +505,55 @@ Auth: platform secret header (`X-Telegram-Bot-Api-Secret-Token` /
 `RADAR_API_KEY` for manual pushes. Non-text updates are acknowledged with
 `{"ignored": true}`; redeliveries return `{"deduped": true}` without
 re-triaging.
+
+### `POST /api/auth/register`
+
+Creates a new organization or user account in PocketBase, issues secure HttpOnly session cookies, and redirects the user to `/onboarding`.
+
+```bash
+curl -X POST http://localhost:3000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "علی رضایی",
+    "email": "ali@example.ir",
+    "password": "super_secret_password_123"
+  }'
+```
+
+### `POST /api/auth/login`
+
+Authenticates existing users via email/password or system administrators via master password, sets 30-day `radar_session` and `radar_onboarded` HttpOnly cookies, and redirects to `/leads` (if onboarding completed) or `/onboarding` (if incomplete).
+
+```bash
+curl -X POST http://localhost:3000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "ali@example.ir",
+    "password": "super_secret_password_123"
+  }'
+```
+
+### `POST /api/onboarding`
+
+Saves company details, role, monitored product information, and Ideal Customer Profile (ICP) definition for the authenticated session, marks `onboarding_completed: true`, and updates the session cookies.
+
+```bash
+curl -X POST http://localhost:3000/api/onboarding \
+  -H "Content-Type: application/json" \
+  -b "radar_session=<session-jwt>" \
+  -d '{
+    "company": "پارس سیستم",
+    "role": "مدیر فروش",
+    "product_name": "حساب‌آنلاین پارس",
+    "product_description": "نرم‌افزار یکپارچه حسابداری ابری و اتصال به سامانه مودیان",
+    "ideal_customer_profile": "مدیران مالی، حسابداران و مدیران عامل شرکت‌های بازرگانی و خدماتی"
+  }'
+```
+
+### `GET /api/auth/session` · `POST /api/auth/logout`
+
+- `GET /api/auth/session`: Inspects current cookie session, returns `{ authenticated, user, onboarded }`.
+- `POST /api/auth/logout`: Clears `radar_session` and `radar_onboarded` cookies (`Max-Age=0`).
 
 ---
 

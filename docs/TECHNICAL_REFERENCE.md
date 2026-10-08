@@ -107,9 +107,23 @@ CDN خارجی، رابط کاملاً RTL با اعداد فارسی.
 ## 4. Data Model — مدل داده
 
 چهار کالکشن در PocketBase. نوشتن مستقیم (create/update/delete) در همه
-کالکشن‌ها فقط برای superuser است (`createRule/updateRule/deleteRule = null`)؛
-خواندن (list/view) باز است تا داشبورد بدون لاگین کار کند. تمام writeها از
-سمت سرور با احراز superuser انجام می‌شود.
+کالکشن‌های داده فقط برای superuser قابل نوشتن هستند (`createRule/updateRule/deleteRule = null`)؛
+خواندن (list/view) برای داده‌های عمومی باز است. دسترسی رکوردهای کاربری در کالکشن `users`
+منحصراً به خود کاربر محدود است (`id = @request.auth.id`). تمام تغییرات سیستمی از
+سمت سرور با احراز superuser یا احراز کاربر انجام می‌شود.
+
+### `users` — کاربران و هویت سازمانی (کالکشن Auth)
+
+| فیلد | نوع | توضیح |
+| --- | --- | --- |
+| `email` | email (required, unique) | ایمیل سازمانی/ورود |
+| `name` | text (required) | نام کاربر |
+| `company` | text | نام شرکت یا سازمان |
+| `role` | text | سمت سازمانی (مدیر فروش، بنیان‌گذار و ...) |
+| `product_name` | text | نام تجاری محصول تحت پایش |
+| `product_description` | text | شرح ارزش‌آفرینی محصول |
+| `ideal_customer_profile` | text | پرسونای مشتری ایده‌آل (ICP) |
+| `onboarding_completed` | bool | وضعیت تکمیل موفق فرآیند آنبوردینگ |
 
 ### `products` — شناسنامه محصول و ICP
 
@@ -268,9 +282,11 @@ Mode خاموش)، و HTTPS عمومی (Caddy در DEPLOY.sh تأمین می‌�
 | `POST /api/leads/status` | ❌ (عمومی) | ۴۰/min/IP | `{leadId, status}` | `{success, lead}` |
 | `POST /api/settings` | ✅ | — | فیلدهای محصول (اعتبارسنجی کامل) | `{success, product}` |
 | `POST /api/assistant` | ❌ | ❌ | `{message, context?}` | `{id, role, content, timestamp}` |
-| `POST /api/auth/login` | رمز داشبورد | — | `{password}` | ست‌کردن کوکی `radar_session` |
-| `POST /api/auth/logout` | — | — | — | پاک‌کردن کوکی |
-| `GET /api/auth/session` | کوکی | — | — | وضعیت نشست |
+| `POST /api/auth/register` | — | — | `{name, email, password}` | ایجاد کاربر، ست‌کردن کوکی‌ها، ریدایرکت به `/onboarding` |
+| `POST /api/auth/login` | — | — | `{email, password}` یا `{password}` ادمین | اعتبارسنجی دوگانه، ست‌کردن کوکی‌ها، هدایت به `/leads` یا `/onboarding` |
+| `POST /api/auth/logout` | — | — | — | پاک‌کردن کوکی‌های `radar_session` و `radar_onboarded` |
+| `GET /api/auth/session` | کوکی | — | — | وضعیت نشست، هویت کاربر و پرچم `onboarded` |
+| `POST /api/onboarding` | کوکی سشن | — | فیلدهای شرکت، سمت، محصول و ICP | ذخیره اطلاعات سازمانی، ست‌کردن پرچم آنبورد، هدایت به `/leads` |
 
 اعتبارسنجی ورودی‌ها در `lib/validation.ts` (سقف طول، strip کاراکترهای
 کنترلی، allowlist پلتفرم‌ها). سقف‌ها: `content` ≤ ۳۰۰۰، `thread_context` ≤
@@ -294,15 +310,23 @@ Mode خاموش)، و HTTPS عمومی (Caddy در DEPLOY.sh تأمین می‌�
 
 ## 9. Authentication & Security — احراز هویت و امنیت
 
-- **نشست داشبورد:** توکن HMAC-SHA256 (`radar:<timestamp>`، ۳۰ روزه) در کوکی
-  HttpOnly + `SameSite=Lax`؛ در production پرچم `Secure` (پس HTTPS اجباری
-  است). `/settings` با `proxy.ts` محافظت می‌شود (ریدایرکت به `/login`).
+- **احراز هویت چندسازمانی (SaaS Multi-User Auth):**
+  - ثبت‌نام کاربر جدید (`/register`) با اعتبارسنجی نام، ایمیل یکتا و رمز عبور (حداقل ۸ کاراکتر) در کالکشن `users` پاکت‌بیس.
+  - ورود اختصاصی کاربران با ایمیل/رمز عبور (`/login`) به همراه پشتیبانی از ورود اضطراری مدیر سیستم با رمز `RADAR_ADMIN_PASSWORD` یا رمز سوپریوزر دیتابیس.
+  - فرآیند آنبوردینگ اجباری سازمانی (`/onboarding`): ضبط نام شرکت، سمت سازمانی، نام محصول، شرح ارزش‌آفرینی و پرسونای مشتری ایده‌آل (ICP) پیش از دسترسی به کارتابل لیدها.
+- **نشست کاربر و الگوی دو کوکی (Dual-Cookie Session):**
+  - **`radar_session`:** توکن استاندارد JWT پاکت‌بیس یا توکن امضاشده HMAC ادمین (`radar:<timestamp>`)، ۳۰ روزه با پرچم‌های `HttpOnly`, `SameSite=Lax`, `Path=/`, و `Secure` در production.
+  - **`radar_onboarded`:** کوکی `HttpOnly` با مقدار `1` یا `0` برای تشخیص فوری وضعیت آنبوردینگ در لایه Edge بدون سربار کوئری به دیتابیس.
+- **مسیریابی و محافظت لبه در Next.js 16 (`proxy.ts`):**
+  - حفاظت از روت‌های `/leads`، `/dashboard` و `/settings` (ریدایرکت خودکار کاربران مهمان به `/login?from=...`).
+  - محافظت دوطرفه از `/onboarding`: هدایت کاربران مهمان به `/login` و کاربران تکمیل‌شده به `/leads` جهت جلوگیری از هرگونه حلقه بازگشتی (Redirect Loop).
+- **تجربه کاربری و جهت ورودی‌های حساس (LTR Inputs):**
+  - ورودی‌های ایمیل و رمز عبور مجهز به ویژگی نیتیو `dir="ltr"` و کلاس‌های `[direction:ltr] text-left` همراه با پدینگ استاندارد آیکون چشم (`pl-10 pr-3.5`) برای تراز صحیح و عدم تداخل زبان فارسی/انگلیسی.
 - **API key:** `RADAR_API_KEY` (Bearer) برای worker و pushهای برنامه‌ای؛
   مقایسه زمان‌ثابت (`timingSafeEqual`). رمز ادمین هم به‌عنوان Bearer پذیرفته
   می‌شود.
 - **وب‌هوک‌ها:** مقایسه زمان‌ثابت secret در هدر اختصاصی هر پلتفرم.
-- **سطح دیتابیس:** هر چهار کالکشن `create/update/delete = null` (فقط
-  superuser از سمت سرور) و `list/view` باز برای فید عمومی داشبورد.
+- **سطح دیتابیس:** تفکیک هویت کاربران در `users` با قانون `id = @request.auth.id`؛ سایر کالکشن‌های داده با `create/update/delete = null` (فقط سوپریوزر سروری).
 - **دفاع تزریق پرامپت (۴ لایه):** کپسوله‌سازی XML پیام غیرقابل‌اعتماد،
   دستور صریح نادیده‌گرفتن دستورات داخل پیام، امتیاز ۰ و `irrelevant` خودکار
   در صورت تزریق (هم در LLM و هم در heuristic و L0)، و sanitize خروجی.
@@ -410,11 +434,15 @@ schema (بدون seed)، پچ idempotent در CSP، بیلد production، یون
 ```text
 radar/
 ├── DEPLOY.sh                   # استقرار تک‌دستوری production (Debian)
+├── proxy.ts                    # پروکسی لبه Next.js 16 و حفاظت روت‌ها
 ├── app/
-│   ├── page.tsx                # لندینگ / داشبورد اصلی
-│   ├── dashboard/page.tsx      # فید زنده لیدها + KPI
+│   ├── page.tsx                # لندینگ / ویترین عمومی
+│   ├── leads/page.tsx          # کارتابل اختصاصی سرنخ‌ها (محافظت‌شده)
+│   ├── dashboard/page.tsx      # فید زنده لیدها + KPI (محافظت‌شده)
 │   ├── settings/page.tsx       # مدیریت محصول و ICP (پشت لاگین)
-│   ├── login/page.tsx
+│   ├── login/page.tsx          # ورود اختصاصی کاربران با ورودی LTR
+│   ├── register/page.tsx       # ثبت‌نام کاربر جدید
+│   ├── onboarding/page.tsx     # فرآیند آنبوردینگ مشخصات شرکت و ICP
 │   └── api/
 │       ├── ingest/telegram/route.ts  # وب‌هوک تلگرام
 │       ├── ingest/bale/route.ts      # وب‌هوک بله
@@ -423,7 +451,8 @@ radar/
 │       ├── leads/status/route.ts     # تغییر وضعیت لید
 │       ├── settings/route.ts   # به‌روزرسانی محصول
 │       ├── assistant/route.ts  # دستیار گفت‌وگو
-│       └── auth/*/route.ts     # login/logout/session
+│       ├── onboarding/route.ts # ذخیره اطلاعات آنبوردینگ
+│       └── auth/*/route.ts     # register/login/logout/session
 ├── components/                 # Icons ،Navbar ،MetricsHeader ،LeadCard ،assistant/ ،agents/
 ├── lib/
 │   ├── pipeline.ts             # خط تریاژ سه‌لایه (نقطه ورود واحد)
