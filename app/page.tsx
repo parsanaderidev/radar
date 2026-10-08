@@ -125,16 +125,16 @@ const PRICING_PLANS: PricingPlan[] = [
     isPopular: true,
     isUpcoming: false,
     audience: "طراحی‌شده برای کسب‌وکارهای B2B، شرکت‌های نرم‌افزاری، دفاتر حسابداری، طراحی وب و مشاورین جهت صید لیدهای گرم",
-    monthlyDiscountedPrice: "۲,۸۹۰,۰۰۰ تومان",
-    monthlyOriginalPrice: "۳,۲۰۰,۰۰۰ تومان",
-    annualTotalPrice: "۳۹,۸۰۰,۰۰۰ تومان",
-    annualMonthlyEquivalent: "۳,۳۱۵,۰۰۰ تومان",
-    messageLimit: "۱۵,۰۰۰ پیام ماهانه پایش هوشمند (۲۰M توکن فارسی) • سقف مصرف فعال",
+    monthlyDiscountedPrice: "۱,۸۹۰,۰۰۰ تومان",
+    monthlyOriginalPrice: "۲,۱۰۰,۰۰۰ تومان",
+    annualTotalPrice: "۱۷,۸۸۰,۰۰۰ تومان",
+    annualMonthlyEquivalent: "۱,۴۹۰,۰۰۰ تومان",
+    messageLimit: "۱۵,۰۰۰ پیام ماهانه پایش هوشمند • سقف مصرف فعال",
     ctaText: "شروع کار با رادار",
     ctaLink: "/dashboard",
     featuresHeader: "امکانات کلیدی و فعال:",
     features: [
-      "پایش هوشمند و بی‌درنگ در پیام‌رسان‌های بله و تلگرام",
+      "پایش هوشمند و بی‌درنگ در پیام‌رسان‌های بله و تلگرام (وب‌هوک فعال)",
       "فیلتر ۳ لایه‌ای تشخیص نیت خرید، استخراج نیاز و بودجه",
       "انطباق عمیق زمینه مکالمه با محصول و پرسونای هدف",
       "تولید خودکار پیش‌نویس پاسخ شخصی‌سازی‌شده و آلرت پیامکی",
@@ -147,11 +147,11 @@ const PRICING_PLANS: PricingPlan[] = [
     isPopular: false,
     isUpcoming: true,
     audience: "طراحی‌شده برای آژانس‌های دیجیتال مارکتینگ، شرکت‌های در حال توسعه و تیم‌های فروش با حجم بالای پیام",
-    monthlyDiscountedPrice: "۶,۸۹۰,۰۰۰ تومان",
-    monthlyOriginalPrice: "۷,۶۵۰,۰۰۰ تومان",
-    annualTotalPrice: "۹۵,۴۰۰,۰۰۰ تومان",
-    annualMonthlyEquivalent: "۷,۹۵۰,۰۰۰ تومان",
-    messageLimit: "۵۰,۰۰۰ پیام ماهانه (۷۰M توکن فارسی) • در حال توسعه",
+    monthlyDiscountedPrice: "۴,۸۹۰,۰۰۰ تومان",
+    monthlyOriginalPrice: "۵,۵۰۰,۰۰۰ تومان",
+    annualTotalPrice: "۴۶,۸۰۰,۰۰۰ تومان",
+    annualMonthlyEquivalent: "۳,۹۰۰,۰۰۰ تومان",
+    messageLimit: "۵۰,۰۰۰ پیام ماهانه • در حال توسعه",
     ctaText: "به‌زودی در دسترس قرار می‌گیرد",
     ctaLink: "#pricing",
     featuresHeader: "قابلیت‌های نقشه راه توسعه:",
@@ -167,13 +167,13 @@ const PRICING_PLANS: PricingPlan[] = [
 ];
 
 const COMPARISON_DIMENSIONS = [
-  { label: "سقف پایش پیام ماهانه", starter: "۱۵,۰۰۰ پیام (۲۰M توکن)", growth: "۵۰,۰۰۰ پیام (به‌زودی)" },
+  { label: "سقف پایش پیام ماهانه", starter: "۱۵,۰۰۰ پیام", growth: "۵۰,۰۰۰ پیام (به‌زودی)" },
   { label: "معماری فیلترینگ و تریاژ", starter: "فیلتر ۳ لایه هوشمند (حذف ۹۸٪ نویز)", growth: "۳ لایه عمیق + مدل‌های چندزبانه" },
   { label: "انطباق با ویژگی‌های محصول", starter: "فعال (۱ محصول و پرسونای هدف)", growth: "پشتیبانی همزمان از چند محصول" },
   { label: "تولید پاسخ‌های پیشنهادی و آلرت", starter: "تولید ظرف چند ثانیه + هشدار فوری پیامکی", growth: "تولید چندلحنی + ارسال مستقیم" },
   { label: "صندوق و مدیریت سرنخ‌ها", starter: "داشبورد تریاژ با وضعیت پیگیری", growth: "تریاژ پیشرفته با ارجاع تیمی بین کارشناسان" },
   { label: "شفافیت هزینه مصرف و هوش مصنوعی", starter: "شفافیت توکن به تفکیک پیام", growth: "گزارش تحلیلی پیشرفته نرخ تبدیل و بازگشت سرمایه" },
-  { label: "کانال‌های تحت پایش", starter: "پیام‌رسان‌های بله و تلگرام", growth: "چندکاناله گسترده (بله، تلگرام، ایتا، وب)" },
+  { label: "کانال‌های تحت پایش", starter: "پیام‌رسان‌های بله و تلگرام (وب‌هوک فعال)", growth: "چندکاناله گسترده (بله، تلگرام، ایتا، وب)" },
   { label: "تعداد کارشناسان و صندلی تیم", starter: "۱ کاربر فعال", growth: "۵ کاربر همزمان با سطح دسترسی" },
   { label: "اتصال به سامانه CRM", starter: "خروجی اکسل / وب‌هوک پایه", growth: "اتصال بومی وب‌هوک به دیدار و پیام‌گستر" },
 ];
@@ -308,7 +308,7 @@ export default function PersianLandingPage() {
                               className="block p-2 rounded-lg hover:bg-[#181818] text-white hover:text-[#00e599] transition-colors"
                             >
                               <div className="font-semibold">اقتصاد توکن و هزینه‌ها</div>
-                              <div className="text-[11px] text-neutral-500">شفافیت کامل کمتر از ۵۰ تومان برای هر پیام</div>
+                              <div className="text-[11px] text-neutral-500">کمتر از ۹ تومان سرشکن هر پیام (۳۸ تا ۴۲ تومان L2)</div>
                             </a>
                           </li>
                           <li>
@@ -524,7 +524,7 @@ export default function PersianLandingPage() {
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal text-center text-balance">
-              رادار به جای جست‌وجوی سطحی کلمات کلیدی، بافت و مکالمات بومی در بله، تلگرام، توییتر و فروم‌ها را درک می‌کند، شدت قصد خرید را می‌سنجد و سرنخ‌های آماده معامله را به تیم فروش تحویل می‌دهد.
+              رادار به جای جست‌وجوی سطحی کلمات کلیدی، بافت مکالمات بومی در بله، تلگرام و کانال‌های متصل را درک می‌کند، شدت قصد خرید را می‌سنجد و سرنخ‌های آماده معامله را به تیم فروش تحویل می‌دهد.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-10">
@@ -1009,7 +1009,7 @@ export default function PersianLandingPage() {
               <div className="text-xs text-emerald-400 mb-2 font-bold">اقتصاد هوش مصنوعی</div>
               <h4 className="text-base font-bold text-white mb-1.5">اقتصاد شفاف و بهینه</h4>
               <p className="text-xs text-neutral-400 leading-relaxed">
-                هزینه میانگین ۹ تومان برای هر پیام تحلیل‌شده؛ بیش از ۹۹٪ صرفه‌جویی نسبت به پیمایش دستی.
+                هزینه سرشکن کمتر از ۹ تومان به‌ازای هر پیام ورودی (۳۸ تا ۴۲ تومان برای ارزیابی عمیق L2)؛ بیش از ۹۹٪ صرفه‌جویی نسبت به پیمایش دستی.
               </p>
             </div>
 
@@ -1042,7 +1042,7 @@ export default function PersianLandingPage() {
               مشتریان رادار متناسب با میزان هوشمندی و کشف فرصت‌هایی که مصرف می‌کنند پرداخت انجام می‌دهند؛ رادار ابزاری برای خلق مستقیم درآمد است.
             </p>
 
-            {/* سوئیچ پرداخت ماهانه (با ۱۰٪ تخفیف) / سالانه (بدون تخفیف سازمانی) */}
+            {/* سوئیچ پرداخت ماهانه (با ۱۰٪ تخفیف) / سالانه (با ۲ ماه رایگان) */}
             <div className="mt-8 p-1.5 rounded-xl bg-[#0c0c0c] border border-[#222222] inline-flex items-center gap-1.5 shadow-inner">
               <button
                 type="button"
@@ -1067,9 +1067,9 @@ export default function PersianLandingPage() {
                     : "text-neutral-400 hover:text-white"
                 }`}
               >
-                <span>قرارداد سالانه سازمانی</span>
-                <span className="px-2 py-0.5 rounded-md bg-neutral-800 text-neutral-300 text-[11px] font-medium border border-neutral-700">
-                  بدون تخفیف • منابع اختصاصی
+                <span>اشتراک سالانه</span>
+                <span className="px-2 py-0.5 rounded-md bg-[#00e599]/15 text-[#00e599] text-[11px] font-bold border border-[#00e599]/30">
+                  ۲ ماه رایگان (۲۰٪ تخفیف)
                 </span>
               </button>
             </div>
@@ -1152,8 +1152,8 @@ export default function PersianLandingPage() {
                           </span>
                           <span className="text-xs text-neutral-400">/ سالانه</span>
                         </div>
-                        <div className="text-[11px] text-amber-400 mt-1 font-medium">
-                          معادل {plan.annualMonthlyEquivalent} در ماه • بدون تخفیف (با تضمین منابع اختصاصی و SLA)
+                        <div className="text-[11px] text-[#00e599] mt-1 font-medium">
+                          معادل {plan.annualMonthlyEquivalent} در ماه • با ۲ ماه اشتراک رایگان سالانه
                         </div>
                       </>
                     )}
@@ -1259,13 +1259,13 @@ export default function PersianLandingPage() {
             {/* نوار بصری پیشرفت مصرف */}
             <div className="space-y-2.5 mb-7">
               <div className="flex justify-between text-xs sm:text-sm text-neutral-400">
-                <span>مصرف ظرفیت پیام‌ها: ۶,۸۴۰ از ۱۰,۰۰۰ پیام</span>
-                <span className="font-bold text-white font-mono">۶۸.۴٪</span>
+                <span>مصرف ظرفیت پیام‌ها: ۶,۸۴۰ از ۱۵,۰۰۰ پیام</span>
+                <span className="font-bold text-white font-mono">۴۵.۶٪</span>
               </div>
               <div className="w-full h-3.5 rounded-full bg-[#161616] overflow-hidden p-0.5 border border-[#262626]">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-[#00e599] transition-all duration-500 shadow-[0_0_12px_rgba(0,229,153,0.4)]"
-                  style={{ width: "68.4%" }}
+                  style={{ width: "45.6%" }}
                 />
               </div>
             </div>
@@ -1281,12 +1281,12 @@ export default function PersianLandingPage() {
                 <div className="text-base sm:text-lg font-black text-[#00e599] mt-1.5">۱۸۴ سرنخ معتبر</div>
               </div>
               <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
-                <div className="text-neutral-500 text-xs">میانگین هزینه هر تحلیل:</div>
-                <div className="text-base sm:text-lg font-black text-sky-400 mt-1.5">۹ تومان</div>
+                <div className="text-neutral-500 text-xs">میانگین سرشکن هر پیام:</div>
+                <div className="text-base sm:text-lg font-black text-sky-400 mt-1.5">کمتر از ۹ تومان</div>
               </div>
               <div className="p-4 sm:p-5 rounded-xl bg-[#0e0e0e] border border-[#1b1b1b]">
                 <div className="text-neutral-500 text-xs">اعتبار باقی‌مانده دوره:</div>
-                <div className="text-base sm:text-lg font-black text-neutral-200 mt-1.5">۳,۱۶۰ پیام</div>
+                <div className="text-base sm:text-lg font-black text-neutral-200 mt-1.5">۸,۱۶۰ پیام</div>
               </div>
             </div>
           </div>
