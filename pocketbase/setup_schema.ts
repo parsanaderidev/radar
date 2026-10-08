@@ -35,6 +35,35 @@ export async function setupSchema() {
   const existingCollections = await pb.collections.getFullList();
   const getCollection = (name: string) => existingCollections.find((c) => c.name === name);
 
+  // 0. USERS COLLECTION (Auth) - Ensure onboarding and profile fields
+  const usersColl = getCollection("users");
+  if (usersColl) {
+    console.log("[PocketBase] Ensuring 'users' collection has onboarding fields...");
+    const existingFieldNames = new Set((usersColl.fields as any[]).map((f) => f.name));
+    const newOnboardingFields = [
+      { name: "company", type: "text", required: false },
+      { name: "role", type: "text", required: false },
+      { name: "product_name", type: "text", required: false },
+      { name: "product_description", type: "text", required: false },
+      { name: "ideal_customer_profile", type: "text", required: false },
+      { name: "onboarding_completed", type: "bool", required: false },
+    ];
+    let updatedFields = [...(usersColl.fields as any[])];
+    let fieldsAdded = false;
+    for (const f of newOnboardingFields) {
+      if (!existingFieldNames.has(f.name)) {
+        updatedFields.push(f);
+        fieldsAdded = true;
+      }
+    }
+    if (fieldsAdded) {
+      await pb.collections.update(usersColl.id, { fields: updatedFields });
+      console.log("[PocketBase] Added onboarding fields to 'users' collection.");
+    } else {
+      console.log("[PocketBase] 'users' collection already has all onboarding fields.");
+    }
+  }
+
   // 1. PRODUCTS COLLECTION
   // Hardened: list/view allowed; create/update/delete restricted to superuser (null)
   let productsColl = getCollection("products");

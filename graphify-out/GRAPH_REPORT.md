@@ -1,151 +1,188 @@
-# Graph Report - radar  (2026-10-08)
+# Graph Report - Radar  (2026-10-08)
 
 ## Corpus Check
-- Corpus is ~43,662 words - fits in a single context window. You may not need a graph.
+- 67 files · ~54,120 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 434 nodes · 802 edges · 24 communities (15 shown, 8 thin omitted)
+- 557 nodes · 952 edges · 31 communities (22 shown, 9 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
+## Graph Freshness
+- Built from commit: `023d7d55`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
+
 ## Community Hubs (Navigation)
-- App Pages & Routes
-- API Routes
-- App Shell & Voice UI
-- LLM Triage Engine
-- App Config & Dependencies
-- Business Plan & Strategy
-- TypeScript Configuration
-- UI Component Config
-- Technical Documentation
-- DEPLOY.sh Script
-- Favicon Brand Assets
-- Webhook Ingest & Pipeline Docs
-- App Icon Brand Assets
-- Production Deploy Checklist
-- LLM Concurrency Limiter
-- API Rate Limiting
-- Assistant API Endpoint
-- Agent Rules Index
-- Graphify Agent Rules
-- Ponytail Dev Principles
-- Graphify Workflow
-- Next.js Type Declarations
-- CSS Build Config
+- Icons.tsx
+- auth.ts
+- voice-orb.tsx
+- pipeline.ts
+- package.json
+- طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی
+- compilerOptions
+- components.json
+- مستندات فنی جامع سامانه رادار (Radar)
+- DEPLOY.sh
+- Favicon SVG Image
+- 3-Layer Triage Pipeline
+- Radar Emblem
+- Public PocketBase URL Constraint
+- ConcurrencyLimiter
+- InMemoryRateLimiter
+- assistant/route.ts
+- AGENTS.md
+- rules/graphify.md
+- ponytail.md
+- workflows/graphify.md
+- next-env.d.ts
+- postcss.config.mjs
+- Radar — Technical Reference (مرجع فنی جامع)
+- devDependencies
+- راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders
+- ingest.ts
+- logout/route.ts
+- proxy.ts
+- next.config.ts
 
 ## God Nodes (most connected - your core abstractions)
-1. `isAuthenticatedRequest()` - 18 edges
-2. `getPocketBaseClient()` - 18 edges
-3. `triagePendingMessage()` - 16 edges
-4. `compilerOptions` - 16 edges
-5. `authenticateSuperuser()` - 15 edges
-6. `react` - 15 edges
-7. `getClientIp()` - 13 edges
-8. `ProductRecord` - 12 edges
-9. `toPersianDigits()` - 12 edges
-10. `طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و پرونده جذب سرمایه` - 12 edges
+1. `getPocketBaseClient()` - 18 edges
+2. `authenticateSuperuser()` - 17 edges
+3. `Radar — Technical Reference (مرجع فنی جامع)` - 17 edges
+4. `isAuthenticatedRequest()` - 16 edges
+5. `triagePendingMessage()` - 16 edges
+6. `compilerOptions` - 16 edges
+7. `getClientIp()` - 15 edges
+8. `مستندات فنی جامع سامانه رادار (Radar)` - 14 edges
+9. `ProductRecord` - 13 edges
+10. `toPersianDigits()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `LeadCardProps` --references--> `LeadRecord`  [EXTRACTED]
-  components/LeadCard.tsx → lib/pocketbase.ts
+- `POST()` --calls--> `triageAdHocMessage()`  [EXTRACTED]
+  app/api/analyze/route.ts → lib/pipeline.ts
+- `GET()` --calls--> `getAuthSession()`  [EXTRACTED]
+  app/api/auth/session/route.ts → lib/auth.ts
+- `POST()` --calls--> `ingestExternalMessage()`  [EXTRACTED]
+  app/api/ingest/bale/route.ts → lib/ingest.ts
+- `POST()` --calls--> `ingestExternalMessage()`  [EXTRACTED]
+  app/api/ingest/telegram/route.ts → lib/ingest.ts
 - `LeadRadarDashboard()` --calls--> `getPocketBaseClient()`  [EXTRACTED]
   app/dashboard/page.tsx → lib/pocketbase.ts
-- `ProductSettingsPage()` --calls--> `getPocketBaseClient()`  [EXTRACTED]
-  app/settings/page.tsx → lib/pocketbase.ts
-- `LeadCard()` --calls--> `ensurePersianText()`  [EXTRACTED]
-  components/LeadCard.tsx → lib/llm.ts
-- `AnimatedNumber()` --calls--> `toPersianDigits()`  [EXTRACTED]
-  components/MetricsHeader.tsx → lib/pricing.ts
 
 ## Import Cycles
 - None detected.
 
 ## Hyperedges (group relationships)
+- **One-Shot Deploy and Production Checklist** — readme_deploy_sh, readme_public_pocketbase_url, readme_csp_connect_src, readme_next_public_baketime, readme_secure_cookies_https, readme_pb_data_backups [EXTRACTED 1.00]
 - **3-Layer Triage Pipeline** — readme_triage_pipeline, readme_layer0_deterministic, readme_layer1_screen, readme_layer2_llm [EXTRACTED 1.00]
 - **Telegram and Bale Webhook Ingest** — readme_telegram_ingest_endpoint, readme_bale_ingest_endpoint, readme_telegram_webhook_secret, readme_bale_webhook_secret, readme_setwebhook_registration [EXTRACTED 1.00]
-- **One-Shot Deploy and Production Checklist** — readme_deploy_sh, readme_public_pocketbase_url, readme_csp_connect_src, readme_next_public_baketime, readme_secure_cookies_https, readme_pb_data_backups [EXTRACTED 1.00]
 
-## Communities (24 total, 8 thin omitted)
+## Communities (31 total, 9 thin omitted)
 
-### Community 0 - "App Pages & Routes"
+### Community 0 - "Icons.tsx"
+Cohesion: 0.05
+Nodes (62): LeadRadarDashboard(), dynamic, dynamic, dynamic, OnboardingPage(), COMPARISON_DIMENSIONS, PersianLandingPage(), PRICING_PLANS (+54 more)
+
+### Community 1 - "auth.ts"
+Cohesion: 0.07
+Nodes (63): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+55 more)
+
+### Community 2 - "voice-orb.tsx"
+Cohesion: 0.08
+Nodes (35): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+27 more)
+
+### Community 3 - "pipeline.ts"
+Cohesion: 0.09
+Nodes (35): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+27 more)
+
+### Community 4 - "package.json"
 Cohesion: 0.06
-Nodes (55): LeadRadarDashboard(), dynamic, COMPARISON_DIMENSIONS, PersianLandingPage(), PRICING_PLANS, PricingPlan, SAMPLE_SIGNALS, SampleSignal (+47 more)
+Nodes (32): clsx, motion, next, dependencies, clsx, motion, next, pocketbase (+24 more)
 
-### Community 1 - "API Routes"
+### Community 5 - "طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی"
 Cohesion: 0.07
-Nodes (56): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+48 more)
+Nodes (27): ارزش پیشنهادی رادار:, ارزیابی صریح گزینه‌های قیمت‌گذاری:, الف. هزینه‌های متغیر و وابسته به حجم مصرف (Variable Costs), ب. هزینه‌های ثابت و سرشکن‌شده زیرساخت (Fixed / Shared Costs), تحلیل سناریوها:, جدول پیش‌بینی درآمدی:, جمع کل بهای تمام‌شده (COGS) به‌ازای هر مشترک:, سامانه هوش مصنوعی رادار (Radar AI) — PriCoders (+19 more)
 
-### Community 2 - "App Shell & Voice UI"
+### Community 6 - "compilerOptions"
 Cohesion: 0.07
-Nodes (41): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+33 more)
+Nodes (28): dom, dom.iterable, esnext, **/*.mts, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts, node_modules (+20 more)
 
-### Community 3 - "LLM Triage Engine"
-Cohesion: 0.09
-Nodes (42): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+34 more)
-
-### Community 4 - "App Config & Dependencies"
-Cohesion: 0.04
-Nodes (45): nextConfig, securityHeaders, dependencies, clsx, motion, next, pocketbase, react (+37 more)
-
-### Community 5 - "Business Plan & Strategy"
-Cohesion: 0.09
-Nodes (21): الف. تفکیک کامل لایه‌های هزینه واقعی یک مشترک در ایران:, ب. جدول اقتصاد واحد و حاشیه سود هر پلن (Unit Economics):, خندق دفاعی استراتژیک رادار (Strategic Moats):, سامانه هوش مصنوعی رادار (Radar AI) — PriCoders, شاخص‌های کلیدی اقتصاد کسب‌وکار در یک نگاه:, طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و پرونده جذب سرمایه, واقعیت بی‌رحم بازار ایران و بازارهای نوظهور:, پرسونای ۱: «مهندس راد» — مدیرعامل / بنیان‌گذار شرکت نرم‌افزاری B2B SaaS (+13 more)
-
-### Community 6 - "TypeScript Configuration"
-Cohesion: 0.11
-Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
-
-### Community 7 - "UI Component Config"
+### Community 7 - "components.json"
 Cohesion: 0.12
 Nodes (15): aliases, components, hooks, lib, ui, utils, rsc, $schema (+7 more)
 
-### Community 8 - "Technical Documentation"
-Cohesion: 0.12
-Nodes (15): Opportunity Intelligence & Sales Automation Engine — PriCoders, استقرار سرور در شرایط اینترنت ایران:, مستندات فنی و معماری جامع سامانه رادار (Radar), ۱. بیانیه مأموریت فنی و رویکرد طراحی (Technical Philosophy), ۲. نمودار کلان جریان داده و خط پردازش (End-to-End System Architecture), ۳. پشته فناوری (Technology Stack), ۴. کالبدشکافی خط تریاژ سه‌لایه رادار (Progressive Triage Deep Dive), ۴.۱ لایه ۰: فیلتر قطعی و ترافیکی (Deterministic Rule Filter) (+7 more)
+### Community 8 - "مستندات فنی جامع سامانه رادار (Radar)"
+Cohesion: 0.04
+Nodes (48): اجرای محیط توسعه (Development), اجزای اصلی و ارتباطات, استقرار خودکار در محیط عملیاتی (Production Deployment), جایگاه محصول (Product Positioning), جریان داده (Data Flow), خط تریاژ سه‌لایه (Progressive Triage Pipeline), راه‌حل (Solution), روش سنجش توکن‌ها (اندازه‌گیری واقعی در برابر تخمین) (+40 more)
 
-### Community 9 - "DEPLOY.sh Script"
+### Community 9 - "DEPLOY.sh"
 Cohesion: 0.36
 Nodes (7): as_user(), DEBIAN_FRONTEND, die(), log(), prompt_secret(), DEPLOY.sh script, usage()
 
-### Community 10 - "Favicon Brand Assets"
+### Community 10 - "Favicon SVG Image"
 Cohesion: 0.22
 Nodes (9): App Brand Identity, Center Emitter Dot, Concentric Range Rings, Favicon SVG Image, Monochrome Palette Decision, Radar Emblem Glyph, Rounded Square Background, Sweep Arm With Blip (+1 more)
 
-### Community 11 - "Webhook Ingest & Pipeline Docs"
+### Community 11 - "3-Layer Triage Pipeline"
 Cohesion: 0.28
 Nodes (9): Bale Webhook Ingest Endpoint (/api/ingest/bale), BALE_WEBHOOK_SECRET, Layer 0 Deterministic Rules (zero tokens), Layer 1 Keyword Screen (zero tokens), Layer 2 LLM Evaluation, setWebhook Registration, Telegram Webhook Ingest Endpoint (/api/ingest/telegram), TELEGRAM_WEBHOOK_SECRET (+1 more)
 
-### Community 12 - "App Icon Brand Assets"
+### Community 12 - "Radar Emblem"
 Cohesion: 0.40
 Nodes (6): Concentric Circles Motif, Monochrome Minimalism, Radar Emblem, Rounded Square Container, App Icon SVG File, Radar Sweep and Blip
 
-### Community 13 - "Production Deploy Checklist"
+### Community 13 - "Public PocketBase URL Constraint"
 Cohesion: 0.40
 Nodes (6): CSP connect-src Constraint, DEPLOY.sh One-Shot Production Deploy, NEXT_PUBLIC Bake Time Constraint, pb_data Nightly Backup, Public PocketBase URL Constraint, Secure Cookies HTTPS Requirement
 
-### Community 16 - "Assistant API Endpoint"
+### Community 16 - "assistant/route.ts"
 Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
+### Community 24 - "Radar — Technical Reference (مرجع فنی جامع)"
+Cohesion: 0.07
+Nodes (28): 10. Configuration — پیکربندی, 11. Frontend & Realtime — رابط کاربری و به‌روزرسانی زنده, 12. Deployment — استقرار, 13. Operations Runbook — دستورالعمل بهره‌برداری, 14. Project Structure — ساختار پروژه, 15. Known Limitations & Roadmap — محدودیت‌ها و نقشه راه, 1. Overview — نمای کلی, 2. System Architecture — معماری سیستم (+20 more)
+
+### Community 25 - "devDependencies"
+Cohesion: 0.12
+Nodes (17): eslint, eslint-config-next, devDependencies, eslint, eslint-config-next, tailwindcss, @tailwindcss/postcss, @types/node (+9 more)
+
+### Community 26 - "راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders"
+Cohesion: 0.14
+Nodes (13): اسلاید ۱: عنوان و هویت محصول (Cover Slide), اسلاید ۱۰: نقشه راه توسعه و مقیاس‌پذیری (Roadmap), اسلاید ۱۱: تیم، دستاوردها و پیشنهاد سرمایه‌گذاری (Team & The Ask), اسلاید ۲: مسئله بازار و واقعیت تلخ فروش (The Problem), اسلاید ۳: چرا راهکارهای فعلی شکست می‌خورند؟ (Why Existing Solutions Fail), اسلاید ۴: معرفی راه‌حل — رادار (The Solution: Radar), اسلاید ۵: چرخه کارکرد فنی و دمو زنده (How It Works & Live Demo), اسلاید ۶: خندق دفاعی و تمایز فناوری (Defensibility & Moats) (+5 more)
+
+### Community 27 - "ingest.ts"
+Cohesion: 0.39
+Nodes (8): escapeFilterValue(), findOrCreateSource(), ingestExternalMessage(), IngestMessageInput, IngestOutcome, IngestPlatform, sourceName(), sanitizeString()
+
+### Community 28 - "logout/route.ts"
+Cohesion: 0.60
+Nodes (4): dynamic, POST(), formatOnboardedClearCookie(), formatSessionClearCookie()
+
+### Community 29 - "proxy.ts"
+Cohesion: 0.50
+Nodes (4): config, middleware, parseEdgeJwtPayload(), proxy()
+
 ## Knowledge Gaps
-- **185 isolated node(s):** `PricingPlan`, `SampleSignal`, `AssistantSuggestionsProps`, `IconProps`, `NavbarProps` (+180 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 214 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **252 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+247 more)
+  These have ≤1 connection - possible missing edges or undocumented components.
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `App Shell & Voice UI` to `App Pages & Routes`, `App Config & Dependencies`?**
-  _High betweenness centrality (0.143) - this node is a cross-community bridge._
-- **Why does `pocketbase` connect `LLM Triage Engine` to `API Routes`, `App Config & Dependencies`?**
-  _High betweenness centrality (0.080) - this node is a cross-community bridge._
-- **Why does `getPocketBaseClient()` connect `API Routes` to `App Pages & Routes`, `LLM Triage Engine`?**
-  _High betweenness centrality (0.035) - this node is a cross-community bridge._
-- **What connects `PricingPlan`, `SampleSignal`, `AssistantSuggestionsProps` to the rest of the system?**
-  _185 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `App Pages & Routes` be split into smaller, more focused modules?**
-  _Cohesion score 0.061754385964912284 - nodes in this community are weakly interconnected._
-- **Should `API Routes` be split into smaller, more focused modules?**
-  _Cohesion score 0.07246376811594203 - nodes in this community are weakly interconnected._
-- **Should `App Shell & Voice UI` be split into smaller, more focused modules?**
-  _Cohesion score 0.06748911465892599 - nodes in this community are weakly interconnected._
+- **Why does `getPocketBaseClient()` connect `auth.ts` to `Icons.tsx`?**
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+- **Why does `RefreshIcon()` connect `Icons.tsx` to `voice-orb.tsx`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Why does `ProductRecord` connect `auth.ts` to `Icons.tsx`, `pipeline.ts`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **What connects `DEBIAN_FRONTEND`, `dynamic`, `dynamic` to the rest of the system?**
+  _252 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Icons.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.05132788559754852 - nodes in this community are weakly interconnected._
+- **Should `auth.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.07341772151898734 - nodes in this community are weakly interconnected._
+- **Should `voice-orb.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.0782608695652174 - nodes in this community are weakly interconnected._

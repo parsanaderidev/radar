@@ -1,9 +1,9 @@
 {
   "app/api/analyze/route.ts": {
-    "mtime": 1791402503.0796154,
-    "seen": 1791404617.4960861,
-    "ast_hash": "867eeadce84376b065329218e59a4158",
-    "semantic_hash": "867eeadce84376b065329218e59a4158"
+    "mtime": 1791407898.4459817,
+    "seen": 1791408871.686631,
+    "ast_hash": "5c76974df4d91c381899cc1a96b2c7e1",
+    "semantic_hash": "5c76974df4d91c381899cc1a96b2c7e1"
   },
   "app/api/auth/login/route.ts": {
     "mtime": 1791402503.0798297,
@@ -36,10 +36,10 @@
     "semantic_hash": "94d831f318f6cbd7f1230117d28a8be8"
   },
   "app/api/simulate/route.ts": {
-    "mtime": 1791402503.0802479,
-    "seen": 1791404617.496093,
-    "ast_hash": "27c8dda2f1e022ec909082773620e961",
-    "semantic_hash": "27c8dda2f1e022ec909082773620e961"
+    "mtime": 1791407912.5978894,
+    "seen": 1791408871.6866372,
+    "ast_hash": "5273882a386248f1b90ca800f78b1297",
+    "semantic_hash": "5273882a386248f1b90ca800f78b1297"
   },
   "app/layout.tsx": {
     "mtime": 1791402503.0806286,
@@ -108,10 +108,10 @@
     "semantic_hash": "edd3be5cc43bce23ec212fdbe2a0ac05"
   },
   "lib/pocketbase.ts": {
-    "mtime": 1791402503.087489,
-    "seen": 1791404617.496104,
-    "ast_hash": "06e1752a32e74fc83c7fe48129f8e753",
-    "semantic_hash": "06e1752a32e74fc83c7fe48129f8e753"
+    "mtime": 1791407945.1411235,
+    "seen": 1791408871.68665,
+    "ast_hash": "e70b4ae9a8aeede548223462630e6ca5",
+    "semantic_hash": "e70b4ae9a8aeede548223462630e6ca5"
   },
   "lib/pricing.ts": {
     "mtime": 1791402503.0875483,
@@ -150,10 +150,10 @@
     "semantic_hash": "fd872113d40a053c4634fa419850b019"
   },
   "pocketbase/setup_schema.ts": {
-    "mtime": 1791402503.0879853,
-    "seen": 1791404617.496108,
-    "ast_hash": "594ade9a141c655a2bbd9c8f98448eb3",
-    "semantic_hash": "594ade9a141c655a2bbd9c8f98448eb3"
+    "mtime": 1791407963.6888587,
+    "seen": 1791408871.6866539,
+    "ast_hash": "f2d995c90857fdc23d6f8ab656466210",
+    "semantic_hash": "f2d995c90857fdc23d6f8ab656466210"
   },
   "postcss.config.mjs": {
     "mtime": 1791402503.0880437,
@@ -174,10 +174,10 @@
     "semantic_hash": "31883e92180fc23e204ca388b587d7ec"
   },
   "scripts/worker.ts": {
-    "mtime": 1791402503.0928867,
-    "seen": 1791404617.496109,
-    "ast_hash": "0164f7e5c8e8b831643b21097595c08b",
-    "semantic_hash": "0164f7e5c8e8b831643b21097595c08b"
+    "mtime": 1791407849.1611078,
+    "seen": 1791408871.686656,
+    "ast_hash": "ee028a3286e117a81b0ff1744ce81bb0",
+    "semantic_hash": "ee028a3286e117a81b0ff1744ce81bb0"
   },
   "tsconfig.json": {
     "mtime": 1791402503.092944,
@@ -216,10 +216,10 @@
     "semantic_hash": "5c27369b226fcf2be8a6cfe52224e767"
   },
   "README.md": {
-    "mtime": 1791403325.9690452,
-    "seen": 1791404937.0731058,
-    "ast_hash": "0a246b6f0aa99a9fe1456799b6e92149",
-    "semantic_hash": "0a246b6f0aa99a9fe1456799b6e92149"
+    "mtime": 1791408045.9534805,
+    "seen": 1791408871.686659,
+    "ast_hash": "83cc32ce01725d7b4f1141d249121eb4",
+    "semantic_hash": "83cc32ce01725d7b4f1141d249121eb4"
   },
   "app/icon.svg": {
     "mtime": 1791402503.0805078,
@@ -334,5 +334,41 @@
     "seen": 1791404937.073107,
     "ast_hash": "db131724c846cfdff75ce3b49f4c2756",
     "semantic_hash": "db131724c846cfdff75ce3b49f4c2756"
+  },
+  "DEPLOY.sh": {
+    "mtime": 1791405965.2326503,
+    "seen": 1791408871.686629,
+    "ast_hash": "73df226030efc23c5a7439fd61f2aef1",
+    "semantic_hash": "73df226030efc23c5a7439fd61f2aef1"
+  },
+  "app/api/ingest/bale/route.ts": {
+    "mtime": 1791407789.5146184,
+    "seen": 1791408871.686635,
+    "ast_hash": "b60a70ed26a0bfa25bb38e56bdf5aaee",
+    "semantic_hash": "b60a70ed26a0bfa25bb38e56bdf5aaee"
+  },
+  "app/api/ingest/telegram/route.ts": {
+    "mtime": 1791407789.391202,
+    "seen": 1791408871.686636,
+    "ast_hash": "9ac9abf44091942d8dd45fe9359b5fe7",
+    "semantic_hash": "9ac9abf44091942d8dd45fe9359b5fe7"
+  },
+  "lib/ingest.ts": {
+    "mtime": 1791407764.0369418,
+    "seen": 1791408871.686649,
+    "ast_hash": "8b196755f1dd270bcb8cf86e920ae8bd",
+    "semantic_hash": "8b196755f1dd270bcb8cf86e920ae8bd"
+  },
+  "lib/pipeline.ts": {
+    "mtime": 1791408308.7618797,
+    "seen": 1791408871.68665,
+    "ast_hash": "430aaf0f81843a46a5186ade58d956e1",
+    "semantic_hash": "430aaf0f81843a46a5186ade58d956e1"
+  },
+  "lib/prefilter.ts": {
+    "mtime": 1791408355.7344568,
+    "seen": 1791408871.686651,
+    "ast_hash": "2cdf223e0a44b4b02acdd83c0a2ecd3a",
+    "semantic_hash": "2cdf223e0a44b4b02acdd83c0a2ecd3a"
   }
 }

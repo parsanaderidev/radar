@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import {
   RadarLogo,
@@ -186,6 +186,20 @@ export default function PersianLandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
   const [showTable, setShowTable] = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetch("/api/auth/session")
+      .then((res) => res.json())
+      .then((data) => {
+        setIsAuthenticated(!!data.authenticated);
+      })
+      .catch(() => {
+        setIsAuthenticated(false);
+      });
+  }, []);
+
+  const primaryCtaTarget = isAuthenticated ? "/leads" : "/register";
 
   const selectedSignal = useMemo(
     () => SAMPLE_SIGNALS.find((s) => s.id === selectedSignalId) || SAMPLE_SIGNALS[0],
@@ -417,21 +431,42 @@ export default function PersianLandingPage() {
 
           {/* دکمه‌های کنشی هدر */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link
-              href="/settings"
-              className="hidden sm:inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-medium text-neutral-300 hover:text-white bg-[#0e0e0e] border border-[#262626] hover:border-neutral-500 transition-colors cursor-pointer"
-            >
-              <SettingsIcon className="w-3.5 h-3.5" />
-              <span>تنظیمات</span>
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link
+                  href="/settings"
+                  className="hidden sm:inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-medium text-neutral-300 hover:text-white bg-[#0e0e0e] border border-[#262626] hover:border-neutral-500 transition-colors cursor-pointer"
+                >
+                  <SettingsIcon className="w-3.5 h-3.5" />
+                  <span>تنظیمات</span>
+                </Link>
 
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-1.5 h-8 sm:h-9 px-4 rounded-xl text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] active:scale-95 cursor-pointer"
-            >
-              <span>ورود به داشبورد</span>
-              <span className="text-black">←</span>
-            </Link>
+                <Link
+                  href="/leads"
+                  className="inline-flex items-center gap-1.5 h-8 sm:h-9 px-4 rounded-xl text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] active:scale-95 cursor-pointer"
+                >
+                  <span>صندوق سرنخ‌ها</span>
+                  <span className="text-black">←</span>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-lg text-xs font-medium text-neutral-300 hover:text-white bg-[#0e0e0e] border border-[#262626] hover:border-neutral-500 transition-colors cursor-pointer"
+                >
+                  <span>ورود</span>
+                </Link>
+
+                <Link
+                  href="/register"
+                  className="inline-flex items-center gap-1.5 h-8 sm:h-9 px-4 rounded-xl text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] active:scale-95 cursor-pointer"
+                >
+                  <span>ثبت‌نام در رادار</span>
+                  <span className="text-black">←</span>
+                </Link>
+              </>
+            )}
 
             {/* دکمه منوی موبایل */}
             <button
@@ -453,20 +488,41 @@ export default function PersianLandingPage() {
         {/* کشوی منوی موبایل */}
         {mobileMenuOpen && (
           <div className="md:hidden border-b border-[#222222] bg-[#080808] px-4 py-4 space-y-2 text-right">
-            <Link
-              href="/dashboard"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 text-sm text-white font-medium hover:bg-[#141414] rounded-lg"
-            >
-              داشبورد لیدها
-            </Link>
-            <Link
-              href="/settings"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 text-sm text-neutral-300 hover:bg-[#141414] rounded-lg"
-            >
-              پیکربندی مشتری ایده‌آل
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link
+                  href="/leads"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block p-2 text-sm text-white font-medium hover:bg-[#141414] rounded-lg"
+                >
+                  صندوق سرنخ‌ها
+                </Link>
+                <Link
+                  href="/settings"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block p-2 text-sm text-neutral-300 hover:bg-[#141414] rounded-lg"
+                >
+                  تنظیمات محصول و مشتری هدف
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block p-2 text-sm text-neutral-300 hover:bg-[#141414] rounded-lg"
+                >
+                  ورود به حساب کاربری
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block p-2 text-sm text-[#00e599] font-medium hover:bg-[#141414] rounded-lg"
+                >
+                  ثبت‌نام در رادار
+                </Link>
+              </>
+            )}
             <a
               href="#pricing"
               onClick={() => setMobileMenuOpen(false)}
@@ -529,11 +585,11 @@ export default function PersianLandingPage() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-10">
               <Link
-                href="/dashboard"
+                href={primaryCtaTarget}
                 className="w-full sm:w-auto h-11 px-7 rounded-xl font-bold text-xs sm:text-sm bg-white text-black hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,255,255,0.25)] active:scale-95 cursor-pointer"
               >
                 <SparklesIcon className="w-4 h-4 text-black" />
-                <span>ورود به داشبورد لیدها</span>
+                <span>{isAuthenticated ? "صندوق هوشمند سرنخ‌ها" : "شروع کار و ثبت‌نام در رادار"}</span>
                 <span className="text-black">←</span>
               </Link>
 

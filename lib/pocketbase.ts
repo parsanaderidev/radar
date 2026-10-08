@@ -1,5 +1,20 @@
 import PocketBase from "pocketbase";
 
+export interface UserRecord {
+  id: string;
+  email: string;
+  name: string;
+  avatar?: string;
+  company?: string;
+  role?: string;
+  product_name?: string;
+  product_description?: string;
+  ideal_customer_profile?: string;
+  onboarding_completed?: boolean;
+  created?: string;
+  updated?: string;
+}
+
 export interface ProductRecord {
   id: string;
   name: string;

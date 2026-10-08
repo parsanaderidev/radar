@@ -9,9 +9,10 @@ export const dynamic = "force-dynamic";
 
 function LoginForm() {
   const searchParams = useSearchParams();
-  const from = searchParams.get("from") || "/dashboard";
+  const from = searchParams.get("from") || "/leads";
 
-  const [password, setPassword] = useState("BuildX");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,59 +31,88 @@ function LoginForm() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: password.trim() }),
+        body: JSON.stringify({
+          email: email.trim(),
+          password: password.trim(),
+        }),
       });
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "رمز عبور نادرست است.");
+        throw new Error(data.error || "اطلاعات ورود نادرست است.");
       }
 
-      // Remember session token in client storage
       if (data.token) {
         try {
           localStorage.setItem("radar_session", data.token);
         } catch {}
       }
 
-      // Hard redirect ensuring 30-day cookie is transmitted cleanly to middleware
-      window.location.href = from;
+      // Respect server redirect destination (/leads or /onboarding)
+      const destination = data.redirect || from || "/leads";
+      window.location.href = destination;
     } catch (err: any) {
       setError(err?.message || "خطا در احراز هویت رخ داد.");
       setIsLoading(false);
     }
   };
 
+  const handleQuickAdmin = () => {
+    setEmail("");
+    setPassword("BuildX");
+  };
+
   return (
     <div className="rounded-2xl bg-[#090909]/90 border border-[#202020] p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.9)] backdrop-blur-xl">
       <form onSubmit={handleLogin} className="space-y-4 text-right">
         {error && (
-          <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 text-rose-300 text-xs text-center font-medium animate-shake">
+          <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 text-rose-300 text-xs text-center font-medium animate-shake leading-relaxed">
             {error}
           </div>
         )}
 
-        <div className="space-y-2">
+        <div className="space-y-1.5">
+          <label htmlFor="user-email" className="block text-xs font-medium text-neutral-300">
+            ایمیل کاری
+          </label>
+          <input
+            id="user-email"
+            dir="ltr"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="founder@company.ir"
+            autoFocus
+            autoComplete="email"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-[#121212] border border-[#282828] text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200 [direction:ltr] text-left"
+          />
+        </div>
+
+        <div className="space-y-1.5">
           <div className="flex items-center justify-between text-xs">
-            <label htmlFor="admin-password" className="font-medium text-neutral-300">
-              رمز عبور سامانه
+            <label htmlFor="user-password" className="font-medium text-neutral-300">
+              رمز عبور
             </label>
-            <span className="text-[11px] text-neutral-500">
-              پیش‌فرض: <span className="font-mono text-emerald-400 select-all">BuildX</span>
-            </span>
+            <button
+              type="button"
+              onClick={handleQuickAdmin}
+              className="text-[11px] text-neutral-500 hover:text-emerald-400 transition-colors cursor-pointer"
+            >
+              ورود سریع مدیر: <span className="font-mono text-emerald-400 select-all">BuildX</span>
+            </button>
           </div>
 
           <div className="relative flex items-center">
             <input
-              id="admin-password"
+              id="user-password"
+              dir="ltr"
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="BuildX"
+              placeholder="••••••••"
               required
-              autoFocus
               autoComplete="current-password"
-              className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-[#121212] border border-[#282828] text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200 ease-out dir-ltr text-left"
+              className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-[#121212] border border-[#282828] text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200 [direction:ltr] text-left"
             />
             <button
               type="button"
@@ -99,7 +129,7 @@ function LoginForm() {
         <button
           type="submit"
           disabled={isLoading || !password.trim()}
-          className="w-full h-11 rounded-xl bg-white text-black text-xs font-bold hover:bg-[#e8e8e8] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all duration-200 ease-out flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.98]"
+          className="w-full h-11 rounded-xl bg-white text-black text-xs font-bold hover:bg-[#e8e8e8] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all duration-200 ease-out flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.98] mt-2"
         >
           {isLoading ? (
             <>
@@ -114,19 +144,19 @@ function LoginForm() {
           )}
         </button>
 
-        <div className="pt-2 border-t border-[#181818] flex items-center justify-between text-xs text-neutral-400">
+        <div className="pt-3 border-t border-[#181818] flex items-center justify-between text-xs text-neutral-400">
           <Link
-            href="/dashboard"
-            className="hover:text-white transition-colors inline-flex items-center gap-1"
+            href="/register"
+            className="text-[#00e599] hover:underline transition-colors font-medium inline-flex items-center gap-1"
           >
-            <span>ورود به صندوق سرنخ‌ها</span>
+            <span>ثبت‌نام حساب جدید</span>
             <span>←</span>
           </Link>
           <Link
             href="/"
             className="hover:text-white transition-colors"
           >
-            معرفی رادار
+            صفحه اصلی رادار
           </Link>
         </div>
       </form>
@@ -149,7 +179,7 @@ export default function LoginPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] vercel-hero-glow blur-[120px] rounded-full pointer-events-none" />
       </div>
 
-      <div className="relative z-10 w-full max-w-[400px] space-y-6">
+      <div className="relative z-10 w-full max-w-[420px] space-y-6">
         {/* Brand Header */}
         <div className="flex flex-col items-center text-center space-y-3">
           <Link href="/" className="inline-flex items-center gap-2 group cursor-pointer focus:outline-none">
@@ -158,7 +188,7 @@ export default function LoginPage() {
           <div className="space-y-1">
             <h1 className="text-xl font-bold text-white tracking-tight">ورود به سامانه رادار</h1>
             <p className="text-xs text-neutral-400">
-              موتور هوشمندی کشف فرصت‌های فروش • <span className="font-mono text-neutral-300">PriCoders</span>
+              موتور هوشمندی کشف فرصت‌های فروش B2B • <span className="font-mono text-neutral-300">PriCoders</span>
             </p>
           </div>
         </div>

@@ -83,6 +83,7 @@ The evaluator speaks the OpenAI-compatible REST standard, so it connects to a lo
 - **One-click reply copy** — generates and copies a natural, tone-matched Persian response draft.
 - **Lead lifecycle management** — move leads between `new`, `approved`, `contacted`, and `dismissed`.
 - **Platform filtering and sorting** — filter the feed by Telegram, Bale, X/Twitter, or forums.
+- **Production-Ready SaaS Auth & Onboarding** — complete user registration (`/register`), ICP onboarding (`/onboarding`), login (`/login`), and dedicated leads management (`/leads`) with Next.js 16 Edge proxy route protection, secure HttpOnly 30-day session cookies, and multi-tenant user profile isolation.
 - **Product & ICP settings (`/settings`)** — manage value propositions, monitored keywords, and buyer persona at runtime.
 - **Precise cost accounting** — per-message input/output tokens, configurable USD rates, and derived local-currency cost.
 

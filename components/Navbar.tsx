@@ -84,17 +84,17 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
         {/* Center: Vercel Nav Underline Tabs */}
         <nav className="flex items-center gap-1 shrink-0">
           <Link
-            href="/dashboard"
+            href="/leads"
             className={cn(
               "px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ease-out inline-flex items-center justify-center gap-1.5 cursor-pointer active:scale-95",
-              pathname === "/dashboard"
+              pathname === "/leads" || pathname === "/dashboard"
                 ? "bg-[#1f1f1f] text-white shadow-sm"
                 : "text-neutral-400 hover:text-white hover:bg-[#141414]"
             )}
           >
             <SparklesIcon className="w-3.5 h-3.5 shrink-0" />
             <span className="hidden sm:inline">صندوق سرنخ‌ها</span>
-            <span className="sm:hidden">داشبورد</span>
+            <span className="sm:hidden">سرنخ‌ها</span>
           </Link>
 
           <Link
@@ -113,7 +113,7 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
           </Link>
         </nav>
 
-        {/* Right: Primary Vercel Button */}
+        {/* Right: Actions */}
         <div className="flex items-center gap-2 shrink-0">
           {onSimulateFeed && (
             <button
@@ -142,6 +142,25 @@ export function Navbar({ onSimulateFeed, isSimulating }: NavbarProps) {
               )}
             </button>
           )}
+
+          <button
+            onClick={async () => {
+              try {
+                await fetch("/api/auth/logout", { method: "POST" });
+                try {
+                  localStorage.removeItem("radar_session");
+                } catch {}
+                window.location.href = "/login";
+              } catch (e) {
+                console.error("Logout error", e);
+                window.location.href = "/login";
+              }
+            }}
+            className="h-8 px-2.5 sm:px-3 rounded-md text-xs font-medium text-neutral-400 hover:text-rose-400 hover:bg-[#181818] transition-all border border-[#242424] inline-flex items-center gap-1.5 cursor-pointer"
+            title="خروج از حساب کاربری"
+          >
+            <span>خروج</span>
+          </button>
         </div>
       </div>
     </header>
