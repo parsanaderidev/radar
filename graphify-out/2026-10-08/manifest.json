@@ -329,12 +329,6 @@
     "ast_hash": "b6a7a9420e3c5b933ad9c5f5609f234a",
     "semantic_hash": ""
   },
-  "docs/TechnicalDocumentation.md": {
-    "mtime": 1791467475.194147,
-    "seen": 1791467935.75153,
-    "ast_hash": "9da678376a5f381d2160c613464442d0",
-    "semantic_hash": ""
-  },
   "DEPLOY.sh": {
     "mtime": 1791458496.8728151,
     "seen": 1791461051.2858992,
@@ -449,28 +443,46 @@
     "ast_hash": "dc3466fd8a6065c9ff872873fd7ed6d8",
     "semantic_hash": ""
   },
-  "docs/Content.md": {
-    "mtime": 1791467542.0521414,
-    "seen": 1791467935.7515254,
-    "ast_hash": "4dfd749ddcfa6803c03c6357ec9dbc9b",
+  "scripts/convert_all_docs_to_pdf.ts": {
+    "mtime": 1791468301.301076,
+    "seen": 1791468361.0399904,
+    "ast_hash": "ad7346c22bacb93c11ae4312687432f4",
     "semantic_hash": ""
   },
-  "scripts/build_docs_html.ts": {
-    "mtime": 1791467668.2661307,
-    "seen": 1791467935.751511,
-    "ast_hash": "7d7b71c6023566cc06c78b79d3428193",
+  "docs/BusinessPlan.html": {
+    "mtime": 1791468311.462742,
+    "seen": 1791468361.0400007,
+    "ast_hash": "9965b9a10f5707c2fdfccafa5aaaf149",
     "semantic_hash": ""
   },
-  "docs/TechnicalDocumentation.html": {
-    "mtime": 1791467680.6006362,
-    "seen": 1791467935.7515287,
-    "ast_hash": "59dc9509ce7de056ab63522cc1a45016",
+  "docs/PITCH_DECK_CONTENT.html": {
+    "mtime": 1791468312.2727408,
+    "seen": 1791468361.0400026,
+    "ast_hash": "1577ce94395b99dbfbfff5ed4c456e76",
     "semantic_hash": ""
   },
-  "docs/TechnicalDocumentation.pdf": {
-    "mtime": 1791467692.7631285,
-    "seen": 1791467935.7515314,
-    "ast_hash": "12783ab339e11e508c6f335144f2cbe1",
+  "docs/TECHNICAL_REFERENCE.html": {
+    "mtime": 1791468310.5015001,
+    "seen": 1791468361.0400045,
+    "ast_hash": "838d8ca6101f495271e95a5aa2f0f665",
+    "semantic_hash": ""
+  },
+  "docs/BusinessPlan.pdf": {
+    "mtime": 1791468312.193075,
+    "seen": 1791468361.0400062,
+    "ast_hash": "f9a4e563e52c8a0280b47d4539a73143",
+    "semantic_hash": ""
+  },
+  "docs/PITCH_DECK_CONTENT.pdf": {
+    "mtime": 1791468313.000075,
+    "seen": 1791468361.040007,
+    "ast_hash": "742124630ca68b42b04c19ddf527878f",
+    "semantic_hash": ""
+  },
+  "docs/TECHNICAL_REFERENCE.pdf": {
+    "mtime": 1791468311.3830752,
+    "seen": 1791468361.0400078,
+    "ast_hash": "46c66e3a72408cab5c0d515bcc738f6f",
     "semantic_hash": ""
   }
 }

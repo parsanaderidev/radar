@@ -32,15 +32,24 @@
 }
 
 
+    /* 
+      EXACT WEBSITE THEME: 
+      Deep Black #000000, Zinc Cards #09090b / #121214, 
+      Borders #27272a, White Headings #ffffff, Muted Text #a1a1aa 
+    */
     :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --border: #e2e8f0;
-      --border-dark: #cbd5e1;
+      --bg: #000000;
+      --card-bg: #09090b;
+      --card-alt: #121215;
+      --border: #27272a;
+      --border-subtle: #1e1e24;
+      --text: #ededed;
+      --text-bright: #ffffff;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --code-bg: #050505;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
     }
 
     * {
@@ -53,278 +62,326 @@
       font-family: 'Ravi', Tahoma, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.85;
-      font-size: 13.5px;
+      line-height: 1.75;
+      font-size: 13px;
       direction: rtl;
       text-align: right;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* Floating Top Toolbar */
     .top-bar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(9, 9, 11, 0.95);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 30px;
+      padding: 10px 25px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
     .top-bar-title {
       font-weight: 700;
-      font-size: 14.5px;
-      color: var(--primary-dark);
+      font-size: 13.5px;
+      color: var(--text-bright);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+    }
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: #ffffff;
+      color: #000000;
+      border-radius: 5px;
+      font-weight: 900;
+      font-size: 12px;
     }
     .btn {
-      padding: 8px 18px;
-      border-radius: 8px;
+      padding: 6px 16px;
+      border-radius: 6px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
-      border: none;
-      background: var(--primary);
-      color: #fff;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: #000000;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+      transition: all 0.15s ease;
     }
     .btn:hover {
-      background: var(--primary-dark);
+      background: #e4e4e7;
     }
 
+    /* Main Container */
     .doc-page {
-      max-width: 880px;
-      margin: 30px auto;
-      background: var(--card-bg);
-      padding: 45px 55px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      max-width: 900px;
+      margin: 20px auto;
+      background: var(--bg);
+      padding: 25px 35px;
     }
 
+    /* Executive Cover Card */
     .cover-card {
-      border: 2px solid #bae6fd;
-      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
-      padding: 40px;
-      border-radius: 14px;
-      margin-bottom: 35px;
-      page-break-after: always;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #121216 0%, #09090b 100%);
+      padding: 30px 35px;
+      border-radius: 12px;
+      margin-bottom: 25px;
     }
     .badge-row {
       display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 14px;
     }
     .badge {
       display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 10.5px;
       font-weight: 700;
+      letter-spacing: 0.3px;
     }
-    .badge-blue { background: #e0f2fe; color: #0369a1; }
-    .badge-green { background: #d1fae5; color: #047857; }
-    .badge-purple { background: #ede9fe; color: #6d28d9; }
+    .badge-white {
+      background: #ffffff;
+      color: #000000;
+    }
+    .badge-zinc {
+      background: #18181b;
+      color: #d4d4d8;
+      border: 1px solid var(--border);
+    }
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
 
     .cover-title {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
-      color: #0f172a;
-      line-height: 1.4;
-      margin-bottom: 12px;
+      color: var(--text-bright);
+      line-height: 1.35;
+      margin-bottom: 8px;
     }
     .cover-subtitle {
-      font-size: 14px;
-      color: #334155;
-      line-height: 1.7;
-      margin-bottom: 25px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
     }
     .cover-meta {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      border-top: 1px solid #cbd5e1;
-      padding-top: 20px;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
     }
     .meta-item {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
     .meta-label {
-      font-size: 11px;
-      color: #64748b;
+      font-size: 10.5px;
+      color: var(--text-dim);
       font-weight: 600;
     }
     .meta-val {
-      font-size: 13px;
-      color: #0f172a;
+      font-size: 12px;
+      color: var(--text-bright);
       font-weight: 700;
     }
 
+    /* Headings - High Contrast White & Zero Premature Page Breaks */
     .doc-h1 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 22px;
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 10px;
+      color: var(--text-bright);
+      margin-top: 25px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      break-after: avoid;
     }
     .doc-h2 {
-      font-size: 18.5px;
+      font-size: 17px;
       font-weight: 800;
-      color: #0f172a;
-      margin-top: 38px;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
+      color: var(--text-bright);
+      margin-top: 26px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       gap: 8px;
-      page-break-after: avoid;
+      break-after: avoid;
     }
-    .h2-indicator {
+    .h2-dot {
       display: inline-block;
-      width: 4px;
-      height: 20px;
-      background: var(--primary);
-      border-radius: 2px;
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
     }
     .doc-h3 {
-      font-size: 15.5px;
+      font-size: 14.5px;
       font-weight: 700;
-      color: #1e293b;
-      margin-top: 25px;
-      margin-bottom: 12px;
-      page-break-after: avoid;
-    }
-    .doc-h4 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #334155;
+      color: var(--text-bright);
       margin-top: 18px;
       margin-bottom: 8px;
-      page-break-after: avoid;
+      break-after: avoid;
+    }
+    .doc-h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #d4d4d8;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      break-after: avoid;
     }
     .doc-p {
-      margin-bottom: 14px;
-      color: #334155;
+      margin-bottom: 12px;
+      color: var(--text);
       text-align: justify;
+      line-height: 1.75;
     }
 
     .section-divider {
       border: 0;
       height: 1px;
-      background: linear-gradient(to left, transparent, var(--border), transparent);
-      margin: 35px 0;
+      background: var(--border);
+      margin: 22px 0;
     }
 
+    /* Blockquotes & Callouts */
     .doc-quote {
-      border-right: 4px solid var(--primary);
-      background: #f0f9ff;
-      padding: 14px 18px;
-      margin: 18px 0;
-      border-radius: 6px 0 0 6px;
-      color: #0369a1;
-      font-size: 13px;
+      border-right: 3px solid #ffffff;
+      background: #0e0e12;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 4px 0 0 4px;
+      color: #d4d4d8;
+      font-size: 12.5px;
+      border: 1px solid var(--border-subtle);
+      border-right: 3px solid #ffffff;
+      break-inside: avoid;
     }
     .callout {
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin: 18px 0;
-      border-right: 4px solid;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border: 1px solid var(--border);
+      break-inside: avoid;
     }
     .callout-warning {
-      background: #fffbeb;
-      border-color: #f59e0b;
-      color: #92400e;
+      background: #121008;
+      border-right: 3px solid var(--accent-amber);
+      color: #fef3c7;
     }
     .callout-title {
       font-weight: 700;
-      font-size: 13px;
+      font-size: 12.5px;
       margin-bottom: 4px;
+      color: var(--text-bright);
     }
     .callout-body {
-      font-size: 12.5px;
-      line-height: 1.7;
+      font-size: 12px;
+      line-height: 1.65;
     }
 
+    /* Lists */
     .doc-ul, .doc-ol {
-      margin: 12px 0 16px 20px;
-      padding-right: 15px;
+      margin: 8px 0 14px 18px;
+      padding-right: 14px;
     }
     .doc-ul li, .doc-ol li {
-      margin-bottom: 7px;
-      color: #334155;
+      margin-bottom: 5px;
+      color: var(--text);
     }
 
+    /* High Density Monochrome Tables */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 18px 0 24px;
+      margin: 10px 0 16px;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      page-break-inside: avoid;
+      border-radius: 6px;
+      background: var(--card-bg);
+      break-inside: auto;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12.5px;
+      font-size: 11.5px;
       text-align: right;
     }
+    thead {
+      display: table-header-group;
+    }
+    tr {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
     th {
-      background: #f1f5f9;
-      color: #0f172a;
+      background: #141418;
+      color: var(--text-bright);
       font-weight: 700;
-      padding: 9px 12px;
-      border-bottom: 2px solid var(--border);
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--border);
       white-space: nowrap;
     }
     td {
-      padding: 9px 12px;
-      border-bottom: 1px solid var(--border);
-      color: #334155;
+      padding: 7px 10px;
+      border-bottom: 1px solid #1a1a20;
+      color: var(--text);
+      vertical-align: middle;
     }
-    tr.odd { background: #ffffff; }
-    tr.even { background: #f8fafc; }
+    tr.odd { background: #09090b; }
+    tr.even { background: #0e0e12; }
     tr:last-child td { border-bottom: none; }
 
+    /* Inline Code */
     .inline-code {
       font-family: Consolas, Monaco, monospace;
       direction: ltr;
       display: inline-block;
-      background: #f1f5f9;
-      color: #0284c7;
-      border: 1px solid #e2e8f0;
+      background: #18181b;
+      color: #ffffff;
+      border: 1px solid #27272a;
       padding: 1px 5px;
       border-radius: 4px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
     }
 
+    /* Code Block Containers */
     .code-container {
-      margin: 18px 0 24px;
-      border-radius: 8px;
+      margin: 14px 0 18px;
+      border-radius: 6px;
       overflow: hidden;
-      border: 1px solid #1e293b;
-      background: #0b1120;
-      page-break-inside: avoid;
+      border: 1px solid var(--border);
+      background: var(--code-bg);
+      break-inside: avoid;
     }
     .code-header {
-      background: #1e293b;
-      padding: 6px 14px;
-      border-bottom: 1px solid #334155;
+      background: #111116;
+      padding: 5px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
     }
     .code-lang {
-      color: #94a3b8;
-      font-size: 10.5px;
+      color: var(--text-dim);
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       font-family: monospace;
@@ -332,140 +389,153 @@
     pre {
       direction: ltr;
       text-align: left;
-      padding: 14px 18px;
+      padding: 12px 15px;
       overflow-x: auto;
       font-family: Consolas, Monaco, monospace;
       font-size: 11.5px;
-      line-height: 1.65;
-      color: #e2e8f0;
+      line-height: 1.6;
+      color: #f4f4f5;
     }
 
+    /* Mermaid Architecture Diagrams */
     .mermaid-box {
-      margin: 20px 0;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: #f8fafc;
+      margin: 16px 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #0c0c10;
       overflow: hidden;
-      page-break-inside: avoid;
+      break-inside: avoid;
     }
     .mermaid-badge {
-      background: #e2e8f0;
-      color: #334155;
-      font-size: 11px;
+      background: #16161c;
+      color: var(--text-muted);
+      font-size: 10.5px;
       font-weight: 700;
       padding: 5px 12px;
-      border-bottom: 1px solid #cbd5e1;
+      border-bottom: 1px solid var(--border);
     }
     .mermaid-code {
       direction: ltr;
       text-align: left;
-      padding: 12px 16px;
+      padding: 12px 15px;
       font-size: 11px;
-      background: #ffffff;
-      color: #1e293b;
+      background: #09090c;
+      color: #e4e4e7;
     }
 
     .doc-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .icon-badge {
+      display: inline-block;
+      margin-left: 3px;
     }
 
+    /* =========================================================================
+       PRINT STYLES: Black & White / Dark Theme with Zero Empty Waste
+    ========================================================================= */
     @media print {
       @page {
         size: A4 portrait;
-        margin: 14mm 10mm 14mm 10mm;
+        margin: 10mm 10mm 10mm 10mm;
       }
       body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 11.5pt;
-        line-height: 1.55;
+        background-color: #000000 !important;
+        color: #ededed !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        font-size: 11pt;
+        line-height: 1.5;
       }
-      .top-bar { display: none !important; }
+      .top-bar {
+        display: none !important;
+      }
       .doc-page {
         max-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
+        background: #000000 !important;
       }
       .cover-card {
-        border: 2px solid #0284c7 !important;
-        background: #ffffff !important;
-        padding: 35px !important;
-        page-break-after: always !important;
+        background: #09090b !important;
+        border: 1px solid #27272a !important;
+        padding: 24px !important;
+        break-after: auto !important;
+        margin-bottom: 20px !important;
       }
-      .doc-h2 {
-        page-break-before: always;
-        break-before: page;
-        margin-top: 25px;
+      /* NO FORCED PAGE BREAKS ON HEADINGS - NATURAL FLOW ELIMINATES EMPTY GAPS */
+      .doc-h1, .doc-h2, .doc-h3, .doc-h4 {
+        break-before: auto !important;
+        page-break-before: auto !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
       }
-      .table-container, .code-container, .mermaid-box, .callout {
-        page-break-inside: avoid;
-        break-inside: avoid;
+      .table-container {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
       }
-      table th {
-        background-color: #f1f5f9 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+      tr {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
       }
+      .code-container, .mermaid-box, .callout, .doc-quote {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      th {
+        background-color: #18181b !important;
+        color: #ffffff !important;
+      }
+      tr.even { background-color: #0e0e12 !important; }
+      tr.odd { background-color: #09090b !important; }
       pre {
-        color: #0f172a !important;
-        background: #f8fafc !important;
-        border: 1px solid #cbd5e1 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        background-color: #050505 !important;
+        color: #f4f4f5 !important;
+        border: 1px solid #27272a !important;
       }
-      .code-container {
-        border-color: #cbd5e1 !important;
-      }
-      .code-header {
-        background: #f1f5f9 !important;
-        color: #0f172a !important;
-        border-color: #cbd5e1 !important;
-      }
-      .code-lang { color: #0f172a !important; }
     }
   </style>
 </head>
 <body>
   <header class="top-bar">
     <div class="top-bar-title">
+      <span class="logo-badge">R</span>
       <span>سامانه رادار (Radar) | مرجع فنی جامع و راهنمای پیاده‌سازی سامانه رادار</span>
     </div>
     <button onclick="window.print()" class="btn">
-      چاپ و خروجی PDF
+      چاپ و خروجی PDF (Black & White)
     </button>
   </header>
 
   <main class="doc-page">
     <section class="cover-card">
       <div class="badge-row">
-        <span class="badge badge-blue">معماری فنی و مهندسی</span>
-        <span class="badge badge-green">پروژه رادار (Radar)</span>
-        <span class="badge badge-purple">نسخه رسمی</span>
+        <span class="badge badge-white">معماری فنی و مهندسی</span>
+        <span class="badge badge-zinc">پروژه رادار (Radar)</span>
+        <span class="badge badge-emerald">نسخه رسمی عملیاتی</span>
       </div>
       <h1 class="cover-title">مرجع فنی جامع و راهنمای پیاده‌سازی سامانه رادار</h1>
-      <p class="cover-subtitle">مستندات معماری، ساختار داده‌ها، خط تریاژ سه‌لایه، احراز هویت چندمستأجری و اسکنر پس‌زمینه خودکار</p>
+      <p class="cover-subtitle">مستندات معماری، ساختار داده‌ها، خط تریاژ سه‌لایه، احراز هویت چندمستأجری، ماتریس سیگنال‌های زنده و اسکنر پس‌زمینه خودکار</p>
       <div class="cover-meta">
         <div class="meta-item">
           <span class="meta-label">محصول:</span>
-          <span class="meta-val">رادار (موتور کشف نیت خرید B2B)</span>
+          <span class="meta-val">رادار (Radar B2B Intent Engine)</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">تاریخ بازبینی:</span>
           <span class="meta-val">بهمن ۱۴۰۳ / اکتبر ۲۰۲۶</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">سطح سند:</span>
-          <span class="meta-val">رسمی و اختصاصی</span>
+          <span class="meta-label">سطح دسترسی:</span>
+          <span class="meta-val">مستند فنی و اجرایی رسمی</span>
         </div>
       </div>
     </section>
 
     <article class="doc-content">
-      <h1 class="doc-h1">Radar — Technical Reference (مرجع فنی جامع)</h1><blockquote class="doc-quote">Persian body, English headings and technical terms. Companion to <code class="inline-code">README.md</code></blockquote><blockquote class="doc-quote">(user guide) and <code class="inline-code">docs/TechnicalDocumentation.md</code> (design philosophy).</blockquote><blockquote class="doc-quote">Last updated for the webhook-ingestion + 3-layer-pipeline release.</blockquote><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>Table of Contents</h2><ul class="doc-ul"><li><a href="#1-overview--نمای-کلی" class="doc-link">1. Overview</a></li><li><a href="#2-system-architecture--معماری-سیستم" class="doc-link">2. System Architecture</a></li><li><a href="#3-tech-stack--پشته-فناوری" class="doc-link">3. Tech Stack</a></li><li><a href="#4-data-model--مدل-داده" class="doc-link">4. Data Model</a></li><li><a href="#5-triage-pipeline--خط-تریاژ-سهلایه" class="doc-link">5. Triage Pipeline</a></li><li><a href="#6-ingestion--جمعآوری-پیام" class="doc-link">6. Ingestion</a></li><li><a href="#7-api-reference--مرجع-api" class="doc-link">7. API Reference</a></li><li><a href="#8-radar-assistant--دستیار-هوشمند" class="doc-link">8. Radar Assistant</a></li><li><a href="#9-authentication--security--احراز-هویت-و-امنیت" class="doc-link">9. Authentication & Security</a></li><li><a href="#10-configuration--پیکربندی" class="doc-link">10. Configuration</a></li><li><a href="#11-frontend--realtime--رابط-کاربری-و-بهروزرسانی-زنده" class="doc-link">11. Frontend & Realtime</a></li><li><a href="#12-deployment--استقرار" class="doc-link">12. Deployment</a></li><li><a href="#13-operations-runbook--دستورالعمل-بهرهبرداری" class="doc-link">13. Operations Runbook</a></li><li><a href="#14-project-structure--ساختار-پروژه" class="doc-link">14. Project Structure</a></li><li><a href="#15-known-limitations--roadmap--محدودیتها-و-نقشه-راه" class="doc-link">15. Known Limitations & Roadmap</a></li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>1. Overview — نمای کلی</h2><p class="doc-p">رادار (Radar) یک موتور محلیِ کشف نیت خرید (Buying-Intent Engine) برای تیم‌های</p><p class="doc-p">فروش فعال در ایران است. پیام‌های جوامع فارسی (تلگرام، بله، ایکس، فروم‌ها) را</p><p class="doc-p">می‌خواند، نویز را با سه لایه فیلتر حذف می‌کند، به هر پیام امتیاز ۰ تا ۱۰۰</p><p class="doc-p">می‌دهد و پیش‌نویس پاسخ فارسی آماده ارسال تولید می‌کند — همه روی یک سرور،</p><p class="doc-p">بدون وابستگی به کلاد خارجی.</p><p class="doc-p">اعداد کلیدی پیاده‌سازی فعلی:</p><div class="table-container"><table><thead><tr><th>شاخص</th><th>مقدار</th></tr></thead><tbody><tr class="even"><td>لایه‌های تریاژ</td><td>۳ (قطعی، غربال سریع، تحلیل عمیق)</td></tr><tr class="odd"><td>سطوح نیت</td><td><code class="inline-code">high_intent</code> ،<code class="inline-code">problem_aware</code> ،<code class="inline-code">curious</code> ،<code class="inline-code">irrelevant</code></td></tr><tr class="even"><td>وضعیت پیام خام</td><td><code class="inline-code">pending</code> ،<code class="inline-code">processed</code> ،<code class="inline-code">filtered</code> ،<code class="inline-code">error</code></td></tr><tr class="odd"><td>وضعیت سرنخ</td><td><code class="inline-code">new</code> ،<code class="inline-code">approved</code> ،<code class="inline-code">contacted</code> ،<code class="inline-code">dismissed</code></td></tr><tr class="even"><td>پلتفرم‌های منبع</td><td><code class="inline-code">telegram</code> ،<code class="inline-code">bale</code> ،<code class="inline-code">twitter_x</code> ،<code class="inline-code">forum</code></td></tr><tr class="odd"><td>هزینه لایه ۰ و ۱</td><td>صفر توکن (CPU خالص)</td></tr><tr class="even"><td>تایم‌اوت فراخوانی LLM</td><td>۱۲ ثانیه، سپس fallback</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>2. System Architecture — معماری سیستم</h2><div class="mermaid-box"><div class="mermaid-badge">نمودار معماری و جریان داده</div><pre class="mermaid-code"><code>graph TD
+      <h1 class="doc-h1">Radar — Technical Reference (مرجع فنی جامع)</h1><blockquote class="doc-quote">Persian body, English headings and technical terms. Companion to <code class="inline-code">README.md</code></blockquote><blockquote class="doc-quote">(user guide) and <code class="inline-code">docs/TechnicalDocumentation.md</code> (design philosophy).</blockquote><blockquote class="doc-quote">Last updated for the webhook-ingestion + 3-layer-pipeline release.</blockquote><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>Table of Contents</h2><ul class="doc-ul"><li><a href="#1-overview--نمای-کلی" class="doc-link">1. Overview</a></li><li><a href="#2-system-architecture--معماری-سیستم" class="doc-link">2. System Architecture</a></li><li><a href="#3-tech-stack--پشته-فناوری" class="doc-link">3. Tech Stack</a></li><li><a href="#4-data-model--مدل-داده" class="doc-link">4. Data Model</a></li><li><a href="#5-triage-pipeline--خط-تریاژ-سهلایه" class="doc-link">5. Triage Pipeline</a></li><li><a href="#6-ingestion--جمعآوری-پیام" class="doc-link">6. Ingestion</a></li><li><a href="#7-api-reference--مرجع-api" class="doc-link">7. API Reference</a></li><li><a href="#8-radar-assistant--دستیار-هوشمند" class="doc-link">8. Radar Assistant</a></li><li><a href="#9-authentication--security--احراز-هویت-و-امنیت" class="doc-link">9. Authentication & Security</a></li><li><a href="#10-configuration--پیکربندی" class="doc-link">10. Configuration</a></li><li><a href="#11-frontend--realtime--رابط-کاربری-و-بهروزرسانی-زنده" class="doc-link">11. Frontend & Realtime</a></li><li><a href="#12-deployment--استقرار" class="doc-link">12. Deployment</a></li><li><a href="#13-operations-runbook--دستورالعمل-بهرهبرداری" class="doc-link">13. Operations Runbook</a></li><li><a href="#14-project-structure--ساختار-پروژه" class="doc-link">14. Project Structure</a></li><li><a href="#15-known-limitations--roadmap--محدودیتها-و-نقشه-راه" class="doc-link">15. Known Limitations & Roadmap</a></li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>1. Overview — نمای کلی</h2><p class="doc-p">رادار (Radar) یک موتور محلیِ کشف نیت خرید (Buying-Intent Engine) برای تیم‌های</p><p class="doc-p">فروش فعال در ایران است. پیام‌های جوامع فارسی (تلگرام، بله، ایکس، فروم‌ها) را</p><p class="doc-p">می‌خواند، نویز را با سه لایه فیلتر حذف می‌کند، به هر پیام امتیاز ۰ تا ۱۰۰</p><p class="doc-p">می‌دهد و پیش‌نویس پاسخ فارسی آماده ارسال تولید می‌کند — همه روی یک سرور،</p><p class="doc-p">بدون وابستگی به کلاد خارجی.</p><p class="doc-p">اعداد کلیدی پیاده‌سازی فعلی:</p><div class="table-container"><table><thead><tr><th>شاخص</th><th>مقدار</th></tr></thead><tbody><tr class="even"><td>لایه‌های تریاژ</td><td>۳ (قطعی، غربال سریع، تحلیل عمیق)</td></tr><tr class="odd"><td>سطوح نیت</td><td><code class="inline-code">high_intent</code> ،<code class="inline-code">problem_aware</code> ،<code class="inline-code">curious</code> ،<code class="inline-code">irrelevant</code></td></tr><tr class="even"><td>وضعیت پیام خام</td><td><code class="inline-code">pending</code> ،<code class="inline-code">processed</code> ،<code class="inline-code">filtered</code> ،<code class="inline-code">error</code></td></tr><tr class="odd"><td>وضعیت سرنخ</td><td><code class="inline-code">new</code> ،<code class="inline-code">approved</code> ،<code class="inline-code">contacted</code> ،<code class="inline-code">dismissed</code></td></tr><tr class="even"><td>پلتفرم‌های منبع</td><td><code class="inline-code">telegram</code> ،<code class="inline-code">bale</code> ،<code class="inline-code">twitter_x</code> ،<code class="inline-code">forum</code></td></tr><tr class="odd"><td>هزینه لایه ۰ و ۱</td><td>صفر توکن (CPU خالص)</td></tr><tr class="even"><td>تایم‌اوت فراخوانی LLM</td><td>۱۲ ثانیه، سپس fallback</td></tr></tbody></table></div><h3 class="doc-h3">نمونه داده‌های واقعی پردازش‌شده در بازار ایران (Live Signals Matrix)</h3><p class="doc-p">برگرفته از نمونه‌های زنده و بنچ‌مارک شده در رابط کاربری سامانه رادار:</p><div class="table-container"><table><thead><tr><th>شناسه و بستر</th><th>فرستنده و جامعه هدف</th><th>متن پیام ورودی</th><th>امتیاز و سطح نیت</th><th>تحلیل هوش مصنوعی</th><th>فوریت و بودجه</th><th>هزینه پردازش</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">sig-1</code> (بله)</td><td>علیرضا فراهانی (مدیر عملیات فین‌تک)</td><td>«ما برای تیم ۲۰ نفرمون به شدت دنبال یه راهکار مطمئن اتوماسیون پیگیری لیدها در کانال‌ها هستیم. روزی ۳ ساعت وقت تیم فروش هدر میره. بودجه ماهانه آماده تا ۱۵ میلیون داریم. چه نرم‌افزاری پیشنهاد می‌دید؟»</td><td>۹۴ (<code class="inline-code">high_intent</code>)</td><td>اعلام صریح اتلاف زمان روزانه (۳ ساعت)، ابعاد تیم فروش (۲۰ نفر)، سقف بودجه معین (۱۵ م.ت) و فوریت بالا در انتخاب سامانه.</td><td>فوری (۲۴ ساعت)<br/>۱۵,۰۰۰,۰۰۰ تومان ماهانه</td><td>۴۲ تومان (~$0.0004)</td></tr><tr class="odd"><td><code class="inline-code">sig-2</code> (تلگرام)</td><td>سارا موحد (مدیر رشد)</td><td>«کسی تجربه استفاده از سرویس‌های ایرانی برای کشف مشتریان بالقوه در گروه‌ها داره؟ دنبال راهکاری هستیم که با نرم‌افزار دیدار یکپارچه بشه.»</td><td>۸۲ (<code class="inline-code">high_intent</code>)</td><td>نیاز مشخص به کشف سرنخ در گروه‌های محلی، درخواست معرفی سرویس ایرانی و پیش‌شرط اتصال خودکار به CRM دیدار.</td><td>متوسط (۱ هفته)<br/>آماده مذاکره و خرید</td><td>۳۸ تومان (~$0.00036)</td></tr><tr class="even"><td><code class="inline-code">sig-3</code> (انجمن‌ها)</td><td>مهدی کاظمی (بنیان‌گذار استارتاپ)</td><td>«چطور می‌تونیم بدون تبلیغات کلیکی پرهزینه، اولین ۱۰۰ مشتری سازمانی نرم‌افزارمون رو در جوامع آنلاین پیدا کنیم؟»</td><td>۶۵ (<code class="inline-code">problem_aware</code>)</td><td>آگاهی کامل از چالش کشف مشتری اولیه و اجتناب از هزینه‌های بالای تبلیغات سنتی؛ فرصت مشاوره و تبدیل به مشتری پایدار.</td><td>متوسط (۱ هفته)<br/>بودجه استارتاپی</td><td>۳۵ تومان (~$0.00033)</td></tr></tbody></table></div><h3 class="doc-h3">مقایسه اقتصادی رادار با پیمایش سنتی توسط نیروی انسانی (SDR Economics)</h3><div class="table-container"><table><thead><tr><th>شاخص مقایسه‌ای</th><th>استخدام کارشناس فروش انسانی (SDR)</th><th>سامانه هوشمند رادار (Radar)</th><th>مزیت و صرفه‌جویی</th></tr></thead><tbody><tr class="even"><td><strong>هزینه ماهانه مستقیم</strong></td><td>۲۵ تا ۴۰ میلیون تومان حقوق و بیمه</td><td>۱,۸۹۰,۰۰۰ تومان (پلن استارتر)</td><td>بیش از <strong>۹۵٪ کاهش هزینه مستقیم</strong></td></tr><tr class="odd"><td><strong>ساعات فعالیت و پایش</strong></td><td>حداکثر ۸ ساعت در روز (روزهای کاری)</td><td>۲۴ ساعته، ۷ روز هفته بدون توقف</td><td>پوشش ۱۰۰٪ پیام‌های شبانه و تعطیلات</td></tr><tr class="even"><td><strong>سرعت کشف و پاسخ</strong></td><td>تا ۴ ساعت تأخیر در مشاهده پیام</td><td>تحلیل بلادرنگ در کمتر از ۳ ثانیه</td><td>پیشگیری از باختن فرصت به رقبا</td></tr><tr class="odd"><td><strong>نرخ خطای تشخیص</strong></td><td>خطای بالا به دلیل خستگی ناشی از نویز ۸۰٪ کانال‌ها</td><td>غربالگری سه‌لایه‌ای دقیق با حذف کامل اسپم</td><td>تفکیک دقیق پیام‌های آماده خرید از احوال‌پرسی</td></tr><tr class="even"><td><strong>هزینه پردازش هر پیام</strong></td><td>سرشکن انسانی ~۲,۵۰۰ تومان</td><td>کمتر از ۹ تومان سرشکن (۳۸ تا ۴۲ تومان L2)</td><td><strong>۹۹٪ صرفه‌جویی مالی در هر پیام</strong></td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>2. System Architecture — معماری سیستم</h2><div class="mermaid-box"><div class="mermaid-badge">نمودار معماری و جریان داده</div><pre class="mermaid-code"><code>graph TD
     A[Iranian Communities&lt;br/&gt;Telegram · Bale · X · Forums] --&gt;|bot webhooks| W[Ingest API&lt;br/&gt;/api/ingest/telegram · /api/ingest/bale]
     W --&gt;|pending| B[(raw_messages&lt;br/&gt;PocketBase / SQLite)]
     A --&gt;|manual / demo| B
@@ -478,13 +548,13 @@
     E --&gt; C
     C --&gt;|score + cost| F[(leads&lt;br/&gt;PocketBase / SQLite)]
     F --&gt;|SSE subscription| G[Next.js 16 Dashboard&lt;br/&gt;app/page.tsx + app/dashboard]
-    G --&gt;|1-click draft| H[Sales &amp; Marketing Team]</code></pre></div><p class="doc-p">مسیر داده همیشه یک‌طرفه است: <code class="inline-code">communities → raw_messages → leads → dashboard</code>.</p><p class="doc-p">هیچ مسیری از داشبورد به پلتفرم‌ها (ارسال خودکار پیام) وجود ندارد؛ ارسال پاسخ</p><p class="doc-p">همیشه با تصمیم انسانی انجام می‌شود (Human-in-the-loop).</p><p class="doc-p">نقش اجزا:</p><div class="table-container"><table><thead><tr><th>جزء</th><th>فایل</th><th>مسئولیت</th></tr></thead><tbody><tr class="even"><td>Ingest API</td><td><code class="inline-code">app/api/ingest/*/route.ts</code> + <code class="inline-code">lib/ingest.ts</code></td><td>دریافت وب‌هوک، dedupe، ساخت <code class="inline-code">source</code>، درج <code class="inline-code">pending</code></td></tr><tr class="odd"><td>Triage Pipeline</td><td><code class="inline-code">lib/pipeline.ts</code></td><td>اجرای L0/L1/L2 و ثبت <code class="inline-code">lead</code> — تنها نقطه تریاژ</td></tr><tr class="even"><td>Layer 0/1</td><td><code class="inline-code">lib/prefilter.ts</code></td><td>قوانین قطعی و غربال سریع، بدون توکن</td></tr><tr class="odd"><td>Layer 2</td><td><code class="inline-code">lib/llm.ts</code> (<code class="inline-code">evaluateMessageWithLLM</code>)</td><td>پرامپت کامل + fallback启发式</td></tr><tr class="even"><td>Worker</td><td><code class="inline-code">scripts/worker.ts</code></td><td>مصرف صف <code class="inline-code">pending</code> (one-shot؛ با timer تکرار می‌شود)</td></tr><tr class="odd"><td>Schema bootstrap</td><td><code class="inline-code">pocketbase/setup_schema.ts</code></td><td>ساخت کالکشن‌ها + مهاجرت‌ها + seed محصول و منابع</td></tr><tr class="even"><td>Dashboard</td><td><code class="inline-code">app/page.tsx</code>, <code class="inline-code">app/dashboard/page.tsx</code></td><td>فید زنده روی SSE ساب‌اسکریپشن PocketBase</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>3. Tech Stack — پشته فناوری</h2><div class="table-container"><table><thead><tr><th>لایه</th><th>فناوری</th></tr></thead><tbody><tr class="even"><td>Runtime / Package manager</td><td>Bun 1.4+</td></tr><tr class="odd"><td>Framework</td><td>Next.js 16 (App Router, Turbopack) · React 19</td></tr><tr class="even"><td>Language</td><td>TypeScript 5 (strict)</td></tr><tr class="odd"><td>Styling</td><td>Tailwind CSS v4 + <code class="inline-code">app/globals.css</code></td></tr><tr class="even"><td>Database & realtime</td><td>PocketBase (embedded SQLite) + SSE subscriptions</td></tr><tr class="odd"><td>AI inference</td><td>OpenAI-compatible endpoint (Ollama/vLLM/domestic gateway) + heuristic fallback</td></tr><tr class="even"><td>Ingestion protocols</td><td>Telegram Bot API webhooks · Bale Bot API webhooks (<code class="inline-code">tapi.bale.ai</code>)</td></tr><tr class="odd"><td>Typography</td><td>Ravi + Estedad (self-hosted, بدون CDN خارجی)</td></tr><tr class="even"><td>Icons</td><td>Inline SVG در <code class="inline-code">components/Icons.tsx</code> (بدون پکیج آیکون)</td></tr></tbody></table></div><p class="doc-p">قواعد معماری (از <code class="inline-code">AGENTS.md</code>): اول TypeScript خالص (بدون یوتیلیتی اضافه)، صفر</p><p class="doc-p">CDN خارجی، رابط کاملاً RTL با اعداد فارسی.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>4. Data Model — مدل داده</h2><p class="doc-p">چهار کالکشن در PocketBase. نوشتن مستقیم (create/update/delete) در همه</p><p class="doc-p">کالکشن‌های داده فقط برای superuser قابل نوشتن هستند (<code class="inline-code">createRule/updateRule/deleteRule = null</code>)؛</p><p class="doc-p">خواندن (list/view) برای داده‌های عمومی باز است. دسترسی رکوردهای کاربری در کالکشن <code class="inline-code">users</code></p><p class="doc-p">منحصراً به خود کاربر محدود است (<code class="inline-code">id = @request.auth.id</code>). تمام تغییرات سیستمی از</p><p class="doc-p">سمت سرور با احراز superuser یا احراز کاربر انجام می‌شود.</p><h3 class="doc-h3"><code class="inline-code">users</code> — کاربران و هویت سازمانی (کالکشن Auth)</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">email</code></td><td>email (required, unique)</td><td>ایمیل سازمانی/ورود</td></tr><tr class="odd"><td><code class="inline-code">name</code></td><td>text (required)</td><td>نام کاربر</td></tr><tr class="even"><td><code class="inline-code">company</code></td><td>text</td><td>نام شرکت یا سازمان</td></tr><tr class="odd"><td><code class="inline-code">role</code></td><td>text</td><td>سمت سازمانی (مدیر فروش، بنیان‌گذار و ...)</td></tr><tr class="even"><td><code class="inline-code">product_name</code></td><td>text</td><td>نام تجاری محصول تحت پایش</td></tr><tr class="odd"><td><code class="inline-code">product_description</code></td><td>text</td><td>شرح ارزش‌آفرینی محصول</td></tr><tr class="even"><td><code class="inline-code">ideal_customer_profile</code></td><td>text</td><td>پرسونای مشتری ایده‌آل (ICP)</td></tr><tr class="odd"><td><code class="inline-code">onboarding_completed</code></td><td>bool</td><td>وضعیت تکمیل موفق فرآیند آنبوردینگ</td></tr></tbody></table></div><h3 class="doc-h3"><code class="inline-code">products</code> — شناسنامه محصول و ICP</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">name</code></td><td>text (required)</td><td>نام محصول</td></tr><tr class="odd"><td><code class="inline-code">tagline</code></td><td>text</td><td>تگ‌لاین</td></tr><tr class="even"><td><code class="inline-code">description</code></td><td>text (required)</td><td>شرح — وارد پرامپت L2 می‌شود</td></tr><tr class="odd"><td><code class="inline-code">value_propositions</code></td><td>json</td><td>مزیت‌ها — وارد پرامپت L2 می‌شود</td></tr><tr class="even"><td><code class="inline-code">ideal_customer_profile</code></td><td>text (required)</td><td>ICP — وارد پرامپت L2 می‌شود</td></tr><tr class="odd"><td><code class="inline-code">keywords</code></td><td>json</td><td>کلیدواژه‌های پایش — ورودی غربال L1</td></tr></tbody></table></div><h3 class="doc-h3"><code class="inline-code">sources</code> — کانال‌های تحت پایش</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">name</code></td><td>text (required)</td><td>مثل <code class="inline-code">Telegram: Group Title (-100123)</code> — وب‌هوک‌ها خودکار می‌سازند</td></tr><tr class="odd"><td><code class="inline-code">platform</code></td><td>select</td><td>`telegram \</td><td>bale \</td><td>twitter_x \</td><td>forum`</td></tr><tr class="even"><td><code class="inline-code">status</code></td><td>select</td><td>`active \</td><td>paused`</td></tr></tbody></table></div><h3 class="doc-h3"><code class="inline-code">raw_messages</code> — پیام‌های خام ورودی</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">source_id</code></td><td>relation → <code class="inline-code">sources</code></td><td>منبع (expand می‌شود تا پلتفرم معلوم شود)</td></tr><tr class="odd"><td><code class="inline-code">external_id</code></td><td>text</td><td>شناسه یکتا در سطح پلتفرم (<code class="inline-code">tg:<chat>:<msg></code>) — کلید dedupe</td></tr><tr class="even"><td><code class="inline-code">author_handle</code></td><td>text (required)</td><td>مثل <code class="inline-code">@username</code></td></tr><tr class="odd"><td><code class="inline-code">content</code></td><td>text (required)</td><td>متن پیام (حداکثر ۳۰۰۰ کاراکتر در ingest)</td></tr><tr class="even"><td><code class="inline-code">thread_context</code></td><td>text</td><td>کانتکست گفت‌وگو</td></tr><tr class="odd"><td><code class="inline-code">posted_at</code></td><td>date</td><td>زمان ارسال در پلتفرم مبدأ</td></tr><tr class="even"><td><code class="inline-code">status</code></td><td>select</td><td>`pending → processed \</td><td>filtered \</td><td>error`</td></tr></tbody></table></div><h3 class="doc-h3"><code class="inline-code">leads</code> — رکوردهای ارزیابی‌شده</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">raw_message_id</code></td><td>relation → <code class="inline-code">raw_messages</code> (required)</td><td>پیام مبدأ</td></tr><tr class="odd"><td><code class="inline-code">product_id</code></td><td>relation → <code class="inline-code">products</code> (required)</td><td>محصول مبنای ارزیابی</td></tr><tr class="even"><td><code class="inline-code">intent_score</code></td><td>number 0–100 (required)</td><td>امتیاز نیت</td></tr><tr class="odd"><td><code class="inline-code">intent_level</code></td><td>select (required)</td><td>چهار سطح نیت</td></tr><tr class="even"><td><code class="inline-code">reasoning</code></td><td>text</td><td>استدلال فارسی</td></tr><tr class="odd"><td><code class="inline-code">matched_feature</code></td><td>text</td><td>ماژول منطبق محصول (فارسی)</td></tr><tr class="even"><td><code class="inline-code">suggested_reply</code></td><td>text</td><td>پیش‌نویس پاسخ فارسی (برای <code class="inline-code">irrelevant</code> خالی)</td></tr><tr class="odd"><td><code class="inline-code">input_tokens</code> / <code class="inline-code">output_tokens</code></td><td>number</td><td>حسابداری توکن (برای L0/L1 صفر)</td></tr><tr class="even"><td><code class="inline-code">estimated_cost_usd</code></td><td>number</td><td>هزینه دلاری (برای L0/L1 صفر)</td></tr><tr class="odd"><td><code class="inline-code">lead_status</code></td><td>select</td><td>چرخه حیات: <code class="inline-code">new → approved/contacted/dismissed</code></td></tr></tbody></table></div><p class="doc-p">رابطه‌ها: <code class="inline-code">PRODUCTS ||--o{ LEADS</code> ،<code class="inline-code">RAW_MESSAGES ||--o{ LEADS</code> ،<code class="inline-code">SOURCES ||--o{ RAW_MESSAGES</code>.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>5. Triage Pipeline — خط تریاژ سه‌لایه</h2><p class="doc-p">نقطه ورود واحد: <code class="inline-code">triagePendingMessage(pb, rawMsg, product)</code> در</p><p class="doc-p"><code class="inline-code">lib/pipeline.ts</code>. همه مصرف‌کننده‌ها (worker، <code class="inline-code">/api/analyze</code>،</p><p class="doc-p"><code class="inline-code">/api/simulate</code>، هر دو وب‌هوک) از همین تابع استفاده می‌کنند تا رفتارها واگرا</p><p class="doc-p">نشوند. برای متن‌های ثبت‌نشده (ad-hoc) نسخه بدون persistence با نام</p><p class="doc-p"><code class="inline-code">triageAdHocMessage</code> وجود دارد.</p><h3 class="doc-h3">Layer 0 — فیلتر قطعی (<code class="inline-code">lib/prefilter.ts::prefilterMessage</code>)</h3><p class="doc-p">کمتر از ۱ میلی‌ثانیه CPU، صفر توکن. خروجی <code class="inline-code">pass</code> یا <code class="inline-code">reject</code> با کد دلیل:</p><div class="table-container"><table><thead><tr><th>کد</th><th>شرط</th><th>امتیاز ثبت‌شده</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">empty</code></td><td>متن خالی</td><td>۵</td></tr><tr class="odd"><td><code class="inline-code">too_short</code></td><td>کمتر از ۱۲ کاراکتر (<code class="inline-code">LAYER0_MIN_LENGTH</code>)</td><td>۵</td></tr><tr class="even"><td><code class="inline-code">link_only</code></td><td>فقط لینک، بدون متن</td><td>۵</td></tr><tr class="odd"><td><code class="inline-code">advertisement</code></td><td>الگوی تبلیغ/عضویت/سیگنال/ارز (زیر ۱۲۰ کاراکتر)</td><td>۵</td></tr><tr class="even"><td><code class="inline-code">injection</code></td><td>الگوی تزریق پرامپت (<code class="inline-code">ignore previous instructions</code> و مشابه)</td><td><strong>۰</strong></td></tr></tbody></table></div><p class="doc-p">سپس dedupe محتوایی ۲۴ ساعته (<code class="inline-code">isDuplicateContent</code>): هش SHA-256 متن نرمال‌شده</p><p class="doc-p">(حذف نیم‌فاصله، یکدست‌سازی فاصله و حروف) با حداکثر ۲۰۰ رکورد اخیر مقایسه</p><p class="doc-p">می‌شود؛ رکورد جاری از مقایسه مستثنا است. تکراری‌ها با امتیاز ۵ ثبت می‌شوند.</p><h3 class="doc-h3">Layer 1 — غربال سریع (<code class="inline-code">screenIntent</code>)</h3><p class="doc-p">بولی و بدون LLM: آیا پیام سیگنال خرید، درد کاری یا تطابق کلیدواژه دارد؟</p><p class="doc-p">دسته‌ها: <code class="inline-code">buying_signal</code> (نشانگرهای خرید/قیمت/جایگزین)، <code class="inline-code">pain_signal</code></p><p class="doc-p">(مودیان/تحریم/اکسل/قطعی)، <code class="inline-code">keyword_match</code> (≥۲ کلیدواژه، یا ۱ کلیدواژه در متن</p><p class="doc-p">بلند)، <code class="inline-code">general_question</code> (سؤالی و بلند). بقیه با امتیاز ۱۲ و بدون مصرف توکن</p><p class="doc-p">رد می‌شوند.</p><h3 class="doc-h3">Layer 2 — تحلیل عمیق (<code class="inline-code">evaluateMessageWithLLM</code>)</h3><p class="doc-p">پرامپت کامل شناسنامه محصول + ICP با کپسوله‌سازی XML (<code class="inline-code"><untrusted_community_message></code>)</p><p class="doc-p">و سلسله‌مراتب مرزی دستورات؛ خروجی JSON سخت‌گیرانه؛ <code class="inline-code">temperature: 0.1</code>؛</p><p class="doc-p">تایم‌اوت ۱۲ ثانیه؛ سقف هم‌زمانی ۳ (<code class="inline-code">llmConcurrencyLimiter</code>). در هر خطا،</p><p class="doc-p">پاسخ نامعتبر یا timeout، موتور heuristic فارسی (<code class="inline-code">heuristicPersianEvaluator</code>)</p><p class="doc-p">جایگزین می‌شود — همان موتوری که آفلاین کامل کار می‌کند. خروجی‌ها sanitize</p><p class="doc-p">می‌شوند (<code class="inline-code">sanitizeSuggestedReply</code>: حذف تگ، خنثی‌سازی <code class="inline-code">javascript:</code> و مشابه،</p><p class="doc-p">سقف ۱۲۰۰ کاراکتر) و <code class="inline-code">reasoning</code>/<code class="inline-code">matched_feature</code> به فارسی تضمین می‌شوند</p><p class="doc-p">(<code class="inline-code">ensurePersianText</code>).</p><h3 class="doc-h3">حسابداری هزینه (<code class="inline-code">lib/pricing.ts</code>)</h3><p class="doc-p">به‌ازای هر پیام: توکن ورودی/خروجی (واقعی از <code class="inline-code">usage</code> یا تخمین فارسی</p><p class="doc-p"><code class="inline-code">estimatePersianTokens</code>: ~۰٫۶۲ توکن به‌ازای هر کاراکتر فارسی) ضربدر نرخ‌های</p><p class="doc-p"><code class="inline-code">INPUT/OUTPUT_TOKEN_COST_PER_MILLION</code>، با معادل ریالی/تومانی برای داشبورد.</p><p class="doc-p">L0/L1 همیشه صفر ثبت می‌کنند.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>6. Ingestion — جمع‌آوری پیام</h2><h3 class="doc-h3">وب‌هوک‌های بات (مسیر اصلی لایو)</h3><div class="table-container"><table><thead><tr><th>مسیر</th><th>پلتفرم</th><th>هدر secret</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">POST /api/ingest/telegram</code></td><td>Telegram Bot API</td><td><code class="inline-code">X-Telegram-Bot-Api-Secret-Token</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/ingest/bale</code></td><td>Bale Bot API (<code class="inline-code">tapi.bale.ai</code>، سازگار با اسکیمای تلگرام)</td><td><code class="inline-code">X-Bale-Secret-Token</code></td></tr></tbody></table></div><p class="doc-p">هر دو <code class="inline-code">X-Webhook-Secret</code> را هم به‌عنوان fallback می‌پذیرند و برای push دستی /</p><p class="doc-p">تست، Bearer معتبر (<code class="inline-code">RADAR_API_KEY</code>) کافی است. ثبت وب‌هوک:</p><div class="code-container"><div class="code-header"><span class="code-lang">bash</span></div><pre><code class="language-bash">curl &quot;https://api.telegram.org/bot&lt;TELEGRAM_BOT_TOKEN&gt;/setWebhook?url=https://&lt;domain&gt;/api/ingest/telegram&amp;secret_token=&lt;TELEGRAM_WEBHOOK_SECRET&gt;&quot;
-# Bale: setWebhook به /api/ingest/bale با BALE_WEBHOOK_SECRET</code></pre></div><p class="doc-p">پیش‌نیازها: بات ساخته‌شده، عضویت بات در سوپرگروه/کانال هدف (تلگرام: Privacy</p><p class="doc-p">Mode خاموش)، و HTTPS عمومی (Caddy در DEPLOY.sh تأمین می‌کند).</p><p class="doc-p">جریان هر درخواست (<code class="inline-code">lib/ingest.ts</code>):</p><ol class="doc-ol"><li>احراز secret/Bearer و rate limit (۱۲۰ req/min به‌ازای IP).</li><li>استخراج پیام از <code class="inline-code">message | edited_message | channel_post</code> (متن یا کپشن)؛</li></ol><p class="doc-p">آپدیت‌های غیرمتنی (استیکر، عضویت، نظرسنجی) و پیام بات‌ها با</p><p class="doc-p"><code class="inline-code">{"ignored": true}</code> تأیید و نادیده گرفته می‌شوند.</p><ol class="doc-ol"><li><code class="inline-code">findOrCreateSource</code>: یک ردیف <code class="inline-code">source</code> به‌ازای هر چت</li></ol><p class="doc-p">(<code class="inline-code">Telegram: <title> (<id>)</code>، وضعیت <code class="inline-code">active</code>).</p><ol class="doc-ol"><li>Dedupe ارسال مجدد روی <code class="inline-code">external_id</code> (<code class="inline-code">tg:<chat>:<msgId></code>) — تکراری‌ها با</li></ol><p class="doc-p"><code class="inline-code">{"deduped": true}</code> برمی‌گردند و دوباره تریاژ نمی‌شوند.</p><ol class="doc-ol"><li>درج <code class="inline-code">raw_messages</code> با وضعیت <code class="inline-code">pending</code> و تریاژ فوری سه‌لایه (مثل simulate).</li></ol><p class="doc-p">پاسخ شامل <code class="inline-code">layer</code> تصمیم‌گیرنده است.</p><h3 class="doc-h3">مسیرهای دستی و نمایشی</h3><ul class="doc-ul"><li><code class="inline-code">POST /api/simulate</code> — تزریق یکی از ۲۶ پیام نمایشی فارسی و تریاژ فوری.</li><li><code class="inline-code">POST /api/analyze</code> — تریاژ یک <code class="inline-code">raw_message</code> موجود یا متن ad-hoc (بدون ثبت).</li><li><code class="inline-code">bun run seed</code> — بارگذاری ۲۶ پیام نمایشی (۵ high-intent، ۵ problem-aware،</li></ul><p class="doc-p">۱۶ نویز) فقط برای دمـو؛ هرگز در production.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>7. API Reference — مرجع API</h2><p class="doc-p">همه مسیرها <code class="inline-code">force-dynamic</code> هستند. احراز (جز موارد ذکرشده): سشن کوکی یا Bearer.</p><div class="table-container"><table><thead><tr><th>متد و مسیر</th><th>احراز</th><th>Rate limit</th><th>ورودی</th><th>خروجی</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">POST /api/analyze</code></td><td><span class="icon-badge">✅</span></td><td>۱۵/min/IP (پلن)</td><td><code class="inline-code">raw_message_id</code> یا <code class="inline-code">content</code> + <code class="inline-code">author_handle?</code>، <code class="inline-code">thread_context?</code>، <code class="inline-code">platform?</code>، <code class="inline-code">product_id?</code></td><td><code class="inline-code">{success, layer?, lead?, evalResult?/evaluation?}</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/simulate</code></td><td><span class="icon-badge">✅</span></td><td>پلن کاربر (سهمیه روزانه)</td><td><code class="inline-code">{index?}</code></td><td><code class="inline-code">{success, layer, lead (expand), evalResult}</code></td></tr><tr class="even"><td><code class="inline-code">POST /api/leads/fetch-initial</code></td><td>کوکی سشن</td><td>سهمیه پلن</td><td>—</td><td>اسکن ۳ پیام اولیه بازار برای کاربر، تریاژ و ذخیره پایدار در پاکت‌بیس</td></tr><tr class="odd"><td><code class="inline-code">POST /api/leads/status</code></td><td>کوکی سشن</td><td>۶۰/min/IP</td><td><code class="inline-code">{leadId, status, notes?}</code></td><td>ذخیره خودکار وضعیت و یادداشت در پاکت‌بیس و اعتبارسنجی مالکیت داده</td></tr><tr class="even"><td><code class="inline-code">POST /api/settings</code></td><td><span class="icon-badge">✅</span></td><td>—</td><td>فیلدهای محصول (اعتبارسنجی کامل)</td><td>ذخیره پایدار محصول اختصاصی و همگام‌سازی پروفایل کاربر</td></tr><tr class="odd"><td><code class="inline-code">POST /api/bot/cron</code></td><td>secret/Bearer/سشن</td><td>کنترل فرکانس</td><td>—</td><td>اجرای چرخه اسکنر خودکار ساعتی برای کاربران فعال طبق سقف پلن</td></tr><tr class="even"><td><code class="inline-code">GET /api/bot/status</code></td><td>کوکی سشن</td><td>—</td><td>—</td><td>وضعیت فعال/غیرفعال بات ساعتی، سقف پیام در ساعت و زمان آخرین اجرا</td></tr><tr class="odd"><td><code class="inline-code">POST /api/bot/toggle</code></td><td>کوکی سشن</td><td>—</td><td><code class="inline-code">{active: boolean}</code></td><td>فعال یا متوقف‌کردن بات اسکنر ساعتی برای کاربر جاری در دیتابیس</td></tr><tr class="even"><td><code class="inline-code">POST /api/ingest/telegram</code></td><td>secret/Bearer</td><td>۱۲۰/min/IP</td><td>Telegram update JSON</td><td><code class="inline-code">{success, layer, lead, evalResult}</code> / <code class="inline-code">{ignored}</code> / <code class="inline-code">{deduped}</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/ingest/bale</code></td><td>secret/Bearer</td><td>۱۲۰/min/IP</td><td>Bale update JSON</td><td>همان بالا</td></tr><tr class="even"><td><code class="inline-code">POST /api/assistant</code></td><td>❌</td><td>❌</td><td><code class="inline-code">{message, context?}</code></td><td><code class="inline-code">{id, role, content, timestamp}</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/auth/register</code></td><td>—</td><td>—</td><td><code class="inline-code">{name, email, password, passwordConfirm}</code></td><td>ایجاد کاربر با پلن free، ست‌کردن کوکی‌ها، هدایت به <code class="inline-code">/onboarding</code></td></tr><tr class="even"><td><code class="inline-code">POST /api/auth/login</code></td><td>—</td><td>—</td><td><code class="inline-code">{email, password}</code> یا <code class="inline-code">{password}</code> ادمین</td><td>اعتبارسنجی دوگانه، بارگذاری سوابق قبلی، هدایت به <code class="inline-code">/leads</code> یا <code class="inline-code">/onboarding</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/auth/logout</code></td><td>—</td><td>—</td><td>—</td><td>پاک‌کردن کوکی‌های <code class="inline-code">radar_session</code> و <code class="inline-code">radar_onboarded</code></td></tr><tr class="even"><td><code class="inline-code">GET /api/auth/session</code></td><td>کوکی</td><td>—</td><td>—</td><td>وضعیت نشست، هویت کاربر، پلن و پرچم <code class="inline-code">has_fetched_initial</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/onboarding</code></td><td>کوکی سشن</td><td>—</td><td>فیلدهای شرکت، سمت، محصول و ICP</td><td>ایجاد محصول اختصاصی در پاکت‌بیس، عدم تزریق داده ماک، هدایت به <code class="inline-code">/leads</code></td></tr></tbody></table></div><p class="doc-p">اعتبارسنجی ورودی‌ها در <code class="inline-code">lib/validation.ts</code> (سقف طول، strip کاراکترهای</p><p class="doc-p">کنترلی، allowlist پلتفرم‌ها). سقف‌ها: <code class="inline-code">content</code> ≤ ۳۰۰۰، <code class="inline-code">thread_context</code> ≤</p><p class="doc-p">۱۵۰۰، <code class="inline-code">author_handle</code> ≤ ۱۰۰ کاراکتر.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>8. Radar Assistant — دستیار هوشمند</h2><p class="doc-p"><code class="inline-code">POST /api/assistant</code> یک راهنمای گفت‌وگویی داخل داشبورد است (نه عامل خودمختار):</p><p class="doc-p">پرامپت سیستمی ثابت + کانتکست فضای کاری (تعداد لیدها، صفحه فعال)، خروجی تمیز</p><p class="doc-p">بدون مارک‌داون (<code class="inline-code">cleanOutput</code>). نکته‌های فنی مهم:</p><ul class="doc-ul"><li>به‌صورت پیش‌فرض به OpenRouter می‌رود (<code class="inline-code">LLM_BASE_URL</code> اگر ست نباشد) و <em></em>fallback</li></ul><p class="doc-p">ندارد<em></em> — در اختلال اینترنت بین‌الملل ۵۰۲ برمی‌گرداند.</p><ul class="doc-ul"><li>در پاسخ‌گویی به فارسی/انگلیسی زبان کاربر را دنبال می‌کند.</li><li><span class="icon-badge">⚠️</span> یافته‌های امنیتی (بخش ۹) را ببینید: این مسیر بدون احراز و بدون rate limit</li></ul><p class="doc-p">است و یک کلید fallback هاردکدشده در سورس دارد.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>9. Authentication & Security — احراز هویت و امنیت</h2><ul class="doc-ul"><li><strong>احراز هویت چندسازمانی (SaaS Multi-User Auth):</strong></li><li>ثبت‌نام کاربر جدید (<code class="inline-code">/register</code>) با اعتبارسنجی نام، ایمیل یکتا و رمز عبور (حداقل ۸ کاراکتر) در کالکشن <code class="inline-code">users</code> پاکت‌بیس.</li><li>ورود اختصاصی کاربران با ایمیل/رمز عبور (<code class="inline-code">/login</code>) به همراه پشتیبانی از ورود اضطراری مدیر سیستم با رمز <code class="inline-code">RADAR_ADMIN_PASSWORD</code> یا رمز سوپریوزر دیتابیس.</li><li>فرآیند آنبوردینگ اجباری سازمانی (<code class="inline-code">/onboarding</code>): ضبط نام شرکت، سمت سازمانی، نام محصول، شرح ارزش‌آفرینی و پرسونای مشتری ایده‌آل (ICP) پیش از دسترسی به کارتابل لیدها.</li><li><strong>نشست کاربر و الگوی دو کوکی (Dual-Cookie Session):</strong></li><li><strong><code class="inline-code">radar_session</code>:</strong> توکن استاندارد JWT پاکت‌بیس یا توکن امضاشده HMAC ادمین (<code class="inline-code">radar:<timestamp></code>)، ۳۰ روزه با پرچم‌های <code class="inline-code">HttpOnly</code>, <code class="inline-code">SameSite=Lax</code>, <code class="inline-code">Path=/</code>, و <code class="inline-code">Secure</code> در production.</li><li><strong><code class="inline-code">radar_onboarded</code>:</strong> کوکی <code class="inline-code">HttpOnly</code> با مقدار <code class="inline-code">1</code> یا <code class="inline-code">0</code> برای تشخیص فوری وضعیت آنبوردینگ در لایه Edge بدون سربار کوئری به دیتابیس.</li><li><strong>مسیریابی و محافظت لبه در Next.js 16 (<code class="inline-code">proxy.ts</code>):</strong></li><li>حفاظت از روت‌های <code class="inline-code">/leads</code>، <code class="inline-code">/dashboard</code> و <code class="inline-code">/settings</code> (ریدایرکت خودکار کاربران مهمان به <code class="inline-code">/login?from=...</code>).</li><li>محافظت دوطرفه از <code class="inline-code">/onboarding</code>: هدایت کاربران مهمان به <code class="inline-code">/login</code> و کاربران تکمیل‌شده به <code class="inline-code">/leads</code> جهت جلوگیری از هرگونه حلقه بازگشتی (Redirect Loop).</li><li><strong>تجربه کاربری و جهت ورودی‌های حساس (LTR Inputs):</strong></li><li>ورودی‌های ایمیل و رمز عبور مجهز به ویژگی نیتیو <code class="inline-code">dir="ltr"</code> و کلاس‌های <code class="inline-code">[direction:ltr] text-left</code> همراه با پدینگ استاندارد آیکون چشم (<code class="inline-code">pl-10 pr-3.5</code>) برای تراز صحیح و عدم تداخل زبان فارسی/انگلیسی.</li><li><strong>API key:</strong> <code class="inline-code">RADAR_API_KEY</code> (Bearer) برای worker و pushهای برنامه‌ای؛</li><li><strong>تفکیک داده چندمستأجری و ذخیره خودکار در پاکت‌بیس (Multi-Tenant Auto-Save):</strong></li><li>فیلد رابطه <code class="inline-code">user_id</code> روی کالکشن‌های <code class="inline-code">leads</code>، <code class="inline-code">raw_messages</code> و <code class="inline-code">products</code> جهت اطمینان از ایزولاسیون کامل داده میان کاربران مختلف.</li><li>کاربران بازگشتی پس از ورود تنها سرنخ‌ها و داده‌های اختصاصی محصول خود را مشاهده می‌کنند (<code class="inline-code">filter: user_id = "${user.id}"</code>).</li><li>تمامی تغییرات در داشبورد (تغییر وضعیت سرنخ به <code class="inline-code">approved</code>, <code class="inline-code">contacted</code>, <code class="inline-code">dismissed</code>، یادداشت‌های پیگیری مشتری، ویرایش محصول و ICP) بلافاصله در دیتابیس لوکال SQLite پاکت‌بیس Auto-Save شده و نشانگر همگام‌سازی لحظه‌ای در بالای کارتابل نمایش داده می‌شود.</li><li><strong>بات اسکنر خودکار ساعتی (Autonomous Hourly Harvester Bot):</strong></li><li>ماژول <code class="inline-code">lib/botScheduler.ts</code> متصل به چرخه راه‌اندازی سرور از طریق <code class="inline-code">instrumentation.ts</code>.</li><li>اسکن و کشف خودکار پیام‌های جامعه کاربری در پس‌زمینه در هر ساعت بدون نیاز به کلیک دستی کاربر.</li><li>رعایت سقف ساعتی پلن کاربری (رایگان: ۱۰ پیام/ساعت، استارتر: ۳۰ پیام/ساعت، رشد: ۸۰ پیام/ساعت، سازمانی: ۲۰۰ پیام/ساعت).</li><li>امکان فعال/متوقف‌سازی بات به ازای هر کاربر از طریق سوئیچ وضعیت در بنر کارتابل (<code class="inline-code">/api/bot/toggle</code>).</li><li><strong>کنترل نرخ و سهمیه‌بندی بر اساس پلن (Plan-Based Rate Limiting):</strong></li><li>تعریف پلن‌های <code class="inline-code">free</code>، <code class="inline-code">starter</code>، <code class="inline-code">growth</code> و <code class="inline-code">enterprise</code> با سقف درخواست در دقیقه و سهمیه روزانه پایش پیام‌ها در <code class="inline-code">lib/rateLimit.ts</code>.</li><li>هدایت کاربران جدید پس از آنبوردینگ به کارتابل خالی بدون تزریق داده‌های ساختگی (Mock Data) و امکان اسکن تعاملی اولیه با دکمه اختصاصی.</li><li><strong>وب‌هوک‌ها:</strong> مقایسه زمان‌ثابت secret در هدر اختصاصی هر پلتفرم.</li><li><strong>سطح دیتابیس:</strong> تفکیک هویت کاربران در <code class="inline-code">users</code> با قانون <code class="inline-code">id = @request.auth.id</code>؛ سایر کالکشن‌های داده با <code class="inline-code">create/update/delete = null</code> (فقط سوپریوزر سروری).</li><li><strong>دفاع تزریق پرامپت (۴ لایه):</strong> کپسوله‌سازی XML پیام غیرقابل‌اعتماد،</li></ul><p class="doc-p">دستور صریح نادیده‌گرفتن دستورات داخل پیام، امتیاز ۰ و <code class="inline-code">irrelevant</code> خودکار</p><p class="doc-p">در صورت تزریق (هم در LLM و هم در heuristic و L0)، و sanitize خروجی.</p><ul class="doc-ul"><li><strong>CSP</strong> در <code class="inline-code">next.config.ts</code>: <code class="inline-code">connect-src</code> فقط <code class="inline-code">self</code> + مبدأ PocketBase؛ به‌همراه</li></ul><p class="doc-p"><code class="inline-code">frame-ancestors 'none'</code> ،HSTS ،<code class="inline-code">X-Frame-Options: DENY</code> و غیره.</p><ul class="doc-ul"><li><strong>Rate limiting</strong> حافظه‌ای sliding-window برای همه مسیرهای حساس.</li></ul><h3 class="doc-h3"><span class="icon-badge">⚠️</span> یافته‌های امنیتی باز و وضعیت برطرف‌سازی</h3><ol class="doc-ol"><li><strong>کلید OpenRouter هاردکدشده</strong> در <code class="inline-code">app/api/assistant/route.ts:51</code> به‌عنوان</li></ol><p class="doc-p">fallback (<code class="inline-code">sk-or-v1-...</code>). این کلید باید revoke و از سورس حذف شود (فقط از</p><p class="doc-p">env خوانده شود) و تاریخچه گیت بررسی/پاک‌سازی شود.</p><ol class="doc-ol"><li><strong><code class="inline-code">POST /api/assistant</code> بدون احراز هویت و بدون rate limit</strong> است — پیشنهاد: افزودن سقف نرخی مثل simulate.</li><li><span class="icon-badge">✅</span> <strong>مسیر <code class="inline-code">POST /api/leads/status</code> ایمن‌سازی شد</strong>: اکنون احراز هویت سشن کاربر، بررسی عدم دسترسی به لیدهای سایر مستأجران، و سقف ۶۰ درخواست در دقیقه را اعمال می‌کند.</li><li>مغایرت مستندات: پرامپت دستیار امتیاز نیت را ۱ تا ۱۰ توصیف می‌کند درحالی‌که</li></ol><p class="doc-p">سیستم ۰ تا ۱۰۰ است.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>10. Configuration — پیکربندی</h2><div class="table-container"><table><thead><tr><th>متغیر</th><th>پیش‌فرض</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">POCKETBASE_URL</code></td><td><code class="inline-code">http://127.0.0.1:8090</code></td><td>آدرس سروری PocketBase (داخلی)</td></tr><tr class="odd"><td><code class="inline-code">NEXT_PUBLIC_POCKETBASE_URL</code></td><td><code class="inline-code">http://127.0.0.1:8090</code></td><td>آدرس مرورگری PocketBase — در production باید مبدأ عمومی باشد (در build bake می‌شود)</td></tr><tr class="even"><td><code class="inline-code">POCKETBASE_ADMIN_EMAIL</code></td><td><code class="inline-code">admin@leadradar.local</code></td><td>ایمیل superuser</td></tr><tr class="odd"><td><code class="inline-code">POCKETBASE_ADMIN_PASSWORD</code></td><td>—</td><td>رمز superuser (حداقل ۱۶ کاراکتر)</td></tr><tr class="even"><td><code class="inline-code">RADAR_ADMIN_PASSWORD</code></td><td>fallback به رمز PB و سپس <code class="inline-code">"BuildX"</code></td><td>رمز <code class="inline-code">/login</code> — در production حتماً ست شود</td></tr><tr class="odd"><td><code class="inline-code">RADAR_API_KEY</code></td><td>—</td><td>کلید Bearer برای worker/وب‌هوک‌های دستی</td></tr><tr class="even"><td><code class="inline-code">TELEGRAM_BOT_TOKEN</code> / <code class="inline-code">TELEGRAM_WEBHOOK_SECRET</code></td><td>—</td><td>بات تلگرام و secret وب‌هوک</td></tr><tr class="odd"><td><code class="inline-code">BALE_BOT_TOKEN</code> / <code class="inline-code">BALE_WEBHOOK_SECRET</code></td><td>—</td><td>بات بله و secret وب‌هوک</td></tr><tr class="even"><td><code class="inline-code">LLM_BASE_URL</code></td><td><code class="inline-code">http://localhost:11434/v1</code></td><td>اندپوینت OpenAI-compatible (تریاژ)</td></tr><tr class="odd"><td><code class="inline-code">LLM_API_KEY</code></td><td><code class="inline-code">dummy</code></td><td>کلید اندپوینت (در صورت نیاز)</td></tr><tr class="even"><td><code class="inline-code">LLM_MODEL</code></td><td><code class="inline-code">llama3.1</code></td><td>مدل تریاژ</td></tr><tr class="odd"><td><code class="inline-code">OPENROUTER_API_KEY</code></td><td>fallback به <code class="inline-code">LLM_API_KEY</code></td><td>کلید دستیار (فعلاً هاردکد هم دارد — بخش ۹)</td></tr><tr class="even"><td><code class="inline-code">INPUT/OUTPUT_TOKEN_COST_PER_MILLION</code></td><td><code class="inline-code">0.15</code> / <code class="inline-code">0.60</code></td><td>نرخ دلاری توکن</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>11. Frontend & Realtime — رابط کاربری و به‌روزرسانی زنده</h2><ul class="doc-ul"><li>صفحات: <code class="inline-code">/</code> (ویترین/لندینگ)، <code class="inline-code">/dashboard</code> (فید زنده + KPI + فیلتر پلتفرم)،</li></ul><p class="doc-p"><code class="inline-code">/settings</code> (محصول/کلیدواژه/ICP، پشت لاگین)، <code class="inline-code">/login</code>، <code class="inline-code">/landing</code>.</p><ul class="doc-ul"><li>فید زنده با ساب‌اسکریپشن SSE پاکت‌بیس (<code class="inline-code">pb.collection("leads").subscribe("*")</code>)</li></ul><p class="doc-p">بدون رفرش دستی؛ کلاینت مرورگر در <code class="inline-code">lib/pocketbase.ts</code> یکتا نگه داشته می‌شود</p><p class="doc-p">تا ساب‌اسکریپشن حفظ شود (<code class="inline-code">autoCancellation(false)</code>).</p><ul class="doc-ul"><li>KPIها: کل پیام‌های پایش‌شده، درصد حذف نویز، لیدهای واجد، هزینه توکن (دلار)،</li></ul><p class="doc-p">هزینه به‌ازای لید با تخمین ریالی/تومانی و اعداد فارسی.</p><ul class="doc-ul"><li>چرخه حیات لید (<code class="inline-code">new/approved/contacted/dismissed</code>) و کپی یک‌کلیکه پیش‌نویس</li></ul><p class="doc-p">پاسخ فارسی.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>12. Deployment — استقرار</h2><p class="doc-p">معماری production (تک‌سرور، مطابق <code class="inline-code">DEPLOY.sh</code>):</p><div class="code-container"><div class="code-header"><span class="code-lang">text</span></div><pre><code class="language-text">Internet → Caddy (TLS, 80/443)
+    G --&gt;|1-click draft| H[Sales &amp; Marketing Team]</code></pre></div><p class="doc-p">مسیر داده همیشه یک‌طرفه است: <code class="inline-code">communities → raw_messages → leads → dashboard</code>.</p><p class="doc-p">هیچ مسیری از داشبورد به پلتفرم‌ها (ارسال خودکار پیام) وجود ندارد؛ ارسال پاسخ</p><p class="doc-p">همیشه با تصمیم انسانی انجام می‌شود (Human-in-the-loop).</p><p class="doc-p">نقش اجزا:</p><div class="table-container"><table><thead><tr><th>جزء</th><th>فایل</th><th>مسئولیت</th></tr></thead><tbody><tr class="even"><td>Ingest API</td><td><code class="inline-code">app/api/ingest/*/route.ts</code> + <code class="inline-code">lib/ingest.ts</code></td><td>دریافت وب‌هوک، dedupe، ساخت <code class="inline-code">source</code>، درج <code class="inline-code">pending</code></td></tr><tr class="odd"><td>Triage Pipeline</td><td><code class="inline-code">lib/pipeline.ts</code></td><td>اجرای L0/L1/L2 و ثبت <code class="inline-code">lead</code> — تنها نقطه تریاژ</td></tr><tr class="even"><td>Layer 0/1</td><td><code class="inline-code">lib/prefilter.ts</code></td><td>قوانین قطعی و غربال سریع، بدون توکن</td></tr><tr class="odd"><td>Layer 2</td><td><code class="inline-code">lib/llm.ts</code> (<code class="inline-code">evaluateMessageWithLLM</code>)</td><td>پرامپت کامل + fallback启发式</td></tr><tr class="even"><td>Worker</td><td><code class="inline-code">scripts/worker.ts</code></td><td>مصرف صف <code class="inline-code">pending</code> (one-shot؛ با timer تکرار می‌شود)</td></tr><tr class="odd"><td>Schema bootstrap</td><td><code class="inline-code">pocketbase/setup_schema.ts</code></td><td>ساخت کالکشن‌ها + مهاجرت‌ها + seed محصول و منابع</td></tr><tr class="even"><td>Dashboard</td><td><code class="inline-code">app/page.tsx</code>, <code class="inline-code">app/dashboard/page.tsx</code></td><td>فید زنده روی SSE ساب‌اسکریپشن PocketBase</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>3. Tech Stack — پشته فناوری</h2><div class="table-container"><table><thead><tr><th>لایه</th><th>فناوری</th></tr></thead><tbody><tr class="even"><td>Runtime / Package manager</td><td>Bun 1.4+</td></tr><tr class="odd"><td>Framework</td><td>Next.js 16 (App Router, Turbopack) · React 19</td></tr><tr class="even"><td>Language</td><td>TypeScript 5 (strict)</td></tr><tr class="odd"><td>Styling</td><td>Tailwind CSS v4 + <code class="inline-code">app/globals.css</code></td></tr><tr class="even"><td>Database & realtime</td><td>PocketBase (embedded SQLite) + SSE subscriptions</td></tr><tr class="odd"><td>AI inference</td><td>OpenAI-compatible endpoint (Ollama/vLLM/domestic gateway) + heuristic fallback</td></tr><tr class="even"><td>Ingestion protocols</td><td>Telegram Bot API webhooks · Bale Bot API webhooks (<code class="inline-code">tapi.bale.ai</code>)</td></tr><tr class="odd"><td>Typography</td><td>Ravi + Estedad (self-hosted, بدون CDN خارجی)</td></tr><tr class="even"><td>Icons</td><td>Inline SVG در <code class="inline-code">components/Icons.tsx</code> (بدون پکیج آیکون)</td></tr></tbody></table></div><p class="doc-p">قواعد معماری (از <code class="inline-code">AGENTS.md</code>): اول TypeScript خالص (بدون یوتیلیتی اضافه)، صفر</p><p class="doc-p">CDN خارجی، رابط کاملاً RTL با اعداد فارسی.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>4. Data Model — مدل داده</h2><p class="doc-p">چهار کالکشن در PocketBase. نوشتن مستقیم (create/update/delete) در همه</p><p class="doc-p">کالکشن‌های داده فقط برای superuser قابل نوشتن هستند (<code class="inline-code">createRule/updateRule/deleteRule = null</code>)؛</p><p class="doc-p">خواندن (list/view) برای داده‌های عمومی باز است. دسترسی رکوردهای کاربری در کالکشن <code class="inline-code">users</code></p><p class="doc-p">منحصراً به خود کاربر محدود است (<code class="inline-code">id = @request.auth.id</code>). تمام تغییرات سیستمی از</p><p class="doc-p">سمت سرور با احراز superuser یا احراز کاربر انجام می‌شود.</p><h3 class="doc-h3"><code class="inline-code">users</code> — کاربران و هویت سازمانی (کالکشن Auth)</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">email</code></td><td>email (required, unique)</td><td>ایمیل سازمانی/ورود</td></tr><tr class="odd"><td><code class="inline-code">name</code></td><td>text (required)</td><td>نام کاربر</td></tr><tr class="even"><td><code class="inline-code">company</code></td><td>text</td><td>نام شرکت یا سازمان</td></tr><tr class="odd"><td><code class="inline-code">role</code></td><td>text</td><td>سمت سازمانی (مدیر فروش، بنیان‌گذار و ...)</td></tr><tr class="even"><td><code class="inline-code">product_name</code></td><td>text</td><td>نام تجاری محصول تحت پایش</td></tr><tr class="odd"><td><code class="inline-code">product_description</code></td><td>text</td><td>شرح ارزش‌آفرینی محصول</td></tr><tr class="even"><td><code class="inline-code">ideal_customer_profile</code></td><td>text</td><td>پرسونای مشتری ایده‌آل (ICP)</td></tr><tr class="odd"><td><code class="inline-code">onboarding_completed</code></td><td>bool</td><td>وضعیت تکمیل موفق فرآیند آنبوردینگ</td></tr></tbody></table></div><h3 class="doc-h3"><code class="inline-code">products</code> — شناسنامه محصول و ICP</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">name</code></td><td>text (required)</td><td>نام محصول</td></tr><tr class="odd"><td><code class="inline-code">tagline</code></td><td>text</td><td>تگ‌لاین</td></tr><tr class="even"><td><code class="inline-code">description</code></td><td>text (required)</td><td>شرح — وارد پرامپت L2 می‌شود</td></tr><tr class="odd"><td><code class="inline-code">value_propositions</code></td><td>json</td><td>مزیت‌ها — وارد پرامپت L2 می‌شود</td></tr><tr class="even"><td><code class="inline-code">ideal_customer_profile</code></td><td>text (required)</td><td>ICP — وارد پرامپت L2 می‌شود</td></tr><tr class="odd"><td><code class="inline-code">keywords</code></td><td>json</td><td>کلیدواژه‌های پایش — ورودی غربال L1</td></tr></tbody></table></div><h3 class="doc-h3"><code class="inline-code">sources</code> — کانال‌های تحت پایش</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">name</code></td><td>text (required)</td><td>مثل <code class="inline-code">Telegram: Group Title (-100123)</code> — وب‌هوک‌ها خودکار می‌سازند</td></tr><tr class="odd"><td><code class="inline-code">platform</code></td><td>select</td><td>`telegram \</td><td>bale \</td><td>twitter_x \</td><td>forum`</td></tr><tr class="even"><td><code class="inline-code">status</code></td><td>select</td><td>`active \</td><td>paused`</td></tr></tbody></table></div><h3 class="doc-h3"><code class="inline-code">raw_messages</code> — پیام‌های خام ورودی</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">source_id</code></td><td>relation → <code class="inline-code">sources</code></td><td>منبع (expand می‌شود تا پلتفرم معلوم شود)</td></tr><tr class="odd"><td><code class="inline-code">external_id</code></td><td>text</td><td>شناسه یکتا در سطح پلتفرم (<code class="inline-code">tg:<chat>:<msg></code>) — کلید dedupe</td></tr><tr class="even"><td><code class="inline-code">author_handle</code></td><td>text (required)</td><td>مثل <code class="inline-code">@username</code></td></tr><tr class="odd"><td><code class="inline-code">content</code></td><td>text (required)</td><td>متن پیام (حداکثر ۳۰۰۰ کاراکتر در ingest)</td></tr><tr class="even"><td><code class="inline-code">thread_context</code></td><td>text</td><td>کانتکست گفت‌وگو</td></tr><tr class="odd"><td><code class="inline-code">posted_at</code></td><td>date</td><td>زمان ارسال در پلتفرم مبدأ</td></tr><tr class="even"><td><code class="inline-code">status</code></td><td>select</td><td>`pending → processed \</td><td>filtered \</td><td>error`</td></tr></tbody></table></div><h3 class="doc-h3"><code class="inline-code">leads</code> — رکوردهای ارزیابی‌شده</h3><div class="table-container"><table><thead><tr><th>فیلد</th><th>نوع</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">raw_message_id</code></td><td>relation → <code class="inline-code">raw_messages</code> (required)</td><td>پیام مبدأ</td></tr><tr class="odd"><td><code class="inline-code">product_id</code></td><td>relation → <code class="inline-code">products</code> (required)</td><td>محصول مبنای ارزیابی</td></tr><tr class="even"><td><code class="inline-code">intent_score</code></td><td>number 0–100 (required)</td><td>امتیاز نیت</td></tr><tr class="odd"><td><code class="inline-code">intent_level</code></td><td>select (required)</td><td>چهار سطح نیت</td></tr><tr class="even"><td><code class="inline-code">reasoning</code></td><td>text</td><td>استدلال فارسی</td></tr><tr class="odd"><td><code class="inline-code">matched_feature</code></td><td>text</td><td>ماژول منطبق محصول (فارسی)</td></tr><tr class="even"><td><code class="inline-code">suggested_reply</code></td><td>text</td><td>پیش‌نویس پاسخ فارسی (برای <code class="inline-code">irrelevant</code> خالی)</td></tr><tr class="odd"><td><code class="inline-code">input_tokens</code> / <code class="inline-code">output_tokens</code></td><td>number</td><td>حسابداری توکن (برای L0/L1 صفر)</td></tr><tr class="even"><td><code class="inline-code">estimated_cost_usd</code></td><td>number</td><td>هزینه دلاری (برای L0/L1 صفر)</td></tr><tr class="odd"><td><code class="inline-code">lead_status</code></td><td>select</td><td>چرخه حیات: <code class="inline-code">new → approved/contacted/dismissed</code></td></tr></tbody></table></div><p class="doc-p">رابطه‌ها: <code class="inline-code">PRODUCTS ||--o{ LEADS</code> ،<code class="inline-code">RAW_MESSAGES ||--o{ LEADS</code> ،<code class="inline-code">SOURCES ||--o{ RAW_MESSAGES</code>.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>5. Triage Pipeline — خط تریاژ سه‌لایه</h2><p class="doc-p">نقطه ورود واحد: <code class="inline-code">triagePendingMessage(pb, rawMsg, product)</code> در</p><p class="doc-p"><code class="inline-code">lib/pipeline.ts</code>. همه مصرف‌کننده‌ها (worker، <code class="inline-code">/api/analyze</code>،</p><p class="doc-p"><code class="inline-code">/api/simulate</code>، هر دو وب‌هوک) از همین تابع استفاده می‌کنند تا رفتارها واگرا</p><p class="doc-p">نشوند. برای متن‌های ثبت‌نشده (ad-hoc) نسخه بدون persistence با نام</p><p class="doc-p"><code class="inline-code">triageAdHocMessage</code> وجود دارد.</p><h3 class="doc-h3">Layer 0 — فیلتر قطعی (<code class="inline-code">lib/prefilter.ts::prefilterMessage</code>)</h3><p class="doc-p">کمتر از ۱ میلی‌ثانیه CPU، صفر توکن. خروجی <code class="inline-code">pass</code> یا <code class="inline-code">reject</code> با کد دلیل:</p><div class="table-container"><table><thead><tr><th>کد</th><th>شرط</th><th>امتیاز ثبت‌شده</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">empty</code></td><td>متن خالی</td><td>۵</td></tr><tr class="odd"><td><code class="inline-code">too_short</code></td><td>کمتر از ۱۲ کاراکتر (<code class="inline-code">LAYER0_MIN_LENGTH</code>)</td><td>۵</td></tr><tr class="even"><td><code class="inline-code">link_only</code></td><td>فقط لینک، بدون متن</td><td>۵</td></tr><tr class="odd"><td><code class="inline-code">advertisement</code></td><td>الگوی تبلیغ/عضویت/سیگنال/ارز (زیر ۱۲۰ کاراکتر)</td><td>۵</td></tr><tr class="even"><td><code class="inline-code">injection</code></td><td>الگوی تزریق پرامپت (<code class="inline-code">ignore previous instructions</code> و مشابه)</td><td><strong>۰</strong></td></tr></tbody></table></div><p class="doc-p">سپس dedupe محتوایی ۲۴ ساعته (<code class="inline-code">isDuplicateContent</code>): هش SHA-256 متن نرمال‌شده</p><p class="doc-p">(حذف نیم‌فاصله، یکدست‌سازی فاصله و حروف) با حداکثر ۲۰۰ رکورد اخیر مقایسه</p><p class="doc-p">می‌شود؛ رکورد جاری از مقایسه مستثنا است. تکراری‌ها با امتیاز ۵ ثبت می‌شوند.</p><h3 class="doc-h3">Layer 1 — غربال سریع (<code class="inline-code">screenIntent</code>)</h3><p class="doc-p">بولی و بدون LLM: آیا پیام سیگنال خرید، درد کاری یا تطابق کلیدواژه دارد؟</p><p class="doc-p">دسته‌ها: <code class="inline-code">buying_signal</code> (نشانگرهای خرید/قیمت/جایگزین)، <code class="inline-code">pain_signal</code></p><p class="doc-p">(مودیان/تحریم/اکسل/قطعی)، <code class="inline-code">keyword_match</code> (≥۲ کلیدواژه، یا ۱ کلیدواژه در متن</p><p class="doc-p">بلند)، <code class="inline-code">general_question</code> (سؤالی و بلند). بقیه با امتیاز ۱۲ و بدون مصرف توکن</p><p class="doc-p">رد می‌شوند.</p><h3 class="doc-h3">Layer 2 — تحلیل عمیق (<code class="inline-code">evaluateMessageWithLLM</code>)</h3><p class="doc-p">پرامپت کامل شناسنامه محصول + ICP با کپسوله‌سازی XML (<code class="inline-code"><untrusted_community_message></code>)</p><p class="doc-p">و سلسله‌مراتب مرزی دستورات؛ خروجی JSON سخت‌گیرانه؛ <code class="inline-code">temperature: 0.1</code>؛</p><p class="doc-p">تایم‌اوت ۱۲ ثانیه؛ سقف هم‌زمانی ۳ (<code class="inline-code">llmConcurrencyLimiter</code>). در هر خطا،</p><p class="doc-p">پاسخ نامعتبر یا timeout، موتور heuristic فارسی (<code class="inline-code">heuristicPersianEvaluator</code>)</p><p class="doc-p">جایگزین می‌شود — همان موتوری که آفلاین کامل کار می‌کند. خروجی‌ها sanitize</p><p class="doc-p">می‌شوند (<code class="inline-code">sanitizeSuggestedReply</code>: حذف تگ، خنثی‌سازی <code class="inline-code">javascript:</code> و مشابه،</p><p class="doc-p">سقف ۱۲۰۰ کاراکتر) و <code class="inline-code">reasoning</code>/<code class="inline-code">matched_feature</code> به فارسی تضمین می‌شوند</p><p class="doc-p">(<code class="inline-code">ensurePersianText</code>).</p><h3 class="doc-h3">حسابداری هزینه (<code class="inline-code">lib/pricing.ts</code>)</h3><p class="doc-p">به‌ازای هر پیام: توکن ورودی/خروجی (واقعی از <code class="inline-code">usage</code> یا تخمین فارسی</p><p class="doc-p"><code class="inline-code">estimatePersianTokens</code>: ~۰٫۶۲ توکن به‌ازای هر کاراکتر فارسی) ضربدر نرخ‌های</p><p class="doc-p"><code class="inline-code">INPUT/OUTPUT_TOKEN_COST_PER_MILLION</code>، با معادل ریالی/تومانی برای داشبورد.</p><p class="doc-p">L0/L1 همیشه صفر ثبت می‌کنند.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>6. Ingestion — جمع‌آوری پیام</h2><h3 class="doc-h3">وب‌هوک‌های بات (مسیر اصلی لایو)</h3><div class="table-container"><table><thead><tr><th>مسیر</th><th>پلتفرم</th><th>هدر secret</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">POST /api/ingest/telegram</code></td><td>Telegram Bot API</td><td><code class="inline-code">X-Telegram-Bot-Api-Secret-Token</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/ingest/bale</code></td><td>Bale Bot API (<code class="inline-code">tapi.bale.ai</code>، سازگار با اسکیمای تلگرام)</td><td><code class="inline-code">X-Bale-Secret-Token</code></td></tr></tbody></table></div><p class="doc-p">هر دو <code class="inline-code">X-Webhook-Secret</code> را هم به‌عنوان fallback می‌پذیرند و برای push دستی /</p><p class="doc-p">تست، Bearer معتبر (<code class="inline-code">RADAR_API_KEY</code>) کافی است. ثبت وب‌هوک:</p><div class="code-container"><div class="code-header"><span class="code-lang">bash</span></div><pre><code class="language-bash">curl &quot;https://api.telegram.org/bot&lt;TELEGRAM_BOT_TOKEN&gt;/setWebhook?url=https://&lt;domain&gt;/api/ingest/telegram&amp;secret_token=&lt;TELEGRAM_WEBHOOK_SECRET&gt;&quot;
+# Bale: setWebhook به /api/ingest/bale با BALE_WEBHOOK_SECRET</code></pre></div><p class="doc-p">پیش‌نیازها: بات ساخته‌شده، عضویت بات در سوپرگروه/کانال هدف (تلگرام: Privacy</p><p class="doc-p">Mode خاموش)، و HTTPS عمومی (Caddy در DEPLOY.sh تأمین می‌کند).</p><p class="doc-p">جریان هر درخواست (<code class="inline-code">lib/ingest.ts</code>):</p><ol class="doc-ol"><li>احراز secret/Bearer و rate limit (۱۲۰ req/min به‌ازای IP).</li><li>استخراج پیام از <code class="inline-code">message | edited_message | channel_post</code> (متن یا کپشن)؛</li></ol><p class="doc-p">آپدیت‌های غیرمتنی (استیکر، عضویت، نظرسنجی) و پیام بات‌ها با</p><p class="doc-p"><code class="inline-code">{"ignored": true}</code> تأیید و نادیده گرفته می‌شوند.</p><ol class="doc-ol"><li><code class="inline-code">findOrCreateSource</code>: یک ردیف <code class="inline-code">source</code> به‌ازای هر چت</li></ol><p class="doc-p">(<code class="inline-code">Telegram: <title> (<id>)</code>، وضعیت <code class="inline-code">active</code>).</p><ol class="doc-ol"><li>Dedupe ارسال مجدد روی <code class="inline-code">external_id</code> (<code class="inline-code">tg:<chat>:<msgId></code>) — تکراری‌ها با</li></ol><p class="doc-p"><code class="inline-code">{"deduped": true}</code> برمی‌گردند و دوباره تریاژ نمی‌شوند.</p><ol class="doc-ol"><li>درج <code class="inline-code">raw_messages</code> با وضعیت <code class="inline-code">pending</code> و تریاژ فوری سه‌لایه (مثل simulate).</li></ol><p class="doc-p">پاسخ شامل <code class="inline-code">layer</code> تصمیم‌گیرنده است.</p><h3 class="doc-h3">مسیرهای دستی و نمایشی</h3><ul class="doc-ul"><li><code class="inline-code">POST /api/simulate</code> — تزریق یکی از ۲۶ پیام نمایشی فارسی و تریاژ فوری.</li><li><code class="inline-code">POST /api/analyze</code> — تریاژ یک <code class="inline-code">raw_message</code> موجود یا متن ad-hoc (بدون ثبت).</li><li><code class="inline-code">bun run seed</code> — بارگذاری ۲۶ پیام نمایشی (۵ high-intent، ۵ problem-aware،</li></ul><p class="doc-p">۱۶ نویز) فقط برای دمـو؛ هرگز در production.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>7. API Reference — مرجع API</h2><p class="doc-p">همه مسیرها <code class="inline-code">force-dynamic</code> هستند. احراز (جز موارد ذکرشده): سشن کوکی یا Bearer.</p><div class="table-container"><table><thead><tr><th>متد و مسیر</th><th>احراز</th><th>Rate limit</th><th>ورودی</th><th>خروجی</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">POST /api/analyze</code></td><td><span class="icon-badge check">✅</span></td><td>۱۵/min/IP (پلن)</td><td><code class="inline-code">raw_message_id</code> یا <code class="inline-code">content</code> + <code class="inline-code">author_handle?</code>، <code class="inline-code">thread_context?</code>، <code class="inline-code">platform?</code>، <code class="inline-code">product_id?</code></td><td><code class="inline-code">{success, layer?, lead?, evalResult?/evaluation?}</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/simulate</code></td><td><span class="icon-badge check">✅</span></td><td>پلن کاربر (سهمیه روزانه)</td><td><code class="inline-code">{index?}</code></td><td><code class="inline-code">{success, layer, lead (expand), evalResult}</code></td></tr><tr class="even"><td><code class="inline-code">POST /api/leads/fetch-initial</code></td><td>کوکی سشن</td><td>سهمیه پلن</td><td>—</td><td>اسکن ۳ پیام اولیه بازار برای کاربر، تریاژ و ذخیره پایدار در پاکت‌بیس</td></tr><tr class="odd"><td><code class="inline-code">POST /api/leads/status</code></td><td>کوکی سشن</td><td>۶۰/min/IP</td><td><code class="inline-code">{leadId, status, notes?}</code></td><td>ذخیره خودکار وضعیت و یادداشت در پاکت‌بیس و اعتبارسنجی مالکیت داده</td></tr><tr class="even"><td><code class="inline-code">POST /api/settings</code></td><td><span class="icon-badge check">✅</span></td><td>—</td><td>فیلدهای محصول (اعتبارسنجی کامل)</td><td>ذخیره پایدار محصول اختصاصی و همگام‌سازی پروفایل کاربر</td></tr><tr class="odd"><td><code class="inline-code">POST /api/bot/cron</code></td><td>secret/Bearer/سشن</td><td>کنترل فرکانس</td><td>—</td><td>اجرای چرخه اسکنر خودکار ساعتی برای کاربران فعال طبق سقف پلن</td></tr><tr class="even"><td><code class="inline-code">GET /api/bot/status</code></td><td>کوکی سشن</td><td>—</td><td>—</td><td>وضعیت فعال/غیرفعال بات ساعتی، سقف پیام در ساعت و زمان آخرین اجرا</td></tr><tr class="odd"><td><code class="inline-code">POST /api/bot/toggle</code></td><td>کوکی سشن</td><td>—</td><td><code class="inline-code">{active: boolean}</code></td><td>فعال یا متوقف‌کردن بات اسکنر ساعتی برای کاربر جاری در دیتابیس</td></tr><tr class="even"><td><code class="inline-code">POST /api/ingest/telegram</code></td><td>secret/Bearer</td><td>۱۲۰/min/IP</td><td>Telegram update JSON</td><td><code class="inline-code">{success, layer, lead, evalResult}</code> / <code class="inline-code">{ignored}</code> / <code class="inline-code">{deduped}</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/ingest/bale</code></td><td>secret/Bearer</td><td>۱۲۰/min/IP</td><td>Bale update JSON</td><td>همان بالا</td></tr><tr class="even"><td><code class="inline-code">POST /api/assistant</code></td><td>❌</td><td>❌</td><td><code class="inline-code">{message, context?}</code></td><td><code class="inline-code">{id, role, content, timestamp}</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/auth/register</code></td><td>—</td><td>—</td><td><code class="inline-code">{name, email, password, passwordConfirm}</code></td><td>ایجاد کاربر با پلن free، ست‌کردن کوکی‌ها، هدایت به <code class="inline-code">/onboarding</code></td></tr><tr class="even"><td><code class="inline-code">POST /api/auth/login</code></td><td>—</td><td>—</td><td><code class="inline-code">{email, password}</code> یا <code class="inline-code">{password}</code> ادمین</td><td>اعتبارسنجی دوگانه، بارگذاری سوابق قبلی، هدایت به <code class="inline-code">/leads</code> یا <code class="inline-code">/onboarding</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/auth/logout</code></td><td>—</td><td>—</td><td>—</td><td>پاک‌کردن کوکی‌های <code class="inline-code">radar_session</code> و <code class="inline-code">radar_onboarded</code></td></tr><tr class="even"><td><code class="inline-code">GET /api/auth/session</code></td><td>کوکی</td><td>—</td><td>—</td><td>وضعیت نشست، هویت کاربر، پلن و پرچم <code class="inline-code">has_fetched_initial</code></td></tr><tr class="odd"><td><code class="inline-code">POST /api/onboarding</code></td><td>کوکی سشن</td><td>—</td><td>فیلدهای شرکت، سمت، محصول و ICP</td><td>ایجاد محصول اختصاصی در پاکت‌بیس، عدم تزریق داده ماک، هدایت به <code class="inline-code">/leads</code></td></tr></tbody></table></div><p class="doc-p">اعتبارسنجی ورودی‌ها در <code class="inline-code">lib/validation.ts</code> (سقف طول، strip کاراکترهای</p><p class="doc-p">کنترلی، allowlist پلتفرم‌ها). سقف‌ها: <code class="inline-code">content</code> ≤ ۳۰۰۰، <code class="inline-code">thread_context</code> ≤</p><p class="doc-p">۱۵۰۰، <code class="inline-code">author_handle</code> ≤ ۱۰۰ کاراکتر.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>8. Radar Assistant — دستیار هوشمند</h2><p class="doc-p"><code class="inline-code">POST /api/assistant</code> یک راهنمای گفت‌وگویی داخل داشبورد است (نه عامل خودمختار):</p><p class="doc-p">پرامپت سیستمی ثابت + کانتکست فضای کاری (تعداد لیدها، صفحه فعال)، خروجی تمیز</p><p class="doc-p">بدون مارک‌داون (<code class="inline-code">cleanOutput</code>). نکته‌های فنی مهم:</p><ul class="doc-ul"><li>به‌صورت پیش‌فرض به OpenRouter می‌رود (<code class="inline-code">LLM_BASE_URL</code> اگر ست نباشد) و <em></em>fallback</li></ul><p class="doc-p">ندارد<em></em> — در اختلال اینترنت بین‌الملل ۵۰۲ برمی‌گرداند.</p><ul class="doc-ul"><li>در پاسخ‌گویی به فارسی/انگلیسی زبان کاربر را دنبال می‌کند.</li><li><span class="icon-badge warn">⚠️</span> یافته‌های امنیتی (بخش ۹) را ببینید: این مسیر بدون احراز و بدون rate limit</li></ul><p class="doc-p">است و یک کلید fallback هاردکدشده در سورس دارد.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>9. Authentication & Security — احراز هویت و امنیت</h2><ul class="doc-ul"><li><strong>احراز هویت چندسازمانی (SaaS Multi-User Auth):</strong></li><li>ثبت‌نام کاربر جدید (<code class="inline-code">/register</code>) با اعتبارسنجی نام، ایمیل یکتا و رمز عبور (حداقل ۸ کاراکتر) در کالکشن <code class="inline-code">users</code> پاکت‌بیس.</li><li>ورود اختصاصی کاربران با ایمیل/رمز عبور (<code class="inline-code">/login</code>) به همراه پشتیبانی از ورود اضطراری مدیر سیستم با رمز <code class="inline-code">RADAR_ADMIN_PASSWORD</code> یا رمز سوپریوزر دیتابیس.</li><li>فرآیند آنبوردینگ اجباری سازمانی (<code class="inline-code">/onboarding</code>): ضبط نام شرکت، سمت سازمانی، نام محصول، شرح ارزش‌آفرینی و پرسونای مشتری ایده‌آل (ICP) پیش از دسترسی به کارتابل لیدها.</li><li><strong>نشست کاربر و الگوی دو کوکی (Dual-Cookie Session):</strong></li><li><strong><code class="inline-code">radar_session</code>:</strong> توکن استاندارد JWT پاکت‌بیس یا توکن امضاشده HMAC ادمین (<code class="inline-code">radar:<timestamp></code>)، ۳۰ روزه با پرچم‌های <code class="inline-code">HttpOnly</code>, <code class="inline-code">SameSite=Lax</code>, <code class="inline-code">Path=/</code>, و <code class="inline-code">Secure</code> در production.</li><li><strong><code class="inline-code">radar_onboarded</code>:</strong> کوکی <code class="inline-code">HttpOnly</code> با مقدار <code class="inline-code">1</code> یا <code class="inline-code">0</code> برای تشخیص فوری وضعیت آنبوردینگ در لایه Edge بدون سربار کوئری به دیتابیس.</li><li><strong>مسیریابی و محافظت لبه در Next.js 16 (<code class="inline-code">proxy.ts</code>):</strong></li><li>حفاظت از روت‌های <code class="inline-code">/leads</code>، <code class="inline-code">/dashboard</code> و <code class="inline-code">/settings</code> (ریدایرکت خودکار کاربران مهمان به <code class="inline-code">/login?from=...</code>).</li><li>محافظت دوطرفه از <code class="inline-code">/onboarding</code>: هدایت کاربران مهمان به <code class="inline-code">/login</code> و کاربران تکمیل‌شده به <code class="inline-code">/leads</code> جهت جلوگیری از هرگونه حلقه بازگشتی (Redirect Loop).</li><li><strong>تجربه کاربری و جهت ورودی‌های حساس (LTR Inputs):</strong></li><li>ورودی‌های ایمیل و رمز عبور مجهز به ویژگی نیتیو <code class="inline-code">dir="ltr"</code> و کلاس‌های <code class="inline-code">[direction:ltr] text-left</code> همراه با پدینگ استاندارد آیکون چشم (<code class="inline-code">pl-10 pr-3.5</code>) برای تراز صحیح و عدم تداخل زبان فارسی/انگلیسی.</li><li><strong>API key:</strong> <code class="inline-code">RADAR_API_KEY</code> (Bearer) برای worker و pushهای برنامه‌ای؛</li><li><strong>تفکیک داده چندمستأجری و ذخیره خودکار در پاکت‌بیس (Multi-Tenant Auto-Save):</strong></li><li>فیلد رابطه <code class="inline-code">user_id</code> روی کالکشن‌های <code class="inline-code">leads</code>، <code class="inline-code">raw_messages</code> و <code class="inline-code">products</code> جهت اطمینان از ایزولاسیون کامل داده میان کاربران مختلف.</li><li>کاربران بازگشتی پس از ورود تنها سرنخ‌ها و داده‌های اختصاصی محصول خود را مشاهده می‌کنند (<code class="inline-code">filter: user_id = "${user.id}"</code>).</li><li>تمامی تغییرات در داشبورد (تغییر وضعیت سرنخ به <code class="inline-code">approved</code>, <code class="inline-code">contacted</code>, <code class="inline-code">dismissed</code>، یادداشت‌های پیگیری مشتری، ویرایش محصول و ICP) بلافاصله در دیتابیس لوکال SQLite پاکت‌بیس Auto-Save شده و نشانگر همگام‌سازی لحظه‌ای در بالای کارتابل نمایش داده می‌شود.</li><li><strong>بات اسکنر خودکار ساعتی (Autonomous Hourly Harvester Bot):</strong></li><li>ماژول <code class="inline-code">lib/botScheduler.ts</code> متصل به چرخه راه‌اندازی سرور از طریق <code class="inline-code">instrumentation.ts</code>.</li><li>اسکن و کشف خودکار پیام‌های جامعه کاربری در پس‌زمینه در هر ساعت بدون نیاز به کلیک دستی کاربر.</li><li>رعایت سقف ساعتی پلن کاربری (رایگان: ۱۰ پیام/ساعت، استارتر: ۳۰ پیام/ساعت، رشد: ۸۰ پیام/ساعت، سازمانی: ۲۰۰ پیام/ساعت).</li><li>امکان فعال/متوقف‌سازی بات به ازای هر کاربر از طریق سوئیچ وضعیت در بنر کارتابل (<code class="inline-code">/api/bot/toggle</code>).</li><li><strong>کنترل نرخ و سهمیه‌بندی بر اساس پلن (Plan-Based Rate Limiting):</strong></li><li>تعریف پلن‌های <code class="inline-code">free</code>، <code class="inline-code">starter</code>، <code class="inline-code">growth</code> و <code class="inline-code">enterprise</code> با سقف درخواست در دقیقه و سهمیه روزانه پایش پیام‌ها در <code class="inline-code">lib/rateLimit.ts</code>.</li><li>هدایت کاربران جدید پس از آنبوردینگ به کارتابل خالی بدون تزریق داده‌های ساختگی (Mock Data) و امکان اسکن تعاملی اولیه با دکمه اختصاصی.</li><li><strong>وب‌هوک‌ها:</strong> مقایسه زمان‌ثابت secret در هدر اختصاصی هر پلتفرم.</li><li><strong>سطح دیتابیس:</strong> تفکیک هویت کاربران در <code class="inline-code">users</code> با قانون <code class="inline-code">id = @request.auth.id</code>؛ سایر کالکشن‌های داده با <code class="inline-code">create/update/delete = null</code> (فقط سوپریوزر سروری).</li><li><strong>دفاع تزریق پرامپت (۴ لایه):</strong> کپسوله‌سازی XML پیام غیرقابل‌اعتماد،</li></ul><p class="doc-p">دستور صریح نادیده‌گرفتن دستورات داخل پیام، امتیاز ۰ و <code class="inline-code">irrelevant</code> خودکار</p><p class="doc-p">در صورت تزریق (هم در LLM و هم در heuristic و L0)، و sanitize خروجی.</p><ul class="doc-ul"><li><strong>CSP</strong> در <code class="inline-code">next.config.ts</code>: <code class="inline-code">connect-src</code> فقط <code class="inline-code">self</code> + مبدأ PocketBase؛ به‌همراه</li></ul><p class="doc-p"><code class="inline-code">frame-ancestors 'none'</code> ،HSTS ،<code class="inline-code">X-Frame-Options: DENY</code> و غیره.</p><ul class="doc-ul"><li><strong>Rate limiting</strong> حافظه‌ای sliding-window برای همه مسیرهای حساس.</li></ul><h3 class="doc-h3"><span class="icon-badge warn">⚠️</span> یافته‌های امنیتی باز و وضعیت برطرف‌سازی</h3><ol class="doc-ol"><li><strong>کلید OpenRouter هاردکدشده</strong> در <code class="inline-code">app/api/assistant/route.ts:51</code> به‌عنوان</li></ol><p class="doc-p">fallback (<code class="inline-code">sk-or-v1-...</code>). این کلید باید revoke و از سورس حذف شود (فقط از</p><p class="doc-p">env خوانده شود) و تاریخچه گیت بررسی/پاک‌سازی شود.</p><ol class="doc-ol"><li><strong><code class="inline-code">POST /api/assistant</code> بدون احراز هویت و بدون rate limit</strong> است — پیشنهاد: افزودن سقف نرخی مثل simulate.</li><li><span class="icon-badge check">✅</span> <strong>مسیر <code class="inline-code">POST /api/leads/status</code> ایمن‌سازی شد</strong>: اکنون احراز هویت سشن کاربر، بررسی عدم دسترسی به لیدهای سایر مستأجران، و سقف ۶۰ درخواست در دقیقه را اعمال می‌کند.</li><li>مغایرت مستندات: پرامپت دستیار امتیاز نیت را ۱ تا ۱۰ توصیف می‌کند درحالی‌که</li></ol><p class="doc-p">سیستم ۰ تا ۱۰۰ است.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>10. Configuration — پیکربندی</h2><div class="table-container"><table><thead><tr><th>متغیر</th><th>پیش‌فرض</th><th>توضیح</th></tr></thead><tbody><tr class="even"><td><code class="inline-code">POCKETBASE_URL</code></td><td><code class="inline-code">http://127.0.0.1:8090</code></td><td>آدرس سروری PocketBase (داخلی)</td></tr><tr class="odd"><td><code class="inline-code">NEXT_PUBLIC_POCKETBASE_URL</code></td><td><code class="inline-code">http://127.0.0.1:8090</code></td><td>آدرس مرورگری PocketBase — در production باید مبدأ عمومی باشد (در build bake می‌شود)</td></tr><tr class="even"><td><code class="inline-code">POCKETBASE_ADMIN_EMAIL</code></td><td><code class="inline-code">admin@leadradar.local</code></td><td>ایمیل superuser</td></tr><tr class="odd"><td><code class="inline-code">POCKETBASE_ADMIN_PASSWORD</code></td><td>—</td><td>رمز superuser (حداقل ۱۶ کاراکتر)</td></tr><tr class="even"><td><code class="inline-code">RADAR_ADMIN_PASSWORD</code></td><td>fallback به رمز PB و سپس <code class="inline-code">"BuildX"</code></td><td>رمز <code class="inline-code">/login</code> — در production حتماً ست شود</td></tr><tr class="odd"><td><code class="inline-code">RADAR_API_KEY</code></td><td>—</td><td>کلید Bearer برای worker/وب‌هوک‌های دستی</td></tr><tr class="even"><td><code class="inline-code">TELEGRAM_BOT_TOKEN</code> / <code class="inline-code">TELEGRAM_WEBHOOK_SECRET</code></td><td>—</td><td>بات تلگرام و secret وب‌هوک</td></tr><tr class="odd"><td><code class="inline-code">BALE_BOT_TOKEN</code> / <code class="inline-code">BALE_WEBHOOK_SECRET</code></td><td>—</td><td>بات بله و secret وب‌هوک</td></tr><tr class="even"><td><code class="inline-code">LLM_BASE_URL</code></td><td><code class="inline-code">http://localhost:11434/v1</code></td><td>اندپوینت OpenAI-compatible (تریاژ)</td></tr><tr class="odd"><td><code class="inline-code">LLM_API_KEY</code></td><td><code class="inline-code">dummy</code></td><td>کلید اندپوینت (در صورت نیاز)</td></tr><tr class="even"><td><code class="inline-code">LLM_MODEL</code></td><td><code class="inline-code">llama3.1</code></td><td>مدل تریاژ</td></tr><tr class="odd"><td><code class="inline-code">OPENROUTER_API_KEY</code></td><td>fallback به <code class="inline-code">LLM_API_KEY</code></td><td>کلید دستیار (فعلاً هاردکد هم دارد — بخش ۹)</td></tr><tr class="even"><td><code class="inline-code">INPUT/OUTPUT_TOKEN_COST_PER_MILLION</code></td><td><code class="inline-code">0.15</code> / <code class="inline-code">0.60</code></td><td>نرخ دلاری توکن</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>11. Frontend & Realtime — رابط کاربری و به‌روزرسانی زنده</h2><ul class="doc-ul"><li>صفحات: <code class="inline-code">/</code> (ویترین/لندینگ)، <code class="inline-code">/dashboard</code> (فید زنده + KPI + فیلتر پلتفرم)،</li></ul><p class="doc-p"><code class="inline-code">/settings</code> (محصول/کلیدواژه/ICP، پشت لاگین)، <code class="inline-code">/login</code>، <code class="inline-code">/landing</code>.</p><ul class="doc-ul"><li>فید زنده با ساب‌اسکریپشن SSE پاکت‌بیس (<code class="inline-code">pb.collection("leads").subscribe("*")</code>)</li></ul><p class="doc-p">بدون رفرش دستی؛ کلاینت مرورگر در <code class="inline-code">lib/pocketbase.ts</code> یکتا نگه داشته می‌شود</p><p class="doc-p">تا ساب‌اسکریپشن حفظ شود (<code class="inline-code">autoCancellation(false)</code>).</p><ul class="doc-ul"><li>KPIها: کل پیام‌های پایش‌شده، درصد حذف نویز، لیدهای واجد، هزینه توکن (دلار)،</li></ul><p class="doc-p">هزینه به‌ازای لید با تخمین ریالی/تومانی و اعداد فارسی.</p><ul class="doc-ul"><li>چرخه حیات لید (<code class="inline-code">new/approved/contacted/dismissed</code>) و کپی یک‌کلیکه پیش‌نویس</li></ul><p class="doc-p">پاسخ فارسی.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>12. Deployment — استقرار</h2><p class="doc-p">معماری production (تک‌سرور، مطابق <code class="inline-code">DEPLOY.sh</code>):</p><div class="code-container"><div class="code-header"><span class="code-lang">text</span></div><pre><code class="language-text">Internet → Caddy (TLS, 80/443)
   ├─ https://&lt;domain&gt;      → Next.js 127.0.0.1:3000
   └─ https://pb.&lt;domain&gt;   → PocketBase 127.0.0.1:8090 (SQLite در pb_data/)
 timer هر ۳ دقیقه → radar-worker (one-shot)
 اختیاری: Ollama/vLLM (بدون آن، heuristic فارسی کار را نگه می‌دارد)</code></pre></div><p class="doc-p">استقرار تک‌دستوری (سرورهای Debian-based، با sudo):</p><div class="code-container"><div class="code-header"><span class="code-lang">bash</span></div><pre><code class="language-bash">git clone &lt;repo-url&gt; /opt/radar &amp;&amp; cd /opt/radar
-sudo bash DEPLOY.sh --domain radar.example.com</code></pre></div><p class="doc-p">اسکریپت: نصب Bun/Caddy/باینری لینوکسی PocketBase، ساخت <code class="inline-code">.env</code>، superuser و</p><p class="doc-p">schema (بدون seed)، پچ idempotent در CSP، بیلد production، یونیت‌های</p><p class="doc-p"><code class="inline-code">radar-pb</code>/<code class="inline-code">radar-web</code>/<code class="inline-code">radar-worker.{service,timer}</code> با کاربر غیرریشه‌ای</p><p class="doc-p"><code class="inline-code">radar</code>، vhostهای Caddy با TLS خودکار، و health-check محلی و عمومی. اجرای</p><p class="doc-p">مجدد = به‌روزرسانی، نه تکرار.</p><p class="doc-p">چک‌لیست production: مبدأ عمومی PB در <code class="inline-code">NEXT_PUBLIC_...</code>، پوشش CSP، بیلد روی</p><p class="doc-p">سرور بعد از نهایی‌شدن <code class="inline-code">.env</code>، <code class="inline-code">RADAR_ADMIN_PASSWORD</code> اختصاصی، HTTPS اجباری،</p><p class="doc-p">بکاپ شبانه <code class="inline-code">pb_data/</code> (کل دیتابیس همین دایرکتوری است)، فایروال فقط ۸۰/۴۴۳.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>13. Operations Runbook — دستورالعمل بهره‌برداری</h2><div class="table-container"><table><thead><tr><th>کار</th><th>دستور</th></tr></thead><tbody><tr class="even"><td>ثبت وب‌هوک تلگرام</td><td><code class="inline-code">curl "https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://<domain>/api/ingest/telegram&secret_token=<SECRET>"</code></td></tr><tr class="odd"><td>بررسی وب‌هوک</td><td><code class="inline-code">getWebhookInfo</code> در همان API</td></tr><tr class="even"><td>اجرای دستی تریاژ</td><td><code class="inline-code">bun run worker</code> (صف <code class="inline-code">pending</code>)</td></tr><tr class="odd"><td>bootstrap اسکیما/مهاجرت</td><td><code class="inline-code">bun run setup:pb</code> (idempotent؛ از جمله افزودن <code class="inline-code">filtered</code>)</td></tr><tr class="even"><td>دموی نمایشی</td><td><code class="inline-code">bun run seed</code> سپس <code class="inline-code">bun run worker</code> (فقط dev)</td></tr><tr class="odd"><td>ارزیابی تک‌پیام</td><td><code class="inline-code">POST /api/analyze</code> با <code class="inline-code">content</code> یا <code class="inline-code">raw_message_id</code></td></tr><tr class="even"><td>بکاپ فوری دیتابیس</td><td><code class="inline-code">tar -czf pb-backup-$(date +%F).tar.gz pb_data/</code> (سرویس PB را لحظه‌ای نگه دارید یا از snapshots پاکت‌بیس استفاده کنید)</td></tr><tr class="odd"><td>مشاهده لاگ‌ها</td><td><code class="inline-code">journalctl -u radar-web -f</code> ،<code class="inline-code">radar-pb</code> ،<code class="inline-code">radar-worker</code></td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>14. Project Structure — ساختار پروژه</h2><div class="code-container"><div class="code-header"><span class="code-lang">text</span></div><pre><code class="language-text">radar/
+sudo bash DEPLOY.sh --domain radar.example.com</code></pre></div><p class="doc-p">اسکریپت: نصب Bun/Caddy/باینری لینوکسی PocketBase، ساخت <code class="inline-code">.env</code>، superuser و</p><p class="doc-p">schema (بدون seed)، پچ idempotent در CSP، بیلد production، یونیت‌های</p><p class="doc-p"><code class="inline-code">radar-pb</code>/<code class="inline-code">radar-web</code>/<code class="inline-code">radar-worker.{service,timer}</code> با کاربر غیرریشه‌ای</p><p class="doc-p"><code class="inline-code">radar</code>، vhostهای Caddy با TLS خودکار، و health-check محلی و عمومی. اجرای</p><p class="doc-p">مجدد = به‌روزرسانی، نه تکرار.</p><p class="doc-p">چک‌لیست production: مبدأ عمومی PB در <code class="inline-code">NEXT_PUBLIC_...</code>، پوشش CSP، بیلد روی</p><p class="doc-p">سرور بعد از نهایی‌شدن <code class="inline-code">.env</code>، <code class="inline-code">RADAR_ADMIN_PASSWORD</code> اختصاصی، HTTPS اجباری،</p><p class="doc-p">بکاپ شبانه <code class="inline-code">pb_data/</code> (کل دیتابیس همین دایرکتوری است)، فایروال فقط ۸۰/۴۴۳.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>13. Operations Runbook — دستورالعمل بهره‌برداری</h2><div class="table-container"><table><thead><tr><th>کار</th><th>دستور</th></tr></thead><tbody><tr class="even"><td>ثبت وب‌هوک تلگرام</td><td><code class="inline-code">curl "https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://<domain>/api/ingest/telegram&secret_token=<SECRET>"</code></td></tr><tr class="odd"><td>بررسی وب‌هوک</td><td><code class="inline-code">getWebhookInfo</code> در همان API</td></tr><tr class="even"><td>اجرای دستی تریاژ</td><td><code class="inline-code">bun run worker</code> (صف <code class="inline-code">pending</code>)</td></tr><tr class="odd"><td>bootstrap اسکیما/مهاجرت</td><td><code class="inline-code">bun run setup:pb</code> (idempotent؛ از جمله افزودن <code class="inline-code">filtered</code>)</td></tr><tr class="even"><td>دموی نمایشی</td><td><code class="inline-code">bun run seed</code> سپس <code class="inline-code">bun run worker</code> (فقط dev)</td></tr><tr class="odd"><td>ارزیابی تک‌پیام</td><td><code class="inline-code">POST /api/analyze</code> با <code class="inline-code">content</code> یا <code class="inline-code">raw_message_id</code></td></tr><tr class="even"><td>بکاپ فوری دیتابیس</td><td><code class="inline-code">tar -czf pb-backup-$(date +%F).tar.gz pb_data/</code> (سرویس PB را لحظه‌ای نگه دارید یا از snapshots پاکت‌بیس استفاده کنید)</td></tr><tr class="odd"><td>مشاهده لاگ‌ها</td><td><code class="inline-code">journalctl -u radar-web -f</code> ،<code class="inline-code">radar-pb</code> ،<code class="inline-code">radar-worker</code></td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>14. Project Structure — ساختار پروژه</h2><div class="code-container"><div class="code-header"><span class="code-lang">text</span></div><pre><code class="language-text">radar/
 ├── DEPLOY.sh                   # استقرار تک‌دستوری production (Debian)
 ├── proxy.ts                    # پروکسی لبه Next.js 16 و حفاظت روت‌ها
 ├── app/
@@ -525,7 +595,7 @@ sudo bash DEPLOY.sh --domain radar.example.com</code></pre></div><p class="doc-p
 │   └── setup_schema.ts         # اسکیما + مهاجرت + seed پایه
 ├── docs/                       # BusinessPlan ،TechnicalDocumentation ،TECHNICAL_REFERENCE
 ├── graphify-out/               # گراف دانش پروژه
-└── public/fonts/               # فونت‌های خودمیزبان Ravi/Estedad</code></pre></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>15. Known Limitations & Roadmap — محدودیت‌ها و نقشه راه</h2><p class="doc-p">محدودیت‌های فعلی:</p><ul class="doc-ul"><li>اینجست واقعی فقط تلگرام/بله (وب‌هوک)؛ X و فروم‌ها fetcher ندارند (seed نمایشی).</li><li>Dedupe محتوایی ۲۴ ساعته روی ۲۰۰ رکورد اخیر محدود است (کران‌دار و ارزان، نه دقیقِ کامل).</li><li><code class="inline-code">screenIntent</code> در L1 محافظه‌کار است: پیام کنجکاو واقعی به L2 می‌رود (هزینه کم، recall بالا) — برای کاهش هزینه می‌توان آستانه را سخت‌گیرانه‌تر کرد.</li><li>دستیار (<code class="inline-code">/api/assistant</code>) بدون fallback آفلاین و با یافته‌های امنیتی بخش ۹.</li><li>Rate limit حافظه‌ای است (با restart ریست می‌شود؛ برای چند نمونه‌ای باید Redis/مشترک شود — خلاف قاعده تک‌سرور فعلی).</li></ul><p class="doc-p">نقشه راه پیشنهادی: fetcherهای X/فروم، صف‌بندی پایدار worker (به‌جای polling)،</p><p class="doc-p">سخت‌افزاری‌کردن آستانه L1 با بازخورد فروش (تصویب/رد لیدها)، رفع یافته‌های</p><p class="doc-p">بخش ۹، و بکاپ خودکار <code class="inline-code">pb_data</code> داخل <code class="inline-code">DEPLOY.sh</code>.</p>
+└── public/fonts/               # فونت‌های خودمیزبان Ravi/Estedad</code></pre></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>15. Known Limitations & Roadmap — محدودیت‌ها و نقشه راه</h2><p class="doc-p">محدودیت‌های فعلی:</p><ul class="doc-ul"><li>اینجست واقعی فقط تلگرام/بله (وب‌هوک)؛ X و فروم‌ها fetcher ندارند (seed نمایشی).</li><li>Dedupe محتوایی ۲۴ ساعته روی ۲۰۰ رکورد اخیر محدود است (کران‌دار و ارزان، نه دقیقِ کامل).</li><li><code class="inline-code">screenIntent</code> در L1 محافظه‌کار است: پیام کنجکاو واقعی به L2 می‌رود (هزینه کم، recall بالا) — برای کاهش هزینه می‌توان آستانه را سخت‌گیرانه‌تر کرد.</li><li>دستیار (<code class="inline-code">/api/assistant</code>) بدون fallback آفلاین و با یافته‌های امنیتی بخش ۹.</li><li>Rate limit حافظه‌ای است (با restart ریست می‌شود؛ برای چند نمونه‌ای باید Redis/مشترک شود — خلاف قاعده تک‌سرور فعلی).</li></ul><p class="doc-p">نقشه راه پیشنهادی: fetcherهای X/فروم، صف‌بندی پایدار worker (به‌جای polling)،</p><p class="doc-p">سخت‌افزاری‌کردن آستانه L1 با بازخورد فروش (تصویب/رد لیدها)، رفع یافته‌های</p><p class="doc-p">بخش ۹، و بکاپ خودکار <code class="inline-code">pb_data</code> داخل <code class="inline-code">DEPLOY.sh</code>.</p>
     </article>
   </main>
 </body>

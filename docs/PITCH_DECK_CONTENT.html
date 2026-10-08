@@ -32,15 +32,24 @@
 }
 
 
+    /* 
+      EXACT WEBSITE THEME: 
+      Deep Black #000000, Zinc Cards #09090b / #121214, 
+      Borders #27272a, White Headings #ffffff, Muted Text #a1a1aa 
+    */
     :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --border: #e2e8f0;
-      --border-dark: #cbd5e1;
+      --bg: #000000;
+      --card-bg: #09090b;
+      --card-alt: #121215;
+      --border: #27272a;
+      --border-subtle: #1e1e24;
+      --text: #ededed;
+      --text-bright: #ffffff;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --code-bg: #050505;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
     }
 
     * {
@@ -53,278 +62,326 @@
       font-family: 'Ravi', Tahoma, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.85;
-      font-size: 13.5px;
+      line-height: 1.75;
+      font-size: 13px;
       direction: rtl;
       text-align: right;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* Floating Top Toolbar */
     .top-bar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(9, 9, 11, 0.95);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 30px;
+      padding: 10px 25px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
     .top-bar-title {
       font-weight: 700;
-      font-size: 14.5px;
-      color: var(--primary-dark);
+      font-size: 13.5px;
+      color: var(--text-bright);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+    }
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: #ffffff;
+      color: #000000;
+      border-radius: 5px;
+      font-weight: 900;
+      font-size: 12px;
     }
     .btn {
-      padding: 8px 18px;
-      border-radius: 8px;
+      padding: 6px 16px;
+      border-radius: 6px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
-      border: none;
-      background: var(--primary);
-      color: #fff;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: #000000;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+      transition: all 0.15s ease;
     }
     .btn:hover {
-      background: var(--primary-dark);
+      background: #e4e4e7;
     }
 
+    /* Main Container */
     .doc-page {
-      max-width: 880px;
-      margin: 30px auto;
-      background: var(--card-bg);
-      padding: 45px 55px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      max-width: 900px;
+      margin: 20px auto;
+      background: var(--bg);
+      padding: 25px 35px;
     }
 
+    /* Executive Cover Card */
     .cover-card {
-      border: 2px solid #bae6fd;
-      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
-      padding: 40px;
-      border-radius: 14px;
-      margin-bottom: 35px;
-      page-break-after: always;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #121216 0%, #09090b 100%);
+      padding: 30px 35px;
+      border-radius: 12px;
+      margin-bottom: 25px;
     }
     .badge-row {
       display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 14px;
     }
     .badge {
       display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 10.5px;
       font-weight: 700;
+      letter-spacing: 0.3px;
     }
-    .badge-blue { background: #e0f2fe; color: #0369a1; }
-    .badge-green { background: #d1fae5; color: #047857; }
-    .badge-purple { background: #ede9fe; color: #6d28d9; }
+    .badge-white {
+      background: #ffffff;
+      color: #000000;
+    }
+    .badge-zinc {
+      background: #18181b;
+      color: #d4d4d8;
+      border: 1px solid var(--border);
+    }
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
 
     .cover-title {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
-      color: #0f172a;
-      line-height: 1.4;
-      margin-bottom: 12px;
+      color: var(--text-bright);
+      line-height: 1.35;
+      margin-bottom: 8px;
     }
     .cover-subtitle {
-      font-size: 14px;
-      color: #334155;
-      line-height: 1.7;
-      margin-bottom: 25px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
     }
     .cover-meta {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      border-top: 1px solid #cbd5e1;
-      padding-top: 20px;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
     }
     .meta-item {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
     .meta-label {
-      font-size: 11px;
-      color: #64748b;
+      font-size: 10.5px;
+      color: var(--text-dim);
       font-weight: 600;
     }
     .meta-val {
-      font-size: 13px;
-      color: #0f172a;
+      font-size: 12px;
+      color: var(--text-bright);
       font-weight: 700;
     }
 
+    /* Headings - High Contrast White & Zero Premature Page Breaks */
     .doc-h1 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 22px;
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 10px;
+      color: var(--text-bright);
+      margin-top: 25px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      break-after: avoid;
     }
     .doc-h2 {
-      font-size: 18.5px;
+      font-size: 17px;
       font-weight: 800;
-      color: #0f172a;
-      margin-top: 38px;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
+      color: var(--text-bright);
+      margin-top: 26px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       gap: 8px;
-      page-break-after: avoid;
+      break-after: avoid;
     }
-    .h2-indicator {
+    .h2-dot {
       display: inline-block;
-      width: 4px;
-      height: 20px;
-      background: var(--primary);
-      border-radius: 2px;
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
     }
     .doc-h3 {
-      font-size: 15.5px;
+      font-size: 14.5px;
       font-weight: 700;
-      color: #1e293b;
-      margin-top: 25px;
-      margin-bottom: 12px;
-      page-break-after: avoid;
-    }
-    .doc-h4 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #334155;
+      color: var(--text-bright);
       margin-top: 18px;
       margin-bottom: 8px;
-      page-break-after: avoid;
+      break-after: avoid;
+    }
+    .doc-h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #d4d4d8;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      break-after: avoid;
     }
     .doc-p {
-      margin-bottom: 14px;
-      color: #334155;
+      margin-bottom: 12px;
+      color: var(--text);
       text-align: justify;
+      line-height: 1.75;
     }
 
     .section-divider {
       border: 0;
       height: 1px;
-      background: linear-gradient(to left, transparent, var(--border), transparent);
-      margin: 35px 0;
+      background: var(--border);
+      margin: 22px 0;
     }
 
+    /* Blockquotes & Callouts */
     .doc-quote {
-      border-right: 4px solid var(--primary);
-      background: #f0f9ff;
-      padding: 14px 18px;
-      margin: 18px 0;
-      border-radius: 6px 0 0 6px;
-      color: #0369a1;
-      font-size: 13px;
+      border-right: 3px solid #ffffff;
+      background: #0e0e12;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 4px 0 0 4px;
+      color: #d4d4d8;
+      font-size: 12.5px;
+      border: 1px solid var(--border-subtle);
+      border-right: 3px solid #ffffff;
+      break-inside: avoid;
     }
     .callout {
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin: 18px 0;
-      border-right: 4px solid;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border: 1px solid var(--border);
+      break-inside: avoid;
     }
     .callout-warning {
-      background: #fffbeb;
-      border-color: #f59e0b;
-      color: #92400e;
+      background: #121008;
+      border-right: 3px solid var(--accent-amber);
+      color: #fef3c7;
     }
     .callout-title {
       font-weight: 700;
-      font-size: 13px;
+      font-size: 12.5px;
       margin-bottom: 4px;
+      color: var(--text-bright);
     }
     .callout-body {
-      font-size: 12.5px;
-      line-height: 1.7;
+      font-size: 12px;
+      line-height: 1.65;
     }
 
+    /* Lists */
     .doc-ul, .doc-ol {
-      margin: 12px 0 16px 20px;
-      padding-right: 15px;
+      margin: 8px 0 14px 18px;
+      padding-right: 14px;
     }
     .doc-ul li, .doc-ol li {
-      margin-bottom: 7px;
-      color: #334155;
+      margin-bottom: 5px;
+      color: var(--text);
     }
 
+    /* High Density Monochrome Tables */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 18px 0 24px;
+      margin: 10px 0 16px;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      page-break-inside: avoid;
+      border-radius: 6px;
+      background: var(--card-bg);
+      break-inside: auto;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12.5px;
+      font-size: 11.5px;
       text-align: right;
     }
+    thead {
+      display: table-header-group;
+    }
+    tr {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
     th {
-      background: #f1f5f9;
-      color: #0f172a;
+      background: #141418;
+      color: var(--text-bright);
       font-weight: 700;
-      padding: 9px 12px;
-      border-bottom: 2px solid var(--border);
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--border);
       white-space: nowrap;
     }
     td {
-      padding: 9px 12px;
-      border-bottom: 1px solid var(--border);
-      color: #334155;
+      padding: 7px 10px;
+      border-bottom: 1px solid #1a1a20;
+      color: var(--text);
+      vertical-align: middle;
     }
-    tr.odd { background: #ffffff; }
-    tr.even { background: #f8fafc; }
+    tr.odd { background: #09090b; }
+    tr.even { background: #0e0e12; }
     tr:last-child td { border-bottom: none; }
 
+    /* Inline Code */
     .inline-code {
       font-family: Consolas, Monaco, monospace;
       direction: ltr;
       display: inline-block;
-      background: #f1f5f9;
-      color: #0284c7;
-      border: 1px solid #e2e8f0;
+      background: #18181b;
+      color: #ffffff;
+      border: 1px solid #27272a;
       padding: 1px 5px;
       border-radius: 4px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
     }
 
+    /* Code Block Containers */
     .code-container {
-      margin: 18px 0 24px;
-      border-radius: 8px;
+      margin: 14px 0 18px;
+      border-radius: 6px;
       overflow: hidden;
-      border: 1px solid #1e293b;
-      background: #0b1120;
-      page-break-inside: avoid;
+      border: 1px solid var(--border);
+      background: var(--code-bg);
+      break-inside: avoid;
     }
     .code-header {
-      background: #1e293b;
-      padding: 6px 14px;
-      border-bottom: 1px solid #334155;
+      background: #111116;
+      padding: 5px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
     }
     .code-lang {
-      color: #94a3b8;
-      font-size: 10.5px;
+      color: var(--text-dim);
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       font-family: monospace;
@@ -332,140 +389,153 @@
     pre {
       direction: ltr;
       text-align: left;
-      padding: 14px 18px;
+      padding: 12px 15px;
       overflow-x: auto;
       font-family: Consolas, Monaco, monospace;
       font-size: 11.5px;
-      line-height: 1.65;
-      color: #e2e8f0;
+      line-height: 1.6;
+      color: #f4f4f5;
     }
 
+    /* Mermaid Architecture Diagrams */
     .mermaid-box {
-      margin: 20px 0;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: #f8fafc;
+      margin: 16px 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #0c0c10;
       overflow: hidden;
-      page-break-inside: avoid;
+      break-inside: avoid;
     }
     .mermaid-badge {
-      background: #e2e8f0;
-      color: #334155;
-      font-size: 11px;
+      background: #16161c;
+      color: var(--text-muted);
+      font-size: 10.5px;
       font-weight: 700;
       padding: 5px 12px;
-      border-bottom: 1px solid #cbd5e1;
+      border-bottom: 1px solid var(--border);
     }
     .mermaid-code {
       direction: ltr;
       text-align: left;
-      padding: 12px 16px;
+      padding: 12px 15px;
       font-size: 11px;
-      background: #ffffff;
-      color: #1e293b;
+      background: #09090c;
+      color: #e4e4e7;
     }
 
     .doc-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .icon-badge {
+      display: inline-block;
+      margin-left: 3px;
     }
 
+    /* =========================================================================
+       PRINT STYLES: Black & White / Dark Theme with Zero Empty Waste
+    ========================================================================= */
     @media print {
       @page {
         size: A4 portrait;
-        margin: 14mm 10mm 14mm 10mm;
+        margin: 10mm 10mm 10mm 10mm;
       }
       body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 11.5pt;
-        line-height: 1.55;
+        background-color: #000000 !important;
+        color: #ededed !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        font-size: 11pt;
+        line-height: 1.5;
       }
-      .top-bar { display: none !important; }
+      .top-bar {
+        display: none !important;
+      }
       .doc-page {
         max-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
+        background: #000000 !important;
       }
       .cover-card {
-        border: 2px solid #0284c7 !important;
-        background: #ffffff !important;
-        padding: 35px !important;
-        page-break-after: always !important;
+        background: #09090b !important;
+        border: 1px solid #27272a !important;
+        padding: 24px !important;
+        break-after: auto !important;
+        margin-bottom: 20px !important;
       }
-      .doc-h2 {
-        page-break-before: always;
-        break-before: page;
-        margin-top: 25px;
+      /* NO FORCED PAGE BREAKS ON HEADINGS - NATURAL FLOW ELIMINATES EMPTY GAPS */
+      .doc-h1, .doc-h2, .doc-h3, .doc-h4 {
+        break-before: auto !important;
+        page-break-before: auto !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
       }
-      .table-container, .code-container, .mermaid-box, .callout {
-        page-break-inside: avoid;
-        break-inside: avoid;
+      .table-container {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
       }
-      table th {
-        background-color: #f1f5f9 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+      tr {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
       }
+      .code-container, .mermaid-box, .callout, .doc-quote {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      th {
+        background-color: #18181b !important;
+        color: #ffffff !important;
+      }
+      tr.even { background-color: #0e0e12 !important; }
+      tr.odd { background-color: #09090b !important; }
       pre {
-        color: #0f172a !important;
-        background: #f8fafc !important;
-        border: 1px solid #cbd5e1 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        background-color: #050505 !important;
+        color: #f4f4f5 !important;
+        border: 1px solid #27272a !important;
       }
-      .code-container {
-        border-color: #cbd5e1 !important;
-      }
-      .code-header {
-        background: #f1f5f9 !important;
-        color: #0f172a !important;
-        border-color: #cbd5e1 !important;
-      }
-      .code-lang { color: #0f172a !important; }
     }
   </style>
 </head>
 <body>
   <header class="top-bar">
     <div class="top-bar-title">
+      <span class="logo-badge">R</span>
       <span>سامانه رادار (Radar) | محتوا و سناریوی ارائه سرمایه‌پذیری رادار (Pitch Deck)</span>
     </div>
     <button onclick="window.print()" class="btn">
-      چاپ و خروجی PDF
+      چاپ و خروجی PDF (Black & White)
     </button>
   </header>
 
   <main class="doc-page">
     <section class="cover-card">
       <div class="badge-row">
-        <span class="badge badge-blue">ارائه به سرمایه‌گذار</span>
-        <span class="badge badge-green">پروژه رادار (Radar)</span>
-        <span class="badge badge-purple">نسخه رسمی</span>
+        <span class="badge badge-white">ارائه به سرمایه‌گذار</span>
+        <span class="badge badge-zinc">پروژه رادار (Radar)</span>
+        <span class="badge badge-emerald">نسخه رسمی عملیاتی</span>
       </div>
       <h1 class="cover-title">محتوا و سناریوی ارائه سرمایه‌پذیری رادار (Pitch Deck)</h1>
-      <p class="cover-subtitle">سناریوی اسلایدبه‌اسلاید، پیام‌های محوری، آمار و ارقام بازار و سناریوی جذب سرمایه</p>
+      <p class="cover-subtitle">سناریوی اسلایدبه‌اسلاید، پیام‌های محوری، آمار و ارقام بازار، اقتصاد واحد و سناریوی جذب سرمایه</p>
       <div class="cover-meta">
         <div class="meta-item">
           <span class="meta-label">محصول:</span>
-          <span class="meta-val">رادار (موتور کشف نیت خرید B2B)</span>
+          <span class="meta-val">رادار (Radar B2B Intent Engine)</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">تاریخ بازبینی:</span>
           <span class="meta-val">بهمن ۱۴۰۳ / اکتبر ۲۰۲۶</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">سطح سند:</span>
-          <span class="meta-val">رسمی و اختصاصی</span>
+          <span class="meta-label">سطح دسترسی:</span>
+          <span class="meta-val">مستند فنی و اجرایی رسمی</span>
         </div>
       </div>
     </section>
 
     <article class="doc-content">
-      <h1 class="doc-h1">محتوای اسلایدهای پیچ‌دک رادار (Radar Pitch Deck Content)</h1><h2 class="doc-h2"><span class="h2-indicator"></span>راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders</h2><p class="doc-p"><strong>نسخه سند:</strong> ۳.۱ (منطبق بر واقعیت کد و ارقام معتبر اقتصادی — پاییز ۱۴۰۵)</p><p class="doc-p"><strong>تعداد اسلایدها:</strong> ۱۱ اسلاید ساختاریافته</p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۱: عنوان و هویت محصول (Cover Slide)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> رادار (Radar) — هوشمندی کشف فرصت‌های فروش B2B</li><li><strong>پیام محوری:</strong> تبدیل هیاهوی گروه‌های تلگرام و بله به سرنخ‌های آماده معامله در کمتر از ۳ ثانیه.</li><li><strong>متن پشتیبان:</strong> سامانه هوشمند خودمیزبان برای شناسایی خودکار نیت خرید و تدوین پیش‌نویس مذاکره برای تیم‌های فروش سازمانی.</li><li><strong>اعداد کلیدی:</strong> ۳ لایه فیلترینگ نویز • ۰ وابستگی به کلاد خارجی • پاسخ‌دهی زیر ۳ ثانیه.</li><li><strong>طرح بصری پیشنهادی:</strong> لوگوی مینیمال سفید رادار با افکت جاروب ۳۶۰ درجه (Radar Sweep)، پس‌زمینه تیره Vercel با نور ملایم سبز زمرگی (<code class="inline-code">#00e599</code>)، برچسب توسعه‌یافته توسط PriCoders.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«سلام به همه؛ امروز می‌خواهیم درباره میلیاردها تومان معامله B2B صحبت کنیم که هر روز جلوی چشم شرکت‌ها در پیام‌رسان‌ها ردوبدل می‌شوند، اما به خاطر نویز بالا سوزانده می‌شوند.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۲: مسئله بازار و واقعیت تلخ فروش (The Problem)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> نبض خرید B2B در پیام‌رسان‌ها می‌زند، اما در اقیانوس نویز گم می‌شود.</li><li><strong>پیام محوری:</strong> ایمیل و لینکدین در ایران بازدهی پایینی دارند؛ خریداران واقعی در گروه‌های تلگرام و بله درخواست خرید می‌دهند اما کسی آن‌ها را نمی‌بیند.</li><li><strong>متن پشتیبان:</strong></li><li>بیش از ۸۰٪ پیام‌های گروه‌های تجاری هرزنامه، احوال‌پرسی و آگهی‌های نامرتبط است.</li><li>کارشناسان فروش یا باید روزی ۳ تا ۴ ساعت وقت گران‌بهای خود را صرف پیمایش دستی کنند، یا فرصت‌ها را به رقبایی که زودتر پاسخ می‌دهند ببازند.</li><li><strong>اعداد کلیدی:</strong> نرخ باز شدن ایمیل مارکتینگ زیر ۳٪ • اتلاف ۳ ساعت در روز برای هر کارشناس • بیش از ۸۰٪ نویز در کانال‌ها.</li><li><strong>طرح بصری پیشنهادی:</strong> تصویر مقایسه‌ای یک گروه شلوغ با صدها پیام اسپم در برابر یک پیام تک‌خطی طلایی: <em>«دنبال نرم‌افزار حسابداری ابری متصل به مودیان هستیم، چی پیشنهاد می‌دید؟»</em> که ۴ ساعت بعد بی‌جواب مانده است.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«در ایران مشتری شرکتی برای خرید ابزار فرم ثبت‌نام پر نمی‌کند؛ در سوپرگروه صنف خود می‌پرسد: چه برنامه‌ای بخرم؟ وقتی فروشنده بعد از ۳ ساعت پیام را می‌بیند، رقیب قرارداد را بسته است.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۳: چرا راهکارهای فعلی شکست می‌خورند؟ (Why Existing Solutions Fail)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> وضعیت موجود: ناکارآمد، پرهزینه و شکننده.</li><li><strong>پیام محوری:</strong> ابزارهای سنتی روابط عمومی و ربات‌های کلیدواژه‌ای برای بستن قرارداد فروش طراحی نشده‌اند.</li><li><strong>متن پشتیبان:</strong></li><li><strong>استخدام نیروی انسانی (SDR):</strong> حقوق ماهانه بالای ۲۵ تا ۴۰ میلیون تومان، خطای انسانی و خستگی مفرط.</li><li><strong>ابزارهای سوشال لیسنینگ (زلکا/نیوزباکس):</strong> تمرکز بر روابط عمومی و تحلیل احساسات، نه کشف نیت خرید و نگارش پاسخ.</li><li><strong>ربات‌های کلیدواژه‌ای تلگرام:</strong> ارسال صدها پیام نامربوط به‌ازای هر کلمه کلیدی، بدون درک بافت مکالمه و بودجه.</li><li><strong>اعداد کلیدی:</strong> هزینه ماهانه ۳۵ میلیون تومانی SDR • نرخ خطای ۷۰٪ ربات‌های ساده کلیدواژه‌ای.</li><li><strong>طرح بصری پیشنهادی:</strong> جدول ماتریسی ضربدر و تیک مقایسه ابزارهای PR، ربات‌های تلگرامی، نیروی انسانی و سامانه رادار.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«اگر کلمه "حسابداری" را پایش کنید، آگهی استخدام و خبر نرخ ارز هم به شما ارسال می‌شود. فروشنده کلمه نمی‌خواهد؛ او خریدار با بودجه مشخص می‌خواهد.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۴: معرفی راه‌حل — رادار (The Solution: Radar)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> رادار: موتور هوشمند کشف نیت خرید با معماری ۳ لایه‌ای بومی.</li><li><strong>پیام محوری:</strong> تشخیص نیت خرید از ۰ تا ۱۰۰، انطباق با ویژگی‌های محصول شما، و تولید پیش‌نویس پاسخ در ۳ ثانیه.</li><li><strong>متن پشتیبان:</strong></li><li>پالایش هوشمندانه ۸۵٪ نویز بدون مصرف توکن.</li><li>استخراج نیاز واقعی، چالش کاری و آمادگی بودجه.</li><li>نگارش پاسخ صمیمی و حرفه‌ای به زبان فارسی برای شروع گفتگو توسط انسان.</li><li>استقلال ۱۰۰٪ از کلاد خارجی (آپ‌تایم پایدار حتی در شرایط محدودیت بین‌الملل).</li><li><strong>اعداد کلیدی:</strong> امتیازدهی ۰ تا ۱۰۰ • فیلتر ۸۵٪ نویز با هزینه صفر • پیش‌نویس پاسخ در کمتر از ۳ ثانیه.</li><li><strong>طرح بصری پیشنهادی:</strong> ماکت مینیمال داشبورد زنده رادار با یک کارت لید برجسته و نشانگر وضعیت سبز (<code class="inline-code">خرید قطعی • امتیاز ۹۴</code>).</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«رادار مانند یک کارشناس ارشد فروش ۲۴ ساعته در تمام کانال‌ها حضور دارد؛ پیام‌ها را درک می‌کند و فقط زمانی که خریدار واقعی پیدا شد، به شما هشدار می‌دهد.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۵: چرخه کارکرد فنی و دمو زنده (How It Works & Live Demo)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> خط تریاژ سه‌لایه: سریع، ارزان و دقیق.</li><li><strong>پیام محوری:</strong> هر پیام خام در کمتر از چند میلی‌ثانیه از سه گیت غربالگری عبور می‌کند.</li><li><strong>متن پشتیبان:</strong></li><li><strong>لایه ۰ (قوانین قطعی):</strong> حذف تبلیغات، لینک‌ها و هک پرامپت با CPU خالص (هزینه: ۰ تومان).</li><li><strong>لایه ۱ (غربال سریع):</strong> تطبیق الگوهای درد و کلیدواژه‌های محصول (هزینه: ۰ تومان).</li><li><strong>لایه ۲ (تحلیل عمیق):</strong> پرامپت هوشمند، استخراج نیت، تطبیق با مزیت‌های محصول و تدوین پاسخ.</li><li><strong>جریان عملیاتی یک پیام نمونه:</strong></li></ul><p class="doc-p"><code class="inline-code">پیام در بله: "نرم‌افزار مودیان با لینک پرداخت می‌خوایم"</code></p><p class="doc-p">→ <code class="inline-code">امتیاز نیت: ۹۴ (خرید قطعی)</code></p><p class="doc-p">→ <code class="inline-code">ویژگی منطبق: ماژول اتصال مستقیم به کارپوشه</code></p><p class="doc-p">→ <code class="inline-code">پاسخ پیشنهادی آماده ارسال</code></p><p class="doc-p">→ <code class="inline-code">هزینه پردازش: ۴۲ تومان</code></p><ul class="doc-ul"><li><strong>طرح بصری پیشنهادی:</strong> نمودار افقی جریان پردازش از تلگرام/بله تا صندوق سرنخ‌ها با کارت نمونه علیرضا فراهانی از کد داشبورد.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«به این نمونه نگاه کنید: مدیر عملیات یک شرکت تقاضای نرم‌افزار کرده. رادار نیت را ۹۴ ارزیابی کرده، ویژگی متناسب محصول را تطبیق داده و یک پیام مؤدبانه آماده کرده که کارشناس با یک کلیک کپی می‌کند.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۶: خندق دفاعی و تمایز فناوری (Defensibility & Moats)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> چرا رادار صرفاً یک پرامپت ساده نیست؟</li><li><strong>پیام محوری:</strong> خندق دفاعی بر پایه زبان محاوره‌ای بومی، تداوم اینترانت و امنیت داده‌ها.</li><li><strong>متن پشتیبان:</strong></li><li><strong>فهم عمیق اصطلاحات تجاری ایران:</strong> درک چالش‌های سامانه مودیان، تسویه شتاب، اکسل دستی و نرم‌افزارهای تحریم‌شده.</li><li><strong>موتور پشتیبان محلی (Heuristic Fallback):</strong> در صورت قطعی اینترنت بین‌الملل، موتور محلی رادار بدون توقف کار را ادامه می‌دهد.</li><li><strong>سپر دفاعی ضد تزریق پرامپت:</strong> کپسوله‌سازی XML برای مسدودسازی خرابکاری در پیام‌های ناشناس.</li><li><strong>حریم خصوصی داده‌ها:</strong> ذخیره‌سازی محلی روی سرور داخل کشور بدون ارسال اطلاعات محرمانه به پایگاه‌های ابری خارجی.</li><li><strong>اعداد کلیدی:</strong> ۳ لایه دفاع تزریق پرامپت • فال‌بک ۳ میلی‌ثانیه‌ای آفلاین • ۱۰۰٪ میزبانی در سرورهای داخلی.</li><li><strong>طرح بصری پیشنهادی:</strong> اینفوگرافیک معماری امنیتی و فال‌بک با تأکید بر نماد "Zero Foreign Cloud Lock-in".</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«بسیاری از ابزارها با قطع اینترنت بین‌الملل از کار می‌افتند. رادار حتی اگر کل ارتباطات خارجی مسدود شود، با موتور محلی خود به تریاژ پیام‌ها ادامه می‌دهد.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۷: مدل تجاری و اشتراک (Business Model)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> اشتراک ماهانه مبتنی بر ارزش کشف فرصت (B2B SaaS).</li><li><strong>پیام محوری:</strong> مشتریان متناسب با ظرفیت پایش و ابعاد تیم فروش خود اشتراک تهیه می‌کنند.</li><li><strong>متن پشتیبان:</strong></li><li><strong>پلن استارتر (فعال در MVP):</strong> ۱,۸۹۰,۰۰۰ تومان در ماه (سقف ۱۵,۰۰۰ پیام ماهانه • اسکن خودکار ۳۰ پیام در ساعت • ۱ کاربر • وب‌هوک بله و تلگرام • پیش‌نویس پاسخ).</li><li><strong>پلن رشد (در حال توسعه):</strong> ۴,۸۹۰,۰۰۰ تومان در ماه (سقف ۵۰,۰۰۰ پیام ماهانه • اسکن خودکار ۸۰ پیام در ساعت • ۵ کاربر • اتصال وب‌هوک به CRM • چندمحصولی).</li><li><strong>منطق ارتقا:</strong> پر شدن سقف پیام‌ها، نیاز به ارجاع تیمی سرنخ‌ها بین چند کارشناس، و همگام‌سازی خودکار با CRM دیدار و پیام‌گستر.</li><li><strong>اعداد کلیدی:</strong> تعرفه استارتر ۱.۸۹ م.ت / ماه • تعرفه رشد ۴.۸۹ م.ت / ماه • بازگشت سرمایه با بستن تنها ۱ قرارداد در سال.</li><li><strong>طرح بصری پیشنهادی:</strong> دو کارت مقایسه‌ای قیمت‌گذاری مشابه بخش Pricing صفحه لندینگ با برچسب متقارن سبز "فعال" و کهربایی "به‌زودی".</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«اشتراک ماهانه رادار از دستمزد ۲ روز یک نیروی فروش کمتر است، اما خروجی آن کشف ماهانه ده‌ها فرصت آماده معامله است.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۸: اقتصاد واحد و حاشیه سود سازمانی (Unit Economics)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> اقتصاد واحد فوق‌العاده با حاشیه سود ناخالص ۷۶٪ تا ۸۳٪.</li><li><strong>پیام محوری:</strong> بهای تمام‌شده شفاف با احتساب تمام هزینه‌های واقعی زیرساخت، سرور و پیامک در ایران.</li><li><strong>متن پشتیبان (تحلیل پلن استارتر ۱,۸۹۰,۰۰۰ تومانی):</strong></li><li>هزینه توکن هوش مصنوعی: ~۸۵,۵۰۰ تومان (به دلیل فیلتر ۸۵٪ پیام‌ها).</li><li>هزینه‌های زیرساخت، سرور ابری و بکاپ: ~۱۳۰,۰۰۰ تومان.</li><li>پیامک هشدار آنی، ترافیک شبکه و درگاه: ~۱۲۴,۰۰۰ تومان.</li><li>پشتیبانی عملیاتی و نگهداری: ~۸۰,۰۰۰ تومان.</li><li><strong>کل بهای تمام‌شده (COGS):</strong> ~۴۴۰,۰۰۰ تومان.</li><li><strong>سود ناخالص هر کاربر:</strong> ۱,۴۵۰,۰۰۰ تومان (<strong>حاشیه سود: ۷۶.۷٪</strong>).</li><li><strong>اعداد کلیدی:</strong> حاشیه سود ناخالص بالای ۷۶٪ • میانگین هزینه سرشکن زیر ۹ تومان به‌ازای هر پیام ورودی • دوره بازگشت CAC زیر ۲ ماه.</li><li><strong>طرح بصری پیشنهادی:</strong> نمودار میله‌ای آبشاری (Waterfall Chart) نشان‌دهنده درآمد، کسر هزینه‌ها (توکن، سرور، پیامک) و سود ناخالص باقی‌مانده.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«ما هزینه هوش مصنوعی را توهمی ندیده‌ایم. با فیلتر ۳ لایه، بهای تمام‌شده هر مشتری ۴۴۰ هزار تومان است و حاشیه سود ناخالص بیش از ۷۶٪ حاصل می‌شود.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۹: اندازه بازار هدف در ایران (Market Size: TAM / SAM / SOM)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> بازاری دست‌نخورده با بیش از ۸,۵۰۰ مشتری سازمانی بالقوه.</li><li><strong>پیام محوری:</strong> تمرکز اولیه بر شرکت‌های فناوری، ارائه‌دهندگان SaaS و آژانس‌های دیجیتال مارکتینگ.</li><li><strong>متن پشتیبان:</strong></li><li><strong>TAM (کل بازار بالقوه):</strong> ۶۰,۰۰۰ شرکت فعال در حوزه فناوری، بازرگانی، مالی و خدمات تجاری در ایران (ارزش بازار سالانه: ۲,۰۰۰+ میلیارد تومان) <em>[برآورد اولیه]</em>.</li><li><strong>SAM (بازار در دسترس مستقیم):</strong> ۸,۵۰۰ شرکت دانش‌بنیان، ارائه‌دهنده B2B SaaS و آژانس با تیم فروش فعال در پیام‌رسان‌ها (ارزش بازار: ۲۸۵ میلیارد تومان) <em>[فرض بازار]</em>.</li><li><strong>SOM (سهم بازار هدف در ۲۴ ماه):</strong> جذب ۳۵۰ مشتری فعال تجاری (معادل ۴٪ از بازار SAM) با درآمد سالانه ۱۱.۷ میلیارد تومان <em>[پیش‌بینی آتی]</em>.</li><li><strong>اعداد کلیدی:</strong> ۶۰ هزار شرکت در کل بازار • ۸,۵۰۰ شرکت هدف مستقیم • هدف ۳۵۰ مشتری در ۲ سال.</li><li><strong>طرح بصری پیشنهادی:</strong> سه دایره هم‌مرکز TAM، SAM و SOM با آمار شفاف و برچسب‌های استاندارد.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«ما نیازی به گرفتن کل بازار نداریم؛ تنها با جذب ۳۵۰ شرکت نرم‌افزاری و خدماتی در ۲ سال اول، به درآمد سالانه نزدیک به ۱۲ میلیارد تومان خواهیم رسید.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۱۰: نقشه راه توسعه و مقیاس‌پذیری (Roadmap)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> مسیر توسعه محصول: از وب‌هوک تا اکوسیستم جامع فروش.</li><li><strong>پیام محوری:</strong> توسعه متوازن لایه دریافت داده، قابلیت‌های تیمی و مدل‌های اختصاصی.</li><li><strong>متن پشتیبان:</strong></li><li><strong>فصل اول (تثبیت MVP - محقق‌شده):</strong> وب‌هوک بات تلگرام و بله، تریاژ ۳ لایه‌ای، داشبورد زنده SSE، و موتور پشتیبان محلی.</li><li><strong>فصل دوم (اتصال CRM و اعلان‌ها):</strong> اتصال وب‌هوک خروجی به نرم‌افزارهای دیدار و پیام‌گستر، و ارسال پیامک فوری به مدیر فروش.</li><li><strong>فصل سوم (چندمستاجری و تیم‌ها):</strong> دسترسی تیمی چندکاربره، تفکیک داده‌ها بر پایه Tenant ID، و خزنده‌های توزیع‌شده کاربر.</li><li><strong>فصل چهارم (مدل فاین‌تیون بومی):</strong> آموزش مدل سبک اختصاصی ۸ میلیاردی روی سرورهای داخلی و حذف کامل وابستگی به درگاه‌های خارجی.</li><li><strong>طرح بصری پیشنهادی:</strong> تایم‌لاین افقی ۴ مرحله‌ای با تفکیک قابلیت‌های انجام‌شده (سبز) و برنامه‌ریزی‌شده (خاکستری/سفید).</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«نسخه فعلی آماده تست و استفاده است. گام بعدی ما اتصال به نرم‌افزارهای CRM ایرانی و توسعه خزنده‌های مستقل است.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۱۱: تیم، دستاوردها و پیشنهاد سرمایه‌گذاری (Team & The Ask)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> تیم توسعه PriCoders و پیشنهاد همکاری و سرمایه‌گذاری.</li><li><strong>پیام محوری:</strong> توسعه چابک، معماری اثبات‌شده و آماده برای مقیاس‌پذیری در بازار B2B.</li><li><strong>متن پشتیبان:</strong></li><li><strong>تیم PriCoders:</strong> ترکیب تخصص در توسعه فول‌استک مدرن (Next.js/React)، مهندسی هوش مصنوعی، و استقرار سرورهای امن لینوکسی.</li><li><strong>وضعیت فعلی:</strong> محصول دارای پایگاه داده، خط تریاژ و داشبورد فعال است و وب‌هوک‌های دریافت پیام مستقر شده‌اند.</li><li><strong>پیشنهاد سرمایه‌گذاری (The Ask):</strong> جذب <strong>۳.۵ میلیارد تومان</strong> برای دستیابی به ۳۵۰ مشترک در ۱۲ ماه (۴۵٪ توسعه فنی و هوش مصنوعی، ۳۵٪ فروش و بازاریابی B2B، ۲۰٪ زیرساخت و سرورها).</li><li><strong>اعداد کلیدی:</strong> ۳.۵ میلیارد تومان جذب سرمایه • دستیابی به نقطه سربه سر در ماه هشتم • تارگت ۳۵۰ مشترک فعال.</li><li><strong>طرح بصری پیشنهادی:</strong> لوگوی PriCoders، اطلاعات تماس، بارکد اسکن دموی داشبورد و تفکیک دایره‌ای هزینه‌کرد سرمایه.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«رادار با تکیه بر واقعیت‌های زیرساختی ایران ساخته شده است. ما به دنبال سرمایه‌گذار و شرکای استراتژیک هستیم تا بزرگ‌ترین موتور کشف سرنخ کشور را مقیاس‌پذیر کنیم. سپاسگزاریم.»</em></p>
+      <h1 class="doc-h1">محتوای اسلایدهای پیچ‌دک رادار (Radar Pitch Deck Content)</h1><h2 class="doc-h2"><span class="h2-dot"></span>راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders</h2><p class="doc-p"><strong>نسخه سند:</strong> ۳.۱ (منطبق بر واقعیت کد و ارقام معتبر اقتصادی — پاییز ۱۴۰۵)</p><p class="doc-p"><strong>تعداد اسلایدها:</strong> ۱۱ اسلاید ساختاریافته</p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۱: عنوان و هویت محصول (Cover Slide)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> رادار (Radar) — هوشمندی کشف فرصت‌های فروش B2B</li><li><strong>پیام محوری:</strong> تبدیل هیاهوی گروه‌های تلگرام و بله به سرنخ‌های آماده معامله در کمتر از ۳ ثانیه.</li><li><strong>متن پشتیبان:</strong> سامانه هوشمند خودمیزبان برای شناسایی خودکار نیت خرید و تدوین پیش‌نویس مذاکره برای تیم‌های فروش سازمانی.</li><li><strong>اعداد کلیدی:</strong> ۳ لایه فیلترینگ نویز • ۰ وابستگی به کلاد خارجی • پاسخ‌دهی زیر ۳ ثانیه.</li><li><strong>طرح بصری پیشنهادی:</strong> لوگوی مینیمال سفید رادار با افکت جاروب ۳۶۰ درجه (Radar Sweep)، پس‌زمینه تیره Vercel با نور ملایم سبز زمرگی (<code class="inline-code">#00e599</code>)، برچسب توسعه‌یافته توسط PriCoders.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«سلام به همه؛ امروز می‌خواهیم درباره میلیاردها تومان معامله B2B صحبت کنیم که هر روز جلوی چشم شرکت‌ها در پیام‌رسان‌ها ردوبدل می‌شوند، اما به خاطر نویز بالا سوزانده می‌شوند.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۲: مسئله بازار و واقعیت تلخ فروش (The Problem)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> نبض خرید B2B در پیام‌رسان‌ها می‌زند، اما در اقیانوس نویز گم می‌شود.</li><li><strong>پیام محوری:</strong> ایمیل و لینکدین در ایران بازدهی پایینی دارند؛ خریداران واقعی در گروه‌های تلگرام و بله درخواست خرید می‌دهند اما کسی آن‌ها را نمی‌بیند.</li><li><strong>متن پشتیبان:</strong></li><li>بیش از ۸۰٪ پیام‌های گروه‌های تجاری هرزنامه، احوال‌پرسی و آگهی‌های نامرتبط است.</li><li>کارشناسان فروش یا باید روزی ۳ تا ۴ ساعت وقت گران‌بهای خود را صرف پیمایش دستی کنند، یا فرصت‌ها را به رقبایی که زودتر پاسخ می‌دهند ببازند.</li><li><strong>اعداد کلیدی:</strong> نرخ باز شدن ایمیل مارکتینگ زیر ۳٪ • اتلاف ۳ ساعت در روز برای هر کارشناس • بیش از ۸۰٪ نویز در کانال‌ها.</li><li><strong>طرح بصری پیشنهادی:</strong> تصویر مقایسه‌ای یک گروه شلوغ با صدها پیام اسپم در برابر یک پیام تک‌خطی طلایی: <em>«دنبال نرم‌افزار حسابداری ابری متصل به مودیان هستیم، چی پیشنهاد می‌دید؟»</em> که ۴ ساعت بعد بی‌جواب مانده است.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«در ایران مشتری شرکتی برای خرید ابزار فرم ثبت‌نام پر نمی‌کند؛ در سوپرگروه صنف خود می‌پرسد: چه برنامه‌ای بخرم؟ وقتی فروشنده بعد از ۳ ساعت پیام را می‌بیند، رقیب قرارداد را بسته است.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۳: چرا راهکارهای فعلی شکست می‌خورند؟ (Why Existing Solutions Fail)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> وضعیت موجود: ناکارآمد، پرهزینه و شکننده.</li><li><strong>پیام محوری:</strong> ابزارهای سنتی روابط عمومی و ربات‌های کلیدواژه‌ای برای بستن قرارداد فروش طراحی نشده‌اند.</li><li><strong>متن پشتیبان:</strong></li><li><strong>استخدام نیروی انسانی (SDR):</strong> حقوق ماهانه بالای ۲۵ تا ۴۰ میلیون تومان، خطای انسانی و خستگی مفرط.</li><li><strong>ابزارهای سوشال لیسنینگ (زلکا/نیوزباکس):</strong> تمرکز بر روابط عمومی و تحلیل احساسات، نه کشف نیت خرید و نگارش پاسخ.</li><li><strong>ربات‌های کلیدواژه‌ای تلگرام:</strong> ارسال صدها پیام نامربوط به‌ازای هر کلمه کلیدی، بدون درک بافت مکالمه و بودجه.</li><li><strong>اعداد کلیدی:</strong> هزینه ماهانه ۳۵ میلیون تومانی SDR • نرخ خطای ۷۰٪ ربات‌های ساده کلیدواژه‌ای.</li><li><strong>طرح بصری پیشنهادی:</strong> جدول ماتریسی ضربدر و تیک مقایسه ابزارهای PR، ربات‌های تلگرامی، نیروی انسانی و سامانه رادار.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«اگر کلمه "حسابداری" را پایش کنید، آگهی استخدام و خبر نرخ ارز هم به شما ارسال می‌شود. فروشنده کلمه نمی‌خواهد؛ او خریدار با بودجه مشخص می‌خواهد.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۴: معرفی راه‌حل — رادار (The Solution: Radar)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> رادار: موتور هوشمند کشف نیت خرید با معماری ۳ لایه‌ای بومی.</li><li><strong>پیام محوری:</strong> تشخیص نیت خرید از ۰ تا ۱۰۰، انطباق با ویژگی‌های محصول شما، و تولید پیش‌نویس پاسخ در ۳ ثانیه.</li><li><strong>متن پشتیبان:</strong></li><li>پالایش هوشمندانه ۸۵٪ نویز بدون مصرف توکن.</li><li>استخراج نیاز واقعی، چالش کاری و آمادگی بودجه.</li><li>نگارش پاسخ صمیمی و حرفه‌ای به زبان فارسی برای شروع گفتگو توسط انسان.</li><li>استقلال ۱۰۰٪ از کلاد خارجی (آپ‌تایم پایدار حتی در شرایط محدودیت بین‌الملل).</li><li><strong>اعداد کلیدی:</strong> امتیازدهی ۰ تا ۱۰۰ • فیلتر ۸۵٪ نویز با هزینه صفر • پیش‌نویس پاسخ در کمتر از ۳ ثانیه.</li><li><strong>طرح بصری پیشنهادی:</strong> ماکت مینیمال داشبورد زنده رادار با یک کارت لید برجسته و نشانگر وضعیت سبز (<code class="inline-code">خرید قطعی • امتیاز ۹۴</code>).</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«رادار مانند یک کارشناس ارشد فروش ۲۴ ساعته در تمام کانال‌ها حضور دارد؛ پیام‌ها را درک می‌کند و فقط زمانی که خریدار واقعی پیدا شد، به شما هشدار می‌دهد.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۵: چرخه کارکرد فنی و دمو زنده (How It Works & Live Demo)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> خط تریاژ سه‌لایه: سریع، ارزان و دقیق.</li><li><strong>پیام محوری:</strong> هر پیام خام در کمتر از چند میلی‌ثانیه از سه گیت غربالگری عبور می‌کند.</li><li><strong>متن پشتیبان:</strong></li><li><strong>لایه ۰ (قوانین قطعی):</strong> حذف تبلیغات، لینک‌ها و هک پرامپت با CPU خالص (هزینه: ۰ تومان).</li><li><strong>لایه ۱ (غربال سریع):</strong> تطبیق الگوهای درد و کلیدواژه‌های محصول (هزینه: ۰ تومان).</li><li><strong>لایه ۲ (تحلیل عمیق):</strong> پرامپت هوشمند، استخراج نیت، تطبیق با مزیت‌های محصول و تدوین پاسخ.</li><li><strong>جریان عملیاتی یک پیام نمونه:</strong></li></ul><p class="doc-p"><code class="inline-code">پیام در بله: "نرم‌افزار مودیان با لینک پرداخت می‌خوایم"</code></p><p class="doc-p">→ <code class="inline-code">امتیاز نیت: ۹۴ (خرید قطعی)</code></p><p class="doc-p">→ <code class="inline-code">ویژگی منطبق: ماژول اتصال مستقیم به کارپوشه</code></p><p class="doc-p">→ <code class="inline-code">پاسخ پیشنهادی آماده ارسال</code></p><p class="doc-p">→ <code class="inline-code">هزینه پردازش: ۴۲ تومان</code></p><ul class="doc-ul"><li><strong>طرح بصری پیشنهادی:</strong> نمودار افقی جریان پردازش از تلگرام/بله تا صندوق سرنخ‌ها با کارت نمونه علیرضا فراهانی از کد داشبورد.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«به این نمونه نگاه کنید: مدیر عملیات یک شرکت تقاضای نرم‌افزار کرده. رادار نیت را ۹۴ ارزیابی کرده، ویژگی متناسب محصول را تطبیق داده و یک پیام مؤدبانه آماده کرده که کارشناس با یک کلیک کپی می‌کند.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۶: خندق دفاعی و تمایز فناوری (Defensibility & Moats)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> چرا رادار صرفاً یک پرامپت ساده نیست؟</li><li><strong>پیام محوری:</strong> خندق دفاعی بر پایه زبان محاوره‌ای بومی، تداوم اینترانت و امنیت داده‌ها.</li><li><strong>متن پشتیبان:</strong></li><li><strong>فهم عمیق اصطلاحات تجاری ایران:</strong> درک چالش‌های سامانه مودیان، تسویه شتاب، اکسل دستی و نرم‌افزارهای تحریم‌شده.</li><li><strong>موتور پشتیبان محلی (Heuristic Fallback):</strong> در صورت قطعی اینترنت بین‌الملل، موتور محلی رادار بدون توقف کار را ادامه می‌دهد.</li><li><strong>سپر دفاعی ضد تزریق پرامپت:</strong> کپسوله‌سازی XML برای مسدودسازی خرابکاری در پیام‌های ناشناس.</li><li><strong>حریم خصوصی داده‌ها:</strong> ذخیره‌سازی محلی روی سرور داخل کشور بدون ارسال اطلاعات محرمانه به پایگاه‌های ابری خارجی.</li><li><strong>اعداد کلیدی:</strong> ۳ لایه دفاع تزریق پرامپت • فال‌بک ۳ میلی‌ثانیه‌ای آفلاین • ۱۰۰٪ میزبانی در سرورهای داخلی.</li><li><strong>طرح بصری پیشنهادی:</strong> اینفوگرافیک معماری امنیتی و فال‌بک با تأکید بر نماد "Zero Foreign Cloud Lock-in".</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«بسیاری از ابزارها با قطع اینترنت بین‌الملل از کار می‌افتند. رادار حتی اگر کل ارتباطات خارجی مسدود شود، با موتور محلی خود به تریاژ پیام‌ها ادامه می‌دهد.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۷: مدل تجاری و اشتراک (Business Model)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> اشتراک ماهانه مبتنی بر ارزش کشف فرصت (B2B SaaS).</li><li><strong>پیام محوری:</strong> مشتریان متناسب با ظرفیت پایش و ابعاد تیم فروش خود اشتراک تهیه می‌کنند.</li><li><strong>متن پشتیبان:</strong></li><li><strong>پلن استارتر (فعال در MVP):</strong> ۱,۸۹۰,۰۰۰ تومان در ماه (سقف ۱۵,۰۰۰ پیام ماهانه • اسکن خودکار ۳۰ پیام در ساعت • ۱ کاربر • وب‌هوک بله و تلگرام • پیش‌نویس پاسخ).</li><li><strong>پلن رشد (در حال توسعه):</strong> ۴,۸۹۰,۰۰۰ تومان در ماه (سقف ۵۰,۰۰۰ پیام ماهانه • اسکن خودکار ۸۰ پیام در ساعت • ۵ کاربر • اتصال وب‌هوک به CRM • چندمحصولی).</li><li><strong>منطق ارتقا:</strong> پر شدن سقف پیام‌ها، نیاز به ارجاع تیمی سرنخ‌ها بین چند کارشناس، و همگام‌سازی خودکار با CRM دیدار و پیام‌گستر.</li><li><strong>اعداد کلیدی:</strong> تعرفه استارتر ۱.۸۹ م.ت / ماه • تعرفه رشد ۴.۸۹ م.ت / ماه • بازگشت سرمایه با بستن تنها ۱ قرارداد در سال.</li><li><strong>طرح بصری پیشنهادی:</strong> دو کارت مقایسه‌ای قیمت‌گذاری مشابه بخش Pricing صفحه لندینگ با برچسب متقارن سبز "فعال" و کهربایی "به‌زودی".</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«اشتراک ماهانه رادار از دستمزد ۲ روز یک نیروی فروش کمتر است، اما خروجی آن کشف ماهانه ده‌ها فرصت آماده معامله است.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۸: اقتصاد واحد و حاشیه سود سازمانی (Unit Economics)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> اقتصاد واحد فوق‌العاده با حاشیه سود ناخالص ۷۶٪ تا ۸۳٪.</li><li><strong>پیام محوری:</strong> بهای تمام‌شده شفاف با احتساب تمام هزینه‌های واقعی زیرساخت، سرور و پیامک در ایران.</li><li><strong>متن پشتیبان (تحلیل پلن استارتر ۱,۸۹۰,۰۰۰ تومانی):</strong></li><li>هزینه توکن هوش مصنوعی: ~۸۵,۵۰۰ تومان (به دلیل فیلتر ۸۵٪ پیام‌ها).</li><li>هزینه‌های زیرساخت، سرور ابری و بکاپ: ~۱۳۰,۰۰۰ تومان.</li><li>پیامک هشدار آنی، ترافیک شبکه و درگاه: ~۱۲۴,۰۰۰ تومان.</li><li>پشتیبانی عملیاتی و نگهداری: ~۸۰,۰۰۰ تومان.</li><li><strong>کل بهای تمام‌شده (COGS):</strong> ~۴۴۰,۰۰۰ تومان.</li><li><strong>سود ناخالص هر کاربر:</strong> ۱,۴۵۰,۰۰۰ تومان (<strong>حاشیه سود: ۷۶.۷٪</strong>).</li><li><strong>اعداد کلیدی:</strong> حاشیه سود ناخالص بالای ۷۶٪ • میانگین هزینه سرشکن زیر ۹ تومان به‌ازای هر پیام ورودی • دوره بازگشت CAC زیر ۲ ماه.</li><li><strong>طرح بصری پیشنهادی:</strong> نمودار میله‌ای آبشاری (Waterfall Chart) نشان‌دهنده درآمد، کسر هزینه‌ها (توکن، سرور، پیامک) و سود ناخالص باقی‌مانده.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«ما هزینه هوش مصنوعی را توهمی ندیده‌ایم. با فیلتر ۳ لایه، بهای تمام‌شده هر مشتری ۴۴۰ هزار تومان است و حاشیه سود ناخالص بیش از ۷۶٪ حاصل می‌شود.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۹: اندازه بازار هدف در ایران (Market Size: TAM / SAM / SOM)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> بازاری دست‌نخورده با بیش از ۸,۵۰۰ مشتری سازمانی بالقوه.</li><li><strong>پیام محوری:</strong> تمرکز اولیه بر شرکت‌های فناوری، ارائه‌دهندگان SaaS و آژانس‌های دیجیتال مارکتینگ.</li><li><strong>متن پشتیبان:</strong></li><li><strong>TAM (کل بازار بالقوه):</strong> ۶۰,۰۰۰ شرکت فعال در حوزه فناوری، بازرگانی، مالی و خدمات تجاری در ایران (ارزش بازار سالانه: ۲,۰۰۰+ میلیارد تومان) <em>[برآورد اولیه]</em>.</li><li><strong>SAM (بازار در دسترس مستقیم):</strong> ۸,۵۰۰ شرکت دانش‌بنیان، ارائه‌دهنده B2B SaaS و آژانس با تیم فروش فعال در پیام‌رسان‌ها (ارزش بازار: ۲۸۵ میلیارد تومان) <em>[فرض بازار]</em>.</li><li><strong>SOM (سهم بازار هدف در ۲۴ ماه):</strong> جذب ۳۵۰ مشتری فعال تجاری (معادل ۴٪ از بازار SAM) با درآمد سالانه ۱۱.۷ میلیارد تومان <em>[پیش‌بینی آتی]</em>.</li><li><strong>اعداد کلیدی:</strong> ۶۰ هزار شرکت در کل بازار • ۸,۵۰۰ شرکت هدف مستقیم • هدف ۳۵۰ مشتری در ۲ سال.</li><li><strong>طرح بصری پیشنهادی:</strong> سه دایره هم‌مرکز TAM، SAM و SOM با آمار شفاف و برچسب‌های استاندارد.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«ما نیازی به گرفتن کل بازار نداریم؛ تنها با جذب ۳۵۰ شرکت نرم‌افزاری و خدماتی در ۲ سال اول، به درآمد سالانه نزدیک به ۱۲ میلیارد تومان خواهیم رسید.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۱۰: نقشه راه توسعه و مقیاس‌پذیری (Roadmap)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> مسیر توسعه محصول: از وب‌هوک تا اکوسیستم جامع فروش.</li><li><strong>پیام محوری:</strong> توسعه متوازن لایه دریافت داده، قابلیت‌های تیمی و مدل‌های اختصاصی.</li><li><strong>متن پشتیبان:</strong></li><li><strong>فصل اول (تثبیت MVP - محقق‌شده):</strong> وب‌هوک بات تلگرام و بله، تریاژ ۳ لایه‌ای، داشبورد زنده SSE، و موتور پشتیبان محلی.</li><li><strong>فصل دوم (اتصال CRM و اعلان‌ها):</strong> اتصال وب‌هوک خروجی به نرم‌افزارهای دیدار و پیام‌گستر، و ارسال پیامک فوری به مدیر فروش.</li><li><strong>فصل سوم (چندمستاجری و تیم‌ها):</strong> دسترسی تیمی چندکاربره، تفکیک داده‌ها بر پایه Tenant ID، و خزنده‌های توزیع‌شده کاربر.</li><li><strong>فصل چهارم (مدل فاین‌تیون بومی):</strong> آموزش مدل سبک اختصاصی ۸ میلیاردی روی سرورهای داخلی و حذف کامل وابستگی به درگاه‌های خارجی.</li><li><strong>طرح بصری پیشنهادی:</strong> تایم‌لاین افقی ۴ مرحله‌ای با تفکیک قابلیت‌های انجام‌شده (سبز) و برنامه‌ریزی‌شده (خاکستری/سفید).</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«نسخه فعلی آماده تست و استفاده است. گام بعدی ما اتصال به نرم‌افزارهای CRM ایرانی و توسعه خزنده‌های مستقل است.»</em></p><hr class="section-divider" /><h3 class="doc-h3">اسلاید ۱۱: تیم، دستاوردها و پیشنهاد سرمایه‌گذاری (Team & The Ask)</h3><ul class="doc-ul"><li><strong>عنوان اسلاید:</strong> تیم توسعه PriCoders و پیشنهاد همکاری و سرمایه‌گذاری.</li><li><strong>پیام محوری:</strong> توسعه چابک، معماری اثبات‌شده و آماده برای مقیاس‌پذیری در بازار B2B.</li><li><strong>متن پشتیبان:</strong></li><li><strong>تیم PriCoders:</strong> ترکیب تخصص در توسعه فول‌استک مدرن (Next.js/React)، مهندسی هوش مصنوعی، و استقرار سرورهای امن لینوکسی.</li><li><strong>وضعیت فعلی:</strong> محصول دارای پایگاه داده، خط تریاژ و داشبورد فعال است و وب‌هوک‌های دریافت پیام مستقر شده‌اند.</li><li><strong>پیشنهاد سرمایه‌گذاری (The Ask):</strong> جذب <strong>۳.۵ میلیارد تومان</strong> برای دستیابی به ۳۵۰ مشترک در ۱۲ ماه (۴۵٪ توسعه فنی و هوش مصنوعی، ۳۵٪ فروش و بازاریابی B2B، ۲۰٪ زیرساخت و سرورها).</li><li><strong>اعداد کلیدی:</strong> ۳.۵ میلیارد تومان جذب سرمایه • دستیابی به نقطه سربه سر در ماه هشتم • تارگت ۳۵۰ مشترک فعال.</li><li><strong>طرح بصری پیشنهادی:</strong> لوگوی PriCoders، اطلاعات تماس، بارکد اسکن دموی داشبورد و تفکیک دایره‌ای هزینه‌کرد سرمایه.</li><li><strong>یادداشت گوینده (Speaker Note):</strong></li></ul><p class="doc-p"><em>«رادار با تکیه بر واقعیت‌های زیرساختی ایران ساخته شده است. ما به دنبال سرمایه‌گذار و شرکای استراتژیک هستیم تا بزرگ‌ترین موتور کشف سرنخ کشور را مقیاس‌پذیر کنیم. سپاسگزاریم.»</em></p>
     </article>
   </main>
 </body>

@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-08)
 
 ## Corpus Check
-- 75 files · ~72,324 words
+- 73 files · ~68,491 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 604 nodes · 1079 edges · 33 communities (24 shown, 9 thin omitted)
+- 549 nodes · 1026 edges · 31 communities (22 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4c5354ce`
+- Built from commit: `bc92d17a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -23,7 +23,7 @@
 - طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی
 - compilerOptions
 - components.json
-- مستندات فنی جامع سامانه رادار
+- convert_all_docs_to_pdf.ts
 - DEPLOY.sh
 - Favicon SVG Image
 - 3-Layer Triage Pipeline
@@ -42,10 +42,8 @@
 - devDependencies
 - راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders
 - ingest.ts
-- راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders
 - proxy.ts
 - next.config.ts
-- build_docs_html.ts
 - logout/route.ts
 
 ## God Nodes (most connected - your core abstractions)
@@ -54,23 +52,23 @@
 3. `getAuthSession()` - 23 edges
 4. `triagePendingMessage()` - 20 edges
 5. `Radar — Technical Reference (مرجع فنی جامع)` - 17 edges
-6. `مستندات فنی جامع سامانه رادار` - 17 edges
-7. `isAuthenticatedRequest()` - 16 edges
-8. `compilerOptions` - 16 edges
-9. `ProductRecord` - 15 edges
-10. `getClientIp()` - 15 edges
+6. `isAuthenticatedRequest()` - 16 edges
+7. `compilerOptions` - 16 edges
+8. `ProductRecord` - 15 edges
+9. `getClientIp()` - 15 edges
+10. `toPersianDigits()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `POST()` --calls--> `triageAdHocMessage()`  [EXTRACTED]
+  app/api/analyze/route.ts → lib/pipeline.ts
+- `POST()` --calls--> `triagePendingMessage()`  [EXTRACTED]
   app/api/analyze/route.ts → lib/pipeline.ts
 - `GET()` --calls--> `getAuthSession()`  [EXTRACTED]
   app/api/auth/session/route.ts → lib/auth.ts
 - `POST()` --calls--> `ingestExternalMessage()`  [EXTRACTED]
   app/api/ingest/bale/route.ts → lib/ingest.ts
-- `POST()` --calls--> `ingestExternalMessage()`  [EXTRACTED]
-  app/api/ingest/telegram/route.ts → lib/ingest.ts
-- `LeadRadarDashboard()` --calls--> `getPocketBaseClient()`  [EXTRACTED]
-  app/dashboard/page.tsx → lib/pocketbase.ts
+- `POST()` --calls--> `triagePendingMessage()`  [EXTRACTED]
+  app/api/ingest/bale/route.ts → lib/pipeline.ts
 
 ## Import Cycles
 - None detected.
@@ -80,23 +78,23 @@
 - **3-Layer Triage Pipeline** — readme_triage_pipeline, readme_layer0_deterministic, readme_layer1_screen, readme_layer2_llm [EXTRACTED 1.00]
 - **Telegram and Bale Webhook Ingest** — readme_telegram_ingest_endpoint, readme_bale_ingest_endpoint, readme_telegram_webhook_secret, readme_bale_webhook_secret, readme_setwebhook_registration [EXTRACTED 1.00]
 
-## Communities (33 total, 9 thin omitted)
+## Communities (31 total, 9 thin omitted)
 
 ### Community 0 - "Icons.tsx"
-Cohesion: 0.06
-Nodes (58): LeadRadarDashboard(), dynamic, dynamic, dynamic, OnboardingPage(), COMPARISON_DIMENSIONS, PersianLandingPage(), PRICING_PLANS (+50 more)
+Cohesion: 0.05
+Nodes (59): LeadRadarDashboard(), dynamic, dynamic, dynamic, OnboardingPage(), COMPARISON_DIMENSIONS, PersianLandingPage(), PRICING_PLANS (+51 more)
 
 ### Community 1 - "auth.ts"
 Cohesion: 0.06
-Nodes (83): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+75 more)
+Nodes (82): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+74 more)
 
 ### Community 2 - "voice-orb.tsx"
 Cohesion: 0.07
-Nodes (39): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+31 more)
+Nodes (38): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+30 more)
 
 ### Community 3 - "pipeline.ts"
-Cohesion: 0.09
-Nodes (35): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+27 more)
+Cohesion: 0.10
+Nodes (36): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+28 more)
 
 ### Community 4 - "package.json"
 Cohesion: 0.06
@@ -114,9 +112,9 @@ Nodes (28): dom, dom.iterable, esnext, **/*.mts, .next/dev/types/**/*.ts, next-e
 Cohesion: 0.12
 Nodes (15): aliases, components, hooks, lib, ui, utils, rsc, $schema (+7 more)
 
-### Community 8 - "مستندات فنی جامع سامانه رادار"
-Cohesion: 0.05
-Nodes (43): استقرار خودکار با اسکریپت `DEPLOY.sh`, بات اسکنر خودکار ساعتی (`lib/botScheduler.ts`), جزئیات مراحل ارزیابی, حسابداری و مدیریت هزینه توکن‌ها (`lib/pricing.ts`), شاخص‌های کلیدی پیاده‌سازی, فهرست مطالب, محدودیت‌های نسخه فعلی, مستندات فنی جامع سامانه رادار (+35 more)
+### Community 8 - "convert_all_docs_to_pdf.ts"
+Cohesion: 0.19
+Nodes (12): buildHtmlPage(), docsDir, escapeHtml(), fontsDir, formatInline(), mdFiles, parseMarkdown(), closeTable() (+4 more)
 
 ### Community 9 - "DEPLOY.sh"
 Cohesion: 0.36
@@ -158,24 +156,16 @@ Nodes (13): اسلاید ۱: عنوان و هویت محصول (Cover Slide), ا
 Cohesion: 0.39
 Nodes (8): escapeFilterValue(), findOrCreateSource(), ingestExternalMessage(), IngestMessageInput, IngestOutcome, IngestPlatform, sourceName(), sanitizeString()
 
-### Community 28 - "راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders"
-Cohesion: 0.14
-Nodes (13): اسلاید ۱: عنوان و هویت محصول (Cover Slide), اسلاید ۱۰: نقشه راه توسعه و مقیاس‌پذیری (Roadmap), اسلاید ۱۱: تیم، دستاوردها و پیشنهاد سرمایه‌گذاری (Team & The Ask), اسلاید ۲: مسئله بازار و واقعیت تلخ فروش (The Problem), اسلاید ۳: چرا راهکارهای فعلی شکست می‌خورند؟ (Why Existing Solutions Fail), اسلاید ۴: معرفی راه‌حل — رادار (The Solution: Radar), اسلاید ۵: چرخه کارکرد فنی و دمو زنده (How It Works & Live Demo), اسلاید ۶: خندق دفاعی و تمایز فناوری (Defensibility & Moats) (+5 more)
-
 ### Community 29 - "proxy.ts"
 Cohesion: 0.50
 Nodes (4): config, middleware, parseEdgeJwtPayload(), proxy()
-
-### Community 31 - "build_docs_html.ts"
-Cohesion: 0.25
-Nodes (9): escapeHtml(), formatInline(), htmlBody, mdContent, mdPath, outHtmlPath, parseMarkdown(), closeTable() (+1 more)
 
 ### Community 32 - "logout/route.ts"
 Cohesion: 0.60
 Nodes (4): dynamic, POST(), formatOnboardedClearCookie(), formatSessionClearCookie()
 
 ## Knowledge Gaps
-- **269 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+264 more)
+- **228 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+223 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -183,16 +173,16 @@ Nodes (4): dynamic, POST(), formatOnboardedClearCookie(), formatSessionClearCook
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `getPocketBaseClient()` connect `auth.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
 - **Why does `RefreshIcon()` connect `Icons.tsx` to `voice-orb.tsx`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `ProductRecord` connect `auth.ts` to `Icons.tsx`, `pipeline.ts`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **What connects `DEBIAN_FRONTEND`, `dynamic`, `dynamic` to the rest of the system?**
-  _269 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _228 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.055651176133103844 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.054901960784313725 - nodes in this community are weakly interconnected._
 - **Should `auth.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.05929919137466307 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05824175824175824 - nodes in this community are weakly interconnected._
 - **Should `voice-orb.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06823529411764706 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07020408163265306 - nodes in this community are weakly interconnected._

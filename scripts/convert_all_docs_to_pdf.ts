@@ -54,8 +54,8 @@ function formatInline(text: string): string {
   s = s.replace(/\*(.*?)\*/g, "<em>$1</em>");
   s = s.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
   s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="doc-link">$1</a>');
-  s = s.replace(/⚠️/g, '<span class="icon-badge">⚠️</span>');
-  s = s.replace(/✅/g, '<span class="icon-badge">✅</span>');
+  s = s.replace(/⚠️/g, '<span class="icon-badge warn">⚠️</span>');
+  s = s.replace(/✅/g, '<span class="icon-badge check">✅</span>');
   return s;
 }
 
@@ -181,7 +181,7 @@ function parseMarkdown(md: string): string {
     }
     if (trimmed.startsWith("## ")) {
       closeList();
-      html += `<h2 class="doc-h2"><span class="h2-indicator"></span>${formatInline(trimmed.slice(3))}</h2>`;
+      html += `<h2 class="doc-h2"><span class="h2-dot"></span>${formatInline(trimmed.slice(3))}</h2>`;
       continue;
     }
     if (trimmed.startsWith("### ")) {
@@ -237,15 +237,24 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
   <style>
     ${fontStyles}
 
+    /* 
+      EXACT WEBSITE THEME: 
+      Deep Black #000000, Zinc Cards #09090b / #121214, 
+      Borders #27272a, White Headings #ffffff, Muted Text #a1a1aa 
+    */
     :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --border: #e2e8f0;
-      --border-dark: #cbd5e1;
+      --bg: #000000;
+      --card-bg: #09090b;
+      --card-alt: #121215;
+      --border: #27272a;
+      --border-subtle: #1e1e24;
+      --text: #ededed;
+      --text-bright: #ffffff;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --code-bg: #050505;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
     }
 
     * {
@@ -258,278 +267,326 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
       font-family: 'Ravi', Tahoma, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.85;
-      font-size: 13.5px;
+      line-height: 1.75;
+      font-size: 13px;
       direction: rtl;
       text-align: right;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* Floating Top Toolbar */
     .top-bar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(9, 9, 11, 0.95);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 30px;
+      padding: 10px 25px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
     .top-bar-title {
       font-weight: 700;
-      font-size: 14.5px;
-      color: var(--primary-dark);
+      font-size: 13.5px;
+      color: var(--text-bright);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+    }
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: #ffffff;
+      color: #000000;
+      border-radius: 5px;
+      font-weight: 900;
+      font-size: 12px;
     }
     .btn {
-      padding: 8px 18px;
-      border-radius: 8px;
+      padding: 6px 16px;
+      border-radius: 6px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
-      border: none;
-      background: var(--primary);
-      color: #fff;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: #000000;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+      transition: all 0.15s ease;
     }
     .btn:hover {
-      background: var(--primary-dark);
+      background: #e4e4e7;
     }
 
+    /* Main Container */
     .doc-page {
-      max-width: 880px;
-      margin: 30px auto;
-      background: var(--card-bg);
-      padding: 45px 55px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      max-width: 900px;
+      margin: 20px auto;
+      background: var(--bg);
+      padding: 25px 35px;
     }
 
+    /* Executive Cover Card */
     .cover-card {
-      border: 2px solid #bae6fd;
-      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
-      padding: 40px;
-      border-radius: 14px;
-      margin-bottom: 35px;
-      page-break-after: always;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #121216 0%, #09090b 100%);
+      padding: 30px 35px;
+      border-radius: 12px;
+      margin-bottom: 25px;
     }
     .badge-row {
       display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 14px;
     }
     .badge {
       display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 10.5px;
       font-weight: 700;
+      letter-spacing: 0.3px;
     }
-    .badge-blue { background: #e0f2fe; color: #0369a1; }
-    .badge-green { background: #d1fae5; color: #047857; }
-    .badge-purple { background: #ede9fe; color: #6d28d9; }
+    .badge-white {
+      background: #ffffff;
+      color: #000000;
+    }
+    .badge-zinc {
+      background: #18181b;
+      color: #d4d4d8;
+      border: 1px solid var(--border);
+    }
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
 
     .cover-title {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
-      color: #0f172a;
-      line-height: 1.4;
-      margin-bottom: 12px;
+      color: var(--text-bright);
+      line-height: 1.35;
+      margin-bottom: 8px;
     }
     .cover-subtitle {
-      font-size: 14px;
-      color: #334155;
-      line-height: 1.7;
-      margin-bottom: 25px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
     }
     .cover-meta {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      border-top: 1px solid #cbd5e1;
-      padding-top: 20px;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
     }
     .meta-item {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
     .meta-label {
-      font-size: 11px;
-      color: #64748b;
+      font-size: 10.5px;
+      color: var(--text-dim);
       font-weight: 600;
     }
     .meta-val {
-      font-size: 13px;
-      color: #0f172a;
+      font-size: 12px;
+      color: var(--text-bright);
       font-weight: 700;
     }
 
+    /* Headings - High Contrast White & Zero Premature Page Breaks */
     .doc-h1 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 22px;
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 10px;
+      color: var(--text-bright);
+      margin-top: 25px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      break-after: avoid;
     }
     .doc-h2 {
-      font-size: 18.5px;
+      font-size: 17px;
       font-weight: 800;
-      color: #0f172a;
-      margin-top: 38px;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
+      color: var(--text-bright);
+      margin-top: 26px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       gap: 8px;
-      page-break-after: avoid;
+      break-after: avoid;
     }
-    .h2-indicator {
+    .h2-dot {
       display: inline-block;
-      width: 4px;
-      height: 20px;
-      background: var(--primary);
-      border-radius: 2px;
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
     }
     .doc-h3 {
-      font-size: 15.5px;
+      font-size: 14.5px;
       font-weight: 700;
-      color: #1e293b;
-      margin-top: 25px;
-      margin-bottom: 12px;
-      page-break-after: avoid;
-    }
-    .doc-h4 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #334155;
+      color: var(--text-bright);
       margin-top: 18px;
       margin-bottom: 8px;
-      page-break-after: avoid;
+      break-after: avoid;
+    }
+    .doc-h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #d4d4d8;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      break-after: avoid;
     }
     .doc-p {
-      margin-bottom: 14px;
-      color: #334155;
+      margin-bottom: 12px;
+      color: var(--text);
       text-align: justify;
+      line-height: 1.75;
     }
 
     .section-divider {
       border: 0;
       height: 1px;
-      background: linear-gradient(to left, transparent, var(--border), transparent);
-      margin: 35px 0;
+      background: var(--border);
+      margin: 22px 0;
     }
 
+    /* Blockquotes & Callouts */
     .doc-quote {
-      border-right: 4px solid var(--primary);
-      background: #f0f9ff;
-      padding: 14px 18px;
-      margin: 18px 0;
-      border-radius: 6px 0 0 6px;
-      color: #0369a1;
-      font-size: 13px;
+      border-right: 3px solid #ffffff;
+      background: #0e0e12;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 4px 0 0 4px;
+      color: #d4d4d8;
+      font-size: 12.5px;
+      border: 1px solid var(--border-subtle);
+      border-right: 3px solid #ffffff;
+      break-inside: avoid;
     }
     .callout {
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin: 18px 0;
-      border-right: 4px solid;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border: 1px solid var(--border);
+      break-inside: avoid;
     }
     .callout-warning {
-      background: #fffbeb;
-      border-color: #f59e0b;
-      color: #92400e;
+      background: #121008;
+      border-right: 3px solid var(--accent-amber);
+      color: #fef3c7;
     }
     .callout-title {
       font-weight: 700;
-      font-size: 13px;
+      font-size: 12.5px;
       margin-bottom: 4px;
+      color: var(--text-bright);
     }
     .callout-body {
-      font-size: 12.5px;
-      line-height: 1.7;
+      font-size: 12px;
+      line-height: 1.65;
     }
 
+    /* Lists */
     .doc-ul, .doc-ol {
-      margin: 12px 0 16px 20px;
-      padding-right: 15px;
+      margin: 8px 0 14px 18px;
+      padding-right: 14px;
     }
     .doc-ul li, .doc-ol li {
-      margin-bottom: 7px;
-      color: #334155;
+      margin-bottom: 5px;
+      color: var(--text);
     }
 
+    /* High Density Monochrome Tables */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 18px 0 24px;
+      margin: 10px 0 16px;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      page-break-inside: avoid;
+      border-radius: 6px;
+      background: var(--card-bg);
+      break-inside: auto;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12.5px;
+      font-size: 11.5px;
       text-align: right;
     }
+    thead {
+      display: table-header-group;
+    }
+    tr {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
     th {
-      background: #f1f5f9;
-      color: #0f172a;
+      background: #141418;
+      color: var(--text-bright);
       font-weight: 700;
-      padding: 9px 12px;
-      border-bottom: 2px solid var(--border);
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--border);
       white-space: nowrap;
     }
     td {
-      padding: 9px 12px;
-      border-bottom: 1px solid var(--border);
-      color: #334155;
+      padding: 7px 10px;
+      border-bottom: 1px solid #1a1a20;
+      color: var(--text);
+      vertical-align: middle;
     }
-    tr.odd { background: #ffffff; }
-    tr.even { background: #f8fafc; }
+    tr.odd { background: #09090b; }
+    tr.even { background: #0e0e12; }
     tr:last-child td { border-bottom: none; }
 
+    /* Inline Code */
     .inline-code {
       font-family: Consolas, Monaco, monospace;
       direction: ltr;
       display: inline-block;
-      background: #f1f5f9;
-      color: #0284c7;
-      border: 1px solid #e2e8f0;
+      background: #18181b;
+      color: #ffffff;
+      border: 1px solid #27272a;
       padding: 1px 5px;
       border-radius: 4px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
     }
 
+    /* Code Block Containers */
     .code-container {
-      margin: 18px 0 24px;
-      border-radius: 8px;
+      margin: 14px 0 18px;
+      border-radius: 6px;
       overflow: hidden;
-      border: 1px solid #1e293b;
-      background: #0b1120;
-      page-break-inside: avoid;
+      border: 1px solid var(--border);
+      background: var(--code-bg);
+      break-inside: avoid;
     }
     .code-header {
-      background: #1e293b;
-      padding: 6px 14px;
-      border-bottom: 1px solid #334155;
+      background: #111116;
+      padding: 5px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
     }
     .code-lang {
-      color: #94a3b8;
-      font-size: 10.5px;
+      color: var(--text-dim);
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       font-family: monospace;
@@ -537,134 +594,147 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
     pre {
       direction: ltr;
       text-align: left;
-      padding: 14px 18px;
+      padding: 12px 15px;
       overflow-x: auto;
       font-family: Consolas, Monaco, monospace;
       font-size: 11.5px;
-      line-height: 1.65;
-      color: #e2e8f0;
+      line-height: 1.6;
+      color: #f4f4f5;
     }
 
+    /* Mermaid Architecture Diagrams */
     .mermaid-box {
-      margin: 20px 0;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: #f8fafc;
+      margin: 16px 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #0c0c10;
       overflow: hidden;
-      page-break-inside: avoid;
+      break-inside: avoid;
     }
     .mermaid-badge {
-      background: #e2e8f0;
-      color: #334155;
-      font-size: 11px;
+      background: #16161c;
+      color: var(--text-muted);
+      font-size: 10.5px;
       font-weight: 700;
       padding: 5px 12px;
-      border-bottom: 1px solid #cbd5e1;
+      border-bottom: 1px solid var(--border);
     }
     .mermaid-code {
       direction: ltr;
       text-align: left;
-      padding: 12px 16px;
+      padding: 12px 15px;
       font-size: 11px;
-      background: #ffffff;
-      color: #1e293b;
+      background: #09090c;
+      color: #e4e4e7;
     }
 
     .doc-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .icon-badge {
+      display: inline-block;
+      margin-left: 3px;
     }
 
+    /* =========================================================================
+       PRINT STYLES: Black & White / Dark Theme with Zero Empty Waste
+    ========================================================================= */
     @media print {
       @page {
         size: A4 portrait;
-        margin: 14mm 10mm 14mm 10mm;
+        margin: 10mm 10mm 10mm 10mm;
       }
       body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 11.5pt;
-        line-height: 1.55;
+        background-color: #000000 !important;
+        color: #ededed !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        font-size: 11pt;
+        line-height: 1.5;
       }
-      .top-bar { display: none !important; }
+      .top-bar {
+        display: none !important;
+      }
       .doc-page {
         max-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
+        background: #000000 !important;
       }
       .cover-card {
-        border: 2px solid #0284c7 !important;
-        background: #ffffff !important;
-        padding: 35px !important;
-        page-break-after: always !important;
+        background: #09090b !important;
+        border: 1px solid #27272a !important;
+        padding: 24px !important;
+        break-after: auto !important;
+        margin-bottom: 20px !important;
       }
-      .doc-h2 {
-        page-break-before: always;
-        break-before: page;
-        margin-top: 25px;
+      /* NO FORCED PAGE BREAKS ON HEADINGS - NATURAL FLOW ELIMINATES EMPTY GAPS */
+      .doc-h1, .doc-h2, .doc-h3, .doc-h4 {
+        break-before: auto !important;
+        page-break-before: auto !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
       }
-      .table-container, .code-container, .mermaid-box, .callout {
-        page-break-inside: avoid;
-        break-inside: avoid;
+      .table-container {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
       }
-      table th {
-        background-color: #f1f5f9 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+      tr {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
       }
+      .code-container, .mermaid-box, .callout, .doc-quote {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      th {
+        background-color: #18181b !important;
+        color: #ffffff !important;
+      }
+      tr.even { background-color: #0e0e12 !important; }
+      tr.odd { background-color: #09090b !important; }
       pre {
-        color: #0f172a !important;
-        background: #f8fafc !important;
-        border: 1px solid #cbd5e1 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        background-color: #050505 !important;
+        color: #f4f4f5 !important;
+        border: 1px solid #27272a !important;
       }
-      .code-container {
-        border-color: #cbd5e1 !important;
-      }
-      .code-header {
-        background: #f1f5f9 !important;
-        color: #0f172a !important;
-        border-color: #cbd5e1 !important;
-      }
-      .code-lang { color: #0f172a !important; }
     }
   </style>
 </head>
 <body>
   <header class="top-bar">
     <div class="top-bar-title">
+      <span class="logo-badge">R</span>
       <span>سامانه رادار (Radar) | ${escapeHtml(title)}</span>
     </div>
     <button onclick="window.print()" class="btn">
-      چاپ و خروجی PDF
+      چاپ و خروجی PDF (Black & White)
     </button>
   </header>
 
   <main class="doc-page">
     <section class="cover-card">
       <div class="badge-row">
-        <span class="badge badge-blue">${escapeHtml(category)}</span>
-        <span class="badge badge-green">پروژه رادار (Radar)</span>
-        <span class="badge badge-purple">نسخه رسمی</span>
+        <span class="badge badge-white">${escapeHtml(category)}</span>
+        <span class="badge badge-zinc">پروژه رادار (Radar)</span>
+        <span class="badge badge-emerald">نسخه رسمی عملیاتی</span>
       </div>
       <h1 class="cover-title">${escapeHtml(title)}</h1>
       <p class="cover-subtitle">${escapeHtml(subtitle)}</p>
       <div class="cover-meta">
         <div class="meta-item">
           <span class="meta-label">محصول:</span>
-          <span class="meta-val">رادار (موتور کشف نیت خرید B2B)</span>
+          <span class="meta-val">رادار (Radar B2B Intent Engine)</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">تاریخ بازبینی:</span>
           <span class="meta-val">بهمن ۱۴۰۳ / اکتبر ۲۰۲۶</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">سطح سند:</span>
-          <span class="meta-val">رسمی و اختصاصی</span>
+          <span class="meta-label">سطح دسترسی:</span>
+          <span class="meta-val">مستند فنی و اجرایی رسمی</span>
         </div>
       </div>
     </section>
@@ -678,29 +748,29 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
 `;
 }
 
-// Convert each markdown in docs/
+// Active documents in docs/
 const mdFiles = [
   {
     file: "TECHNICAL_REFERENCE.md",
     title: "مرجع فنی جامع و راهنمای پیاده‌سازی سامانه رادار",
-    subtitle: "مستندات معماری، ساختار داده‌ها، خط تریاژ سه‌لایه، احراز هویت چندمستأجری و اسکنر پس‌زمینه خودکار",
+    subtitle: "مستندات معماری، ساختار داده‌ها، خط تریاژ سه‌لایه، احراز هویت چندمستأجری، ماتریس سیگنال‌های زنده و اسکنر پس‌زمینه خودکار",
     category: "معماری فنی و مهندسی",
   },
   {
     file: "BusinessPlan.md",
     title: "طرح کسب‌وکار و مدل درآمدی سامانه رادار (Business Plan)",
-    subtitle: "سند استراتژی بازار، تحلیل پرسونای مشتری، مدل قیمت‌گذاری و درآمدی، و اقتصاد واحد (Unit Economics)",
+    subtitle: "سند استراتژی بازار، تحلیل پرسونای مشتری، مقایسه هزینه با SDR انسانی، مدل قیمت‌گذاری و درآمدی، و اقتصاد واحد (Unit Economics)",
     category: "طرح تجاری و استراتژی",
   },
   {
     file: "PITCH_DECK_CONTENT.md",
     title: "محتوا و سناریوی ارائه سرمایه‌پذیری رادار (Pitch Deck)",
-    subtitle: "سناریوی اسلایدبه‌اسلاید، پیام‌های محوری، آمار و ارقام بازار و سناریوی جذب سرمایه",
+    subtitle: "سناریوی اسلایدبه‌اسلاید، پیام‌های محوری، آمار و ارقام بازار، اقتصاد واحد و سناریوی جذب سرمایه",
     category: "ارائه به سرمایه‌گذار",
   },
 ];
 
-console.log("Processing docs directory...");
+console.log("Processing docs directory with Black & White Dark Aesthetic...");
 
 for (const item of mdFiles) {
   const mdFilePath = path.join(docsDir, item.file);
@@ -734,4 +804,4 @@ for (const item of mdFiles) {
   }
 }
 
-console.log("All markdown files converted to HTML and PDF!");
+console.log("All markdown files converted to high-density Black & White HTML and PDF!");

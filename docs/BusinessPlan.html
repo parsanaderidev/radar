@@ -32,15 +32,24 @@
 }
 
 
+    /* 
+      EXACT WEBSITE THEME: 
+      Deep Black #000000, Zinc Cards #09090b / #121214, 
+      Borders #27272a, White Headings #ffffff, Muted Text #a1a1aa 
+    */
     :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --border: #e2e8f0;
-      --border-dark: #cbd5e1;
+      --bg: #000000;
+      --card-bg: #09090b;
+      --card-alt: #121215;
+      --border: #27272a;
+      --border-subtle: #1e1e24;
+      --text: #ededed;
+      --text-bright: #ffffff;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --code-bg: #050505;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
     }
 
     * {
@@ -53,278 +62,326 @@
       font-family: 'Ravi', Tahoma, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.85;
-      font-size: 13.5px;
+      line-height: 1.75;
+      font-size: 13px;
       direction: rtl;
       text-align: right;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* Floating Top Toolbar */
     .top-bar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(9, 9, 11, 0.95);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 30px;
+      padding: 10px 25px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
     .top-bar-title {
       font-weight: 700;
-      font-size: 14.5px;
-      color: var(--primary-dark);
+      font-size: 13.5px;
+      color: var(--text-bright);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+    }
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: #ffffff;
+      color: #000000;
+      border-radius: 5px;
+      font-weight: 900;
+      font-size: 12px;
     }
     .btn {
-      padding: 8px 18px;
-      border-radius: 8px;
+      padding: 6px 16px;
+      border-radius: 6px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
-      border: none;
-      background: var(--primary);
-      color: #fff;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: #000000;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+      transition: all 0.15s ease;
     }
     .btn:hover {
-      background: var(--primary-dark);
+      background: #e4e4e7;
     }
 
+    /* Main Container */
     .doc-page {
-      max-width: 880px;
-      margin: 30px auto;
-      background: var(--card-bg);
-      padding: 45px 55px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      max-width: 900px;
+      margin: 20px auto;
+      background: var(--bg);
+      padding: 25px 35px;
     }
 
+    /* Executive Cover Card */
     .cover-card {
-      border: 2px solid #bae6fd;
-      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
-      padding: 40px;
-      border-radius: 14px;
-      margin-bottom: 35px;
-      page-break-after: always;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #121216 0%, #09090b 100%);
+      padding: 30px 35px;
+      border-radius: 12px;
+      margin-bottom: 25px;
     }
     .badge-row {
       display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 14px;
     }
     .badge {
       display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 10.5px;
       font-weight: 700;
+      letter-spacing: 0.3px;
     }
-    .badge-blue { background: #e0f2fe; color: #0369a1; }
-    .badge-green { background: #d1fae5; color: #047857; }
-    .badge-purple { background: #ede9fe; color: #6d28d9; }
+    .badge-white {
+      background: #ffffff;
+      color: #000000;
+    }
+    .badge-zinc {
+      background: #18181b;
+      color: #d4d4d8;
+      border: 1px solid var(--border);
+    }
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
 
     .cover-title {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
-      color: #0f172a;
-      line-height: 1.4;
-      margin-bottom: 12px;
+      color: var(--text-bright);
+      line-height: 1.35;
+      margin-bottom: 8px;
     }
     .cover-subtitle {
-      font-size: 14px;
-      color: #334155;
-      line-height: 1.7;
-      margin-bottom: 25px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
     }
     .cover-meta {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      border-top: 1px solid #cbd5e1;
-      padding-top: 20px;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
     }
     .meta-item {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
     .meta-label {
-      font-size: 11px;
-      color: #64748b;
+      font-size: 10.5px;
+      color: var(--text-dim);
       font-weight: 600;
     }
     .meta-val {
-      font-size: 13px;
-      color: #0f172a;
+      font-size: 12px;
+      color: var(--text-bright);
       font-weight: 700;
     }
 
+    /* Headings - High Contrast White & Zero Premature Page Breaks */
     .doc-h1 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 22px;
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 10px;
+      color: var(--text-bright);
+      margin-top: 25px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      break-after: avoid;
     }
     .doc-h2 {
-      font-size: 18.5px;
+      font-size: 17px;
       font-weight: 800;
-      color: #0f172a;
-      margin-top: 38px;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
+      color: var(--text-bright);
+      margin-top: 26px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       gap: 8px;
-      page-break-after: avoid;
+      break-after: avoid;
     }
-    .h2-indicator {
+    .h2-dot {
       display: inline-block;
-      width: 4px;
-      height: 20px;
-      background: var(--primary);
-      border-radius: 2px;
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
     }
     .doc-h3 {
-      font-size: 15.5px;
+      font-size: 14.5px;
       font-weight: 700;
-      color: #1e293b;
-      margin-top: 25px;
-      margin-bottom: 12px;
-      page-break-after: avoid;
-    }
-    .doc-h4 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #334155;
+      color: var(--text-bright);
       margin-top: 18px;
       margin-bottom: 8px;
-      page-break-after: avoid;
+      break-after: avoid;
+    }
+    .doc-h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #d4d4d8;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      break-after: avoid;
     }
     .doc-p {
-      margin-bottom: 14px;
-      color: #334155;
+      margin-bottom: 12px;
+      color: var(--text);
       text-align: justify;
+      line-height: 1.75;
     }
 
     .section-divider {
       border: 0;
       height: 1px;
-      background: linear-gradient(to left, transparent, var(--border), transparent);
-      margin: 35px 0;
+      background: var(--border);
+      margin: 22px 0;
     }
 
+    /* Blockquotes & Callouts */
     .doc-quote {
-      border-right: 4px solid var(--primary);
-      background: #f0f9ff;
-      padding: 14px 18px;
-      margin: 18px 0;
-      border-radius: 6px 0 0 6px;
-      color: #0369a1;
-      font-size: 13px;
+      border-right: 3px solid #ffffff;
+      background: #0e0e12;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 4px 0 0 4px;
+      color: #d4d4d8;
+      font-size: 12.5px;
+      border: 1px solid var(--border-subtle);
+      border-right: 3px solid #ffffff;
+      break-inside: avoid;
     }
     .callout {
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin: 18px 0;
-      border-right: 4px solid;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border: 1px solid var(--border);
+      break-inside: avoid;
     }
     .callout-warning {
-      background: #fffbeb;
-      border-color: #f59e0b;
-      color: #92400e;
+      background: #121008;
+      border-right: 3px solid var(--accent-amber);
+      color: #fef3c7;
     }
     .callout-title {
       font-weight: 700;
-      font-size: 13px;
+      font-size: 12.5px;
       margin-bottom: 4px;
+      color: var(--text-bright);
     }
     .callout-body {
-      font-size: 12.5px;
-      line-height: 1.7;
+      font-size: 12px;
+      line-height: 1.65;
     }
 
+    /* Lists */
     .doc-ul, .doc-ol {
-      margin: 12px 0 16px 20px;
-      padding-right: 15px;
+      margin: 8px 0 14px 18px;
+      padding-right: 14px;
     }
     .doc-ul li, .doc-ol li {
-      margin-bottom: 7px;
-      color: #334155;
+      margin-bottom: 5px;
+      color: var(--text);
     }
 
+    /* High Density Monochrome Tables */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 18px 0 24px;
+      margin: 10px 0 16px;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      page-break-inside: avoid;
+      border-radius: 6px;
+      background: var(--card-bg);
+      break-inside: auto;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12.5px;
+      font-size: 11.5px;
       text-align: right;
     }
+    thead {
+      display: table-header-group;
+    }
+    tr {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
     th {
-      background: #f1f5f9;
-      color: #0f172a;
+      background: #141418;
+      color: var(--text-bright);
       font-weight: 700;
-      padding: 9px 12px;
-      border-bottom: 2px solid var(--border);
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--border);
       white-space: nowrap;
     }
     td {
-      padding: 9px 12px;
-      border-bottom: 1px solid var(--border);
-      color: #334155;
+      padding: 7px 10px;
+      border-bottom: 1px solid #1a1a20;
+      color: var(--text);
+      vertical-align: middle;
     }
-    tr.odd { background: #ffffff; }
-    tr.even { background: #f8fafc; }
+    tr.odd { background: #09090b; }
+    tr.even { background: #0e0e12; }
     tr:last-child td { border-bottom: none; }
 
+    /* Inline Code */
     .inline-code {
       font-family: Consolas, Monaco, monospace;
       direction: ltr;
       display: inline-block;
-      background: #f1f5f9;
-      color: #0284c7;
-      border: 1px solid #e2e8f0;
+      background: #18181b;
+      color: #ffffff;
+      border: 1px solid #27272a;
       padding: 1px 5px;
       border-radius: 4px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
     }
 
+    /* Code Block Containers */
     .code-container {
-      margin: 18px 0 24px;
-      border-radius: 8px;
+      margin: 14px 0 18px;
+      border-radius: 6px;
       overflow: hidden;
-      border: 1px solid #1e293b;
-      background: #0b1120;
-      page-break-inside: avoid;
+      border: 1px solid var(--border);
+      background: var(--code-bg);
+      break-inside: avoid;
     }
     .code-header {
-      background: #1e293b;
-      padding: 6px 14px;
-      border-bottom: 1px solid #334155;
+      background: #111116;
+      padding: 5px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
     }
     .code-lang {
-      color: #94a3b8;
-      font-size: 10.5px;
+      color: var(--text-dim);
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       font-family: monospace;
@@ -332,140 +389,153 @@
     pre {
       direction: ltr;
       text-align: left;
-      padding: 14px 18px;
+      padding: 12px 15px;
       overflow-x: auto;
       font-family: Consolas, Monaco, monospace;
       font-size: 11.5px;
-      line-height: 1.65;
-      color: #e2e8f0;
+      line-height: 1.6;
+      color: #f4f4f5;
     }
 
+    /* Mermaid Architecture Diagrams */
     .mermaid-box {
-      margin: 20px 0;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: #f8fafc;
+      margin: 16px 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #0c0c10;
       overflow: hidden;
-      page-break-inside: avoid;
+      break-inside: avoid;
     }
     .mermaid-badge {
-      background: #e2e8f0;
-      color: #334155;
-      font-size: 11px;
+      background: #16161c;
+      color: var(--text-muted);
+      font-size: 10.5px;
       font-weight: 700;
       padding: 5px 12px;
-      border-bottom: 1px solid #cbd5e1;
+      border-bottom: 1px solid var(--border);
     }
     .mermaid-code {
       direction: ltr;
       text-align: left;
-      padding: 12px 16px;
+      padding: 12px 15px;
       font-size: 11px;
-      background: #ffffff;
-      color: #1e293b;
+      background: #09090c;
+      color: #e4e4e7;
     }
 
     .doc-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .icon-badge {
+      display: inline-block;
+      margin-left: 3px;
     }
 
+    /* =========================================================================
+       PRINT STYLES: Black & White / Dark Theme with Zero Empty Waste
+    ========================================================================= */
     @media print {
       @page {
         size: A4 portrait;
-        margin: 14mm 10mm 14mm 10mm;
+        margin: 10mm 10mm 10mm 10mm;
       }
       body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 11.5pt;
-        line-height: 1.55;
+        background-color: #000000 !important;
+        color: #ededed !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        font-size: 11pt;
+        line-height: 1.5;
       }
-      .top-bar { display: none !important; }
+      .top-bar {
+        display: none !important;
+      }
       .doc-page {
         max-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
+        background: #000000 !important;
       }
       .cover-card {
-        border: 2px solid #0284c7 !important;
-        background: #ffffff !important;
-        padding: 35px !important;
-        page-break-after: always !important;
+        background: #09090b !important;
+        border: 1px solid #27272a !important;
+        padding: 24px !important;
+        break-after: auto !important;
+        margin-bottom: 20px !important;
       }
-      .doc-h2 {
-        page-break-before: always;
-        break-before: page;
-        margin-top: 25px;
+      /* NO FORCED PAGE BREAKS ON HEADINGS - NATURAL FLOW ELIMINATES EMPTY GAPS */
+      .doc-h1, .doc-h2, .doc-h3, .doc-h4 {
+        break-before: auto !important;
+        page-break-before: auto !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
       }
-      .table-container, .code-container, .mermaid-box, .callout {
-        page-break-inside: avoid;
-        break-inside: avoid;
+      .table-container {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
       }
-      table th {
-        background-color: #f1f5f9 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+      tr {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
       }
+      .code-container, .mermaid-box, .callout, .doc-quote {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      th {
+        background-color: #18181b !important;
+        color: #ffffff !important;
+      }
+      tr.even { background-color: #0e0e12 !important; }
+      tr.odd { background-color: #09090b !important; }
       pre {
-        color: #0f172a !important;
-        background: #f8fafc !important;
-        border: 1px solid #cbd5e1 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        background-color: #050505 !important;
+        color: #f4f4f5 !important;
+        border: 1px solid #27272a !important;
       }
-      .code-container {
-        border-color: #cbd5e1 !important;
-      }
-      .code-header {
-        background: #f1f5f9 !important;
-        color: #0f172a !important;
-        border-color: #cbd5e1 !important;
-      }
-      .code-lang { color: #0f172a !important; }
     }
   </style>
 </head>
 <body>
   <header class="top-bar">
     <div class="top-bar-title">
+      <span class="logo-badge">R</span>
       <span>سامانه رادار (Radar) | طرح کسب‌وکار و مدل درآمدی سامانه رادار (Business Plan)</span>
     </div>
     <button onclick="window.print()" class="btn">
-      چاپ و خروجی PDF
+      چاپ و خروجی PDF (Black & White)
     </button>
   </header>
 
   <main class="doc-page">
     <section class="cover-card">
       <div class="badge-row">
-        <span class="badge badge-blue">طرح تجاری و استراتژی</span>
-        <span class="badge badge-green">پروژه رادار (Radar)</span>
-        <span class="badge badge-purple">نسخه رسمی</span>
+        <span class="badge badge-white">طرح تجاری و استراتژی</span>
+        <span class="badge badge-zinc">پروژه رادار (Radar)</span>
+        <span class="badge badge-emerald">نسخه رسمی عملیاتی</span>
       </div>
       <h1 class="cover-title">طرح کسب‌وکار و مدل درآمدی سامانه رادار (Business Plan)</h1>
-      <p class="cover-subtitle">سند استراتژی بازار، تحلیل پرسونای مشتری، مدل قیمت‌گذاری و درآمدی، و اقتصاد واحد (Unit Economics)</p>
+      <p class="cover-subtitle">سند استراتژی بازار، تحلیل پرسونای مشتری، مقایسه هزینه با SDR انسانی، مدل قیمت‌گذاری و درآمدی، و اقتصاد واحد (Unit Economics)</p>
       <div class="cover-meta">
         <div class="meta-item">
           <span class="meta-label">محصول:</span>
-          <span class="meta-val">رادار (موتور کشف نیت خرید B2B)</span>
+          <span class="meta-val">رادار (Radar B2B Intent Engine)</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">تاریخ بازبینی:</span>
           <span class="meta-val">بهمن ۱۴۰۳ / اکتبر ۲۰۲۶</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">سطح سند:</span>
-          <span class="meta-val">رسمی و اختصاصی</span>
+          <span class="meta-label">سطح دسترسی:</span>
+          <span class="meta-val">مستند فنی و اجرایی رسمی</span>
         </div>
       </div>
     </section>
 
     <article class="doc-content">
-      <h1 class="doc-h1">طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی</h1><h2 class="doc-h2"><span class="h2-indicator"></span>سامانه هوش مصنوعی رادار (Radar AI) — PriCoders</h2><p class="doc-p"><strong>نسخه سند:</strong> ۳.۱ (بازنگری اقتصادی منطبق بر واقعیت کد و بهای تمام‌شده واقعی — پاییز ۱۴۰۵ / اکتبر ۲۰۲۶)</p><p class="doc-p"><strong>دسته‌بندی:</strong> B2B Sales Opportunity Intelligence & Inbound Revenue Accelerator</p><p class="doc-p"><strong>مخاطب سند:</strong> سرمایه‌گذاران نهادی، فرشتگان سرمایه‌گذار، داوران و ارزیابان مسابقات استارتاپی و هیئت‌مدیره</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۱. دسته‌بندی داده‌های مالی و استانداردهای راستی‌آزمایی</h2><p class="doc-p">به منظور حفظ بالاترین سطح شفافیت و جلوگیری از هرگونه اغراق در ارزیابی کسب‌وکار، تمامی ارقام و محاسبات مالی این سند در یکی از ۵ طبقه زیر دسته‌بندی شده‌اند:</p><ol class="doc-ol"><li><strong>داده‌های واقعی پیاده‌سازی‌شده (Actual):</strong> برگرفته از تست مستقیم کدهای مخزن، جداول دیتابیس و توابع پردازشی.</li><li><strong>محاسبه‌شده بر مبنای پیاده‌سازی (Calculated):</strong> خروجی فرمول‌های کد با اعمال متغیرهای محیطی سیستم (<code class="inline-code">lib/pricing.ts</code>).</li><li><strong>تخمین مبتنی بر ارائه‌دهندگان سرویس (Provider-based Estimate):</strong> نرخ‌های استعلام‌شده از سرویس‌دهندگان واقعی (OpenRouter، کاوه‌نگار، ابر آروان، زرین‌پال).</li><li><strong>فرضیات بنیادین مدل کسب‌وکار (Business Assumption):</strong> برآوردهای منطقی بازار و رفتار مشتری که در مراحل بعدی نیازمند اعتبارسنجی تجربی هستند (برچسب‌گذاری‌شده با <em>[فرض بازار]</em> یا <em>[برآورد اولیه]</em>).</li><li><strong>پیش‌بینی‌های آتی (Future Projection):</strong> برون‌یابی ریاضی حاصل از فرضیات رشد و مقیاس‌پذیری (برچسب‌گذاری‌شده با <em>[پیش‌بینی آتی]</em>).</li></ol><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۲. خلاصه اجرایی (Executive Summary)</h2><p class="doc-p"><strong>رادار (Radar)</strong> یک پلتفرم هوشمندی فرصت‌های فروش بین‌شرکتی (B2B Opportunity Intelligence) است که با پایش مداوم جوامع آنلاین فارسی‌زبان (پیام‌رسان‌های بله و تلگرام، و انجمن‌های تخصصی وب)، تقاضاهای نهفته و نیازهای فعال خرید را شناسایی کرده و نویزهای عمومی را فیلتر می‌کند.</p><h3 class="doc-h3">مسئله و وضعیت موجود:</h3><ul class="doc-ul"><li>در اقتصاد دیجیتال ایران، بخش عظیمی از خریدهای سازمانی، پروژه‌های برون‌سپاری و درخواست‌های جایگزینی نرم‌افزارهای مالی، اداری و توسعه نرم‌افزار در <strong>گروه‌ها و کانال‌های تخصصی پیام‌رسان‌ها</strong> مطرح می‌شوند.</li><li>بیش از ۸۰٪ پیام‌های این گروه‌ها نویز خالص است. تیم‌های فروش یا این سیگنال‌ها را به دلیل حجم بالای پیام‌ها از دست می‌دهند، یا باید زمان نیروهای متخصص خود را ساعت‌ها صرف خواندن دستی پیام‌ها کنند.</li></ul><h3 class="doc-h3">ارزش پیشنهادی رادار:</h3><ul class="doc-ul"><li><strong>فیلترینگ ۳ لایه‌ای تدریجی:</strong> حذف بیش از ۸۰٪ نویز در لایه‌های ۰ و ۱ بدون مصرف حتی ۱ توکن هوش مصنوعی (هزینه پردازش صفر).</li><li><strong>کشف نیت و ارزش‌گذاری تجاری:</strong> ارزیابی عمیق پیام‌های واجد شرایط با مدل‌های زبانی هوشمند، تخصیص امتیاز نیت از ۰ تا ۱۰۰، استخراج نیاز مشتری و تدوین پیش‌نویس پاسخ فارسی برای کارشناس فروش در کمتر از ۳ ثانیه.</li><li><strong>استقلال کامل از زیرساخت‌های خارجی:</strong> قابلیت میزبانی ۱۰۰٪ داخلی بر بستر دیتاسنترهای مقیم کشور با تضمین تداوم کار در زمان اختلالات اینترنت بین‌الملل.</li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۳. پرسونای مشتریان، منطق ارزش و انگیزه پرداخت</h2><p class="doc-p">رادار برای افراد عادی یا مصارف عمومی ساخته نشده است. مشتریان هدف رادار کسب‌وکارهایی هستند که <strong>ارزش هر معامله آن‌ها (Deal Size) بین ۱۵ تا ۲۰۰ میلیون تومان</strong> است و بستن تنها یک معامله در ماه از طریق رادار، چند برابر هزینه اشتراک سالانه آن‌ها را بازمی‌گرداند.</p><h3 class="doc-h3">۱. شرکت‌های نرم‌افزاری و ارائه‌دهندگان B2B SaaS (مانند حساب‌آنلاین پارس)</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> ۱۵ تا ۵۰ نفر پرسنل، فروش نرم‌افزارهای ابری مالیاتی، ERP، مدیریت ارتباط با مشتریان (CRM).</li><li><strong>چرا پرداخت می‌کنند:</strong> مشتریان روزانه در گروه‌های تجاری از قطعی نرم‌افزارهای سنتی یا چالش‌های سامانه مودیان گلایه دارند. سرعت پاسخگویی در ۵ دقیقه اول به معنای بردن رقابت از سایر رقبا است.</li><li><strong>شغل مورد نظر (JTBD):</strong> کشف لحظه‌ای شرکت‌هایی که به دنبال جایگزین نرم‌افزارهای حسابداری یا فروشگاهی هستند.</li></ul><h3 class="doc-h3">۲. آژانس‌های دیجیتال مارکتینگ و شرکت‌های توسعه نرم‌افزار</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> ۱۰ تا ۳۰ نفر، مجری پروژه‌های طراحی سایت، سئو، توسعه اپلیکیشن و کمپین‌های تبلیغاتی.</li><li><strong>چرا پرداخت می‌کنند:</strong> جذب پروژه از طریق تماس‌های سرد بازدهی بسیار پایینی دارد. در گروه‌های تجاری روزانه ده‌ها کارفرما تقاضای معرفی برنامه‌نویس یا مجری سئو با بودجه‌های مشخص می‌کنند.</li><li><strong>شغل مورد نظر (JTBD):</strong> دریافت هشدارهای فوری پروژه‌های با بودجه بالای ۵۰ میلیون تومان همراه با پیش‌نویس پاسخ فنی و متقاعدکننده.</li></ul><h3 class="doc-h3">۳. شرکت‌های خدمات مالی، حقوقی و مشاوره بازرگانی</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> دفاتری با ارزش قرارداد پرونده‌ای ۵۰ تا ۵۰۰ میلیون تومان.</li><li><strong>چرا پرداخت می‌کنند:</strong> تقاضای خدمات مالیاتی یا ترخیص گمرکی اغلب در لحظه بحران یا مسدود شدن حساب‌ها مطرح می‌شود؛ هر پاسخی که سریع‌تر، فنی‌تر و مستدل‌تر باشد برنده پرونده است.</li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۴. کالبدشکافی بهای تمام‌شده عملیاتی (Comprehensive COGS Model)</h2><p class="doc-p">در سامانه‌های هوش مصنوعی عملیاتی در ایران، بهای تمام‌شده صرفاً به هزینه توکن خام خلاصه نمی‌شود. جدول زیر ساختار بهای تمام‌شده ماهانه به‌ازای یک مشتری فعال را به تفکیک مؤلفه‌ها نمایش می‌دهد:</p><h3 class="doc-h3">الف. هزینه‌های متغیر و وابسته به حجم مصرف (Variable Costs)</h3><div class="table-container"><table><thead><tr><th>مؤلفه هزینه</th><th>مبنای محاسبه در کد و محیط</th><th>هزینه در پلن استارتر (۱۵,۰۰۰ پیام)</th><th>هزینه در پلن رشد (۵۰,۰۰۰ پیام)</th><th>دسته‌بندی داده</th></tr></thead><tbody><tr class="even"><td><strong>پردازش هوش مصنوعی (LLM)</strong></td><td>فیلتر ۸۵٪ پیام‌ها در لایه ۰/۱ (رایگان). پردازش ۱۵٪ در لایه ۲ با هزینه میانگین ۳۸ تومان</td><td>۸۵,۵۰۰ تومان</td><td>۲۸۵,۰۰۰ تومان</td><td>محاسبه‌شده بر مبنای پیاده‌سازی</td></tr><tr class="odd"><td><strong>پیامک هشدارهای آنی</strong></td><td>۱۰۰ تا ۳۰۰ پیامک هشدار برای لیدهای با امتیاز بالا (هر پارت ۲۵۰ تومان)</td><td>۲۵,۰۰۰ تومان</td><td>۷۵,۰۰۰ تومان</td><td>تخمین مبتنی بر تعرفه اپراتور</td></tr><tr class="even"><td><strong>کارمزد شبکه پرداخت</strong></td><td>کارمزد درگاه پرداخت و شاپرک (۰.۵٪ تا ۱٪ مبلغ فاکتور)</td><td>۱۹,۰۰۰ تومان</td><td>۴۸,۰۰۰ تومان</td><td>داده واقعی شاپرک/درگاه</td></tr><tr class="odd"><td><strong>ترافیک شبکه و پراکسی</strong></td><td>مصرف پهنای باند و آی‌پی پایدار جهت استعلام و ارتباطات وب‌هوک</td><td>۸۰,۰۰۰ تومان</td><td>۱۸۰,۰۰۰ تومان</td><td>تخمین مبتنی بر تعرفه سرور</td></tr><tr class="even"><td><strong>جمع کل هزینه‌های متغیر</strong></td><td>—</td><td><strong>۲۰۹,۵۰۰ تومان</strong></td><td><strong>۵۸۸,۰۰۰ تومان</strong></td><td>محاسبه‌شده</td></tr></tbody></table></div><h3 class="doc-h3">ب. هزینه‌های ثابت و سرشکن‌شده زیرساخت (Fixed / Shared Costs)</h3><div class="table-container"><table><thead><tr><th>مؤلفه زیرساختی</th><th>مبنای برآورد در مقیاس ۱۰۰ مشتری</th><th>سهم سرشکن هر مشتری</th><th>دسته‌بندی داده</th></tr></thead><tbody><tr class="even"><td><strong>سرور ابری و پایگاه‌داده</strong></td><td>سرور اختصاصی ابری (ابر آروان / هتزنر) ماهانه ۱۰ میلیون تومان</td><td>۱۰۰,۰۰۰ تومان</td><td>تخمین مبتنی بر تعرفه کلاد</td></tr><tr class="odd"><td><strong>فضای ذخیره‌سازی و بکاپ</strong></td><td>پشتیبان‌گیری شبانه پایگاه داده SQLite و آرشیو ماهانه ۳ میلیون تومان</td><td>۳۰,۰۰۰ تومان</td><td>تخمین سرور ذخیره‌سازی</td></tr><tr class="even"><td><strong>مانیتورینگ و آپ‌تایم</strong></td><td>پایش پیوسته سرویس‌ها و هشدار خطاها</td><td>۲۰,۰۰۰ تومان</td><td>برآورد عملیاتی</td></tr><tr class="odd"><td><strong>پشتیبانی فنی و هلپ‌دسک</strong></td><td>کارشناس پشتیبانی و نگهداری مشتریان سرشکن بر اعضا</td><td>۸۰,۰۰۰ تومان</td><td>برآورد منابع انسانی</td></tr><tr class="even"><td><strong>جمع کل سهم هزینه‌های ثابت</strong></td><td>—</td><td><strong>۲۳۰,۰۰۰ تومان</strong></td><td>محاسبه سرشکن</td></tr></tbody></table></div><h3 class="doc-h3">جمع کل بهای تمام‌شده (COGS) به‌ازای هر مشترک:</h3><ul class="doc-ul"><li><strong>پلن استارتر:</strong> ۲۰۹,۵۰۰ + ۲۳۰,۰۰۰ = <strong>۴۳۹,۵۰۰ تومان / ماه</strong> (تقریباً ۴۴۰,۰۰۰ تومان)</li><li><strong>پلن رشد:</strong> ۵۸۸,۰۰۰ + ۲۳۰,۰۰۰ = <strong>۸۱۸,۰۰۰ تومان / ماه</strong> (تقریباً ۸۲۰,۰۰۰ تومان)</li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۵. تحلیل تطبیقی مدل‌های قیمت‌گذاری (Pricing Evaluation & Upgrade Logic)</h2><h3 class="doc-h3">ارزیابی صریح گزینه‌های قیمت‌گذاری:</h3><h4 class="doc-h4">۱. بررسی فرضیه تعرفه ۶۹۰,۰۰۰ تومان (Starter) و ۲,۱۹۰,۰۰۰ تومان (Growth):</h4><ul class="doc-ul"><li><strong>درآمد ناخالص:</strong> ۶۹۰,۰۰۰ تومان.</li><li><strong>بهای تمام‌شده واقعی (COGS):</strong> ~۴۴۰,۰۰۰ تومان.</li><li><strong>سود ناخالص:</strong> ۲۵۰,۰۰۰ تومان (<strong>حاشیه سود ناخالص: ۳۶.۲٪</strong>).</li><li><strong>نتیجه‌گیری و نقد تخصصی:</strong></li></ul><p class="doc-p">حاشیه سود ۳۶٪ برای یک کسب‌وکار B2B SaaS به شدت شکننده است. کوچک‌ترین نوسان در نرخ ارز، افزایش حجم پیام‌های ارسالی یا بالا رفتن نرخ خطاهای شبکه، حاشیه سود را منفی می‌کند. همچنین این قیمت ابزار را در حد یک ربات تلگرامی ساده بی‌ارزش جلوه می‌دهد و هیچ بودجه‌ای برای هزینه جذب مشتری (CAC) یا تیم پشتیبانی باقی نمی‌گذارد.</p><h4 class="doc-h4">۲. تعرفه تجاری و پایدار پیشنهادی (Defensible Commercial Model):</h4><div class="code-container"><div class="code-header"><span class="code-lang">code</span></div><pre><code class="language-">┌────────────────────────────────────────────────────────────────────────┐
+      <h1 class="doc-h1">طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی</h1><h2 class="doc-h2"><span class="h2-dot"></span>سامانه هوش مصنوعی رادار (Radar AI) — PriCoders</h2><p class="doc-p"><strong>نسخه سند:</strong> ۳.۱ (بازنگری اقتصادی منطبق بر واقعیت کد و بهای تمام‌شده واقعی — پاییز ۱۴۰۵ / اکتبر ۲۰۲۶)</p><p class="doc-p"><strong>دسته‌بندی:</strong> B2B Sales Opportunity Intelligence & Inbound Revenue Accelerator</p><p class="doc-p"><strong>مخاطب سند:</strong> سرمایه‌گذاران نهادی، فرشتگان سرمایه‌گذار، داوران و ارزیابان مسابقات استارتاپی و هیئت‌مدیره</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۱. دسته‌بندی داده‌های مالی و استانداردهای راستی‌آزمایی</h2><p class="doc-p">به منظور حفظ بالاترین سطح شفافیت و جلوگیری از هرگونه اغراق در ارزیابی کسب‌وکار، تمامی ارقام و محاسبات مالی این سند در یکی از ۵ طبقه زیر دسته‌بندی شده‌اند:</p><ol class="doc-ol"><li><strong>داده‌های واقعی پیاده‌سازی‌شده (Actual):</strong> برگرفته از تست مستقیم کدهای مخزن، جداول دیتابیس و توابع پردازشی.</li><li><strong>محاسبه‌شده بر مبنای پیاده‌سازی (Calculated):</strong> خروجی فرمول‌های کد با اعمال متغیرهای محیطی سیستم (<code class="inline-code">lib/pricing.ts</code>).</li><li><strong>تخمین مبتنی بر ارائه‌دهندگان سرویس (Provider-based Estimate):</strong> نرخ‌های استعلام‌شده از سرویس‌دهندگان واقعی (OpenRouter، کاوه‌نگار، ابر آروان، زرین‌پال).</li><li><strong>فرضیات بنیادین مدل کسب‌وکار (Business Assumption):</strong> برآوردهای منطقی بازار و رفتار مشتری که در مراحل بعدی نیازمند اعتبارسنجی تجربی هستند (برچسب‌گذاری‌شده با <em>[فرض بازار]</em> یا <em>[برآورد اولیه]</em>).</li><li><strong>پیش‌بینی‌های آتی (Future Projection):</strong> برون‌یابی ریاضی حاصل از فرضیات رشد و مقیاس‌پذیری (برچسب‌گذاری‌شده با <em>[پیش‌بینی آتی]</em>).</li></ol><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۲. خلاصه اجرایی (Executive Summary)</h2><p class="doc-p"><strong>رادار (Radar)</strong> یک پلتفرم هوشمندی فرصت‌های فروش بین‌شرکتی (B2B Opportunity Intelligence) است که با پایش مداوم جوامع آنلاین فارسی‌زبان (پیام‌رسان‌های بله و تلگرام، و انجمن‌های تخصصی وب)، تقاضاهای نهفته و نیازهای فعال خرید را شناسایی کرده و نویزهای عمومی را فیلتر می‌کند.</p><h3 class="doc-h3">مسئله و وضعیت موجود:</h3><ul class="doc-ul"><li>در اقتصاد دیجیتال ایران، بخش عظیمی از خریدهای سازمانی، پروژه‌های برون‌سپاری و درخواست‌های جایگزینی نرم‌افزارهای مالی، اداری و توسعه نرم‌افزار در <strong>گروه‌ها و کانال‌های تخصصی پیام‌رسان‌ها</strong> مطرح می‌شوند.</li><li>بیش از ۸۰٪ پیام‌های این گروه‌ها نویز خالص است. تیم‌های فروش یا این سیگنال‌ها را به دلیل حجم بالای پیام‌ها از دست می‌دهند، یا باید زمان نیروهای متخصص خود را ساعت‌ها صرف خواندن دستی پیام‌ها کنند.</li></ul><h3 class="doc-h3">ارزش پیشنهادی رادار:</h3><ul class="doc-ul"><li><strong>فیلترینگ ۳ لایه‌ای تدریجی:</strong> حذف بیش از ۸۰٪ نویز در لایه‌های ۰ و ۱ بدون مصرف حتی ۱ توکن هوش مصنوعی (هزینه پردازش صفر).</li><li><strong>کشف نیت و ارزش‌گذاری تجاری:</strong> ارزیابی عمیق پیام‌های واجد شرایط با مدل‌های زبانی هوشمند، تخصیص امتیاز نیت از ۰ تا ۱۰۰، استخراج نیاز مشتری و تدوین پیش‌نویس پاسخ فارسی برای کارشناس فروش در کمتر از ۳ ثانیه.</li><li><strong>استقلال کامل از زیرساخت‌های خارجی:</strong> قابلیت میزبانی ۱۰۰٪ داخلی بر بستر دیتاسنترهای مقیم کشور با تضمین تداوم کار در زمان اختلالات اینترنت بین‌الملل.</li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۳. پرسونای مشتریان، منطق ارزش و انگیزه پرداخت</h2><p class="doc-p">رادار برای افراد عادی یا مصارف عمومی ساخته نشده است. مشتریان هدف رادار کسب‌وکارهایی هستند که <strong>ارزش هر معامله آن‌ها (Deal Size) بین ۱۵ تا ۲۰۰ میلیون تومان</strong> است و بستن تنها یک معامله در ماه از طریق رادار، چند برابر هزینه اشتراک سالانه آن‌ها را بازمی‌گرداند.</p><h3 class="doc-h3">۱. شرکت‌های نرم‌افزاری و ارائه‌دهندگان B2B SaaS (مانند حساب‌آنلاین پارس)</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> ۱۵ تا ۵۰ نفر پرسنل، فروش نرم‌افزارهای ابری مالیاتی، ERP، مدیریت ارتباط با مشتریان (CRM).</li><li><strong>چرا پرداخت می‌کنند:</strong> مشتریان روزانه در گروه‌های تجاری از قطعی نرم‌افزارهای سنتی یا چالش‌های سامانه مودیان گلایه دارند. سرعت پاسخگویی در ۵ دقیقه اول به معنای بردن رقابت از سایر رقبا است.</li><li><strong>شغل مورد نظر (JTBD):</strong> کشف لحظه‌ای شرکت‌هایی که به دنبال جایگزین نرم‌افزارهای حسابداری یا فروشگاهی هستند.</li></ul><h3 class="doc-h3">۲. آژانس‌های دیجیتال مارکتینگ و شرکت‌های توسعه نرم‌افزار</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> ۱۰ تا ۳۰ نفر، مجری پروژه‌های طراحی سایت، سئو، توسعه اپلیکیشن و کمپین‌های تبلیغاتی.</li><li><strong>چرا پرداخت می‌کنند:</strong> جذب پروژه از طریق تماس‌های سرد بازدهی بسیار پایینی دارد. در گروه‌های تجاری روزانه ده‌ها کارفرما تقاضای معرفی برنامه‌نویس یا مجری سئو با بودجه‌های مشخص می‌کنند.</li><li><strong>شغل مورد نظر (JTBD):</strong> دریافت هشدارهای فوری پروژه‌های با بودجه بالای ۵۰ میلیون تومان همراه با پیش‌نویس پاسخ فنی و متقاعدکننده.</li></ul><h3 class="doc-h3">۳. شرکت‌های خدمات مالی، حقوقی و مشاوره بازرگانی</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> دفاتری با ارزش قرارداد پرونده‌ای ۵۰ تا ۵۰۰ میلیون تومان.</li><li><strong>چرا پرداخت می‌کنند:</strong> تقاضای خدمات مالیاتی یا ترخیص گمرکی اغلب در لحظه بحران یا مسدود شدن حساب‌ها مطرح می‌شود؛ هر پاسخی که سریع‌تر، فنی‌تر و مستدل‌تر باشد برنده پرونده است.</li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۴. کالبدشکافی بهای تمام‌شده عملیاتی (Comprehensive COGS Model)</h2><p class="doc-p">در سامانه‌های هوش مصنوعی عملیاتی در ایران، بهای تمام‌شده صرفاً به هزینه توکن خام خلاصه نمی‌شود. جدول زیر ساختار بهای تمام‌شده ماهانه به‌ازای یک مشتری فعال را به تفکیک مؤلفه‌ها نمایش می‌دهد:</p><h3 class="doc-h3">الف. هزینه‌های متغیر و وابسته به حجم مصرف (Variable Costs)</h3><div class="table-container"><table><thead><tr><th>مؤلفه هزینه</th><th>مبنای محاسبه در کد و محیط</th><th>هزینه در پلن استارتر (۱۵,۰۰۰ پیام)</th><th>هزینه در پلن رشد (۵۰,۰۰۰ پیام)</th><th>دسته‌بندی داده</th></tr></thead><tbody><tr class="even"><td><strong>پردازش هوش مصنوعی (LLM)</strong></td><td>فیلتر ۸۵٪ پیام‌ها در لایه ۰/۱ (رایگان). پردازش ۱۵٪ در لایه ۲ با هزینه میانگین ۳۸ تومان</td><td>۸۵,۵۰۰ تومان</td><td>۲۸۵,۰۰۰ تومان</td><td>محاسبه‌شده بر مبنای پیاده‌سازی</td></tr><tr class="odd"><td><strong>پیامک هشدارهای آنی</strong></td><td>۱۰۰ تا ۳۰۰ پیامک هشدار برای لیدهای با امتیاز بالا (هر پارت ۲۵۰ تومان)</td><td>۲۵,۰۰۰ تومان</td><td>۷۵,۰۰۰ تومان</td><td>تخمین مبتنی بر تعرفه اپراتور</td></tr><tr class="even"><td><strong>کارمزد شبکه پرداخت</strong></td><td>کارمزد درگاه پرداخت و شاپرک (۰.۵٪ تا ۱٪ مبلغ فاکتور)</td><td>۱۹,۰۰۰ تومان</td><td>۴۸,۰۰۰ تومان</td><td>داده واقعی شاپرک/درگاه</td></tr><tr class="odd"><td><strong>ترافیک شبکه و پراکسی</strong></td><td>مصرف پهنای باند و آی‌پی پایدار جهت استعلام و ارتباطات وب‌هوک</td><td>۸۰,۰۰۰ تومان</td><td>۱۸۰,۰۰۰ تومان</td><td>تخمین مبتنی بر تعرفه سرور</td></tr><tr class="even"><td><strong>جمع کل هزینه‌های متغیر</strong></td><td>—</td><td><strong>۲۰۹,۵۰۰ تومان</strong></td><td><strong>۵۸۸,۰۰۰ تومان</strong></td><td>محاسبه‌شده</td></tr></tbody></table></div><h3 class="doc-h3">ب. هزینه‌های ثابت و سرشکن‌شده زیرساخت (Fixed / Shared Costs)</h3><div class="table-container"><table><thead><tr><th>مؤلفه زیرساختی</th><th>مبنای برآورد در مقیاس ۱۰۰ مشتری</th><th>سهم سرشکن هر مشتری</th><th>دسته‌بندی داده</th></tr></thead><tbody><tr class="even"><td><strong>سرور ابری و پایگاه‌داده</strong></td><td>سرور اختصاصی ابری (ابر آروان / هتزنر) ماهانه ۱۰ میلیون تومان</td><td>۱۰۰,۰۰۰ تومان</td><td>تخمین مبتنی بر تعرفه کلاد</td></tr><tr class="odd"><td><strong>فضای ذخیره‌سازی و بکاپ</strong></td><td>پشتیبان‌گیری شبانه پایگاه داده SQLite و آرشیو ماهانه ۳ میلیون تومان</td><td>۳۰,۰۰۰ تومان</td><td>تخمین سرور ذخیره‌سازی</td></tr><tr class="even"><td><strong>مانیتورینگ و آپ‌تایم</strong></td><td>پایش پیوسته سرویس‌ها و هشدار خطاها</td><td>۲۰,۰۰۰ تومان</td><td>برآورد عملیاتی</td></tr><tr class="odd"><td><strong>پشتیبانی فنی و هلپ‌دسک</strong></td><td>کارشناس پشتیبانی و نگهداری مشتریان سرشکن بر اعضا</td><td>۸۰,۰۰۰ تومان</td><td>برآورد منابع انسانی</td></tr><tr class="even"><td><strong>جمع کل سهم هزینه‌های ثابت</strong></td><td>—</td><td><strong>۲۳۰,۰۰۰ تومان</strong></td><td>محاسبه سرشکن</td></tr></tbody></table></div><h3 class="doc-h3">جمع کل بهای تمام‌شده (COGS) به‌ازای هر مشترک:</h3><ul class="doc-ul"><li><strong>پلن استارتر:</strong> ۲۰۹,۵۰۰ + ۲۳۰,۰۰۰ = <strong>۴۳۹,۵۰۰ تومان / ماه</strong> (تقریباً ۴۴۰,۰۰۰ تومان)</li><li><strong>پلن رشد:</strong> ۵۸۸,۰۰۰ + ۲۳۰,۰۰۰ = <strong>۸۱۸,۰۰۰ تومان / ماه</strong> (تقریباً ۸۲۰,۰۰۰ تومان)</li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۵. تحلیل تطبیقی مدل‌های قیمت‌گذاری (Pricing Evaluation & Upgrade Logic)</h2><h3 class="doc-h3">ارزیابی صریح گزینه‌های قیمت‌گذاری:</h3><h4 class="doc-h4">۱. بررسی فرضیه تعرفه ۶۹۰,۰۰۰ تومان (Starter) و ۲,۱۹۰,۰۰۰ تومان (Growth):</h4><ul class="doc-ul"><li><strong>درآمد ناخالص:</strong> ۶۹۰,۰۰۰ تومان.</li><li><strong>بهای تمام‌شده واقعی (COGS):</strong> ~۴۴۰,۰۰۰ تومان.</li><li><strong>سود ناخالص:</strong> ۲۵۰,۰۰۰ تومان (<strong>حاشیه سود ناخالص: ۳۶.۲٪</strong>).</li><li><strong>نتیجه‌گیری و نقد تخصصی:</strong></li></ul><p class="doc-p">حاشیه سود ۳۶٪ برای یک کسب‌وکار B2B SaaS به شدت شکننده است. کوچک‌ترین نوسان در نرخ ارز، افزایش حجم پیام‌های ارسالی یا بالا رفتن نرخ خطاهای شبکه، حاشیه سود را منفی می‌کند. همچنین این قیمت ابزار را در حد یک ربات تلگرامی ساده بی‌ارزش جلوه می‌دهد و هیچ بودجه‌ای برای هزینه جذب مشتری (CAC) یا تیم پشتیبانی باقی نمی‌گذارد.</p><h4 class="doc-h4">۲. تعرفه تجاری و پایدار پیشنهادی (Defensible Commercial Model):</h4><div class="code-container"><div class="code-header"><span class="code-lang">code</span></div><pre><code class="language-">┌────────────────────────────────────────────────────────────────────────┐
 │                        پلن‌های اشتراک تجاری رادار                      │
 ├──────────────────────────┬──────────────────────┬──────────────────────┤
 │ مشخصه                    │ پلن استارتر (Starter)│ پلن رشد (Growth)     │
@@ -478,7 +548,7 @@
 │ بهای تمام‌شده (COGS)     │ ۴۴۰,۰۰۰ تومان        │ ۸۲۰,۰۰۰ تومان        │
 │ سود ناخالص ماهانه        │ ۱,۴۵۰,۰۰۰ تومان      │ ۴,۰۷۰,۰۰۰ تومان      │
 │ حاشیه سود ناخالص         │ ۷۶.۷٪                │ ۸۳.۲٪                │
-└──────────────────────────┴──────────────────────┴──────────────────────┘</code></pre></div><p class="doc-p"><em>(یادداشت تطبیق با داشبورد و لندینگ):</em></p><p class="doc-p">در صفحه اصلی لندینگ، پلن استارتر با قیمت اولیه ۳,۲۰۰,۰۰۰ تومان با تخفیف دوره‌ای معرفی شده است. جهت یکدستی با استانداردهای سرمایه‌گذاری، رقم پایه قابل دفاع در این سند بر مبنای تعرفه پایدار <strong>۱,۸۹۰,۰۰۰ تومان</strong> مدل‌سازی شده است تا حاشیه سود ناخالص بالای ۷۵٪ کاملاً تضمین گردد.</p><h3 class="doc-h3">منطق ارتقا میان پلن‌ها (Upgrade Drivers):</h3><p class="doc-p">مشتری به دلایل زیر از پلن استارتر به پلن رشد ارتقا می‌یابد:</p><p class="doc-p">۱. <strong>اشباع سقف پیام:</strong> با رسیدن به انتهای ظرفیت ۱۵,۰۰۰ پیام در ماه.</p><p class="doc-p">۲. <strong>افزایش اعضای تیم فروش:</strong> نیاز به توزیع لیدها میان چند کارشناس فروش (۱ کاربر به ۵ کاربر).</p><p class="doc-p">۳. <strong>اتصال خودکار به CRM:</strong> ارسال مستقیم لیدهای تأییدشده به سامانه‌های دیدار یا پیام‌گستر از طریق وب‌هوک.</p><p class="doc-p">۴. <strong>پشتیبانی از چند محصول:</strong> امکان تعریف همزمان چند شناسنامه محصول و ICP مجزا در سامانه.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۶. اقتصاد واحد در سناریوهای مقیاس‌پذیری (Scale Economics)</h2><p class="doc-p">بر مبنای ترکیب فرضی ۷۰٪ پلن استارتر و ۳۰٪ پلن رشد:</p><ul class="doc-ul"><li><strong>میانگین درآمد به‌ازای هر مشتری (ARPU):</strong></li></ul><p class="doc-p">(۰.۷ × ۱,۸۹۰,۰۰۰) + (۰.۳ × ۴,۸۹۰,۰۰۰) = ۱,۳۲۳,۰۰۰ + ۱,۴۶۷,۰۰۰ = <strong>۲,۷۹۰,۰۰۰ تومان / ماه</strong></p><ul class="doc-ul"><li><strong>میانگین بهای تمام‌شده به‌ازای هر مشتری (Blended COGS):</strong></li></ul><p class="doc-p">(۰.۷ × ۴۴۰,۰۰۰) + (۰.۳ × ۸۲۰,۰۰۰) = ۳۰۸,۰۰۰ + ۲۴۶,۰۰۰ = <strong>۵۵۴,۰۰۰ تومان / ماه</strong></p><ul class="doc-ul"><li><strong>میانگین حاشیه سود ناخالص:</strong> <strong>۸۰.۱٪</strong></li></ul><h3 class="doc-h3">تحلیل سناریوها:</h3><div class="code-container"><div class="code-header"><span class="code-lang">code</span></div><pre><code class="language-">┌────────────────────────────────────────────────────────────────────────┐
+└──────────────────────────┴──────────────────────┴──────────────────────┘</code></pre></div><p class="doc-p"><em>(یادداشت تطبیق با داشبورد و لندینگ):</em></p><p class="doc-p">در صفحه اصلی لندینگ، پلن استارتر با قیمت اولیه ۳,۲۰۰,۰۰۰ تومان با تخفیف دوره‌ای معرفی شده است. جهت یکدستی با استانداردهای سرمایه‌گذاری، رقم پایه قابل دفاع در این سند بر مبنای تعرفه پایدار <strong>۱,۸۹۰,۰۰۰ تومان</strong> مدل‌سازی شده است تا حاشیه سود ناخالص بالای ۷۵٪ کاملاً تضمین گردد.</p><h3 class="doc-h3">منطق ارتقا میان پلن‌ها (Upgrade Drivers):</h3><p class="doc-p">مشتری به دلایل زیر از پلن استارتر به پلن رشد ارتقا می‌یابد:</p><p class="doc-p">۱. <strong>اشباع سقف پیام:</strong> با رسیدن به انتهای ظرفیت ۱۵,۰۰۰ پیام در ماه.</p><p class="doc-p">۲. <strong>افزایش اعضای تیم فروش:</strong> نیاز به توزیع لیدها میان چند کارشناس فروش (۱ کاربر به ۵ کاربر).</p><p class="doc-p">۳. <strong>اتصال خودکار به CRM:</strong> ارسال مستقیم لیدهای تأییدشده به سامانه‌های دیدار یا پیام‌گستر از طریق وب‌هوک.</p><p class="doc-p">۴. <strong>پشتیبانی از چند محصول:</strong> امکان تعریف همزمان چند شناسنامه محصول و ICP مجزا در سامانه.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۶. اقتصاد واحد در سناریوهای مقیاس‌پذیری (Scale Economics)</h2><p class="doc-p">بر مبنای ترکیب فرضی ۷۰٪ پلن استارتر و ۳۰٪ پلن رشد:</p><ul class="doc-ul"><li><strong>میانگین درآمد به‌ازای هر مشتری (ARPU):</strong></li></ul><p class="doc-p">(۰.۷ × ۱,۸۹۰,۰۰۰) + (۰.۳ × ۴,۸۹۰,۰۰۰) = ۱,۳۲۳,۰۰۰ + ۱,۴۶۷,۰۰۰ = <strong>۲,۷۹۰,۰۰۰ تومان / ماه</strong></p><ul class="doc-ul"><li><strong>میانگین بهای تمام‌شده به‌ازای هر مشتری (Blended COGS):</strong></li></ul><p class="doc-p">(۰.۷ × ۴۴۰,۰۰۰) + (۰.۳ × ۸۲۰,۰۰۰) = ۳۰۸,۰۰۰ + ۲۴۶,۰۰۰ = <strong>۵۵۴,۰۰۰ تومان / ماه</strong></p><ul class="doc-ul"><li><strong>میانگین حاشیه سود ناخالص:</strong> <strong>۸۰.۱٪</strong></li></ul><h3 class="doc-h3">تحلیل سناریوها:</h3><div class="code-container"><div class="code-header"><span class="code-lang">code</span></div><pre><code class="language-">┌────────────────────────────────────────────────────────────────────────┐
 │                        سناریوهای مقیاس‌پذیری رادار                      │
 ├──────────────────────────┬──────────────┬──────────────┬───────────────┤
 │ شاخص مالی                │ ۱۰ مشتری      │ ۱۰۰ مشتری    │ ۱,۰۰۰ مشتری   │
@@ -490,7 +560,7 @@
 │ حاشیه سود ناخالص         │ ۸۰.۱٪        │ ۸۰.۱٪        │ ۸۰.۱٪         │
 │ هزینه ثابت اختصاصی سرور  │ ۵,۰۰۰,۰۰۰ ت   │ ۱۰,۰۰۰,۰۰۰ ت │ ۴۵,۰۰۰,۰۰۰ ت  │
 │ سود عملیاتی ماهانه (EBITDA)| ۱۷,۳۶۰,۰۰۰ ت  │ ۲۱۳,۶۰۰,۰۰۰ ت│ ۲,۱۹۱,۰۰۰,۰۰۰ت│
-└──────────────────────────┴──────────────┴──────────────┴───────────────┘</code></pre></div><p class="doc-p"><em>[پیش‌بینی آتی بر مبنای فرضیات مدل]</em></p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۷. اندازه بازار (TAM / SAM / SOM)</h2><p class="doc-p">تمامی ارقام این بخش به عنوان <strong>[برآورد اولیه و فرض بازار]</strong> طبقه‌بندی شده‌اند و برگرفته از سرشماری تقریبی شرکت‌های ثبت‌شده فناوری و بازرگانی در ایران هستند:</p><div class="code-container"><div class="code-header"><span class="code-lang">code</span></div><pre><code class="language-">┌────────────────────────────────────────────────────────────────────────┐
+└──────────────────────────┴──────────────┴──────────────┴───────────────┘</code></pre></div><p class="doc-p"><em>[پیش‌بینی آتی بر مبنای فرضیات مدل]</em></p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۷. اندازه بازار (TAM / SAM / SOM)</h2><p class="doc-p">تمامی ارقام این بخش به عنوان <strong>[برآورد اولیه و فرض بازار]</strong> طبقه‌بندی شده‌اند و برگرفته از سرشماری تقریبی شرکت‌های ثبت‌شده فناوری و بازرگانی در ایران هستند:</p><div class="code-container"><div class="code-header"><span class="code-lang">code</span></div><pre><code class="language-">┌────────────────────────────────────────────────────────────────────────┐
 │                        اندازه بازار رادار (برآورد اولیه)               │
 ├────────────────────────────────────────────────────────────────────────┤
 │ TAM (کل بازار بالقوه در ایران):                                         │
@@ -506,7 +576,7 @@
 │ SOM (سهم بازار هدف واقع‌بینانه رادار در ۲۴ ماه نخست):                 │
 │ • جذب ۳۵۰ مشترک فعال تجاری (معادل حدود ۴٪ از بازار SAM).               │
 │ • درآمد سالانه هدف (ARR): ۱۱.۷ میلیارد تومان                           │
-└────────────────────────────────────────────────────────────────────────┘</code></pre></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۸. پیش‌بینی‌های مالی و جدول درآمدی ۳ ساله</h2><h3 class="doc-h3">فرضیات کلیدی مدل:</h3><ul class="doc-ul"><li><strong>نرخ ریزش ماهانه (Monthly Churn):</strong> ۴.۵٪ در سال اول، کاهش به ۳٪ در سال‌های دوم و سوم. <em>[فرض بازار]</em></li><li><strong>هزینه جذب هر مشتری (CAC):</strong> حدود ۱,۸۰۰,۰۰۰ تا ۲,۵۰۰,۰۰۰ تومان از طریق بازاریابی درون‌گرا، دموی مستقیم و شبکه‌سازی رویدادها. <em>[فرض بازار]</em></li><li><strong>دوره بازگشت هزینه جذب (CAC Payback):</strong> کمتر از ۲ ماه.</li></ul><h3 class="doc-h3">جدول پیش‌بینی درآمدی:</h3><div class="table-container"><table><thead><tr><th>دوره زمانی</th><th>تعداد مشترکین انتهای دوره</th><th>درآمد ماهانه پایانی (MRR)</th><th>درآمد سالانه کل (ARR)</th><th>سود ناخالص سالانه</th><th>دسته‌بندی</th></tr></thead><tbody><tr class="even"><td><strong>سال اول (۱۴۰۶)</strong></td><td>۵۰ شرکت</td><td>۱۳۹,۵۰۰,۰۰۰ تومان</td><td>۱,۱۲۰,۰۰۰,۰۰۰ تومان</td><td>۸۹۵,۰۰۰,۰۰۰ تومان</td><td>پیش‌بینی آتی</td></tr><tr class="odd"><td><strong>سال دوم (۱۴۰۷)</strong></td><td>۱۸۰ شرکت</td><td>۵۰۲,۲۰۰,۰۰۰ تومان</td><td>۴,۵۱۰,۰۰۰,۰۰۰ تومان</td><td>۳,۶۱۰,۰۰۰,۰۰۰ تومان</td><td>پیش‌بینی آتی</td></tr><tr class="even"><td><strong>سال سوم (۱۴۰۸)</strong></td><td>۴۵۰ شرکت</td><td>۱,۲۵۵,۵۰۰,۰۰۰ تومان</td><td>۱۲,۸۰۰,۰۰۰,۰۰۰ تومان</td><td>۱۰,۲۵۰,۰۰۰,۰۰۰ تومان</td><td>پیش‌بینی آتی</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۹. تحلیل ریسک‌ها و راهکارهای مدیریت بحران</h2><div class="table-container"><table><thead><tr><th>عنوان ریسک</th><th>احتمال</th><th>شدت</th><th>راهکار پیش‌بینی‌شده در معماری و بیزینس</th></tr></thead><tbody><tr class="even"><td><strong>محدودسازی وب‌هوک‌ها توسط پلتفرم‌ها</strong></td><td>متوسط</td><td>بالا</td><td>تنوع‌بخشی به ورودی‌ها (پشتیبانی همزمان از بله، تلگرام و API مستقیم)، طراحی لایه دریافت ماژولار.</td></tr><tr class="odd"><td><strong>نوسانات شدید نرخ ارز و هزینه توکن</strong></td><td>بالا</td><td>کم</td><td>به دلیل فیلتر ۸۵٪ پیام‌ها در لایه‌های رایگان، سهم توکن در کل بهای تمام‌شده زیر ۲۰٪ است و حاشیه سود بالای ۷۵٪ شوک‌های ارزی را کاملاً خنثی می‌کند.</td></tr><tr class="even"><td><strong>قطع کامل اینترنت بین‌الملل</strong></td><td>بالا</td><td>متوسط</td><td>سامانه ۱۰۰٪ داخلی است؛ در صورت قطعی کامل، موتور Heuristic آفلاین رادار تریاژ را بدون وابستگی ابری ادامه می‌دهد.</td></tr><tr class="odd"><td><strong>تزریق پرامپت و خرابکاری در پیام‌ها</strong></td><td>متوسط</td><td>متوسط</td><td>اجرای پروتکل دفاع ۴ لایه با کپسوله‌سازی XML و مسدودسازی الگوهای حمله در لایه ۰ پیش‌فیلتر.</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-indicator"></span>۱۰. درخواست سرمایه‌گذاری و تخصیص منابع (The Ask)</h2><p class="doc-p">تیم PriCoders برای تسریع در دستیابی به هدف ۳۵۰ مشتری فعال و گسترش زیرساخت در بازه زمانی ۱۲ ماهه، در حال جذب منابع به شرح زیر است:</p><ul class="doc-ul"><li><strong>مبلغ سرمایه‌گذاری پیشنهادی:</strong> <strong>۳.۵ میلیارد تومان</strong> در ازای واگذاری سهم اقلیت توافقی.</li><li><strong>برنامه تخصیص منابع:</strong></li><li><strong>۴۵٪ توسعه محصول و زیرساخت هوش مصنوعی:</strong> فاین‌تیون مدل بومی سبک، توسعه خزنده‌های توزیع‌شده و کانکتورهای اختصاصی CRM.</li><li><strong>۳۵٪ بازاریابی B2B، فروش سازمانی و جذب مشتری:</strong> برگزاری وبینارها، دموی مستقیم با مدیران فروش و تبلیغات هدفمند B2B.</li><li><strong>۲۰٪ هزینه‌های جاری و ذخیره امنیتی:</strong> سرورهای اختصاصی پردازش گرافیکی داخلی، درگاه‌های پیامکی و پشتیبانی فنی.</li></ul>
+└────────────────────────────────────────────────────────────────────────┘</code></pre></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۸. پیش‌بینی‌های مالی و جدول درآمدی ۳ ساله</h2><h3 class="doc-h3">فرضیات کلیدی مدل:</h3><ul class="doc-ul"><li><strong>نرخ ریزش ماهانه (Monthly Churn):</strong> ۴.۵٪ در سال اول، کاهش به ۳٪ در سال‌های دوم و سوم. <em>[فرض بازار]</em></li><li><strong>هزینه جذب هر مشتری (CAC):</strong> حدود ۱,۸۰۰,۰۰۰ تا ۲,۵۰۰,۰۰۰ تومان از طریق بازاریابی درون‌گرا، دموی مستقیم و شبکه‌سازی رویدادها. <em>[فرض بازار]</em></li><li><strong>دوره بازگشت هزینه جذب (CAC Payback):</strong> کمتر از ۲ ماه.</li></ul><h3 class="doc-h3">جدول پیش‌بینی درآمدی:</h3><div class="table-container"><table><thead><tr><th>دوره زمانی</th><th>تعداد مشترکین انتهای دوره</th><th>درآمد ماهانه پایانی (MRR)</th><th>درآمد سالانه کل (ARR)</th><th>سود ناخالص سالانه</th><th>دسته‌بندی</th></tr></thead><tbody><tr class="even"><td><strong>سال اول (۱۴۰۶)</strong></td><td>۵۰ شرکت</td><td>۱۳۹,۵۰۰,۰۰۰ تومان</td><td>۱,۱۲۰,۰۰۰,۰۰۰ تومان</td><td>۸۹۵,۰۰۰,۰۰۰ تومان</td><td>پیش‌بینی آتی</td></tr><tr class="odd"><td><strong>سال دوم (۱۴۰۷)</strong></td><td>۱۸۰ شرکت</td><td>۵۰۲,۲۰۰,۰۰۰ تومان</td><td>۴,۵۱۰,۰۰۰,۰۰۰ تومان</td><td>۳,۶۱۰,۰۰۰,۰۰۰ تومان</td><td>پیش‌بینی آتی</td></tr><tr class="even"><td><strong>سال سوم (۱۴۰۸)</strong></td><td>۴۵۰ شرکت</td><td>۱,۲۵۵,۵۰۰,۰۰۰ تومان</td><td>۱۲,۸۰۰,۰۰۰,۰۰۰ تومان</td><td>۱۰,۲۵۰,۰۰۰,۰۰۰ تومان</td><td>پیش‌بینی آتی</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۹. تحلیل ریسک‌ها و راهکارهای مدیریت بحران</h2><div class="table-container"><table><thead><tr><th>عنوان ریسک</th><th>احتمال</th><th>شدت</th><th>راهکار پیش‌بینی‌شده در معماری و بیزینس</th></tr></thead><tbody><tr class="even"><td><strong>محدودسازی وب‌هوک‌ها توسط پلتفرم‌ها</strong></td><td>متوسط</td><td>بالا</td><td>تنوع‌بخشی به ورودی‌ها (پشتیبانی همزمان از بله، تلگرام و API مستقیم)، طراحی لایه دریافت ماژولار.</td></tr><tr class="odd"><td><strong>نوسانات شدید نرخ ارز و هزینه توکن</strong></td><td>بالا</td><td>کم</td><td>به دلیل فیلتر ۸۵٪ پیام‌ها در لایه‌های رایگان، سهم توکن در کل بهای تمام‌شده زیر ۲۰٪ است و حاشیه سود بالای ۷۵٪ شوک‌های ارزی را کاملاً خنثی می‌کند.</td></tr><tr class="even"><td><strong>قطع کامل اینترنت بین‌الملل</strong></td><td>بالا</td><td>متوسط</td><td>سامانه ۱۰۰٪ داخلی است؛ در صورت قطعی کامل، موتور Heuristic آفلاین رادار تریاژ را بدون وابستگی ابری ادامه می‌دهد.</td></tr><tr class="odd"><td><strong>تزریق پرامپت و خرابکاری در پیام‌ها</strong></td><td>متوسط</td><td>متوسط</td><td>اجرای پروتکل دفاع ۴ لایه با کپسوله‌سازی XML و مسدودسازی الگوهای حمله در لایه ۰ پیش‌فیلتر.</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۱۰. درخواست سرمایه‌گذاری و تخصیص منابع (The Ask)</h2><p class="doc-p">تیم PriCoders برای تسریع در دستیابی به هدف ۳۵۰ مشتری فعال و گسترش زیرساخت در بازه زمانی ۱۲ ماهه، در حال جذب منابع به شرح زیر است:</p><ul class="doc-ul"><li><strong>مبلغ سرمایه‌گذاری پیشنهادی:</strong> <strong>۳.۵ میلیارد تومان</strong> در ازای واگذاری سهم اقلیت توافقی.</li><li><strong>برنامه تخصیص منابع:</strong></li><li><strong>۴۵٪ توسعه محصول و زیرساخت هوش مصنوعی:</strong> فاین‌تیون مدل بومی سبک، توسعه خزنده‌های توزیع‌شده و کانکتورهای اختصاصی CRM.</li><li><strong>۳۵٪ بازاریابی B2B، فروش سازمانی و جذب مشتری:</strong> برگزاری وبینارها، دموی مستقیم با مدیران فروش و تبلیغات هدفمند B2B.</li><li><strong>۲۰٪ هزینه‌های جاری و ذخیره امنیتی:</strong> سرورهای اختصاصی پردازش گرافیکی داخلی، درگاه‌های پیامکی و پشتیبانی فنی.</li></ul>
     </article>
   </main>
 </body>

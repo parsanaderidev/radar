@@ -7,7 +7,7 @@
   "5": "طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی",
   "6": "compilerOptions",
   "7": "components.json",
-  "8": "مستندات فنی جامع سامانه رادار",
+  "8": "convert_all_docs_to_pdf.ts",
   "9": "DEPLOY.sh",
   "10": "Favicon SVG Image",
   "11": "3-Layer Triage Pipeline",
@@ -27,9 +27,7 @@
   "25": "devDependencies",
   "26": "راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders",
   "27": "ingest.ts",
-  "28": "راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders",
   "29": "proxy.ts",
   "30": "next.config.ts",
-  "31": "build_docs_html.ts",
   "32": "logout/route.ts"
 }

@@ -104,19 +104,6 @@
       "source_location": "L3"
     },
     {
-      "id": "components_leadcard_leadcardprops",
-      "label": "LeadCardProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Icons.tsx",
-      "file_type": "code",
-      "norm_label": "leadcardprops",
-      "source_file": "components/LeadCard.tsx",
-      "source_location": "L20"
-    },
-    {
       "id": "components_metricsheader_metricsheaderprops",
       "label": "MetricsHeaderProps",
       "_callable": true,
@@ -141,19 +128,6 @@
       "norm_label": "navbarprops",
       "source_file": "components/Navbar.tsx",
       "source_location": "L15"
-    },
-    {
-      "id": "lib_pocketbase_leadrecord",
-      "label": "LeadRecord",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Icons.tsx",
-      "file_type": "code",
-      "norm_label": "leadrecord",
-      "source_file": "lib/pocketbase.ts",
-      "source_location": "L62"
     },
     {
       "id": "lib_pricing_communitymetricssummary",
@@ -234,6 +208,19 @@
       "source_location": "L14"
     },
     {
+      "id": "components_leadcard_leadcardprops",
+      "label": "LeadCardProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "leadcardprops",
+      "source_file": "components/LeadCard.tsx",
+      "source_location": "L20"
+    },
+    {
       "id": "lib_auth_authsession",
       "label": "AuthSession",
       "_callable": true,
@@ -260,17 +247,17 @@
       "source_location": "L11"
     },
     {
-      "id": "lib_pocketbase_productrecord",
-      "label": "ProductRecord",
+      "id": "lib_pocketbase_leadrecord",
+      "label": "LeadRecord",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "auth.ts",
       "file_type": "code",
-      "norm_label": "productrecord",
+      "norm_label": "leadrecord",
       "source_file": "lib/pocketbase.ts",
-      "source_location": "L23"
+      "source_location": "L62"
     },
     {
       "id": "lib_pocketbase_sourcerecord",
@@ -336,32 +323,6 @@
       "norm_label": "ratelimitrecord",
       "source_file": "lib/rateLimit.ts",
       "source_location": "L6"
-    },
-    {
-      "id": "lib_validation_validationerror",
-      "label": "ValidationError",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "validationerror",
-      "source_file": "lib/validation.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "lib_validation_validationresult",
-      "label": "ValidationResult",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "validationresult",
-      "source_file": "lib/validation.ts",
-      "source_location": "L11"
     },
     {
       "id": "scripts_seed_demo_demomessagedefinition",
@@ -585,6 +546,32 @@
       "source_location": "L12"
     },
     {
+      "id": "lib_validation_validationerror",
+      "label": "ValidationError",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "ingest.ts",
+      "file_type": "code",
+      "norm_label": "validationerror",
+      "source_file": "lib/validation.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "lib_validation_validationresult",
+      "label": "ValidationResult",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "ingest.ts",
+      "file_type": "code",
+      "norm_label": "validationresult",
+      "source_file": "lib/validation.ts",
+      "source_location": "L11"
+    },
+    {
       "id": "lib_llm_evaluatemessageinput",
       "label": "EvaluateMessageInput",
       "_callable": true,
@@ -635,6 +622,19 @@
       "norm_label": "triageoutcome",
       "source_file": "lib/pipeline.ts",
       "source_location": "L28"
+    },
+    {
+      "id": "lib_pocketbase_productrecord",
+      "label": "ProductRecord",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "productrecord",
+      "source_file": "lib/pocketbase.ts",
+      "source_location": "L23"
     },
     {
       "id": "lib_pocketbase_rawmessagerecord",
@@ -1290,18 +1290,6 @@
       "source_location": "L43"
     },
     {
-      "id": "app_api_analyze_route_post",
-      "label": "POST()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "app/api/analyze/route.ts",
-      "source_location": "L10"
-    },
-    {
       "id": "app_api_auth_login_route_post",
       "label": "POST()",
       "_callable": true,
@@ -1312,6 +1300,18 @@
       "norm_label": "post()",
       "source_file": "app/api/auth/login/route.ts",
       "source_location": "L15"
+    },
+    {
+      "id": "app_api_auth_logout_route_post",
+      "label": "POST()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "app/api/auth/logout/route.ts",
+      "source_location": "L6"
     },
     {
       "id": "app_api_auth_register_route_post",
@@ -1518,6 +1518,18 @@
       "source_location": "L92"
     },
     {
+      "id": "lib_auth_formatonboardedclearcookie",
+      "label": "formatOnboardedClearCookie()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "formatonboardedclearcookie()",
+      "source_file": "lib/auth.ts",
+      "source_location": "L327"
+    },
+    {
       "id": "lib_auth_formatonboardedsetcookie",
       "label": "formatOnboardedSetCookie()",
       "_callable": true,
@@ -1528,6 +1540,18 @@
       "norm_label": "formatonboardedsetcookie()",
       "source_file": "lib/auth.ts",
       "source_location": "L309"
+    },
+    {
+      "id": "lib_auth_formatsessionclearcookie",
+      "label": "formatSessionClearCookie()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "formatsessionclearcookie()",
+      "source_file": "lib/auth.ts",
+      "source_location": "L320"
     },
     {
       "id": "lib_auth_formatsessionsetcookie",
@@ -1780,42 +1804,6 @@
       "norm_label": "getclientip()",
       "source_file": "lib/rateLimit.ts",
       "source_location": "L84"
-    },
-    {
-      "id": "lib_validation_validateanalyzeinput",
-      "label": "validateAnalyzeInput()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "validateanalyzeinput()",
-      "source_file": "lib/validation.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "lib_validation_validateleadstatusinput",
-      "label": "validateLeadStatusInput()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "validateleadstatusinput()",
-      "source_file": "lib/validation.ts",
-      "source_location": "L127"
-    },
-    {
-      "id": "lib_validation_validatesettingsinput",
-      "label": "validateSettingsInput()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "validatesettingsinput()",
-      "source_file": "lib/validation.ts",
-      "source_location": "L173"
     },
     {
       "id": "pocketbase_setup_schema_setupschema",
@@ -2202,6 +2190,42 @@
       "source_location": "L20"
     },
     {
+      "id": "lib_validation_validateanalyzeinput",
+      "label": "validateAnalyzeInput()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "ingest.ts",
+      "file_type": "code",
+      "norm_label": "validateanalyzeinput()",
+      "source_file": "lib/validation.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "lib_validation_validateleadstatusinput",
+      "label": "validateLeadStatusInput()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "ingest.ts",
+      "file_type": "code",
+      "norm_label": "validateleadstatusinput()",
+      "source_file": "lib/validation.ts",
+      "source_location": "L127"
+    },
+    {
+      "id": "lib_validation_validatesettingsinput",
+      "label": "validateSettingsInput()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "ingest.ts",
+      "file_type": "code",
+      "norm_label": "validatesettingsinput()",
+      "source_file": "lib/validation.ts",
+      "source_location": "L173"
+    },
+    {
       "id": "proxy_parseedgejwtpayload",
       "label": "parseEdgeJwtPayload()",
       "_callable": true,
@@ -2224,6 +2248,18 @@
       "norm_label": "proxy()",
       "source_file": "proxy.ts",
       "source_location": "L28"
+    },
+    {
+      "id": "app_api_analyze_route_post",
+      "label": "POST()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "app/api/analyze/route.ts",
+      "source_location": "L10"
     },
     {
       "id": "lib_llm_buildprompt",
@@ -2464,42 +2500,6 @@
       "norm_label": "runtriageworker()",
       "source_file": "scripts/worker.ts",
       "source_location": "L13"
-    },
-    {
-      "id": "app_api_auth_logout_route_post",
-      "label": "POST()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 32,
-      "community_name": "logout/route.ts",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "app/api/auth/logout/route.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "lib_auth_formatonboardedclearcookie",
-      "label": "formatOnboardedClearCookie()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 32,
-      "community_name": "logout/route.ts",
-      "file_type": "code",
-      "norm_label": "formatonboardedclearcookie()",
-      "source_file": "lib/auth.ts",
-      "source_location": "L327"
-    },
-    {
-      "id": "lib_auth_formatsessionclearcookie",
-      "label": "formatSessionClearCookie()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 32,
-      "community_name": "logout/route.ts",
-      "file_type": "code",
-      "norm_label": "formatsessionclearcookie()",
-      "source_file": "lib/auth.ts",
-      "source_location": "L320"
     },
     {
       "id": "scripts_convert_all_docs_to_pdf_buildhtmlpage",
@@ -2860,28 +2860,6 @@
       "source_location": "L111"
     },
     {
-      "id": "app_api_analyze_route",
-      "label": "analyze/route.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "analyze/route.ts",
-      "source_file": "app/api/analyze/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_api_analyze_route_dynamic",
-      "label": "dynamic",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "dynamic",
-      "source_file": "app/api/analyze/route.ts",
-      "source_location": "L8"
-    },
-    {
       "id": "app_api_auth_login_route",
       "label": "login/route.ts",
       "_origin": "ast",
@@ -2902,6 +2880,28 @@
       "norm_label": "dynamic",
       "source_file": "app/api/auth/login/route.ts",
       "source_location": "L13"
+    },
+    {
+      "id": "app_api_auth_logout_route",
+      "label": "logout/route.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "logout/route.ts",
+      "source_file": "app/api/auth/logout/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_auth_logout_route_dynamic",
+      "label": "dynamic",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "dynamic",
+      "source_file": "app/api/auth/logout/route.ts",
+      "source_location": "L4"
     },
     {
       "id": "app_api_auth_register_route",
@@ -3278,6 +3278,17 @@
       "source_location": "L1"
     },
     {
+      "id": "lib_ratelimit_llmconcurrencylimiter",
+      "label": "llmConcurrencyLimiter",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "llmconcurrencylimiter",
+      "source_file": "lib/rateLimit.ts",
+      "source_location": "L128"
+    },
+    {
       "id": "lib_ratelimit_plan_limits",
       "label": "PLAN_LIMITS",
       "_origin": "ast",
@@ -3298,17 +3309,6 @@
       "norm_label": "ratelimiter",
       "source_file": "lib/rateLimit.ts",
       "source_location": "L79"
-    },
-    {
-      "id": "lib_validation",
-      "label": "validation.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "validation.ts",
-      "source_file": "lib/validation.ts",
-      "source_location": "L1"
     },
     {
       "id": "pocketbase_setup_schema",
@@ -3811,7 +3811,7 @@
       "node_kind": "heading",
       "norm_label": "10. configuration \u2014 \u067e\u06cc\u06a9\u0631\u0628\u0646\u062f\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L363"
+      "source_location": "L383"
     },
     {
       "id": "docs_technical_reference_11_frontend_realtime_\u0631\u0627\u0628\u0637_\u06a9\u0627\u0631\u0628\u0631\u06cc_\u0648_\u0628\u0647_\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc_\u0632\u0646\u062f\u0647",
@@ -3823,7 +3823,7 @@
       "node_kind": "heading",
       "norm_label": "11. frontend & realtime \u2014 \u0631\u0627\u0628\u0637 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0648 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0632\u0646\u062f\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L383"
+      "source_location": "L403"
     },
     {
       "id": "docs_technical_reference_12_deployment_\u0627\u0633\u062a\u0642\u0631\u0627\u0631",
@@ -3835,7 +3835,7 @@
       "node_kind": "heading",
       "norm_label": "12. deployment \u2014 \u0627\u0633\u062a\u0642\u0631\u0627\u0631",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L397"
+      "source_location": "L417"
     },
     {
       "id": "docs_technical_reference_13_operations_runbook_\u062f\u0633\u062a\u0648\u0631\u0627\u0644\u0639\u0645\u0644_\u0628\u0647\u0631\u0647_\u0628\u0631\u062f\u0627\u0631\u06cc",
@@ -3847,7 +3847,7 @@
       "node_kind": "heading",
       "norm_label": "13. operations runbook \u2014 \u062f\u0633\u062a\u0648\u0631\u0627\u0644\u0639\u0645\u0644 \u0628\u0647\u0631\u0647\u200c\u0628\u0631\u062f\u0627\u0631\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L428"
+      "source_location": "L448"
     },
     {
       "id": "docs_technical_reference_14_project_structure_\u0633\u0627\u062e\u062a\u0627\u0631_\u067e\u0631\u0648\u0698\u0647",
@@ -3859,7 +3859,7 @@
       "node_kind": "heading",
       "norm_label": "14. project structure \u2014 \u0633\u0627\u062e\u062a\u0627\u0631 \u067e\u0631\u0648\u0698\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L443"
+      "source_location": "L463"
     },
     {
       "id": "docs_technical_reference_15_known_limitations_roadmap_\u0645\u062d\u062f\u0648\u062f\u06cc\u062a_\u0647\u0627_\u0648_\u0646\u0642\u0634\u0647_\u0631\u0627\u0647",
@@ -3871,7 +3871,7 @@
       "node_kind": "heading",
       "norm_label": "15. known limitations & roadmap \u2014 \u0645\u062d\u062f\u0648\u062f\u06cc\u062a\u200c\u0647\u0627 \u0648 \u0646\u0642\u0634\u0647 \u0631\u0627\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L492"
+      "source_location": "L512"
     },
     {
       "id": "docs_technical_reference_1_overview_\u0646\u0645\u0627\u06cc_\u06a9\u0644\u06cc",
@@ -3895,7 +3895,7 @@
       "node_kind": "heading",
       "norm_label": "2. system architecture \u2014 \u0645\u0639\u0645\u0627\u0631\u06cc \u0633\u06cc\u0633\u062a\u0645",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L51"
+      "source_location": "L71"
     },
     {
       "id": "docs_technical_reference_3_tech_stack_\u067e\u0634\u062a\u0647_\u0641\u0646\u0627\u0648\u0631\u06cc",
@@ -3907,7 +3907,7 @@
       "node_kind": "heading",
       "norm_label": "3. tech stack \u2014 \u067e\u0634\u062a\u0647 \u0641\u0646\u0627\u0648\u0631\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L88"
+      "source_location": "L108"
     },
     {
       "id": "docs_technical_reference_4_data_model_\u0645\u062f\u0644_\u062f\u0627\u062f\u0647",
@@ -3919,7 +3919,7 @@
       "node_kind": "heading",
       "norm_label": "4. data model \u2014 \u0645\u062f\u0644 \u062f\u0627\u062f\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L107"
+      "source_location": "L127"
     },
     {
       "id": "docs_technical_reference_5_triage_pipeline_\u062e\u0637_\u062a\u0631\u06cc\u0627\u0698_\u0633\u0647_\u0644\u0627\u06cc\u0647",
@@ -3931,7 +3931,7 @@
       "node_kind": "heading",
       "norm_label": "5. triage pipeline \u2014 \u062e\u0637 \u062a\u0631\u06cc\u0627\u0698 \u0633\u0647\u200c\u0644\u0627\u06cc\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L178"
+      "source_location": "L198"
     },
     {
       "id": "docs_technical_reference_6_ingestion_\u062c\u0645\u0639_\u0622\u0648\u0631\u06cc_\u067e\u06cc\u0627\u0645",
@@ -3943,7 +3943,7 @@
       "node_kind": "heading",
       "norm_label": "6. ingestion \u2014 \u062c\u0645\u0639\u200c\u0627\u0648\u0631\u06cc \u067e\u06cc\u0627\u0645",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L230"
+      "source_location": "L250"
     },
     {
       "id": "docs_technical_reference_7_api_reference_\u0645\u0631\u062c\u0639_api",
@@ -3955,7 +3955,7 @@
       "node_kind": "heading",
       "norm_label": "7. api reference \u2014 \u0645\u0631\u062c\u0639 api",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L272"
+      "source_location": "L292"
     },
     {
       "id": "docs_technical_reference_8_radar_assistant_\u062f\u0633\u062a\u06cc\u0627\u0631_\u0647\u0648\u0634\u0645\u0646\u062f",
@@ -3967,7 +3967,7 @@
       "node_kind": "heading",
       "norm_label": "8. radar assistant \u2014 \u062f\u0633\u062a\u06cc\u0627\u0631 \u0647\u0648\u0634\u0645\u0646\u062f",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L301"
+      "source_location": "L321"
     },
     {
       "id": "docs_technical_reference_9_authentication_security_\u0627\u062d\u0631\u0627\u0632_\u0647\u0648\u06cc\u062a_\u0648_\u0627\u0645\u0646\u06cc\u062a",
@@ -3979,7 +3979,7 @@
       "node_kind": "heading",
       "norm_label": "9. authentication & security \u2014 \u0627\u062d\u0631\u0627\u0632 \u0647\u0648\u06cc\u062a \u0648 \u0627\u0645\u0646\u06cc\u062a",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L315"
+      "source_location": "L335"
     },
     {
       "id": "docs_technical_reference_layer_0_\u0641\u06cc\u0644\u062a\u0631_\u0642\u0637\u0639\u06cc_lib_prefilter_ts_prefiltermessage",
@@ -3991,7 +3991,7 @@
       "node_kind": "heading",
       "norm_label": "layer 0 \u2014 \u0641\u06cc\u0644\u062a\u0631 \u0642\u0637\u0639\u06cc (`lib/prefilter.ts::prefiltermessage`)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L186"
+      "source_location": "L206"
     },
     {
       "id": "docs_technical_reference_layer_1_\u063a\u0631\u0628\u0627\u0644_\u0633\u0631\u06cc\u0639_screenintent",
@@ -4003,7 +4003,7 @@
       "node_kind": "heading",
       "norm_label": "layer 1 \u2014 \u063a\u0631\u0628\u0627\u0644 \u0633\u0631\u06cc\u0639 (`screenintent`)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L202"
+      "source_location": "L222"
     },
     {
       "id": "docs_technical_reference_layer_2_\u062a\u062d\u0644\u06cc\u0644_\u0639\u0645\u06cc\u0642_evaluatemessagewithllm",
@@ -4015,7 +4015,7 @@
       "node_kind": "heading",
       "norm_label": "layer 2 \u2014 \u062a\u062d\u0644\u06cc\u0644 \u0639\u0645\u06cc\u0642 (`evaluatemessagewithllm`)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L210"
+      "source_location": "L230"
     },
     {
       "id": "docs_technical_reference_leads_\u0631\u06a9\u0648\u0631\u062f\u0647\u0627\u06cc_\u0627\u0631\u0632\u06cc\u0627\u0628\u06cc_\u0634\u062f\u0647",
@@ -4027,7 +4027,7 @@
       "node_kind": "heading",
       "norm_label": "`leads` \u2014 \u0631\u06a9\u0648\u0631\u062f\u0647\u0627\u06cc \u0627\u0631\u0632\u06cc\u0627\u0628\u06cc\u200c\u0634\u062f\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L159"
+      "source_location": "L179"
     },
     {
       "id": "docs_technical_reference_products_\u0634\u0646\u0627\u0633\u0646\u0627\u0645\u0647_\u0645\u062d\u0635\u0648\u0644_\u0648_icp",
@@ -4039,7 +4039,7 @@
       "node_kind": "heading",
       "norm_label": "`products` \u2014 \u0634\u0646\u0627\u0633\u0646\u0627\u0645\u0647 \u0645\u062d\u0635\u0648\u0644 \u0648 icp",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L128"
+      "source_location": "L148"
     },
     {
       "id": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
@@ -4063,7 +4063,7 @@
       "node_kind": "heading",
       "norm_label": "`raw_messages` \u2014 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u062e\u0627\u0645 \u0648\u0631\u0648\u062f\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L147"
+      "source_location": "L167"
     },
     {
       "id": "docs_technical_reference_sources_\u06a9\u0627\u0646\u0627\u0644_\u0647\u0627\u06cc_\u062a\u062d\u062a_\u067e\u0627\u06cc\u0634",
@@ -4075,7 +4075,7 @@
       "node_kind": "heading",
       "norm_label": "`sources` \u2014 \u06a9\u0627\u0646\u0627\u0644\u200c\u0647\u0627\u06cc \u062a\u062d\u062a \u067e\u0627\u06cc\u0634",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L139"
+      "source_location": "L159"
     },
     {
       "id": "docs_technical_reference_table_of_contents",
@@ -4099,7 +4099,7 @@
       "node_kind": "heading",
       "norm_label": "`users` \u2014 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0648 \u0647\u0648\u06cc\u062a \u0633\u0627\u0632\u0645\u0627\u0646\u06cc (\u06a9\u0627\u0644\u06a9\u0634\u0646 auth)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L115"
+      "source_location": "L135"
     },
     {
       "id": "docs_technical_reference_\u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc_\u0647\u0632\u06cc\u0646\u0647_lib_pricing_ts",
@@ -4111,7 +4111,7 @@
       "node_kind": "heading",
       "norm_label": "\u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc \u0647\u0632\u06cc\u0646\u0647 (`lib/pricing.ts`)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L221"
+      "source_location": "L241"
     },
     {
       "id": "docs_technical_reference_\u0645\u0633\u06cc\u0631\u0647\u0627\u06cc_\u062f\u0633\u062a\u06cc_\u0648_\u0646\u0645\u0627\u06cc\u0634\u06cc",
@@ -4123,7 +4123,31 @@
       "node_kind": "heading",
       "norm_label": "\u0645\u0633\u06cc\u0631\u0647\u0627\u06cc \u062f\u0633\u062a\u06cc \u0648 \u0646\u0645\u0627\u06cc\u0634\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L263"
+      "source_location": "L283"
+    },
+    {
+      "id": "docs_technical_reference_\u0645\u0642\u0627\u06cc\u0633\u0647_\u0627\u0642\u062a\u0635\u0627\u062f\u06cc_\u0631\u0627\u062f\u0627\u0631_\u0628\u0627_\u067e\u06cc\u0645\u0627\u06cc\u0634_\u0633\u0646\u062a\u06cc_\u062a\u0648\u0633\u0637_\u0646\u06cc\u0631\u0648\u06cc_\u0627\u0646\u0633\u0627\u0646\u06cc_sdr_economics",
+      "label": "\u0645\u0642\u0627\u06cc\u0633\u0647 \u0627\u0642\u062a\u0635\u0627\u062f\u06cc \u0631\u0627\u062f\u0627\u0631 \u0628\u0627 \u067e\u06cc\u0645\u0627\u06cc\u0634 \u0633\u0646\u062a\u06cc \u062a\u0648\u0633\u0637 \u0646\u06cc\u0631\u0648\u06cc \u0627\u0646\u0633\u0627\u0646\u06cc (SDR Economics)",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "Radar \u2014 Technical Reference (\u0645\u0631\u062c\u0639 \u0641\u0646\u06cc \u062c\u0627\u0645\u0639)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0645\u0642\u0627\u06cc\u0633\u0647 \u0627\u0642\u062a\u0635\u0627\u062f\u06cc \u0631\u0627\u062f\u0627\u0631 \u0628\u0627 \u067e\u06cc\u0645\u0627\u06cc\u0634 \u0633\u0646\u062a\u06cc \u062a\u0648\u0633\u0637 \u0646\u06cc\u0631\u0648\u06cc \u0627\u0646\u0633\u0627\u0646\u06cc (sdr economics)",
+      "source_file": "docs/TECHNICAL_REFERENCE.md",
+      "source_location": "L59"
+    },
+    {
+      "id": "docs_technical_reference_\u0646\u0645\u0648\u0646\u0647_\u062f\u0627\u062f\u0647_\u0647\u0627\u06cc_\u0648\u0627\u0642\u0639\u06cc_\u067e\u0631\u062f\u0627\u0632\u0634_\u0634\u062f\u0647_\u062f\u0631_\u0628\u0627\u0632\u0627\u0631_\u0627\u06cc\u0631\u0627\u0646_live_signals_matrix",
+      "label": "\u0646\u0645\u0648\u0646\u0647 \u062f\u0627\u062f\u0647\u200c\u0647\u0627\u06cc \u0648\u0627\u0642\u0639\u06cc \u067e\u0631\u062f\u0627\u0632\u0634\u200c\u0634\u062f\u0647 \u062f\u0631 \u0628\u0627\u0632\u0627\u0631 \u0627\u06cc\u0631\u0627\u0646 (Live Signals Matrix)",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "Radar \u2014 Technical Reference (\u0645\u0631\u062c\u0639 \u0641\u0646\u06cc \u062c\u0627\u0645\u0639)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0646\u0645\u0648\u0646\u0647 \u062f\u0627\u062f\u0647\u200c\u0647\u0627\u06cc \u0648\u0627\u0642\u0639\u06cc \u067e\u0631\u062f\u0627\u0632\u0634\u200c\u0634\u062f\u0647 \u062f\u0631 \u0628\u0627\u0632\u0627\u0631 \u0627\u06cc\u0631\u0627\u0646 (live signals matrix)",
+      "source_file": "docs/TECHNICAL_REFERENCE.md",
+      "source_location": "L49"
     },
     {
       "id": "docs_technical_reference_\u0648\u0628_\u0647\u0648\u06a9_\u0647\u0627\u06cc_\u0628\u0627\u062a_\u0645\u0633\u06cc\u0631_\u0627\u0635\u0644\u06cc_\u0644\u0627\u06cc\u0648",
@@ -4135,7 +4159,7 @@
       "node_kind": "heading",
       "norm_label": "\u0648\u0628\u200c\u0647\u0648\u06a9\u200c\u0647\u0627\u06cc \u0628\u0627\u062a (\u0645\u0633\u06cc\u0631 \u0627\u0635\u0644\u06cc \u0644\u0627\u06cc\u0648)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L232"
+      "source_location": "L252"
     },
     {
       "id": "docs_technical_reference_\u06cc\u0627\u0641\u062a\u0647_\u0647\u0627\u06cc_\u0627\u0645\u0646\u06cc\u062a\u06cc_\u0628\u0627\u0632_\u0648_\u0648\u0636\u0639\u06cc\u062a_\u0628\u0631\u0637\u0631\u0641_\u0633\u0627\u0632\u06cc",
@@ -4147,7 +4171,7 @@
       "node_kind": "heading",
       "norm_label": "\u26a0\ufe0f \u06cc\u0627\u0641\u062a\u0647\u200c\u0647\u0627\u06cc \u0627\u0645\u0646\u06cc\u062a\u06cc \u0628\u0627\u0632 \u0648 \u0648\u0636\u0639\u06cc\u062a \u0628\u0631\u0637\u0631\u0641\u200c\u0633\u0627\u0632\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L351"
+      "source_location": "L371"
     },
     {
       "id": "package_devdependencies",
@@ -4516,6 +4540,17 @@
       "source_location": "L1"
     },
     {
+      "id": "lib_validation",
+      "label": "validation.ts",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "ingest.ts",
+      "file_type": "code",
+      "norm_label": "validation.ts",
+      "source_file": "lib/validation.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "proxy",
       "label": "proxy.ts",
       "_origin": "ast",
@@ -4547,6 +4582,28 @@
       "norm_label": "middleware",
       "source_file": "proxy.ts",
       "source_location": "L109"
+    },
+    {
+      "id": "app_api_analyze_route",
+      "label": "analyze/route.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "analyze/route.ts",
+      "source_file": "app/api/analyze/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_analyze_route_dynamic",
+      "label": "dynamic",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "dynamic",
+      "source_file": "app/api/analyze/route.ts",
+      "source_location": "L8"
     },
     {
       "id": "lib_llm",
@@ -4648,17 +4705,6 @@
       "source_location": "L68"
     },
     {
-      "id": "lib_ratelimit_llmconcurrencylimiter",
-      "label": "llmConcurrencyLimiter",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "pipeline.ts",
-      "file_type": "code",
-      "norm_label": "llmconcurrencylimiter",
-      "source_file": "lib/rateLimit.ts",
-      "source_location": "L128"
-    },
-    {
       "id": "scripts_worker",
       "label": "worker.ts",
       "_origin": "ast",
@@ -4701,28 +4747,6 @@
       "norm_label": "securityheaders",
       "source_file": "next.config.ts",
       "source_location": "L3"
-    },
-    {
-      "id": "app_api_auth_logout_route",
-      "label": "logout/route.ts",
-      "_origin": "ast",
-      "community": 32,
-      "community_name": "logout/route.ts",
-      "file_type": "code",
-      "norm_label": "logout/route.ts",
-      "source_file": "app/api/auth/logout/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_api_auth_logout_route_dynamic",
-      "label": "dynamic",
-      "_origin": "ast",
-      "community": 32,
-      "community_name": "logout/route.ts",
-      "file_type": "code",
-      "norm_label": "dynamic",
-      "source_file": "app/api/auth/logout/route.ts",
-      "source_location": "L4"
     },
     {
       "id": "package",
@@ -5960,7 +5984,7 @@
       "file_type": "code",
       "norm_label": "mdfiles",
       "source_file": "scripts/convert_all_docs_to_pdf.ts",
-      "source_location": "L682"
+      "source_location": "L752"
     },
     {
       "id": "scripts_convert_all_docs_to_pdf_raviboldbase64",
@@ -15453,6 +15477,28 @@
       "weight": 1.0
     },
     {
+      "source": "docs_technical_reference_1_overview_\u0646\u0645\u0627\u06cc_\u06a9\u0644\u06cc",
+      "target": "docs_technical_reference_\u0646\u0645\u0648\u0646\u0647_\u062f\u0627\u062f\u0647_\u0647\u0627\u06cc_\u0648\u0627\u0642\u0639\u06cc_\u067e\u0631\u062f\u0627\u0632\u0634_\u0634\u062f\u0647_\u062f\u0631_\u0628\u0627\u0632\u0627\u0631_\u0627\u06cc\u0631\u0627\u0646_live_signals_matrix",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/TECHNICAL_REFERENCE.md",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_technical_reference_1_overview_\u0646\u0645\u0627\u06cc_\u06a9\u0644\u06cc",
+      "target": "docs_technical_reference_\u0645\u0642\u0627\u06cc\u0633\u0647_\u0627\u0642\u062a\u0635\u0627\u062f\u06cc_\u0631\u0627\u062f\u0627\u0631_\u0628\u0627_\u067e\u06cc\u0645\u0627\u06cc\u0634_\u0633\u0646\u062a\u06cc_\u062a\u0648\u0633\u0637_\u0646\u06cc\u0631\u0648\u06cc_\u0627\u0646\u0633\u0627\u0646\u06cc_sdr_economics",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/TECHNICAL_REFERENCE.md",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
       "source": "docs_technical_reference_4_data_model_\u0645\u062f\u0644_\u062f\u0627\u062f\u0647",
       "target": "docs_technical_reference_users_\u06a9\u0627\u0631\u0628\u0631\u0627\u0646_\u0648_\u0647\u0648\u06cc\u062a_\u0633\u0627\u0632\u0645\u0627\u0646\u06cc_\u06a9\u0627\u0644\u06a9\u0634\u0646_auth",
       "relation": "contains",
@@ -15460,7 +15506,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L115",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -15471,7 +15517,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L128",
+      "source_location": "L148",
       "weight": 1.0
     },
     {
@@ -15482,7 +15528,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L139",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -15493,7 +15539,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L147",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -15504,7 +15550,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L159",
+      "source_location": "L179",
       "weight": 1.0
     },
     {
@@ -15515,7 +15561,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L186",
+      "source_location": "L206",
       "weight": 1.0
     },
     {
@@ -15526,7 +15572,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L202",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -15537,7 +15583,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L210",
+      "source_location": "L230",
       "weight": 1.0
     },
     {
@@ -15548,7 +15594,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L221",
+      "source_location": "L241",
       "weight": 1.0
     },
     {
@@ -15559,7 +15605,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L232",
+      "source_location": "L252",
       "weight": 1.0
     },
     {
@@ -15570,7 +15616,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L263",
+      "source_location": "L283",
       "weight": 1.0
     },
     {
@@ -15581,7 +15627,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L351",
+      "source_location": "L371",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
+      "target": "docs_technical_reference_3_tech_stack_\u067e\u0634\u062a\u0647_\u0641\u0646\u0627\u0648\u0631\u06cc",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/TECHNICAL_REFERENCE.md",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -15592,7 +15649,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L107",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -15603,7 +15660,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L178",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
@@ -15614,18 +15671,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L230",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
-      "target": "docs_technical_reference_7_api_reference_\u0645\u0631\u062c\u0639_api",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L272",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -15641,13 +15687,24 @@
     },
     {
       "source": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
+      "target": "docs_technical_reference_7_api_reference_\u0645\u0631\u062c\u0639_api",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/TECHNICAL_REFERENCE.md",
+      "source_location": "L292",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
       "target": "docs_technical_reference_8_radar_assistant_\u062f\u0633\u062a\u06cc\u0627\u0631_\u0647\u0648\u0634\u0645\u0646\u062f",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L301",
+      "source_location": "L321",
       "weight": 1.0
     },
     {
@@ -15658,7 +15715,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L315",
+      "source_location": "L335",
       "weight": 1.0
     },
     {
@@ -15669,7 +15726,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L363",
+      "source_location": "L383",
       "weight": 1.0
     },
     {
@@ -15680,7 +15737,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L383",
+      "source_location": "L403",
       "weight": 1.0
     },
     {
@@ -15691,7 +15748,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L397",
+      "source_location": "L417",
       "weight": 1.0
     },
     {
@@ -15702,7 +15759,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L428",
+      "source_location": "L448",
       "weight": 1.0
     },
     {
@@ -15713,7 +15770,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L443",
+      "source_location": "L463",
       "weight": 1.0
     },
     {
@@ -15724,7 +15781,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L492",
+      "source_location": "L512",
       "weight": 1.0
     },
     {
@@ -15735,18 +15792,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L51",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
-      "target": "docs_technical_reference_3_tech_stack_\u067e\u0634\u062a\u0647_\u0641\u0646\u0627\u0648\u0631\u06cc",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L88",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -17583,7 +17629,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/convert_all_docs_to_pdf.ts",
-      "source_location": "L682",
+      "source_location": "L752",
       "weight": 1.0
     },
     {
@@ -18490,5 +18536,5 @@
       "source_file": "README.md"
     }
   ],
-  "built_at_commit": "bc92d17a8ad23dc9f2a2bcca0c4fc5078bc310c1"
+  "built_at_commit": "44b8a4901f857435a4d02830dc2e4cbd963d92fa"
 }
