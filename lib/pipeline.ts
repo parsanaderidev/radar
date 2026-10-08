@@ -136,7 +136,10 @@ export async function processSingleMessage(
     const lead = await pb.collection("leads").create({
       raw_message_id: rawMsg.id,
       product_id: product.id,
-      intent_score: evalResult.intent_score,
+      intent_score:
+        typeof evalResult.intent_score === "number" && !isNaN(evalResult.intent_score)
+          ? evalResult.intent_score
+          : 0,
       intent_level: evalResult.intent_level,
       reasoning: evalResult.reasoning,
       matched_feature: evalResult.matched_feature || "",

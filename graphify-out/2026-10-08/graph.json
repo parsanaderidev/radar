@@ -260,6 +260,45 @@
       "source_location": "L219"
     },
     {
+      "id": "lib_ingest_ingestmessageinput",
+      "label": "IngestMessageInput",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "ingestmessageinput",
+      "source_file": "lib/ingest.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "lib_ingest_ingestoutcome",
+      "label": "IngestOutcome",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "ingestoutcome",
+      "source_file": "lib/ingest.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "lib_ingest_ingestplatform",
+      "label": "IngestPlatform",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "ingestplatform",
+      "source_file": "lib/ingest.ts",
+      "source_location": "L12"
+    },
+    {
       "id": "lib_pocketbase_productrecord",
       "label": "ProductRecord",
       "_callable": true,
@@ -336,19 +375,6 @@
       "norm_label": "validationresult",
       "source_file": "lib/validation.ts",
       "source_location": "L11"
-    },
-    {
-      "id": "scripts_seed_demo_demomessagedefinition",
-      "label": "DemoMessageDefinition",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "demomessagedefinition",
-      "source_file": "scripts/seed_demo.ts",
-      "source_location": "L5"
     },
     {
       "id": "lib_ratelimit_concurrencylimiter",
@@ -507,43 +533,17 @@
       "source_location": "L28"
     },
     {
-      "id": "lib_ingest_ingestmessageinput",
-      "label": "IngestMessageInput",
+      "id": "scripts_seed_demo_demomessagedefinition",
+      "label": "DemoMessageDefinition",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 27,
-      "community_name": "ingest.ts",
+      "community_name": "seed_demo.ts",
       "file_type": "code",
-      "norm_label": "ingestmessageinput",
-      "source_file": "lib/ingest.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "lib_ingest_ingestoutcome",
-      "label": "IngestOutcome",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "ingest.ts",
-      "file_type": "code",
-      "norm_label": "ingestoutcome",
-      "source_file": "lib/ingest.ts",
-      "source_location": "L26"
-    },
-    {
-      "id": "lib_ingest_ingestplatform",
-      "label": "IngestPlatform",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "ingest.ts",
-      "file_type": "code",
-      "norm_label": "ingestplatform",
-      "source_file": "lib/ingest.ts",
-      "source_location": "L12"
+      "norm_label": "demomessagedefinition",
+      "source_file": "scripts/seed_demo.ts",
+      "source_location": "L5"
     },
     {
       "id": "lib_llm_evaluatemessageinput",
@@ -1599,16 +1599,52 @@
       "source_location": "L162"
     },
     {
-      "id": "lib_pipeline_triagependingmessage",
-      "label": "triagePendingMessage()",
+      "id": "lib_ingest_escapefiltervalue",
+      "label": "escapeFilterValue()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "auth.ts",
       "file_type": "code",
-      "norm_label": "triagependingmessage()",
-      "source_file": "lib/pipeline.ts",
-      "source_location": "L180"
+      "norm_label": "escapefiltervalue()",
+      "source_file": "lib/ingest.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "lib_ingest_findorcreatesource",
+      "label": "findOrCreateSource()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "findorcreatesource()",
+      "source_file": "lib/ingest.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "lib_ingest_ingestexternalmessage",
+      "label": "ingestExternalMessage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "ingestexternalmessage()",
+      "source_file": "lib/ingest.ts",
+      "source_location": "L69"
+    },
+    {
+      "id": "lib_ingest_sourcename",
+      "label": "sourceName()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "sourcename()",
+      "source_file": "lib/ingest.ts",
+      "source_location": "L32"
     },
     {
       "id": "lib_pocketbase_authenticatesuperuser",
@@ -1659,6 +1695,18 @@
       "source_location": "L84"
     },
     {
+      "id": "lib_validation_sanitizestring",
+      "label": "sanitizeString()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "sanitizestring()",
+      "source_file": "lib/validation.ts",
+      "source_location": "L20"
+    },
+    {
       "id": "lib_validation_validateanalyzeinput",
       "label": "validateAnalyzeInput()",
       "_callable": true,
@@ -1693,30 +1741,6 @@
       "norm_label": "validatesettingsinput()",
       "source_file": "lib/validation.ts",
       "source_location": "L162"
-    },
-    {
-      "id": "pocketbase_setup_schema_setupschema",
-      "label": "setupSchema()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "setupschema()",
-      "source_file": "pocketbase/setup_schema.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "scripts_seed_demo_seeddemomessages",
-      "label": "seedDemoMessages()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "seeddemomessages()",
-      "source_file": "scripts/seed_demo.ts",
-      "source_location": "L193"
     },
     {
       "id": "lib_ratelimit_concurrencylimiter_acquire",
@@ -1995,64 +2019,28 @@
       "source_location": "L4"
     },
     {
-      "id": "lib_ingest_escapefiltervalue",
-      "label": "escapeFilterValue()",
+      "id": "pocketbase_setup_schema_setupschema",
+      "label": "setupSchema()",
       "_callable": true,
       "_origin": "ast",
       "community": 27,
-      "community_name": "ingest.ts",
+      "community_name": "seed_demo.ts",
       "file_type": "code",
-      "norm_label": "escapefiltervalue()",
-      "source_file": "lib/ingest.ts",
-      "source_location": "L38"
+      "norm_label": "setupschema()",
+      "source_file": "pocketbase/setup_schema.ts",
+      "source_location": "L7"
     },
     {
-      "id": "lib_ingest_findorcreatesource",
-      "label": "findOrCreateSource()",
+      "id": "scripts_seed_demo_seeddemomessages",
+      "label": "seedDemoMessages()",
       "_callable": true,
       "_origin": "ast",
       "community": 27,
-      "community_name": "ingest.ts",
+      "community_name": "seed_demo.ts",
       "file_type": "code",
-      "norm_label": "findorcreatesource()",
-      "source_file": "lib/ingest.ts",
-      "source_location": "L45"
-    },
-    {
-      "id": "lib_ingest_ingestexternalmessage",
-      "label": "ingestExternalMessage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "ingest.ts",
-      "file_type": "code",
-      "norm_label": "ingestexternalmessage()",
-      "source_file": "lib/ingest.ts",
-      "source_location": "L69"
-    },
-    {
-      "id": "lib_ingest_sourcename",
-      "label": "sourceName()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "ingest.ts",
-      "file_type": "code",
-      "norm_label": "sourcename()",
-      "source_file": "lib/ingest.ts",
-      "source_location": "L32"
-    },
-    {
-      "id": "lib_validation_sanitizestring",
-      "label": "sanitizeString()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "ingest.ts",
-      "file_type": "code",
-      "norm_label": "sanitizestring()",
-      "source_file": "lib/validation.ts",
-      "source_location": "L20"
+      "norm_label": "seeddemomessages()",
+      "source_file": "scripts/seed_demo.ts",
+      "source_location": "L193"
     },
     {
       "id": "app_api_auth_logout_route_post",
@@ -2257,6 +2245,18 @@
       "norm_label": "triageadhocmessage()",
       "source_file": "lib/pipeline.ts",
       "source_location": "L240"
+    },
+    {
+      "id": "lib_pipeline_triagependingmessage",
+      "label": "triagePendingMessage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "triagependingmessage()",
+      "source_file": "lib/pipeline.ts",
+      "source_location": "L180"
     },
     {
       "id": "lib_prefilter_hashcontent",
@@ -2904,6 +2904,17 @@
       "source_location": "L12"
     },
     {
+      "id": "lib_ingest",
+      "label": "ingest.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "ingest.ts",
+      "source_file": "lib/ingest.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "lib_pocketbase",
       "label": "pocketbase.ts",
       "_origin": "ast",
@@ -2946,39 +2957,6 @@
       "norm_label": "validation.ts",
       "source_file": "lib/validation.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "pocketbase_setup_schema",
-      "label": "setup_schema.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "setup_schema.ts",
-      "source_file": "pocketbase/setup_schema.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_seed_demo",
-      "label": "seed_demo.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "seed_demo.ts",
-      "source_file": "scripts/seed_demo.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_seed_demo_demo_community_messages",
-      "label": "DEMO_COMMUNITY_MESSAGES",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "demo_community_messages",
-      "source_file": "scripts/seed_demo.ts",
-      "source_location": "L13"
     },
     {
       "id": "app_api_assistant_route",
@@ -3437,7 +3415,7 @@
       "node_kind": "heading",
       "norm_label": "10. configuration \u2014 \u067e\u06cc\u06a9\u0631\u0628\u0646\u062f\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L328"
+      "source_location": "L352"
     },
     {
       "id": "docs_technical_reference_11_frontend_realtime_\u0631\u0627\u0628\u0637_\u06a9\u0627\u0631\u0628\u0631\u06cc_\u0648_\u0628\u0647_\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc_\u0632\u0646\u062f\u0647",
@@ -3449,7 +3427,7 @@
       "node_kind": "heading",
       "norm_label": "11. frontend & realtime \u2014 \u0631\u0627\u0628\u0637 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0648 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0632\u0646\u062f\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L348"
+      "source_location": "L372"
     },
     {
       "id": "docs_technical_reference_12_deployment_\u0627\u0633\u062a\u0642\u0631\u0627\u0631",
@@ -3461,7 +3439,7 @@
       "node_kind": "heading",
       "norm_label": "12. deployment \u2014 \u0627\u0633\u062a\u0642\u0631\u0627\u0631",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L362"
+      "source_location": "L386"
     },
     {
       "id": "docs_technical_reference_13_operations_runbook_\u062f\u0633\u062a\u0648\u0631\u0627\u0644\u0639\u0645\u0644_\u0628\u0647\u0631\u0647_\u0628\u0631\u062f\u0627\u0631\u06cc",
@@ -3473,7 +3451,7 @@
       "node_kind": "heading",
       "norm_label": "13. operations runbook \u2014 \u062f\u0633\u062a\u0648\u0631\u0627\u0644\u0639\u0645\u0644 \u0628\u0647\u0631\u0647\u200c\u0628\u0631\u062f\u0627\u0631\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L393"
+      "source_location": "L417"
     },
     {
       "id": "docs_technical_reference_14_project_structure_\u0633\u0627\u062e\u062a\u0627\u0631_\u067e\u0631\u0648\u0698\u0647",
@@ -3485,7 +3463,7 @@
       "node_kind": "heading",
       "norm_label": "14. project structure \u2014 \u0633\u0627\u062e\u062a\u0627\u0631 \u067e\u0631\u0648\u0698\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L408"
+      "source_location": "L432"
     },
     {
       "id": "docs_technical_reference_15_known_limitations_roadmap_\u0645\u062d\u062f\u0648\u062f\u06cc\u062a_\u0647\u0627_\u0648_\u0646\u0642\u0634\u0647_\u0631\u0627\u0647",
@@ -3497,7 +3475,7 @@
       "node_kind": "heading",
       "norm_label": "15. known limitations & roadmap \u2014 \u0645\u062d\u062f\u0648\u062f\u06cc\u062a\u200c\u0647\u0627 \u0648 \u0646\u0642\u0634\u0647 \u0631\u0627\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L452"
+      "source_location": "L481"
     },
     {
       "id": "docs_technical_reference_1_overview_\u0646\u0645\u0627\u06cc_\u06a9\u0644\u06cc",
@@ -3557,7 +3535,7 @@
       "node_kind": "heading",
       "norm_label": "5. triage pipeline \u2014 \u062e\u0637 \u062a\u0631\u06cc\u0627\u0698 \u0633\u0647\u200c\u0644\u0627\u06cc\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L164"
+      "source_location": "L178"
     },
     {
       "id": "docs_technical_reference_6_ingestion_\u062c\u0645\u0639_\u0622\u0648\u0631\u06cc_\u067e\u06cc\u0627\u0645",
@@ -3569,7 +3547,7 @@
       "node_kind": "heading",
       "norm_label": "6. ingestion \u2014 \u062c\u0645\u0639\u200c\u0627\u0648\u0631\u06cc \u067e\u06cc\u0627\u0645",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L216"
+      "source_location": "L230"
     },
     {
       "id": "docs_technical_reference_7_api_reference_\u0645\u0631\u062c\u0639_api",
@@ -3581,7 +3559,7 @@
       "node_kind": "heading",
       "norm_label": "7. api reference \u2014 \u0645\u0631\u062c\u0639 api",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L258"
+      "source_location": "L272"
     },
     {
       "id": "docs_technical_reference_8_radar_assistant_\u062f\u0633\u062a\u06cc\u0627\u0631_\u0647\u0648\u0634\u0645\u0646\u062f",
@@ -3593,7 +3571,7 @@
       "node_kind": "heading",
       "norm_label": "8. radar assistant \u2014 \u062f\u0633\u062a\u06cc\u0627\u0631 \u0647\u0648\u0634\u0645\u0646\u062f",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L281"
+      "source_location": "L297"
     },
     {
       "id": "docs_technical_reference_9_authentication_security_\u0627\u062d\u0631\u0627\u0632_\u0647\u0648\u06cc\u062a_\u0648_\u0627\u0645\u0646\u06cc\u062a",
@@ -3605,7 +3583,7 @@
       "node_kind": "heading",
       "norm_label": "9. authentication & security \u2014 \u0627\u062d\u0631\u0627\u0632 \u0647\u0648\u06cc\u062a \u0648 \u0627\u0645\u0646\u06cc\u062a",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L295"
+      "source_location": "L311"
     },
     {
       "id": "docs_technical_reference_layer_0_\u0641\u06cc\u0644\u062a\u0631_\u0642\u0637\u0639\u06cc_lib_prefilter_ts_prefiltermessage",
@@ -3617,7 +3595,7 @@
       "node_kind": "heading",
       "norm_label": "layer 0 \u2014 \u0641\u06cc\u0644\u062a\u0631 \u0642\u0637\u0639\u06cc (`lib/prefilter.ts::prefiltermessage`)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L172"
+      "source_location": "L186"
     },
     {
       "id": "docs_technical_reference_layer_1_\u063a\u0631\u0628\u0627\u0644_\u0633\u0631\u06cc\u0639_screenintent",
@@ -3629,7 +3607,7 @@
       "node_kind": "heading",
       "norm_label": "layer 1 \u2014 \u063a\u0631\u0628\u0627\u0644 \u0633\u0631\u06cc\u0639 (`screenintent`)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L188"
+      "source_location": "L202"
     },
     {
       "id": "docs_technical_reference_layer_2_\u062a\u062d\u0644\u06cc\u0644_\u0639\u0645\u06cc\u0642_evaluatemessagewithllm",
@@ -3641,7 +3619,7 @@
       "node_kind": "heading",
       "norm_label": "layer 2 \u2014 \u062a\u062d\u0644\u06cc\u0644 \u0639\u0645\u06cc\u0642 (`evaluatemessagewithllm`)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L196"
+      "source_location": "L210"
     },
     {
       "id": "docs_technical_reference_leads_\u0631\u06a9\u0648\u0631\u062f\u0647\u0627\u06cc_\u0627\u0631\u0632\u06cc\u0627\u0628\u06cc_\u0634\u062f\u0647",
@@ -3653,7 +3631,7 @@
       "node_kind": "heading",
       "norm_label": "`leads` \u2014 \u0631\u06a9\u0648\u0631\u062f\u0647\u0627\u06cc \u0627\u0631\u0632\u06cc\u0627\u0628\u06cc\u200c\u0634\u062f\u0647",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L145"
+      "source_location": "L159"
     },
     {
       "id": "docs_technical_reference_products_\u0634\u0646\u0627\u0633\u0646\u0627\u0645\u0647_\u0645\u062d\u0635\u0648\u0644_\u0648_icp",
@@ -3665,7 +3643,7 @@
       "node_kind": "heading",
       "norm_label": "`products` \u2014 \u0634\u0646\u0627\u0633\u0646\u0627\u0645\u0647 \u0645\u062d\u0635\u0648\u0644 \u0648 icp",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L114"
+      "source_location": "L128"
     },
     {
       "id": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
@@ -3689,7 +3667,7 @@
       "node_kind": "heading",
       "norm_label": "`raw_messages` \u2014 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u062e\u0627\u0645 \u0648\u0631\u0648\u062f\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L133"
+      "source_location": "L147"
     },
     {
       "id": "docs_technical_reference_sources_\u06a9\u0627\u0646\u0627\u0644_\u0647\u0627\u06cc_\u062a\u062d\u062a_\u067e\u0627\u06cc\u0634",
@@ -3701,7 +3679,7 @@
       "node_kind": "heading",
       "norm_label": "`sources` \u2014 \u06a9\u0627\u0646\u0627\u0644\u200c\u0647\u0627\u06cc \u062a\u062d\u062a \u067e\u0627\u06cc\u0634",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L125"
+      "source_location": "L139"
     },
     {
       "id": "docs_technical_reference_table_of_contents",
@@ -3716,6 +3694,18 @@
       "source_location": "L9"
     },
     {
+      "id": "docs_technical_reference_users_\u06a9\u0627\u0631\u0628\u0631\u0627\u0646_\u0648_\u0647\u0648\u06cc\u062a_\u0633\u0627\u0632\u0645\u0627\u0646\u06cc_\u06a9\u0627\u0644\u06a9\u0634\u0646_auth",
+      "label": "`users` \u2014 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0648 \u0647\u0648\u06cc\u062a \u0633\u0627\u0632\u0645\u0627\u0646\u06cc (\u06a9\u0627\u0644\u06a9\u0634\u0646 Auth)",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "Radar \u2014 Technical Reference (\u0645\u0631\u062c\u0639 \u0641\u0646\u06cc \u062c\u0627\u0645\u0639)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "`users` \u2014 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0648 \u0647\u0648\u06cc\u062a \u0633\u0627\u0632\u0645\u0627\u0646\u06cc (\u06a9\u0627\u0644\u06a9\u0634\u0646 auth)",
+      "source_file": "docs/TECHNICAL_REFERENCE.md",
+      "source_location": "L115"
+    },
+    {
       "id": "docs_technical_reference_\u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc_\u0647\u0632\u06cc\u0646\u0647_lib_pricing_ts",
       "label": "\u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc \u0647\u0632\u06cc\u0646\u0647 (`lib/pricing.ts`)",
       "_origin": "ast",
@@ -3725,7 +3715,7 @@
       "node_kind": "heading",
       "norm_label": "\u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc \u0647\u0632\u06cc\u0646\u0647 (`lib/pricing.ts`)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L207"
+      "source_location": "L221"
     },
     {
       "id": "docs_technical_reference_\u0645\u0633\u06cc\u0631\u0647\u0627\u06cc_\u062f\u0633\u062a\u06cc_\u0648_\u0646\u0645\u0627\u06cc\u0634\u06cc",
@@ -3737,7 +3727,7 @@
       "node_kind": "heading",
       "norm_label": "\u0645\u0633\u06cc\u0631\u0647\u0627\u06cc \u062f\u0633\u062a\u06cc \u0648 \u0646\u0645\u0627\u06cc\u0634\u06cc",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L249"
+      "source_location": "L263"
     },
     {
       "id": "docs_technical_reference_\u0648\u0628_\u0647\u0648\u06a9_\u0647\u0627\u06cc_\u0628\u0627\u062a_\u0645\u0633\u06cc\u0631_\u0627\u0635\u0644\u06cc_\u0644\u0627\u06cc\u0648",
@@ -3749,7 +3739,7 @@
       "node_kind": "heading",
       "norm_label": "\u0648\u0628\u200c\u0647\u0648\u06a9\u200c\u0647\u0627\u06cc \u0628\u0627\u062a (\u0645\u0633\u06cc\u0631 \u0627\u0635\u0644\u06cc \u0644\u0627\u06cc\u0648)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L218"
+      "source_location": "L232"
     },
     {
       "id": "docs_technical_reference_\u06cc\u0627\u0641\u062a\u0647_\u0647\u0627\u06cc_\u0627\u0645\u0646\u06cc\u062a\u06cc_\u0628\u0627\u0632_\u0646\u06cc\u0627\u0632\u0645\u0646\u062f_\u0627\u0642\u062f\u0627\u0645",
@@ -3761,7 +3751,7 @@
       "node_kind": "heading",
       "norm_label": "\u26a0\ufe0f \u06cc\u0627\u0641\u062a\u0647\u200c\u0647\u0627\u06cc \u0627\u0645\u0646\u06cc\u062a\u06cc \u0628\u0627\u0632 (\u0646\u06cc\u0627\u0632\u0645\u0646\u062f \u0627\u0642\u062f\u0627\u0645)",
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L313"
+      "source_location": "L337"
     },
     {
       "id": "package_devdependencies",
@@ -4119,15 +4109,37 @@
       "source_location": "L1"
     },
     {
-      "id": "lib_ingest",
-      "label": "ingest.ts",
+      "id": "pocketbase_setup_schema",
+      "label": "setup_schema.ts",
       "_origin": "ast",
       "community": 27,
-      "community_name": "ingest.ts",
+      "community_name": "seed_demo.ts",
       "file_type": "code",
-      "norm_label": "ingest.ts",
-      "source_file": "lib/ingest.ts",
+      "norm_label": "setup_schema.ts",
+      "source_file": "pocketbase/setup_schema.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "scripts_seed_demo",
+      "label": "seed_demo.ts",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "seed_demo.ts",
+      "file_type": "code",
+      "norm_label": "seed_demo.ts",
+      "source_file": "scripts/seed_demo.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_seed_demo_demo_community_messages",
+      "label": "DEMO_COMMUNITY_MESSAGES",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "seed_demo.ts",
+      "file_type": "code",
+      "norm_label": "demo_community_messages",
+      "source_file": "scripts/seed_demo.ts",
+      "source_location": "L13"
     },
     {
       "id": "app_api_auth_logout_route",
@@ -14400,13 +14412,24 @@
     },
     {
       "source": "docs_technical_reference_4_data_model_\u0645\u062f\u0644_\u062f\u0627\u062f\u0647",
+      "target": "docs_technical_reference_users_\u06a9\u0627\u0631\u0628\u0631\u0627\u0646_\u0648_\u0647\u0648\u06cc\u062a_\u0633\u0627\u0632\u0645\u0627\u0646\u06cc_\u06a9\u0627\u0644\u06a9\u0634\u0646_auth",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/TECHNICAL_REFERENCE.md",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_technical_reference_4_data_model_\u0645\u062f\u0644_\u062f\u0627\u062f\u0647",
       "target": "docs_technical_reference_products_\u0634\u0646\u0627\u0633\u0646\u0627\u0645\u0647_\u0645\u062d\u0635\u0648\u0644_\u0648_icp",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L114",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -14417,7 +14440,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L125",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -14428,7 +14451,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L133",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
@@ -14439,7 +14462,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L145",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -14450,7 +14473,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L172",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -14461,7 +14484,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L188",
+      "source_location": "L202",
       "weight": 1.0
     },
     {
@@ -14472,7 +14495,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L196",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -14483,7 +14506,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L207",
+      "source_location": "L221",
       "weight": 1.0
     },
     {
@@ -14494,7 +14517,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L218",
+      "source_location": "L232",
       "weight": 1.0
     },
     {
@@ -14505,7 +14528,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L249",
+      "source_location": "L263",
       "weight": 1.0
     },
     {
@@ -14516,7 +14539,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L313",
+      "source_location": "L337",
       "weight": 1.0
     },
     {
@@ -14538,7 +14561,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L164",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -14549,7 +14572,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L216",
+      "source_location": "L230",
       "weight": 1.0
     },
     {
@@ -14560,18 +14583,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L258",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
-      "target": "docs_technical_reference_8_radar_assistant_\u062f\u0633\u062a\u06cc\u0627\u0631_\u0647\u0648\u0634\u0645\u0646\u062f",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L281",
+      "source_location": "L272",
       "weight": 1.0
     },
     {
@@ -14587,13 +14599,24 @@
     },
     {
       "source": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
+      "target": "docs_technical_reference_8_radar_assistant_\u062f\u0633\u062a\u06cc\u0627\u0631_\u0647\u0648\u0634\u0645\u0646\u062f",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/TECHNICAL_REFERENCE.md",
+      "source_location": "L297",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_technical_reference_radar_technical_reference_\u0645\u0631\u062c\u0639_\u0641\u0646\u06cc_\u062c\u0627\u0645\u0639",
       "target": "docs_technical_reference_9_authentication_security_\u0627\u062d\u0631\u0627\u0632_\u0647\u0648\u06cc\u062a_\u0648_\u0627\u0645\u0646\u06cc\u062a",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L295",
+      "source_location": "L311",
       "weight": 1.0
     },
     {
@@ -14604,7 +14627,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L328",
+      "source_location": "L352",
       "weight": 1.0
     },
     {
@@ -14615,7 +14638,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L348",
+      "source_location": "L372",
       "weight": 1.0
     },
     {
@@ -14626,7 +14649,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L362",
+      "source_location": "L386",
       "weight": 1.0
     },
     {
@@ -14637,7 +14660,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L393",
+      "source_location": "L417",
       "weight": 1.0
     },
     {
@@ -14648,7 +14671,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L408",
+      "source_location": "L432",
       "weight": 1.0
     },
     {
@@ -14659,7 +14682,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/TECHNICAL_REFERENCE.md",
-      "source_location": "L452",
+      "source_location": "L481",
       "weight": 1.0
     },
     {
@@ -17702,5 +17725,5 @@
       "source_file": "README.md"
     }
   ],
-  "built_at_commit": "023d7d557780ac872d05e48c462e865e24a6e3e3"
+  "built_at_commit": "f4d9c4364862dd18be5665d7283928a97820676f"
 }

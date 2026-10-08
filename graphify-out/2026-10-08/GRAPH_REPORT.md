@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-08)
 
 ## Corpus Check
-- 67 files · ~54,120 words
+- 67 files · ~55,016 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 557 nodes · 952 edges · 31 communities (22 shown, 9 thin omitted)
+- 558 nodes · 953 edges · 31 communities (22 shown, 9 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `023d7d55`
+- Built from commit: `f4d9c436`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -41,7 +41,7 @@
 - Radar — Technical Reference (مرجع فنی جامع)
 - devDependencies
 - راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders
-- ingest.ts
+- seed_demo.ts
 - logout/route.ts
 - proxy.ts
 - next.config.ts
@@ -61,14 +61,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `POST()` --calls--> `triageAdHocMessage()`  [EXTRACTED]
   app/api/analyze/route.ts → lib/pipeline.ts
+- `POST()` --calls--> `triagePendingMessage()`  [EXTRACTED]
+  app/api/analyze/route.ts → lib/pipeline.ts
 - `GET()` --calls--> `getAuthSession()`  [EXTRACTED]
   app/api/auth/session/route.ts → lib/auth.ts
-- `POST()` --calls--> `ingestExternalMessage()`  [EXTRACTED]
-  app/api/ingest/bale/route.ts → lib/ingest.ts
-- `POST()` --calls--> `ingestExternalMessage()`  [EXTRACTED]
-  app/api/ingest/telegram/route.ts → lib/ingest.ts
-- `LeadRadarDashboard()` --calls--> `getPocketBaseClient()`  [EXTRACTED]
-  app/dashboard/page.tsx → lib/pocketbase.ts
+- `POST()` --calls--> `triagePendingMessage()`  [EXTRACTED]
+  app/api/ingest/bale/route.ts → lib/pipeline.ts
+- `POST()` --calls--> `triagePendingMessage()`  [EXTRACTED]
+  app/api/ingest/telegram/route.ts → lib/pipeline.ts
 
 ## Import Cycles
 - None detected.
@@ -86,15 +86,15 @@ Nodes (62): LeadRadarDashboard(), dynamic, dynamic, dynamic, OnboardingPage(), C
 
 ### Community 1 - "auth.ts"
 Cohesion: 0.07
-Nodes (63): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+55 more)
+Nodes (66): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+58 more)
 
 ### Community 2 - "voice-orb.tsx"
 Cohesion: 0.08
 Nodes (35): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+27 more)
 
 ### Community 3 - "pipeline.ts"
-Cohesion: 0.09
-Nodes (35): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+27 more)
+Cohesion: 0.10
+Nodes (36): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+28 more)
 
 ### Community 4 - "package.json"
 Cohesion: 0.06
@@ -142,7 +142,7 @@ Nodes (3): cleanOutput(), dynamic, POST()
 
 ### Community 24 - "Radar — Technical Reference (مرجع فنی جامع)"
 Cohesion: 0.07
-Nodes (28): 10. Configuration — پیکربندی, 11. Frontend & Realtime — رابط کاربری و به‌روزرسانی زنده, 12. Deployment — استقرار, 13. Operations Runbook — دستورالعمل بهره‌برداری, 14. Project Structure — ساختار پروژه, 15. Known Limitations & Roadmap — محدودیت‌ها و نقشه راه, 1. Overview — نمای کلی, 2. System Architecture — معماری سیستم (+20 more)
+Nodes (29): 10. Configuration — پیکربندی, 11. Frontend & Realtime — رابط کاربری و به‌روزرسانی زنده, 12. Deployment — استقرار, 13. Operations Runbook — دستورالعمل بهره‌برداری, 14. Project Structure — ساختار پروژه, 15. Known Limitations & Roadmap — محدودیت‌ها و نقشه راه, 1. Overview — نمای کلی, 2. System Architecture — معماری سیستم (+21 more)
 
 ### Community 25 - "devDependencies"
 Cohesion: 0.12
@@ -152,9 +152,9 @@ Nodes (17): eslint, eslint-config-next, devDependencies, eslint, eslint-config-n
 Cohesion: 0.14
 Nodes (13): اسلاید ۱: عنوان و هویت محصول (Cover Slide), اسلاید ۱۰: نقشه راه توسعه و مقیاس‌پذیری (Roadmap), اسلاید ۱۱: تیم، دستاوردها و پیشنهاد سرمایه‌گذاری (Team & The Ask), اسلاید ۲: مسئله بازار و واقعیت تلخ فروش (The Problem), اسلاید ۳: چرا راهکارهای فعلی شکست می‌خورند؟ (Why Existing Solutions Fail), اسلاید ۴: معرفی راه‌حل — رادار (The Solution: Radar), اسلاید ۵: چرخه کارکرد فنی و دمو زنده (How It Works & Live Demo), اسلاید ۶: خندق دفاعی و تمایز فناوری (Defensibility & Moats) (+5 more)
 
-### Community 27 - "ingest.ts"
-Cohesion: 0.39
-Nodes (8): escapeFilterValue(), findOrCreateSource(), ingestExternalMessage(), IngestMessageInput, IngestOutcome, IngestPlatform, sourceName(), sanitizeString()
+### Community 27 - "seed_demo.ts"
+Cohesion: 0.47
+Nodes (4): setupSchema(), DEMO_COMMUNITY_MESSAGES, DemoMessageDefinition, seedDemoMessages()
 
 ### Community 28 - "logout/route.ts"
 Cohesion: 0.60
@@ -165,7 +165,7 @@ Cohesion: 0.50
 Nodes (4): config, middleware, parseEdgeJwtPayload(), proxy()
 
 ## Knowledge Gaps
-- **252 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+247 more)
+- **253 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+248 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -179,10 +179,10 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `ProductRecord` connect `auth.ts` to `Icons.tsx`, `pipeline.ts`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **What connects `DEBIAN_FRONTEND`, `dynamic`, `dynamic` to the rest of the system?**
-  _252 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _253 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.05132788559754852 - nodes in this community are weakly interconnected._
 - **Should `auth.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07341772151898734 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07106293285155074 - nodes in this community are weakly interconnected._
 - **Should `voice-orb.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.0782608695652174 - nodes in this community are weakly interconnected._

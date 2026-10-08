@@ -562,8 +562,8 @@ export default function PersianLandingPage() {
             href="/dashboard"
             className="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-medium text-white border border-[#2b2b2b] hover:border-neutral-500 bg-[#0e0e0e] hover:bg-[#161616] transition-all cursor-pointer"
           >
-            <span>مشاهده زنده سیگنال‌ها</span>
-            <span>←</span>
+            <span className="mt-1">مشاهده زنده سیگنال‌ها</span>
+            <span className="mt-1">←</span>
           </Link>
         </div>
       </div>
@@ -885,12 +885,12 @@ export default function PersianLandingPage() {
         </section>
 
         {/* ========================================================
-            ۰۷. بخش عمیق ۳: پاسخ اختصاصی و اقدام فروش در ۳ ثانیه
+            ۰۷. بخش عمیق ۳: پاسخ اختصاصی و اقدام فروش در چند ثانیه
         ======================================================== */}
         <section id="deep-dive-3" className="py-24 px-4 sm:px-6 max-w-[1240px] mx-auto border-t border-[#141414]">
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mb-14">
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight flex flex-wrap justify-center text-center mb-3">
-              پاسخ اختصاصی و اقدام فروش در ۳ ثانیه
+              پاسخ اختصاصی و اقدام فروش در چند ثانیه
             </h2>
             <p className="text-xs sm:text-sm text-neutral-400 text-center max-w-3xl mx-auto leading-relaxed">
               تحلیل عمیق درد کاربر و آماده‌سازی پیشنهاد متناسب در لحظه با قابلیت کپی فوری و ارسال مستقیم به ارتباط با مشتریان.

@@ -242,7 +242,7 @@ export async function setupSchema() {
           type: "number",
           min: 0,
           max: 100,
-          required: true,
+          required: false,
         },
         {
           name: "intent_level",
@@ -278,6 +278,21 @@ export async function setupSchema() {
       updateRule: null,
       deleteRule: null,
     });
+    // Migrate intent_score to required: false so zero values (0) are accepted in Go/PocketBase
+    try {
+      const full = await pb.collections.getOne(leadsColl.id);
+      const scoreField: any = (full.fields as any[]).find((f) => f.name === "intent_score");
+      if (scoreField && scoreField.required === true) {
+        await pb.collections.update(leadsColl.id, {
+          fields: (full.fields as any[]).map((f) =>
+            f.name === "intent_score" ? { ...f, required: false } : f
+          ),
+        });
+        console.log("[PocketBase] Migrated 'leads.intent_score' to required: false.");
+      }
+    } catch (err: any) {
+      console.warn("[PocketBase] leads migration skipped:", err?.message || err);
+    }
   }
 
   // Ensure default product exists
