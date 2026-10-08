@@ -27,6 +27,7 @@
   "25": "devDependencies",
   "26": "راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders",
   "27": "ingest.ts",
+  "28": "logout/route.ts",
   "29": "proxy.ts",
   "30": "next.config.ts"
 }

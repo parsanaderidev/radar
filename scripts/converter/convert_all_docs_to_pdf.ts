@@ -49,6 +49,7 @@ function escapeHtml(str: string): string {
 
 function formatInline(text: string): string {
   let s = text;
+  s = s.replace(/<br\s*\/?>/gi, "<br/>");
   s = s.replace(/\*\*\*(.*?)\*\*\*/g, "<strong><em>$1</em></strong>");
   s = s.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
   s = s.replace(/\*(.*?)\*/g, "<em>$1</em>");
@@ -174,24 +175,36 @@ function parseMarkdown(md: string): string {
       continue;
     }
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\u0600-\u06FFa-zA-Z0-9\s-_]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
     if (trimmed.startsWith("# ")) {
       closeList();
-      html += `<h1 class="doc-h1">${formatInline(trimmed.slice(2))}</h1>`;
+      const title = trimmed.slice(2);
+      html += `<h1 id="${slugify(title)}" class="doc-h1">${formatInline(title)}</h1>`;
       continue;
     }
     if (trimmed.startsWith("## ")) {
       closeList();
-      html += `<h2 class="doc-h2"><span class="h2-dot"></span>${formatInline(trimmed.slice(3))}</h2>`;
+      const title = trimmed.slice(3);
+      html += `<h2 id="${slugify(title)}" class="doc-h2"><span class="h2-dot"></span>${formatInline(title)}</h2>`;
       continue;
     }
     if (trimmed.startsWith("### ")) {
       closeList();
-      html += `<h3 class="doc-h3">${formatInline(trimmed.slice(4))}</h3>`;
+      const title = trimmed.slice(4);
+      html += `<h3 id="${slugify(title)}" class="doc-h3">${formatInline(title)}</h3>`;
       continue;
     }
     if (trimmed.startsWith("#### ")) {
       closeList();
-      html += `<h4 class="doc-h4">${formatInline(trimmed.slice(5))}</h4>`;
+      const title = trimmed.slice(5);
+      html += `<h4 id="${slugify(title)}" class="doc-h4">${formatInline(title)}</h4>`;
       continue;
     }
 
@@ -522,46 +535,47 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
       color: var(--text);
     }
 
-    /* High Density Monochrome Tables */
+    /* High Density Monochrome Markdown Tables */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 10px 0 16px;
+      margin: 12px 0 16px;
       border: 1px solid var(--border);
       border-radius: 6px;
       background: var(--card-bg);
       break-inside: auto;
     }
-    table {
+    .table-container table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 11.5px;
+      font-size: 11px;
       text-align: right;
     }
-    thead {
+    .table-container thead {
       display: table-header-group;
     }
-    tr {
+    .table-container tr {
       break-inside: avoid;
       page-break-inside: avoid;
     }
-    th {
+    .table-container th {
       background: #141418;
       color: var(--text-bright);
       font-weight: 700;
-      padding: 7px 10px;
+      padding: 6px 9px;
       border-bottom: 1px solid var(--border);
       white-space: nowrap;
     }
-    td {
-      padding: 7px 10px;
+    .table-container td {
+      padding: 6px 9px;
       border-bottom: 1px solid #1a1a20;
       color: var(--text);
       vertical-align: middle;
+      font-size: 11px;
     }
-    tr.odd { background: #09090b; }
-    tr.even { background: #0e0e12; }
-    tr:last-child td { border-bottom: none; }
+    .table-container tr.odd { background: #09090b; }
+    .table-container tr.even { background: #0e0e12; }
+    .table-container tr:last-child td { border-bottom: none; }
 
     /* Inline Code */
     .inline-code {
@@ -648,8 +662,114 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
     }
 
     /* =========================================================================
-       PRINT STYLES: 100% Full Bleed Black & White with Zero White Margins
+       PRINT & SCREEN STYLES: 100% Full Bleed Black & White with Perfect Alignment
     ========================================================================= */
+    * {
+      box-sizing: border-box !important;
+      scrollbar-width: none !important; /* Firefox */
+      -ms-overflow-style: none !important; /* IE/Edge */
+    }
+    *::-webkit-scrollbar {
+      display: none !important; /* Chrome / Safari */
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    .print-page-table {
+      width: 100%;
+      max-width: 100%;
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      border: none;
+      table-layout: fixed;
+    }
+    .print-page-table > thead {
+      display: table-header-group;
+    }
+    .print-page-table > tfoot {
+      display: table-footer-group;
+    }
+    .print-page-table > thead > tr > td {
+      height: 12mm;
+      vertical-align: top;
+      padding: 5mm 14mm 3mm 14mm;
+      border: none !important;
+      background: transparent !important;
+    }
+    .print-page-table > tfoot > tr > td {
+      height: 12mm;
+      vertical-align: bottom;
+      padding: 3mm 14mm 5mm 14mm;
+      border: none !important;
+      background: transparent !important;
+    }
+    .print-page-table > tbody > tr > td {
+      padding: 8mm 14mm 8mm 14mm;
+      vertical-align: top;
+      border: none !important;
+      background: transparent !important;
+      font-size: 13.5px;
+      line-height: 1.8;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .running-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #71717a;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2.5mm;
+      width: 100%;
+      direction: rtl;
+    }
+    .running-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5pt;
+      font-weight: 500;
+      color: #71717a;
+      border-top: 1px solid var(--border);
+      padding-top: 2.5mm;
+      width: 100%;
+      direction: rtl;
+    }
+
+    @media screen {
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .print-page-table {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .print-page-table > thead > tr > td {
+        padding: 16px 20px 0 20px;
+        height: auto;
+      }
+      .print-page-table > tfoot > tr > td {
+        padding: 0 20px 20px 20px;
+        height: auto;
+      }
+      .print-page-table > tbody > tr > td {
+        padding: 10px 20px;
+      }
+      .doc-page {
+        width: 100%;
+        max-width: 100%;
+        margin: 15px auto;
+        padding: 0;
+      }
+    }
+
     @media print {
       @page {
         size: A4 portrait;
@@ -659,6 +779,8 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
         background-color: #000000 !important;
         margin: 0 !important;
         padding: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
@@ -667,28 +789,113 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
         color: #ededed !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        font-size: 11pt;
-        line-height: 1.5;
+        font-size: 11pt !important;
+        line-height: 1.8 !important;
         margin: 0 !important;
-        padding: 12mm 14mm !important;
+        padding: 0 !important;
+        width: 100% !important;
       }
       .top-bar {
         display: none !important;
       }
+      .print-page-table {
+        width: 100% !important;
+        max-width: 100% !important;
+        table-layout: fixed !important;
+        background-color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .print-page-table > thead > tr > td {
+        height: 12mm !important;
+        padding: 5mm 14mm 3mm 14mm !important;
+      }
+      .print-page-table > tfoot > tr > td {
+        height: 12mm !important;
+        padding: 3mm 14mm 5mm 14mm !important;
+      }
+      .print-page-table > tbody > tr > td {
+        padding: 8mm 14mm 8mm 14mm !important;
+        font-size: 11pt !important;
+        line-height: 1.8 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+      }
       .doc-page {
+        width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-        background: #000000 !important;
+        background: transparent !important;
+      }
+      .doc-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+      }
+      .doc-p {
+        font-size: 11pt !important;
+        line-height: 1.8 !important;
+        margin-bottom: 12px !important;
+        word-break: break-word !important;
+      }
+      .doc-ul, .doc-ol {
+        margin: 6px 0 12px 14px !important;
+        padding-right: 14px !important;
+      }
+      .doc-ul li, .doc-ol li {
+        font-size: 11pt !important;
+        line-height: 1.75 !important;
+        margin-bottom: 6px !important;
+        word-break: break-word !important;
+      }
+      .doc-h1 {
+        font-size: 17pt !important;
+        margin-top: 22px !important;
+        margin-bottom: 12px !important;
+        padding-bottom: 6px !important;
+      }
+      .doc-h2 {
+        font-size: 14pt !important;
+        margin-top: 20px !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 5px !important;
+      }
+      .doc-h3 {
+        font-size: 12.5pt !important;
+        margin-top: 16px !important;
+        margin-bottom: 7px !important;
+      }
+      .doc-h4 {
+        font-size: 11.5pt !important;
+        margin-top: 13px !important;
+        margin-bottom: 5px !important;
       }
       .cover-card {
         background: #09090b !important;
         border: 1px solid #27272a !important;
-        padding: 24px !important;
+        padding: 20px 22px !important;
         break-after: auto !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 18px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
       }
-      /* NO FORCED PAGE BREAKS ON HEADINGS - NATURAL FLOW ELIMINATES EMPTY GAPS */
+      .cover-title {
+        font-size: 22pt !important;
+        line-height: 1.35 !important;
+      }
+      .cover-subtitle {
+        font-size: 11.5pt !important;
+        line-height: 1.6 !important;
+      }
+      .cover-meta {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+        align-items: center !important;
+      }
+      /* NO FORCED PAGE BREAKS ON HEADINGS - NATURAL FLOW */
       .doc-h1, .doc-h2, .doc-h3, .doc-h4 {
         break-before: auto !important;
         page-break-before: auto !important;
@@ -698,25 +905,66 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
       .table-container {
         break-inside: auto !important;
         page-break-inside: auto !important;
+        margin: 10px 0 14px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
       }
-      tr {
+      .table-container table {
+        width: 100% !important;
+        max-width: 100% !important;
+        table-layout: fixed !important;
+      }
+      .table-container tr {
         break-inside: avoid !important;
         page-break-inside: avoid !important;
       }
+      .table-container th {
+        background-color: #18181b !important;
+        color: #ffffff !important;
+        font-size: 9.5pt !important;
+        padding: 6px 8px !important;
+        word-break: break-word !important;
+      }
+      .table-container td {
+        font-size: 9.5pt !important;
+        padding: 6px 8px !important;
+        word-break: break-word !important;
+        line-height: 1.5 !important;
+      }
+      .table-container tr.even { background-color: #0e0e12 !important; }
+      .table-container tr.odd { background-color: #09090b !important; }
       .code-container, .mermaid-box, .callout, .doc-quote {
         break-inside: avoid !important;
         page-break-inside: avoid !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
       }
-      th {
-        background-color: #18181b !important;
-        color: #ffffff !important;
-      }
-      tr.even { background-color: #0e0e12 !important; }
-      tr.odd { background-color: #09090b !important; }
       pre {
         background-color: #050505 !important;
         color: #f4f4f5 !important;
         border: 1px solid #27272a !important;
+        font-size: 9pt !important;
+        white-space: pre-wrap !important;
+        word-break: break-all !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        padding: 10px 12px !important;
+      }
+      code {
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      .callout {
+        padding: 10px 14px !important;
+        margin: 12px 0 !important;
+      }
+      .doc-quote {
+        padding: 10px 14px !important;
+        margin: 12px 0 !important;
       }
     }
   </style>
@@ -732,35 +980,63 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
     </button>
   </header>
 
-  <main class="doc-page">
-    <section class="cover-card">
-      <div class="badge-row">
-        <span class="badge badge-white">${escapeHtml(category)}</span>
-        <span class="badge badge-zinc">پروژه رادار (Radar)</span>
-        <span class="badge badge-emerald">نسخه رسمی عملیاتی</span>
-      </div>
-      <h1 class="cover-title">${escapeHtml(title)}</h1>
-      <p class="cover-subtitle">${escapeHtml(subtitle)}</p>
-      <div class="cover-meta">
-        <div class="meta-item">
-          <span class="meta-label">محصول:</span>
-          <span class="meta-val">رادار (Radar B2B Intent Engine)</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">تاریخ بازبینی:</span>
-          <span class="meta-val">بهمن ۱۴۰۳ / اکتبر ۲۰۲۶</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">سطح دسترسی:</span>
-          <span class="meta-val">مستند فنی و اجرایی رسمی</span>
-        </div>
-      </div>
-    </section>
+  <table class="print-page-table">
+    <thead>
+      <tr>
+        <td>
+          <div class="running-header">
+            <span>سامانه هوشمند رادار (Radar) — PriCoders</span>
+            <span>${escapeHtml(title)}</span>
+          </div>
+        </td>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td>
+          <div class="running-footer">
+            <span>سامانه رادار (Radar) — PriCoders</span>
+            <span>سند رسمی محرمانه — پاییز ۱۴۰۵</span>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr>
+        <td>
+          <main class="doc-page">
+            <section class="cover-card">
+              <div class="badge-row">
+                <span class="badge badge-white">${escapeHtml(category)}</span>
+                <span class="badge badge-zinc">پروژه رادار (Radar)</span>
+                <span class="badge badge-emerald">مستند سازمانی</span>
+              </div>
+              <h1 class="cover-title">${escapeHtml(title)}</h1>
+              <p class="cover-subtitle">${escapeHtml(subtitle)}</p>
+              <div class="cover-meta">
+                <div class="meta-item">
+                  <span class="meta-label">محصول:</span>
+                  <span class="meta-val">رادار (Radar B2B Intent Engine)</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">تاریخ تدوین:</span>
+                  <span class="meta-val">پاییز ۱۴۰۵</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">سطح دسترسی:</span>
+                  <span class="meta-val">مستند رسمی و اجرایی</span>
+                </div>
+              </div>
+            </section>
 
-    <article class="doc-content">
-      ${bodyContent}
-    </article>
-  </main>
+            <article class="doc-content">
+              ${bodyContent}
+            </article>
+          </main>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>
 `;
@@ -770,20 +1046,20 @@ function buildHtmlPage(title: string, subtitle: string, category: string, bodyCo
 const mdFiles = [
   {
     file: "TECHNICAL_REFERENCE.md",
-    title: "مرجع فنی جامع و راهنمای پیاده‌سازی سامانه رادار",
-    subtitle: "مستندات معماری، ساختار داده‌ها، خط تریاژ سه‌لایه، احراز هویت چندمستأجری، ماتریس سیگنال‌های زنده و اسکنر پس‌زمینه خودکار",
+    title: "مرجع فنی و راهنمای پیاده‌سازی سامانه رادار",
+    subtitle: "مستندات معماری نرم‌افزار، ساختار داده‌ها، خط تریاژ سه‌لایه، احراز هویت چندمستأجری و زمان‌بند خودکار پس‌زمینه",
     category: "معماری فنی و مهندسی",
   },
   {
     file: "BusinessPlan.md",
-    title: "طرح کسب‌وکار و مدل درآمدی سامانه رادار (Business Plan)",
-    subtitle: "سند استراتژی بازار، تحلیل پرسونای مشتری، مقایسه هزینه با SDR انسانی، مدل قیمت‌گذاری و درآمدی، و اقتصاد واحد (Unit Economics)",
+    title: "طرح کسب‌وکار و مدل اقتصادی سامانه رادار",
+    subtitle: "استراتژی بازار، تحلیل پرسونای مشتری، مدل تعرفه‌گذاری، اقتصاد واحد و دورنمای مالی",
     category: "طرح تجاری و استراتژی",
   },
   {
     file: "PITCH_DECK_CONTENT.md",
-    title: "محتوا و سناریوی ارائه سرمایه‌پذیری رادار (Pitch Deck)",
-    subtitle: "سناریوی اسلایدبه‌اسلاید، پیام‌های محوری، آمار و ارقام بازار، اقتصاد واحد و سناریوی جذب سرمایه",
+    title: "محتوا و سناریوی ارائه سرمایه‌پذیری رادار",
+    subtitle: "سناریوی اسلایدبه‌اسلاید، پیام‌های محوری، آمار بازار و برنامه جذب سرمایه",
     category: "ارائه به سرمایه‌گذار",
   },
 ];

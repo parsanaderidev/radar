@@ -1,16 +1,16 @@
 # Graph Report - Radar  (2026-10-08)
 
 ## Corpus Check
-- 73 files · ~70,810 words
+- 73 files · ~74,760 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 553 nodes · 1030 edges · 31 communities (22 shown, 9 thin omitted)
+- 573 nodes · 1050 edges · 31 communities (22 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `81a3220a`
+- Built from commit: `8b80003a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -38,9 +38,9 @@
 - workflows/graphify.md
 - next-env.d.ts
 - postcss.config.mjs
-- Radar — Technical Reference (مرجع فنی جامع)
+- سامانه رادار — مرجع فنی جامع و راهنمای پیاده‌سازی
 - devDependencies
-- راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders
+- فهرست اسلایدهای ارائه
 - ingest.ts
 - logout/route.ts
 - proxy.ts
@@ -51,12 +51,12 @@
 2. `authenticateSuperuser()` - 25 edges
 3. `getAuthSession()` - 23 edges
 4. `triagePendingMessage()` - 20 edges
-5. `Radar — Technical Reference (مرجع فنی جامع)` - 17 edges
+5. `سامانه رادار — مرجع فنی جامع و راهنمای پیاده‌سازی` - 18 edges
 6. `isAuthenticatedRequest()` - 16 edges
 7. `compilerOptions` - 16 edges
 8. `ProductRecord` - 15 edges
 9. `getClientIp()` - 15 edges
-10. `toPersianDigits()` - 12 edges
+10. `طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `POST()` --calls--> `triageAdHocMessage()`  [EXTRACTED]
@@ -86,23 +86,23 @@ Nodes (58): LeadRadarDashboard(), dynamic, dynamic, dynamic, OnboardingPage(), C
 
 ### Community 1 - "auth.ts"
 Cohesion: 0.06
-Nodes (80): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+72 more)
+Nodes (78): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+70 more)
 
 ### Community 2 - "voice-orb.tsx"
 Cohesion: 0.07
-Nodes (39): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+31 more)
+Nodes (38): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+30 more)
 
 ### Community 3 - "pipeline.ts"
-Cohesion: 0.10
-Nodes (34): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+26 more)
+Cohesion: 0.09
+Nodes (36): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+28 more)
 
 ### Community 4 - "package.json"
 Cohesion: 0.06
 Nodes (32): clsx, motion, next, dependencies, clsx, motion, next, pocketbase (+24 more)
 
 ### Community 5 - "طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی"
-Cohesion: 0.07
-Nodes (27): ارزش پیشنهادی رادار:, ارزیابی صریح گزینه‌های قیمت‌گذاری:, الف. هزینه‌های متغیر و وابسته به حجم مصرف (Variable Costs), ب. هزینه‌های ثابت و سرشکن‌شده زیرساخت (Fixed / Shared Costs), تحلیل سناریوها:, جدول پیش‌بینی درآمدی:, جمع کل بهای تمام‌شده (COGS) به‌ازای هر مشترک:, سامانه هوش مصنوعی رادار (Radar AI) — PriCoders (+19 more)
+Cohesion: 0.06
+Nodes (35): ارزش پیشنهادی رادار:, الف. هزینه‌های متغیر ماهانه, ب. هزینه‌های ثابت و سرشکن‌شده زیرساخت, برنامه تفصیلی تخصیص منابع جذب‌شده:, تحلیل اهرم عملیاتی در مراحل سه‌گانه مقیاس‌پذیری:, جمع‌بندی بهای تمام‌شده واقعی واحد:, دورنمای مالی ۳ ساله:, سامانه هوشمند رادار — PriCoders (+27 more)
 
 ### Community 6 - "compilerOptions"
 Cohesion: 0.07
@@ -113,7 +113,7 @@ Cohesion: 0.12
 Nodes (15): aliases, components, hooks, lib, ui, utils, rsc, $schema (+7 more)
 
 ### Community 8 - "convert_all_docs_to_pdf.ts"
-Cohesion: 0.19
+Cohesion: 0.17
 Nodes (12): buildHtmlPage(), docsDir, escapeHtml(), fontsDir, formatInline(), mdFiles, parseMarkdown(), closeTable() (+4 more)
 
 ### Community 9 - "DEPLOY.sh"
@@ -140,21 +140,21 @@ Nodes (6): CSP connect-src Constraint, DEPLOY.sh One-Shot Production Deploy, NEX
 Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
-### Community 24 - "Radar — Technical Reference (مرجع فنی جامع)"
-Cohesion: 0.06
-Nodes (33): 10. Configuration — پیکربندی, 11. Frontend & Realtime — رابط کاربری و به‌روزرسانی زنده, 12. Deployment — استقرار, 13. Operations Runbook — دستورالعمل بهره‌برداری, 14. Project Structure — ساختار پروژه, 15. Known Limitations & Roadmap — محدودیت‌ها و نقشه راه, 1. Overview — نمای کلی, 2. System Architecture — معماری سیستم (+25 more)
+### Community 24 - "سامانه رادار — مرجع فنی جامع و راهنمای پیاده‌سازی"
+Cohesion: 0.05
+Nodes (43): PriCoders — مهندسی نرم‌افزار و معماری سیستم‌های هوشمند, اجرای تک‌دستوری استقرار روی سرورهای دبیان و اوبونتو:, الف. پایگاه داده و آدرس‌های سیستمی, ب. امنیت و دسترسی‌های اجرایی, تحلیل مقایسه‌ای اقتصاد رادار با روش‌های سنتی:, تفکیک وظایف ماژول‌های اصلی:, ج. درگاه‌های وب‌هوک پیام‌رسان‌ها, د. مدل‌های هوش مصنوعی و نرخ توکن‌ها (+35 more)
 
 ### Community 25 - "devDependencies"
 Cohesion: 0.12
 Nodes (17): eslint, eslint-config-next, devDependencies, eslint, eslint-config-next, tailwindcss, @tailwindcss/postcss, @types/node (+9 more)
 
-### Community 26 - "راهنمای تفصیلی متن و سناریوی ارائه برای طراحان و ارائه‌دهندگان — PriCoders"
-Cohesion: 0.14
-Nodes (13): اسلاید ۱: عنوان و هویت محصول (Cover Slide), اسلاید ۱۰: نقشه راه توسعه و مقیاس‌پذیری (Roadmap), اسلاید ۱۱: تیم، دستاوردها و پیشنهاد سرمایه‌گذاری (Team & The Ask), اسلاید ۲: مسئله بازار و واقعیت تلخ فروش (The Problem), اسلاید ۳: چرا راهکارهای فعلی شکست می‌خورند؟ (Why Existing Solutions Fail), اسلاید ۴: معرفی راه‌حل — رادار (The Solution: Radar), اسلاید ۵: چرخه کارکرد فنی و دمو زنده (How It Works & Live Demo), اسلاید ۶: خندق دفاعی و تمایز فناوری (Defensibility & Moats) (+5 more)
+### Community 26 - "فهرست اسلایدهای ارائه"
+Cohesion: 0.13
+Nodes (14): اسلاید ۱: عنوان، هویت محصول و بیانیه ارزش, اسلاید ۱۰: نقشه راه توسعه محصول و افق رشد, اسلاید ۱۱: تیم توسعه، دستاوردها و پیشنهاد سرمایه‌گذاری, اسلاید ۲: مسئله بازار و واقعیت تلخ فروش در ایران, اسلاید ۳: چرا راهکارهای فعلی بازار ناکارآمد هستند؟, اسلاید ۴: معرفی راه‌حل — سامانه هوشمند رادار, اسلاید ۵: چرخه کارکرد فنی و دموی پردازش پیام, اسلاید ۶: خندق دفاعی، تمایز فناوری و پایداری داخلی (+6 more)
 
 ### Community 27 - "ingest.ts"
-Cohesion: 0.24
-Nodes (12): escapeFilterValue(), findOrCreateSource(), ingestExternalMessage(), IngestMessageInput, IngestOutcome, IngestPlatform, sourceName(), sanitizeString() (+4 more)
+Cohesion: 0.23
+Nodes (13): escapeFilterValue(), findOrCreateSource(), ingestExternalMessage(), IngestMessageInput, IngestOutcome, IngestPlatform, sourceName(), sanitizeString() (+5 more)
 
 ### Community 28 - "logout/route.ts"
 Cohesion: 0.60
@@ -165,7 +165,7 @@ Cohesion: 0.50
 Nodes (4): config, middleware, parseEdgeJwtPayload(), proxy()
 
 ## Knowledge Gaps
-- **231 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+226 more)
+- **245 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+240 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -173,16 +173,16 @@ Nodes (4): config, middleware, parseEdgeJwtPayload(), proxy()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `getPocketBaseClient()` connect `auth.ts` to `Icons.tsx`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+  _High betweenness centrality (0.029) - this node is a cross-community bridge._
 - **Why does `RefreshIcon()` connect `Icons.tsx` to `voice-orb.tsx`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `ProductRecord` connect `auth.ts` to `Icons.tsx`, `pipeline.ts`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `ProductRecord` connect `auth.ts` to `Icons.tsx`, `pipeline.ts`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `DEBIAN_FRONTEND`, `dynamic`, `dynamic` to the rest of the system?**
-  _231 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _245 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.055651176133103844 - nodes in this community are weakly interconnected._
 - **Should `auth.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06192972238400311 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06383838383838383 - nodes in this community are weakly interconnected._
 - **Should `voice-orb.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06823529411764706 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07020408163265306 - nodes in this community are weakly interconnected._

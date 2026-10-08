@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>طرح کسب‌وکار و مدل درآمدی سامانه رادار (Business Plan)</title>
+  <title>طرح کسب‌وکار و مدل اقتصادی سامانه رادار</title>
   <style>
     
 @font-face {
@@ -317,46 +317,47 @@
       color: var(--text);
     }
 
-    /* High Density Monochrome Tables */
+    /* High Density Monochrome Markdown Tables */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 10px 0 16px;
+      margin: 12px 0 16px;
       border: 1px solid var(--border);
       border-radius: 6px;
       background: var(--card-bg);
       break-inside: auto;
     }
-    table {
+    .table-container table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 11.5px;
+      font-size: 11px;
       text-align: right;
     }
-    thead {
+    .table-container thead {
       display: table-header-group;
     }
-    tr {
+    .table-container tr {
       break-inside: avoid;
       page-break-inside: avoid;
     }
-    th {
+    .table-container th {
       background: #141418;
       color: var(--text-bright);
       font-weight: 700;
-      padding: 7px 10px;
+      padding: 6px 9px;
       border-bottom: 1px solid var(--border);
       white-space: nowrap;
     }
-    td {
-      padding: 7px 10px;
+    .table-container td {
+      padding: 6px 9px;
       border-bottom: 1px solid #1a1a20;
       color: var(--text);
       vertical-align: middle;
+      font-size: 11px;
     }
-    tr.odd { background: #09090b; }
-    tr.even { background: #0e0e12; }
-    tr:last-child td { border-bottom: none; }
+    .table-container tr.odd { background: #09090b; }
+    .table-container tr.even { background: #0e0e12; }
+    .table-container tr:last-child td { border-bottom: none; }
 
     /* Inline Code */
     .inline-code {
@@ -443,8 +444,114 @@
     }
 
     /* =========================================================================
-       PRINT STYLES: 100% Full Bleed Black & White with Zero White Margins
+       PRINT & SCREEN STYLES: 100% Full Bleed Black & White with Perfect Alignment
     ========================================================================= */
+    * {
+      box-sizing: border-box !important;
+      scrollbar-width: none !important; /* Firefox */
+      -ms-overflow-style: none !important; /* IE/Edge */
+    }
+    *::-webkit-scrollbar {
+      display: none !important; /* Chrome / Safari */
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    .print-page-table {
+      width: 100%;
+      max-width: 100%;
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      border: none;
+      table-layout: fixed;
+    }
+    .print-page-table > thead {
+      display: table-header-group;
+    }
+    .print-page-table > tfoot {
+      display: table-footer-group;
+    }
+    .print-page-table > thead > tr > td {
+      height: 12mm;
+      vertical-align: top;
+      padding: 5mm 14mm 3mm 14mm;
+      border: none !important;
+      background: transparent !important;
+    }
+    .print-page-table > tfoot > tr > td {
+      height: 12mm;
+      vertical-align: bottom;
+      padding: 3mm 14mm 5mm 14mm;
+      border: none !important;
+      background: transparent !important;
+    }
+    .print-page-table > tbody > tr > td {
+      padding: 8mm 14mm 8mm 14mm;
+      vertical-align: top;
+      border: none !important;
+      background: transparent !important;
+      font-size: 13.5px;
+      line-height: 1.8;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .running-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #71717a;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2.5mm;
+      width: 100%;
+      direction: rtl;
+    }
+    .running-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5pt;
+      font-weight: 500;
+      color: #71717a;
+      border-top: 1px solid var(--border);
+      padding-top: 2.5mm;
+      width: 100%;
+      direction: rtl;
+    }
+
+    @media screen {
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .print-page-table {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .print-page-table > thead > tr > td {
+        padding: 16px 20px 0 20px;
+        height: auto;
+      }
+      .print-page-table > tfoot > tr > td {
+        padding: 0 20px 20px 20px;
+        height: auto;
+      }
+      .print-page-table > tbody > tr > td {
+        padding: 10px 20px;
+      }
+      .doc-page {
+        width: 100%;
+        max-width: 100%;
+        margin: 15px auto;
+        padding: 0;
+      }
+    }
+
     @media print {
       @page {
         size: A4 portrait;
@@ -454,6 +561,8 @@
         background-color: #000000 !important;
         margin: 0 !important;
         padding: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
@@ -462,28 +571,113 @@
         color: #ededed !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        font-size: 11pt;
-        line-height: 1.5;
+        font-size: 11pt !important;
+        line-height: 1.8 !important;
         margin: 0 !important;
-        padding: 12mm 14mm !important;
+        padding: 0 !important;
+        width: 100% !important;
       }
       .top-bar {
         display: none !important;
       }
+      .print-page-table {
+        width: 100% !important;
+        max-width: 100% !important;
+        table-layout: fixed !important;
+        background-color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .print-page-table > thead > tr > td {
+        height: 12mm !important;
+        padding: 5mm 14mm 3mm 14mm !important;
+      }
+      .print-page-table > tfoot > tr > td {
+        height: 12mm !important;
+        padding: 3mm 14mm 5mm 14mm !important;
+      }
+      .print-page-table > tbody > tr > td {
+        padding: 8mm 14mm 8mm 14mm !important;
+        font-size: 11pt !important;
+        line-height: 1.8 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+      }
       .doc-page {
+        width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-        background: #000000 !important;
+        background: transparent !important;
+      }
+      .doc-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+      }
+      .doc-p {
+        font-size: 11pt !important;
+        line-height: 1.8 !important;
+        margin-bottom: 12px !important;
+        word-break: break-word !important;
+      }
+      .doc-ul, .doc-ol {
+        margin: 6px 0 12px 14px !important;
+        padding-right: 14px !important;
+      }
+      .doc-ul li, .doc-ol li {
+        font-size: 11pt !important;
+        line-height: 1.75 !important;
+        margin-bottom: 6px !important;
+        word-break: break-word !important;
+      }
+      .doc-h1 {
+        font-size: 17pt !important;
+        margin-top: 22px !important;
+        margin-bottom: 12px !important;
+        padding-bottom: 6px !important;
+      }
+      .doc-h2 {
+        font-size: 14pt !important;
+        margin-top: 20px !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 5px !important;
+      }
+      .doc-h3 {
+        font-size: 12.5pt !important;
+        margin-top: 16px !important;
+        margin-bottom: 7px !important;
+      }
+      .doc-h4 {
+        font-size: 11.5pt !important;
+        margin-top: 13px !important;
+        margin-bottom: 5px !important;
       }
       .cover-card {
         background: #09090b !important;
         border: 1px solid #27272a !important;
-        padding: 24px !important;
+        padding: 20px 22px !important;
         break-after: auto !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 18px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
       }
-      /* NO FORCED PAGE BREAKS ON HEADINGS - NATURAL FLOW ELIMINATES EMPTY GAPS */
+      .cover-title {
+        font-size: 22pt !important;
+        line-height: 1.35 !important;
+      }
+      .cover-subtitle {
+        font-size: 11.5pt !important;
+        line-height: 1.6 !important;
+      }
+      .cover-meta {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+        align-items: center !important;
+      }
+      /* NO FORCED PAGE BREAKS ON HEADINGS - NATURAL FLOW */
       .doc-h1, .doc-h2, .doc-h3, .doc-h4 {
         break-before: auto !important;
         page-break-before: auto !important;
@@ -493,25 +687,66 @@
       .table-container {
         break-inside: auto !important;
         page-break-inside: auto !important;
+        margin: 10px 0 14px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
       }
-      tr {
+      .table-container table {
+        width: 100% !important;
+        max-width: 100% !important;
+        table-layout: fixed !important;
+      }
+      .table-container tr {
         break-inside: avoid !important;
         page-break-inside: avoid !important;
       }
+      .table-container th {
+        background-color: #18181b !important;
+        color: #ffffff !important;
+        font-size: 9.5pt !important;
+        padding: 6px 8px !important;
+        word-break: break-word !important;
+      }
+      .table-container td {
+        font-size: 9.5pt !important;
+        padding: 6px 8px !important;
+        word-break: break-word !important;
+        line-height: 1.5 !important;
+      }
+      .table-container tr.even { background-color: #0e0e12 !important; }
+      .table-container tr.odd { background-color: #09090b !important; }
       .code-container, .mermaid-box, .callout, .doc-quote {
         break-inside: avoid !important;
         page-break-inside: avoid !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
       }
-      th {
-        background-color: #18181b !important;
-        color: #ffffff !important;
-      }
-      tr.even { background-color: #0e0e12 !important; }
-      tr.odd { background-color: #09090b !important; }
       pre {
         background-color: #050505 !important;
         color: #f4f4f5 !important;
         border: 1px solid #27272a !important;
+        font-size: 9pt !important;
+        white-space: pre-wrap !important;
+        word-break: break-all !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        padding: 10px 12px !important;
+      }
+      code {
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      .callout {
+        padding: 10px 14px !important;
+        margin: 12px 0 !important;
+      }
+      .doc-quote {
+        padding: 10px 14px !important;
+        margin: 12px 0 !important;
       }
     }
   </style>
@@ -520,82 +755,69 @@
   <header class="top-bar">
     <div class="top-bar-title">
       <span class="logo-badge">R</span>
-      <span>سامانه رادار (Radar) | طرح کسب‌وکار و مدل درآمدی سامانه رادار (Business Plan)</span>
+      <span>سامانه رادار (Radar) | طرح کسب‌وکار و مدل اقتصادی سامانه رادار</span>
     </div>
     <button onclick="window.print()" class="btn">
       چاپ و خروجی PDF (Black & White)
     </button>
   </header>
 
-  <main class="doc-page">
-    <section class="cover-card">
-      <div class="badge-row">
-        <span class="badge badge-white">طرح تجاری و استراتژی</span>
-        <span class="badge badge-zinc">پروژه رادار (Radar)</span>
-        <span class="badge badge-emerald">نسخه رسمی عملیاتی</span>
-      </div>
-      <h1 class="cover-title">طرح کسب‌وکار و مدل درآمدی سامانه رادار (Business Plan)</h1>
-      <p class="cover-subtitle">سند استراتژی بازار، تحلیل پرسونای مشتری، مقایسه هزینه با SDR انسانی، مدل قیمت‌گذاری و درآمدی، و اقتصاد واحد (Unit Economics)</p>
-      <div class="cover-meta">
-        <div class="meta-item">
-          <span class="meta-label">محصول:</span>
-          <span class="meta-val">رادار (Radar B2B Intent Engine)</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">تاریخ بازبینی:</span>
-          <span class="meta-val">بهمن ۱۴۰۳ / اکتبر ۲۰۲۶</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">سطح دسترسی:</span>
-          <span class="meta-val">مستند فنی و اجرایی رسمی</span>
-        </div>
-      </div>
-    </section>
+  <table class="print-page-table">
+    <thead>
+      <tr>
+        <td>
+          <div class="running-header">
+            <span>سامانه هوشمند رادار (Radar) — PriCoders</span>
+            <span>طرح کسب‌وکار و مدل اقتصادی سامانه رادار</span>
+          </div>
+        </td>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td>
+          <div class="running-footer">
+            <span>سامانه رادار (Radar) — PriCoders</span>
+            <span>سند رسمی محرمانه — پاییز ۱۴۰۵</span>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr>
+        <td>
+          <main class="doc-page">
+            <section class="cover-card">
+              <div class="badge-row">
+                <span class="badge badge-white">طرح تجاری و استراتژی</span>
+                <span class="badge badge-zinc">پروژه رادار (Radar)</span>
+                <span class="badge badge-emerald">مستند سازمانی</span>
+              </div>
+              <h1 class="cover-title">طرح کسب‌وکار و مدل اقتصادی سامانه رادار</h1>
+              <p class="cover-subtitle">استراتژی بازار، تحلیل پرسونای مشتری، مدل تعرفه‌گذاری، اقتصاد واحد و دورنمای مالی</p>
+              <div class="cover-meta">
+                <div class="meta-item">
+                  <span class="meta-label">محصول:</span>
+                  <span class="meta-val">رادار (Radar B2B Intent Engine)</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">تاریخ تدوین:</span>
+                  <span class="meta-val">پاییز ۱۴۰۵</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">سطح دسترسی:</span>
+                  <span class="meta-val">مستند رسمی و اجرایی</span>
+                </div>
+              </div>
+            </section>
 
-    <article class="doc-content">
-      <h1 class="doc-h1">طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی</h1><h2 class="doc-h2"><span class="h2-dot"></span>سامانه هوش مصنوعی رادار (Radar AI) — PriCoders</h2><p class="doc-p"><strong>نسخه سند:</strong> ۳.۱ (بازنگری اقتصادی منطبق بر واقعیت کد و بهای تمام‌شده واقعی — پاییز ۱۴۰۵ / اکتبر ۲۰۲۶)</p><p class="doc-p"><strong>دسته‌بندی:</strong> B2B Sales Opportunity Intelligence & Inbound Revenue Accelerator</p><p class="doc-p"><strong>مخاطب سند:</strong> سرمایه‌گذاران نهادی، فرشتگان سرمایه‌گذار، داوران و ارزیابان مسابقات استارتاپی و هیئت‌مدیره</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۱. دسته‌بندی داده‌های مالی و استانداردهای راستی‌آزمایی</h2><p class="doc-p">به منظور حفظ بالاترین سطح شفافیت و جلوگیری از هرگونه اغراق در ارزیابی کسب‌وکار، تمامی ارقام و محاسبات مالی این سند در یکی از ۵ طبقه زیر دسته‌بندی شده‌اند:</p><ol class="doc-ol"><li><strong>داده‌های واقعی پیاده‌سازی‌شده (Actual):</strong> برگرفته از تست مستقیم کدهای مخزن، جداول دیتابیس و توابع پردازشی.</li><li><strong>محاسبه‌شده بر مبنای پیاده‌سازی (Calculated):</strong> خروجی فرمول‌های کد با اعمال متغیرهای محیطی سیستم (<code class="inline-code">lib/pricing.ts</code>).</li><li><strong>تخمین مبتنی بر ارائه‌دهندگان سرویس (Provider-based Estimate):</strong> نرخ‌های استعلام‌شده از سرویس‌دهندگان واقعی (OpenRouter، کاوه‌نگار، ابر آروان، زرین‌پال).</li><li><strong>فرضیات بنیادین مدل کسب‌وکار (Business Assumption):</strong> برآوردهای منطقی بازار و رفتار مشتری که در مراحل بعدی نیازمند اعتبارسنجی تجربی هستند (برچسب‌گذاری‌شده با <em>[فرض بازار]</em> یا <em>[برآورد اولیه]</em>).</li><li><strong>پیش‌بینی‌های آتی (Future Projection):</strong> برون‌یابی ریاضی حاصل از فرضیات رشد و مقیاس‌پذیری (برچسب‌گذاری‌شده با <em>[پیش‌بینی آتی]</em>).</li></ol><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۲. خلاصه اجرایی (Executive Summary)</h2><p class="doc-p"><strong>رادار (Radar)</strong> یک پلتفرم هوشمندی فرصت‌های فروش بین‌شرکتی (B2B Opportunity Intelligence) است که با پایش مداوم جوامع آنلاین فارسی‌زبان (پیام‌رسان‌های بله و تلگرام، و انجمن‌های تخصصی وب)، تقاضاهای نهفته و نیازهای فعال خرید را شناسایی کرده و نویزهای عمومی را فیلتر می‌کند.</p><h3 class="doc-h3">مسئله و وضعیت موجود:</h3><ul class="doc-ul"><li>در اقتصاد دیجیتال ایران، بخش عظیمی از خریدهای سازمانی، پروژه‌های برون‌سپاری و درخواست‌های جایگزینی نرم‌افزارهای مالی، اداری و توسعه نرم‌افزار در <strong>گروه‌ها و کانال‌های تخصصی پیام‌رسان‌ها</strong> مطرح می‌شوند.</li><li>بیش از ۸۰٪ پیام‌های این گروه‌ها نویز خالص است. تیم‌های فروش یا این سیگنال‌ها را به دلیل حجم بالای پیام‌ها از دست می‌دهند، یا باید زمان نیروهای متخصص خود را ساعت‌ها صرف خواندن دستی پیام‌ها کنند.</li></ul><h3 class="doc-h3">ارزش پیشنهادی رادار:</h3><ul class="doc-ul"><li><strong>فیلترینگ ۳ لایه‌ای تدریجی:</strong> حذف بیش از ۸۰٪ نویز در لایه‌های ۰ و ۱ بدون مصرف حتی ۱ توکن هوش مصنوعی (هزینه پردازش صفر).</li><li><strong>کشف نیت و ارزش‌گذاری تجاری:</strong> ارزیابی عمیق پیام‌های واجد شرایط با مدل‌های زبانی هوشمند، تخصیص امتیاز نیت از ۰ تا ۱۰۰، استخراج نیاز مشتری و تدوین پیش‌نویس پاسخ فارسی برای کارشناس فروش در کمتر از ۳ ثانیه.</li><li><strong>استقلال کامل از زیرساخت‌های خارجی:</strong> قابلیت میزبانی ۱۰۰٪ داخلی بر بستر دیتاسنترهای مقیم کشور با تضمین تداوم کار در زمان اختلالات اینترنت بین‌الملل.</li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۳. پرسونای مشتریان، منطق ارزش و انگیزه پرداخت</h2><p class="doc-p">رادار برای افراد عادی یا مصارف عمومی ساخته نشده است. مشتریان هدف رادار کسب‌وکارهایی هستند که <strong>ارزش هر معامله آن‌ها (Deal Size) بین ۱۵ تا ۲۰۰ میلیون تومان</strong> است و بستن تنها یک معامله در ماه از طریق رادار، چند برابر هزینه اشتراک سالانه آن‌ها را بازمی‌گرداند.</p><h3 class="doc-h3">۱. شرکت‌های نرم‌افزاری و ارائه‌دهندگان B2B SaaS (مانند حساب‌آنلاین پارس)</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> ۱۵ تا ۵۰ نفر پرسنل، فروش نرم‌افزارهای ابری مالیاتی، ERP، مدیریت ارتباط با مشتریان (CRM).</li><li><strong>چرا پرداخت می‌کنند:</strong> مشتریان روزانه در گروه‌های تجاری از قطعی نرم‌افزارهای سنتی یا چالش‌های سامانه مودیان گلایه دارند. سرعت پاسخگویی در ۵ دقیقه اول به معنای بردن رقابت از سایر رقبا است.</li><li><strong>شغل مورد نظر (JTBD):</strong> کشف لحظه‌ای شرکت‌هایی که به دنبال جایگزین نرم‌افزارهای حسابداری یا فروشگاهی هستند.</li></ul><h3 class="doc-h3">۲. آژانس‌های دیجیتال مارکتینگ و شرکت‌های توسعه نرم‌افزار</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> ۱۰ تا ۳۰ نفر، مجری پروژه‌های طراحی سایت، سئو، توسعه اپلیکیشن و کمپین‌های تبلیغاتی.</li><li><strong>چرا پرداخت می‌کنند:</strong> جذب پروژه از طریق تماس‌های سرد بازدهی بسیار پایینی دارد. در گروه‌های تجاری روزانه ده‌ها کارفرما تقاضای معرفی برنامه‌نویس یا مجری سئو با بودجه‌های مشخص می‌کنند.</li><li><strong>شغل مورد نظر (JTBD):</strong> دریافت هشدارهای فوری پروژه‌های با بودجه بالای ۵۰ میلیون تومان همراه با پیش‌نویس پاسخ فنی و متقاعدکننده.</li></ul><h3 class="doc-h3">۳. شرکت‌های خدمات مالی، حقوقی و مشاوره بازرگانی</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> دفاتری با ارزش قرارداد پرونده‌ای ۵۰ تا ۵۰۰ میلیون تومان.</li><li><strong>چرا پرداخت می‌کنند:</strong> تقاضای خدمات مالیاتی یا ترخیص گمرکی اغلب در لحظه بحران یا مسدود شدن حساب‌ها مطرح می‌شود؛ هر پاسخی که سریع‌تر، فنی‌تر و مستدل‌تر باشد برنده پرونده است.</li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۴. کالبدشکافی بهای تمام‌شده عملیاتی (Comprehensive COGS Model)</h2><p class="doc-p">در سامانه‌های هوش مصنوعی عملیاتی در ایران، بهای تمام‌شده صرفاً به هزینه توکن خام خلاصه نمی‌شود. جدول زیر ساختار بهای تمام‌شده ماهانه به‌ازای یک مشتری فعال را به تفکیک مؤلفه‌ها نمایش می‌دهد:</p><h3 class="doc-h3">الف. هزینه‌های متغیر و وابسته به حجم مصرف (Variable Costs)</h3><div class="table-container"><table><thead><tr><th>مؤلفه هزینه</th><th>مبنای محاسبه در کد و محیط</th><th>هزینه در پلن استارتر (۱۵,۰۰۰ پیام)</th><th>هزینه در پلن رشد (۵۰,۰۰۰ پیام)</th><th>دسته‌بندی داده</th></tr></thead><tbody><tr class="even"><td><strong>پردازش هوش مصنوعی (LLM)</strong></td><td>فیلتر ۸۵٪ پیام‌ها در لایه ۰/۱ (رایگان). پردازش ۱۵٪ در لایه ۲ با هزینه میانگین ۳۸ تومان</td><td>۸۵,۵۰۰ تومان</td><td>۲۸۵,۰۰۰ تومان</td><td>محاسبه‌شده بر مبنای پیاده‌سازی</td></tr><tr class="odd"><td><strong>پیامک هشدارهای آنی</strong></td><td>۱۰۰ تا ۳۰۰ پیامک هشدار برای لیدهای با امتیاز بالا (هر پارت ۲۵۰ تومان)</td><td>۲۵,۰۰۰ تومان</td><td>۷۵,۰۰۰ تومان</td><td>تخمین مبتنی بر تعرفه اپراتور</td></tr><tr class="even"><td><strong>کارمزد شبکه پرداخت</strong></td><td>کارمزد درگاه پرداخت و شاپرک (۰.۵٪ تا ۱٪ مبلغ فاکتور)</td><td>۱۹,۰۰۰ تومان</td><td>۴۸,۰۰۰ تومان</td><td>داده واقعی شاپرک/درگاه</td></tr><tr class="odd"><td><strong>ترافیک شبکه و پراکسی</strong></td><td>مصرف پهنای باند و آی‌پی پایدار جهت استعلام و ارتباطات وب‌هوک</td><td>۸۰,۰۰۰ تومان</td><td>۱۸۰,۰۰۰ تومان</td><td>تخمین مبتنی بر تعرفه سرور</td></tr><tr class="even"><td><strong>جمع کل هزینه‌های متغیر</strong></td><td>—</td><td><strong>۲۰۹,۵۰۰ تومان</strong></td><td><strong>۵۸۸,۰۰۰ تومان</strong></td><td>محاسبه‌شده</td></tr></tbody></table></div><h3 class="doc-h3">ب. هزینه‌های ثابت و سرشکن‌شده زیرساخت (Fixed / Shared Costs)</h3><div class="table-container"><table><thead><tr><th>مؤلفه زیرساختی</th><th>مبنای برآورد در مقیاس ۱۰۰ مشتری</th><th>سهم سرشکن هر مشتری</th><th>دسته‌بندی داده</th></tr></thead><tbody><tr class="even"><td><strong>سرور ابری و پایگاه‌داده</strong></td><td>سرور اختصاصی ابری (ابر آروان / هتزنر) ماهانه ۱۰ میلیون تومان</td><td>۱۰۰,۰۰۰ تومان</td><td>تخمین مبتنی بر تعرفه کلاد</td></tr><tr class="odd"><td><strong>فضای ذخیره‌سازی و بکاپ</strong></td><td>پشتیبان‌گیری شبانه پایگاه داده SQLite و آرشیو ماهانه ۳ میلیون تومان</td><td>۳۰,۰۰۰ تومان</td><td>تخمین سرور ذخیره‌سازی</td></tr><tr class="even"><td><strong>مانیتورینگ و آپ‌تایم</strong></td><td>پایش پیوسته سرویس‌ها و هشدار خطاها</td><td>۲۰,۰۰۰ تومان</td><td>برآورد عملیاتی</td></tr><tr class="odd"><td><strong>پشتیبانی فنی و هلپ‌دسک</strong></td><td>کارشناس پشتیبانی و نگهداری مشتریان سرشکن بر اعضا</td><td>۸۰,۰۰۰ تومان</td><td>برآورد منابع انسانی</td></tr><tr class="even"><td><strong>جمع کل سهم هزینه‌های ثابت</strong></td><td>—</td><td><strong>۲۳۰,۰۰۰ تومان</strong></td><td>محاسبه سرشکن</td></tr></tbody></table></div><h3 class="doc-h3">جمع کل بهای تمام‌شده (COGS) به‌ازای هر مشترک:</h3><ul class="doc-ul"><li><strong>پلن استارتر:</strong> ۲۰۹,۵۰۰ + ۲۳۰,۰۰۰ = <strong>۴۳۹,۵۰۰ تومان / ماه</strong> (تقریباً ۴۴۰,۰۰۰ تومان)</li><li><strong>پلن رشد:</strong> ۵۸۸,۰۰۰ + ۲۳۰,۰۰۰ = <strong>۸۱۸,۰۰۰ تومان / ماه</strong> (تقریباً ۸۲۰,۰۰۰ تومان)</li></ul><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۵. تحلیل تطبیقی مدل‌های قیمت‌گذاری (Pricing Evaluation & Upgrade Logic)</h2><h3 class="doc-h3">ارزیابی صریح گزینه‌های قیمت‌گذاری:</h3><h4 class="doc-h4">۱. بررسی فرضیه تعرفه ۶۹۰,۰۰۰ تومان (Starter) و ۲,۱۹۰,۰۰۰ تومان (Growth):</h4><ul class="doc-ul"><li><strong>درآمد ناخالص:</strong> ۶۹۰,۰۰۰ تومان.</li><li><strong>بهای تمام‌شده واقعی (COGS):</strong> ~۴۴۰,۰۰۰ تومان.</li><li><strong>سود ناخالص:</strong> ۲۵۰,۰۰۰ تومان (<strong>حاشیه سود ناخالص: ۳۶.۲٪</strong>).</li><li><strong>نتیجه‌گیری و نقد تخصصی:</strong></li></ul><p class="doc-p">حاشیه سود ۳۶٪ برای یک کسب‌وکار B2B SaaS به شدت شکننده است. کوچک‌ترین نوسان در نرخ ارز، افزایش حجم پیام‌های ارسالی یا بالا رفتن نرخ خطاهای شبکه، حاشیه سود را منفی می‌کند. همچنین این قیمت ابزار را در حد یک ربات تلگرامی ساده بی‌ارزش جلوه می‌دهد و هیچ بودجه‌ای برای هزینه جذب مشتری (CAC) یا تیم پشتیبانی باقی نمی‌گذارد.</p><h4 class="doc-h4">۲. تعرفه تجاری و پایدار پیشنهادی (Defensible Commercial Model):</h4><div class="code-container"><div class="code-header"><span class="code-lang">code</span></div><pre><code class="language-">┌────────────────────────────────────────────────────────────────────────┐
-│                        پلن‌های اشتراک تجاری رادار                      │
-├──────────────────────────┬──────────────────────┬──────────────────────┤
-│ مشخصه                    │ پلن استارتر (Starter)│ پلن رشد (Growth)     │
-├──────────────────────────┼──────────────────────┼──────────────────────┤
-│ تعرفه ماهانه             │ ۱,۸۹۰,۰۰۰ تومان      │ ۴,۸۹۰,۰۰۰ تومان      │
-│ تعرفه با تخفیف سالانه    │ ۱,۴۹۰,۰۰۰ تومان/ماه  │ ۳,۹۰۰,۰۰۰ تومان/ماه  │
-│ سقف پایش پیام            │ ۱۵,۰۰۰ پیام در ماه   │ ۵۰,۰۰۰ پیام در ماه   │
-│ تعداد کاربر (صندلی)      │ ۱ کاربر فعال         │ ۵ کاربر همزمان تیمی  │
-│ وضعیت فعلی در کد         │ فعال و در دسترس      │ به‌زودی (در حال توسعه)│
-│ بهای تمام‌شده (COGS)     │ ۴۴۰,۰۰۰ تومان        │ ۸۲۰,۰۰۰ تومان        │
-│ سود ناخالص ماهانه        │ ۱,۴۵۰,۰۰۰ تومان      │ ۴,۰۷۰,۰۰۰ تومان      │
-│ حاشیه سود ناخالص         │ ۷۶.۷٪                │ ۸۳.۲٪                │
-└──────────────────────────┴──────────────────────┴──────────────────────┘</code></pre></div><p class="doc-p"><em>(یادداشت تطبیق با داشبورد و لندینگ):</em></p><p class="doc-p">در صفحه اصلی لندینگ، پلن استارتر با قیمت اولیه ۳,۲۰۰,۰۰۰ تومان با تخفیف دوره‌ای معرفی شده است. جهت یکدستی با استانداردهای سرمایه‌گذاری، رقم پایه قابل دفاع در این سند بر مبنای تعرفه پایدار <strong>۱,۸۹۰,۰۰۰ تومان</strong> مدل‌سازی شده است تا حاشیه سود ناخالص بالای ۷۵٪ کاملاً تضمین گردد.</p><h3 class="doc-h3">منطق ارتقا میان پلن‌ها (Upgrade Drivers):</h3><p class="doc-p">مشتری به دلایل زیر از پلن استارتر به پلن رشد ارتقا می‌یابد:</p><p class="doc-p">۱. <strong>اشباع سقف پیام:</strong> با رسیدن به انتهای ظرفیت ۱۵,۰۰۰ پیام در ماه.</p><p class="doc-p">۲. <strong>افزایش اعضای تیم فروش:</strong> نیاز به توزیع لیدها میان چند کارشناس فروش (۱ کاربر به ۵ کاربر).</p><p class="doc-p">۳. <strong>اتصال خودکار به CRM:</strong> ارسال مستقیم لیدهای تأییدشده به سامانه‌های دیدار یا پیام‌گستر از طریق وب‌هوک.</p><p class="doc-p">۴. <strong>پشتیبانی از چند محصول:</strong> امکان تعریف همزمان چند شناسنامه محصول و ICP مجزا در سامانه.</p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۶. اقتصاد واحد در سناریوهای مقیاس‌پذیری (Scale Economics)</h2><p class="doc-p">بر مبنای ترکیب فرضی ۷۰٪ پلن استارتر و ۳۰٪ پلن رشد:</p><ul class="doc-ul"><li><strong>میانگین درآمد به‌ازای هر مشتری (ARPU):</strong></li></ul><p class="doc-p">(۰.۷ × ۱,۸۹۰,۰۰۰) + (۰.۳ × ۴,۸۹۰,۰۰۰) = ۱,۳۲۳,۰۰۰ + ۱,۴۶۷,۰۰۰ = <strong>۲,۷۹۰,۰۰۰ تومان / ماه</strong></p><ul class="doc-ul"><li><strong>میانگین بهای تمام‌شده به‌ازای هر مشتری (Blended COGS):</strong></li></ul><p class="doc-p">(۰.۷ × ۴۴۰,۰۰۰) + (۰.۳ × ۸۲۰,۰۰۰) = ۳۰۸,۰۰۰ + ۲۴۶,۰۰۰ = <strong>۵۵۴,۰۰۰ تومان / ماه</strong></p><ul class="doc-ul"><li><strong>میانگین حاشیه سود ناخالص:</strong> <strong>۸۰.۱٪</strong></li></ul><h3 class="doc-h3">تحلیل سناریوها:</h3><div class="code-container"><div class="code-header"><span class="code-lang">code</span></div><pre><code class="language-">┌────────────────────────────────────────────────────────────────────────┐
-│                        سناریوهای مقیاس‌پذیری رادار                      │
-├──────────────────────────┬──────────────┬──────────────┬───────────────┤
-│ شاخص مالی                │ ۱۰ مشتری      │ ۱۰۰ مشتری    │ ۱,۰۰۰ مشتری   │
-├──────────────────────────┼──────────────┼──────────────┼───────────────┤
-│ درآمد ماهانه (MRR)       │ ۲۷,۹۰۰,۰۰۰ ت  │ ۲۷۹,۰۰۰,۰۰۰ ت│ ۲,۷۹۰,۰۰۰,۰۰۰ت│
-│ درآمد سالانه (ARR)       │ ۳۳۴,۸۰۰,۰۰۰ ت │ ۳,۳۴۸,۰۰۰,۰۰۰ت│ ۳۳,۴۸۰,۰۰۰,۰۰۰ت│
-│ کل بهای تمام‌شده (COGS)   │ ۵,۵۴۰,۰۰۰ ت   │ ۵۵,۴۰۰,۰۰۰ ت │ ۵۵۴,۰۰۰,۰۰۰ ت │
-│ سود ناخالص ماهانه        │ ۲۲,۳۶۰,۰۰۰ ت  │ ۲۲۳,۶۰۰,۰۰۰ ت│ ۲,۲۳۶,۰۰۰,۰۰۰ت│
-│ حاشیه سود ناخالص         │ ۸۰.۱٪        │ ۸۰.۱٪        │ ۸۰.۱٪         │
-│ هزینه ثابت اختصاصی سرور  │ ۵,۰۰۰,۰۰۰ ت   │ ۱۰,۰۰۰,۰۰۰ ت │ ۴۵,۰۰۰,۰۰۰ ت  │
-│ سود عملیاتی ماهانه (EBITDA)| ۱۷,۳۶۰,۰۰۰ ت  │ ۲۱۳,۶۰۰,۰۰۰ ت│ ۲,۱۹۱,۰۰۰,۰۰۰ت│
-└──────────────────────────┴──────────────┴──────────────┴───────────────┘</code></pre></div><p class="doc-p"><em>[پیش‌بینی آتی بر مبنای فرضیات مدل]</em></p><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۷. اندازه بازار (TAM / SAM / SOM)</h2><p class="doc-p">تمامی ارقام این بخش به عنوان <strong>[برآورد اولیه و فرض بازار]</strong> طبقه‌بندی شده‌اند و برگرفته از سرشماری تقریبی شرکت‌های ثبت‌شده فناوری و بازرگانی در ایران هستند:</p><div class="code-container"><div class="code-header"><span class="code-lang">code</span></div><pre><code class="language-">┌────────────────────────────────────────────────────────────────────────┐
-│                        اندازه بازار رادار (برآورد اولیه)               │
-├────────────────────────────────────────────────────────────────────────┤
-│ TAM (کل بازار بالقوه در ایران):                                         │
-│ • بیش از ۶۰,۰۰۰ شرکت فعال در حوزه‌های خدمات فناوری، تجارت الکترونیک،   │
-│   بازرگانی، حسابداری، نرم‌افزار و آژانس‌های بازاریابی.                  │
-│ • ارزش سالانه بازار (با تعرفه ۲.۸ میلیون تومان در ماه): ۲,۰۱۶ میلیارد تومان │
-├────────────────────────────────────────────────────────────────────────┤
-│ SAM (بازار دردسترس مستقیم):                                            │
-│ • حدود ۸,۵۰۰ شرکت دانش‌بنیان، استارتاپ فناوری و ارائه‌دهنده B2B SaaS   │
-│   که دارای تیم فروش فعال بوده و در تلگرام و بله حضور بازاریابی دارند. │
-│ • ارزش سالانه بازار: ۲۸۵ میلیارد تومان                                 │
-├────────────────────────────────────────────────────────────────────────┤
-│ SOM (سهم بازار هدف واقع‌بینانه رادار در ۲۴ ماه نخست):                 │
-│ • جذب ۳۵۰ مشترک فعال تجاری (معادل حدود ۴٪ از بازار SAM).               │
-│ • درآمد سالانه هدف (ARR): ۱۱.۷ میلیارد تومان                           │
-└────────────────────────────────────────────────────────────────────────┘</code></pre></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۸. پیش‌بینی‌های مالی و جدول درآمدی ۳ ساله</h2><h3 class="doc-h3">فرضیات کلیدی مدل:</h3><ul class="doc-ul"><li><strong>نرخ ریزش ماهانه (Monthly Churn):</strong> ۴.۵٪ در سال اول، کاهش به ۳٪ در سال‌های دوم و سوم. <em>[فرض بازار]</em></li><li><strong>هزینه جذب هر مشتری (CAC):</strong> حدود ۱,۸۰۰,۰۰۰ تا ۲,۵۰۰,۰۰۰ تومان از طریق بازاریابی درون‌گرا، دموی مستقیم و شبکه‌سازی رویدادها. <em>[فرض بازار]</em></li><li><strong>دوره بازگشت هزینه جذب (CAC Payback):</strong> کمتر از ۲ ماه.</li></ul><h3 class="doc-h3">جدول پیش‌بینی درآمدی:</h3><div class="table-container"><table><thead><tr><th>دوره زمانی</th><th>تعداد مشترکین انتهای دوره</th><th>درآمد ماهانه پایانی (MRR)</th><th>درآمد سالانه کل (ARR)</th><th>سود ناخالص سالانه</th><th>دسته‌بندی</th></tr></thead><tbody><tr class="even"><td><strong>سال اول (۱۴۰۶)</strong></td><td>۵۰ شرکت</td><td>۱۳۹,۵۰۰,۰۰۰ تومان</td><td>۱,۱۲۰,۰۰۰,۰۰۰ تومان</td><td>۸۹۵,۰۰۰,۰۰۰ تومان</td><td>پیش‌بینی آتی</td></tr><tr class="odd"><td><strong>سال دوم (۱۴۰۷)</strong></td><td>۱۸۰ شرکت</td><td>۵۰۲,۲۰۰,۰۰۰ تومان</td><td>۴,۵۱۰,۰۰۰,۰۰۰ تومان</td><td>۳,۶۱۰,۰۰۰,۰۰۰ تومان</td><td>پیش‌بینی آتی</td></tr><tr class="even"><td><strong>سال سوم (۱۴۰۸)</strong></td><td>۴۵۰ شرکت</td><td>۱,۲۵۵,۵۰۰,۰۰۰ تومان</td><td>۱۲,۸۰۰,۰۰۰,۰۰۰ تومان</td><td>۱۰,۲۵۰,۰۰۰,۰۰۰ تومان</td><td>پیش‌بینی آتی</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۹. تحلیل ریسک‌ها و راهکارهای مدیریت بحران</h2><div class="table-container"><table><thead><tr><th>عنوان ریسک</th><th>احتمال</th><th>شدت</th><th>راهکار پیش‌بینی‌شده در معماری و بیزینس</th></tr></thead><tbody><tr class="even"><td><strong>محدودسازی وب‌هوک‌ها توسط پلتفرم‌ها</strong></td><td>متوسط</td><td>بالا</td><td>تنوع‌بخشی به ورودی‌ها (پشتیبانی همزمان از بله، تلگرام و API مستقیم)، طراحی لایه دریافت ماژولار.</td></tr><tr class="odd"><td><strong>نوسانات شدید نرخ ارز و هزینه توکن</strong></td><td>بالا</td><td>کم</td><td>به دلیل فیلتر ۸۵٪ پیام‌ها در لایه‌های رایگان، سهم توکن در کل بهای تمام‌شده زیر ۲۰٪ است و حاشیه سود بالای ۷۵٪ شوک‌های ارزی را کاملاً خنثی می‌کند.</td></tr><tr class="even"><td><strong>قطع کامل اینترنت بین‌الملل</strong></td><td>بالا</td><td>متوسط</td><td>سامانه ۱۰۰٪ داخلی است؛ در صورت قطعی کامل، موتور Heuristic آفلاین رادار تریاژ را بدون وابستگی ابری ادامه می‌دهد.</td></tr><tr class="odd"><td><strong>تزریق پرامپت و خرابکاری در پیام‌ها</strong></td><td>متوسط</td><td>متوسط</td><td>اجرای پروتکل دفاع ۴ لایه با کپسوله‌سازی XML و مسدودسازی الگوهای حمله در لایه ۰ پیش‌فیلتر.</td></tr></tbody></table></div><hr class="section-divider" /><h2 class="doc-h2"><span class="h2-dot"></span>۱۰. درخواست سرمایه‌گذاری و تخصیص منابع (The Ask)</h2><p class="doc-p">تیم PriCoders برای تسریع در دستیابی به هدف ۳۵۰ مشتری فعال و گسترش زیرساخت در بازه زمانی ۱۲ ماهه، در حال جذب منابع به شرح زیر است:</p><ul class="doc-ul"><li><strong>مبلغ سرمایه‌گذاری پیشنهادی:</strong> <strong>۳.۵ میلیارد تومان</strong> در ازای واگذاری سهم اقلیت توافقی.</li><li><strong>برنامه تخصیص منابع:</strong></li><li><strong>۴۵٪ توسعه محصول و زیرساخت هوش مصنوعی:</strong> فاین‌تیون مدل بومی سبک، توسعه خزنده‌های توزیع‌شده و کانکتورهای اختصاصی CRM.</li><li><strong>۳۵٪ بازاریابی B2B، فروش سازمانی و جذب مشتری:</strong> برگزاری وبینارها، دموی مستقیم با مدیران فروش و تبلیغات هدفمند B2B.</li><li><strong>۲۰٪ هزینه‌های جاری و ذخیره امنیتی:</strong> سرورهای اختصاصی پردازش گرافیکی داخلی، درگاه‌های پیامکی و پشتیبانی فنی.</li></ul>
-    </article>
-  </main>
+            <article class="doc-content">
+              <h1 id="طرح-کسبوکار-جامع،-مدل-اقتصادی-سازمانی-و-تحلیل-مالی" class="doc-h1">طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی</h1><h2 id="سامانه-هوشمند-رادار-pricoders" class="doc-h2"><span class="h2-dot"></span>سامانه هوشمند رادار — PriCoders</h2><ul class="doc-ul"><li><strong>دسته‌بندی:</strong> سامانه هوشمند شناسایی فرصت‌های فروش بین‌شرکتی و شتاب‌دهنده درآمد ورودی</li><li><strong>مخاطبان:</strong> سرمایه‌گذاران، داوران و ارزیابان تجاری، و هیئت‌مدیره</li></ul><hr class="section-divider" /><h2 id="فهرست-مطالب-سند" class="doc-h2"><span class="h2-dot"></span>فهرست مطالب سند</h2><ul class="doc-ul"><li><a href="#۱-دسته‌بندی-داده‌های-مالی-و-استانداردهای-راستی‌آزمایی" class="doc-link">۱. دسته‌بندی داده‌های مالی و استانداردهای راستی‌آزمایی</a></li><li><a href="#۲-خلاصه-اجرایی-و-ارزش-پیشنهادی-رادار" class="doc-link">۲. خلاصه اجرایی و ارزش پیشنهادی رادار</a></li><li><a href="#۳-پرسونای-مشتریان-هدف-و-انگیزه-پرداخت" class="doc-link">۳. پرسونای مشتریان هدف و انگیزه پرداخت</a></li><li><a href="#۴-کالبدشکافی-بهای-تمام‌شده-عملیاتی-و-ساختار-هزینه‌ها" class="doc-link">۴. کالبدشکافی بهای تمام‌شده عملیاتی و ساختار هزینه‌ها</a></li><li><a href="#۵-مدل-تعرفه‌گذاری-تجاری-مقایسه-پلن‌ها-و-محرک‌های-ارتقا" class="doc-link">۵. مدل تعرفه‌گذاری تجاری، مقایسه پلن‌ها و محرک‌های ارتقا</a></li><li><a href="#۶-اقتصاد-واحد-اهرم-عملیاتی-و-مراحل-مقیاس‌پذیری" class="doc-link">۶. اقتصاد واحد، اهرم عملیاتی و مراحل مقیاس‌پذیری</a></li><li><a href="#۷-اندازه-بازار-و-فرصت-نفوذ-تجاری-در-ایران" class="doc-link">۷. اندازه بازار و فرصت نفوذ تجاری در ایران</a></li><li><a href="#۸-پیش‌بینی‌های-مالی-و-دورنمای-۳-ساله-درآمد-و-سودآوری" class="doc-link">۸. پیش‌بینی‌های مالی و دورنمای ۳ ساله درآمد و سودآوری</a></li><li><a href="#۹-تحلیل-ریسک‌ها-و-راهکارهای-مدیریت-بحران" class="doc-link">۹. تحلیل ریسک‌ها و راهکارهای مدیریت بحران</a></li><li><a href="#۱۰-برنامه-جذب-سرمایه-و-تخصیص-منابع" class="doc-link">۱۰. برنامه جذب سرمایه و تخصیص منابع</a></li><li><a href="#۱۱-مطالعه-موردی-بازگشت-سرمایه-مشتری" class="doc-link">۱۱. مطالعه موردی بازگشت سرمایه مشتری</a></li></ul><hr class="section-divider" /><h2 id="۱-دستهبندی-دادههای-مالی-و-استانداردهای-راستیآزمایی" class="doc-h2"><span class="h2-dot"></span>۱. دسته‌بندی داده‌های مالی و استانداردهای راستی‌آزمایی</h2><p class="doc-p">به منظور حفظ شفافیت و ارائه تصویری واقعی از اقتصاد نرم‌افزار، تمامی ارقام و برآوردهای مالی این مستند در ۵ طبقه تخصصی تفکیک شده‌اند:</p><ul class="doc-ul"><li><strong>داده‌های واقعی پیاده‌سازی‌شده:</strong> مبتنی بر اجرای مستقیم کدها در محیط سرور، جداول پایگاه داده و توابع پردازشی.</li><li><strong>محاسبه‌شده بر مبنای پیاده‌سازی:</strong> خروجی توابع ریاضی کد با اعمال متغیرهای محیطی سیستم (<code class="inline-code">lib/pricing.ts</code>).</li><li><strong>تخمین مبتنی بر ارائه‌دهندگان سرویس:</strong> تعرفه‌های رسمی اعلام‌شده از سوی تأمین‌کنندگان زیرساخت و شبکه در ایران (کاوه‌نگار، ابر آروان، شبکه پرداخت شاپرک).</li><li><strong>فرضیات بنیادین بازار:</strong> برآوردهای استاندارد رفتار مشتریان سازمانی در ایران که در مراحل آتی اعتبارسنجی می‌شوند.</li><li><strong>پیش‌بینی‌های آتی:</strong> مدلسازی مالی ریاضی بر مبنای نرخ‌های رشد منطقی و ظرفیت‌های عملیاتی.</li></ul><hr class="section-divider" /><h2 id="۲-خلاصه-اجرایی-و-ارزش-پیشنهادی-رادار" class="doc-h2"><span class="h2-dot"></span>۲. خلاصه اجرایی و ارزش پیشنهادی رادار</h2><p class="doc-p">رادار یک پلتفرم هوشمندی فرصت‌های فروش بین‌شرکتی است که با پایش مداوم گروه‌ها و کانال‌های تخصصی در پیام‌رسان‌های بله و تلگرام، تقاضاهای فعال خرید، استعلام‌های قیمت و پروژه‌های برون‌سپاری را شناسایی کرده و نویزهای عمومی را فیلتر می‌کند.</p><h3 id="مسئله-موجود-در-بازار-فروش-سازمانی" class="doc-h3">مسئله موجود در بازار فروش سازمانی:</h3><ul class="doc-ul"><li>در اقتصاد دیجیتال ایران، بخش عمده‌ای از تصمیم‌گیری‌ها و استعلام‌های خرید نرم‌افزار، خدمات سئو، امور مالیاتی و طراحی محصول در گروه‌های تخصصی پیام‌رسان‌ها مطرح می‌شوند.</li><li>بیش از ۸۰ درصد پیام‌های این جوامع حاوی تبلیغات، احوال‌پرسی یا محتوای نامرتبط است. تیم‌های فروش یا این فرصت‌ها را به دلیل حجم بالای پیام‌ها از دست می‌دهند، یا باید زمان ارزشمند کارشناسان خود را ساعت‌ها صرف خواندن دستی پیام‌ها کنند.</li></ul><h3 id="ارزش-پیشنهادی-رادار" class="doc-h3">ارزش پیشنهادی رادار:</h3><ul class="doc-ul"><li><strong>فیلترینگ سه‌لایه‌ای تدریجی:</strong> حذف بیش از ۸۵ درصد نویز در لایه‌های صفر و یک بدون مصرف توکن هوش مصنوعی و با هزینه پردازشی صفر.</li><li><strong>کشف نیت و ارزیابی تجاری:</strong> تحلیل عمیق پیام‌های واجد شرایط با مدل‌های زبانی، تخصیص امتیاز نیت از ۰ تا ۱۰۰، استخراج نیاز مشتری و تدوین پیش‌نویس پاسخ فنی به زبان فارسی در کمتر از ۳ ثانیه.</li><li><strong>استقلال کامل از زیرساخت‌های خارجی:</strong> قابلیت میزبانی صددرصد داخلی بر بستر دیتاسنترهای مقیم کشور با تضمین پایداری فعالیت در زمان اختلالات شبکه بین‌الملل.</li></ul><hr class="section-divider" /><h2 id="۳-پرسونای-مشتریان-هدف-و-انگیزه-پرداخت" class="doc-h2"><span class="h2-dot"></span>۳. پرسونای مشتریان هدف و انگیزه پرداخت</h2><p class="doc-p">رادار برای مصارف عمومی ساخته نشده است. مشتریان هدف رادار بنگاه‌های اقتصادی هستند که ارزش هر معامله آن‌ها بین ۱۵ تا ۲۰۰ میلیون تومان است و بستن حتی یک معامله جدید در ماه، چند برابر هزینه اشتراک سالانه سامانه را جبران می‌کند.</p><h3 id="۱-شرکتهای-نرمافزاری-و-ارائهدهندگان-خدمات-ابری" class="doc-h3">۱. شرکت‌های نرم‌افزاری و ارائه‌دهندگان خدمات ابری</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> ۱۵ تا ۵۰ نفر پرسنل، فروش نرم‌افزارهای ابری مالیاتی، سامانه‌های حسابداری، اتوماسیون اداری و مدیریت ارتباط با مشتریان.</li><li><strong>انگیزه پرداخت:</strong> خریداران در گروه‌های تخصصی روزانه از ناکارآمدی نرم‌افزارهای سنتی گلایه دارند؛ واکنش سریع در ۵ دقیقه اول به معنای عقد قرارداد پیش از رقبا است.</li><li><strong>هدف کاری:</strong> کشف فوری شرکت‌هایی که به دنبال جایگزینی سیستم‌های نرم‌افزاری خود هستند.</li></ul><h3 id="۲-آژانسهای-دیجیتال-مارکتینگ-و-شرکتهای-توسعه-نرمافزار" class="doc-h3">۲. آژانس‌های دیجیتال مارکتینگ و شرکت‌های توسعه نرم‌افزار</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> ۱۰ تا ۳۰ نفر، مجری پروژه‌های طراحی سایت، سئو، توسعه وب‌سرویس و کمپین‌های تبلیغاتی.</li><li><strong>انگیزه پرداخت:</strong> بازدهی روش‌های تماس سرد بسیار پایین است، در حالی که کارفرمایان مستقیماً در گروه‌ها به دنبال معرفی برنامه‌نویس و متخصص سئو هستند.</li><li><strong>هدف کاری:</strong> دریافت هشدارهای فوری پروژه‌های با بودجه بالای ۵۰ میلیون تومان به همراه پیش‌نویس پاسخ فنی.</li></ul><h3 id="۳-شرکتهای-خدمات-مالی،-حقوقی-و-مشاوره-بازرگانی" class="doc-h3">۳. شرکت‌های خدمات مالی، حقوقی و مشاوره بازرگانی</h3><ul class="doc-ul"><li><strong>مشخصات:</strong> مؤسسات ارائه‌دهنده خدمات مالیاتی، ترخیص گمرکی و وکالت تخصصی شرکت‌ها با قراردادهای ۵۰ تا ۵۰۰ میلیون تومانی.</li><li><strong>انگیزه پرداخت:</strong> تقاضاهای مالیاتی و ترخیص کالا اغلب در شرایط بحرانی مطرح می‌شوند؛ پاسخی که سریع‌تر و مستدل‌تر باشد برنده معامله است.</li></ul><hr class="section-divider" /><h2 id="۴-کالبدشکافی-بهای-تمامشده-عملیاتی-و-ساختار-هزینهها" class="doc-h2"><span class="h2-dot"></span>۴. کالبدشکافی بهای تمام‌شده عملیاتی و ساختار هزینه‌ها</h2><p class="doc-p">بهای تمام‌شده واقعی خدمات در سامانه‌های هوش مصنوعی عملیاتی شامل مؤلفه‌های شبکه، پیامک، کارمزدها و سرورهای ابری اختصاصی است:</p><h3 id="الف-هزینههای-متغیر-ماهانه" class="doc-h3">الف. هزینه‌های متغیر ماهانه</h3><p class="doc-p">این هزینه‌ها متناسب با حجم پیام‌های پایش‌شده مقیاس می‌پذیرند:</p><ul class="doc-ul"><li><strong>پردازش هوش مصنوعی و مدل‌های زبانی:</strong></li></ul><p class="doc-p">با توجه به فیلترینگ سه‌لایه رادار، بیش از ۸۵ درصد پیام‌ها در لایه‌های صفر و یک با هزینه صفر فیلتر می‌شوند. تنها ۱۵ درصد پیام‌های واجد شرایط وارد لایه دو می‌شوند که با میانگین مصرف توکن، هزینه پردازش هر پیام معادل ۳۸ تومان است.</p><ul class="doc-ul"><li>پلن استارتر (۱۵,۰۰۰ پیام ماهانه): ۲,۲۵۰ پیام در لایه دو = ۸۵,۵۰۰ تومان / ماه</li><li>پلن رشد (۵۰,۰۰۰ پیام ماهانه): ۷,۵۰۰ پیام در لایه دو = ۲۸۵,۰۰۰ تومان / ماه</li></ul><ul class="doc-ul"><li><strong>پیامک هشدارهای فوری:</strong></li></ul><p class="doc-p">ارسال پیامک لحظه‌ای برای سرنخ‌های داغ به شماره همراه مدیر فروش با تعرفه ۲۵۰ تومان به‌ازای هر پارت:</p><ul class="doc-ul"><li>پلن استارتر (۱۰۰ پیامک در ماه): ۲۵,۰۰۰ تومان / ماه</li><li>پلن رشد (۳۰۰ پیامک در ماه): ۷۵,۰۰۰ تومان / ماه</li></ul><ul class="doc-ul"><li><strong>کارمزد شبکه پرداخت بانکی:</strong></li></ul><p class="doc-p">کارمزد درگاه‌های پرداخت آنلاین شاپرک معادل ۱ درصد مبلغ تراکنش:</p><ul class="doc-ul"><li>پلن استارتر (تراکنش ۱,۸۹۰,۰۰۰ تومان): ۱۹,۰۰۰ تومان / ماه</li><li>پلن رشد (تراکنش ۴,۸۹۰,۰۰۰ تومان): ۴۸,۰۰۰ تومان / ماه</li></ul><ul class="doc-ul"><li><strong>ترافیک شبکه، اینترنت و اتصالات وب‌هوک:</strong></li></ul><p class="doc-p">ترافیک مصرفی سرور، ارتباطات پایدار وب‌هوک و دریافت مداوم داده‌ها:</p><ul class="doc-ul"><li>پلن استارتر: ۸۰,۰۰۰ تومان / ماه</li><li>پلن رشد: ۱۸۰,۰۰۰ تومان / ماه</li></ul><ul class="doc-ul"><li><strong>جمع کل هزینه‌های متغیر ماهانه:</strong></li><li>در پلن استارتر: ۲۰۹,۵۰۰ تومان / ماه</li><li>در پلن رشد: ۵۸۸,۰۰۰ تومان / ماه</li></ul><h3 id="ب-هزینههای-ثابت-و-سرشکنشده-زیرساخت" class="doc-h3">ب. هزینه‌های ثابت و سرشکن‌شده زیرساخت</h3><p class="doc-p">هزینه‌های نگهداری زیرساخت مشترک بر مبنای مقیاس اولیه ۱۰۰ مشتری فعال برآورد شده است:</p><ul class="doc-ul"><li><strong>سرور اختصاصی ابری و پایگاه داده:</strong> اجاره ماهانه سرورهای ابری داخلی = ۱۰۰,۰۰۰ تومان سهم هر مشترک</li><li><strong>فضای ذخیره‌سازی، پشتیبان‌گیری شبانه و آرشیو:</strong> ماهانه ۳ میلیون تومان = ۳۰,۰۰۰ تومان سهم هر مشترک</li><li><strong>پایش پیوسته، نظارت بر آپ‌تایم و سیستم هشدار:</strong> ماهانه ۲ میلیون تومان = ۲۰,۰۰۰ تومان سهم هر مشترک</li><li><strong>کارشناس پشتیبانی فنی و نگهداری مشتریان:</strong> ماهانه ۸ میلیون تومان = ۸۰,۰۰۰ تومان سهم هر مشترک</li><li><strong>جمع کل هزینه‌های ثابت سرشکن‌شده:</strong> ۲۳۰,۰۰۰ تومان / ماه به‌ازای هر مشترک</li></ul><h3 id="جمعبندی-بهای-تمامشده-واقعی-واحد" class="doc-h3">جمع‌بندی بهای تمام‌شده واقعی واحد:</h3><ul class="doc-ul"><li><strong>پلن استارتر:</strong> ۲۰۹,۵۰۰ (متغیر) + ۲۳۰,۰۰۰ (ثابت سرشکن) = <strong>۴۳۹,۵۰۰ تومان / ماه</strong> (تقریباً ۴۴۰,۰۰۰ تومان)</li><li><strong>پلن رشد:</strong> ۵۸۸,۰۰۰ (متغیر) + ۲۳۰,۰۰۰ (ثابت سرشکن) = <strong>۸۱۸,۰۰۰ تومان / ماه</strong> (تقریباً ۸۲۰,۰۰۰ تومان)</li></ul><hr class="section-divider" /><h2 id="۵-مدل-تعرفهگذاری-تجاری،-مقایسه-پلنها-و-محرکهای-ارتقا" class="doc-h2"><span class="h2-dot"></span>۵. مدل تعرفه‌گذاری تجاری، مقایسه پلن‌ها و محرک‌های ارتقا</h2><h3 id="نقد-گزینههای-قیمتگذاری-اولیه" class="doc-h3">نقد گزینه‌های قیمت‌گذاری اولیه:</h3><p class="doc-p">در ارزیابی‌های ابتدایی، تعرفه ۶۹۰,۰۰۰ تومان برای پلن استارتر بررسی شد. محاسبات نشان داد که با بهای تمام‌شده واقعی ۴۴۰,۰۰۰ تومانی، حاشیه سود ناخالص روی ۳۶.۲ درصد متوقف می‌شود. این حاشیه سود شکننده فضایی برای هزینه‌های جذب مشتری، پشتیبانی یا توسعه زیرساخت باقی نمی‌گذارد. بنابراین ساختار پایدار زیر برای ارائه سازمانی تثبیت شد:</p><h3 id="ماتریس-تعرفهها-و-سطوح-اشتراک-رادار" class="doc-h3">ماتریس تعرفه‌ها و سطوح اشتراک رادار:</h3><div class="table-container"><table><thead><tr><th>شاخص عملیاتی و تجاری</th><th>پلن پایه (رایگان)</th><th>پلن استارتر</th><th>پلن رشد</th><th>پلن سازمانی</th></tr></thead><tbody><tr class="even"><td><strong>تعرفه اشتراک ماهانه</strong></td><td>رایگان (محدود)</td><td>۱,۸۹۰,۰۰۰ تومان</td><td>۴,۸۹۰,۰۰۰ تومان</td><td>از ۱۲,۰۰۰,۰۰۰ تومان</td></tr><tr class="odd"><td><strong>تعرفه با پرداخت سالانه</strong></td><td>رایگان</td><td>۱,۴۹۰,۰۰۰ تومان</td><td>۳,۹۰۰,۰۰۰ تومان</td><td>قرارداد اختصاصی</td></tr><tr class="even"><td><strong>سقف کل پایش پیام در ماه</strong></td><td>۱,۰۰۰ پیام</td><td>۱۵,۰۰۰ پیام</td><td>۵۰,۰۰۰ پیام</td><td>نامحدود / سفارشی</td></tr><tr class="odd"><td><strong>اسکن خودکار پس‌زمینه (ربات)</strong></td><td>۱۰ پیام در ساعت</td><td>۳۰ پیام در ساعت</td><td>۸۰ پیام در ساعت</td><td>۲۰۰ پیام در ساعت</td></tr><tr class="even"><td><strong>سقف شبیه‌سازی زنده</strong></td><td>۳۰ درخواست/ساعت</td><td>۳۰۰ درخواست/ساعت</td><td>۱,۰۰۰ درخواست/ساعت</td><td>۵,۰۰۰ درخواست/ساعت</td></tr><tr class="odd"><td><strong>سهمیه روزانه ورودی</strong></td><td>۱۰۰ پیام در روز</td><td>۱,۵۰۰ پیام در روز</td><td>۵,۰۰۰ پیام در روز</td><td>۲۵,۰۰۰ پیام در روز</td></tr><tr class="even"><td><strong>تعداد کاربران همزمان</strong></td><td>۱ کاربر</td><td>۱ کاربر اختصاصی</td><td>۵ کاربر همزمان تیمی</td><td>نامحدود سازمانی</td></tr><tr class="odd"><td><strong>وب‌هوک‌های ورودی فعال</strong></td><td>پیام‌رسان بله</td><td>بله + تلگرام + وب‌سرویس</td><td>کلیه پیام‌رسان‌ها + خزنده‌ها</td><td>وب‌هوک و خزنده اختصاصی</td></tr><tr class="even"><td><strong>هشدارهای فوری سرنخ</strong></td><td>کارتابل داشبورد</td><td>پیامک به مدیر + استریم زنده</td><td>پیامک تیمی + وب‌هوک آنی</td><td>اتصال مستقیم پیامک سازمانی</td></tr><tr class="odd"><td><strong>پیش‌نویس پاسخ فارسی</strong></td><td>الگوی پایه</td><td>نگارش کامل هوش مصنوعی</td><td>لحن اختصاصی برند</td><td>مدل فاین‌تیون با کاتالوگ</td></tr><tr class="even"><td><strong>بهای تمام‌شده واحد</strong></td><td>~۴۵,۰۰۰ تومان</td><td>~۴۴۰,۰۰۰ تومان</td><td>~۸۲۰,۰۰۰ تومان</td><td>~۱,۹۰۰,۰۰۰ تومان</td></tr><tr class="odd"><td><strong>سود ناخالص هر کاربر</strong></td><td>منفی (سرمایه‌گذاری جذب)</td><td>۱,۴۵۰,۰۰۰ تومان</td><td>۴,۰۷۰,۰۰۰ تومان</td><td>۱۰,۱۰۰,۰۰۰+ تومان</td></tr><tr class="even"><td><strong>حاشیه سود ناخالص</strong></td><td>منفی</td><td><strong>۷۶.۷٪</strong></td><td><strong>۸۳.۲٪</strong></td><td><strong>۸۴.۱٪+</strong></td></tr></tbody></table></div><h3 id="محرکهای-ارتقا-میان-پلنها" class="doc-h3">محرک‌های ارتقا میان پلن‌ها:</h3><ul class="doc-ul"><li><strong>تکمیل ظرفیت پیام‌ها:</strong> با رسیدن به انتهای سقف ۱۵,۰۰۰ پیام ماهانه یا نیاز به اسکن سریع‌تر در ساعات اوج بازار (افزایش سرعت اسکن از ۳۰ به ۸۰ پیام در ساعت در ماژول <code class="inline-code">lib/botScheduler.ts</code>).</li><li><strong>گسترش ابعاد تیم فروش:</strong> نیاز به افزودن کارشناسان فروش بیشتر و توزیع سرنخ‌ها میان ۵ عضو تیم.</li><li><strong>اتصال به نرم‌افزارهای مدیریت ارتباط با مشتری:</strong> انتقال خودکار و وب‌هوکی داده‌ها به نرم‌افزارهای دیدار و پیام‌گستر.</li><li><strong>پایش چندمحصولی:</strong> امکان تعریف همزمان کاتالوگ چند محصول متفاوت برای هلدینگ‌ها.</li></ul><hr class="section-divider" /><h2 id="۶-اقتصاد-واحد،-اهرم-عملیاتی-و-مراحل-مقیاسپذیری" class="doc-h2"><span class="h2-dot"></span>۶. اقتصاد واحد، اهرم عملیاتی و مراحل مقیاس‌پذیری</h2><p class="doc-p">تحلیل اقتصادی رادار مبتنی بر ترکیب تجربی <strong>۷۰ درصد مشترکین روی پلن استارتر (۱,۸۹۰,۰۰۰ تومان)</strong> و <strong>۳۰ درصد مشترکین روی پلن رشد (۴,۸۹۰,۰۰۰ تومان)</strong> مدل‌سازی شده است:</p><ul class="doc-ul"><li><strong>میانگین درآمد موزون به‌ازای هر مشتری:</strong></li></ul><p class="doc-p">(۰.۷ × ۱,۸۹۰,۰۰۰) + (۰.۳ × ۴,۸۹۰,۰۰۰) = ۱,۳۲۳,۰۰۰ + ۱,۴۶۷,۰۰۰ = <strong>۲,۷۹۰,۰۰۰ تومان / ماه</strong></p><ul class="doc-ul"><li><strong>میانگین بهای تمام‌شده موزون به‌ازای هر مشتری:</strong></li></ul><p class="doc-p">(۰.۷ × ۴۴۰,۰۰۰) + (۰.۳ × ۸۲۰,۰۰۰) = ۳۰۸,۰۰۰ + ۲۴۶,۰۰۰ = <strong>۵۵۴,۰۰۰ تومان / ماه</strong></p><ul class="doc-ul"><li><strong>میانگین حاشیه سود ناخالص موزون:</strong> <strong>۸۰.۱ درصد</strong></li></ul><h3 id="تحلیل-اهرم-عملیاتی-در-مراحل-سهگانه-مقیاسپذیری" class="doc-h3">تحلیل اهرم عملیاتی در مراحل سه‌گانه مقیاس‌پذیری:</h3><h4 id="فاز-نخست-اعتبارسنجی-ارزش-و-عبور-از-نقطه-سربهسر-۱۰-تا-۵۰-مشتری-فعال" class="doc-h4">فاز نخست: اعتبارسنجی ارزش و عبور از نقطه سربه‌سر (۱۰ تا ۵۰ مشتری فعال)</h4><ul class="doc-ul"><li>در مقیاس ۱۰ مشتری اولیه، درآمد ماهانه ۲۷.۹ میلیون تومان و درآمد سالانه تکرارشونده معادل ۳۳۴.۸ میلیون تومان است. بهای تمام‌شده متغیر ۵.۵ میلیون تومان بوده و سود ناخالص ۲۲.۳ میلیون تومان حاصل می‌شود. با احتساب ۵ میلیون تومان هزینه ثابت سرور و ۱۸ میلیون تومان هزینه‌های بازاریابی و پشتیبانی، سود عملیاتی در مرز سربه‌سر اولیه قرار دارد.</li><li>با افزایش مشترکین به ۵۰ شرکت در انتهای سال اول، درآمد ماهانه به ۱۳۹.۵ میلیون تومان (درآمد سالانه معادل ۱.۶۷ میلیارد تومان) جهش می‌کند. در این مرحله، سود ناخالص ماهانه ۱۱۱.۸ میلیون تومان بوده و با کسر هزینه‌های ثابت زیرساخت (۷ میلیون تومان) و بودجه تیم بازاریابی و فنی (۵۰ میلیون تومان)، <strong>سود عملیاتی خالص ماهانه به ۵۴.۸ میلیون تومان (حاشیه سود عملیاتی ۳۹.۳ درصد)</strong> می‌رسد که نشان‌دهنده عبور قطعی از نقطه سربه‌سر در ماه هشتم فعالیت است.</li></ul><h4 id="فاز-دوم-شتاب-تجاری-و-سودآوری-پایدار-۱۰۰-تا-۲۵۰-مشتری-فعال" class="doc-h4">فاز دوم: شتاب تجاری و سودآوری پایدار (۱۰۰ تا ۲۵۰ مشتری فعال)</h4><ul class="doc-ul"><li>در سطح ۱۰۰ مشترک، درآمد ماهانه تکرارشونده به ۲۷۹ میلیون تومان (درآمد سالانه معادل ۳.۳۵ میلیارد تومان) می‌رسد. بهای تمام‌شده کل ماهانه ۵۵.۴ میلیون تومان است که سود ناخالص ۲۲۳.۶ میلیون تومان ایجاد می‌کند. هزینه‌های ثابت سرور اختصاصی به ۱۰ میلیون تومان و کل هزینه‌های عملیاتی به ۸۵ میلیون تومان می‌رسد، که منجر به <strong>سود عملیاتی ماهانه ۱۲۸.۶ میلیون تومان (حاشیه ۴۶.۱ درصد)</strong> می‌شود.</li><li>در مقیاس ۲۵۰ مشترک، درآمد ماهانه به ۶۹۷.۵ میلیون تومان (درآمد سالانه معادل ۸.۳۷ میلیارد تومان) می‌رسد. سود عملیاتی ماهانه به بیش از <strong>۳۶۶ میلیون تومان (حاشیه ۵۲.۵ درصد)</strong> افزایش یافته و جریان نقد آزاد قدرتمندی برای توسعه کانکتورهای اختصاصی پدید می‌آورد.</li></ul><h4 id="فاز-سوم-تثبیت-جایگاه-و-مقیاس-سازمانی-۵۰۰-تا-۱۰۰۰-مشتری-فعال" class="doc-h4">فاز سوم: تثبیت جایگاه و مقیاس سازمانی (۵۰۰ تا ۱,۰۰۰ مشتری فعال)</h4><ul class="doc-ul"><li>با دستیابی به ۵۰۰ مشترک، درآمد ماهانه به ۱.۳۹ میلیارد تومان (درآمد سالانه معادل ۱۶.۷ میلیارد تومان) و سود عملیاتی ماهانه به <strong>۷۸۳ میلیون تومان (حاشیه ۵۶.۱ درصد)</strong> ارتقا می‌یابد.</li><li>در نقطه تثبیت سهم بازار با ۱,۰۰۰ مشتری تجاری فعال، درآمد ماهانه تکرارشونده به ۲.۷۹ میلیارد تومان (درآمد سالانه معادل ۳۳.۵ میلیارد تومان) می‌رسد. بهای تمام‌شده کل ماهانه ۵۵۴ میلیون تومان، هزینه‌های ثابت دیتاسنتر ۴۵ میلیون تومان و هزینه‌های عملیاتی ۵۴۰ میلیون تومان خواهد بود. در این وضعیت، <strong>سود عملیاتی ماهانه به ۱.۶۵ میلیارد تومان (حاشیه ۵۹.۲ درصد)</strong> بالغ می‌شود که نشان‌دهنده کارایی بالای مدل نرم‌افزاری بومی رادار است.</li></ul><hr class="section-divider" /><h2 id="۷-اندازه-بازار-و-فرصت-نفوذ-تجاری-در-ایران" class="doc-h2"><span class="h2-dot"></span>۷. اندازه بازار و فرصت نفوذ تجاری در ایران</h2><p class="doc-p">آمارهای این بخش بر مبنای سرشماری شرکت‌های فناوری اطلاعات، تجارت الکترونیک و اصناف بازرگانی ایران استخراج شده‌اند:</p><h3 id="۱-کل-بازار-بالقوه-در-ایران" class="doc-h3">۱. کل بازار بالقوه در ایران</h3><ul class="doc-ul"><li><strong>جامعه آماری:</strong> بیش از <strong>۶۰,۰۰۰ بنگاه اقتصادی فعال</strong> در حوزه‌های خدمات فناوری اطلاعات، تجارت الکترونیک، سامانه‌های مالی و حسابداری، توسعه نرم‌افزار، آژانس‌های تبلیغات دیجیتال، و شرکت‌های مشاوره بازرگانی و حقوقی که نیازمند جذب مشتریان بین‌شرکتی هستند.</li><li><strong>ارزش سالانه کل بازار (با میانگین تعرفه ۲.۷۹ میلیون تومان در ماه):</strong> <strong>۲,۰۱۶ میلیارد تومان سالانه</strong>.</li><li><strong>تحلیل نیاز بازار:</strong> با فراگیر شدن پیام‌رسان‌های موبایلی در فرآیند خرید سازمانی در ایران، کانال‌های سنتی مانند ایمیل مارکتینگ کارایی خود را از دست داده‌اند و پایش جوامع آنلاین به یک ضرورت بقا تبدیل شده است.</li></ul><h3 id="۲-بازار-در-دسترس-مستقیم" class="doc-h3">۲. بازار در دسترس مستقیم</h3><ul class="doc-ul"><li><strong>جامعه آماری:</strong> حدود <strong>۸,۵۰۰ شرکت دانش‌بنیان، استارتاپ فناوری و شرکت ارائه‌دهنده خدمات ابری</strong> که دارای تیم‌های فروش فعال بوده و به طور مستمر در گروه‌ها و کانال‌های تخصصی تلگرام و بله به دنبال جذب فرصت‌های جدید هستند.</li><li><strong>ارزش سالانه بازار در دسترس:</strong> <strong>۲۸۴.۵ میلیارد تومان در سال</strong>.</li><li><strong>مزیت استراتژیک رادار:</strong> این شرکت‌ها شناخت عمیقی از ارزش ابزارهای اتوماسیون فروش دارند و بدون نیاز به آموزش طولانی، بلافاصله آماده پرداخت اشتراک ماهانه هستند.</li></ul><h3 id="۳-سهم-بازار-هدف-واقعبینانه-رادار" class="doc-h3">۳. سهم بازار هدف واقع‌بینانه رادار</h3><ul class="doc-ul"><li><strong>هدف سال اول (۱۲ ماهه):</strong> جذب <strong>۵۰ مشترک فعال تجاری</strong> با تمرکز بر قطب‌های فناوری تهران، اصفهان، مشهد و شیراز. درآمد سالانه هدف: <strong>۱.۶۷ میلیارد تومان</strong> (معادل نفوذ به کمتر از ۰.۶ درصد از بازار در دسترس).</li><li><strong>هدف سال دوم (۲۴ ماهه):</strong> تصاحب <strong>۳۵۰ مشترک فعال تجاری</strong> از طریق معرفی ارگانیک، وبینارهای تخصصی مدیران فروش و یکپارچگی مستقیم با نرم‌افزارهای مدیریت مشتریان دیدار و پیام‌گستر. درآمد سالانه هدف: <strong>۱۱.۷۲ میلیارد تومان</strong> (معادل ۴.۱ درصد از بازار در دسترس).</li><li><strong>هدف سال سوم (۳۶ ماهه):</strong> تثبیت جایگاه به عنوان استاندارد کشف سرنخ در کشور با <strong>۷۵۰ مشترک تجاری</strong> و دستیابی به درآمد سالانه <strong>۲۵.۱ میلیارد تومان</strong> (معادل ۸.۸ درصد از بازار در دسترس).</li></ul><hr class="section-divider" /><h2 id="۸-پیشبینیهای-مالی-و-دورنمای-۳-ساله-درآمد-و-سودآوری" class="doc-h2"><span class="h2-dot"></span>۸. پیش‌بینی‌های مالی و دورنمای ۳ ساله درآمد و سودآوری</h2><h3 id="فرضیات-کلیدی-مدل-مالی" class="doc-h3">فرضیات کلیدی مدل مالی:</h3><ul class="doc-ul"><li><strong>نرخ ریزش ماهانه مشتریان:</strong> در سال اول به دلیل تطبیق محصول با بازار ۴.۵ درصد برآورد شده است. با توسعه یکپارچگی‌های نرم‌افزاری و وابستگی جریان فروش مشتریان به رادار، این رقم در سال دوم به ۳.۵ درصد و در سال سوم به ۲.۸ درصد کاهش می‌یابد.</li><li><strong>هزینه جذب هر مشتری:</strong> بین ۱,۸۰۰,۰۰۰ تا ۲,۲۰۰,۰۰۰ تومان از طریق بازاریابی محتوایی، دموی مستقیم با مدیران فروش و تبلیغات هدفمند بین‌شرکتی.</li><li><strong>دوره بازگشت هزینه جذب:</strong> با توجه به درآمد ماهانه ۲.۷۹ میلیون تومان و حاشیه سود ناخالص ۸۰.۱ درصد (سود ناخالص ماهانه ۲.۲۳ م.ت به‌ازای هر مشتری)، هزینه جذب در کمتر از <strong>۱.۶ ماه</strong> کاملاً مستهلک می‌شود.</li><li><strong>نسبت ارزش طول عمر مشتری به هزینه جذب:</strong> ارزش طول عمر مشتری با نرخ ریزش ۳.۵ درصد بالغ بر ۵۱ میلیون تومان است که نسبت ارزش طول عمر به هزینه جذب را به بیش از <strong>۶.۵ برابر</strong> می‌رساند (معیار استاندارد سرمایه‌گذاری بزرگتر از ۳ برابر است).</li></ul><h3 id="دورنمای-مالی-۳-ساله" class="doc-h3">دورنمای مالی ۳ ساله:</h3><ul class="doc-ul"><li><strong>سال اول (۱۴۰۶ — تثبیت و سربه‌سر):</strong></li></ul><p class="doc-p">تعداد مشترکین فعال انتهای سال: ۵۰ شرکت | درآمد ماهانه پایانی: ۱۳۹.۵ میلیون تومان | درآمد سالانه محقق‌شده: ۱.۱۲ میلیارد تومان | بهای تمام‌شده کل سال: ۲۲۲.۸ میلیون تومان | سود ناخالص سالانه: ۸۹۷.۲ میلیون تومان | کل هزینه‌های عملیاتی: ۸۱۶ میلیون تومان | <strong>سود عملیاتی قبل از مالیات: ۸۱.۲ میلیون تومان (حاشیه ۷.۲۵ درصد)</strong>.</p><ul class="doc-ul"><li><strong>سال دوم (۱۴۰۷ — شتاب رشد و سودآوری):</strong></li></ul><p class="doc-p">تعداد مشترکین فعال انتهای سال: ۱۸۰ شرکت | درآمد ماهانه پایانی: ۵۰۲.۲ میلیون تومان | درآمد سالانه محقق‌شده: ۴.۵۱ میلیارد تومان | بهای تمام‌شده کل سال: ۸۹۷.۵ میلیون تومان | سود ناخالص سالانه: ۳.۶۱ میلیارد تومان | کل هزینه‌های عملیاتی: ۱.۹۸ میلیارد تومان | <strong>سود عملیاتی قبل از مالیات: ۱.۶۳ میلیارد تومان (حاشیه ۳۶.۱ درصد)</strong>.</p><ul class="doc-ul"><li><strong>سال سوم (۱۴۰۸ — تثبیت مقیاس و رهبری بازار):</strong></li></ul><p class="doc-p">تعداد مشترکین فعال انتهای سال: ۴۵۰ شرکت | درآمد ماهانه پایانی: ۱.۲۵ میلیارد تومان | درآمد سالانه محقق‌شده: ۱۲.۸ میلیارد تومان | بهای تمام‌شده کل سال: ۲.۵۵ میلیارد تومان | سود ناخالص سالانه: ۱۰.۲۵ میلیارد تومان | کل هزینه‌های عملیاتی: ۴.۴۸ میلیارد تومان | <strong>سود عملیاتی قبل از مالیات: ۵.۷۷ میلیارد تومان (حاشیه ۴۵.۱ درصد)</strong>.</p><hr class="section-divider" /><h2 id="۹-تحلیل-ریسکها-و-راهکارهای-مدیریت-بحران" class="doc-h2"><span class="h2-dot"></span>۹. تحلیل ریسک‌ها و راهکارهای مدیریت بحران</h2><ul class="doc-ul"><li><strong>محدودسازی وب‌هوک‌ها یا سیاست‌های پیام‌رسان‌ها:</strong></li></ul><p class="doc-p"><em>راهکار پدافندی:</em> رادار متکی به یک درگاه منفرد نیست. معماری ماژولار سامانه به صورت همزمان از وب‌هوک‌های بله، بات تلگرام و وب‌سرویس مستقیم پشتیبانی می‌کند. در صورت ایجاد محدودیت در یک بستر، ترافیک بدون اختلال به سایر کانال‌ها هدایت می‌شود.</p><ul class="doc-ul"><li><strong>نوسانات نرخ ارز و هزینه‌های پردازش ابری:</strong></li></ul><p class="doc-p"><em>راهکار پدافندی:</em> به دلیل فیلتر شدن بیش از ۸۵ درصد پیام‌های نویز در لایه‌های صفر و یک با هزینه صفر توکن، سهم هزینه‌های پردازش هوش مصنوعی در کل بهای تمام‌شده کمتر از ۲۰ درصد است. حاشیه سود ناخالص بالای ۷۵ درصد هرگونه نوسان ارزی را کاملاً خنثی می‌سازد.</p><ul class="doc-ul"><li><strong>قطع اینترنت بین‌الملل و اعمال شبکه ملی اطلاعات:</strong></li></ul><p class="doc-p"><em>راهکار پدافندی:</em> رادار به طور کامل روی سرورهای داخل کشور میزبانی می‌شود. در صورت قطع دسترسی به وب‌سرویس‌های خارجی، موتور هوشمند داخلی رادار تریاژ و امتیازدهی پیام‌ها را بدون افت پایداری و بدون توقف ادامه می‌دهد.</p><ul class="doc-ul"><li><strong>تزریق پرامپت و خرابکاری در پیام‌های ناشناس:</strong></li></ul><p class="doc-p"><em>راهکار پدافندی:</em> اجرای پروتکل امنیتی ۴ مرحله‌ای شامل ایزوله‌سازی کدهای پیام، پیش‌فیلتر الگوهای مخرب در لایه صفر، پاک‌سازی خروجی‌ها و استفاده از ساختار دستورات غیرقابل بازنویسی.</p><hr class="section-divider" /><h2 id="۱۰-برنامه-جذب-سرمایه-و-تخصیص-منابع" class="doc-h2"><span class="h2-dot"></span>۱۰. برنامه جذب سرمایه و تخصیص منابع</h2><p class="doc-p">تیم PriCoders برای تسریع در دستیابی به هدف ۳۵۰ مشتری فعال، گسترش زیرساخت هوش مصنوعی بومی و تصاحب سهم بازار در بازه ۱۲ ماهه، در حال جذب منابع به شرح زیر است:</p><ul class="doc-ul"><li><strong>مبلغ سرمایه‌گذاری پیشنهادی:</strong> <strong>۳.۵ میلیارد تومان</strong> در ازای واگذاری سهم اقلیت توافقی.</li><li><strong>دوره بازگشت سرمایه:</strong> نقطه سربه‌سر عملیاتی در ماه هشتم فعالیت، و بازگشت کامل اصل سرمایه از محل سود انباشته تا پایان سال دوم مالی.</li></ul><h3 id="برنامه-تفصیلی-تخصیص-منابع-جذبشده" class="doc-h3">برنامه تفصیلی تخصیص منابع جذب‌شده:</h3><ul class="doc-ul"><li><strong>۴۵ درصد توسعه محصول و مهندسی هوش مصنوعی (۱,۵۷۵,۰۰۰,۰۰۰ تومان):</strong></li></ul><p class="doc-p">فاین‌تیون مدل زبانی سبک بومی بر بستر سرورهای داخلی، توسعه کانکتورهای دوطرفه وب‌هوک به نرم‌افزارهای مدیریت ارتباط با مشتری دیدار و پیام‌گستر، و پیاده‌سازی خزنده‌های توزیع‌شده با نشانی‌های پایدار شبکه ملی.</p><ul class="doc-ul"><li><strong>۳۵ درصد بازاریابی تجاری، فروش سازمانی و برندینگ (۱,۲۲۵,۰۰۰,۰۰۰ تومان):</strong></li></ul><p class="doc-p">راه‌اندازی فرآیند فروش سازمانی، اجرای کمپین‌های بازاریابی محتوایی و سئو، برگزاری کارگاه‌های تخصصی برای مدیران ارشد فروش، و تضمین جذب ۳۵۰ مشترک تجاری.</p><ul class="doc-ul"><li><strong>۱۵ درصد زیرساخت سخت‌افزاری و پایداری شبکه داخلی (۵۲۵,۰۰۰,۰۰۰ تومان):</strong></li></ul><p class="doc-p">تجهیز و اجاره رک‌های سرور اختصاصی پرسرعت و پردازنده‌های گرافیکی در دیتاسنترهای داخلی جهت حفظ آپ‌تایم ۹۹.۹ درصد حتی در شرایط قطعی کامل اینترنت بین‌الملل.</p><ul class="doc-ul"><li><strong>۵ درصد تنخواه‌گردان احتیاطی و ذخیره نقدینگی (۱۷۵,۰۰۰,۰۰۰ تومان):</strong></li></ul><p class="doc-p">پوشش نوسانات پیش‌بینی‌نشده ارزی، هزینه‌های حقوقی، ثبتی و ران‌وی امن ۱۲ ماهه تیم.</p><hr class="section-divider" /><h2 id="۱۱-مطالعه-موردی-بازگشت-سرمایه-مشتری" class="doc-h2"><span class="h2-dot"></span>۱۱. مطالعه موردی بازگشت سرمایه مشتری</h2><p class="doc-p">سرمایه‌گذاران همواره می‌پرسند: <em>«چرا یک شرکت نرم‌افزاری حاضر است ماهانه ۱.۸۹ تا ۴.۸۹ میلیون تومان بابت رادار پرداخت کند؟»</em></p><p class="doc-p">پاسخ در اقتصاد واقعی تصمیم‌گیری مدیر فروش نهفته است. یک شرکت ارائه‌دهنده نرم‌افزار سازمانی با ارزش میانگین هر معامله ۲۵ میلیون تومان را در نظر بگیرید:</p><ul class="doc-ul"><li><strong>روش سنتی (استخدام کارشناس فروش دستی):</strong></li></ul><p class="doc-p">شرکت ماهانه حداقل ۳۵ میلیون تومان بابت حقوق، بیمه، مزایا و هزینه‌های اداری پرداخت می‌کند. این نیرو حداکثر ۸ ساعت در روز فعال است و به دلیل خستگی ناشی از نویز ۸۰ درصدی گروه‌ها، نهایتاً ۳,۵۰۰ پیام را پیمایش می‌کند. پیام‌ها با تأخیر ۲ تا ۴ ساعته دیده می‌شوند و بسیاری از خریداران به رقبا پاسخ می‌دهند. خروجی ماهانه این نیرو بستن ۱ تا ۱.۵ معامله (معادل ۳۷.۵ میلیون تومان درآمد جدید) است که حاشیه سودی ناچیز ایجاد می‌کند.</p><ul class="doc-ul"><li><strong>استفاده از سامانه هوشمند رادار:</strong></li></ul><p class="doc-p">شرکت تنها ۱,۸۹۰,۰۰۰ تومان بابت پلن استارتر پرداخت می‌کند (<strong>۹۴.۶ درصد کاهش هزینه مستقیم</strong>). سامانه ۲۴ ساعته شبانه‌روز فعال است، ماهانه ۱۵,۰۰۰ پیام را بلادرنگ اسکن می‌کند و سیگنال‌های خرید را در کمتر از ۳ ثانیه با پیش‌نویس آماده تحویل می‌دهد. سرعت واکنش در ۵ دقیقه اول شانس پیروزی در معامله را ۳ برابر می‌کند و تیم به طور میانگین ۳ تا ۵ قرارداد جدید در ماه می‌بندد (معادل ۱۰۰ میلیون تومان درآمد جدید).</p><ul class="doc-ul"><li><strong>نتیجه اقتصادی:</strong></li></ul><p class="doc-p">سامانه بیش از ۶۲.۵ میلیون تومان درآمد مازاد خالص ماهانه برای شرکت ایجاد می‌کند. بازگشت سرمایه مشتری به <strong>فراتر از ۵,۰۰۰ درصد</strong> می‌رسد و بستن تنها یک قرارداد در طول یک سال، هزینه اشتراک چندین سال رادار را کاملاً پوشش می‌دهد. این انگیزه پرداخت قوی، ضامن پایداری و رشد ارگانیک رادار است.</p>
+            </article>
+          </main>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>
