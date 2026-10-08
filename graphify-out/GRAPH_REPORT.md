@@ -1,27 +1,28 @@
-# Graph Report - radar  (2026-10-07)
+# Graph Report - radar  (2026-10-08)
 
 ## Corpus Check
-- Corpus is ~38,750 words - fits in a single context window. You may not need a graph.
+- Corpus is ~43,662 words - fits in a single context window. You may not need a graph.
 
 ## Summary
-- 373 nodes · 658 edges · 23 communities (14 shown, 8 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.85)
+- 434 nodes · 802 edges · 24 communities (15 shown, 8 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
 - App Pages & Routes
 - API Routes
-- Assistant & Voice UI
-- Dependencies & Package Config
-- Authentication & Sessions
+- App Shell & Voice UI
+- LLM Triage Engine
+- App Config & Dependencies
 - Business Plan & Strategy
 - TypeScript Configuration
 - UI Component Config
 - Technical Documentation
+- DEPLOY.sh Script
 - Favicon Brand Assets
-- App Shell & Security Headers
+- Webhook Ingest & Pipeline Docs
 - App Icon Brand Assets
-- Product Vision & Constraints
+- Production Deploy Checklist
 - LLM Concurrency Limiter
 - API Rate Limiting
 - Assistant API Endpoint
@@ -33,59 +34,58 @@
 - CSS Build Config
 
 ## God Nodes (most connected - your core abstractions)
-1. `compilerOptions` - 16 edges
-2. `react` - 15 edges
-3. `isAuthenticatedRequest()` - 14 edges
-4. `getPocketBaseClient()` - 14 edges
-5. `toPersianDigits()` - 12 edges
-6. `طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و پرونده جذب سرمایه` - 12 edges
-7. `evaluateMessageWithLLM()` - 11 edges
-8. `authenticateSuperuser()` - 11 edges
-9. `مستندات فنی و معماری جامع سامانه رادار (Radar)` - 11 edges
-10. `cn()` - 9 edges
+1. `isAuthenticatedRequest()` - 18 edges
+2. `getPocketBaseClient()` - 18 edges
+3. `triagePendingMessage()` - 16 edges
+4. `compilerOptions` - 16 edges
+5. `authenticateSuperuser()` - 15 edges
+6. `react` - 15 edges
+7. `getClientIp()` - 13 edges
+8. `ProductRecord` - 12 edges
+9. `toPersianDigits()` - 12 edges
+10. `طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و پرونده جذب سرمایه` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `POST()` --calls--> `isAuthenticatedRequest()`  [EXTRACTED]
-  app/api/analyze/route.ts → lib/auth.ts
-- `POST()` --calls--> `getClientIp()`  [EXTRACTED]
-  app/api/auth/login/route.ts → lib/rateLimit.ts
-- `GET()` --calls--> `isAuthenticatedRequest()`  [EXTRACTED]
-  app/api/auth/session/route.ts → lib/auth.ts
-- `POST()` --calls--> `isAuthenticatedRequest()`  [EXTRACTED]
-  app/api/settings/route.ts → lib/auth.ts
-- `POST()` --calls--> `isAuthenticatedRequest()`  [EXTRACTED]
-  app/api/simulate/route.ts → lib/auth.ts
+- `LeadCardProps` --references--> `LeadRecord`  [EXTRACTED]
+  components/LeadCard.tsx → lib/pocketbase.ts
+- `LeadRadarDashboard()` --calls--> `getPocketBaseClient()`  [EXTRACTED]
+  app/dashboard/page.tsx → lib/pocketbase.ts
+- `ProductSettingsPage()` --calls--> `getPocketBaseClient()`  [EXTRACTED]
+  app/settings/page.tsx → lib/pocketbase.ts
+- `LeadCard()` --calls--> `ensurePersianText()`  [EXTRACTED]
+  components/LeadCard.tsx → lib/llm.ts
+- `AnimatedNumber()` --calls--> `toPersianDigits()`  [EXTRACTED]
+  components/MetricsHeader.tsx → lib/pricing.ts
 
 ## Import Cycles
 - None detected.
 
 ## Hyperedges (group relationships)
-- **Radar triage from ingestion to lead action** — readme_radar, readme_triage_pipeline [EXTRACTED 0.75]
-- **Radar Icon Composition** — app_icon_svgfile, app_icon_radar_emblem, app_icon_concentric_circles, app_icon_sweep_blip [EXTRACTED 1.00]
-- **Radar glyph assembly** — public_favicon_concentric_rings, public_favicon_center_dot, public_favicon_sweep_arm [EXTRACTED 1.00]
-- **Minimal monochrome brand system** — public_favicon_faviconimage, public_favicon_monochrome_palette, public_favicon_brand_identity [INFERRED 0.85]
+- **3-Layer Triage Pipeline** — readme_triage_pipeline, readme_layer0_deterministic, readme_layer1_screen, readme_layer2_llm [EXTRACTED 1.00]
+- **Telegram and Bale Webhook Ingest** — readme_telegram_ingest_endpoint, readme_bale_ingest_endpoint, readme_telegram_webhook_secret, readme_bale_webhook_secret, readme_setwebhook_registration [EXTRACTED 1.00]
+- **One-Shot Deploy and Production Checklist** — readme_deploy_sh, readme_public_pocketbase_url, readme_csp_connect_src, readme_next_public_baketime, readme_secure_cookies_https, readme_pb_data_backups [EXTRACTED 1.00]
 
-## Communities (23 total, 8 thin omitted)
+## Communities (24 total, 8 thin omitted)
 
 ### Community 0 - "App Pages & Routes"
 Cohesion: 0.06
-Nodes (56): LeadRadarDashboard(), dynamic, COMPARISON_DIMENSIONS, PersianLandingPage(), PRICING_PLANS, PricingPlan, SAMPLE_SIGNALS, SampleSignal (+48 more)
+Nodes (55): LeadRadarDashboard(), dynamic, COMPARISON_DIMENSIONS, PersianLandingPage(), PRICING_PLANS, PricingPlan, SAMPLE_SIGNALS, SampleSignal (+47 more)
 
 ### Community 1 - "API Routes"
-Cohesion: 0.10
-Nodes (42): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, POST() (+34 more)
-
-### Community 2 - "Assistant & Voice UI"
 Cohesion: 0.07
-Nodes (38): DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb(), VoiceOrbProps, askRadarAssistant() (+30 more)
+Nodes (56): dynamic, POST(), dynamic, POST(), dynamic, POST(), dynamic, GET() (+48 more)
 
-### Community 3 - "Dependencies & Package Config"
-Cohesion: 0.05
-Nodes (42): dependencies, clsx, motion, next, pocketbase, react, react-dom, tailwind-merge (+34 more)
+### Community 2 - "App Shell & Voice UI"
+Cohesion: 0.07
+Nodes (41): metadata, viewport, DEFAULT_COLORS, level(), createOrbRenderer(), OrbFrame, rgb(), VoiceOrb() (+33 more)
 
-### Community 4 - "Authentication & Sessions"
-Cohesion: 0.18
-Nodes (18): dynamic, POST(), dynamic, POST(), dynamic, GET(), createSessionToken(), formatSessionClearCookie() (+10 more)
+### Community 3 - "LLM Triage Engine"
+Cohesion: 0.09
+Nodes (42): buildPrompt(), ensurePersianText(), escapeXml(), estimatePersianTokens(), EvaluateMessageInput, evaluateMessageWithLLM(), heuristicPersianEvaluator(), IntentEvaluationResult (+34 more)
+
+### Community 4 - "App Config & Dependencies"
+Cohesion: 0.04
+Nodes (45): nextConfig, securityHeaders, dependencies, clsx, motion, next, pocketbase, react (+37 more)
 
 ### Community 5 - "Business Plan & Strategy"
 Cohesion: 0.09
@@ -103,45 +103,49 @@ Nodes (15): aliases, components, hooks, lib, ui, utils, rsc, $schema (+7 more)
 Cohesion: 0.12
 Nodes (15): Opportunity Intelligence & Sales Automation Engine — PriCoders, استقرار سرور در شرایط اینترنت ایران:, مستندات فنی و معماری جامع سامانه رادار (Radar), ۱. بیانیه مأموریت فنی و رویکرد طراحی (Technical Philosophy), ۲. نمودار کلان جریان داده و خط پردازش (End-to-End System Architecture), ۳. پشته فناوری (Technology Stack), ۴. کالبدشکافی خط تریاژ سه‌لایه رادار (Progressive Triage Deep Dive), ۴.۱ لایه ۰: فیلتر قطعی و ترافیکی (Deterministic Rule Filter) (+7 more)
 
-### Community 9 - "Favicon Brand Assets"
+### Community 9 - "DEPLOY.sh Script"
+Cohesion: 0.36
+Nodes (7): as_user(), DEBIAN_FRONTEND, die(), log(), prompt_secret(), DEPLOY.sh script, usage()
+
+### Community 10 - "Favicon Brand Assets"
 Cohesion: 0.22
 Nodes (9): App Brand Identity, Center Emitter Dot, Concentric Range Rings, Favicon SVG Image, Monochrome Palette Decision, Radar Emblem Glyph, Rounded Square Background, Sweep Arm With Blip (+1 more)
 
-### Community 10 - "App Shell & Security Headers"
-Cohesion: 0.25
-Nodes (5): metadata, viewport, nextConfig, securityHeaders, next
+### Community 11 - "Webhook Ingest & Pipeline Docs"
+Cohesion: 0.28
+Nodes (9): Bale Webhook Ingest Endpoint (/api/ingest/bale), BALE_WEBHOOK_SECRET, Layer 0 Deterministic Rules (zero tokens), Layer 1 Keyword Screen (zero tokens), Layer 2 LLM Evaluation, setWebhook Registration, Telegram Webhook Ingest Endpoint (/api/ingest/telegram), TELEGRAM_WEBHOOK_SECRET (+1 more)
 
-### Community 11 - "App Icon Brand Assets"
+### Community 12 - "App Icon Brand Assets"
 Cohesion: 0.40
 Nodes (6): Concentric Circles Motif, Monochrome Minimalism, Radar Emblem, Rounded Square Container, App Icon SVG File, Radar Sweep and Blip
 
-### Community 12 - "Product Vision & Constraints"
-Cohesion: 0.33
-Nodes (6): Four-Tier Intent Classification, Resilient LLM Gateway with Persian Heuristic Fallback, PocketBase SQLite Backend, Radar AI Lead Radar, Triage Scoring and Cost Accounting Pipeline, Zero Foreign Cloud Lock-in
+### Community 13 - "Production Deploy Checklist"
+Cohesion: 0.40
+Nodes (6): CSP connect-src Constraint, DEPLOY.sh One-Shot Production Deploy, NEXT_PUBLIC Bake Time Constraint, pb_data Nightly Backup, Public PocketBase URL Constraint, Secure Cookies HTTPS Requirement
 
-### Community 15 - "Assistant API Endpoint"
+### Community 16 - "Assistant API Endpoint"
 Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
 ## Knowledge Gaps
-- **157 isolated node(s):** `dynamic`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+152 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 189 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **185 isolated node(s):** `PricingPlan`, `SampleSignal`, `AssistantSuggestionsProps`, `IconProps`, `NavbarProps` (+180 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 214 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `App Pages & Routes` to `Assistant & Voice UI`, `Dependencies & Package Config`?**
-  _High betweenness centrality (0.169) - this node is a cross-community bridge._
-- **Why does `pocketbase` connect `API Routes` to `Dependencies & Package Config`?**
-  _High betweenness centrality (0.060) - this node is a cross-community bridge._
-- **Why does `getPocketBaseClient()` connect `API Routes` to `App Pages & Routes`?**
-  _High betweenness centrality (0.034) - this node is a cross-community bridge._
-- **What connects `dynamic`, `dynamic`, `dynamic` to the rest of the system?**
-  _157 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `react` connect `App Shell & Voice UI` to `App Pages & Routes`, `App Config & Dependencies`?**
+  _High betweenness centrality (0.143) - this node is a cross-community bridge._
+- **Why does `pocketbase` connect `LLM Triage Engine` to `API Routes`, `App Config & Dependencies`?**
+  _High betweenness centrality (0.080) - this node is a cross-community bridge._
+- **Why does `getPocketBaseClient()` connect `API Routes` to `App Pages & Routes`, `LLM Triage Engine`?**
+  _High betweenness centrality (0.035) - this node is a cross-community bridge._
+- **What connects `PricingPlan`, `SampleSignal`, `AssistantSuggestionsProps` to the rest of the system?**
+  _185 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `App Pages & Routes` be split into smaller, more focused modules?**
-  _Cohesion score 0.06322624743677376 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.061754385964912284 - nodes in this community are weakly interconnected._
 - **Should `API Routes` be split into smaller, more focused modules?**
-  _Cohesion score 0.0965166908563135 - nodes in this community are weakly interconnected._
-- **Should `Assistant & Voice UI` be split into smaller, more focused modules?**
-  _Cohesion score 0.07358156028368794 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07246376811594203 - nodes in this community are weakly interconnected._
+- **Should `App Shell & Voice UI` be split into smaller, more focused modules?**
+  _Cohesion score 0.06748911465892599 - nodes in this community are weakly interconnected._

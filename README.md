@@ -92,9 +92,13 @@ The evaluator speaks the OpenAI-compatible REST standard, so it connects to a lo
 
 ```mermaid
 graph TD
-    A[Iranian Communities<br/>Telegram · Bale · X · Forums] -->|ingest| B[(raw_messages<br/>PocketBase / SQLite)]
-    B -->|pending queue| C[Triage Worker<br/>scripts/worker.ts]
-    C -->|prompt| D{LLM Gateway<br/>Ollama / vLLM / Domestic Proxy}
+    A[Iranian Communities<br/>Telegram · Bale · X · Forums] -->|bot webhooks| W[Ingest API<br/>/api/ingest/telegram · /api/ingest/bale]
+    W -->|pending| B[(raw_messages<br/>PocketBase / SQLite)]
+    A -->|manual / demo| B
+    B -->|pending queue| C[3-Layer Triage Pipeline<br/>lib/pipeline.ts]
+    C -->|L0 reject: 0 tokens| F
+    C -->|L1 unqualified: 0 tokens| F
+    C -->|L2 prompt| D{LLM Gateway<br/>Ollama / vLLM / Domestic Proxy}
     D -->|structured JSON| C
     D -.->|offline fallback| E[Persian Heuristic Engine]
     E --> C
@@ -102,6 +106,11 @@ graph TD
     F -->|SSE subscription| G[Next.js 16 Dashboard<br/>app/page.tsx]
     G -->|1-click draft| H[Sales & Marketing Team]
 ```
+
+Every message passes Layer 0 (deterministic rules: length, ads, duplicates,
+injection — zero tokens) and Layer 1 (keyword/pain-signal screen — zero
+tokens) before Layer 2 spends anything on the LLM. Rejections are still
+recorded as zero-cost `irrelevant` leads so the noise-reduction KPI stays honest.
 
 ---
 
@@ -380,6 +389,10 @@ bun run scripts/worker.ts
 | `LLM_BASE_URL` | `http://localhost:11434/v1` | OpenAI-compatible endpoint (Ollama / vLLM / domestic gateway) |
 | `LLM_API_KEY` | `dummy` | API key, if the endpoint requires one |
 | `LLM_MODEL` | `llama3.1` | Model identifier used for triage |
+| `TELEGRAM_BOT_TOKEN` | — | Bot token for the Telegram group bot (Privacy Mode off) |
+| `TELEGRAM_WEBHOOK_SECRET` | — | Secret verified against `X-Telegram-Bot-Api-Secret-Token` on `/api/ingest/telegram` |
+| `BALE_BOT_TOKEN` | — | Bot token for the Bale assistant bot |
+| `BALE_WEBHOOK_SECRET` | — | Secret verified on `/api/ingest/bale` |
 | `INPUT_TOKEN_COST_PER_MILLION` | `0.15` | USD per 1M input tokens |
 | `OUTPUT_TOKEN_COST_PER_MILLION` | `0.60` | USD per 1M output tokens |
 
@@ -438,6 +451,32 @@ curl -X POST http://localhost:3000/api/simulate \
   -H "Content-Type: application/json" \
   -d '{}'
 ```
+
+### `POST /api/ingest/telegram` · `POST /api/ingest/bale`
+
+Bot-webhook receivers for live community ingestion. Accept the platform's
+native update JSON, dedupe on the platform message id, auto-provision the
+`source` row per chat, persist a `pending` message, and triage it through the
+3-layer pipeline immediately. Every response includes the layer that decided
+it (`layer0` | `layer1` | `layer2`).
+
+```bash
+# Register the webhook (Telegram example; needs public HTTPS):
+curl "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/setWebhook?url=https://radar.example.com/api/ingest/telegram&secret_token=<TELEGRAM_WEBHOOK_SECRET>"
+# Bale mirrors Telegram's API: setWebhook to /api/ingest/bale with BALE_WEBHOOK_SECRET.
+
+# Manual push (Bearer key, same shape the bots deliver):
+curl -X POST http://localhost:3000/api/ingest/telegram \
+  -H "Authorization: Bearer $RADAR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"message":{"message_id":1,"date":1728250000,"text":"...","from":{"username":"founder"},"chat":{"id":-1001,"title":"Iran Tech Founders"}}}'
+```
+
+Auth: platform secret header (`X-Telegram-Bot-Api-Secret-Token` /
+`X-Bale-Secret-Token`, `X-Webhook-Secret` accepted as fallback), or Bearer
+`RADAR_API_KEY` for manual pushes. Non-text updates are acknowledged with
+`{"ignored": true}`; redeliveries return `{"deduped": true}` without
+re-triaging.
 
 ---
 

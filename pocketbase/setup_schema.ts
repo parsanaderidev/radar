@@ -145,7 +145,7 @@ export async function setupSchema() {
         {
           name: "status",
           type: "select",
-          values: ["pending", "processed", "error"],
+          values: ["pending", "processed", "filtered", "error"],
           maxSelect: 1,
           required: true,
         },
@@ -163,6 +163,21 @@ export async function setupSchema() {
       updateRule: null,
       deleteRule: null,
     });
+    // Migrate the status select to include "filtered" (Layer 0/1 rejections).
+    try {
+      const full = await pb.collections.getOne(rawMessagesColl.id);
+      const statusField: any = (full.fields as any[]).find((f) => f.name === "status");
+      if (statusField && Array.isArray(statusField.values) && !statusField.values.includes("filtered")) {
+        await pb.collections.update(rawMessagesColl.id, {
+          fields: (full.fields as any[]).map((f) =>
+            f.name === "status" ? { ...f, values: [...f.values, "filtered"] } : f
+          ),
+        });
+        console.log("[PocketBase] Migrated 'raw_messages.status' to include 'filtered'.");
+      }
+    } catch (err: any) {
+      console.warn("[PocketBase] Status migration skipped:", err?.message || err);
+    }
   }
 
   // 4. LEADS COLLECTION

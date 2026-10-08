@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { getPocketBaseClient, authenticateSuperuser, type ProductRecord } from "@/lib/pocketbase";
-import { evaluateMessageWithLLM } from "@/lib/llm";
-import { processSingleMessage } from "@/scripts/worker";
+import { triageAdHocMessage, triagePendingMessage } from "@/lib/pipeline";
 import { isAuthenticatedRequest } from "@/lib/auth";
 import { validateAnalyzeInput } from "@/lib/validation";
 import { rateLimiter, getClientIp } from "@/lib/rateLimit";
@@ -70,8 +69,8 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "No product configured in database." }, { status: 400 });
       }
 
-      const { lead, evalResult } = await processSingleMessage(pb, rawMsg, products.items[0]);
-      return NextResponse.json({ success: true, lead, evalResult });
+      const { lead, evalResult, layer } = await triagePendingMessage(pb, rawMsg, products.items[0]);
+      return NextResponse.json({ success: true, layer, lead, evalResult });
     }
 
     // Case 2: On-the-fly evaluation of ad-hoc message text
@@ -97,7 +96,7 @@ export async function POST(req: Request) {
       product = products.items[0];
     }
 
-    const evalResult = await evaluateMessageWithLLM({
+    const { evalResult, layer } = await triageAdHocMessage({
       content,
       author_handle,
       thread_context,
@@ -107,6 +106,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
+      layer,
       evaluation: evalResult,
     });
   } catch (err: any) {

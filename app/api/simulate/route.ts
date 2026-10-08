@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPocketBaseClient, authenticateSuperuser, type ProductRecord } from "@/lib/pocketbase";
 import { DEMO_COMMUNITY_MESSAGES } from "@/scripts/seed_demo";
-import { processSingleMessage } from "@/scripts/worker";
+import { triagePendingMessage } from "@/lib/pipeline";
 import { isAuthenticatedRequest } from "@/lib/auth";
 import { rateLimiter, getClientIp } from "@/lib/rateLimit";
 
@@ -77,7 +77,7 @@ export async function POST(req: Request) {
     });
 
     // Ingest & evaluate immediately
-    const { lead, evalResult } = await processSingleMessage(pb, rawMsg as any, product);
+    const { lead, evalResult, layer } = await triagePendingMessage(pb, rawMsg as any, product);
 
     // Expand lead relations for immediate UI consumption
     const fullLead = await pb.collection("leads").getOne(lead.id, {
@@ -87,6 +87,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       success: true,
       message: "Simulated message triaged successfully",
+      layer,
       lead: fullLead,
       evalResult,
     });

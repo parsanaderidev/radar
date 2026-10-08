@@ -29,7 +29,7 @@ export interface RawMessageRecord {
   content: string;
   thread_context?: string;
   posted_at?: string;
-  status: "pending" | "processed" | "error";
+  status: "pending" | "processed" | "filtered" | "error";
   created?: string;
   updated?: string;
   expand?: {
