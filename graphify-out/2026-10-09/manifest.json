@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "docs/BusinessPlan.md": {
-    "mtime": 1791472336.188728,
-    "seen": 1791472627.3205209,
-    "ast_hash": "38ddd9dd7d6769f10b13a5ee50ac3a24",
+    "mtime": 1791488728.3883033,
+    "seen": 1791488756.2003365,
+    "ast_hash": "153ea634a22f7e83f75b611f134d6932",
     "semantic_hash": ""
   },
   "DEPLOY.sh": {
@@ -432,15 +432,15 @@
     "semantic_hash": ""
   },
   "docs/BusinessPlan.html": {
-    "mtime": 1791481066.245964,
-    "seen": 1791481082.9386673,
-    "ast_hash": "3638c7508361b82d05e0004bebd68164",
+    "mtime": 1791488747.8403018,
+    "seen": 1791488756.2003329,
+    "ast_hash": "99e4f22e8164ea5738e43fcd28789fae",
     "semantic_hash": ""
   },
   "docs/BusinessPlan.pdf": {
-    "mtime": 1791481067.0459638,
-    "seen": 1791481082.9386752,
-    "ast_hash": "2c921760ec6780947a0c8bc874f73403",
+    "mtime": 1791488748.5043015,
+    "seen": 1791488756.2003586,
+    "ast_hash": "c42a6a279729b055586527395ef478eb",
     "semantic_hash": ""
   },
   "scripts/converter/pdf_maker.ts": {
@@ -450,20 +450,20 @@
     "semantic_hash": ""
   },
   "docs/Content.html": {
-    "mtime": 1791481067.105964,
-    "seen": 1791481082.9386709,
-    "ast_hash": "6a3dd9471dd147c1b82966b60855e8a6",
+    "mtime": 1791488748.5823016,
+    "seen": 1791488756.2003484,
+    "ast_hash": "0488243b5d881d2d6239b1adba40dcd1",
     "semantic_hash": ""
   },
   "docs/Content.md": {
-    "mtime": 1791481044.1029658,
-    "seen": 1791481082.9386718,
-    "ast_hash": "2bd44d4510a8597374f8e9f23f3a7981",
+    "mtime": 1791488663.832309,
+    "seen": 1791488756.2003512,
+    "ast_hash": "96efcec8e02ec1f1dc6db6ab4a3c9419",
     "semantic_hash": ""
   },
   "docs/TechnicalDocumentation.html": {
-    "mtime": 1791481065.454964,
-    "seen": 1791481082.9386735,
+    "mtime": 1791488746.7493017,
+    "seen": 1791488756.2003536,
     "ast_hash": "fa514bd04230ff341a8e14f63f6327fd",
     "semantic_hash": ""
   },
@@ -474,15 +474,15 @@
     "semantic_hash": ""
   },
   "docs/Content.pdf": {
-    "mtime": 1791481067.6839638,
-    "seen": 1791481082.938676,
-    "ast_hash": "d685898a7d9eb31c9d312d0b53bfeaed",
+    "mtime": 1791488749.2143016,
+    "seen": 1791488756.2003613,
+    "ast_hash": "7357e1b834b206879f0cb7b7fe17fcf7",
     "semantic_hash": ""
   },
   "docs/TechnicalDocumentation.pdf": {
-    "mtime": 1791481066.176964,
-    "seen": 1791481082.9386773,
-    "ast_hash": "0a683b40fe098a51da85655ee025a95f",
+    "mtime": 1791488747.7643018,
+    "seen": 1791488756.2003639,
+    "ast_hash": "d65b79099824dd6b3e1728fc3313db8c",
     "semantic_hash": ""
   }
 }

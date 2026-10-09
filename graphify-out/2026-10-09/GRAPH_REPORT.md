@@ -1,7 +1,7 @@
 # Graph Report - Radar  (2026-10-08)
 
 ## Corpus Check
-- 73 files · ~73,051 words
+- 73 files · ~71,642 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `223d7b6e`
+- Built from commit: `37f5bd38`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -37,7 +37,7 @@
 - workflows/graphify.md
 - next-env.d.ts
 - postcss.config.mjs
-- فهرست اسلایدهای ارائه
+- فهرست اسلایدهای ارائه بر اساس ترتیب مصوب
 - devDependencies
 - pdf_maker.ts
 - pocketbase.ts
@@ -55,7 +55,7 @@
 7. `compilerOptions` - 16 edges
 8. `ProductRecord` - 15 edges
 9. `getClientIp()` - 15 edges
-10. `طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی` - 14 edges
+10. `toPersianDigits()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `GET()` --calls--> `getAuthSession()`  [EXTRACTED]
@@ -97,7 +97,7 @@ Nodes (32): clsx, motion, next, dependencies, clsx, motion, next, pocketbase (+2
 
 ### Community 5 - "طرح کسب‌وکار جامع، مدل اقتصادی سازمانی و تحلیل مالی"
 Cohesion: 0.06
-Nodes (35): ارزش پیشنهادی رادار:, الف. هزینه‌های متغیر ماهانه, ب. هزینه‌های ثابت و سرشکن‌شده زیرساخت, برنامه تفصیلی تخصیص منابع جذب‌شده:, تحلیل اهرم عملیاتی در مراحل سه‌گانه مقیاس‌پذیری:, جمع‌بندی بهای تمام‌شده واقعی واحد:, دورنمای مالی ۳ ساله:, سامانه هوشمند رادار — PriCoders (+27 more)
+Nodes (35): بخش ۱: مسئله بازار و واقعیت فروش سازمانی (Problem), بخش ۲: راه‌حل رادار و نحوه کارکرد (Solution), بخش ۳: چرا رادار؟ و مزیت‌های رقابتی (Why Radar?), بخش ۴: اندازه بازار و سهم هدف (Market Size), بخش ۵: مدل کسب‌وکار، اقتصاد واحد و تحلیل مالی (Business Model), بخش ۶: استراتژی ورود به بازار و نقشه راه محصول (GTM Strategy & Roadmap), بخش ۷: تیم توسعه و رهبری سیستم (Team), بخش ۸: برنامه جذب سرمایه، تخصیص منابع و سپاسگزاری (Thank You) (+27 more)
 
 ### Community 6 - "compilerOptions"
 Cohesion: 0.07
@@ -135,9 +135,9 @@ Nodes (6): CSP connect-src Constraint, DEPLOY.sh One-Shot Production Deploy, NEX
 Cohesion: 0.67
 Nodes (3): cleanOutput(), dynamic, POST()
 
-### Community 24 - "فهرست اسلایدهای ارائه"
+### Community 24 - "فهرست اسلایدهای ارائه بر اساس ترتیب مصوب"
 Cohesion: 0.14
-Nodes (13): اسلاید ۱: عنوان و کاور اصلی, اسلاید ۱۰: جمع‌بندی و سرمایه‌پذیری, اسلاید ۲: فهرست مطالب, اسلاید ۳: مسئله بازار و واقعیت فروش سازمانی, اسلاید ۴: دیدگاه و اندازه بازار, اسلاید ۵: معرفی سامانه رادار, اسلاید ۶: نحوه کارکرد رادار, اسلاید ۷: فناوری و زیرساخت (+5 more)
+Nodes (13): اسلاید ۱: عنوان و کاور اصلی, اسلاید ۱۰: سپاسگزاریم و جذب سرمایه, اسلاید ۲: فهرست مطالب, اسلاید ۳: مسئله بازار, اسلاید ۴: راه‌حل رادار, اسلاید ۵: چرا رادار؟, اسلاید ۶: اندازه بازار, اسلاید ۷: مدل کسب‌وکار (+5 more)
 
 ### Community 25 - "devDependencies"
 Cohesion: 0.12
@@ -160,7 +160,7 @@ Cohesion: 0.50
 Nodes (4): config, middleware, parseEdgeJwtPayload(), proxy()
 
 ## Knowledge Gaps
-- **244 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+239 more)
+- **245 isolated node(s):** `DEBIAN_FRONTEND`, `dynamic`, `dynamic`, `dynamic`, `dynamic` (+240 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -174,7 +174,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `ProductRecord` connect `pocketbase.ts` to `Icons.tsx`, `pipeline.ts`, `auth.ts`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `DEBIAN_FRONTEND`, `dynamic`, `dynamic` to the rest of the system?**
-  _244 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _245 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Icons.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.054901960784313725 - nodes in this community are weakly interconnected._
 - **Should `voice-orb.tsx` be split into smaller, more focused modules?**
